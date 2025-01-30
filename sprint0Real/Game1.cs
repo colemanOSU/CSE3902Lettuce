@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace sprint0Real
 {
     public class Game1 : Game
-    {   //test
+    {  
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
