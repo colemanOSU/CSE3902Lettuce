@@ -5,7 +5,6 @@ using System.Collections.Generic;
 
 namespace sprint0Real
 {
-    //Test Andie
     public class Game1 : Game
     {  
         private GraphicsDeviceManager _graphics;
