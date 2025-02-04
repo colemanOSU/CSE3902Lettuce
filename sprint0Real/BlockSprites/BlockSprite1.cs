@@ -14,8 +14,8 @@ namespace sprint0Real.BlockSprites
         bool movingUp = false;
         bool movingLeft = false;
 
-        public Rectangle sourceRectangle = new Rectangle(983, 9, 16, 18);
-        public Rectangle destinationRectangle = new Rectangle(200, 200, 200, 25);
+        public Rectangle sourceRectangle = new Rectangle(984, 11, 16, 16);
+        public Rectangle destinationRectangle = new Rectangle(200, 200, 40, 40);
 
         public Texture2D _texture;
 
@@ -26,7 +26,7 @@ namespace sprint0Real.BlockSprites
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_texture, sourceRectangle, destinationRectangle, Color.White);
+            spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
         }
 
         public void Update(GameTime gametime)
