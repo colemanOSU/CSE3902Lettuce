@@ -7,7 +7,7 @@ namespace sprint0Real.Interfaces
 {
     public interface IBlock
     {
-        void Update();
+        void Update(GameTime gametime);
 
         void Draw(SpriteBatch spriteBatch);
 
