@@ -32,7 +32,7 @@ namespace sprint0Real
         {
             // TODO: Add your initialization logic here
             controllerList = new List<IController>();
-            controllerList.Add(new KeyboardController());
+            //controllerList.Add(new KeyboardControllerTemp(this));
             controllerList.Add(new MouseController());
 
             base.Initialize();
@@ -58,12 +58,15 @@ namespace sprint0Real
             foreach (IController controller in controllerList)
             {
                 sprite = controller.Update(sprite);
+
             }
+            
 
             if ((Keyboard.GetState().IsKeyDown(Keys.D0) || Keyboard.GetState().IsKeyDown(Keys.NumPad0) || (Mouse.GetState().RightButton == ButtonState.Pressed)))
             {
                 this.Exit();
             }
+            
 
             currentBlock.Update(gameTime);
         }
