@@ -17,7 +17,6 @@ public class RunningInPlacePlayer : ISprite
 
     public void Update(SpriteBatch spriteBatch, Texture2D marioSheet)
     {
-        
         currentFrame = (currentFrame + 1) % (totalFrames * 8);
 
         sourceRectangle = new Rectangle(20 + currentFrame / 8 * 18, 8, 15, 15);

@@ -1,0 +1,43 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using sprint0Real.Interfaces;
+using Microsoft.Xna.Framework.Graphics;
+using System.Runtime.CompilerServices;
+using System.Numerics;
+using Microsoft.Xna.Framework;
+using Vector2 = Microsoft.Xna.Framework.Vector2;
+
+namespace sprint0Real.EnemyStuff
+{
+    public class DragonSprite : ISprite
+    {
+        private Texture2D sprites;
+        private Game1 myGame;
+        
+        public DragonSprite(Texture2D spriteSheet, SpriteBatch spriteBatch) {
+            sprites = spriteSheet;
+        }
+
+        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        {
+            Rectangle sourceRectangle;
+            Rectangle destinationRectangle;
+
+            sourceRectangle = new Rectangle(180, 0, 17, 15);
+            destinationRectangle = new Rectangle((int)location.X,
+            (int)location.Y, 20, 20);
+
+            spriteBatch.Begin();
+            spriteBatch.Draw(sprites, destinationRectangle, sourceRectangle, Color.White);
+            spriteBatch.End();
+        }
+
+        public void Update(SpriteBatch spriteBatch, Texture2D sprites)
+        {
+            StateMachine.Update();
+        }
+    }
+}
