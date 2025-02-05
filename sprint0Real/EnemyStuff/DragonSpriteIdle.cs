@@ -12,13 +12,16 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace sprint0Real.EnemyStuff
 {
-    public class DragonSprite : ISprite
+    public class DragonSpriteIdle : ISprite
     {
         private Texture2D sprites;
+        private int currentFrame;
+        private int totalFrames;
         private Game1 myGame;
         
-        public DragonSprite(Texture2D spriteSheet, SpriteBatch spriteBatch) {
+        public DragonSpriteIdle(Texture2D spriteSheet, SpriteBatch spriteBatch) {
             sprites = spriteSheet;
+            totalFrames = 3;
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
@@ -37,7 +40,8 @@ namespace sprint0Real.EnemyStuff
 
         public void Update(SpriteBatch spriteBatch, Texture2D sprites)
         {
-            StateMachine.Update();
+            currentFrame = (currentFrame + 1) % totalFrames;
+            
         }
     }
 }

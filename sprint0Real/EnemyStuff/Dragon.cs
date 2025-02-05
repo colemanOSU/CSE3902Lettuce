@@ -15,5 +15,10 @@ namespace sprint0Real.EnemyStuff
         {
             stateMachine = new DragonStateMachine();
         }
+
+        public void Update()
+        {
+            stateMachine.Update();
+        }
     }
 }

@@ -33,7 +33,7 @@ namespace sprint0Real.EnemyStuff
         }
         public ISprite CreateDragonEnemySprite()
         {
-            return new DragonSprite(bossesSheet);
+            return new DragonSpriteIdle(bossesSheet);
         }
         public ISprite CreateBigEnemySprite()
         {
