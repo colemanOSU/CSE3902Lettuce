@@ -10,31 +10,31 @@ namespace sprint0Real
     public class KeyboardControllerTemp : IControllerTemp
     {
         private Dictionary<Keys, ICommand> commands;
-        private int currentBlock;
+        private int currentBlock = 1;
+        private Game1 _game;
+        private Texture2D blockTexture;
 
         public KeyboardControllerTemp(Game1 game)
         {
             commands = new Dictionary<Keys, ICommand>();
-            currentBlock = 1;
+            _game = game;
+            blockTexture = _game.Content.Load<Texture2D>("NES - The Legend of Zelda - Dungeon Tileset");
 
-            if (Keyboard.GetState().Equals(Keys.Y))
-            {
-                currentBlock++;
-            }
 
-            commands.Add(Keys.D0, new QuitCommand(game));
-            commands.Add(Keys.NumPad0, new QuitCommand(game));
-            commands.Add(Keys.Y, new NextBlockCommand(game, currentBlock, game.Content.Load<Texture2D>("NES - The Legend of Zelda - Dungeon Tileset")));
+            commands.Add(Keys.D0, new QuitCommand(_game));
+            commands.Add(Keys.NumPad0, new QuitCommand(_game));
+            commands.Add(Keys.Y, new NextBlockCommand(_game, blockTexture));
+            commands.Add(Keys.T, new PreviousBlockCommand(_game, blockTexture));
 
         }
         public void Update(GameTime gameTime)
         {
             var KeyboardState = Keyboard.GetState();
-            foreach(var commands in commands)
+            foreach(var command in commands)
             {
-                if (KeyboardState.IsKeyDown(commands.Key))
+                if (KeyboardState.IsKeyDown(command.Key))
                 {
-                    commands.Value.Execute();
+                    command.Value.Execute();
                 }
             }
         }
