@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using sprint0Real.BlockSprites;
+using sprint0Real.Interfaces;
 using System.Collections.Generic;
 
 namespace sprint0Real
@@ -11,6 +13,7 @@ namespace sprint0Real
         private SpriteBatch _spriteBatch;
 
         Texture2D marioSheet;
+        Texture2D blockSheet;
         SpriteFont font1;
 
         public Game1()
@@ -21,6 +24,7 @@ namespace sprint0Real
         }
 
         ISprite sprite = new StandingInPlacePlayer();
+        public IBlock currentBlock;
         TextSprite text = new TextSprite();
         List<IController> controllerList;
 
@@ -28,7 +32,7 @@ namespace sprint0Real
         {
             // TODO: Add your initialization logic here
             controllerList = new List<IController>();
-            controllerList.Add(new KeyboardController());
+            //controllerList.Add(new KeyboardControllerTemp(this));
             controllerList.Add(new MouseController());
 
             base.Initialize();
@@ -41,7 +45,10 @@ namespace sprint0Real
             font1 = Content.Load<SpriteFont>("MyMenuFont");
             // TODO: use this.Content to load your game content here
             marioSheet = Content.Load<Texture2D>("mario");
-            //yhindhsifdgsdhgs
+
+            //Loading Block Content
+            blockSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - Dungeon Tileset");
+            currentBlock = new BlockSprite1(blockSheet);
         }
 
 
@@ -51,12 +58,17 @@ namespace sprint0Real
             foreach (IController controller in controllerList)
             {
                 sprite = controller.Update(sprite);
+
             }
+            
 
             if ((Keyboard.GetState().IsKeyDown(Keys.D0) || Keyboard.GetState().IsKeyDown(Keys.NumPad0) || (Mouse.GetState().RightButton == ButtonState.Pressed)))
             {
                 this.Exit();
             }
+            
+
+            currentBlock.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
@@ -66,6 +78,7 @@ namespace sprint0Real
 
             // TODO: Add your drawing code here
             _spriteBatch.Begin();
+            currentBlock.Draw(_spriteBatch);
             sprite.Update(_spriteBatch, marioSheet);
             text.Update(_spriteBatch, font1);
             _spriteBatch.End();
