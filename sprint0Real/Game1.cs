@@ -15,25 +15,27 @@ namespace sprint0Real
         Texture2D marioSheet;
         Texture2D blockSheet;
         SpriteFont font1;
+        public int currentBlockIndex;
 
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+            currentBlockIndex = 1;
         }
 
         ISprite sprite = new StandingInPlacePlayer();
         public IBlock currentBlock;
         TextSprite text = new TextSprite();
-        List<IController> controllerList;
+        List<IControllerTemp> controllerList;
 
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            controllerList = new List<IController>();
-            //controllerList.Add(new KeyboardControllerTemp(this));
-            controllerList.Add(new MouseController());
+            controllerList = new List<IControllerTemp>();
+            controllerList.Add(new KeyboardControllerTemp(this));
+            //controllerList.Add(new MouseController());
 
             base.Initialize();
         }
@@ -55,9 +57,10 @@ namespace sprint0Real
         protected override void Update(GameTime gameTime)
         {
 
-            foreach (IController controller in controllerList)
+            foreach (IControllerTemp controller in controllerList)
             {
-                sprite = controller.Update(sprite);
+                //sprite = controller.Update(sprite);
+                controller.Update(gameTime);
 
             }
             

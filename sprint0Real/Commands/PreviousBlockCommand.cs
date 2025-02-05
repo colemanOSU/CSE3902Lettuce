@@ -7,14 +7,14 @@ using sprint0Real.Interfaces;
 
 namespace sprint0Real.Commands
 {
-    public class NextBlockCommand : ICommand
+    public class PreviousBlockCommand : ICommand
     {
         private Dictionary<int, IBlock> blocks;
         private Game1 _game;
         private Texture2D _texture;
         private int _currentBlock;
 
-        public NextBlockCommand(Game1 game, Texture2D blockTexture)
+        public PreviousBlockCommand(Game1 game, Texture2D blockTexture)
         {
             _game = game;
             _texture = blockTexture;
@@ -38,13 +38,13 @@ namespace sprint0Real.Commands
         {
             if (blocks.ContainsKey(_currentBlock))
             {
-                if (_currentBlock == 10) //if at last block start over
+                if (_currentBlock == 1) //if at first block go to last
                 {
-                    _currentBlock = 1;
+                    _currentBlock = 10;
                 }
-                else //increment to next block
+                else //decrement to previous block
                 {
-                    _currentBlock++;
+                    _currentBlock--;
                 }
 
                 _game.currentBlock = blocks[_currentBlock];
