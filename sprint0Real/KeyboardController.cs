@@ -35,13 +35,13 @@ public class KeyboardController : IController
         else if (Keyboard.GetState().IsKeyDown(Keys.D2) || Keyboard.GetState().IsKeyDown(Keys.NumPad2))
         {
 
-            sprite = new RunningInPlacePlayer();
+             sprite = new RunningLeftAndRightPlayer();
         }
         else if (Keyboard.GetState().IsKeyDown(Keys.D3) || Keyboard.GetState().IsKeyDown(Keys.NumPad3))
         {
             sprite = new DeadPlayerMovingUpAndDown();
         }
-        else if (Keyboard.GetState().IsKeyDown(Keys.D4) || Keyboard.GetState().IsKeyDown(Keys.NumPad4))
+        else (Keyboard.GetState().IsKeyDown(Keys.D4) || Keyboard.GetState().IsKeyDown(Keys.NumPad4))
         {
             sprite = new RunningLeftAndRightPlayer();
         }
