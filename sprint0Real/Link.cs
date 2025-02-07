@@ -6,11 +6,13 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework.Graphics;
 
 public class Link
 {
     private LinkStateMachine stateMachine;
     private KeyboardControllerTemp keyboardControllerTemp;
+    private Game1 game;
     public Link()
     {
         stateMachine = new LinkStateMachine();
@@ -19,5 +21,8 @@ public class Link
     {
         stateMachine.Damaged();
     }
-
+        public void Draw(SpriteBatch spritebatch,Texture2D texture)
+    {
+        stateMachine.Draw(spritebatch, texture);
+    }
 }

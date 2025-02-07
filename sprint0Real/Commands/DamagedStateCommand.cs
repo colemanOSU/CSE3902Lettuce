@@ -11,13 +11,17 @@ namespace sprint0Real.Commands
     {
         private Texture2D _texture;
         private Game1 _game;
+        private SpriteBatch _batch;
+        private Link link;
         public DamagedStateCommand(Game1 game,Texture2D link) {
+           
             _game = game;
             _texture = link;
         }
         public void Execute()
         {
-
+            link.Damaged();
+            link.Draw(_batch,_texture);
         }
     }
 }

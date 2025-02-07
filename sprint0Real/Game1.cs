@@ -12,7 +12,7 @@ namespace sprint0Real
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
-        Texture2D marioSheet;
+        Texture2D linkSheet;
         Texture2D blockSheet;
         SpriteFont font1;
 
@@ -26,14 +26,14 @@ namespace sprint0Real
         ISprite sprite = new StandingInPlacePlayer();
         public IBlock currentBlock;
         TextSprite text = new TextSprite();
-        List<IController> controllerList;
+        List<IControllerTemp> controllerList;
 
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            controllerList = new List<IController>();
-            //controllerList.Add(new KeyboardControllerTemp(this));
-            controllerList.Add(new MouseController());
+            controllerList = new List<IControllerTemp>();
+            controllerList.Add(new KeyboardControllerTemp(this));
+            //controllerList.Add(new MouseController());
 
             base.Initialize();
         }
@@ -44,7 +44,7 @@ namespace sprint0Real
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             font1 = Content.Load<SpriteFont>("MyMenuFont");
             // TODO: use this.Content to load your game content here
-            marioSheet = Content.Load<Texture2D>("mario");
+            linkSheet = Content.Load<Texture2D>("zelda");
 
             //Loading Block Content
             blockSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - Dungeon Tileset");
@@ -55,9 +55,9 @@ namespace sprint0Real
         protected override void Update(GameTime gameTime)
         {
 
-            foreach (IController controller in controllerList)
+            foreach (IControllerTemp controller in controllerList)
             {
-                sprite = controller.Update(sprite);
+                controller.Update(gameTime);
 
             }
             
@@ -79,7 +79,7 @@ namespace sprint0Real
             // TODO: Add your drawing code here
             _spriteBatch.Begin();
             currentBlock.Draw(_spriteBatch);
-            sprite.Update(_spriteBatch, marioSheet);
+            sprite.Update(_spriteBatch, linkSheet);
             text.Update(_spriteBatch, font1);
             _spriteBatch.End();
 
