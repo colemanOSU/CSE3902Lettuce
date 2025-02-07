@@ -18,24 +18,27 @@ namespace sprint0Real.Commands
         {
             _game = game;
             _texture = blockTexture;
-            _currentBlock = _game.currentBlockIndex;
 
-            blocks = new Dictionary<int, IBlock>();
-            blocks.Add(1, new BlockSprite1(_texture));
-            blocks.Add(2, new BlockSprite2(_texture));
-            blocks.Add(3, new BlockSprite3(_texture));
-            blocks.Add(4, new BlockSprite4(_texture));
-            blocks.Add(5, new BlockSprite5(_texture));
-            blocks.Add(6, new BlockSprite6(_texture));
-            blocks.Add(7, new BlockSprite7(_texture));
-            blocks.Add(8, new BlockSprite8(_texture));
-            blocks.Add(9, new BlockSprite9(_texture));
-            blocks.Add(10, new BlockSprite10(_texture));
+            blocks = new Dictionary<int, IBlock>()
+            {
+                { 1, new BlockSprite1(_texture) },
+                { 2, new BlockSprite2(_texture) },
+                { 3, new BlockSprite3(_texture) },
+                { 4, new BlockSprite4(_texture) },
+                { 5, new BlockSprite5(_texture) },
+                { 6, new BlockSprite6(_texture) },
+                { 7, new BlockSprite7(_texture) },
+                { 8, new BlockSprite8(_texture) },
+                { 9, new BlockSprite9(_texture) },
+                { 10, new BlockSprite10(_texture) }
+             };
 
         }
 
         public void Execute()
         {
+            int _currentBlock = _game.currentBlockIndex;
+
             if (blocks.ContainsKey(_currentBlock))
             {
                 if (_currentBlock == 10) //if at last block start over
