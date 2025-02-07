@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using sprint0Real.BlockSprites;
 using sprint0Real.Interfaces;
+using sprint0Real.LinkSprites;
 using System.Collections.Generic;
 
 namespace sprint0Real
@@ -14,8 +15,13 @@ namespace sprint0Real
 
         Texture2D marioSheet;
         Texture2D blockSheet;
+        
         SpriteFont font1;
         public int currentBlockIndex;
+
+        public ILink Link = new Link();
+        public ILinkSprite linkSprite;
+        public Texture2D linkSheet;
 
         public Game1()
         {
@@ -51,6 +57,9 @@ namespace sprint0Real
             //Loading Block Content
             blockSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - Dungeon Tileset");
             currentBlock = new BlockSprite1(blockSheet);
+
+            linkSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - Link");
+            linkSprite = new MoveRightSprite(linkSheet, this);
         }
 
 
@@ -72,17 +81,22 @@ namespace sprint0Real
             
 
             currentBlock.Update(gameTime);
+
+
         }
 
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            string output = "Credits:\nProgram Made By: Kelly Coleman\n Sprites from: https://www.spriters-resource.com/nes/supermariobros/sheet/50365/";
-
-            // TODO: Add your drawing code here
+            
             _spriteBatch.Begin();
             currentBlock.Draw(_spriteBatch);
             sprite.Update(_spriteBatch, marioSheet);
+
+            linkSprite.Update(gameTime, _spriteBatch);
+
+            linkSprite.Draw(_spriteBatch);
+            
             text.Update(_spriteBatch, font1);
             _spriteBatch.End();
 
