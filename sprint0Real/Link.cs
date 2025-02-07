@@ -13,9 +13,11 @@ public class Link
     private KeyboardControllerTemp keyboardControllerTemp;
     public Link()
     {
-        //stateMachine = new LinkStateMachine();
-       // public Vector2 Position{ get;private set};
+        stateMachine = new LinkStateMachine();
     }
-
+        public void Damaged()
+    {
+        stateMachine.Damaged();
+    }
 
 }

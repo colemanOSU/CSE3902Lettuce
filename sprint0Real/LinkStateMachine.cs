@@ -8,10 +8,11 @@ using sprint0Real.Interfaces;
 
 public class LinkStateMachine
 {
-    private enum LinkState;
-    //private LinkState currentState = LinkState.Static;
-    //public void Damaged()
-    //{
-
-    //}
+    private KeyboardControllerTemp keyboardControllerTemp;
+    private enum LinkHealth {Normal,Damaged};
+    private LinkHealth health = LinkHealth.Normal;
+    public void Damaged()
+    {
+        
+    }
 }
