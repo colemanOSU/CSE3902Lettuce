@@ -59,7 +59,7 @@ namespace sprint0Real
             currentBlock = new BlockSprite1(blockSheet);
 
             linkSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - Link");
-            linkSprite = new MoveRightSprite(linkSheet, this);
+            linkSprite = new FaceRightSprite(linkSheet, this);
         }
 
 

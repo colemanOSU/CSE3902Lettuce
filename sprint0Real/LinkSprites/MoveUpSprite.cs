@@ -6,14 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using sprint0Real.Interfaces;
-using Microsoft.Xna.Framework.Input;
 
 namespace sprint0Real.LinkSprites
 {
-    internal class MoveRightSprite : ILinkSprite
+    internal class MoveUpSprite : ILinkSprite
     {
-        private Rectangle frame1Rec = new(35 + 17, 11, 16, 16);
-        private Rectangle frame2Rec = new (35, 11, 16, 16);
+        private Rectangle frame1Rec = new(69 + 17, 11, 16, 16);
+        private Rectangle frame2Rec = new (69, 11, 16, 16);
         private Rectangle sourceRectangle = new(35, 11, 16, 16);
         private Rectangle destinationRectangle = new(200, 200, 16, 16);
 
@@ -21,7 +20,7 @@ namespace sprint0Real.LinkSprites
         private Game1 myGame;
         private int frameCount = 0;
 
-        public MoveRightSprite(Texture2D texture, Game1 game)
+        public MoveUpSprite(Texture2D texture, Game1 game)
         {
             _texture = texture;
             myGame = game;
@@ -29,13 +28,14 @@ namespace sprint0Real.LinkSprites
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
+            //Draws all right facing sprites flipped horizontally
+            spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White, 0, Vector2.Zero, SpriteEffects.FlipHorizontally, 0);
         }
 
         public void Update(GameTime gameTime, SpriteBatch spriteBatch)
         {
             destinationRectangle = myGame.Link.getLocation();
-            destinationRectangle.Offset(2, 0);
+            destinationRectangle.Offset(0, -2);
             myGame.Link.setLocation(destinationRectangle);
 
             frameCount++;

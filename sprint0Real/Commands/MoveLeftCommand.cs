@@ -6,17 +6,17 @@ using sprint0Real.LinkSprites;
 
 namespace sprint0Real.Commands
 {
-    public class MoveRightCommand : ICommand
+    public class MoveLeftCommand : ICommand
     {
         private Game1 myGame;
-        public MoveRightCommand(Game1 game)
+        public MoveLeftCommand(Game1 game)
         {
             myGame = game;
         }
 
         public void Execute()
         {
-            myGame.linkSprite = new MoveRightSprite(myGame.linkSheet, myGame);
+            myGame.linkSprite = new MoveLeftSprite(myGame.linkSheet, myGame);
         }
     }
 }

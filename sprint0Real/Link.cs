@@ -8,6 +8,7 @@ public class Link : ILink
     public Rectangle sourceRectangle;
     public Rectangle destinationRectangle;
     public bool canMove;
+    //public const int Speed = 2;
 
     public Link()
 	{
@@ -35,4 +36,5 @@ public class Link : ILink
     {
         destinationRectangle = rectangle;
     }
+
 }
