@@ -5,9 +5,11 @@ using Microsoft.Xna.Framework;
 using sprint0Real.Interfaces;
 public class Link : ILink
 {
-    public Rectangle sourceRectangle;
-    public Rectangle destinationRectangle;
-    public bool canMove;
+    private Rectangle sourceRectangle;
+    private Rectangle destinationRectangle;
+    private bool canMove;
+    private bool canAttack;
+
     public const int SPEED = 2;
 
     public enum Direction
@@ -18,11 +20,14 @@ public class Link : ILink
         Right
     }
 
+    private Direction Facing = Direction.Right;
+
     public Link()
 	{
         sourceRectangle = new Rectangle(1, 11, 16, 16);
         destinationRectangle = new Rectangle(200, 200, 16, 16);
         canMove = true;
+        canAttack = true;
     }
 
     //Moves Link's rendering rectangle in one of four directions
@@ -49,14 +54,43 @@ public class Link : ILink
         }
     }
 
-    public Rectangle getLocation()
+    public Rectangle GetLocation()
     {
         return destinationRectangle;
     }
 
-    public void setLocation(Rectangle rectangle)
+    public void SetLocation(Rectangle rectangle)
     {
         destinationRectangle = rectangle;
     }
 
+    public bool CanMove()
+    {
+        return canMove;
+    }
+
+    public void SetCanMove(bool move)
+    {
+        canMove = move;
+    }
+
+    public bool CanAttack()
+    {
+        return canAttack;
+    }
+
+    public void SetCanAttack(bool canAttack)
+    {
+        this.canAttack = canAttack;
+    }
+
+    public Direction GetFacing()
+    {
+        return Facing;
+    }
+
+    public void SetFacing(Direction facing)
+    {
+        Facing = facing;
+    }
 }

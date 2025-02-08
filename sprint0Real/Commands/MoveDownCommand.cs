@@ -16,7 +16,11 @@ namespace sprint0Real.Commands
 
         public void Execute()
         {
-            myGame.linkSprite = new MoveDownSprite(myGame.linkSheet, myGame);
+            if (myGame.Link.CanMove())
+            {
+                myGame.Link.SetFacing(Link.Direction.Down);
+                myGame.linkSprite = new MoveDownSprite(myGame.linkSheet, myGame);
+            }
         }
     }
 }

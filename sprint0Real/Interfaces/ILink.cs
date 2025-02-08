@@ -14,8 +14,20 @@ namespace sprint0Real.Interfaces
     {
         public void MoveInDirection(Direction dir);
 
-        public Rectangle getLocation();
+        public Rectangle GetLocation();
 
-        public void setLocation(Rectangle location);
+        public void SetLocation(Rectangle location);
+
+        public bool CanMove();
+
+        public bool CanAttack();
+
+        public void SetCanMove(bool move);
+
+        public Direction GetFacing();
+
+        public void SetFacing(Direction facing);
+
+        public void SetCanAttack(bool canAttack);
     }
 }

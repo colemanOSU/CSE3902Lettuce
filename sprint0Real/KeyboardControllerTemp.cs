@@ -36,13 +36,17 @@ namespace sprint0Real
             commands.Add(Keys.A, new MoveLeftCommand(_game));
             commands.Add(Keys.W, new MoveUpCommand(_game));
             commands.Add(Keys.S, new MoveDownCommand(_game));
+            commands.Add(Keys.Z, new AttackCommand(_game));
+            commands.Add(Keys.N, new AttackCommand(_game));
 
             //Commands for when key is released. Subject to change.
             releaseCommands = new Dictionary<Keys, ICommand>();
+
             releaseCommands.Add(Keys.D, new FaceRightCommand(_game));
             releaseCommands.Add(Keys.A, new FaceLeftCommand(_game));
             releaseCommands.Add(Keys.W, new FaceUpCommand(_game));
             releaseCommands.Add(Keys.S, new FaceDownCommand(_game));
+
 
             foreach (Keys key in commands.Keys )
             {
@@ -62,14 +66,15 @@ namespace sprint0Real
                 Keys key = command.Key;
                 bool isKeyDown = KeyboardState.IsKeyDown(key);
 
-                if (isKeyDown && !keyPreviouslyPressed[key])
-                {
-                    command.Value.Execute();
-                }
                 if (!isKeyDown && keyPreviouslyPressed[key] && releaseCommands.ContainsKey(key))
                 {
                     releaseCommands.GetValueOrDefault(key).Execute();
                 }
+                if (isKeyDown && !keyPreviouslyPressed[key])
+                {
+                    command.Value.Execute();
+                }
+
 
                 //update state
                 keyPreviouslyPressed[key] = isKeyDown;
