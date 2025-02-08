@@ -18,6 +18,7 @@ namespace sprint0Real.Commands
         {
             if (myGame.Link.CanAttack())
             {
+
                 switch (myGame.Link.GetFacing())
                 {
                     case Link.Direction.Left:
@@ -33,8 +34,12 @@ namespace sprint0Real.Commands
                         myGame.linkSprite = new UseDownSprite(myGame.linkSheet, myGame);
                         break;
                 }
+
+                //temp
+                myGame.tempItem = new WoodSwordSprite(myGame.linkSheet, myGame);
+                //temp
             }
-            
+
         }
     }
 }

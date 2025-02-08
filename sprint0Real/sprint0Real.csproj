@@ -23,6 +23,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="ItemSprites\ItemStateMachine.cs" />
     <None Include="LinkSprites\UseLeftSprite.cs" />
   </ItemGroup>
   <ItemGroup>

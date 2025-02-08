@@ -20,7 +20,13 @@ public class Link : ILink
         Right
     }
 
-    private Direction Facing = Direction.Right;
+    public enum Item
+    {
+        WoodSword
+    }
+
+    private Item CurrentItem;
+    private Direction Facing;
 
     public Link()
 	{
@@ -28,6 +34,8 @@ public class Link : ILink
         destinationRectangle = new Rectangle(200, 200, 16, 16);
         canMove = true;
         canAttack = true;
+        Facing = Direction.Right;
+        CurrentItem = Item.WoodSword;
     }
 
     //Moves Link's rendering rectangle in one of four directions

@@ -21,7 +21,12 @@ namespace sprint0Real
 
         public ILink Link = new Link();
         public ILinkSprite linkSprite;
+        
         public Texture2D linkSheet;
+
+        //temp
+        public IItem tempItem;
+        //temp
 
         public Game1()
         {
@@ -60,6 +65,8 @@ namespace sprint0Real
 
             linkSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - Link");
             linkSprite = new FaceRightSprite(linkSheet, this);
+
+            tempItem = null;
         }
 
 
@@ -90,13 +97,22 @@ namespace sprint0Real
             GraphicsDevice.Clear(Color.CornflowerBlue);
             
             _spriteBatch.Begin();
+
+
+            //TEMP ITEM
+            if (tempItem != null)
+            {
+                tempItem.Draw(_spriteBatch);
+            }
+
             currentBlock.Draw(_spriteBatch);
             sprite.Update(_spriteBatch, marioSheet);
 
             linkSprite.Update(gameTime, _spriteBatch);
 
             linkSprite.Draw(_spriteBatch);
-            
+
+
             text.Update(_spriteBatch, font1);
             _spriteBatch.End();
 
