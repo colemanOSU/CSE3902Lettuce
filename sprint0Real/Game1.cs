@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using sprint0Real.BlockSprites;
 using sprint0Real.Interfaces;
+using sprint0Real.LinkSprites;
 using System.Collections.Generic;
 
 namespace sprint0Real
@@ -14,26 +15,38 @@ namespace sprint0Real
 
         Texture2D marioSheet;
         Texture2D blockSheet;
+        
         SpriteFont font1;
+        public int currentBlockIndex;
+
+        public ILink Link = new Link();
+        public ILinkSprite linkSprite;
+        
+        public Texture2D linkSheet;
+
+        //temp
+        public IItem tempItem;
+        //temp
 
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+            currentBlockIndex = 1;
         }
 
         ISprite sprite = new StandingInPlacePlayer();
         public IBlock currentBlock;
         TextSprite text = new TextSprite();
-        List<IController> controllerList;
+        List<IControllerTemp> controllerList;
 
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            controllerList = new List<IController>();
-            //controllerList.Add(new KeyboardControllerTemp(this));
-            controllerList.Add(new MouseController());
+            controllerList = new List<IControllerTemp>();
+            controllerList.Add(new KeyboardControllerTemp(this));
+            //controllerList.Add(new MouseController());
 
             base.Initialize();
         }
@@ -49,15 +62,21 @@ namespace sprint0Real
             //Loading Block Content
             blockSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - Dungeon Tileset");
             currentBlock = new BlockSprite1(blockSheet);
+
+            linkSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - Link");
+            linkSprite = new FaceRightSprite(linkSheet, this);
+
+            tempItem = null;
         }
 
 
         protected override void Update(GameTime gameTime)
         {
 
-            foreach (IController controller in controllerList)
+            foreach (IControllerTemp controller in controllerList)
             {
-                sprite = controller.Update(sprite);
+                //sprite = controller.Update(sprite);
+                controller.Update(gameTime);
 
             }
             
@@ -69,17 +88,31 @@ namespace sprint0Real
             
 
             currentBlock.Update(gameTime);
+
+
         }
 
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            string output = "Credits:\nProgram Made By: Kelly Coleman\n Sprites from: https://www.spriters-resource.com/nes/supermariobros/sheet/50365/";
-
-            // TODO: Add your drawing code here
+            
             _spriteBatch.Begin();
+
+
+            //TEMP ITEM
+            if (tempItem != null)
+            {
+                tempItem.Draw(_spriteBatch);
+            }
+
             currentBlock.Draw(_spriteBatch);
             sprite.Update(_spriteBatch, marioSheet);
+
+            linkSprite.Update(gameTime, _spriteBatch);
+
+            linkSprite.Draw(_spriteBatch);
+
+
             text.Update(_spriteBatch, font1);
             _spriteBatch.End();
 
