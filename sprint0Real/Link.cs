@@ -8,7 +8,15 @@ public class Link : ILink
     public Rectangle sourceRectangle;
     public Rectangle destinationRectangle;
     public bool canMove;
-    //public const int Speed = 2;
+    public const int SPEED = 2;
+
+    public enum Direction
+    {
+        Up,
+        Down,
+        Left,
+        Right
+    }
 
     public Link()
 	{
@@ -17,13 +25,27 @@ public class Link : ILink
         canMove = true;
     }
 
-
-    public void MoveRight()
+    //Moves Link's rendering rectangle in one of four directions
+    public void MoveInDirection(Direction dir)
     {
-        sourceRectangle = new Rectangle(35, 11, 16, 16);
+        
         if (canMove)
         {
-            destinationRectangle.Offset(1, 0);
+            switch (dir)
+            {
+                case Direction.Up:
+                    destinationRectangle.Offset(0, -SPEED);
+                break;
+                case Direction.Down:
+                    destinationRectangle.Offset(0, SPEED);
+                break;
+                case Direction.Left:
+                    destinationRectangle.Offset(-SPEED, 0);
+                break;
+                case Direction.Right:
+                    destinationRectangle.Offset(SPEED, 0);
+                break;
+            }   
         }
     }
 

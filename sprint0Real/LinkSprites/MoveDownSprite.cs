@@ -28,15 +28,12 @@ namespace sprint0Real.LinkSprites
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            //Draws all right facing sprites flipped horizontally
-            spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
+            spriteBatch.Draw(_texture, myGame.Link.getLocation(), sourceRectangle, Color.White);
         }
 
         public void Update(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            destinationRectangle = myGame.Link.getLocation();
-            destinationRectangle.Offset(0, 2);
-            myGame.Link.setLocation(destinationRectangle);
+            myGame.Link.MoveInDirection(Link.Direction.Down);
 
             frameCount++;
             if (frameCount < 10)
