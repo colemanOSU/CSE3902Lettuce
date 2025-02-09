@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework.Input;
+﻿/*using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
 using System;
 using Microsoft.Xna.Framework.Graphics;
@@ -34,3 +34,4 @@ public class MouseController : IController
         return sprite;
 	}
 }
+*/

@@ -6,30 +6,23 @@ using Microsoft.Xna.Framework.Input;
 using sprint0Real.Commands;
 using sprint0Real.Interfaces;
 using System.Data.Common;
-
-public class LinkStateMachine
+namespace sprint0Real
 {
-    private KeyboardControllerTemp keyboardControllerTemp;
-    private enum LinkHealth {Normal,Damaged};
-    private LinkHealth health = LinkHealth.Normal;
-    private Game1 game;
-    private Texture2D _texture;
-    private SpriteBatch spriteBatch;
-    public void Damaged()
+    public class LinkStateMachine
     {
-         health = LinkHealth.Damaged;
-         
-    }
-    public void Draw(SpriteBatch spritbatch,Texture2D texture)
-    {
-        _texture = texture;
-        if (health == LinkHealth.Damaged)
+        private enum LinkHealth { Normal, Damaged };
+        private LinkHealth health = LinkHealth.Normal;
+        private Game1 _game;
+        private ISprite _sprite;
+        public LinkStateMachine(Game1 game)
         {
-            Rectangle sourceRectangle = new Rectangle(1, 20, 15, 15);
-            Rectangle destinationRectangle = new Rectangle(320, 130, 150, 150);
-            spriteBatch.Begin();
-            spriteBatch.Draw(_texture,destinationRectangle,sourceRectangle,Color.White);
-            spriteBatch.End();
+            _game = game;
+            _sprite = game.sprite;
+        }
+        public void Damaged()
+        {
+            health = LinkHealth.Damaged;
+            _sprite = new DamagedSprite(_game, _game.linkSheet);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -27,7 +28,7 @@ namespace sprint0Real
             commands.Add(Keys.D0, new QuitCommand(game));
             commands.Add(Keys.NumPad0, new QuitCommand(game));
             commands.Add(Keys.Y, new NextBlockCommand(game, currentBlock, game.Content.Load<Texture2D>("NES - The Legend of Zelda - Dungeon Tileset")));
-            commands.Add(Keys.E, new DamagedStateCommand(game, game.Content.Load<Texture2D>("zelda")));
+            commands.Add(Keys.E, new DamagedStateCommand(game));
        
 
         }
@@ -38,6 +39,7 @@ namespace sprint0Real
             {
                 if (KeyboardState.IsKeyDown(commands.Key))
                 {
+                    Console.WriteLine($"Key {commands.Key} detected! Executing command...");
                     commands.Value.Execute();
                 }
             }

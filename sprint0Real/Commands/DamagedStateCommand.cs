@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using System.Xml.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -9,19 +12,20 @@ namespace sprint0Real.Commands
 {
     public class DamagedStateCommand : ICommand
     {
-        private Texture2D _texture;
+        private Link _link;
         private Game1 _game;
-        private SpriteBatch _batch;
-        private Link link;
-        public DamagedStateCommand(Game1 game,Texture2D link) {
-           
+        private ISprite _sprite;
+        public DamagedStateCommand(Game1 game) {
+            _link = game.link;
             _game = game;
-            _texture = link;
+            _sprite = game.sprite;
+
         }
         public void Execute()
         {
-            link.Damaged();
-            link.Draw(_batch,_texture);
+            Console.WriteLine("Updatding");
+            _link.Damaged();
+
         }
     }
 }

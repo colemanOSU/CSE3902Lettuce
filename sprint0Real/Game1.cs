@@ -3,7 +3,9 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using sprint0Real.BlockSprites;
 using sprint0Real.Interfaces;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace sprint0Real
 {
@@ -12,28 +14,32 @@ namespace sprint0Real
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
-        Texture2D linkSheet;
+        public Texture2D linkSheet;
         Texture2D blockSheet;
         SpriteFont font1;
+        public int currentBlockIndex;
 
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+            currentBlockIndex = 1;
         }
 
-        ISprite sprite = new StandingInPlacePlayer();
+        public ISprite sprite { get; set; }
         public IBlock currentBlock;
-        TextSprite text = new TextSprite();
+        public Link link;
         List<IControllerTemp> controllerList;
 
         protected override void Initialize()
         {
+            link = new Link(this);
             // TODO: Add your initialization logic here
             controllerList = new List<IControllerTemp>();
-            controllerList.Add(new KeyboardControllerTemp(this));
+            var keyboardController = new KeyboardControllerTemp(this);
             //controllerList.Add(new MouseController());
+            
 
             base.Initialize();
         }
@@ -42,10 +48,12 @@ namespace sprint0Real
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+            
             font1 = Content.Load<SpriteFont>("MyMenuFont");
             // TODO: use this.Content to load your game content here
             linkSheet = Content.Load<Texture2D>("zelda");
-
+           
+            sprite = new StandingInPlacePlayer(linkSheet);
             //Loading Block Content
             blockSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - Dungeon Tileset");
             currentBlock = new BlockSprite1(blockSheet);
@@ -55,8 +63,9 @@ namespace sprint0Real
         protected override void Update(GameTime gameTime)
         {
 
-            foreach (IControllerTemp controller in controllerList)
+            foreach (var controller in controllerList)
             {
+                
                 controller.Update(gameTime);
 
             }
@@ -70,17 +79,17 @@ namespace sprint0Real
 
             currentBlock.Update(gameTime);
         }
-
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            string output = "Credits:\nProgram Made By: Kelly Coleman\n Sprites from: https://www.spriters-resource.com/nes/supermariobros/sheet/50365/";
+           
 
             // TODO: Add your drawing code here
             _spriteBatch.Begin();
             currentBlock.Draw(_spriteBatch);
-            sprite.Update(_spriteBatch, linkSheet);
-            text.Update(_spriteBatch, font1);
+            sprite.Draw(_spriteBatch);
+            sprite.Update(gameTime,_spriteBatch);
+            //text.Update(_spriteBatch, font1);
             _spriteBatch.End();
 
             
