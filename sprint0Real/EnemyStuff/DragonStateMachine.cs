@@ -7,7 +7,7 @@ using sprint0Real.Interfaces;
 
 namespace sprint0Real.EnemyStuff
 {
-    internal class DragonStateMachine : IStateMachine
+    public class DragonStateMachine : IStateMachine
     {
         public DragonStateMachine() { }
         
@@ -21,7 +21,7 @@ namespace sprint0Real.EnemyStuff
             // Something that draws the current state?
             switch (currentState)
             {
-                case DragonState.Idle:
+               
                     
             }
         }

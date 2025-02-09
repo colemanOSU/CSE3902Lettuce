@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using sprint0Real.BlockSprites;
+using sprint0Real.EnemyStuff;
 using sprint0Real.Interfaces;
 using sprint0Real.LinkSprites;
 using System.Collections.Generic;
@@ -10,8 +11,9 @@ namespace sprint0Real
 {
     public class Game1 : Game
     {  
-        private GraphicsDeviceManager _graphics;
-        private SpriteBatch _spriteBatch;
+        private static Game1 instance = new Game1();
+        public GraphicsDeviceManager _graphics;
+        public SpriteBatch _spriteBatch;
 
         Texture2D marioSheet;
         Texture2D blockSheet;
@@ -34,6 +36,11 @@ namespace sprint0Real
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
             currentBlockIndex = 1;
+        }
+
+        public static Game1 Instance
+        {
+            get { return instance; }
         }
 
         ISprite sprite = new StandingInPlacePlayer();
@@ -60,11 +67,13 @@ namespace sprint0Real
             marioSheet = Content.Load<Texture2D>("mario");
 
             //Loading Block Content
-            blockSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - Dungeon Tileset");
+            blockSheet = Content.Load<Texture2D>("Dungeon_Tileset");
             currentBlock = new BlockSprite1(blockSheet);
 
-            linkSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - Link");
+            linkSheet = Content.Load<Texture2D>("Link");
             linkSprite = new FaceRightSprite(linkSheet, this);
+
+            EnemySpriteFactory.Instance.LoadAllTextures(Content);
 
             tempItem = null;
         }

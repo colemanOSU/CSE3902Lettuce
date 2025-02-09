@@ -42,7 +42,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:NES - The Legend of Zelda - Bosses.png
+/build:NES - The Legend of Zelda - Bosses.png;Bosses.png
 
 #begin NES - The Legend of Zelda - Dungeon Enemies.png
 /importer:TextureImporter
@@ -54,7 +54,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:NES - The Legend of Zelda - Dungeon Enemies.png
+/build:NES - The Legend of Zelda - Dungeon Enemies.png;Dungeon Enemies.png
 
 #begin NES - The Legend of Zelda - Dungeon Tileset.png
 /importer:TextureImporter
@@ -66,7 +66,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:NES - The Legend of Zelda - Dungeon Tileset.png
+/build:NES - The Legend of Zelda - Dungeon Tileset.png;Dungeon Tileset.png
 
 #begin NES - The Legend of Zelda - Link.png
 /importer:TextureImporter
@@ -78,7 +78,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:NES - The Legend of Zelda - Link.png
+/build:NES - The Legend of Zelda - Link.png;Link.png
 
 #begin NES - The Legend of Zelda - Overworld Enemies.png
 /importer:TextureImporter
@@ -90,5 +90,5 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:NES - The Legend of Zelda - Overworld Enemies.png
+/build:NES - The Legend of Zelda - Overworld Enemies.png;Overworld Enemies.png
 

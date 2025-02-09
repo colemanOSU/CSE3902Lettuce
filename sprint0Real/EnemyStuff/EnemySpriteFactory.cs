@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Content;
@@ -33,7 +34,7 @@ namespace sprint0Real.EnemyStuff
         }
         public ISprite CreateDragonEnemySprite()
         {
-            return new DragonSpriteIdle(bossesSheet);
+            return new DragonSpriteIdle(bossesSheet, Game1.Instance._spriteBatch);
         }
         public ISprite CreateBigEnemySprite()
         {

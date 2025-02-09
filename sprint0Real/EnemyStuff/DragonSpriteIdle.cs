@@ -19,7 +19,7 @@ namespace sprint0Real.EnemyStuff
         private int totalFrames;
         private Game1 myGame;
         
-        public DragonSpriteIdle(Texture2D spriteSheet, SpriteBatch spriteBatch) {
+        public DragonSpriteIdle(Texture2D spriteSheet, SpriteBatch spriteBatch, Vector2 location) {
             sprites = spriteSheet;
             totalFrames = 3;
         }
@@ -29,7 +29,7 @@ namespace sprint0Real.EnemyStuff
             Rectangle sourceRectangle;
             Rectangle destinationRectangle;
 
-            sourceRectangle = new Rectangle(180, 0, 17, 15);
+            sourceRectangle = new Rectangle(0, 0, 24, 42);
             destinationRectangle = new Rectangle((int)location.X,
             (int)location.Y, 20, 20);
 
@@ -41,7 +41,6 @@ namespace sprint0Real.EnemyStuff
         public void Update(SpriteBatch spriteBatch, Texture2D sprites)
         {
             currentFrame = (currentFrame + 1) % totalFrames;
-            
         }
     }
 }
