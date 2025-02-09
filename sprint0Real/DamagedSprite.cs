@@ -22,8 +22,6 @@ namespace sprint0Real
             _link = linkSheet;
             _game = game;
             _timer = 0;
-            _horizontal = 0;
-            _verticle = 0;
             destinationRectangle = _game.Link.GetLocation();
         }
         public void Update(GameTime gameTime, SpriteBatch spriteBatch)
