@@ -30,12 +30,12 @@ namespace sprint0Real.EnemyStuff.DragonStuff
 
         public void TakeDamage()
         {
+            myDragon.health -= 1;
             myDragon.mySprite = EnemySpriteFactory.Instance.CreateDragonDamagedSprite();
         }
 
         public void Attack()
         {
-            Fireballs(myDragon.location);
             myDragon.mySprite = EnemySpriteFactory.Instance.CreateDragonAttackSprite();
         }
 

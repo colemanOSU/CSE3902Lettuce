@@ -13,12 +13,15 @@ namespace sprint0Real.EnemyStuff.DragonStuff
     public class DragonBehavior
     {
         private Dragon myDragon;
-        private float jukeDelay = 0f;
+
         private float attackDelay = 5f;
-        private float jukeTimer = 0f;
         private float attackTimer = 0f;
         private float attackDuration = 2f;
         private bool attackFlag = false;
+
+        private float jukeTimer = 0f;
+        private float jukeDelay = 0f;
+        
         private Random random = new Random();
 
         public DragonBehavior(Dragon dragon)
@@ -41,35 +44,48 @@ namespace sprint0Real.EnemyStuff.DragonStuff
                 myDragon.ChangeDirection();
             }
         }
-
-        public void Update(GameTime time)
+        private void JukeCheck()
         {
-            jukeTimer += (float)time.ElapsedGameTime.TotalSeconds;
-            attackTimer += (float)time.ElapsedGameTime.TotalSeconds;
-
             if (jukeDelay <= jukeTimer)
             {
                 jukeTimer = 0;
                 jukeDelay = (float)(random.NextDouble() * 1);
                 myDragon.ChangeDirection();
             }
-
-            // Gotta make sure the dragon doesn't juke it's way off screen
-            SafeJuke();
-
+        }
+        private void AttackCheck()
+        {
             if (attackDelay <= attackTimer)
             {
                 attackTimer = 0;
                 myDragon.Attack();
                 attackFlag = true;
             }
-
+        }
+        private void AttackFinish()
+        {
             if (attackFlag == true && attackTimer >= attackDuration)
             {
                 attackTimer = 0;
                 myDragon.Idle();
             }
+        }
 
+        public void Update(GameTime time)
+        {
+            jukeTimer += (float)time.ElapsedGameTime.TotalSeconds;
+            attackTimer += (float)time.ElapsedGameTime.TotalSeconds;
+
+            JukeCheck();
+            // Gotta make sure the dragon doesn't juke it's way off screen
+            SafeJuke();
+            AttackCheck();
+            AttackFinish();
+
+            if (myDragon.health <= 0)
+            {
+                EnemyPage.Instance.enemyList.Remove(myDragon);
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)

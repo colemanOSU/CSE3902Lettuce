@@ -15,8 +15,15 @@ namespace sprint0Real.EnemyStuff
     public class EnemyPage
     {
         public List<IEnemy> enemyList;
-        
 
+        private static EnemyPage instance = new EnemyPage();
+        public static EnemyPage Instance
+        {
+            get
+            {
+                return instance;
+            }
+        }
 
         public EnemyPage()
         {
