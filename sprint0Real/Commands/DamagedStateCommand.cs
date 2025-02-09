@@ -12,19 +12,16 @@ namespace sprint0Real.Commands
 {
     public class DamagedStateCommand : ICommand
     {
-        private Link _link;
+        private ILink _link;
         private Game1 _game;
-        private ISprite _sprite;
         public DamagedStateCommand(Game1 game) {
-            _link = game.link;
+            _link = game.Link;
             _game = game;
-            _sprite = game.sprite;
-
         }
         public void Execute()
         {
-            Console.WriteLine("Updatding");
             _link.Damaged();
+            _game.linkSprite = new DamagedSprite(_game, _game.linkSheet);
 
         }
     }

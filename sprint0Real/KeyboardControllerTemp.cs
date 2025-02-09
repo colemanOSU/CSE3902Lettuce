@@ -35,6 +35,7 @@ namespace sprint0Real
             commands.Add(Keys.NumPad0, new QuitCommand(_game));
             commands.Add(Keys.Y, new NextBlockCommand(_game, blockTexture));
             commands.Add(Keys.T, new PreviousBlockCommand(_game, blockTexture));
+            commands.Add(Keys.E, new DamagedStateCommand(_game));
             commands.Add(Keys.D, new MoveRightCommand(_game));
             commands.Add(Keys.A, new MoveLeftCommand(_game));
             commands.Add(Keys.W, new MoveUpCommand(_game));

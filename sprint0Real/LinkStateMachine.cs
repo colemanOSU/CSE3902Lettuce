@@ -14,15 +14,12 @@ namespace sprint0Real
         private LinkHealth health = LinkHealth.Normal;
         private Game1 _game;
         private ILinkSprite _sprite;
-        public LinkStateMachine(Game1 game)
+        public LinkStateMachine()
         {
-            _game = game;
-            _sprite = game.linkSprite;
         }
         public void Damaged()
         {
             health = LinkHealth.Damaged;
-            _sprite = new DamagedSprite(_game, _game.linkSheet);
         }
     }
 }

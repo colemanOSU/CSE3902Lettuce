@@ -21,7 +21,8 @@ namespace sprint0Real
         SpriteFont font1;
         public int currentBlockIndex;
 
-        public ILink Link;
+
+        public ILink Link = new Link();
         public ILinkSprite linkSprite;
         
 
@@ -37,15 +38,13 @@ namespace sprint0Real
             currentBlockIndex = 1;
         }
 
-        public ISprite sprite { get; set; }
+        ISprite sprite = new StandingInPlacePlayer();
         public IBlock currentBlock;
-        public Link link;
         TextSprite text = new TextSprite();
         List<IControllerTemp> controllerList;
 
         protected override void Initialize()
         {
-            link = new Link(this);
             // TODO: Add your initialization logic here
             controllerList = new List<IControllerTemp>();
             controllerList.Add(new KeyboardControllerTemp(this));
