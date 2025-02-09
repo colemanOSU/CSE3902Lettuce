@@ -36,14 +36,17 @@ namespace sprint0Real.EnemyStuff
         {
             return new DragonSpriteIdle(bossesSheet, Game1.Instance._spriteBatch);
         }
-        public ISprite CreateBigEnemySprite()
+
+        public ISprite CreateDragonAttackSprite()
         {
-            return new EnemySprite(enemySpriteSheet, 64, 64);
+            return new DragonSpriteAttack(bossesSheet, Game1.Instance._spriteBatch);
         }
-        public ISprite CreateTintedEnemySprite(ILevel level)
+
+        public ISprite CreateDragonDamagedSprite()
         {
-            return new EnemySprite(enemySpriteSheet, level.ColorTheme);
+            return new DragonSpriteDamaged(bossesSheet, Game1.Instance._spriteBatch);
         }
+
         // More public ISprite returning methods follow
         // ...
     }

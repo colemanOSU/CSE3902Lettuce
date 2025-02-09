@@ -33,4 +33,8 @@ public class DeadPlayerMovingUpAndDown : ISprite
 
         spriteBatch.Draw(marioSheet, destinationRectangle, sourceRectangle, Color.White);
     }
+
+    public void Draw(SpriteBatch spriteBatch, Vector2 location)
+    {
+    }
 }
