@@ -21,7 +21,7 @@ namespace sprint0Real.EnemyStuff.DragonStuff
         public DragonSpriteAttack(Texture2D spriteSheet, SpriteBatch spriteBatch)
         {
             sprites = spriteSheet;
-            totalFrames = 2;
+            totalFrames = 24;
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
@@ -29,7 +29,7 @@ namespace sprint0Real.EnemyStuff.DragonStuff
             Rectangle sourceRectangle;
             Rectangle destinationRectangle;
 
-            if (currentFrame == 0)
+            if (currentFrame <= 12)
             {
                 sourceRectangle = new Rectangle(1, 11, 24, 32);
                 destinationRectangle = new Rectangle((int)location.X,
@@ -47,7 +47,11 @@ namespace sprint0Real.EnemyStuff.DragonStuff
 
         public void Update()
         {
-            currentFrame = (currentFrame + 1) % totalFrames;
+            currentFrame++;
+            if (currentFrame == totalFrames)
+            {
+                currentFrame = 0;
+            }
         }
     }
 }

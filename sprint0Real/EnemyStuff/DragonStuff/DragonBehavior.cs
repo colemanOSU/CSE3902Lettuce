@@ -21,7 +21,11 @@ namespace sprint0Real.EnemyStuff.DragonStuff
 
         private float jukeTimer = 0f;
         private float jukeDelay = 0f;
-        
+
+        private float damageTimer;
+        private float damageDuration = 1f;
+        private bool damageFlag = false;
+
         private Random random = new Random();
 
         public DragonBehavior(Dragon dragon)
@@ -49,7 +53,7 @@ namespace sprint0Real.EnemyStuff.DragonStuff
             if (jukeDelay <= jukeTimer)
             {
                 jukeTimer = 0;
-                jukeDelay = (float)(random.NextDouble() * 1);
+                jukeDelay = (float)(random.NextDouble() * 2);
                 myDragon.ChangeDirection();
             }
         }
@@ -64,28 +68,44 @@ namespace sprint0Real.EnemyStuff.DragonStuff
         }
         private void AttackFinish()
         {
-            if (attackFlag == true && attackTimer >= attackDuration)
+            if (attackFlag && attackTimer >= attackDuration)
             {
                 attackTimer = 0;
                 myDragon.Idle();
             }
         }
 
+        public void TakeDamage()
+        {
+            damageFlag = true;
+        }
+
         public void Update(GameTime time)
         {
             jukeTimer += (float)time.ElapsedGameTime.TotalSeconds;
-            attackTimer += (float)time.ElapsedGameTime.TotalSeconds;
-
+            
             JukeCheck();
             // Gotta make sure the dragon doesn't juke it's way off screen
             SafeJuke();
             AttackCheck();
             AttackFinish();
 
-            if (myDragon.health <= 0)
+            if (damageFlag)
             {
-                EnemyPage.Instance.enemyList.Remove(myDragon);
+                damageTimer += (float)time.ElapsedGameTime.TotalSeconds;
+                if (damageTimer >= damageDuration)
+                {
+                    damageTimer = 0;
+                    damageFlag = false;
+                    myDragon.Idle();
+                }
             }
+            else
+            {
+                // Don't want to be attacking while damaged
+                attackTimer += (float)time.ElapsedGameTime.TotalSeconds;
+            }
+
         }
 
         public void Draw(SpriteBatch spriteBatch)

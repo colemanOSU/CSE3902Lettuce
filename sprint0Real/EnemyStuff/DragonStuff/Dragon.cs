@@ -17,7 +17,7 @@ namespace sprint0Real.EnemyStuff.DragonStuff
 
         public ISprite2 mySprite;
         public Vector2 location;
-        public int speed = 3;
+        public int speed = 2;
         public int health = 10;
 
         public Dragon(Vector2 placement)

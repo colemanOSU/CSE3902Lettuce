@@ -31,7 +31,15 @@ namespace sprint0Real.EnemyStuff.DragonStuff
         public void TakeDamage()
         {
             myDragon.health -= 1;
-            myDragon.mySprite = EnemySpriteFactory.Instance.CreateDragonDamagedSprite();
+            currentState = DragonState.Damaged;
+            if (myDragon.health <= 0)
+            {
+                EnemyPage.Instance.enemyList.Remove(myDragon);
+            }
+            else
+            {
+                myDragon.mySprite = EnemySpriteFactory.Instance.CreateDragonDamagedSprite();
+            }
         }
 
         public void Attack()
