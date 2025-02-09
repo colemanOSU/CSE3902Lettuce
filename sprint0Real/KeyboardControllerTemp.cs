@@ -13,35 +13,75 @@ namespace sprint0Real
         private Dictionary<Keys, ICommand> commands;
         private int currentBlock;
         private Vector2 location;
+        private Dictionary<Keys, ICommand> releaseCommands;
+
+        private Dictionary<Keys, bool> keyPreviouslyPressed;
+        private int currentBlock = 1;
+        private Game1 _game;
+        private ILink _Link;
+        private Texture2D blockTexture;
 
         public KeyboardControllerTemp(Game1 game)
         {
             commands = new Dictionary<Keys, ICommand>();
-            currentBlock = 1;
+
+            keyPreviouslyPressed = new Dictionary<Keys, bool>();
+            _game = game;
+            blockTexture = _game.Content.Load<Texture2D>("NES - The Legend of Zelda - Dungeon Tileset");
+
             
 
-            if (Keyboard.GetState().Equals(Keys.Y))
-            {
-                currentBlock++;
-            }
+            commands.Add(Keys.D0, new QuitCommand(_game));
+            commands.Add(Keys.NumPad0, new QuitCommand(_game));
+            commands.Add(Keys.Y, new NextBlockCommand(_game, blockTexture));
+            commands.Add(Keys.T, new PreviousBlockCommand(_game, blockTexture));
+            commands.Add(Keys.D, new MoveRightCommand(_game));
+            commands.Add(Keys.A, new MoveLeftCommand(_game));
+            commands.Add(Keys.W, new MoveUpCommand(_game));
+            commands.Add(Keys.S, new MoveDownCommand(_game));
+            commands.Add(Keys.Z, new AttackCommand(_game));
+            commands.Add(Keys.N, new AttackCommand(_game));
+            
 
-            commands.Add(Keys.D0, new QuitCommand(game));
-            commands.Add(Keys.NumPad0, new QuitCommand(game));
-            commands.Add(Keys.Y, new NextBlockCommand(game, currentBlock, game.Content.Load<Texture2D>("NES - The Legend of Zelda - Dungeon Tileset")));
-            commands.Add(Keys.E, new DamagedStateCommand(game));
-       
+            //Commands for when key is released. Subject to change.
+            releaseCommands = new Dictionary<Keys, ICommand>();
+
+            releaseCommands.Add(Keys.D, new FaceRightCommand(_game));
+            releaseCommands.Add(Keys.A, new FaceLeftCommand(_game));
+            releaseCommands.Add(Keys.W, new FaceUpCommand(_game));
+            releaseCommands.Add(Keys.S, new FaceDownCommand(_game));
+
+
+            foreach (Keys key in commands.Keys )
+            {
+                keyPreviouslyPressed[key] = false;
+            }
 
         }
         public void Update(GameTime gameTime)
         {
             var KeyboardState = Keyboard.GetState();
-            foreach(var commands in commands)
+            
+
+
+
+            foreach(var command in commands)
             {
-                if (KeyboardState.IsKeyDown(commands.Key))
+                Keys key = command.Key;
+                bool isKeyDown = KeyboardState.IsKeyDown(key);
+
+                if (!isKeyDown && keyPreviouslyPressed[key] && releaseCommands.ContainsKey(key))
                 {
-                    Console.WriteLine($"Key {commands.Key} detected! Executing command...");
-                    commands.Value.Execute();
+                    releaseCommands.GetValueOrDefault(key).Execute();
                 }
+                if (isKeyDown && !keyPreviouslyPressed[key])
+                {
+                    command.Value.Execute();
+                }
+
+
+                //update state
+                keyPreviouslyPressed[key] = isKeyDown;
             }
         }
     }
