@@ -4,12 +4,14 @@ using sprint0Real.Commands;
 using System;
 using Microsoft.Xna.Framework;
 using sprint0Real.Interfaces;
+using sprint0Real;
 public class Link : ILink
 {
     private Rectangle sourceRectangle;
     private Rectangle destinationRectangle;
     private bool canMove;
     private bool canAttack;
+    private LinkStateMachine stateMachine;
 
     public const int SPEED = 2;
 

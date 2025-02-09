@@ -21,10 +21,9 @@ namespace sprint0Real
         SpriteFont font1;
         public int currentBlockIndex;
 
-        public ILink Link = new Link();
+        public ILink Link;
         public ILinkSprite linkSprite;
         
-        public Texture2D linkSheet;
 
         //temp
         public IItem tempItem;
@@ -64,7 +63,6 @@ namespace sprint0Real
             // TODO: use this.Content to load your game content here
             linkSheet = Content.Load<Texture2D>("zelda");
            
-            sprite = new StandingInPlacePlayer(linkSheet);
             //Loading Block Content
             blockSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - Dungeon Tileset");
             currentBlock = new BlockSprite1(blockSheet);
@@ -111,10 +109,7 @@ namespace sprint0Real
             }
 
             currentBlock.Draw(_spriteBatch);
-            sprite.Draw(_spriteBatch);
-            sprite.Update(gameTime,_spriteBatch);
             //text.Update(_spriteBatch, font1);
-            sprite.Update(_spriteBatch, marioSheet);
 
             linkSprite.Update(gameTime, _spriteBatch);
 

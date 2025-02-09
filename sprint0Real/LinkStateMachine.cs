@@ -13,11 +13,11 @@ namespace sprint0Real
         private enum LinkHealth { Normal, Damaged };
         private LinkHealth health = LinkHealth.Normal;
         private Game1 _game;
-        private ISprite _sprite;
+        private ILinkSprite _sprite;
         public LinkStateMachine(Game1 game)
         {
             _game = game;
-            _sprite = game.sprite;
+            _sprite = game.linkSprite;
         }
         public void Damaged()
         {

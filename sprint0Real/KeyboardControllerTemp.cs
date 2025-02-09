@@ -11,12 +11,12 @@ namespace sprint0Real
     public class KeyboardControllerTemp : IControllerTemp
     {
         private Dictionary<Keys, ICommand> commands;
-        private int currentBlock;
+        private int currentBlock = 1;
         private Vector2 location;
         private Dictionary<Keys, ICommand> releaseCommands;
 
         private Dictionary<Keys, bool> keyPreviouslyPressed;
-        private int currentBlock = 1;
+        
         private Game1 _game;
         private ILink _Link;
         private Texture2D blockTexture;

@@ -6,6 +6,5 @@ using System.Numerics;
 
 public interface ISprite
 {
-    public void Update(GameTime gameTime, SpriteBatch spriteBatch);
-    public void Draw(SpriteBatch spriteBatch);
+    public void Update(SpriteBatch spriteBatch, Texture2D marioSheet);
 }
