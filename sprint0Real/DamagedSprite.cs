@@ -16,8 +16,6 @@ namespace sprint0Real
         private float _frameSpeed = 0.2f;
         private int _currentFrame;
         private double _timer;
-        private int _horizontal;
-        private int _verticle;
 
         public DamagedSprite(Game1 game, Texture2D linkSheet)
         {
@@ -60,12 +58,12 @@ namespace sprint0Real
             }
             else if (_currentFrame == 7)
             {
-                _horizontal = (8 * 17) + 64; // Extra offset
+                _horizontal = (8 * 17) + 64; 
                 _verticle = 9;
             }
             else if ( _currentFrame == 8)
             {
-                _horizontal = (9 * 17) + 70; // Extra offset
+                _horizontal = (9 * 17) + 70; 
                 _verticle = 9;
             }
             Rectangle sourceRectangle = new Rectangle(0 + _horizontal, 232 + _verticle, 16, 16);
