@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0Real.EnemyStuff.DragonStuff;
+using sprint0Real.Interfaces;
 
 namespace sprint0Real.EnemyStuff
 {
@@ -33,17 +34,17 @@ namespace sprint0Real.EnemyStuff
             // More Content.Load calls follow
             //...
         }
-        public ISprite CreateDragonEnemySprite()
+        public ISprite2 CreateDragonEnemySprite()
         {
             return new DragonSpriteIdle(bossesSheet, Game1.Instance._spriteBatch);
         }
 
-        public ISprite CreateDragonAttackSprite()
+        public ISprite2 CreateDragonAttackSprite()
         {
             return new DragonSpriteAttack(bossesSheet, Game1.Instance._spriteBatch);
         }
 
-        public ISprite CreateDragonDamagedSprite()
+        public ISprite2 CreateDragonDamagedSprite()
         {
             return new DragonSpriteDamaged(bossesSheet, Game1.Instance._spriteBatch);
         }

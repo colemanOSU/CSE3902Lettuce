@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using System.Text;
 using System.Threading.Tasks;
 using sprint0Real.Interfaces;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace sprint0Real.EnemyStuff.DragonStuff
 {
@@ -14,9 +15,9 @@ namespace sprint0Real.EnemyStuff.DragonStuff
         private DragonStateMachine stateMachine;
         private DragonBehavior behavior;
 
-        public ISprite mySprite;
+        public ISprite2 mySprite;
         public Vector2 location;
-        public int speed = 10;
+        public int speed = 3;
         public int health = 10;
 
         public Dragon(Vector2 placement)
@@ -42,16 +43,24 @@ namespace sprint0Real.EnemyStuff.DragonStuff
             stateMachine.Attack();
         }
 
+        public void Idle()
+        {
+            stateMachine.Idle();
+        }
+
         public void Update(GameTime time)
         {
             // Updates the location
             stateMachine.Update();
             // Moves onto the next frame in animation
-            mySprite.Update(Game1.Instance._spriteBatch, Game1.Instance.linkSheet);
-            // Draws the new frame
-            mySprite.Draw(Game1.Instance._spriteBatch, location);
+            mySprite.Update();
             // Updates the state based on external states
             behavior.Update(time);
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            mySprite.Draw(spriteBatch, location);
         }
     }
 }

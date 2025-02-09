@@ -7,13 +7,16 @@ using System.Threading.Tasks;
 using sprint0Real.EnemyStuff.DragonStuff;
 using Microsoft.Xna.Framework;
 using sprint0Real.Interfaces;
+using Microsoft.Xna.Framework.Graphics;
 
 
 namespace sprint0Real.EnemyStuff
 {
     public class EnemyPage
     {
-        List<IEnemy> enemyList;
+        public List<IEnemy> enemyList;
+        
+
 
         public EnemyPage()
         {
@@ -26,6 +29,14 @@ namespace sprint0Real.EnemyStuff
             foreach(IEnemy enemy in enemyList)
             {
                 enemy.Update(time);
+            }
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            foreach (IEnemy enemy in enemyList)
+            {
+                enemy.Draw(spriteBatch);
             }
         }
     }

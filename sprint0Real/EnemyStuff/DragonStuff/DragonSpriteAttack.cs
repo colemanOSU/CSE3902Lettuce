@@ -12,7 +12,7 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace sprint0Real.EnemyStuff.DragonStuff
 {
-    public class DragonSpriteAttack : ISprite
+    public class DragonSpriteAttack : ISprite2
     {
         private Texture2D sprites;
         private int currentFrame;
@@ -21,7 +21,7 @@ namespace sprint0Real.EnemyStuff.DragonStuff
         public DragonSpriteAttack(Texture2D spriteSheet, SpriteBatch spriteBatch)
         {
             sprites = spriteSheet;
-            totalFrames = 4;
+            totalFrames = 2;
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
@@ -31,31 +31,23 @@ namespace sprint0Real.EnemyStuff.DragonStuff
 
             if (currentFrame == 0)
             {
-                sourceRectangle = new Rectangle(0, 10, 24, 42);
+                sourceRectangle = new Rectangle(1, 11, 24, 32);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 20, 20);
+                (int)location.Y, 48, 64);
             }
             else
             {
-                sourceRectangle = new Rectangle(25, 10, 24, 42);
+                sourceRectangle = new Rectangle(26, 11, 24, 32);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 20, 20);
+                (int)location.Y, 48, 64);
             }
 
-            spriteBatch.Begin();
             spriteBatch.Draw(sprites, destinationRectangle, sourceRectangle, Color.White);
-            spriteBatch.End();
         }
 
         public void Update()
         {
             currentFrame = (currentFrame + 1) % totalFrames;
-        }
-
-        // This is just here to make the compiler happy. Will delete later
-        public void Update(SpriteBatch spriteBatch, Texture2D marioSheet)
-        {
-            throw new NotImplementedException();
         }
     }
 }

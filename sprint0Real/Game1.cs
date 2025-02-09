@@ -128,6 +128,7 @@ namespace sprint0Real
 
             linkSprite.Draw(_spriteBatch);
 
+            enemyPage.Draw(_spriteBatch);
 
             text.Update(_spriteBatch, font1);
             _spriteBatch.End();

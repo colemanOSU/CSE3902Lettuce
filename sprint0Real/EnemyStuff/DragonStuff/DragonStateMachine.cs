@@ -35,7 +35,13 @@ namespace sprint0Real.EnemyStuff.DragonStuff
 
         public void Attack()
         {
+            Fireballs(myDragon.location);
             myDragon.mySprite = EnemySpriteFactory.Instance.CreateDragonAttackSprite();
+        }
+
+        public void Idle()
+        {
+            myDragon.mySprite = EnemySpriteFactory.Instance.CreateDragonEnemySprite();
         }
 
         public void Update()
@@ -43,7 +49,7 @@ namespace sprint0Real.EnemyStuff.DragonStuff
             switch (currentState)
             {
                 case DragonState.Idle:
-                    myDragon.location.X += 0;
+                    myDragon.location.X += myDragon.speed;
                     break;
                 case DragonState.Attack:
                     myDragon.location.X += myDragon.speed;
