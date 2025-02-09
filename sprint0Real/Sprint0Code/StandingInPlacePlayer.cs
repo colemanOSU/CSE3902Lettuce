@@ -17,4 +17,8 @@ public class StandingInPlacePlayer : ISprite
     public void Update(SpriteBatch spriteBatch, Texture2D marioSheet) {
         spriteBatch.Draw(marioSheet, destinationRectangle, sourceRectangle, Color.White);
     }
+    public void Draw(SpriteBatch thing, Vector2 thing2)
+    {
+        // Make the Compiler Happy
+    }
 }

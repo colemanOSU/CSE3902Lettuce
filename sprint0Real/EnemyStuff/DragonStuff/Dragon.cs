@@ -5,25 +5,25 @@ using System.Linq;
 using Microsoft.Xna.Framework;
 using System.Text;
 using System.Threading.Tasks;
+using sprint0Real.Interfaces;
 
-namespace sprint0Real.EnemyStuff
+namespace sprint0Real.EnemyStuff.DragonStuff
 {
-    public class Dragon
+    public class Dragon : IEnemy
     {
         private DragonStateMachine stateMachine;
         private DragonBehavior behavior;
-        
-        public GameTime time;
+
         public ISprite mySprite;
         public Vector2 location;
         public int speed = 10;
         public int health = 10;
 
-        public Dragon(GameTime gameTime)
+        public Dragon(Vector2 placement)
         {
-            time = gameTime;
+            location = placement;
             stateMachine = new DragonStateMachine(this);
-            behavior = new DragonBehavior(this); 
+            behavior = new DragonBehavior(this);
             mySprite = EnemySpriteFactory.Instance.CreateDragonEnemySprite();
         }
 

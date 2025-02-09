@@ -6,16 +6,16 @@ using System.Text;
 using System.Threading.Tasks;
 using sprint0Real.Interfaces;
 
-namespace sprint0Real.EnemyStuff
+namespace sprint0Real.EnemyStuff.DragonStuff
 {
     public class DragonStateMachine : IStateMachine
     {
         public DragonStateMachine() { }
-        
-        private enum DragonState {Idle, Attack, Damaged};
+
+        private enum DragonState { Idle, Attack, Damaged };
         private DragonState currentState = DragonState.Idle;
         private Dragon myDragon;
-        
+
         // All the transitions possible
         public DragonStateMachine(Dragon dragon)
         {

@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 
-namespace sprint0Real.EnemyStuff
+namespace sprint0Real.EnemyStuff.DragonStuff
 {
-    
+
     public class DragonBehavior
     {
         private Dragon myDragon;
@@ -17,15 +17,16 @@ namespace sprint0Real.EnemyStuff
         private float attackTimer = 0f;
         private Random random = new Random();
 
-        public DragonBehavior(Dragon dragon) {
+        public DragonBehavior(Dragon dragon)
+        {
             myDragon = dragon;
-        } 
+        }
 
         public void Update(GameTime time)
         {
-            jukeTimer += (float) time.ElapsedGameTime.TotalSeconds;
-            attackTimer += (float) time.ElapsedGameTime.TotalSeconds;
-            
+            jukeTimer += (float)time.ElapsedGameTime.TotalSeconds;
+            attackTimer += (float)time.ElapsedGameTime.TotalSeconds;
+
             if (jukeDelay <= jukeTimer)
             {
                 jukeTimer = 0;

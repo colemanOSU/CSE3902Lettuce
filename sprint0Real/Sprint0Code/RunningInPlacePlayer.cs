@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using sprint0Real;
 using System;
 
 public class RunningInPlacePlayer : ISprite
@@ -22,5 +23,10 @@ public class RunningInPlacePlayer : ISprite
         sourceRectangle = new Rectangle(20 + currentFrame / 8 * 18, 8, 15, 15);
 
         spriteBatch.Draw(marioSheet, destinationRectangle, sourceRectangle, Color.White);
+    }
+
+    public void Draw(SpriteBatch thing, Vector2 thing2)
+    {
+        // Make the Compiler Happy
     }
 }

@@ -10,19 +10,19 @@ using System.Numerics;
 using Microsoft.Xna.Framework;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
 
-namespace sprint0Real.EnemyStuff
+namespace sprint0Real.EnemyStuff.DragonStuff
 {
-    public class DragonSpriteDamaged : ISprite
+    public class DragonSpriteIdle : ISprite
     {
         private Texture2D sprites;
         private int currentFrame;
         private int totalFrames;
         private Game1 myGame;
 
-        public DragonSpriteDamaged(Texture2D spriteSheet, SpriteBatch spriteBatch)
+        public DragonSpriteIdle(Texture2D spriteSheet, SpriteBatch spriteBatch)
         {
             sprites = spriteSheet;
-            totalFrames = 3;
+            totalFrames = 4;
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
@@ -32,25 +32,13 @@ namespace sprint0Real.EnemyStuff
 
             if (currentFrame == 0)
             {
-                sourceRectangle = new Rectangle(261, 226, 24, 42);
-                destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 20, 20);
-            }
-            else if (currentFrame == 1)
-            {
-                sourceRectangle = new Rectangle(292, 226, 24, 42);
-                destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 20, 20);
-            }
-            else if (currentFrame == 3)
-            {
-                sourceRectangle = new Rectangle(323, 226, 24, 42);
+                sourceRectangle = new Rectangle(50, 10, 24, 42);
                 destinationRectangle = new Rectangle((int)location.X,
                 (int)location.Y, 20, 20);
             }
             else
             {
-                sourceRectangle = new Rectangle(354, 226, 24, 42);
+                sourceRectangle = new Rectangle(75, 10, 24, 42);
                 destinationRectangle = new Rectangle((int)location.X,
                 (int)location.Y, 20, 20);
             }
@@ -68,7 +56,7 @@ namespace sprint0Real.EnemyStuff
         // This is just here to make the compiler happy. Will delete later
         public void Update(SpriteBatch spriteBatch, Texture2D marioSheet)
         {
-            throw new NotImplementedException();
+            // lol
         }
     }
 }

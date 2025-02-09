@@ -10,16 +10,16 @@ using System.Numerics;
 using Microsoft.Xna.Framework;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
 
-namespace sprint0Real.EnemyStuff
+namespace sprint0Real.EnemyStuff.DragonStuff
 {
-    public class DragonSpriteIdle : ISprite
+    public class DragonSpriteAttack : ISprite
     {
         private Texture2D sprites;
         private int currentFrame;
         private int totalFrames;
-        private Game1 myGame;
-        
-        public DragonSpriteIdle(Texture2D spriteSheet, SpriteBatch spriteBatch) {
+
+        public DragonSpriteAttack(Texture2D spriteSheet, SpriteBatch spriteBatch)
+        {
             sprites = spriteSheet;
             totalFrames = 4;
         }
@@ -31,13 +31,13 @@ namespace sprint0Real.EnemyStuff
 
             if (currentFrame == 0)
             {
-                sourceRectangle = new Rectangle(50, 10, 24, 42);
+                sourceRectangle = new Rectangle(0, 10, 24, 42);
                 destinationRectangle = new Rectangle((int)location.X,
                 (int)location.Y, 20, 20);
             }
             else
             {
-                sourceRectangle = new Rectangle(75, 10, 24, 42);
+                sourceRectangle = new Rectangle(25, 10, 24, 42);
                 destinationRectangle = new Rectangle((int)location.X,
                 (int)location.Y, 20, 20);
             }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using sprint0Real.EnemyStuff;
 using sprint0Real.BlockSprites;
 using sprint0Real.EnemyStuff;
 using sprint0Real.Interfaces;
@@ -23,7 +24,8 @@ namespace sprint0Real
 
         public ILink Link = new Link();
         public ILinkSprite linkSprite;
-        
+        public EnemyPage enemyPage;
+
         public Texture2D linkSheet;
 
         //temp
@@ -66,6 +68,12 @@ namespace sprint0Real
             // TODO: use this.Content to load your game content here
             marioSheet = Content.Load<Texture2D>("mario");
 
+            // State sprite factory
+            EnemySpriteFactory.Instance.LoadAllTextures(Content);
+
+            //
+            enemyPage = new EnemyPage();
+
             //Loading Block Content
             blockSheet = Content.Load<Texture2D>("Dungeon_Tileset");
             currentBlock = new BlockSprite1(blockSheet);
@@ -95,10 +103,9 @@ namespace sprint0Real
                 this.Exit();
             }
             
+            enemyPage.Update(gameTime);
 
             currentBlock.Update(gameTime);
-
-
         }
 
         protected override void Draw(GameTime gameTime)
@@ -124,8 +131,6 @@ namespace sprint0Real
 
             text.Update(_spriteBatch, font1);
             _spriteBatch.End();
-
-            
 
             base.Draw(gameTime);
         }
