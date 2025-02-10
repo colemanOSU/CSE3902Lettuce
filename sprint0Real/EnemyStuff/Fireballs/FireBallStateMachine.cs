@@ -10,14 +10,18 @@ namespace sprint0Real.EnemyStuff.Fireballs
     {
         private FireBall myFireball;
         private int speed = 3;
-        private float slope;
+        private float time;
         private float deltaX;
         private float deltaY;
+        private float slopeX;
+        private float slopeY;
         public FireBallStateMachine(FireBall fireball) { 
             myFireball = fireball;
             deltaX = fireball.destination.X - myFireball.location.X;
             deltaY = fireball.destination.Y - myFireball.location.Y;
-            slope = deltaY / deltaX;
+            time = (float)Math.Sqrt(Math.Pow(deltaX, 2) + Math.Pow(deltaY, 2)) / speed;
+            slopeX = deltaX / time;
+            slopeY = deltaY / time;
         }
         public void Despawn()
         {
@@ -25,8 +29,8 @@ namespace sprint0Real.EnemyStuff.Fireballs
         }
         public void Update()
         {
-            myFireball.location.X = myFireball.location.X + speed;
-            myFireball.location.Y = myFireball.location.Y + speed * slope;
+            myFireball.location.X = myFireball.location.X + slopeX;
+            myFireball.location.Y = myFireball.location.Y + slopeY;
         }
     }
 }

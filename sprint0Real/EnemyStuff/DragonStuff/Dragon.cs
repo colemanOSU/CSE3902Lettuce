@@ -43,7 +43,7 @@ namespace sprint0Real.EnemyStuff.DragonStuff
 
         public void Attack()
         {
-            attack = new DragonAttack(location, new Vector2(0 , 0));
+            attack = new DragonAttack(location, new Vector2(400 , 400));
             attack.Attack();
             stateMachine.Attack();
         }

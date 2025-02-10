@@ -18,8 +18,8 @@ namespace sprint0Real.EnemyStuff.Fireballs
         {
             location = start;  
             destitation = final;
-            destination2 = new Vector2(final.X, final.Y + 10);
-            destination3 = new Vector2(final.X, final.Y - 10);
+            destination2 = new Vector2(final.X, final.Y + 100);
+            destination3 = new Vector2(final.X, final.Y - 100);
         }
 
         public void Attack()
