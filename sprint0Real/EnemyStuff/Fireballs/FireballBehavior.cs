@@ -11,6 +11,7 @@ namespace sprint0Real.EnemyStuff.Fireballs
     public class FireballBehavior
     {
         private FireBall myFireball;
+        Rectangle bounds = EnemySpriteFactory.Instance.myGame.GraphicsDevice.Viewport.Bounds;
         
         public FireballBehavior(FireBall fireball)
         {
@@ -18,7 +19,7 @@ namespace sprint0Real.EnemyStuff.Fireballs
         }
         public void Update()
         {
-                if (myFireball.location.X <= 0 || myFireball.location.X >= Game1.Instance._graphics.PreferredBackBufferWidth || myFireball.location.Y <= 0 || myFireball.location.Y >= Game1.Instance._graphics.PreferredBackBufferHeight)
+            if (!bounds.Contains(myFireball.location))
                 {
                     myFireball.Despawn();
             }  

@@ -13,7 +13,6 @@ namespace sprint0Real
 {
     public class Game1 : Game
     {  
-        private static Game1 instance = new Game1();
         public GraphicsDeviceManager _graphics;
         public SpriteBatch _spriteBatch;
 
@@ -40,10 +39,6 @@ namespace sprint0Real
             currentBlockIndex = 1;
         }
 
-        public static Game1 Instance
-        {
-            get { return instance; }
-        }
 
         ISprite sprite = new StandingInPlacePlayer();
         public IBlock currentBlock;
@@ -75,6 +70,7 @@ namespace sprint0Real
             linkSheet = Content.Load<Texture2D>("Link");
             linkSprite = new FaceRightSprite(linkSheet, this);
 
+            EnemySpriteFactory.Instance.LoadGame(this);
             EnemySpriteFactory.Instance.LoadAllTextures(Content);
             EnemyPage.Instance.AddEnemies();
 

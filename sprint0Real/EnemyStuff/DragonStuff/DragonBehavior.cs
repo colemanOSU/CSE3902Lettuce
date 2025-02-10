@@ -35,10 +35,10 @@ namespace sprint0Real.EnemyStuff.DragonStuff
 
         private void SafeJuke()
         {
-            if (myDragon.location.X >= Game1.Instance._graphics.PreferredBackBufferWidth - 48)
+            if (myDragon.location.X >= EnemySpriteFactory.Instance.myGame._graphics.PreferredBackBufferWidth - 48)
             {
                 jukeTimer = 0;
-                myDragon.location.X = Game1.Instance._graphics.PreferredBackBufferWidth - 48;
+                myDragon.location.X = EnemySpriteFactory.Instance.myGame._graphics.PreferredBackBufferWidth - 48;
                 myDragon.ChangeDirection();
             }
             else if (myDragon.location.X <= 0)
