@@ -25,9 +25,14 @@ namespace sprint0Real.LinkSprites
             spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
         }
 
-        public void Update(GameTime gameTime, SpriteBatch spriteBatch)
+        public void Update(SpriteBatch spriteBatch, GameTime gameTime)
         {
         
+        }
+
+        public void Update(SpriteBatch spriteBatch, Texture2D marioSheet)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
