@@ -4,8 +4,10 @@ using Microsoft.Xna.Framework.Input;
 using sprint0Real.EnemyStuff;
 using sprint0Real.BlockSprites;
 using sprint0Real.Interfaces;
+using System;
 using sprint0Real.LinkSprites;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace sprint0Real
 {
@@ -15,16 +17,16 @@ namespace sprint0Real
         public GraphicsDeviceManager _graphics;
         public SpriteBatch _spriteBatch;
 
-        Texture2D marioSheet;
+        public Texture2D linkSheet;
         Texture2D blockSheet;
         
         SpriteFont font1;
         public int currentBlockIndex;
 
+
         public ILink Link = new Link();
         public ILinkSprite linkSprite;
-        public EnemyPage enemyPage;
-
+        
         public Texture2D linkSheet;
 
         //temp
@@ -63,13 +65,10 @@ namespace sprint0Real
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+            
             font1 = Content.Load<SpriteFont>("MyMenuFont");
             // TODO: use this.Content to load your game content here
             marioSheet = Content.Load<Texture2D>("mario");
-
-            // State sprite factory
-            EnemySpriteFactory.Instance.LoadAllTextures(Content);
-            EnemyPage.Instance.AddEnemies();
 
             //Loading Block Content
             blockSheet = Content.Load<Texture2D>("Dungeon_Tileset");
@@ -104,7 +103,6 @@ namespace sprint0Real
 
             currentBlock.Update(gameTime);
         }
-
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
@@ -119,7 +117,7 @@ namespace sprint0Real
             }
 
             currentBlock.Draw(_spriteBatch);
-            sprite.Update(_spriteBatch, marioSheet);
+            //text.Update(_spriteBatch, font1);
 
             linkSprite.Update(gameTime, _spriteBatch);
 

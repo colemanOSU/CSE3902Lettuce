@@ -29,5 +29,6 @@ namespace sprint0Real.Interfaces
         public void SetFacing(Direction facing);
 
         public void SetCanAttack(bool canAttack);
+        public void Damaged();
     }
 }

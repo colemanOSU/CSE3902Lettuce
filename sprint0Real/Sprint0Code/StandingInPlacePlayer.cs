@@ -1,21 +1,21 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using sprint0Real.Interfaces;
 using System;
 
 public class StandingInPlacePlayer : ISprite
 {
-    int currentFrame = 0;
-    int totalFrames = 1;
-    int yPos = 0;
-    int xPos = 0;
-    bool movingUp = false;
-    bool movingLeft = false;
-
-    public Rectangle sourceRectangle = new Rectangle(0, 8, 15, 15);
-    public Rectangle destinationRectangle = new Rectangle(400, 400, 15, 15);
-
-    public void Update(SpriteBatch spriteBatch, Texture2D marioSheet) {
-        spriteBatch.Draw(marioSheet, destinationRectangle, sourceRectangle, Color.White);
+    private Texture2D _link;
+    public Rectangle sourceRectangle = new Rectangle(0, 10, 15, 15);
+    public Rectangle destinationRectangle = new Rectangle(350, 150, 50, 50);
+    
+    public StandingInPlacePlayer()
+    {
+    }
+    
+    public void Update(SpriteBatch spritebatch,Texture2D mariosheet)
+    {
+        
     }
     public void Draw(SpriteBatch thing, Vector2 thing2)
     {
