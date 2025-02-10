@@ -27,7 +27,7 @@ namespace sprint0Real
 
             keyPreviouslyPressed = new Dictionary<Keys, bool>();
             _game = game;
-            blockTexture = _game.Content.Load<Texture2D>("Dungeon_Tileset");
+            blockTexture = _game.Content.Load<Texture2D>("NES - The Legend of Zelda - Dungeon Tileset");
 
             
 
