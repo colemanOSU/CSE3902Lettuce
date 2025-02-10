@@ -60,7 +60,6 @@ namespace sprint0Real
             
             font1 = Content.Load<SpriteFont>("MyMenuFont");
             // TODO: use this.Content to load your game content here
-            linkSheet = Content.Load<Texture2D>("zelda");
            
             //Loading Block Content
             blockSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - Dungeon Tileset");
@@ -97,8 +96,8 @@ namespace sprint0Real
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            
-            _spriteBatch.Begin();
+
+            _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp);
 
 
             //TEMP ITEM
