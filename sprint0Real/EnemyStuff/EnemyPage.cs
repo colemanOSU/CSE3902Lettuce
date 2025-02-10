@@ -8,6 +8,7 @@ using sprint0Real.EnemyStuff.DragonStuff;
 using Microsoft.Xna.Framework;
 using sprint0Real.Interfaces;
 using Microsoft.Xna.Framework.Graphics;
+using sprint0Real.EnemyStuff.Fireballs;
 
 
 namespace sprint0Real.EnemyStuff
@@ -29,6 +30,7 @@ namespace sprint0Real.EnemyStuff
         {
             enemyList = new List<IEnemy>();
             enemyList.Add(new Dragon(new Vector2(5, 5)));
+            enemyList.Add(new FireBall(new Vector2(0, 0), new Vector2(100, 100)));
         }
 
         public void Update(GameTime time)

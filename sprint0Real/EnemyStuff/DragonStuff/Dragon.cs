@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using sprint0Real.Interfaces;
 using Microsoft.Xna.Framework.Graphics;
+using sprint0Real.EnemyStuff.Fireballs;
 
 namespace sprint0Real.EnemyStuff.DragonStuff
 {
@@ -19,6 +20,7 @@ namespace sprint0Real.EnemyStuff.DragonStuff
         public Vector2 location;
         public int speed = 2;
         public int health = 10;
+        public DragonAttack attack;
 
         public Dragon(Vector2 placement)
         {
@@ -35,11 +37,14 @@ namespace sprint0Real.EnemyStuff.DragonStuff
 
         public void TakeDamage()
         {
+            behavior.TakeDamage();
             stateMachine.TakeDamage();
         }
 
         public void Attack()
         {
+            attack = new DragonAttack(location, new Vector2(0 , 0));
+            attack.Attack();
             stateMachine.Attack();
         }
 

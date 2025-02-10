@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0Real.EnemyStuff.DragonStuff;
+using sprint0Real.EnemyStuff.Fireballs;
 using sprint0Real.Interfaces;
 
 namespace sprint0Real.EnemyStuff
@@ -47,6 +48,11 @@ namespace sprint0Real.EnemyStuff
         public ISprite2 CreateDragonDamagedSprite()
         {
             return new DragonSpriteDamaged(bossesSheet, Game1.Instance._spriteBatch);
+        }
+
+        public ISprite2 CreateFireballSprite()
+        {
+            return new FireballSprite(bossesSheet, Game1.Instance._spriteBatch);
         }
 
         // More public ISprite returning methods follow

@@ -70,6 +70,7 @@ namespace sprint0Real.EnemyStuff.DragonStuff
         {
             if (attackFlag && attackTimer >= attackDuration)
             {
+                attackFlag = false;
                 attackTimer = 0;
                 myDragon.Idle();
             }
@@ -106,11 +107,6 @@ namespace sprint0Real.EnemyStuff.DragonStuff
                 attackTimer += (float)time.ElapsedGameTime.TotalSeconds;
             }
 
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            myDragon.Draw(spriteBatch);
         }
     }
 }

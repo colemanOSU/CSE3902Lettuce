@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using sprint0Real.EnemyStuff;
 using sprint0Real.BlockSprites;
-using sprint0Real.EnemyStuff;
 using sprint0Real.Interfaces;
 using sprint0Real.LinkSprites;
 using System.Collections.Generic;
@@ -71,7 +70,7 @@ namespace sprint0Real
             // State sprite factory
             EnemySpriteFactory.Instance.LoadAllTextures(Content);
 
-            //
+            // Load enemy's in position
             enemyPage = new EnemyPage();
 
             //Loading Block Content
