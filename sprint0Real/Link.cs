@@ -5,6 +5,7 @@ using System;
 using Microsoft.Xna.Framework;
 using sprint0Real.Interfaces;
 using sprint0Real;
+using sprint0Real.LinkSprites;
 public class Link : ILink
 {
     private Rectangle sourceRectangle;
@@ -12,6 +13,7 @@ public class Link : ILink
     private bool canMove;
     private bool canAttack;
     private LinkStateMachine stateMachine;
+    private ItemStateMachine itemStateMachine;
 
     public const int SPEED = 2;
 
@@ -23,21 +25,9 @@ public class Link : ILink
         Right
     }
 
-    public enum Item
-    {
-        WoodSword,
-        Whitesword,
-        MagicRod,
-        WoodArrow,
-        BlueArrow,
-        WoodBoomerang,
-        BlueBoomerang,
-        Bomb,
-        Fire
+    
 
-    }
-
-    private Item CurrentItem;
+    
     private Direction Facing;
 
     public Link()
@@ -47,12 +37,18 @@ public class Link : ILink
         canMove = true;
         canAttack = true;
         Facing = Direction.Right;
-        CurrentItem = Item.WoodSword;
         stateMachine = new LinkStateMachine();
+        itemStateMachine = new ItemStateMachine();
     }
     public void Damaged()
     {
             stateMachine.Damaged();
+    }
+
+    //ItemStateMachine
+    public void SetItem()
+    {
+        itemStateMachine.SetItem();
     }
 
     //Moves Link's rendering rectangle in one of four directions
