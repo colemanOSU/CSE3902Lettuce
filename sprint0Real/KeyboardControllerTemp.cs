@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -10,10 +11,12 @@ namespace sprint0Real
     public class KeyboardControllerTemp : IControllerTemp
     {
         private Dictionary<Keys, ICommand> commands;
+        private int currentBlock = 1;
+        private Vector2 location;
         private Dictionary<Keys, ICommand> releaseCommands;
 
         private Dictionary<Keys, bool> keyPreviouslyPressed;
-        private int currentBlock = 1;
+        
         private Game1 _game;
         private ILink _Link;
         private Texture2D blockTexture;
@@ -32,12 +35,14 @@ namespace sprint0Real
             commands.Add(Keys.NumPad0, new QuitCommand(_game));
             commands.Add(Keys.Y, new NextBlockCommand(_game, blockTexture));
             commands.Add(Keys.T, new PreviousBlockCommand(_game, blockTexture));
+            commands.Add(Keys.E, new DamagedStateCommand(_game));
             commands.Add(Keys.D, new MoveRightCommand(_game));
             commands.Add(Keys.A, new MoveLeftCommand(_game));
             commands.Add(Keys.W, new MoveUpCommand(_game));
             commands.Add(Keys.S, new MoveDownCommand(_game));
             commands.Add(Keys.Z, new AttackCommand(_game));
             commands.Add(Keys.N, new AttackCommand(_game));
+            
 
             //Commands for when key is released. Subject to change.
             releaseCommands = new Dictionary<Keys, ICommand>();

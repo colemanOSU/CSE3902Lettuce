@@ -1,14 +1,17 @@
+
 ﻿using Microsoft.Xna.Framework.Graphics;
 using sprint0Real.Commands;
 using System;
 using Microsoft.Xna.Framework;
 using sprint0Real.Interfaces;
+using sprint0Real;
 public class Link : ILink
 {
     private Rectangle sourceRectangle;
     private Rectangle destinationRectangle;
     private bool canMove;
     private bool canAttack;
+    private LinkStateMachine stateMachine;
 
     public const int SPEED = 2;
 
@@ -31,11 +34,16 @@ public class Link : ILink
     public Link()
 	{
         sourceRectangle = new Rectangle(1, 11, 16, 16);
-        destinationRectangle = new Rectangle(200, 200, 16, 16);
+        destinationRectangle = new Rectangle(200, 200, 50, 50);
         canMove = true;
         canAttack = true;
         Facing = Direction.Right;
         CurrentItem = Item.WoodSword;
+        stateMachine = new LinkStateMachine();
+    }
+    public void Damaged()
+    {
+            stateMachine.Damaged();
     }
 
     //Moves Link's rendering rectangle in one of four directions
