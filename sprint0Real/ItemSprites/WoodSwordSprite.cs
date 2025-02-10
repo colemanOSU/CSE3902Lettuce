@@ -29,5 +29,9 @@ namespace sprint0Real.LinkSprites
         {
         
         }
+
+        public void Update(SpriteBatch spriteBatch, Texture2D marioSheet)
+        {
+        }
     }
 }
