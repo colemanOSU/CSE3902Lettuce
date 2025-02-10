@@ -27,7 +27,6 @@ namespace sprint0Real
         public ILink Link = new Link();
         public ILinkSprite linkSprite;
         
-        public Texture2D linkSheet;
 
         //temp
         public IItem tempItem;
@@ -68,7 +67,6 @@ namespace sprint0Real
             
             font1 = Content.Load<SpriteFont>("MyMenuFont");
             // TODO: use this.Content to load your game content here
-            marioSheet = Content.Load<Texture2D>("mario");
 
             //Loading Block Content
             blockSheet = Content.Load<Texture2D>("Dungeon_Tileset");
@@ -78,6 +76,7 @@ namespace sprint0Real
             linkSprite = new FaceRightSprite(linkSheet, this);
 
             EnemySpriteFactory.Instance.LoadAllTextures(Content);
+            EnemyPage.Instance.AddEnemies();
 
             tempItem = null;
         }
