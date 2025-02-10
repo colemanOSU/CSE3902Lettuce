@@ -29,7 +29,36 @@ namespace sprint0Real.LinkSprites
         }
         public void SetItem(int num)
         {
-
+            switch (num)
+            {
+                case 1:
+                    CurrentItem = Item.WoodSword;
+                    break;
+                case 2:
+                    CurrentItem = Item.Whitesword;
+                    break;
+                case 3:
+                    CurrentItem = Item.MagicRod;
+                    break;
+                case 4:
+                    CurrentItem = Item.WoodArrow;
+                    break;
+                case 5:
+                    CurrentItem = Item.BlueArrow;
+                    break
+            ;   case 6:
+                    CurrentItem = Item.WoodBoomerang;
+                    break;
+                case 7:
+                    CurrentItem = Item.BlueBoomerang;
+                    break;
+                case 8:
+                    CurrentItem = Item.Bomb;
+                    break;
+                case 9:
+                    CurrentItem = Item.Fire;
+                    break;
+            }
         }
     }
 }
