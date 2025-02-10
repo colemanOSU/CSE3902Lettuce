@@ -19,7 +19,6 @@ namespace sprint0Real.EnemyStuff
         public List<IEnemy> stagingAdd;
         public List<IEnemy> stagingRemove;
 
-
         private static EnemyPage instance = new EnemyPage();
         
         public static EnemyPage Instance
@@ -30,17 +29,17 @@ namespace sprint0Real.EnemyStuff
             }
         }
 
-        public EnemyPage()
+        private EnemyPage()
         {
             enemyList = new List<IEnemy>();
             stagingAdd = new List<IEnemy>();
             stagingRemove = new List<IEnemy>();
         }
 
+        // Add all enemies to be spawned here
         public void AddEnemies()
         {
             enemyList.Add(new Dragon(new Vector2(5, 5)));
-            enemyList.Add(new FireBall(new Vector2(0, 0), new Vector2(100, 100)));
         }
 
         public void Update(GameTime time)

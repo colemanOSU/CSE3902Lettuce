@@ -69,10 +69,7 @@ namespace sprint0Real
 
             // State sprite factory
             EnemySpriteFactory.Instance.LoadAllTextures(Content);
-
-            // Load enemy's in position
-            enemyPage = new EnemyPage();
-            enemyPage.AddEnemies();
+            EnemyPage.Instance.AddEnemies();
 
             //Loading Block Content
             blockSheet = Content.Load<Texture2D>("Dungeon_Tileset");
@@ -103,7 +100,7 @@ namespace sprint0Real
                 this.Exit();
             }
             
-            enemyPage.Update(gameTime);
+            EnemyPage.Instance.Update(gameTime);
 
             currentBlock.Update(gameTime);
         }
@@ -128,7 +125,7 @@ namespace sprint0Real
 
             linkSprite.Draw(_spriteBatch);
 
-            enemyPage.Draw(_spriteBatch);
+            EnemyPage.Instance.Draw(_spriteBatch);
 
             text.Update(_spriteBatch, font1);
             _spriteBatch.End();
