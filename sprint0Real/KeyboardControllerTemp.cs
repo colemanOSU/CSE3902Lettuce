@@ -11,7 +11,6 @@ namespace sprint0Real
     public class KeyboardControllerTemp : IControllerTemp
     {
         private Dictionary<Keys, ICommand> commands;
-        private int currentBlock = 1;
         private Vector2 location;
         private Dictionary<Keys, ICommand> releaseCommands;
 
