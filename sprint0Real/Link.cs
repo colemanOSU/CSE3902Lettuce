@@ -46,9 +46,9 @@ public class Link : ILink
     }
 
     //ItemStateMachine
-    public void SetItem()
+    public void SetItem(int num)
     {
-        itemStateMachine.SetItem();
+        itemStateMachine.SetItem(num);
     }
 
     //Moves Link's rendering rectangle in one of four directions

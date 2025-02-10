@@ -27,7 +27,7 @@ namespace sprint0Real.LinkSprites
         {
             CurrentItem = Item.WoodSword;
         }
-        public void SetItem()
+        public void SetItem(int num)
         {
 
         }
