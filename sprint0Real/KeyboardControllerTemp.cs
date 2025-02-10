@@ -11,7 +11,6 @@ namespace sprint0Real
     public class KeyboardControllerTemp : IControllerTemp
     {
         private Dictionary<Keys, ICommand> commands;
-        private int currentBlock = 1;
         private Vector2 location;
         private Dictionary<Keys, ICommand> releaseCommands;
 
@@ -42,7 +41,16 @@ namespace sprint0Real
             commands.Add(Keys.S, new MoveDownCommand(_game));
             commands.Add(Keys.Z, new AttackCommand(_game));
             commands.Add(Keys.N, new AttackCommand(_game));
-            
+            commands.Add(Keys.D1, new ItemChangeCommand(_game,1));
+            commands.Add(Keys.D2, new ItemChangeCommand(_game,2));
+            commands.Add(Keys.D3, new ItemChangeCommand(_game,3));
+            commands.Add(Keys.D4, new ItemChangeCommand(_game,4));
+            commands.Add(Keys.D5, new ItemChangeCommand(_game,5));
+            commands.Add(Keys.D6, new ItemChangeCommand(_game,6));
+            commands.Add(Keys.D7, new ItemChangeCommand(_game,7));
+            commands.Add(Keys.D8, new ItemChangeCommand(_game,8));
+            commands.Add(Keys.D9, new ItemChangeCommand(_game,9));
+
 
             //Commands for when key is released. Subject to change.
             releaseCommands = new Dictionary<Keys, ICommand>();

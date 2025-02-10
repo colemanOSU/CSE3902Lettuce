@@ -30,5 +30,6 @@ namespace sprint0Real.Interfaces
 
         public void SetCanAttack(bool canAttack);
         public void Damaged();
+        public void SetItem(int num);
     }
 }
