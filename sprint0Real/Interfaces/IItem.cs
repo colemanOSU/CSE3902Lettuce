@@ -7,7 +7,9 @@ namespace sprint0Real.Interfaces
 {
     public interface IItem
     {
-        public void Update(SpriteBatch spriteBatch, Texture2D marioSheet);
+        //public void Update(SpriteBatch spriteBatch, Texture2D marioSheet);
+
+        public void Draw(SpriteBatch _spriteBatch);
 
     }
 }

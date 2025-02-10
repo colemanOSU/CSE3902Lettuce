@@ -1,23 +1,30 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using sprint0Real.Interfaces;
+using Microsoft.Xna.Framework.Input;
 
 namespace sprint0Real.LinkSprites
 {
-    internal class WoodSwordSprite : IItem
+    internal class PickUpSprite : ILinkSprite
     {
-        private Rectangle sourceRectangle = new(10, 154, 16, 16);
-        private Rectangle destinationRectangle;
-
         private Texture2D _texture;
         private Game1 myGame;
-        private int frameCount = 0;
 
-        public WoodSwordSprite(Texture2D texture, Game1 game)
+        private Rectangle sourceRectangle = new(213, 11, 16, 16);
+        private Rectangle destinationRectangle;
+
+        
+
+        public PickUpSprite(Texture2D texture, Game1 game)
         {
             _texture = texture;
             myGame = game;
-            destinationRectangle = new Rectangle(game.Link.GetLocation().X + 11, game.Link.GetLocation().Y + 1, 16, 16);
+            destinationRectangle = myGame.Link.GetLocation();
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -27,11 +34,7 @@ namespace sprint0Real.LinkSprites
 
         public void Update(GameTime gameTime, SpriteBatch spriteBatch)
         {
-        
-        }
-
-        public void Update(SpriteBatch spriteBatch, Texture2D marioSheet)
-        {
+            //Static Sprite, no need to update
         }
     }
 }

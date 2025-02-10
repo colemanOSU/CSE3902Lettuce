@@ -17,8 +17,4 @@ public class StandingInPlacePlayer : ISprite
     {
         
     }
-    public void Draw(SpriteBatch thing, Vector2 thing2)
-    {
-        // Make the Compiler Happy
-    }
 }
