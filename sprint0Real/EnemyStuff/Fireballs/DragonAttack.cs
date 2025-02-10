@@ -24,9 +24,9 @@ namespace sprint0Real.EnemyStuff.Fireballs
 
         public void Attack()
         {
-            EnemyPage.Instance.enemyList.Add(new FireBall(location, destitation));
-            EnemyPage.Instance.enemyList.Add(new FireBall(location, destination2));
-            EnemyPage.Instance.enemyList.Add(new FireBall(location, destination3));
+            EnemyPage.Instance.stagingAdd.Add(new FireBall(location, destitation));
+            EnemyPage.Instance.stagingAdd.Add(new FireBall(location, destination2));
+            EnemyPage.Instance.stagingAdd.Add(new FireBall(location, destination3));
         }
     }
 }

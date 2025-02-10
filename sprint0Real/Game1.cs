@@ -72,6 +72,7 @@ namespace sprint0Real
 
             // Load enemy's in position
             enemyPage = new EnemyPage();
+            enemyPage.AddEnemies();
 
             //Loading Block Content
             blockSheet = Content.Load<Texture2D>("Dungeon_Tileset");

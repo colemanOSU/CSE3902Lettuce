@@ -21,7 +21,7 @@ namespace sprint0Real.EnemyStuff.Fireballs
         }
         public void Despawn()
         {
-            EnemyPage.Instance.enemyList.Remove(myFireball);
+            EnemyPage.Instance.stagingRemove.Add(myFireball);
         }
         public void Update()
         {
