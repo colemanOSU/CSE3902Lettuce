@@ -24,4 +24,9 @@ public class RunningLeftAndRightPlayer : ISprite
 
         spriteBatch.Draw(marioSheet, destinationRectangle, sourceRectangle, Color.White);
     }
+
+    public void Draw(SpriteBatch thing, Vector2 thing2)
+    {
+        // Make the Compiler Happy
+    }
 }
