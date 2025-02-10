@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using sprint0Real.EnemyStuff;
 using sprint0Real.BlockSprites;
 using sprint0Real.Interfaces;
 using System;
@@ -13,8 +12,8 @@ namespace sprint0Real
 {
     public class Game1 : Game
     {  
-        public GraphicsDeviceManager _graphics;
-        public SpriteBatch _spriteBatch;
+        private GraphicsDeviceManager _graphics;
+        private SpriteBatch _spriteBatch;
 
         public Texture2D linkSheet;
         Texture2D blockSheet;
@@ -47,13 +46,11 @@ namespace sprint0Real
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            
+            controllerList = new List<IControllerTemp>();
+            controllerList.Add(new KeyboardControllerTemp(this));
             //controllerList.Add(new MouseController());
 
             base.Initialize();
-
-            controllerList = new List<IControllerTemp>();
-            controllerList.Add(new KeyboardControllerTemp(this));
         }
         
 
@@ -63,16 +60,14 @@ namespace sprint0Real
             
             font1 = Content.Load<SpriteFont>("MyMenuFont");
             // TODO: use this.Content to load your game content here
-
+            linkSheet = Content.Load<Texture2D>("zelda");
+           
             //Loading Block Content
-            blockSheet = Content.Load<Texture2D>("Dungeon_Tileset");
+            blockSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - Dungeon Tileset");
             currentBlock = new BlockSprite1(blockSheet);
 
-            linkSheet = Content.Load<Texture2D>("Link");
+            linkSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - Link");
             linkSprite = new FaceRightSprite(linkSheet, this);
-
-            EnemySpriteFactory.Instance.LoadAllTextures(Content, this);
-            EnemyPage.Instance.AddEnemies();
 
             tempItem = null;
         }
@@ -94,9 +89,10 @@ namespace sprint0Real
                 this.Exit();
             }
             
-            EnemyPage.Instance.Update(gameTime);
 
             currentBlock.Update(gameTime);
+
+
         }
         protected override void Draw(GameTime gameTime)
         {
@@ -118,10 +114,11 @@ namespace sprint0Real
 
             linkSprite.Draw(_spriteBatch);
 
-            EnemyPage.Instance.Draw(_spriteBatch);
 
             text.Update(_spriteBatch, font1);
             _spriteBatch.End();
+
+            
 
             base.Draw(gameTime);
         }
