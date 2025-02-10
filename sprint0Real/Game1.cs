@@ -12,8 +12,13 @@ namespace sprint0Real
 {
     public class Game1 : Game
     {  
+<<<<<<< HEAD
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+=======
+        public GraphicsDeviceManager _graphics;
+        public SpriteBatch _spriteBatch;
+>>>>>>> ceb8d31 (Fixed Singleton)
 
         public Texture2D linkSheet;
         Texture2D blockSheet;
@@ -38,6 +43,10 @@ namespace sprint0Real
             currentBlockIndex = 1;
         }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> ceb8d31 (Fixed Singleton)
         ISprite sprite = new StandingInPlacePlayer();
         public IBlock currentBlock;
         TextSprite text = new TextSprite();
@@ -68,6 +77,13 @@ namespace sprint0Real
             linkSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - Link");
             linkSprite = new FaceRightSprite(linkSheet, this);
 
+<<<<<<< HEAD
+=======
+            EnemySpriteFactory.Instance.LoadGame(this);
+            EnemySpriteFactory.Instance.LoadAllTextures(Content);
+            EnemyPage.Instance.AddEnemies();
+
+>>>>>>> ceb8d31 (Fixed Singleton)
             tempItem = null;
         }
 
