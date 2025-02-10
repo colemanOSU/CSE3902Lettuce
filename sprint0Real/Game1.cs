@@ -105,8 +105,8 @@ namespace sprint0Real
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            
-            _spriteBatch.Begin();
+
+            _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp);
 
 
             //TEMP ITEM

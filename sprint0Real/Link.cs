@@ -25,7 +25,16 @@ public class Link : ILink
 
     public enum Item
     {
-        WoodSword
+        WoodSword,
+        Whitesword,
+        MagicRod,
+        WoodArrow,
+        BlueArrow,
+        WoodBoomerang,
+        BlueBoomerang,
+        Bomb,
+        Fire
+
     }
 
     private Item CurrentItem;
