@@ -1,21 +1,36 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using sprint0Real.EnemyStuff;
 using sprint0Real.BlockSprites;
 using sprint0Real.Interfaces;
+using System;
+using sprint0Real.LinkSprites;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace sprint0Real
 {
     public class Game1 : Game
     {  
-        private GraphicsDeviceManager _graphics;
-        private SpriteBatch _spriteBatch;
+        private static Game1 instance = new Game1();
+        public GraphicsDeviceManager _graphics;
+        public SpriteBatch _spriteBatch;
 
-        Texture2D marioSheet;
+        public Texture2D linkSheet;
         Texture2D blockSheet;
+        
         SpriteFont font1;
         public int currentBlockIndex;
+
+
+        public ILink Link = new Link();
+        public ILinkSprite linkSprite;
+        
+
+        //temp
+        public IItem tempItem;
+        //temp
 
         public Game1()
         {
@@ -23,6 +38,11 @@ namespace sprint0Real
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
             currentBlockIndex = 1;
+        }
+
+        public static Game1 Instance
+        {
+            get { return instance; }
         }
 
         ISprite sprite = new StandingInPlacePlayer();
@@ -44,13 +64,21 @@ namespace sprint0Real
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+            
             font1 = Content.Load<SpriteFont>("MyMenuFont");
             // TODO: use this.Content to load your game content here
-            marioSheet = Content.Load<Texture2D>("mario");
 
             //Loading Block Content
-            blockSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - Dungeon Tileset");
+            blockSheet = Content.Load<Texture2D>("Dungeon_Tileset");
             currentBlock = new BlockSprite1(blockSheet);
+
+            linkSheet = Content.Load<Texture2D>("Link");
+            linkSprite = new FaceRightSprite(linkSheet, this);
+
+            EnemySpriteFactory.Instance.LoadAllTextures(Content);
+            EnemyPage.Instance.AddEnemies();
+
+            tempItem = null;
         }
 
 
@@ -70,23 +98,34 @@ namespace sprint0Real
                 this.Exit();
             }
             
+            EnemyPage.Instance.Update(gameTime);
 
             currentBlock.Update(gameTime);
         }
-
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            string output = "Credits:\nProgram Made By: Kelly Coleman\n Sprites from: https://www.spriters-resource.com/nes/supermariobros/sheet/50365/";
-
-            // TODO: Add your drawing code here
+            
             _spriteBatch.Begin();
+
+
+            //TEMP ITEM
+            if (tempItem != null)
+            {
+                tempItem.Draw(_spriteBatch);
+            }
+
             currentBlock.Draw(_spriteBatch);
-            sprite.Update(_spriteBatch, marioSheet);
+            //text.Update(_spriteBatch, font1);
+
+            linkSprite.Update(gameTime, _spriteBatch);
+
+            linkSprite.Draw(_spriteBatch);
+
+            EnemyPage.Instance.Draw(_spriteBatch);
+
             text.Update(_spriteBatch, font1);
             _spriteBatch.End();
-
-            
 
             base.Draw(gameTime);
         }
