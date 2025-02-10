@@ -16,6 +16,7 @@ namespace sprint0Real.EnemyStuff
     {
         private Texture2D bossesSheet;
         private Texture2D enemySpriteSheet;
+        public Game1 myGame;
         // More private Texture2Ds follow
         // ...
         private static EnemySpriteFactory instance = new EnemySpriteFactory();
@@ -29,30 +30,31 @@ namespace sprint0Real.EnemyStuff
         private EnemySpriteFactory()
         {
         }
-        public void LoadAllTextures(ContentManager content)
+        public void LoadAllTextures(ContentManager content, Game1 game)
         {
+            myGame = game;
             bossesSheet = content.Load<Texture2D>("Bosses");
             // More Content.Load calls follow
             //...
         }
         public ISprite2 CreateDragonEnemySprite()
         {
-            return new DragonSpriteIdle(bossesSheet, Game1.Instance._spriteBatch);
+            return new DragonSpriteIdle(bossesSheet, myGame._spriteBatch);
         }
 
         public ISprite2 CreateDragonAttackSprite()
         {
-            return new DragonSpriteAttack(bossesSheet, Game1.Instance._spriteBatch);
+            return new DragonSpriteAttack(bossesSheet, myGame._spriteBatch);
         }
 
         public ISprite2 CreateDragonDamagedSprite()
         {
-            return new DragonSpriteDamaged(bossesSheet, Game1.Instance._spriteBatch);
+            return new DragonSpriteDamaged(bossesSheet, myGame._spriteBatch);
         }
 
         public ISprite2 CreateFireballSprite()
         {
-            return new FireballSprite(bossesSheet, Game1.Instance._spriteBatch);
+            return new FireballSprite(bossesSheet, myGame._spriteBatch);
         }
 
         // More public ISprite returning methods follow

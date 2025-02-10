@@ -13,7 +13,6 @@ namespace sprint0Real
 {
     public class Game1 : Game
     {  
-        private static Game1 instance = new Game1();
         public GraphicsDeviceManager _graphics;
         public SpriteBatch _spriteBatch;
 
@@ -40,11 +39,6 @@ namespace sprint0Real
             currentBlockIndex = 1;
         }
 
-        public static Game1 Instance
-        {
-            get { return instance; }
-        }
-
         ISprite sprite = new StandingInPlacePlayer();
         public IBlock currentBlock;
         TextSprite text = new TextSprite();
@@ -53,11 +47,13 @@ namespace sprint0Real
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            controllerList = new List<IControllerTemp>();
-            controllerList.Add(new KeyboardControllerTemp(this));
+            
             //controllerList.Add(new MouseController());
 
             base.Initialize();
+
+            controllerList = new List<IControllerTemp>();
+            controllerList.Add(new KeyboardControllerTemp(this));
         }
         
 
@@ -75,7 +71,7 @@ namespace sprint0Real
             linkSheet = Content.Load<Texture2D>("Link");
             linkSprite = new FaceRightSprite(linkSheet, this);
 
-            EnemySpriteFactory.Instance.LoadAllTextures(Content);
+            EnemySpriteFactory.Instance.LoadAllTextures(Content, this);
             EnemyPage.Instance.AddEnemies();
 
             tempItem = null;
