@@ -74,7 +74,7 @@ namespace sprint0Real
 
             EnemySpriteFactory.Instance.LoadAllTextures(Content);
             EnemySpriteFactory.Instance.LoadGame(this);
-            
+            EnemyPage.Instance.AddEnemies();
 
             tempItem = null;
         }
@@ -99,6 +99,7 @@ namespace sprint0Real
 
             currentBlock.Update(gameTime);
 
+            EnemyPage.Instance.Update(gameTime);
 
         }
         protected override void Draw(GameTime gameTime)
