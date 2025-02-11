@@ -23,9 +23,35 @@ namespace sprint0Real.LinkSprites
 
         }
         private Item CurrentItem;
+        private int index;
         public ItemStateMachine()
         {
             CurrentItem = Item.WoodSword;
+            index = 0;
+        }
+        public void nextItem()
+        {
+            if (index == 8)
+            {
+                index = 0;
+            }
+            else
+            {
+                index += 1;
+            }
+            CurrentItem = (Item)index;
+        }
+        public void lastItem()
+        {
+            if (index == 0)
+            {
+                index = 8;
+            }
+            else
+            {
+                index -= 1;
+            }
+            CurrentItem = (Item)index;
         }
         public void SetItem(int num)
         {
