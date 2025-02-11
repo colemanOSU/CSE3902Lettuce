@@ -20,7 +20,6 @@ namespace sprint0Real.LinkSprites
             BlueBoomerang,
             Bomb,
             Fire
-
         }
         private Item CurrentItem;
         private int index;
