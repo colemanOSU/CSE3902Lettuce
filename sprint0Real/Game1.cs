@@ -7,6 +7,7 @@ using System;
 using sprint0Real.LinkSprites;
 using System.Collections.Generic;
 using System.Diagnostics;
+using sprint0Real.EnemyStuff;
 
 namespace sprint0Real
 {
@@ -71,7 +72,9 @@ namespace sprint0Real
             linkSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - Link");
             linkSprite = new FaceRightSprite(linkSheet, this);
 
-
+            EnemySpriteFactory.Instance.LoadAllTextures(Content);
+            EnemySpriteFactory.Instance.LoadGame(this);
+            
 
             tempItem = null;
         }
@@ -118,6 +121,7 @@ namespace sprint0Real
 
             linkSprite.Draw(_spriteBatch);
 
+            EnemyPage.Instance.Draw(_spriteBatch);
 
             text.Update(_spriteBatch, font1);
             _spriteBatch.End();
