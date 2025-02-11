@@ -56,7 +56,6 @@ namespace sprint0Real
 
             base.Initialize();
         }
-        
 
         protected override void LoadContent()
         {
@@ -79,7 +78,6 @@ namespace sprint0Real
             tempItem = null;
         }
 
-
         protected override void Update(GameTime gameTime)
         {
 
@@ -89,13 +87,6 @@ namespace sprint0Real
                 controller.Update(gameTime);
 
             }
-            
-
-            if ((Keyboard.GetState().IsKeyDown(Keys.D0) || Keyboard.GetState().IsKeyDown(Keys.NumPad0) || (Mouse.GetState().RightButton == ButtonState.Pressed)))
-            {
-                this.Exit();
-            }
-            
 
             currentBlock.Update(gameTime);
 
@@ -130,6 +121,11 @@ namespace sprint0Real
             
 
             base.Draw(gameTime);
+        }
+
+        public void ResetGame()
+        {
+            //TODO
         }
     }
 }
