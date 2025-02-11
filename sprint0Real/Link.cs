@@ -50,6 +50,14 @@ public class Link : ILink
     {
         itemStateMachine.SetItem(num);
     }
+    public void NextItem()
+    {
+        itemStateMachine.nextItem();
+    }
+    public void LastItem()
+    {
+        itemStateMachine.lastItem();
+    }
 
     //Moves Link's rendering rectangle in one of four directions
     public void MoveInDirection(Direction dir)
