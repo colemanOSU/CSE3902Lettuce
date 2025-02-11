@@ -44,6 +44,8 @@ namespace sprint0Real
             commands.Add(Keys.N, new AttackCommand(_game));
             commands.Add(Keys.Q, new QuitCommand(_game));
             commands.Add(Keys.R, new ResetCommand(_game));
+            commands.Add(Keys.U, new NextItemCommand(_game));
+            commands.Add(Keys.I, new LastItemCommand(_game));
             commands.Add(Keys.D1, new ItemChangeCommand(_game,1));
             commands.Add(Keys.D2, new ItemChangeCommand(_game,2));
             commands.Add(Keys.D3, new ItemChangeCommand(_game,3));
