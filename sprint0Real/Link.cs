@@ -114,4 +114,13 @@ public class Link : ILink
     {
         Facing = facing;
     }
+
+    // Make the compiler happy
+    public void NextItem()
+    {
+    }
+
+    public void LastItem()
+    {
+    }
 }

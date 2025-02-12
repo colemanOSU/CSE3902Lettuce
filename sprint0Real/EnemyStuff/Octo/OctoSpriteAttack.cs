@@ -63,6 +63,12 @@ namespace sprint0Real.EnemyStuff.DragonStuff
             spriteBatch.Draw(sprites, destinationRectangle, sourceRectangle, Color.White);
         }
 
+        // Just make the compiler happy
+        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        {
+            //bleh
+        }
+
         public void Update()
         {
             currentFrame++;

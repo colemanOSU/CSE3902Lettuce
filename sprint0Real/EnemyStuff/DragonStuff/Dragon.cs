@@ -20,7 +20,6 @@ namespace sprint0Real.EnemyStuff.DragonStuff
         public Vector2 location;
         public int speed = 2;
         public int health = 10;
-        public DragonAttack attack;
 
         public Dragon(Vector2 placement)
         {
@@ -43,7 +42,7 @@ namespace sprint0Real.EnemyStuff.DragonStuff
 
         public void Attack()
         {
-            attack = new DragonAttack(location, new Vector2(EnemySpriteFactory.Instance.myGame.Link.GetLocation().X, EnemySpriteFactory.Instance.myGame.Link.GetLocation().Y));
+            DragonAttack attack = new DragonAttack(location, new Vector2(EnemySpriteFactory.Instance.myGame.Link.GetLocation().X, EnemySpriteFactory.Instance.myGame.Link.GetLocation().Y));
             attack.Attack();
             stateMachine.Attack();
         }

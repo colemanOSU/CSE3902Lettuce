@@ -34,6 +34,8 @@ namespace sprint0Real
         public IItem tempItem;
         //temp
 
+        public EnemyCycleExample EnemyCycle;
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -74,7 +76,10 @@ namespace sprint0Real
 
             EnemySpriteFactory.Instance.LoadAllTextures(Content);
             EnemySpriteFactory.Instance.LoadGame(this);
-            EnemyPage.Instance.AddEnemies();
+            EnemyCycle = new EnemyCycleExample();
+
+            // Don't need EnemyPage yet
+            // EnemyPage.Instance.AddEnemies();
 
             tempItem = null;
         }
@@ -91,7 +96,8 @@ namespace sprint0Real
 
             currentBlock.Update(gameTime);
 
-            EnemyPage.Instance.Update(gameTime);
+            //EnemyPage.Instance.Update(gameTime);
+            EnemyCycle.Update(gameTime);
 
         }
         protected override void Draw(GameTime gameTime)
@@ -114,7 +120,8 @@ namespace sprint0Real
 
             linkSprite.Draw(_spriteBatch);
 
-            EnemyPage.Instance.Draw(_spriteBatch);
+            //EnemyPage.Instance.Draw(_spriteBatch);
+            EnemyCycle.Draw(_spriteBatch);
 
             text.Update(_spriteBatch, font1);
             _spriteBatch.End();

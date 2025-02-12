@@ -13,32 +13,12 @@ using sprint0Real.EnemyStuff.Fireballs;
 
 namespace sprint0Real.EnemyStuff
 {
-    public class EnemyPage
+    public class EnemyPage : IMap
     {
-        public List<IEnemy> enemyList;
-        public List<IEnemy> stagingAdd;
-        public List<IEnemy> stagingRemove;
-
-        private static EnemyPage instance = new EnemyPage();
-        
-        public static EnemyPage Instance
+        private List<IEnemy> enemyList;
+        public EnemyPage()
         {
-            get
-            {
-                return instance;
-            }
-        }
-
-        private EnemyPage()
-        {
-            enemyList = new List<IEnemy>();
-            stagingAdd = new List<IEnemy>();
-            stagingRemove = new List<IEnemy>();
-        }
-
-        // Add all enemies to be spawned here
-        public void AddEnemies()
-        {
+            // Add enemies to be spawned here
             enemyList.Add(new Dragon(new Vector2(5, 5)));
         }
 
@@ -48,15 +28,6 @@ namespace sprint0Real.EnemyStuff
             {
                 enemy.Update(time);
             }
-            foreach(IEnemy enemy in stagingAdd){
-                enemyList.Add(enemy);
-            }
-            stagingAdd.Clear();
-            foreach (IEnemy enemy in stagingRemove)
-            {
-                enemyList.Remove(enemy);
-            }
-            stagingRemove.Clear();
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -65,6 +36,15 @@ namespace sprint0Real.EnemyStuff
             {
                 enemy.Draw(spriteBatch);
             }
+        }
+        public void Stage(IEnemy enemy)
+        {
+            enemyList.Add(enemy);
+        }
+
+        public void DeStage(IEnemy enemy)
+        {
+            enemyList.Remove(enemy);
         }
     }
 }

@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using sprint0Real.BlockSprites;
 using sprint0Real.Interfaces;
+using sprint0Real.LinkSprites;
 
 namespace sprint0Real.Commands
 {
