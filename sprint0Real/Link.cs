@@ -1,11 +1,11 @@
 
-﻿using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Graphics;
 using sprint0Real.Commands;
 using System;
 using Microsoft.Xna.Framework;
 using sprint0Real.Interfaces;
-using sprint0Real;
 using sprint0Real.LinkSprites;
+using sprint0Real;
 public class Link : ILink
 {
     private Rectangle sourceRectangle;
@@ -49,14 +49,6 @@ public class Link : ILink
     public void SetItem(int num)
     {
         itemStateMachine.SetItem(num);
-    }
-    public void NextItem()
-    {
-        itemStateMachine.nextItem();
-    }
-    public void LastItem()
-    {
-        itemStateMachine.lastItem();
     }
 
     //Moves Link's rendering rectangle in one of four directions

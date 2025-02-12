@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using sprint0Real.Interfaces;
 using Microsoft.Xna.Framework.Input;
 
-namespace sprint0Real.LinkSprites
+namespace sprint0Real.Items.ItemSprites
 {
     internal class BombSprite : ILinkSprite
     {
@@ -18,7 +18,7 @@ namespace sprint0Real.LinkSprites
         private Rectangle sourceRectangle = new(129, 185, 8, 16);
         private Rectangle destinationRectangle;
 
-        
+
 
         public BombSprite(Texture2D texture, Game1 game)
         {

@@ -36,19 +36,20 @@ namespace sprint0Real.LinkSprites
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            
-            switch(_currentFrame){
+
+            switch (_currentFrame)
+            {
                 case 1:
                     sourceRectangle = new(111, 77, 27, 18);
-                    destinationRectangle = new(myGame.Link.GetLocation().X, myGame.Link.GetLocation().Y, 27*3, 18*3); 
+                    destinationRectangle = new(myGame.Link.GetLocation().X, myGame.Link.GetLocation().Y, 27 * 3, 18 * 3);
                     break;
                 case 2:
                     sourceRectangle = new(138, 77, 24, 18);
-                    destinationRectangle = new(myGame.Link.GetLocation().X, myGame.Link.GetLocation().Y, 24*3, 18 * 3);
+                    destinationRectangle = new(myGame.Link.GetLocation().X, myGame.Link.GetLocation().Y, 24 * 3, 18 * 3);
                     break;
                 case 3:
                     sourceRectangle = new(164, 77, 18, 18);
-                    destinationRectangle = new(myGame.Link.GetLocation().X, myGame.Link.GetLocation().Y, 18 * 3, 18*3);
+                    destinationRectangle = new(myGame.Link.GetLocation().X, myGame.Link.GetLocation().Y, 18 * 3, 18 * 3);
                     break;
                 case 4:
                     flag = true;
@@ -57,7 +58,7 @@ namespace sprint0Real.LinkSprites
             spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
             myGame.Link.SetCanMove(false);
             myGame.Link.SetCanAttack(false);
-            
+
         }
 
         public void Update(GameTime gameTime, SpriteBatch spriteBatch)
@@ -74,7 +75,7 @@ namespace sprint0Real.LinkSprites
                 myGame.Link.SetCanAttack(true);
                 new FaceRightCommand(myGame).Execute();
             }
-            
+
         }
     }
 }

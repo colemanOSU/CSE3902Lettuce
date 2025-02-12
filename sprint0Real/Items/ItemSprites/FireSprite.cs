@@ -2,18 +2,18 @@
 using Microsoft.Xna.Framework;
 using sprint0Real.Interfaces;
 
-namespace sprint0Real.LinkSprites
+namespace sprint0Real.Items.ItemSprites
 {
-    internal class MagicRod : IItem
+    internal class FireSprite : IItem
     {
-        private Rectangle sourceRectangle = new(154, 154, 16, 16);
+        private Rectangle sourceRectangle = new(191, 185, 16, 16);
         private Rectangle destinationRectangle;
 
         private Texture2D _texture;
         private Game1 myGame;
         private int frameCount = 0;
 
-        public MagicRod(Texture2D texture, Game1 game)
+        public FireSprite(Texture2D texture, Game1 game)
         {
             _texture = texture;
             myGame = game;

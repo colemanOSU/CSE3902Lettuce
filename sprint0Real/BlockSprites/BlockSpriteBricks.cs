@@ -5,14 +5,14 @@ using sprint0Real.Interfaces;
 
 namespace sprint0Real.BlockSprites
 {
-    public class BlockSprite10 : IBlock
+    public class BlockSpriteBricks : IBlock
     {
-        public Rectangle sourceRectangle = new Rectangle(1001, 45, 16, 16);
+        public Rectangle sourceRectangle = new Rectangle(984, 45, 16, 16);
         public Rectangle destinationRectangle = new Rectangle(200, 200, 40, 40);
 
         public Texture2D _texture;
 
-        public BlockSprite10(Texture2D texture)
+        public BlockSpriteBricks(Texture2D texture)
         {
             _texture = texture;
         }
