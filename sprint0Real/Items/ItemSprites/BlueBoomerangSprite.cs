@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework;
 using sprint0Real.Interfaces;
 
-namespace sprint0Real.LinkSprites
+namespace sprint0Real.Items.ItemSprites
 {
     internal class BlueBoomerangSprite : IItem
     {

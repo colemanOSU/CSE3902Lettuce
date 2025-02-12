@@ -21,7 +21,7 @@ namespace sprint0Real.LinkSprites
         private Rectangle sourceRectangle = new(107, 11, 16, 16);
         private Rectangle destinationRectangle;
 
-        
+
 
         public UseDownSprite(Texture2D texture, Game1 game)
         {

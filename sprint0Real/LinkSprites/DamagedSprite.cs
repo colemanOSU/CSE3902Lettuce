@@ -1,11 +1,10 @@
-﻿using sprint0Real;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using sprint0Real.Interfaces;
 using System.Collections.Generic;
 
-namespace sprint0Real
+namespace sprint0Real.LinkSprites
 {
     public class DamagedSprite : ILinkSprite
     {
@@ -42,32 +41,32 @@ namespace sprint0Real
 
             if (_currentFrame < 3)
             {
-                _horizontal =1 +  (_currentFrame * 17);
+                _horizontal = 1 + _currentFrame * 17;
             }
             else if (_currentFrame == 3)
             {
-                _horizontal =  (3 * 17) + 7;
+                _horizontal = 3 * 17 + 7;
                 _verticle = -8;
             }
             else if (_currentFrame > 3 && _currentFrame < 7)
             {
-                _horizontal = (_currentFrame * 17) + 7;
+                _horizontal = _currentFrame * 17 + 7;
                 _verticle = -8;
             }
             else if (_currentFrame == 7)
             {
-                _horizontal = (8 * 17) + 64; 
+                _horizontal = 8 * 17 + 64;
                 _verticle = 9;
             }
-            else if ( _currentFrame == 8)
+            else if (_currentFrame == 8)
             {
-                _horizontal = (9 * 17) + 70; 
+                _horizontal = 9 * 17 + 70;
                 _verticle = 9;
             }
             Rectangle sourceRectangle = new Rectangle(0 + _horizontal, 232 + _verticle, 16, 16);
-           spriteBatch.Draw(_link, destinationRectangle, sourceRectangle, Color.White);
-          
-            
+            spriteBatch.Draw(_link, destinationRectangle, sourceRectangle, Color.White);
+
+
         }
     }
 }

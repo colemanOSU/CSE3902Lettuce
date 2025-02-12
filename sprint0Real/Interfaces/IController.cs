@@ -1,7 +1,12 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using System;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
 
-public interface IController
+namespace sprint0Real.Interfaces
 {
-	public ISprite Update(ISprite sprite);
+    public interface IController
+    {
+        void Update(GameTime gameTime);
+    }
 }

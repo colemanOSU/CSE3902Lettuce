@@ -2,18 +2,18 @@
 using Microsoft.Xna.Framework;
 using sprint0Real.Interfaces;
 
-namespace sprint0Real.LinkSprites
+namespace sprint0Real.Items.ItemSprites
 {
-    internal class WoodArrow : IItem
+    internal class WoodSwordSprite : IItem
     {
-        private Rectangle sourceRectangle = new(10, 185, 16, 16);
+        private Rectangle sourceRectangle = new(10, 154, 16, 16);
         private Rectangle destinationRectangle;
 
         private Texture2D _texture;
         private Game1 myGame;
         private int frameCount = 0;
 
-        public WoodArrow(Texture2D texture, Game1 game)
+        public WoodSwordSprite(Texture2D texture, Game1 game)
         {
             _texture = texture;
             myGame = game;
