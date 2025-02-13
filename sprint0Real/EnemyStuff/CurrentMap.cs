@@ -31,9 +31,10 @@ namespace sprint0Real.EnemyStuff
             stagingRemove = new List<IEnemy>();
         }
 
-        public void LoadMap()
+        public void SetMap(IMap enemy)
         {
-            myMap = new EnemyPage();
+            // REMEMBER TO FIX THIS AFTER SPRINT 2
+            myMap = enemy;
         }
 
         public void Stage(IEnemy enemy)

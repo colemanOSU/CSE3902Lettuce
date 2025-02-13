@@ -16,10 +16,15 @@ namespace sprint0Real.EnemyStuff
     public class EnemyPage : IMap
     {
         private List<IEnemy> enemyList;
-        public EnemyPage()
+
+        // Temporary for Sprit 2. Enemy Page should not have a parameter when initilizing
+        public EnemyPage(IEnemy enemy)
         {
+            enemyList = new List<IEnemy>();
+            enemyList.Add(enemy);
+
             // Add enemies to be spawned here
-            enemyList.Add(new Dragon(new Vector2(5, 5)));
+            //enemyList.Add(new Dragon(new Vector2(5, 5)));
         }
 
         public void Update(GameTime time)
