@@ -39,6 +39,7 @@ namespace sprint0Real.EnemyStuff.RedGoriya
 
         public void TakeDamage()
         {
+            behavior.TakeDamage();
             stateMachine.TakeDamage();
         }
 

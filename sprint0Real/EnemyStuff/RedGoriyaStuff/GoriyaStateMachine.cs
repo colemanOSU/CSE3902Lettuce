@@ -15,7 +15,7 @@ namespace sprint0Real.EnemyStuff.GoriyaStuff
     {
         public GoriyaStateMachine() { }
 
-        private enum GoriyaState {Right, Left, Up, Down, Damaged};
+        private enum GoriyaState {Right, Left, Up, Down};
         private enum AttackStates {Idle, Attack}
         private GoriyaState currentState = GoriyaState.Right;
         private AttackStates attackStatus = AttackStates.Idle;
@@ -54,7 +54,6 @@ namespace sprint0Real.EnemyStuff.GoriyaStuff
         public void TakeDamage()
         {
             myGoriya.health -= 1;
-            currentState = GoriyaState.Damaged;
             if (myGoriya.health <= 0)
             {
                 CurrentMap.Instance.DeStage(myGoriya);
