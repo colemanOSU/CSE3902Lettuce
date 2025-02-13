@@ -9,16 +9,16 @@ using sprint0Real.Interfaces;
 
 namespace sprint0Real.EnemyStuff.RedGoriyaStuff
 {
-    public class GoriyaDownSprite : ISprite2
+    public class BoomerangSprite : ISprite2
     {
         private Texture2D sprites;
         private int currentFrame;
         private int totalFrames;
 
-        public GoriyaDownSprite(Texture2D spriteSheet, SpriteBatch spriteBatch)
+        public BoomerangSprite(Texture2D spriteSheet, SpriteBatch spriteBatch)
         {
             sprites = spriteSheet;
-            totalFrames = 2;
+            totalFrames = 3;
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
@@ -28,13 +28,19 @@ namespace sprint0Real.EnemyStuff.RedGoriyaStuff
 
             if (currentFrame == 0)
             {
-                sourceRectangle = new Rectangle(223, 11, 15, 15);
+                sourceRectangle = new Rectangle(290, 14, 7, 9);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 30, 30);
+                (int)location.Y, 7, 9);
+            }
+            else if (currentFrame == 1)
+            {
+                sourceRectangle = new Rectangle(299, 14, 7, 9);
+                destinationRectangle = new Rectangle((int)location.X,
+                (int)location.Y, 7, 9);
             }
             else
             {
-                sourceRectangle = new Rectangle(80, 78, 15, 15);
+                sourceRectangle = new Rectangle(308, 14, 7, 9);
                 destinationRectangle = new Rectangle((int)location.X,
                 (int)location.Y, 48, 64);
             }

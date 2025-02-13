@@ -6,10 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using sprint0Real.Interfaces;
 
 namespace sprint0Real.EnemyStuff.RedGoriyaStuff
 {
-    public class GoriyaDownDamaged
+    public class GoriyaDownDamaged : ISprite2
     {
         private Texture2D sprites;
         private int currentFrame;
