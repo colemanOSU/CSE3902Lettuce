@@ -32,6 +32,26 @@ namespace sprint0Real.EnemyStuff.RedGoriya
             mySprite = EnemySpriteFactory.Instance.CreateGoriyaRightSprite();
         }
 
+        public void ChangeDirection()
+        {
+            stateMachine.ChangeDirection();
+        }
+
+        public void TakeDamage()
+        {
+            stateMachine.TakeDamage();
+        }
+
+        public void Attack()
+        {
+            stateMachine.Attack();
+        }
+
+        public void Idle()
+        {
+            stateMachine.Idle();
+        }
+
         public void Draw(SpriteBatch spriteBatch)
         {
             mySprite.Draw(spriteBatch, location);
@@ -39,7 +59,15 @@ namespace sprint0Real.EnemyStuff.RedGoriya
 
         public void Update(GameTime time)
         {
-            mySprite.Update();
+            // Moves onto the next frame in animation
+            timer += (float)time.ElapsedGameTime.TotalSeconds;
+            
+            if (timer >= ((float)1 / FPS))
+            {
+                timer = 0f;
+                mySprite.Update();
+            }
+
             behavior.Update(time);
             stateMachine.Update();
         }

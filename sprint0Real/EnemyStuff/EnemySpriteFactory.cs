@@ -39,6 +39,7 @@ namespace sprint0Real.EnemyStuff
         public void LoadAllTextures(ContentManager content)
         {
             bossesSheet = content.Load<Texture2D>("Bosses");
+            enemySpriteSheet = content.Load<Texture2D>("Dungeon Enemies"); 
             // More Content.Load calls follow
             //...
         }
@@ -63,40 +64,40 @@ namespace sprint0Real.EnemyStuff
         }
         public ISprite2 CreateGoriyaUpSprite()
         {
-            return new GoriyaUpSprite(bossesSheet, myGame._spriteBatch);
+            return new GoriyaUpSprite(enemySpriteSheet, myGame._spriteBatch);
         }
         public ISprite2 CreateGoriyaUpDamaged()
         {
-            return new GoriyaUpDamaged(bossesSheet, myGame._spriteBatch);
+            return new GoriyaUpDamaged(enemySpriteSheet, myGame._spriteBatch);
         }
         public ISprite2 CreateGoriyaDownSprite()
         {
-            return new GoriyaDownSprite(bossesSheet, myGame._spriteBatch);
+            return new GoriyaDownSprite(enemySpriteSheet, myGame._spriteBatch);
         }
         public ISprite2 CreateGoriyaDownDamaged()
         {
-            return new GoriyaDownDamaged(bossesSheet, myGame._spriteBatch);
+            return new GoriyaDownDamaged(enemySpriteSheet, myGame._spriteBatch);
         }
         public ISprite2 CreateGoriyaLeftSprite()
         {
-            return new GoriyaLeftSprite(bossesSheet, myGame._spriteBatch);
+            return new GoriyaLeftSprite(enemySpriteSheet, myGame._spriteBatch);
         }
         public ISprite2 CreateGoriyaLeftDamaged()
         {
-            return new GoriyaLeftDamaged(bossesSheet, myGame._spriteBatch);
+            return new GoriyaLeftDamaged(enemySpriteSheet, myGame._spriteBatch);
         }
         public ISprite2 CreateGoriyaRightSprite()
         {
-            return new GoriyaUpSprite(bossesSheet, myGame._spriteBatch);
+            return new GoriyaRightSprite(enemySpriteSheet, myGame._spriteBatch);
         }
         public ISprite2 CreateGoriyaRightDamaged()
         {
-            return new GoriyaUpDamaged(bossesSheet, myGame._spriteBatch);
+            return new GoriyaRightDamaged(enemySpriteSheet, myGame._spriteBatch);
         }
 
         public ISprite2 CreateBoomerangSprite()
         {
-            return new BoomerangSprite(bossesSheet, myGame._spriteBatch);
+            return new BoomerangSprite(enemySpriteSheet, myGame._spriteBatch);
         }
 
         // More public ISprite returning methods follow

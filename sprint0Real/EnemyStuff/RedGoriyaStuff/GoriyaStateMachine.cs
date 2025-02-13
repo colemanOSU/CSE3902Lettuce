@@ -22,7 +22,6 @@ namespace sprint0Real.EnemyStuff.GoriyaStuff
         private Goriya myGoriya;
         private Random random = new Random();
 
-        // All the transitions possible
         public GoriyaStateMachine(Goriya Goriya)
         {
             myGoriya = Goriya;
@@ -30,20 +29,24 @@ namespace sprint0Real.EnemyStuff.GoriyaStuff
 
         public void ChangeDirection()
         {
-            int nextDirection = random.Next(0, 3);
+            int nextDirection = random.Next(0, 4);
             switch (nextDirection)
             {
                 case 0:
-                    currentState = GoriyaState.Left;
+                    currentState = GoriyaState.Right;
+                    myGoriya.mySprite = EnemySpriteFactory.Instance.CreateGoriyaRightSprite();
                     break;
                 case 1:
-                    currentState = GoriyaState.Right;
+                    currentState = GoriyaState.Left;
+                    myGoriya.mySprite = EnemySpriteFactory.Instance.CreateGoriyaLeftSprite();
                     break;
                 case 2:
                     currentState = GoriyaState.Up;
+                    myGoriya.mySprite = EnemySpriteFactory.Instance.CreateGoriyaUpSprite();
                     break;
                 case 3:
                     currentState = GoriyaState.Down;
+                    myGoriya.mySprite = EnemySpriteFactory.Instance.CreateGoriyaDownSprite();
                     break;
             }
         }
@@ -79,7 +82,7 @@ namespace sprint0Real.EnemyStuff.GoriyaStuff
         public void Attack()
         {
             attackStatus = AttackStates.Attack;
-            switch (currentState)
+  /*          switch (currentState)
             {
                 case GoriyaState.Right:
                     currentState = GoriyaState.Right;
@@ -94,10 +97,10 @@ namespace sprint0Real.EnemyStuff.GoriyaStuff
                     myGoriya.mySprite = EnemySpriteFactory.Instance.CreateGoriyaUpSprite();
                     break;
                 case GoriyaState.Down:
-                    currentState = GoriyaState.Right;
+                    currentState = GoriyaState.Down;
                     myGoriya.mySprite = EnemySpriteFactory.Instance.CreateGoriyaDownSprite();
                     break;
-            }
+            }*/
         }
 
         public void Idle()
@@ -112,16 +115,16 @@ namespace sprint0Real.EnemyStuff.GoriyaStuff
                 switch (currentState)
                 {
                     case GoriyaState.Right:
-                        myGoriya.location.X += myGoriya.speed;
-                        break;
-                    case GoriyaState.Left:
                         myGoriya.location.X -= myGoriya.speed;
                         break;
+                    case GoriyaState.Left:
+                        myGoriya.location.X += myGoriya.speed;
+                        break;
                     case GoriyaState.Up:
-                        myGoriya.location.Y += myGoriya.speed;
+                        myGoriya.location.Y -= myGoriya.speed;
                         break;
                     case GoriyaState.Down:
-                        myGoriya.location.Y -= myGoriya.speed;
+                        myGoriya.location.Y += myGoriya.speed;
                         break;
                 }
             }

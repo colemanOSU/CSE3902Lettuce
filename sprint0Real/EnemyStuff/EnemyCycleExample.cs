@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0Real.EnemyStuff;
 using sprint0Real.EnemyStuff.DragonStuff;
+using sprint0Real.EnemyStuff.RedGoriya;
 using sprint0Real.Interfaces;
 
 namespace sprint0Real.EnemyStuff
@@ -18,7 +19,7 @@ namespace sprint0Real.EnemyStuff
         private IMap enemyToDraw;
         private int current;
         private int total;
-        private Vector2 location = new Vector2(10, 10);
+        private Vector2 location = new Vector2(100, 100);
 
 
         public EnemyCycleExample()
@@ -37,6 +38,7 @@ namespace sprint0Real.EnemyStuff
         private void AddEnemies()
         {
             enemyList.Add(new EnemyPage(new Dragon(location)));
+            enemyList.Add(new EnemyPage(new Goriya(location)));
         }
 
         public void NextEnemy()
@@ -48,7 +50,7 @@ namespace sprint0Real.EnemyStuff
 
         public void PreviousEnemy()
         {
-            current = (current - 1) % total;
+            current = Math.Abs((current - 1)) % total;
             enemyToDraw = enemyList[current];
             CurrentMap.Instance.SetMap(enemyToDraw);
         }

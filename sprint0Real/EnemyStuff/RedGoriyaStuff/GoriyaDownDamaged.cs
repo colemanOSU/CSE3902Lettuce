@@ -32,14 +32,14 @@ namespace sprint0Real.EnemyStuff.RedGoriyaStuff
                 // White
                 sourceRectangle = new Rectangle(293, 28, 15, 15);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 48, 64);
+                (int)location.Y, 30, 30);
             }
             else if (currentFrame == 1)
             {
                 // Teal
                 sourceRectangle = new Rectangle(366, 28, 15, 15);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 48, 64);
+                (int)location.Y, 30, 30);
             }
             else if (currentFrame == 2)
             {
@@ -59,19 +59,19 @@ namespace sprint0Real.EnemyStuff.RedGoriyaStuff
             {
                 sourceRectangle = new Rectangle(137, 78, 15, 15);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 48, 64);
+                (int)location.Y, 30, 30);
             }
             else if (currentFrame == 5)
             {
                 sourceRectangle = new Rectangle(138, 95, 15, 15);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 48, 64);
+                (int)location.Y, 30, 30);
             }
             else if (currentFrame == 6)
             {
                 sourceRectangle = new Rectangle(81, 78, 15, 15);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 48, 64);
+                (int)location.Y, 30, 30);
             }
             else
             {
