@@ -133,7 +133,12 @@ namespace sprint0Real
 
         public void ResetGame()
         {
-            //TODO
+            currentBlock = new BlockSpriteFloorTile(blockSheet);
+            linkSprite = new ResetLink(linkSheet, this);
+            EnemyCycle = new EnemyCycleExample();
+
+            //Update with other objects in game...
+
         }
     }
 }
