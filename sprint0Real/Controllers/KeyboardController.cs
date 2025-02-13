@@ -40,6 +40,10 @@ namespace sprint0Real.Controllers
             commands.Add(Keys.A, new MoveLeftCommand(_game));
             commands.Add(Keys.W, new MoveUpCommand(_game));
             commands.Add(Keys.S, new MoveDownCommand(_game));
+            commands.Add(Keys.Right, new MoveRightCommand(_game));
+            commands.Add(Keys.Left, new MoveLeftCommand(_game));
+            commands.Add(Keys.Up, new MoveUpCommand(_game));
+            commands.Add(Keys.Down, new MoveDownCommand(_game));
             commands.Add(Keys.Z, new AttackCommand(_game));
             commands.Add(Keys.N, new AttackCommand(_game));
             commands.Add(Keys.Q, new QuitCommand(_game));
@@ -66,6 +70,10 @@ namespace sprint0Real.Controllers
             releaseCommands.Add(Keys.A, new FaceLeftCommand(_game));
             releaseCommands.Add(Keys.W, new FaceUpCommand(_game));
             releaseCommands.Add(Keys.S, new FaceDownCommand(_game));
+            releaseCommands.Add(Keys.Right, new FaceRightCommand(_game));
+            releaseCommands.Add(Keys.Left, new FaceLeftCommand(_game));
+            releaseCommands.Add(Keys.Up, new FaceUpCommand(_game));
+            releaseCommands.Add(Keys.Down, new FaceDownCommand(_game));
 
 
             foreach (Keys key in commands.Keys)
