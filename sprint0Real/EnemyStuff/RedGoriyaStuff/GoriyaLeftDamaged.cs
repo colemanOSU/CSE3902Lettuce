@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +18,7 @@ namespace sprint0Real.EnemyStuff.RedGoriyaStuff
         public GoriyaLeftDamaged(Texture2D spriteSheet, SpriteBatch spriteBatch)
         {
             sprites = spriteSheet;
-            totalFrames = 24;
+            totalFrames = 8;
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
@@ -25,20 +26,60 @@ namespace sprint0Real.EnemyStuff.RedGoriyaStuff
             Rectangle sourceRectangle;
             Rectangle destinationRectangle;
 
-            if (currentFrame <= 12)
+            if (currentFrame == 0)
             {
-                sourceRectangle = new Rectangle(51, 11, 24, 32);
+                sourceRectangle = new Rectangle(325, 28, 15, 15);
+                destinationRectangle = new Rectangle((int)location.X,
+                (int)location.Y, 48, 64);
+            }
+            else if (currentFrame == 1)
+            {
+                sourceRectangle = new Rectangle(399, 28, 15, 15);
+                destinationRectangle = new Rectangle((int)location.X,
+                (int)location.Y, 48, 64);
+            }
+            else if (currentFrame == 2)
+            {
+                sourceRectangle = new Rectangle(256, 11, 15, 15);
+                destinationRectangle = new Rectangle((int)location.X,
+                (int)location.Y, 30, 30);
+            }
+            else if (currentFrame == 3)
+            {
+                sourceRectangle = new Rectangle(257, 28, 15, 15);
+                destinationRectangle = new Rectangle((int)location.X,
+                (int)location.Y, 30, 30);
+            }
+            else if (currentFrame == 4)
+            {
+                sourceRectangle = new Rectangle(343, 28, 15, 15);
+                destinationRectangle = new Rectangle((int)location.X,
+                (int)location.Y, 48, 64);
+            }
+            else if (currentFrame == 5)
+            {
+                sourceRectangle = new Rectangle(417, 28, 15, 15);
+                destinationRectangle = new Rectangle((int)location.X,
+                (int)location.Y, 48, 64);
+            }
+            else if (currentFrame == 6)
+            {
+                sourceRectangle = new Rectangle(273, 11, 15, 15);
                 destinationRectangle = new Rectangle((int)location.X,
                 (int)location.Y, 48, 64);
             }
             else
             {
-                sourceRectangle = new Rectangle(76, 11, 24, 32);
+                sourceRectangle = new Rectangle(275, 28, 15, 15);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 48, 64);
+                (int)location.Y, 30, 30);
             }
 
             spriteBatch.Draw(sprites, destinationRectangle, sourceRectangle, Color.White);
+        }
+        public void Update()
+        {
+            currentFrame = (currentFrame + 1) % totalFrames;
         }
     }
 }
