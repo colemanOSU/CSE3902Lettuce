@@ -21,6 +21,9 @@ namespace sprint0Real.EnemyStuff.DragonStuff
         public int speed = 2;
         public int health = 10;
 
+        private int FPS = 6;
+        private float timer = 0f;
+
         public Dragon(Vector2 placement)
         {
             location = placement;
@@ -57,7 +60,12 @@ namespace sprint0Real.EnemyStuff.DragonStuff
             // Updates the location
             stateMachine.Update();
             // Moves onto the next frame in animation
-            mySprite.Update();
+            timer += (float) time.ElapsedGameTime.TotalSeconds;
+            if (timer >= ((float) 1 / FPS))
+            {
+                timer = 0f;
+                mySprite.Update();
+            }
             // Updates the state based on external states
             behavior.Update(time);
         }

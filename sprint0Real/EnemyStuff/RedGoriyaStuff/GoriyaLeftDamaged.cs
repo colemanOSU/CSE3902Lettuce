@@ -2,27 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Microsoft.Xna.Framework.Input;
 using System.Threading.Tasks;
-using sprint0Real.Interfaces;
-using Microsoft.Xna.Framework.Graphics;
-using System.Runtime.CompilerServices;
-using System.Numerics;
 using Microsoft.Xna.Framework;
-using Vector2 = Microsoft.Xna.Framework.Vector2;
+using Microsoft.Xna.Framework.Graphics;
 
-namespace sprint0Real.EnemyStuff.DragonStuff
+namespace sprint0Real.EnemyStuff.RedGoriyaStuff
 {
-    public class DragonSpriteIdle : ISprite2
+    public class GoriyaLeftDamaged
     {
         private Texture2D sprites;
         private int currentFrame;
         private int totalFrames;
 
-        public DragonSpriteIdle(Texture2D spriteSheet, SpriteBatch spriteBatch)
+        public GoriyaLeftDamaged(Texture2D spriteSheet, SpriteBatch spriteBatch)
         {
             sprites = spriteSheet;
-            totalFrames = 2;
+            totalFrames = 24;
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
@@ -30,7 +25,7 @@ namespace sprint0Real.EnemyStuff.DragonStuff
             Rectangle sourceRectangle;
             Rectangle destinationRectangle;
 
-            if (currentFrame == 0)
+            if (currentFrame <= 12)
             {
                 sourceRectangle = new Rectangle(51, 11, 24, 32);
                 destinationRectangle = new Rectangle((int)location.X,
@@ -45,11 +40,5 @@ namespace sprint0Real.EnemyStuff.DragonStuff
 
             spriteBatch.Draw(sprites, destinationRectangle, sourceRectangle, Color.White);
         }
-
-        public void Update()
-        {
-            currentFrame = (currentFrame + 1) % totalFrames;
-        }
-        }
+    }
 }
-

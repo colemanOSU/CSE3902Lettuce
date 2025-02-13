@@ -42,6 +42,7 @@
   <ItemGroup>
     <Folder Include="EnemyStuff\Bat\" />
     <Folder Include="EnemyStuff\HandStuff\" />
+    <Folder Include="EnemyStuff\BladeTrapStuff\" />
     <Folder Include="EnemyStuff\SlimeStuff\" />
     <Folder Include="EnemyStuff\SkeletonStuff\" />
   </ItemGroup>
