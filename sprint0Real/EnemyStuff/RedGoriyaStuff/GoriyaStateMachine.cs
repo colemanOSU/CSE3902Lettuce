@@ -2,20 +2,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
 using System.Runtime;
 using System.Text;
 using System.Threading.Tasks;
+using sprint0Real.EnemyStuff.BoomerangStuff;
 using sprint0Real.EnemyStuff.RedGoriya;
+using sprint0Real.EnemyStuff.RedGoriyaStuff;
 using sprint0Real.Interfaces;
 
 namespace sprint0Real.EnemyStuff.GoriyaStuff
 {
     public class GoriyaStateMachine : IStateMachine
     {
-        public GoriyaStateMachine() { }
-
-        private enum GoriyaState {Right, Left, Up, Down};
         private enum AttackStates {Idle, Attack}
         private GoriyaState currentState = GoriyaState.Right;
         private AttackStates attackStatus = AttackStates.Idle;
@@ -81,25 +79,7 @@ namespace sprint0Real.EnemyStuff.GoriyaStuff
         public void Attack()
         {
             attackStatus = AttackStates.Attack;
-  /*          switch (currentState)
-            {
-                case GoriyaState.Right:
-                    currentState = GoriyaState.Right;
-                    myGoriya.mySprite = EnemySpriteFactory.Instance.CreateGoriyaRightSprite();
-                    break;
-                case GoriyaState.Left:
-                    currentState = GoriyaState.Left;
-                    myGoriya.mySprite = EnemySpriteFactory.Instance.CreateGoriyaLeftSprite();
-                    break;
-                case GoriyaState.Up:
-                    currentState = GoriyaState.Up;
-                    myGoriya.mySprite = EnemySpriteFactory.Instance.CreateGoriyaUpSprite();
-                    break;
-                case GoriyaState.Down:
-                    currentState = GoriyaState.Down;
-                    myGoriya.mySprite = EnemySpriteFactory.Instance.CreateGoriyaDownSprite();
-                    break;
-            }*/
+            CurrentMap.Instance.Stage(new Boomerang(myGoriya.location, currentState));
         }
 
         public void Idle()

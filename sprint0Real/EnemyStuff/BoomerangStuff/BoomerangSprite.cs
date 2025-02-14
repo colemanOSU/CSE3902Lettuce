@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0Real.Interfaces;
 
-namespace sprint0Real.EnemyStuff.RedGoriyaStuff
+namespace sprint0Real.EnemyStuff.BoomerangStuff
 {
     public class BoomerangSprite : ISprite2
     {
@@ -30,19 +30,19 @@ namespace sprint0Real.EnemyStuff.RedGoriyaStuff
             {
                 sourceRectangle = new Rectangle(290, 14, 7, 9);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 7, 9);
+                (int)location.Y, 14, 18);
             }
             else if (currentFrame == 1)
             {
                 sourceRectangle = new Rectangle(299, 14, 7, 9);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 7, 9);
+                (int)location.Y, 14, 18);
             }
             else
             {
                 sourceRectangle = new Rectangle(308, 14, 7, 9);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 7, 9);
+                (int)location.Y, 14, 18);
             }
 
             spriteBatch.Draw(sprites, destinationRectangle, sourceRectangle, Color.White);

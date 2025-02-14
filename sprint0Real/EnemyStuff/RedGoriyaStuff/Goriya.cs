@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using sprint0Real.EnemyStuff.BoomerangStuff;
 using sprint0Real.EnemyStuff.GoriyaStuff;
 using sprint0Real.EnemyStuff.RedGoriyaStuff;
 using sprint0Real.Interfaces;
@@ -30,6 +31,7 @@ namespace sprint0Real.EnemyStuff.RedGoriya
             stateMachine = new GoriyaStateMachine(this);
             behavior = new GoriyaBehavior(this);
             mySprite = EnemySpriteFactory.Instance.CreateGoriyaRightSprite();
+            
         }
 
         public void ChangeDirection()
