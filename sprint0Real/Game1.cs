@@ -7,6 +7,7 @@ using System;
 using sprint0Real.LinkSprites;
 using System.Collections.Generic;
 using System.Diagnostics;
+using sprint0Real.Controllers;
 using sprint0Real.EnemyStuff;
 
 namespace sprint0Real
@@ -33,6 +34,8 @@ namespace sprint0Real
         public IItem tempItem;
         //temp
 
+        public EnemyCycleExample EnemyCycle;
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -45,13 +48,13 @@ namespace sprint0Real
         ISprite sprite = new StandingInPlacePlayer();
         public IBlock currentBlock;
         TextSprite text = new TextSprite();
-        List<IControllerTemp> controllerList;
+        List<IController> controllerList;
 
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            controllerList = new List<IControllerTemp>();
-            controllerList.Add(new KeyboardControllerTemp(this));
+            controllerList = new List<IController>();
+            controllerList.Add(new KeyboardController(this));
             //controllerList.Add(new MouseController());
 
             base.Initialize();
@@ -66,14 +69,17 @@ namespace sprint0Real
            
             //Loading Block Content
             blockSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - Dungeon Tileset");
-            currentBlock = new BlockSprite1(blockSheet);
+            currentBlock = new BlockSpriteFloorTile(blockSheet);
 
             linkSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - Link");
             linkSprite = new FaceRightSprite(linkSheet, this);
 
             EnemySpriteFactory.Instance.LoadAllTextures(Content);
             EnemySpriteFactory.Instance.LoadGame(this);
-            EnemyPage.Instance.AddEnemies();
+            EnemyCycle = new EnemyCycleExample();
+
+            // Don't need EnemyPage yet
+            // EnemyPage.Instance.AddEnemies();
 
             tempItem = null;
         }
@@ -81,7 +87,7 @@ namespace sprint0Real
         protected override void Update(GameTime gameTime)
         {
 
-            foreach (IControllerTemp controller in controllerList)
+            foreach (IController controller in controllerList)
             {
                 //sprite = controller.Update(sprite);
                 controller.Update(gameTime);
@@ -90,7 +96,8 @@ namespace sprint0Real
 
             currentBlock.Update(gameTime);
 
-            EnemyPage.Instance.Update(gameTime);
+            //EnemyPage.Instance.Update(gameTime);
+            EnemyCycle.Update(gameTime);
 
         }
         protected override void Draw(GameTime gameTime)
@@ -113,7 +120,8 @@ namespace sprint0Real
 
             linkSprite.Draw(_spriteBatch);
 
-            EnemyPage.Instance.Draw(_spriteBatch);
+            //EnemyPage.Instance.Draw(_spriteBatch);
+            EnemyCycle.Draw(_spriteBatch);
 
             text.Update(_spriteBatch, font1);
             _spriteBatch.End();
@@ -125,7 +133,12 @@ namespace sprint0Real
 
         public void ResetGame()
         {
-            //TODO
+            currentBlock = new BlockSpriteFloorTile(blockSheet);
+            linkSprite = new ResetLink(linkSheet, this);
+            EnemyCycle = new EnemyCycleExample();
+
+            //Update with other objects in game...
+
         }
     }
 }

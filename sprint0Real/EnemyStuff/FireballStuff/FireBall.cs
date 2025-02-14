@@ -36,6 +36,7 @@ namespace sprint0Real.EnemyStuff.Fireballs
             mySprite.Draw(spriteBatch, location);
         }
 
+
         public void Update(GameTime time)
         {
             behavior.Update();

@@ -18,7 +18,7 @@ namespace sprint0Real.LinkSprites
         private Rectangle sourceRectangle = new(69, 11, 16, 16);
         private Rectangle destinationRectangle;
 
-        
+
 
         public FaceUpSprite(Texture2D texture, Game1 game)
         {

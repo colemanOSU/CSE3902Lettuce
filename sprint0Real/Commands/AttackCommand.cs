@@ -36,7 +36,7 @@ namespace sprint0Real.Commands
                 }
 
                 //temp
-                myGame.tempItem = new WoodSwordSprite(myGame.linkSheet, myGame);
+                //myGame.tempItem = new WoodSwordSprite(myGame.linkSheet, myGame);
                 //temp
             }
 

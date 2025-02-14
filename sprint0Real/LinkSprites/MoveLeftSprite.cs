@@ -12,7 +12,7 @@ namespace sprint0Real.LinkSprites
     internal class MoveLeftSprite : ILinkSprite
     {
         private Rectangle frame1Rec = new(35 + 17, 11, 16, 16);
-        private Rectangle frame2Rec = new (35, 11, 16, 16);
+        private Rectangle frame2Rec = new(35, 11, 16, 16);
         private Rectangle sourceRectangle = new(35, 11, 16, 16);
         private Rectangle destinationRectangle = new(200, 200, 16, 16);
 
@@ -44,7 +44,8 @@ namespace sprint0Real.LinkSprites
             else if (frameCount < 20)
             {
                 sourceRectangle = frame2Rec;
-            } else
+            }
+            else
             {
                 frameCount = 0;
             }

@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0Real.EnemyStuff.DragonStuff;
 using sprint0Real.EnemyStuff.Fireballs;
+using sprint0Real.EnemyStuff.RedGoriyaStuff;
 using sprint0Real.Interfaces;
 
 namespace sprint0Real.EnemyStuff
@@ -38,6 +39,7 @@ namespace sprint0Real.EnemyStuff
         public void LoadAllTextures(ContentManager content)
         {
             bossesSheet = content.Load<Texture2D>("Bosses");
+            enemySpriteSheet = content.Load<Texture2D>("Dungeon Enemies"); 
             // More Content.Load calls follow
             //...
         }
@@ -59,6 +61,43 @@ namespace sprint0Real.EnemyStuff
         public ISprite2 CreateFireballSprite()
         {
             return new FireballSprite(bossesSheet, myGame._spriteBatch);
+        }
+        public ISprite2 CreateGoriyaUpSprite()
+        {
+            return new GoriyaUpSprite(enemySpriteSheet, myGame._spriteBatch);
+        }
+        public ISprite2 CreateGoriyaUpDamaged()
+        {
+            return new GoriyaUpDamaged(enemySpriteSheet, myGame._spriteBatch);
+        }
+        public ISprite2 CreateGoriyaDownSprite()
+        {
+            return new GoriyaDownSprite(enemySpriteSheet, myGame._spriteBatch);
+        }
+        public ISprite2 CreateGoriyaDownDamaged()
+        {
+            return new GoriyaDownDamaged(enemySpriteSheet, myGame._spriteBatch);
+        }
+        public ISprite2 CreateGoriyaLeftSprite()
+        {
+            return new GoriyaLeftSprite(enemySpriteSheet, myGame._spriteBatch);
+        }
+        public ISprite2 CreateGoriyaLeftDamaged()
+        {
+            return new GoriyaLeftDamaged(enemySpriteSheet, myGame._spriteBatch);
+        }
+        public ISprite2 CreateGoriyaRightSprite()
+        {
+            return new GoriyaRightSprite(enemySpriteSheet, myGame._spriteBatch);
+        }
+        public ISprite2 CreateGoriyaRightDamaged()
+        {
+            return new GoriyaRightDamaged(enemySpriteSheet, myGame._spriteBatch);
+        }
+
+        public ISprite2 CreateBoomerangSprite()
+        {
+            return new BoomerangSprite(enemySpriteSheet, myGame._spriteBatch);
         }
 
         // More public ISprite returning methods follow

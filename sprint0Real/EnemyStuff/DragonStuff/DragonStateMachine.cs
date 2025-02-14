@@ -34,7 +34,7 @@ namespace sprint0Real.EnemyStuff.DragonStuff
             currentState = DragonState.Damaged;
             if (myDragon.health <= 0)
             {
-                EnemyPage.Instance.enemyList.Remove(myDragon);
+                CurrentMap.Instance.DeStage(myDragon);
             }
             else
             {

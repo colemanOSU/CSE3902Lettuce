@@ -20,7 +20,9 @@ namespace sprint0Real.EnemyStuff.DragonStuff
         public Vector2 location;
         public int speed = 2;
         public int health = 10;
-        public DragonAttack attack;
+
+        private int FPS = 6;
+        private float timer = 0f;
 
         public Dragon(Vector2 placement)
         {
@@ -43,7 +45,7 @@ namespace sprint0Real.EnemyStuff.DragonStuff
 
         public void Attack()
         {
-            attack = new DragonAttack(location, new Vector2(EnemySpriteFactory.Instance.myGame.Link.GetLocation().X, EnemySpriteFactory.Instance.myGame.Link.GetLocation().Y));
+            DragonAttack attack = new DragonAttack(location, new Vector2(EnemySpriteFactory.Instance.myGame.Link.GetLocation().X, EnemySpriteFactory.Instance.myGame.Link.GetLocation().Y));
             attack.Attack();
             stateMachine.Attack();
         }
@@ -58,7 +60,12 @@ namespace sprint0Real.EnemyStuff.DragonStuff
             // Updates the location
             stateMachine.Update();
             // Moves onto the next frame in animation
-            mySprite.Update();
+            timer += (float) time.ElapsedGameTime.TotalSeconds;
+            if (timer >= ((float) 1 / FPS))
+            {
+                timer = 0f;
+                mySprite.Update();
+            }
             // Updates the state based on external states
             behavior.Update(time);
         }
