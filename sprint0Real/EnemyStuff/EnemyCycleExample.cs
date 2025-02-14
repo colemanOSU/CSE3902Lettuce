@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using sprint0Real.EnemyStuff;
 using sprint0Real.EnemyStuff.DragonStuff;
 using sprint0Real.EnemyStuff.RedGoriya;
+using sprint0Real.EnemyStuff.SkeletonStuff;
 using sprint0Real.Interfaces;
 
 namespace sprint0Real.EnemyStuff
@@ -38,6 +39,7 @@ namespace sprint0Real.EnemyStuff
         {
             enemyList.Add(new EnemyPage(new Goriya(location)));
             enemyList.Add(new EnemyPage(new Dragon(location)));
+            enemyList.Add(new EnemyPage(new Skeleton(location)));
         }
 
         public void NextEnemy()
@@ -47,9 +49,24 @@ namespace sprint0Real.EnemyStuff
             CurrentMap.Instance.SetMap(enemyToDraw);
         }
 
+        public int ClockPrevious(int input, int total)
+        {
+            int result;
+            if (input - 1 < 0)
+            {
+                result = total - 1;
+            }
+            else
+            {
+                result = input - 1;
+            }
+            return result;
+        }
+
         public void PreviousEnemy()
         {
-            current = Math.Abs((current - 1)) % total;
+            
+            current = ClockPrevious(current, total);
             enemyToDraw = enemyList[current];
             CurrentMap.Instance.SetMap(enemyToDraw);
         }

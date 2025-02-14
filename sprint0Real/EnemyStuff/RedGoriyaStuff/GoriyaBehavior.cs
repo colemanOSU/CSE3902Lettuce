@@ -105,7 +105,11 @@ namespace sprint0Real.EnemyStuff.RedGoriyaStuff
         public void Update(GameTime time)
         {
             jukeTimer += (float)time.ElapsedGameTime.TotalSeconds;
-            attackTimer += (float)time.ElapsedGameTime.TotalSeconds;
+            if (!attackFlag)
+            {
+                attackTimer += (float)time.ElapsedGameTime.TotalSeconds;
+            }
+
             JukeCheck();
             // Gotta make sure the Goriya doesn't juke it's way off screen
             SafeJuke();

@@ -116,8 +116,6 @@ namespace sprint0Real.EnemyStuff
         {
             return new OctoSpriteIdleL(enemySpriteSheet, myGame._spriteBatch);
         }
-
-
         public ISprite2 CreateOctoAttackSpriteU()
         {
             return new OctoSpriteAttackU(enemySpriteSheet, myGame._spriteBatch);
@@ -139,12 +137,14 @@ namespace sprint0Real.EnemyStuff
         {
             return new OctoSpriteDamaged(enemySpriteSheet, myGame._spriteBatch);
         }
-
         public ISprite2 CreateRockSprite()
         {
             return new RockSprite(enemySpriteSheet, myGame._spriteBatch);
         }
-
+        public ISprite2 CreateSkeletonSprite()
+        {
+            return new SkeletonSprite(enemySpriteSheet, myGame._spriteBatch);
+        }
         // More public ISprite returning methods follow
         // ...
     }
