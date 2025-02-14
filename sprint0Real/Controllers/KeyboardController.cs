@@ -19,6 +19,7 @@ namespace sprint0Real.Controllers
         private Game1 _game;
         private ILink _Link;
         private Texture2D blockTexture;
+        private Texture2D itemTexture;
 
         public KeyboardController(Game1 game)
         {
@@ -27,6 +28,7 @@ namespace sprint0Real.Controllers
             keyPreviouslyPressed = new Dictionary<Keys, bool>();
             _game = game;
             blockTexture = _game.Content.Load<Texture2D>("NES - The Legend of Zelda - Dungeon Tileset");
+            itemTexture = _game.Content.Load<Texture2D>("NES - The Legend of Zelda - Items & Weapons");
 
 
             /*
@@ -35,6 +37,7 @@ namespace sprint0Real.Controllers
             */
             commands.Add(Keys.Y, new NextBlockCommand(_game, blockTexture));
             commands.Add(Keys.T, new PreviousBlockCommand(_game, blockTexture));
+            commands.Add(Keys.I, new NextTempItemCommand(_game,  itemTexture));
             commands.Add(Keys.E, new DamagedStateCommand(_game));
             commands.Add(Keys.D, new MoveRightCommand(_game));
             commands.Add(Keys.A, new MoveLeftCommand(_game));
@@ -49,7 +52,7 @@ namespace sprint0Real.Controllers
             commands.Add(Keys.Q, new QuitCommand(_game));
             commands.Add(Keys.R, new ResetCommand(_game));
             commands.Add(Keys.U, new NextItemCommand(_game));
-            commands.Add(Keys.I, new LastItemCommand(_game));
+            //commands.Add(Keys.I, new LastItemCommand(_game));
             commands.Add(Keys.D1, new ItemChangeCommand(_game, 1));
             commands.Add(Keys.D2, new ItemChangeCommand(_game, 2));
             commands.Add(Keys.D3, new ItemChangeCommand(_game, 3));

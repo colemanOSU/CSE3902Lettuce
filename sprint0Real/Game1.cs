@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using sprint0Real.Controllers;
 using sprint0Real.EnemyStuff;
+using sprint0Real.ItemTempSprites;
 
 namespace sprint0Real
 {
@@ -26,6 +27,7 @@ namespace sprint0Real
         
         SpriteFont font1;
         public int currentBlockIndex;
+        public int currentItemIndex;
 
 
         public ILink Link = new Link();
@@ -44,6 +46,7 @@ namespace sprint0Real
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
             currentBlockIndex = 1;
+            currentItemIndex = 1;
         }
 
 
@@ -146,6 +149,7 @@ namespace sprint0Real
         public void ResetGame()
         {
             currentBlock = new BlockSpriteFloorTile(blockSheet);
+            currentItem = new Clock(itemSheet);
             linkSprite = new ResetLink(linkSheet, this);
             EnemyCycle = new EnemyCycleExample();
 

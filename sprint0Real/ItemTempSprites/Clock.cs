@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using sprint0Real.Interfaces;
 
-namespace sprint0Real.BlockSprites
+namespace sprint0Real.ItemTempSprites
 {
     public class Clock : IItemtemp
     {
