@@ -76,16 +76,16 @@ namespace sprint0Real.Items.ItemSprites
                     switch (_currentFrame)
                     {
                         case 0:
-                            sourceRectangle = new(125, 83, 13, 8);
-                            destinationRectangle = new(myGame.Link.GetLocation().X + 40, myGame.Link.GetLocation().Y + 20, 13 * 3, 8 * 3);
+                            sourceRectangle = new(114,96,8, 13);
+                            destinationRectangle = new(myGame.Link.GetLocation().X + 20, myGame.Link.GetLocation().Y, 13 * 3, 8 * 3);
                             break;
                         case 1:
-                            sourceRectangle = new(151, 81, 11, 11);
-                            destinationRectangle = new(myGame.Link.GetLocation().X + 35, myGame.Link.GetLocation().Y + 13, 11 * 3, 11 * 3);
+                            sourceRectangle = new(131, 98, 8, 13);
+                            destinationRectangle = new(myGame.Link.GetLocation().X + 25, myGame.Link.GetLocation().Y, 11 * 3, 11 * 3);
                             break;
                         case 2:
-                            sourceRectangle = new(165, 77, 17, 17);
-                            destinationRectangle = new(myGame.Link.GetLocation().X + 13, myGame.Link.GetLocation().Y, 17 * 3, 17 * 3);
+                            sourceRectangle = new(148, 106, 8, 3);
+                            destinationRectangle = new(myGame.Link.GetLocation().X + 10, myGame.Link.GetLocation().Y, 17 * 3, 17 * 3);
                             break;
                         case 3:
                             flag = true;
