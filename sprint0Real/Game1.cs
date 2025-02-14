@@ -22,6 +22,7 @@ namespace sprint0Real
 
         public Texture2D linkSheet;
         Texture2D blockSheet;
+        Texture2D itemSheet;
         
         SpriteFont font1;
         public int currentBlockIndex;
@@ -48,6 +49,7 @@ namespace sprint0Real
 
         ISprite sprite = new StandingInPlacePlayer();
         public IBlock currentBlock;
+        public IItemtemp currentItem;
         TextSprite text = new TextSprite();
         List<IController> controllerList;
 
@@ -71,6 +73,10 @@ namespace sprint0Real
             //Loading Block Content
             blockSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - Dungeon Tileset");
             currentBlock = new BlockSpriteFloorTile(blockSheet);
+
+            //Loading Item Content
+            itemSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - Items & Weapons");
+            currentItem = new Clock(itemSheet);
 
             linkSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - Link");
             linkSprite = new FaceRightSprite(linkSheet, this);
@@ -97,6 +103,7 @@ namespace sprint0Real
             }
 
             currentBlock.Update(gameTime);
+            currentItem.Update(gameTime);
 
             //EnemyPage.Instance.Update(gameTime);
             EnemyCycle.Update(gameTime);
@@ -116,6 +123,7 @@ namespace sprint0Real
             }
 
             currentBlock.Draw(_spriteBatch);
+            currentItem.Draw(_spriteBatch);
             //text.Update(_spriteBatch, font1);
 
             linkSprite.Update(gameTime, _spriteBatch);
