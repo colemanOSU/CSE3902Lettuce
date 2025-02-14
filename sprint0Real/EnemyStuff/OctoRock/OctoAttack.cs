@@ -20,7 +20,7 @@ namespace sprint0Real.EnemyStuff.Fireballs
 
         public void Attack()
         {
-            EnemyPage.Instance.stagingAdd.Add(new Rock(location, direction));
+            CurrentMap.Instance.Stage(new Rock(location, direction));
         }
     }
 }

@@ -18,7 +18,7 @@ namespace sprint0Real.EnemyStuff.Fireballs
         }
         public void Update()
         {
-                if (myPetRock.location.X <= 0 || myPetRock.location.X >= Game1.Instance._graphics.PreferredBackBufferWidth || myPetRock.location.Y <= 0 || myPetRock.location.Y >= Game1.Instance._graphics.PreferredBackBufferHeight)
+                if (myPetRock.location.X <= 0 || myPetRock.location.X >= EnemySpriteFactory.Instance.myGame._graphics.PreferredBackBufferWidth || myPetRock.location.Y <= 0 || myPetRock.location.Y >= EnemySpriteFactory.Instance.myGame._graphics.PreferredBackBufferHeight)
                 {
                 myPetRock.Despawn();
             }  

@@ -50,7 +50,7 @@ namespace sprint0Real.EnemyStuff.DragonStuff
             myOcto.health -= 1;
             currentState = DragonState.Damaged;
             myOcto.mySprite = EnemySpriteFactory.Instance.CreateDragonDamagedSprite();
-            EnemyPage.Instance.enemyList.Remove(myOcto);
+            CurrentMap.Instance.DeStage(myOcto);
         }
 
         public void Attack()

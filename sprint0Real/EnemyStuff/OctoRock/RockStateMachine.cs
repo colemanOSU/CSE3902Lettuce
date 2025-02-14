@@ -40,7 +40,7 @@ namespace sprint0Real.EnemyStuff.Fireballs
         }
         public void Despawn()
         {
-            EnemyPage.Instance.stagingRemove.Add(myPetRock);
+            CurrentMap.Instance.DeStage(myPetRock);
         }
         public void Update()
         {
