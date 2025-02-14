@@ -79,7 +79,7 @@ namespace sprint0Real
 
             //Loading Item Content
             itemSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - Items & Weapons");
-            currentItem = new Clock(itemSheet);
+            currentItem = new Heart(itemSheet);
 
             linkSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - Link");
             linkSprite = new FaceRightSprite(linkSheet, this);
@@ -149,7 +149,7 @@ namespace sprint0Real
         public void ResetGame()
         {
             currentBlock = new BlockSpriteFloorTile(blockSheet);
-            currentItem = new Clock(itemSheet);
+            currentItem = new Heart(itemSheet);
             linkSprite = new ResetLink(linkSheet, this);
             EnemyCycle = new EnemyCycleExample();
 
