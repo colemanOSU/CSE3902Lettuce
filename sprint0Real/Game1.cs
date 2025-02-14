@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using sprint0Real.BlockSprites;
+using sprint0Real.Items.ItemSprites;
 using sprint0Real.Interfaces;
 using System;
 using sprint0Real.LinkSprites;
@@ -28,7 +29,7 @@ namespace sprint0Real
 
         public ILink Link = new Link();
         public ILinkSprite linkSprite;
-        
+        public ILinkSprite weaponItems;
 
         //temp
         public IItem tempItem;
@@ -73,6 +74,7 @@ namespace sprint0Real
 
             linkSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - Link");
             linkSprite = new FaceRightSprite(linkSheet, this);
+            weaponItems = new NullSprite(linkSheet, this);
 
             EnemySpriteFactory.Instance.LoadAllTextures(Content);
             EnemySpriteFactory.Instance.LoadGame(this);
@@ -119,6 +121,8 @@ namespace sprint0Real
             linkSprite.Update(gameTime, _spriteBatch);
 
             linkSprite.Draw(_spriteBatch);
+            weaponItems.Update(gameTime,_spriteBatch);
+            weaponItems.Draw(_spriteBatch);
 
             //EnemyPage.Instance.Draw(_spriteBatch);
             EnemyCycle.Draw(_spriteBatch);

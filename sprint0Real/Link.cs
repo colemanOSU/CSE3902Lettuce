@@ -25,9 +25,8 @@ public class Link : ILink
         Right
     }
 
-    
 
-    
+
     private Direction Facing;
 
     public Link()
@@ -46,9 +45,13 @@ public class Link : ILink
     }
 
     //ItemStateMachine
-    public void SetItem(int num)
+    public void SetItem(int num, Game1 game)
     {
-        itemStateMachine.SetItem(num);
+        itemStateMachine.SetItem(num,game);
+    }
+    public void DrawWeaponSprite()
+    {
+        itemStateMachine.DrawWeaponSprite();
     }
 
     //Moves Link's rendering rectangle in one of four directions

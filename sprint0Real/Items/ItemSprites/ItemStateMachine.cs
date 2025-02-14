@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using sprint0Real.Interfaces;
+using sprint0Real.Items.ItemSprites;
 
 namespace sprint0Real.LinkSprites
 {
@@ -23,6 +24,7 @@ namespace sprint0Real.LinkSprites
         }
         private Item CurrentItem;
         private int index;
+        private Game1 myGame;
         public ItemStateMachine()
         {
             CurrentItem = Item.WoodSword;
@@ -52,8 +54,9 @@ namespace sprint0Real.LinkSprites
             }
             CurrentItem = (Item)index;
         }
-        public void SetItem(int num)
+        public void SetItem(int num,Game1 game)
         {
+            myGame = game;
             switch (num)
             {
                 case 1:
@@ -83,6 +86,13 @@ namespace sprint0Real.LinkSprites
                 case 9:
                     CurrentItem = Item.Fire;
                     break;
+            }
+        }
+        public void DrawWeaponSprite()
+        {
+            if (CurrentItem.Equals(Item.Whitesword))
+            {
+                myGame.weaponItems = new WhiteSwordSprite(myGame.linkSheet, myGame);
             }
         }
     }
