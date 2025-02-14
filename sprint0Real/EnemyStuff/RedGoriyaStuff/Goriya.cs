@@ -21,9 +21,10 @@ namespace sprint0Real.EnemyStuff.RedGoriya
         public Vector2 location;
         public int speed = 2;
         public int health = 10;
-
+        public Boomerang boomerang;
         private int FPS = 6;
         private float timer = 0f;
+        
 
         public Goriya(Vector2 placement)
         {

@@ -23,26 +23,21 @@ namespace sprint0Real.EnemyStuff.BoomerangStuff
             CurrentMap.Instance.DeStage(myBoomerang);
         }
 
-        public void Attack(GoriyaState goriyaState)
-        {
-            goriyaState = myGoriyaState;
-        }
-
         public void Update()
         {
-            switch (myGoriyaState)
+            switch (myBoomerang.myGoriyaState)
             {
                 case GoriyaState.Right:
-                    myBoomerang.location.X += myBoomerang.speed;
-                    break;
-                case GoriyaState.Left:
                     myBoomerang.location.X -= myBoomerang.speed;
                     break;
+                case GoriyaState.Left:
+                    myBoomerang.location.X += myBoomerang.speed;
+                    break;
                 case GoriyaState.Up:
-                    myBoomerang.location.Y += myBoomerang.speed;
+                    myBoomerang.location.Y -= myBoomerang.speed;
                     break;
                 case GoriyaState.Down:
-                    myBoomerang.location.Y -= myBoomerang.speed;
+                    myBoomerang.location.Y += myBoomerang.speed;
                     break;
             }
         }
