@@ -9,6 +9,7 @@ using sprint0Real.EnemyStuff;
 using sprint0Real.EnemyStuff.DragonStuff;
 using sprint0Real.EnemyStuff.RedGoriya;
 using sprint0Real.EnemyStuff.SkeletonStuff;
+using sprint0Real.EnemyStuff.SlimeStuff;
 using sprint0Real.Interfaces;
 
 namespace sprint0Real.EnemyStuff
@@ -40,6 +41,7 @@ namespace sprint0Real.EnemyStuff
             enemyList.Add(new EnemyPage(new Goriya(location)));
             enemyList.Add(new EnemyPage(new Dragon(location)));
             enemyList.Add(new EnemyPage(new Skeleton(location)));
+            enemyList.Add(new EnemyPage(new Slime(location)));
         }
 
         public void NextEnemy()

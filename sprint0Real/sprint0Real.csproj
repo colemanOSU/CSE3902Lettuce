@@ -35,7 +35,6 @@
     <Folder Include="EnemyStuff\Bat\" />
     <Folder Include="EnemyStuff\HandStuff\" />
     <Folder Include="EnemyStuff\BladeTrapStuff\" />
-    <Folder Include="EnemyStuff\SlimeStuff\" />
     <Folder Include="Code Reviews\" />
   </ItemGroup>
   <Target Name="RestoreDotnetTools" BeforeTargets="Restore">
