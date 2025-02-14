@@ -25,7 +25,7 @@ namespace sprint0Real.EnemyStuff.RedGoriyaStuff
         {
             Rectangle sourceRectangle;
             Rectangle destinationRectangle;
-
+   
             if (currentFrame == 0)
             {
                 sourceRectangle = new Rectangle(223, 11, 15, 15);

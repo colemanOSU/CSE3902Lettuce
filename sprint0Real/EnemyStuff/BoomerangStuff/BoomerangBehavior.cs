@@ -10,8 +10,8 @@ namespace sprint0Real.EnemyStuff.BoomerangStuff
     public class BoomerangBehavior
     {
         private Boomerang myBoomerang;
-        private bool Hit = false;
-        private bool Caught = false;
+        
+        private bool caught = false;
 
         Rectangle bounds = EnemySpriteFactory.Instance.myGame.GraphicsDevice.Viewport.Bounds;
 
@@ -23,28 +23,23 @@ namespace sprint0Real.EnemyStuff.BoomerangStuff
         private void HitBounds()
         {
             if (!bounds.Contains(myBoomerang.location)){
-                Hit = true;
+                myBoomerang.IsHit();
             }
-            
         }
 
-        private void IsCaught()
+        public void Caught()
         {
-            if (myBoomerang.location == new Vector2(0,0))
-            {
-                Caught = true;
-            }
+             caught = true;
         }
 
         public void Update()
         {
             HitBounds();
-            IsCaught();
-            if (Caught)
+            if (caught)
             {
                 myBoomerang.Despawn();
             }
-            else if (Hit && myBoomerang.speed >= -myBoomerang.speed)
+            else if (myBoomerang.Hit && myBoomerang.speed >= -myBoomerang.Initialspeed)
             {
                 myBoomerang.speed -= myBoomerang.deceeleration;
             }

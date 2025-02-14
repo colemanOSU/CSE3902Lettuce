@@ -79,7 +79,8 @@ namespace sprint0Real.EnemyStuff.GoriyaStuff
         public void Attack()
         {
             attackStatus = AttackStates.Attack;
-            CurrentMap.Instance.Stage(new Boomerang(myGoriya.location, currentState));
+            myGoriya.boomerang = new Boomerang(myGoriya.location, currentState);
+            CurrentMap.Instance.Stage(myGoriya.boomerang);
         }
 
         public void Idle()

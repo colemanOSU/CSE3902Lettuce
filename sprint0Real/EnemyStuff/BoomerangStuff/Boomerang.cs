@@ -17,27 +17,43 @@ namespace sprint0Real.EnemyStuff.BoomerangStuff
         private BoomerangBehavior behavior;
         private BoomerangStateMachine stateMachine;
         private ISprite2 mySprite;
-        public float deceeleration = 0.1f;
-        public float speed = 3f;
-        public Vector2 destination;
+        
+        public bool Hit = false;
+        public GoriyaState myGoriyaState;
+        public float deceeleration = 1f;
+        public float Initialspeed = 3f;
+        public float speed;
         public Vector2 location;
+
 
         public Boomerang(Vector2 start, GoriyaState goriyaState)
         {
+            location = start;
             mySprite = EnemySpriteFactory.Instance.CreateBoomerangSprite();
             behavior = new BoomerangBehavior(this);
             stateMachine = new BoomerangStateMachine(this);
-            stateMachine.Attack(goriyaState);
+            myGoriyaState = goriyaState;
+            speed = Initialspeed;
         }
 
         public void Despawn()
         {
-            //stateMachine.Despawn();
+            stateMachine.Despawn();
+        }
+
+        public void IsHit()
+        {
+            Hit = true;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             mySprite.Draw(spriteBatch, location);
+        }
+
+        public void Caught()
+        {
+            behavior.Caught();
         }
 
         public void Update(GameTime time)

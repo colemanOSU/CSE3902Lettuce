@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using sprint0Real.EnemyStuff.BoomerangStuff;
 using sprint0Real.EnemyStuff.GoriyaStuff;
 using sprint0Real.EnemyStuff.RedGoriya;
 
@@ -17,17 +18,17 @@ namespace sprint0Real.EnemyStuff.RedGoriyaStuff
             myGoriya = goriya;
         }
 
-        private float attackDelay = 5f;
         private float attackTimer = 0f;
-        private float attackDuration = 2f;
+        private float attackDelay = 5f;
         private bool attackFlag = false;
-
+        
         private float jukeTimer = 0f;
         private float jukeDelay = 0f;
 
         private float damageTimer;
         private float damageDuration = 1f;
         private bool damageFlag = false;
+
 
         private Random random = new Random();
 
@@ -78,12 +79,20 @@ namespace sprint0Real.EnemyStuff.RedGoriyaStuff
                 attackFlag = true;
             }
         }
+
+        private bool Overlaps()
+        {
+            // Do you ever realize you're doing something so horribly but the colossal effort of making a
+            // tedious, but necessary change is so monumental that you instead choose to ignore it?
+            return (myGoriya.boomerang.location.X >= myGoriya.location.X && myGoriya.boomerang.location.X <= myGoriya.location.X + 30 && myGoriya.boomerang.location.Y >= myGoriya.location.Y && myGoriya.boomerang.location.Y <= myGoriya.location.Y + 30);
+        }
+
         private void AttackFinish()
         {
-            if (attackFlag && attackTimer >= attackDuration)
+            if (attackFlag && Overlaps() && myGoriya.boomerang.Hit)
             {
                 attackFlag = false;
-                attackTimer = 0;
+                myGoriya.boomerang.Caught();
                 myGoriya.Idle();
             }
         }

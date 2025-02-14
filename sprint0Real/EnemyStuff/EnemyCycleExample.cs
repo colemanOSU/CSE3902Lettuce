@@ -25,7 +25,6 @@ namespace sprint0Real.EnemyStuff
         public EnemyCycleExample()
         {
             enemyList = new List<IMap>();
-            location = new Vector2(0, 0);
 
             // Add the enemies that have been made 
             AddEnemies();
@@ -37,8 +36,8 @@ namespace sprint0Real.EnemyStuff
 
         private void AddEnemies()
         {
-            enemyList.Add(new EnemyPage(new Dragon(location)));
             enemyList.Add(new EnemyPage(new Goriya(location)));
+            enemyList.Add(new EnemyPage(new Dragon(location)));
         }
 
         public void NextEnemy()
