@@ -11,6 +11,7 @@ using sprint0Real.Commands;
 using System.Xml.Linq;
 using System.Linq.Expressions;
 using System.Reflection.Metadata.Ecma335;
+using sprint0Real.Items.ItemSprites;
 
 namespace sprint0Real.LinkSprites
 {
@@ -18,13 +19,13 @@ namespace sprint0Real.LinkSprites
     {
         private Texture2D _texture;
         private Game1 myGame;
-        private int frameCount = 5;
-        private Rectangle sourceRectangle = new(124, 11, 16, 16);
-        private Rectangle destinationRectangle;
+        private int frameCount = 4; 
         private float _frameSpeed = 0.2f;
         private int _currentFrame;
         private double _timer;
         private bool flag = false;
+        private Rectangle sourceRectangle = new(124, 11, 16, 16);
+        private Rectangle destinationRectangle;
 
         public UseRightSprite(Texture2D texture, Game1 game)
         {
@@ -40,18 +41,13 @@ namespace sprint0Real.LinkSprites
             switch (_currentFrame)
             {
                 case 1:
-                    sourceRectangle = new(111, 77, 27, 18);
-                    destinationRectangle = new(myGame.Link.GetLocation().X, myGame.Link.GetLocation().Y, 27 * 3, 18 * 3);
+                    myGame.Link.DrawWeaponSprite();
                     break;
                 case 2:
-                    sourceRectangle = new(138, 77, 24, 18);
-                    destinationRectangle = new(myGame.Link.GetLocation().X, myGame.Link.GetLocation().Y, 24 * 3, 18 * 3);
+                    sourceRectangle = new(52, 11, 16, 16);
                     break;
                 case 3:
-                    sourceRectangle = new(164, 77, 18, 18);
-                    destinationRectangle = new(myGame.Link.GetLocation().X, myGame.Link.GetLocation().Y, 18 * 3, 18 * 3);
-                    break;
-                case 4:
+                    sourceRectangle = new(32, 11, 16, 16);
                     flag = true;
                     break;
             }
@@ -74,6 +70,7 @@ namespace sprint0Real.LinkSprites
                 myGame.Link.SetCanMove(true);
                 myGame.Link.SetCanAttack(true);
                 new FaceRightCommand(myGame).Execute();
+                myGame.weaponItems = new NullSprite(_texture, myGame);
             }
 
         }

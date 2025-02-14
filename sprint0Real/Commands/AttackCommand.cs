@@ -9,11 +9,13 @@ namespace sprint0Real.Commands
     public class AttackCommand : ICommand
     {
         private Game1 myGame;
+        private int itemSelection;
         public AttackCommand(Game1 game)
         {
             myGame = game;
-        }
 
+            
+        }
         public void Execute()
         {
             if (myGame.Link.CanAttack())
@@ -34,7 +36,7 @@ namespace sprint0Real.Commands
                         myGame.linkSprite = new UseDownSprite(myGame.linkSheet, myGame);
                         break;
                 }
-
+                
                 //temp
                 //myGame.tempItem = new WoodSwordSprite(myGame.linkSheet, myGame);
                 //temp

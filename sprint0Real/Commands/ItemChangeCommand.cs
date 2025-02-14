@@ -17,7 +17,7 @@ namespace sprint0Real.Commands
         }
         public void Execute()
         {
-            _game.Link.SetItem(_command);
+            _game.Link.SetItem(_command, _game);
         }
     }
 }
