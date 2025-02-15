@@ -7,15 +7,15 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0Real.Interfaces;
 
-namespace sprint0Real.EnemyStuff.RedGoriyaStuff
+namespace sprint0Real.EnemyStuff.BubbleStuff
 {
-    public class SkeletonSprite : ISprite2
+    public class BubbleSprite : ISprite2
     {
         private Texture2D sprites;
         private int currentFrame;
         private int totalFrames;
 
-        public SkeletonSprite(Texture2D spriteSheet, SpriteBatch spriteBatch)
+        public BubbleSprite(Texture2D spriteSheet, SpriteBatch spriteBatch)
         {
             sprites = spriteSheet;
             totalFrames = 2;
@@ -25,22 +25,10 @@ namespace sprint0Real.EnemyStuff.RedGoriyaStuff
         {
             Rectangle sourceRectangle;
             Rectangle destinationRectangle;
-            Vector2 org;
-            org.X = 0;
-            org.Y = 0;
-
-            if (currentFrame == 0)
-            {
-                sourceRectangle = new Rectangle(2, 59, 15, 15);
-                destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 30, 30);
-            }
-            else
-            {
-                sourceRectangle = new Rectangle(159, 78, 15, 15);
-                destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 30, 30);
-            }
+            //doesnt change sprite
+            sourceRectangle = new Rectangle(339, 11, 14, 15);
+            destinationRectangle = new Rectangle((int)location.X,
+            (int)location.Y, 28, 30);
             spriteBatch.Draw(sprites, destinationRectangle, sourceRectangle, Color.White);
         }
         public void Update()

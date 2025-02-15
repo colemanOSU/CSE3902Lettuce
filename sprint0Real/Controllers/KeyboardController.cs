@@ -63,6 +63,7 @@ namespace sprint0Real.Controllers
             commands.Add(Keys.D7, new ItemChangeCommand(_game, 7));
             commands.Add(Keys.D8, new ItemChangeCommand(_game, 8));
             commands.Add(Keys.D9, new ItemChangeCommand(_game, 9));
+            commands.Add(Keys.D0, new ItemChangeCommand(_game, 0));
             commands.Add(Keys.O, new PreviousEnemy(_game));
             commands.Add(Keys.P, new NextEnemy(_game));
 

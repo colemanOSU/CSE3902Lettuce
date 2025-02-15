@@ -30,7 +30,7 @@ namespace sprint0Real
         public int currentItemIndex;
 
 
-        public ILink Link = new Link();
+        public ILink Link;
         public ILinkSprite linkSprite;
         public ILinkSprite weaponItems;
 
@@ -46,6 +46,7 @@ namespace sprint0Real
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
             currentBlockIndex = 1;
+            Link = new Link(this);
             currentItemIndex = 1;
         }
 

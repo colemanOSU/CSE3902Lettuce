@@ -1,37 +1,143 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using sprint0Real.Interfaces;
+using sprint0Real.Commands;
 
 namespace sprint0Real.Items.ItemSprites
 {
-    internal class WoodSwordSprite : IItem
+    internal class WoodSwordSprite : ILinkSprite
     {
-        private Rectangle sourceRectangle = new(10, 154, 16, 16);
+        private Rectangle sourceRectangle = new(124, 78, 14, 14);
         private Rectangle destinationRectangle;
 
         private Texture2D _texture;
         private Game1 myGame;
-        private int frameCount = 0;
+        private int frameCount = 4;
+        private float _frameSpeed = 0.2f;
+        private int _currentFrame;
+        private double _timer;
+        private bool flag = false;
 
         public WoodSwordSprite(Texture2D texture, Game1 game)
         {
             _texture = texture;
             myGame = game;
-            destinationRectangle = new Rectangle(game.Link.GetLocation().X + 11, game.Link.GetLocation().Y + 1, 16, 16);
+            _timer = 0;
+            destinationRectangle = new Rectangle(game.Link.GetLocation().X + 13, game.Link.GetLocation().Y + 1, 14 * 3, 14 * 3);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
+            if (flag) return;
+
+            switch (myGame.Link.GetFacing())
+            {
+                case Link.Direction.Right:
+                    switch (_currentFrame)
+                    {
+                        case 0:
+                            sourceRectangle = new(31, 83, 14, 7);
+                            destinationRectangle = new(myGame.Link.GetLocation().X + 14*3 - 1, myGame.Link.GetLocation().Y + 6*3, 14 * 3, 7 * 3);
+                            break;
+                        case 1:
+                            sourceRectangle = new(58, 81, 11, 11);
+                            destinationRectangle = new(myGame.Link.GetLocation().X + 12*3, myGame.Link.GetLocation().Y + 4*3, 11 * 3, 11 * 3);
+                            break;
+                        case 2:
+                            sourceRectangle = new(83, 81, 6, 9);
+                            destinationRectangle = new(myGame.Link.GetLocation().X + 13*3, myGame.Link.GetLocation().Y + 4*3, 6 * 3, 9 * 3);
+                            break;
+                        case 3:
+                            flag = true;
+                            break;
+                    }
+                    spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
+                    break;
+                case Link.Direction.Left:
+                    switch (_currentFrame)
+                    {
+                        case 0:
+                            sourceRectangle = new(31, 83, 14, 7);
+                            destinationRectangle = new(myGame.Link.GetLocation().X - 11 * 3, myGame.Link.GetLocation().Y + 6 * 3, 14 * 3, 7 * 3);
+                            break;
+                        case 1:
+                            sourceRectangle = new(58, 81, 11, 11);
+                            destinationRectangle = new(myGame.Link.GetLocation().X - 4 * 3, myGame.Link.GetLocation().Y + 4 * 3, 11 * 3, 11 * 3);
+                            break;
+                        case 2:
+                            sourceRectangle = new(83, 81, 6, 9);
+                            destinationRectangle = new(myGame.Link.GetLocation().X - 3 * 3, myGame.Link.GetLocation().Y + 4 * 3, 6 * 3, 9 * 3);
+                            break;
+                        case 3:
+                            flag = true;
+                            break;
+                    }
+                    spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White, 0, Vector2.Zero, SpriteEffects.FlipHorizontally, 0);
+                    break;
+                case Link.Direction.Up:
+                    switch (_currentFrame)
+                    {
+                        case 0:
+                            sourceRectangle = new(21, 97, 8, 13);
+                            destinationRectangle = new(myGame.Link.GetLocation().X + 3*3, myGame.Link.GetLocation().Y - 12*3, 8 * 3, 13 * 3);
+                            break;
+                        case 1:
+                            sourceRectangle = new(38, 98, 8, 13);
+                            destinationRectangle = new(myGame.Link.GetLocation().X + 3*3, myGame.Link.GetLocation().Y - 12*3, 8 * 3, 13 * 3);
+                            break;
+                        case 2:
+                            sourceRectangle = new(55 , 106, 8, 3);
+                            destinationRectangle = new(myGame.Link.GetLocation().X + 9, myGame.Link.GetLocation().Y - 9, 8 * 3, 3 * 3);
+                            break;
+                        case 3:
+                            flag = true;
+                            break;
+                    }
+                    spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
+                    break;
+                case Link.Direction.Down:
+                    switch (_currentFrame)
+                    {
+                        case 0:
+                            sourceRectangle = new(23, 61, 8, 13);
+                            destinationRectangle = new(myGame.Link.GetLocation().X + 5*3, myGame.Link.GetLocation().Y + 14*3, 8 * 3, 13 * 3);
+                            break;
+                        case 1:
+                            sourceRectangle = new(42, 61, 3, 9);
+                            destinationRectangle = new(myGame.Link.GetLocation().X + 7*3, myGame.Link.GetLocation().Y + 14*3, 3 * 3, 9 * 3);
+                            break;
+                        case 2:
+                            sourceRectangle = new(59, 61, 3, 5);
+                            destinationRectangle = new(myGame.Link.GetLocation().X + 7 * 3, myGame.Link.GetLocation().Y + 14 * 3, 3 * 3, 5 * 3);
+                            break;
+                        case 3:
+                            flag = true;
+                            break;
+                    }
+                    spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
+                    break;
+            }
+
         }
 
         public void Update(GameTime gameTime, SpriteBatch spriteBatch)
         {
+            _timer += gameTime.ElapsedGameTime.TotalSeconds * 2;
+            if (flag)
+            {
+                myGame.Link.SetCanMove(true);
+                myGame.Link.SetCanAttack(true);
+                myGame.weaponItems = new NullSprite(_texture, myGame);
+                return;
+            }
+            if (_timer > _frameSpeed)
+            {
+                _currentFrame = (_currentFrame + 1) % frameCount;
+                _timer -= _frameSpeed;
 
+            }
+            
         }
 
-        public void Update(SpriteBatch spriteBatch, Texture2D marioSheet)
-        {
-        }
     }
 }
