@@ -25,21 +25,24 @@ namespace sprint0Real.EnemyStuff.RedGoriyaStuff
         {
             Rectangle sourceRectangle;
             Rectangle destinationRectangle;
+            Vector2 org;
+            org.X = 0;
+            org.Y = 0;
 
             if (currentFrame == 0)
             {
-                sourceRectangle = new Rectangle(1, 59, 15, 15);
+                sourceRectangle = new Rectangle(2, 59, 15, 15);
                 destinationRectangle = new Rectangle((int)location.X,
                 (int)location.Y, 30, 30);
+                spriteBatch.Draw(sprites, destinationRectangle, sourceRectangle, Color.White);
             }
             else
             {
                 sourceRectangle = new Rectangle(159, 78, 15, 15);
                 destinationRectangle = new Rectangle((int)location.X,
                 (int)location.Y, 30, 30);
+                spriteBatch.Draw(sprites, destinationRectangle, sourceRectangle, Color.White, 0, org, SpriteEffects.FlipHorizontally, 5);
             }
-
-            spriteBatch.Draw(sprites, destinationRectangle, sourceRectangle, Color.White);
         }
         public void Update()
         {
