@@ -12,6 +12,7 @@ using sprint0Real.EnemyStuff.HandStuff;
 using sprint0Real.EnemyStuff.RedGoriya;
 using sprint0Real.EnemyStuff.SkeletonStuff;
 using sprint0Real.EnemyStuff.SlimeStuff;
+using sprint0Real.EnemyStuff.ZolStuff;
 using sprint0Real.Interfaces;
 
 namespace sprint0Real.EnemyStuff
@@ -46,6 +47,7 @@ namespace sprint0Real.EnemyStuff
             enemyList.Add(new EnemyPage(new Skeleton(location)));
             enemyList.Add(new EnemyPage(new Slime(location)));
             enemyList.Add(new EnemyPage(new Hand(location)));
+            enemyList.Add(new EnemyPage(new Zol(location)));
         }
 
         public void NextEnemy()

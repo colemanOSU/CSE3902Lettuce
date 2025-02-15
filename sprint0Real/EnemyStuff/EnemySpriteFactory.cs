@@ -13,6 +13,7 @@ using sprint0Real.EnemyStuff.Fireballs;
 using sprint0Real.EnemyStuff.HandStuff;
 using sprint0Real.EnemyStuff.RedGoriyaStuff;
 using sprint0Real.EnemyStuff.SlimeStuff;
+using sprint0Real.EnemyStuff.ZolStuff;
 using sprint0Real.Interfaces;
 
 namespace sprint0Real.EnemyStuff
@@ -151,6 +152,10 @@ namespace sprint0Real.EnemyStuff
         public ISprite2 CreateSlimeSprite()
         {
             return new SlimeSprite(enemySpriteSheet, myGame._spriteBatch);
+        }
+        public ISprite2 CreateZolSprite()
+        {
+            return new ZolSprite(enemySpriteSheet, myGame._spriteBatch);
         }
         public ISprite2 CreateHandSprite()
         {
