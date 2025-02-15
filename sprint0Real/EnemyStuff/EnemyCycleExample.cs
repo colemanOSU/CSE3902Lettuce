@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0Real.EnemyStuff;
 using sprint0Real.EnemyStuff.BatStuff;
+using sprint0Real.EnemyStuff.BubbleStuff;
 using sprint0Real.EnemyStuff.DragonStuff;
 using sprint0Real.EnemyStuff.HandStuff;
 using sprint0Real.EnemyStuff.RedGoriya;
@@ -48,6 +49,7 @@ namespace sprint0Real.EnemyStuff
             enemyList.Add(new EnemyPage(new Slime(location)));
             enemyList.Add(new EnemyPage(new Hand(location)));
             enemyList.Add(new EnemyPage(new Zol(location)));
+            enemyList.Add(new EnemyPage(new Bubble(location)));
         }
 
         public void NextEnemy()

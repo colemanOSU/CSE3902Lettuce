@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0Real.EnemyStuff.BatStuff;
 using sprint0Real.EnemyStuff.BoomerangStuff;
+using sprint0Real.EnemyStuff.BubbleStuff;
 using sprint0Real.EnemyStuff.DragonStuff;
 using sprint0Real.EnemyStuff.Fireballs;
 using sprint0Real.EnemyStuff.HandStuff;
@@ -164,6 +165,10 @@ namespace sprint0Real.EnemyStuff
         public ISprite2 CreateBatSprite()
         {
             return new BatSprite(enemySpriteSheet, myGame._spriteBatch);
+        }
+        public ISprite2 CreateBubbleSprite()
+        {
+            return new BubbleSprite(enemySpriteSheet, myGame._spriteBatch);
         }
         // More public ISprite returning methods follow
         // ...
