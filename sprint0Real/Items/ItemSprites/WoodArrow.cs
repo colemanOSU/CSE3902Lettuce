@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using sprint0Real.Interfaces;
 using sprint0Real.Commands;
+using System.Linq.Expressions;
 
 namespace sprint0Real.Items.ItemSprites
 {
@@ -21,6 +22,9 @@ namespace sprint0Real.Items.ItemSprites
         private bool flag = false;
         private bool isMoving = true;
         private Vector2 _position;
+        private double delayTimer;
+        private double delayDuration = 0.5;
+        private bool isDelaying = false;
 
         public WoodArrow(Texture2D texture, Game1 game)
         {
@@ -37,14 +41,22 @@ namespace sprint0Real.Items.ItemSprites
 
         public void Draw(SpriteBatch spriteBatch)
         {
-                switch (myGame.Link.GetFacing())
+            if (!isMoving)
+            {
+                sourceRectangle = new(53, 189, 8, 8);
+                destinationRectangle = new Rectangle((int)_position.X, (int)_position.Y+13, 8 * 3, 8 * 3);
+                spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
+                isDelaying = true;
+                delayTimer = 0;
+            }
+            else { 
+            switch (myGame.Link.GetFacing())
                 {
                     case Link.Direction.Right:
                         velocity.X = 300;
                         sourceRectangle = new(10, 185, 16, 16);
                         destinationRectangle = new Rectangle((int)_position.X, (int)_position.Y, 16 * 3, 16 * 3);
                         spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
-
                         break;
                     case Link.Direction.Left:
                         velocity.X = -300;
@@ -53,70 +65,44 @@ namespace sprint0Real.Items.ItemSprites
                         spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White,0,Vector2.Zero,SpriteEffects.FlipHorizontally,0);
                         break;
                     case Link.Direction.Up:
-                        switch (_currentFrame)
-                        {
-                            case 0:
-                                sourceRectangle = new(207, 97, 8, 13);
-                                destinationRectangle = new(myGame.Link.GetLocation().X + 12, myGame.Link.GetLocation().Y - 36, 8 * 3, 13 * 3);
-                                break;
-                            case 1:
-                                sourceRectangle = new(131, 98, 8, 13);
-                                destinationRectangle = new(myGame.Link.GetLocation().X + 12, myGame.Link.GetLocation().Y - 30, 8 * 3, 13 * 3);
-                                break;
-                            case 2:
-                                sourceRectangle = new(148, 106, 8, 3);
-                                destinationRectangle = new(myGame.Link.GetLocation().X + 10, myGame.Link.GetLocation().Y - 30, 8 * 3, 13 * 3);
-                                break;
-                            case 3:
-                                flag = true;
-                                break;
-                        }
+                        velocity.X = 0;
+                        velocity.Y = -300;
+                        sourceRectangle = new(3, 185, 5, 16);
+                        destinationRectangle = new Rectangle((int)_position.X, (int)_position.Y, 5 * 3, 16 * 3);
                         spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
                         break;
                     case Link.Direction.Down:
-                        switch (_currentFrame)
-                        {
-                            case 0:
-                                sourceRectangle = new(209, 61, 8, 13);
-                                destinationRectangle = new(myGame.Link.GetLocation().X + 16, myGame.Link.GetLocation().Y + 41, 8 * 3, 13 * 3);
-                                break;
-                            case 1:
-                                sourceRectangle = new(134, 61, 5, 9);
-                                destinationRectangle = new(myGame.Link.GetLocation().X + 19, myGame.Link.GetLocation().Y + 41, 5 * 3, 9 * 3);
-                                break;
-                            case 2:
-                                sourceRectangle = new(152, 61, 3, 5);
-                                destinationRectangle = new(myGame.Link.GetLocation().X + 16, myGame.Link.GetLocation().Y + 41, 3 * 3, 5 * 3);
-                                break;
-                            case 3:
-                                flag = true;
-                                break;
-                        }
-                        spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
+                        velocity.X = 0;
+                        velocity.Y = 300;
+                        sourceRectangle = new(3, 185, 5, 16);
+                        destinationRectangle = new Rectangle((int)_position.X, (int)_position.Y, 5 * 3, 16 * 3);
+                        spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White, 0, Vector2.Zero, SpriteEffects.FlipVertically, 0);
                         break;
                 }
-            
+            }
 
         }
 
         public void Update(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            _timer += gameTime.ElapsedGameTime.TotalSeconds;
-            if (!isMoving) return;
-           _position += velocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
-           if (_timer > 3)
+            _timer += gameTime.ElapsedGameTime.TotalSeconds*2;
+            if (isMoving)
+            {
+                _position += velocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                if (_timer > 1)
                 {
                     isMoving = false;
                     velocity = Vector2.Zero;
                 }
-
-            
-            
-            if (flag == true)
+            }
+            if (isDelaying)
             {
-                myGame.Link.SetCanMove(true);
-                myGame.Link.SetCanAttack(true);
-                myGame.weaponItems = new NullSprite(_texture, myGame);
+                delayTimer += gameTime.ElapsedGameTime.TotalSeconds;
+                if (delayTimer >= delayDuration)
+                {
+                    isDelaying = false;
+                    myGame.weaponItems = new NullSprite(_texture, myGame);
+                }
             }
         }
 
