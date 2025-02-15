@@ -48,13 +48,14 @@ namespace sprint0Real.LinkSprites
                     break;
                 case 3:
                     sourceRectangle = new(35, 11, 16, 16);
-                    flag = true;
+                        myGame.Link.SetCanMove(true);
+                        myGame.Link.SetCanAttack(true);
+                        flag = true;
                     break;
             }
             }
             spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, myGame.Link.GetLinkColor());
-            myGame.Link.SetCanMove(true);
-            myGame.Link.SetCanAttack(true);
+            
 
         }
 

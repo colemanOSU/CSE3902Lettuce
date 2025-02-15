@@ -20,7 +20,8 @@ namespace sprint0Real.Commands
         {
             if (myGame.Link.CanAttack())
             {
-
+                myGame.Link.SetCanAttack(false);
+                myGame.Link.SetCanMove(false);
                 switch (myGame.Link.GetFacing())
                 {
                     case Link.Direction.Left:

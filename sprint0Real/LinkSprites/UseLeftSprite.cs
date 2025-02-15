@@ -49,12 +49,13 @@ namespace sprint0Real.LinkSprites
                     case 3:
                         sourceRectangle = new(35, 11, 16, 16);
                         flag = true;
+                        myGame.Link.SetCanMove(true);
+                        myGame.Link.SetCanAttack(true);
                         break;
                 }
             }
             spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, myGame.Link.GetLinkColor(), 0, Vector2.Zero, SpriteEffects.FlipHorizontally, 0);
-            myGame.Link.SetCanMove(true);
-            myGame.Link.SetCanAttack(true);
+            
         }
 
         public void Update(GameTime gameTime, SpriteBatch spriteBatch)
