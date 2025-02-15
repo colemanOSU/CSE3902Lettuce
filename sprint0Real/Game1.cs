@@ -51,8 +51,6 @@ namespace sprint0Real
             currentItemIndex = 1;
         }
 
-
-        ISprite sprite = new StandingInPlacePlayer();
         public IBlock currentBlock;
         public IItemtemp currentItem;
         
@@ -161,7 +159,10 @@ namespace sprint0Real
             currentItem = new Heart(itemSheet);
             linkSprite = new ResetLink(linkSheet, this);
             EnemyCycle = new EnemyCycleExample();
-
+            currentBlockIndex = 1;
+            Link = new Link(this);
+            currentItemIndex = 1;
+            LinkState = new LinkStateMachine(this);
             //Update with other objects in game...
 
         }
