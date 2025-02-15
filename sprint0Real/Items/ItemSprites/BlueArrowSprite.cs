@@ -4,7 +4,7 @@ using sprint0Real.Interfaces;
 
 namespace sprint0Real.Items.ItemSprites
 {
-    internal class BlueArrowSprite : IItem
+    internal class BlueArrowSprite : ILinkSprite
     {
         private Rectangle sourceRectangle = new(36, 185, 16, 16);
         private Rectangle destinationRectangle;
@@ -28,10 +28,7 @@ namespace sprint0Real.Items.ItemSprites
         public void Update(GameTime gameTime, SpriteBatch spriteBatch)
         {
 
-        }
-
-        public void Update(SpriteBatch spriteBatch, Texture2D marioSheet)
-        {
+        //nothing yet 
         }
     }
 }

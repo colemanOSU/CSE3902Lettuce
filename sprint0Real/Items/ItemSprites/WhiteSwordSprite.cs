@@ -130,7 +130,6 @@ namespace sprint0Real.Items.ItemSprites
             {
                 myGame.Link.SetCanMove(true);
                 myGame.Link.SetCanAttack(true);
-                new FaceRightCommand(myGame).Execute();
                 myGame.weaponItems = new NullSprite(_texture, myGame);
             }
         }
