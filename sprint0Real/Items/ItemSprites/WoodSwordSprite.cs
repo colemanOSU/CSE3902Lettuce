@@ -28,22 +28,24 @@ namespace sprint0Real.Items.ItemSprites
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            if (flag) return;
+
             switch (myGame.Link.GetFacing())
             {
                 case Link.Direction.Right:
                     switch (_currentFrame)
                     {
                         case 0:
-                            sourceRectangle = new(32, 83, 13, 8);
-                            destinationRectangle = new(myGame.Link.GetLocation().X + 40, myGame.Link.GetLocation().Y + 20, 13 * 3, 8 * 3);
+                            sourceRectangle = new(31, 83, 14, 7);
+                            destinationRectangle = new(myGame.Link.GetLocation().X + 14*3, myGame.Link.GetLocation().Y + 6*3, 14 * 3, 7 * 3);
                             break;
                         case 1:
                             sourceRectangle = new(58, 81, 11, 11);
-                            destinationRectangle = new(myGame.Link.GetLocation().X + 35, myGame.Link.GetLocation().Y + 13, 11 * 3, 11 * 3);
+                            destinationRectangle = new(myGame.Link.GetLocation().X + 12*3, myGame.Link.GetLocation().Y + 4*3, 11 * 3, 11 * 3);
                             break;
                         case 2:
                             sourceRectangle = new(83, 81, 6, 9);
-                            destinationRectangle = new(myGame.Link.GetLocation().X + 13, myGame.Link.GetLocation().Y, 6 * 3, 9 * 3);
+                            destinationRectangle = new(myGame.Link.GetLocation().X + 13*3, myGame.Link.GetLocation().Y + 4*3, 6 * 3, 9 * 3);
                             break;
                         case 3:
                             flag = true;
@@ -55,16 +57,16 @@ namespace sprint0Real.Items.ItemSprites
                     switch (_currentFrame)
                     {
                         case 0:
-                            sourceRectangle = new(32, 83, 13, 8);
-                            destinationRectangle = new(myGame.Link.GetLocation().X - 30, myGame.Link.GetLocation().Y + 20, 13 * 3, 8 * 3);
+                            sourceRectangle = new(32, 83, 14, 7);
+                            destinationRectangle = new(myGame.Link.GetLocation().X - 3 * 3, myGame.Link.GetLocation().Y + 6 * 3, 14 * 3, 7 * 3);
                             break;
                         case 1:
                             sourceRectangle = new(58, 81, 11, 11);
-                            destinationRectangle = new(myGame.Link.GetLocation().X - 28, myGame.Link.GetLocation().Y + 13, 11 * 3, 11 * 3);
+                            destinationRectangle = new(myGame.Link.GetLocation().X - 4 * 3, myGame.Link.GetLocation().Y + 4 * 3, 11 * 3, 11 * 3);
                             break;
                         case 2:
                             sourceRectangle = new(83, 81, 6, 9);
-                            destinationRectangle = new(myGame.Link.GetLocation().X - 13, myGame.Link.GetLocation().Y, 6 * 3, 9 * 3);
+                            destinationRectangle = new(myGame.Link.GetLocation().X - 3 * 3, myGame.Link.GetLocation().Y + 4 * 3, 6 * 3, 9 * 3);
                             break;
                         case 3:
                             flag = true;
@@ -121,16 +123,20 @@ namespace sprint0Real.Items.ItemSprites
         public void Update(GameTime gameTime, SpriteBatch spriteBatch)
         {
             _timer += gameTime.ElapsedGameTime.TotalSeconds * 2;
+            if (flag)
+            {
+                myGame.Link.SetCanMove(true);
+                myGame.Link.SetCanAttack(true);
+                myGame.weaponItems = new NullSprite(_texture, myGame);
+                return;
+            }
             if (_timer > _frameSpeed)
             {
                 _currentFrame = (_currentFrame + 1) % frameCount;
                 _timer -= _frameSpeed;
-            }
-            if (flag == true)
-            {
 
-                myGame.weaponItems = new NullSprite(_texture, myGame);
             }
+            
         }
 
     }
