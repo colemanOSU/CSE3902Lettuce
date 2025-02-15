@@ -34,7 +34,7 @@ namespace sprint0Real.EnemyStuff.HandStuff
             }
             else
             {
-                sourceRectangle = new Rectangle(408, 11, 15, 15);
+                sourceRectangle = new Rectangle(409, 11, 15, 15);
                 destinationRectangle = new Rectangle((int)location.X,
                 (int)location.Y, 30, 30);
             }
