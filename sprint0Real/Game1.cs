@@ -54,7 +54,7 @@ namespace sprint0Real
         public IBlock currentBlock;
         public IItemtemp currentItem;
         
-        TextSprite text = new TextSprite();
+        //TextSprite text = new TextSprite();
         List<IController> controllerList;
 
         public ILinkState LinkState;
@@ -134,7 +134,7 @@ namespace sprint0Real
 
             currentBlock.Draw(_spriteBatch);
             currentItem.Draw(_spriteBatch);
-            //text.Update(_spriteBatch, font1);
+
 
             linkSprite.Update(gameTime, _spriteBatch);
 
@@ -145,7 +145,7 @@ namespace sprint0Real
             //EnemyPage.Instance.Draw(_spriteBatch);
             EnemyCycle.Draw(_spriteBatch);
 
-            text.Update(_spriteBatch, font1);
+            //text.Update(_spriteBatch, font1);
             _spriteBatch.End();
 
             

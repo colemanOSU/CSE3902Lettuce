@@ -1,14 +1,10 @@
 
-using Microsoft.Xna.Framework.Graphics;
-using sprint0Real.Commands;
-using System;
 using Microsoft.Xna.Framework;
 using sprint0Real.Interfaces;
 using sprint0Real.LinkSprites;
 using sprint0Real;
 public class Link : ILink
 {
-    private Rectangle sourceRectangle;
     private Rectangle destinationRectangle;
     private bool canMove;
     private bool canAttack;
@@ -33,7 +29,6 @@ public class Link : ILink
 
     public Link(Game1 game)
 	{
-        sourceRectangle = new Rectangle(1, 11, 16, 16);
         destinationRectangle = new Rectangle(200, 200, 50, 50);
         canMove = true;
         canAttack = true;

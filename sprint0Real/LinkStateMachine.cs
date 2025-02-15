@@ -9,10 +9,8 @@ namespace sprint0Real
 {
     public class LinkStateMachine : ILinkState
     {
-        private enum LinkHealth { Normal, Damaged };
-        private LinkHealth health = LinkHealth.Normal;
+
         private ILink Link;
-        private ILinkSprite _sprite;
         private double DamageFrameCount;
 
         private int DamageLoops;
