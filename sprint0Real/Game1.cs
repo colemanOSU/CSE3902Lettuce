@@ -32,6 +32,7 @@ namespace sprint0Real
 
         public ILink Link;
         public ILinkSprite linkSprite;
+
         public ILinkSprite weaponItems;
 
         //temp
@@ -54,8 +55,11 @@ namespace sprint0Real
         ISprite sprite = new StandingInPlacePlayer();
         public IBlock currentBlock;
         public IItemtemp currentItem;
+        
         TextSprite text = new TextSprite();
         List<IController> controllerList;
+
+        public ILinkState LinkState;
 
         protected override void Initialize()
         {
@@ -63,6 +67,8 @@ namespace sprint0Real
             controllerList = new List<IController>();
             controllerList.Add(new KeyboardController(this));
             //controllerList.Add(new MouseController());
+
+            LinkState = new LinkStateMachine(this);
 
             base.Initialize();
         }
@@ -108,6 +114,8 @@ namespace sprint0Real
 
             currentBlock.Update(gameTime);
             currentItem.Update(gameTime);
+            LinkState.Update(gameTime);
+            
 
             //EnemyPage.Instance.Update(gameTime);
             EnemyCycle.Update(gameTime);

@@ -38,19 +38,24 @@ public class Link : ILink
         canMove = true;
         canAttack = true;
         Facing = Direction.Right;
-        stateMachine = new LinkStateMachine();
+        //stateMachine = new LinkStateMachine(this);
         itemStateMachine = new ItemStateMachine(game);
         LinkSpriteColor = Color.White;
         isDamaged = false;
     }
     public void Damaged()
     {
-            stateMachine.Damaged();
+            
     }
 
     public Color GetLinkColor()
     {
         return LinkSpriteColor;
+    }
+
+    public void SetLinkColor(Color color)
+    {
+        LinkSpriteColor = color;
     }
 
     //ItemStateMachine
@@ -138,9 +143,16 @@ public class Link : ILink
 
     public void DamageLink()
     {
-        if (isDamaged == false)
-        {
+    
+    }
 
-        }
+    public bool IsDamaged()
+    {
+        return isDamaged;
+    }
+
+    public void SetIsDamaged(bool ToDamage)
+    {
+        isDamaged = ToDamage;
     }
 }

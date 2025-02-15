@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using sprint0Real.Commands;
+﻿using Microsoft.Xna.Framework;
 using static Link;
 
 namespace sprint0Real.Interfaces
@@ -36,5 +29,13 @@ namespace sprint0Real.Interfaces
         public void LastItem();
 
         public Color GetLinkColor();
+
+        public void DamageLink();
+
+        public bool IsDamaged();
+
+        public void SetIsDamaged(bool toDamage);
+
+        public void SetLinkColor(Color color);
     }
 }

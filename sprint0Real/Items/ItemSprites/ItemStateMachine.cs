@@ -96,6 +96,7 @@ namespace sprint0Real.LinkSprites
         }
         public void DrawWeaponSprite()
         {
+            
             switch (CurrentItem) {
                 case Item.WoodSword:
                     myGame.weaponItems = new WoodSwordSprite(myGame.linkSheet, myGame);
@@ -127,8 +128,10 @@ namespace sprint0Real.LinkSprites
                 case Item.Fire:
                     myGame.weaponItems = new FireSprite(myGame.linkSheet, myGame);
                     break;  
+            
 
             }
+            
         }
     }
 }

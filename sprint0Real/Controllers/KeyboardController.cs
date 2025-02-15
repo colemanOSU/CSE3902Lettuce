@@ -39,7 +39,7 @@ namespace sprint0Real.Controllers
             commands.Add(Keys.T, new PreviousBlockCommand(_game, blockTexture));
             commands.Add(Keys.I, new NextTempItemCommand(_game,  itemTexture));
             commands.Add(Keys.U, new PreviousTempItemCommand(_game, itemTexture));
-            commands.Add(Keys.E, new DamagedStateCommand(_game));
+            commands.Add(Keys.E, new DamageLinkCommand(_game));
             commands.Add(Keys.D, new MoveRightCommand(_game));
             commands.Add(Keys.A, new MoveLeftCommand(_game));
             commands.Add(Keys.W, new MoveUpCommand(_game));
