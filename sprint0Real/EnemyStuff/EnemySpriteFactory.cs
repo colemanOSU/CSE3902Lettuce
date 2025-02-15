@@ -6,11 +6,18 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using sprint0Real.EnemyStuff.BatStuff;
 using sprint0Real.EnemyStuff.BoomerangStuff;
+using sprint0Real.EnemyStuff.BubbleStuff;
 using sprint0Real.EnemyStuff.DragonStuff;
 using sprint0Real.EnemyStuff.Fireballs;
+using sprint0Real.EnemyStuff.HandStuff;
 using sprint0Real.EnemyStuff.RedGoriyaStuff;
+using sprint0Real.EnemyStuff.BTrapStuff;
+using sprint0Real.EnemyStuff.SnakeStuff;
+using sprint0Real.EnemyStuff.ZolStuff;
 using sprint0Real.Interfaces;
+using sprint0Real.EnemyStuff.SlimeStuff;
 
 namespace sprint0Real.EnemyStuff
 {
@@ -116,8 +123,6 @@ namespace sprint0Real.EnemyStuff
         {
             return new OctoSpriteIdleL(enemySpriteSheet, myGame._spriteBatch);
         }
-
-
         public ISprite2 CreateOctoAttackSpriteU()
         {
             return new OctoSpriteAttackU(enemySpriteSheet, myGame._spriteBatch);
@@ -139,12 +144,42 @@ namespace sprint0Real.EnemyStuff
         {
             return new OctoSpriteDamaged(enemySpriteSheet, myGame._spriteBatch);
         }
-
         public ISprite2 CreateRockSprite()
         {
             return new RockSprite(enemySpriteSheet, myGame._spriteBatch);
         }
-
+        public ISprite2 CreateSkeletonSprite()
+        {
+            return new SkeletonSprite(enemySpriteSheet, myGame._spriteBatch);
+        }
+        public ISprite2 CreateBTrapSprite()
+        {
+            return new BTrapSprite(enemySpriteSheet, myGame._spriteBatch);
+        }
+        public ISprite2 CreateSlimeSprite()
+        {
+            return new SlimeSprite(enemySpriteSheet, myGame._spriteBatch);
+        }
+        public ISprite2 CreateZolSprite()
+        {
+            return new ZolSprite(enemySpriteSheet, myGame._spriteBatch);
+        }
+        public ISprite2 CreateHandSprite()
+        {
+            return new HandSprite(enemySpriteSheet, myGame._spriteBatch);
+        }
+        public ISprite2 CreateBatSprite()
+        {
+            return new BatSprite(enemySpriteSheet, myGame._spriteBatch);
+        }
+        public ISprite2 CreateBubbleSprite()
+        {
+            return new BubbleSprite(enemySpriteSheet, myGame._spriteBatch);
+        }
+        public ISprite2 CreateSnakeSprite()
+        {
+            return new SnakeSprite(enemySpriteSheet, myGame._spriteBatch);
+        }
         // More public ISprite returning methods follow
         // ...
     }

@@ -1,0 +1,56 @@
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using sprint0Real.Interfaces;
+
+namespace sprint0Real.EnemyStuff.HandStuff
+{
+    public class Hand : IEnemy
+    {
+        private HandStateMachine stateMachine;
+        private HandBehavior behavior;
+
+        public ISprite2 mySprite;
+        public Vector2 location;
+        public int speed = 2;
+
+        private int FPS = 6;
+        private float timer = 0f;
+
+        public Hand(Vector2 start)
+        {
+            location = start;
+            stateMachine = new HandStateMachine(this);
+            behavior = new HandBehavior(this);
+            mySprite = EnemySpriteFactory.Instance.CreateHandSprite();
+        }
+
+        public void ChangeDirection()
+        {
+            stateMachine.ChangeDirection();
+        }
+
+        public void Despawn()
+        {
+            CurrentMap.Instance.DeStage(this);
+        }
+
+        public void Update(GameTime gameTime)
+        {
+            stateMachine.Update();
+            behavior.Update(gameTime);
+
+            timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            if (timer >= ((float)1 / FPS))
+            {
+                timer = 0f;
+                mySprite.Update();
+            }
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            mySprite.Draw(spriteBatch, location);
+        }
+    }
+}

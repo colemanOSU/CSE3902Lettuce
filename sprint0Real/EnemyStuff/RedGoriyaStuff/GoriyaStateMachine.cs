@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime;
-using System.Text;
-using System.Threading.Tasks;
 using sprint0Real.EnemyStuff.BoomerangStuff;
 using sprint0Real.EnemyStuff.RedGoriya;
 using sprint0Real.EnemyStuff.RedGoriyaStuff;
