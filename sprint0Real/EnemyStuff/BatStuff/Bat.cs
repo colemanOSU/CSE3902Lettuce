@@ -32,14 +32,17 @@ namespace sprint0Real.EnemyStuff.BatStuff
                 FPS = FPS - FPS / stopTime * (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
         }
-        public void Perch()
+        public void Perch(GameTime gameTime)
         {
+            Slowdown(gameTime);
             stateMachine.Perched();
             Perched = true;
         }
 
         public void UnPerch()
         {
+            speed = 2;
+            FPS = 6;
             stateMachine.ChangeDirection();
             Perched = false;
         }
