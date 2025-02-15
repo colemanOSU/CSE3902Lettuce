@@ -29,7 +29,7 @@ public class Link : ILink
 
     private Direction Facing;
 
-    public Link()
+    public Link(Game1 game)
 	{
         sourceRectangle = new Rectangle(1, 11, 16, 16);
         destinationRectangle = new Rectangle(200, 200, 50, 50);
@@ -37,7 +37,7 @@ public class Link : ILink
         canAttack = true;
         Facing = Direction.Right;
         stateMachine = new LinkStateMachine();
-        itemStateMachine = new ItemStateMachine();
+        itemStateMachine = new ItemStateMachine(game);
     }
     public void Damaged()
     {

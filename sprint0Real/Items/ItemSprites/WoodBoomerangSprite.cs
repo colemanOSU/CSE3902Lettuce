@@ -4,7 +4,7 @@ using sprint0Real.Interfaces;
 
 namespace sprint0Real.Items.ItemSprites
 {
-    internal class WoodBoomerangSprite : IItem
+    internal class WoodBoomerangSprite : ILinkSprite
     {
         private Rectangle sourceRectangle = new(64, 185, 8, 16);
         private Rectangle destinationRectangle;
@@ -30,8 +30,6 @@ namespace sprint0Real.Items.ItemSprites
 
         }
 
-        public void Update(SpriteBatch spriteBatch, Texture2D marioSheet)
-        {
-        }
+        
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using sprint0Real.Interfaces;
 using sprint0Real.Items.ItemSprites;
+using System.Collections;
 
 namespace sprint0Real.LinkSprites
 {
@@ -20,13 +21,15 @@ namespace sprint0Real.LinkSprites
             WoodBoomerang,
             BlueBoomerang,
             Bomb,
-            Fire
+            Fire,
+            MagicSword
         }
         private Item CurrentItem;
         private int index;
         private Game1 myGame;
-        public ItemStateMachine()
+        public ItemStateMachine(Game1 game)
         {
+            myGame = game;
             CurrentItem = Item.WoodSword;
             index = 0;
         }
@@ -56,7 +59,7 @@ namespace sprint0Real.LinkSprites
         }
         public void SetItem(int num,Game1 game)
         {
-            myGame = game;
+
             switch (num)
             {
                 case 1:
@@ -86,13 +89,45 @@ namespace sprint0Real.LinkSprites
                 case 9:
                     CurrentItem = Item.Fire;
                     break;
+                case 0:
+                    CurrentItem = Item.MagicSword;
+                    break;
             }
         }
         public void DrawWeaponSprite()
         {
-            if (CurrentItem.Equals(Item.Whitesword))
-            {
-                myGame.weaponItems = new WhiteSwordSprite(myGame.linkSheet, myGame);
+            switch (CurrentItem) {
+                case Item.WoodSword:
+                    myGame.weaponItems = new WoodSwordSprite(myGame.linkSheet, myGame);
+                    break;
+                case Item.Whitesword:
+                    myGame.weaponItems = new WhiteSwordSprite(myGame.linkSheet, myGame);
+                    break;
+                case Item.MagicSword:
+                    myGame.weaponItems = new MagicSword(myGame.linkSheet, myGame);
+                        break;
+                case Item.MagicRod:
+                    myGame.weaponItems = new MagicRod(myGame.linkSheet, myGame);
+                    break;
+                case Item.WoodArrow:
+                    myGame.weaponItems = new WoodArrow(myGame.linkSheet, myGame);
+                    break;
+                case Item.BlueArrow:
+                    myGame.weaponItems = new BlueArrowSprite(myGame.linkSheet, myGame);
+                    break;
+                case Item.WoodBoomerang:
+                    myGame.weaponItems = new WoodBoomerangSprite(myGame.linkSheet, myGame);
+                    break;
+                case Item.BlueBoomerang:
+                    myGame.weaponItems = new BlueBoomerangSprite(myGame.linkSheet, myGame);
+                    break;
+                case Item.Bomb:
+                    myGame.weaponItems = new BombSprite(myGame.linkSheet, myGame);
+                    break;
+                case Item.Fire:
+                    myGame.weaponItems = new FireSprite(myGame.linkSheet, myGame);
+                    break;  
+
             }
         }
     }

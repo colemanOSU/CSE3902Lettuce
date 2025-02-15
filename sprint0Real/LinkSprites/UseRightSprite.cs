@@ -37,7 +37,7 @@ namespace sprint0Real.LinkSprites
 
         public void Draw(SpriteBatch spriteBatch)
         {
-
+            if (!flag) { 
             switch (_currentFrame)
             {
                 case 1:
@@ -47,13 +47,14 @@ namespace sprint0Real.LinkSprites
                     sourceRectangle = new(52, 11, 16, 16);
                     break;
                 case 3:
-                    sourceRectangle = new(32, 11, 16, 16);
+                    sourceRectangle = new(35, 11, 16, 16);
                     flag = true;
                     break;
             }
+            }
             spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
-            myGame.Link.SetCanMove(false);
-            myGame.Link.SetCanAttack(false);
+            myGame.Link.SetCanMove(true);
+            myGame.Link.SetCanAttack(true);
 
         }
 
@@ -65,13 +66,7 @@ namespace sprint0Real.LinkSprites
                 _currentFrame = (_currentFrame + 1) % frameCount;
                 _timer -= _frameSpeed;
             }
-            if (flag == true)
-            {
-                myGame.Link.SetCanMove(true);
-                myGame.Link.SetCanAttack(true);
-                new FaceRightCommand(myGame).Execute();
-                myGame.weaponItems = new NullSprite(_texture, myGame);
-            }
+            
 
         }
     }
