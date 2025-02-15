@@ -52,7 +52,7 @@ namespace sprint0Real.LinkSprites
                         break;
                 }
             }
-            spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
+            spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, myGame.Link.GetLinkColor());
             myGame.Link.SetCanMove(true);
             myGame.Link.SetCanAttack(true);
         }

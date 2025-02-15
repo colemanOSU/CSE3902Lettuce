@@ -16,7 +16,10 @@ namespace sprint0Real.Commands
 
         public void Execute()
         {
-            myGame.linkSprite = new FaceUpSprite(myGame.linkSheet, myGame);
+            if (myGame.Link.CanMove())
+            {
+                myGame.linkSprite = new FaceUpSprite(myGame.linkSheet, myGame);
+            }
         }
     }
 }

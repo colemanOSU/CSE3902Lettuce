@@ -29,7 +29,7 @@ namespace sprint0Real.LinkSprites
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
+            spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, myGame.Link.GetLinkColor());
         }
 
         public void Update(GameTime gameTime, SpriteBatch spriteBatch)
