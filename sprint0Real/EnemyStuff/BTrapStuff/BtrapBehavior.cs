@@ -87,15 +87,10 @@ namespace sprint0Real.EnemyStuff.BTrapStuff
         }
         private void JukeCheck()
         {
-            if (jukeDelay <= jukeTimer)
+            if (moving ==0)
             {
-                jukeTimer = 0;
-                jukeDelay = (float)(random.NextDouble() * 1);
-                if (moving ==0)
-                {
-                    moving = 1;
-                    myBTrap.ChangeDirection();
-                }
+                moving = 1;
+                myBTrap.ChangeDirection();
             }
         }
 
