@@ -55,6 +55,7 @@ namespace sprint0Real.Items.ItemSprites
         {
             _timer += gameTime.ElapsedGameTime.TotalSeconds;
             _position += velocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            Vector2 temp = new(myGame.Link.GetLocation().X, myGame.Link.GetLocation().Y);
 
             if (!isReturning && Vector2.Distance(_position, startPosition) >= travelDistance)
             {
