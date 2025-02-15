@@ -35,5 +35,6 @@ namespace sprint0Real.Interfaces
         public void NextItem();
         public void LastItem();
 
+        public Color GetLinkColor();
     }
 }
