@@ -64,37 +64,41 @@ namespace sprint0Real.EnemyStuff.BatStuff
         {
             if (PerchTimer >= PerchDelay)
             {
-                PerchFlag = false;
-                UnPerchTimer = 0;
+                PerchFlag = true;
+                myBat.Perch();
+                PerchTimer = 0;
             }
         }
         private void TimeToUnPerch()
         {
             if (UnPerchTimer >= UnPerchDelay)
             {
-                PerchFlag = true;
-                PerchTimer = 0;
+                PerchFlag = false;
+                myBat.UnPerch();
+                UnPerchTimer = 0;
             }
         }
         private void Perch(GameTime time)
         {
             if (PerchFlag)
             {
-                myBat.Perch();
                 UnPerchTimer += (float)time.ElapsedGameTime.TotalSeconds;
             } else
             {
-                myBat.UnPerch();
                 PerchTimer += (float)time.ElapsedGameTime.TotalSeconds;
             }
         }
 
         public void Update(GameTime time)
         {
-            jukeTimer += (float)time.ElapsedGameTime.TotalSeconds;
-            TimeToPerch();
-            TimeToUnPerch();
+            // Don't change direction while perching
+            if (!PerchFlag)
+            {
+                jukeTimer += (float)time.ElapsedGameTime.TotalSeconds;
+            }
             Perch(time);
+            TimeToPerch();
+            TimeToUnPerch(); 
             SafeJuke();
             JukeCheck();
         }

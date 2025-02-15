@@ -5,7 +5,7 @@ namespace sprint0Real.EnemyStuff.BatStuff
 {
     public class BatStateMachine : IStateMachine
     {
-        private enum BatStates {LeftUp, RightUp, LeftDown, RightDown, Left, Right, Up, Down}
+        private enum BatStates {LeftUp, RightUp, LeftDown, RightDown, Left, Right, Up, Down, Perched}
         private BatStates currentState = BatStates.Right;
         private Bat myBat;
         private float SqrtSpeed;
@@ -16,7 +16,10 @@ namespace sprint0Real.EnemyStuff.BatStuff
             myBat = Bat;
             SqrtSpeed = (float)Math.Sqrt((Math.Pow(Bat.speed,2))/2);
         }
-
+        public void Perched()
+        {
+            currentState = BatStates.Perched;
+        }
         public void ChangeDirection()
         {
             int nextDirection = random.Next(0, 8);

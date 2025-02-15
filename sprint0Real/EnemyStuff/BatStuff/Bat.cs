@@ -8,12 +8,13 @@ namespace sprint0Real.EnemyStuff.BatStuff
     {
         private BatStateMachine stateMachine;
         private BatBehavior behavior;
-        private bool Perched = true;
+        private bool Perched = false;
         public ISprite2 mySprite;
         public Vector2 location;
         public float speed = 2f;
-        private float FPS = 6;
+        private float FPS = 10;
         private float timer = 0f;
+        private float stopTime = 1;
 
         public Bat(Vector2 start)
         {
@@ -22,29 +23,25 @@ namespace sprint0Real.EnemyStuff.BatStuff
             behavior = new BatBehavior(this);
             mySprite = EnemySpriteFactory.Instance.CreateBatSprite();
         }
-
+        
+        public void Slowdown(GameTime gameTime)
+        {
+            while (speed > 0)
+            {
+                speed = speed - speed / stopTime * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                FPS = FPS - FPS / stopTime * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            }
+        }
         public void Perch()
         {
-            if (FPS >= 3f)
-            {
-                FPS = FPS - 1/60f;
-            }
-            if (FPS < 3f)
-            {
-                Perched = true;
-            }
+            stateMachine.Perched();
+            Perched = true;
         }
 
         public void UnPerch()
         {
-            if (FPS <= 6f)
-            {
-                FPS = FPS + 1/60f;
-            }
-            if (FPS > 0)
-            {
-                Perched = false;
-            }
+            stateMachine.ChangeDirection();
+            Perched = false;
         }
 
         public void ChangeDirection()
@@ -59,13 +56,12 @@ namespace sprint0Real.EnemyStuff.BatStuff
 
         public void Update(GameTime gameTime)
         {
+            stateMachine.Update();
             behavior.Update(gameTime);
-            timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
-
+            timer += (float)gameTime.ElapsedGameTime.TotalSeconds;     
             if (timer >= (1 / FPS) && !Perched)
             {
                 timer = 0f;
-                stateMachine.Update();
                 mySprite.Update();
             }
         }
