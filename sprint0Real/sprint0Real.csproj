@@ -32,9 +32,6 @@
     <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.2.1105" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="EnemyStuff\Bat\" />
-    <Folder Include="EnemyStuff\HandStuff\" />
-    <Folder Include="EnemyStuff\BladeTrapStuff\" />
     <Folder Include="Code Reviews\" />
   </ItemGroup>
   <Target Name="RestoreDotnetTools" BeforeTargets="Restore">

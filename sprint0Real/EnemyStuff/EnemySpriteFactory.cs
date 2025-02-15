@@ -6,9 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using sprint0Real.EnemyStuff.BatStuff;
 using sprint0Real.EnemyStuff.BoomerangStuff;
 using sprint0Real.EnemyStuff.DragonStuff;
 using sprint0Real.EnemyStuff.Fireballs;
+using sprint0Real.EnemyStuff.HandStuff;
 using sprint0Real.EnemyStuff.RedGoriyaStuff;
 using sprint0Real.EnemyStuff.SlimeStuff;
 using sprint0Real.Interfaces;
@@ -149,6 +151,14 @@ namespace sprint0Real.EnemyStuff
         public ISprite2 CreateSlimeSprite()
         {
             return new SlimeSprite(enemySpriteSheet, myGame._spriteBatch);
+        }
+        public ISprite2 CreateHandSprite()
+        {
+            return new HandSprite(enemySpriteSheet, myGame._spriteBatch);
+        }
+        public ISprite2 CreateBatSprite()
+        {
+            return new BatSprite(enemySpriteSheet, myGame._spriteBatch);
         }
         // More public ISprite returning methods follow
         // ...

@@ -1,0 +1,56 @@
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using sprint0Real.Interfaces;
+
+namespace sprint0Real.EnemyStuff.BladeTrapStuff
+{
+    public class BladeTrap : IEnemy
+    {
+        private BladeTrapStateMachine stateMachine;
+        private BladeTrapBehavior behavior;
+
+        public ISprite2 mySprite;
+        public Vector2 location;
+        public int speed = 2;
+
+        private int FPS = 6;
+        private float timer = 0f;
+
+        public BladeTrap(Vector2 start)
+        {
+            location = start;
+            stateMachine = new BladeTrapStateMachine(this);
+            behavior = new BladeTrapBehavior(this);
+            //mySprite = EnemySpriteFactory.Instance.CreateBladeTrapSprite();
+        }
+
+        public void ChangeDirection()
+        {
+            stateMachine.ChangeDirection();
+        }
+
+        public void Despawn()
+        {
+            CurrentMap.Instance.DeStage(this);
+        }
+
+        public void Update(GameTime gameTime)
+        {
+            stateMachine.Update();
+            behavior.Update(gameTime);
+
+            timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            if (timer >= ((float)1 / FPS))
+            {
+                timer = 0f;
+                mySprite.Update();
+            }
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            mySprite.Draw(spriteBatch, location);
+        }
+    }
+}
