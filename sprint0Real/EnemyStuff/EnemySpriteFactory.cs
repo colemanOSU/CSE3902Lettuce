@@ -13,10 +13,11 @@ using sprint0Real.EnemyStuff.DragonStuff;
 using sprint0Real.EnemyStuff.Fireballs;
 using sprint0Real.EnemyStuff.HandStuff;
 using sprint0Real.EnemyStuff.RedGoriyaStuff;
-using sprint0Real.EnemyStuff.SlimeStuff;
+using sprint0Real.EnemyStuff.BTrapStuff;
 using sprint0Real.EnemyStuff.SnakeStuff;
 using sprint0Real.EnemyStuff.ZolStuff;
 using sprint0Real.Interfaces;
+using sprint0Real.EnemyStuff.SlimeStuff;
 
 namespace sprint0Real.EnemyStuff
 {
@@ -150,6 +151,10 @@ namespace sprint0Real.EnemyStuff
         public ISprite2 CreateSkeletonSprite()
         {
             return new SkeletonSprite(enemySpriteSheet, myGame._spriteBatch);
+        }
+        public ISprite2 CreateBTrapSprite()
+        {
+            return new BTrapSprite(enemySpriteSheet, myGame._spriteBatch);
         }
         public ISprite2 CreateSlimeSprite()
         {
