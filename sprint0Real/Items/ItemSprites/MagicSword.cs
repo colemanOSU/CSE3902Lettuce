@@ -34,16 +34,16 @@ namespace sprint0Real.Items.ItemSprites
                     switch (_currentFrame)
                     {
                         case 0:
-                            sourceRectangle = new(218, 83, 13, 8);
-                            destinationRectangle = new(myGame.Link.GetLocation().X + 40, myGame.Link.GetLocation().Y + 20, 13 * 3, 8 * 3);
+                            sourceRectangle = new(217, 83, 14, 7);
+                            destinationRectangle = new(myGame.Link.GetLocation().X + 14 * 3 - 1, myGame.Link.GetLocation().Y + 6 * 3, 14 * 3, 7 * 3);
                             break;
                         case 1:
-                            sourceRectangle = new(151, 81, 11, 11);
-                            destinationRectangle = new(myGame.Link.GetLocation().X + 35, myGame.Link.GetLocation().Y + 13, 11 * 3, 11 * 3);
+                            sourceRectangle = new(244, 81, 11, 11);
+                            destinationRectangle = new(myGame.Link.GetLocation().X + 12 * 3, myGame.Link.GetLocation().Y + 4 * 3, 11 * 3, 11 * 3);
                             break;
                         case 2:
-                            sourceRectangle = new(165, 77, 17, 17);
-                            destinationRectangle = new(myGame.Link.GetLocation().X + 13, myGame.Link.GetLocation().Y, 17 * 3, 17 * 3);
+                            sourceRectangle = new(269, 81, 6, 9);
+                            destinationRectangle = new(myGame.Link.GetLocation().X + 13 * 3, myGame.Link.GetLocation().Y + 4 * 3, 6 * 3, 9 * 3);
                             break;
                         case 3:
                             flag = true;
@@ -55,16 +55,16 @@ namespace sprint0Real.Items.ItemSprites
                     switch (_currentFrame)
                     {
                         case 0:
-                            sourceRectangle = new(218, 83, 13, 8);
-                            destinationRectangle = new(myGame.Link.GetLocation().X - 30, myGame.Link.GetLocation().Y + 20, 13 * 3, 8 * 3);
+                            sourceRectangle = new(217, 83, 14, 7);
+                            destinationRectangle = new(myGame.Link.GetLocation().X - 11 * 3, myGame.Link.GetLocation().Y + 6 * 3, 14 * 3, 7 * 3);
                             break;
                         case 1:
-                            sourceRectangle = new(151, 81, 11, 11);
-                            destinationRectangle = new(myGame.Link.GetLocation().X - 28, myGame.Link.GetLocation().Y + 13, 11 * 3, 11 * 3);
+                            sourceRectangle = new(244, 81, 11, 11);
+                            destinationRectangle = new(myGame.Link.GetLocation().X - 4 * 3, myGame.Link.GetLocation().Y + 4 * 3, 11 * 3, 11 * 3);
                             break;
                         case 2:
-                            sourceRectangle = new(165, 77, 17, 17);
-                            destinationRectangle = new(myGame.Link.GetLocation().X - 13, myGame.Link.GetLocation().Y, 17 * 3, 17 * 3);
+                            sourceRectangle = new(269, 81, 6, 9);
+                            destinationRectangle = new(myGame.Link.GetLocation().X - 3 * 3, myGame.Link.GetLocation().Y + 4 * 3, 6 * 3, 9 * 3);
                             break;
                         case 3:
                             flag = true;
@@ -77,15 +77,15 @@ namespace sprint0Real.Items.ItemSprites
                     {
                         case 0:
                             sourceRectangle = new(207, 97, 8, 13);
-                            destinationRectangle = new(myGame.Link.GetLocation().X + 12, myGame.Link.GetLocation().Y - 36, 8 * 3, 13 * 3);
+                            destinationRectangle = new(myGame.Link.GetLocation().X + 9, myGame.Link.GetLocation().Y - 12 * 3, 8 * 3, 13 * 3);
                             break;
                         case 1:
-                            sourceRectangle = new(131, 98, 8, 13);
-                            destinationRectangle = new(myGame.Link.GetLocation().X + 12, myGame.Link.GetLocation().Y - 30, 8 * 3, 13 * 3);
+                            sourceRectangle = new(224, 98, 8, 13);
+                            destinationRectangle = new(myGame.Link.GetLocation().X + 9, myGame.Link.GetLocation().Y - 12 * 3, 8 * 3, 13 * 3);
                             break;
                         case 2:
-                            sourceRectangle = new(148, 106, 8, 3);
-                            destinationRectangle = new(myGame.Link.GetLocation().X + 10, myGame.Link.GetLocation().Y - 30, 8 * 3, 13 * 3);
+                            sourceRectangle = new(241 , 106, 8, 3);
+                            destinationRectangle = new(myGame.Link.GetLocation().X + 9, myGame.Link.GetLocation().Y - 9, 8 * 3, 3 * 3);
                             break;
                         case 3:
                             flag = true;
@@ -98,15 +98,15 @@ namespace sprint0Real.Items.ItemSprites
                     {
                         case 0:
                             sourceRectangle = new(209, 61, 8, 13);
-                            destinationRectangle = new(myGame.Link.GetLocation().X + 16, myGame.Link.GetLocation().Y + 41, 8 * 3, 13 * 3);
+                            destinationRectangle = new(myGame.Link.GetLocation().X + 15, myGame.Link.GetLocation().Y + 14 * 3, 8 * 3, 13 * 3);
                             break;
                         case 1:
-                            sourceRectangle = new(134, 61, 5, 9);
-                            destinationRectangle = new(myGame.Link.GetLocation().X + 19, myGame.Link.GetLocation().Y + 41, 5 * 3, 9 * 3);
+                            sourceRectangle = new(228, 61, 3, 9);
+                            destinationRectangle = new(myGame.Link.GetLocation().X + 21, myGame.Link.GetLocation().Y + 14 * 3, 3 * 3, 9 * 3);
                             break;
                         case 2:
-                            sourceRectangle = new(152, 61, 3, 5);
-                            destinationRectangle = new(myGame.Link.GetLocation().X + 16, myGame.Link.GetLocation().Y + 41, 3 * 3, 5 * 3);
+                            sourceRectangle = new(245, 61, 3, 5);
+                            destinationRectangle = new(myGame.Link.GetLocation().X + 21, myGame.Link.GetLocation().Y + 14 * 3, 3 * 3, 5 * 3);
                             break;
                         case 3:
                             flag = true;

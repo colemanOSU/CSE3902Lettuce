@@ -22,6 +22,8 @@ namespace sprint0Real.Items.ItemSprites
         private double delayDuration = 0.5;
         private bool isDelaying = false;
         private Vector2 finalPosition;
+        private Link.Direction arrowDirection;
+
 
         public WoodArrow(Texture2D texture, Game1 game)
         {
@@ -30,18 +32,40 @@ namespace sprint0Real.Items.ItemSprites
             myGame = game;
             _timer = 0;
             velocity = Vector2.Zero;
-            startPosition = new Vector2(game.Link.GetLocation().X, game.Link.GetLocation().Y);
+            arrowDirection = myGame.Link.GetFacing();
+            GetPosition(arrowDirection);
             _position = startPosition;
             destinationRectangle = new Rectangle((int)_position.X, (int)_position.Y, 16*3, 16 * 3);
 
         }
-
+        public void GetPosition(Link.Direction direction)
+        {
+            switch (direction)
+            {
+                case Link.Direction.Right:
+                    velocity = new Vector2(300, 0);
+                    startPosition = new(myGame.Link.GetLocation().X + 16 * 3, myGame.Link.GetLocation().Y);
+                    break;
+                case Link.Direction.Left:
+                    velocity = new Vector2(-300, 0);
+                    startPosition = new(myGame.Link.GetLocation().X - 9 * 3, myGame.Link.GetLocation().Y);
+                    break;
+                case Link.Direction.Up:
+                    velocity = new Vector2(0, -300);
+                    startPosition = new(myGame.Link.GetLocation().X + 3 * 3, myGame.Link.GetLocation().Y - 16 * 3);
+                    break;
+                case Link.Direction.Down:
+                    velocity = new Vector2(0, 300);
+                    startPosition = new(myGame.Link.GetLocation().X + 3 * 3, myGame.Link.GetLocation().Y + 14 * 3);
+                    break;
+            }
+        }
         public void Draw(SpriteBatch spriteBatch)
         {
             if (isDelaying)
             {
                 sourceRectangle = new(53, 189, 8, 8);
-                switch (myGame.Link.GetFacing())
+                switch (arrowDirection)
                 {
                     case Link.Direction.Right:
                         destinationRectangle = new Rectangle((int)finalPosition.X + (16 * 3),(int)finalPosition.Y + 5,8 * 3,8 * 3);
@@ -64,35 +88,30 @@ namespace sprint0Real.Items.ItemSprites
                 return;
             }
             if(isMoving) {
-             switch (myGame.Link.GetFacing())
+             switch (arrowDirection)
                 {
                     case Link.Direction.Right:
-                        velocity.X = 300;
                         sourceRectangle = new(10, 185, 16, 16);
-                        destinationRectangle = new Rectangle((int)_position.X+40, (int)_position.Y+1, 16 * 3, 16 * 3);
+                        destinationRectangle = new((int)_position.X, (int)_position.Y, 16 * 3, 16 * 3);
                         spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
                         break;
                     case Link.Direction.Left:
-                        velocity.X = -300;
                         sourceRectangle = new(10, 185, 16, 16);
-                        destinationRectangle = new Rectangle((int)_position.X-40, (int)_position.Y+2, 16 * 3, 16 * 3);
+                        destinationRectangle = new((int)_position.X, (int)_position.Y, 16 * 3, 16 * 3);
                         spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White,0,Vector2.Zero,SpriteEffects.FlipHorizontally,0);
                         break;
                     case Link.Direction.Up:
-                        velocity.X = 0;
-                        velocity.Y = -300;
-                        sourceRectangle = new(3, 185, 5, 16);
-                        destinationRectangle = new Rectangle((int)_position.X+10, (int)_position.Y-40, 5 * 3, 16 * 3);
+                        sourceRectangle = new(1, 185, 8, 16);
+                        destinationRectangle = new((int)_position.X, (int)_position.Y, 8 * 3, 16 * 3);
                         spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
                         break;
                     case Link.Direction.Down:
-                        velocity.X = 0;
-                        velocity.Y = 300;
-                        sourceRectangle = new(3, 185, 5, 16);
-                        destinationRectangle = new Rectangle((int)_position.X+15, (int)_position.Y+40, 5 * 3, 16 * 3);
+                        sourceRectangle = new(1, 185, 8, 16);
+                        destinationRectangle = new((int)_position.X, (int)_position.Y, 8 * 3, 16 * 3);
                         spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White, 0, Vector2.Zero, SpriteEffects.FlipVertically, 0);
                         break;
                 }
+                
             }
 
         }
