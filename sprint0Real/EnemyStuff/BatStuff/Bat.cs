@@ -12,9 +12,9 @@ namespace sprint0Real.EnemyStuff.BatStuff
         public ISprite2 mySprite;
         public Vector2 location;
         public float speed = 2f;
-        private float FPS = 10;
+        public float FPS = 10;
         private float timer = 0f;
-        private float stopTime = 1;
+        
 
         public Bat(Vector2 start)
         {
@@ -23,28 +23,19 @@ namespace sprint0Real.EnemyStuff.BatStuff
             behavior = new BatBehavior(this);
             mySprite = EnemySpriteFactory.Instance.CreateBatSprite();
         }
-        
-        public void Slowdown(GameTime gameTime)
+
+        public void Perch()
         {
-            while (speed > 0)
-            {
-                speed = speed - speed / stopTime * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                FPS = FPS - FPS / stopTime * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            }
-        }
-        public void Perch(GameTime gameTime)
-        {
-            Slowdown(gameTime);
-            stateMachine.Perched();
             Perched = true;
+            stateMachine.Perched();
         }
 
         public void UnPerch()
         {
-            speed = 2;
-            FPS = 6;
-            stateMachine.ChangeDirection();
+            FPS = 10;
+            speed = 2f;
             Perched = false;
+            stateMachine.ChangeDirection();
         }
 
         public void ChangeDirection()

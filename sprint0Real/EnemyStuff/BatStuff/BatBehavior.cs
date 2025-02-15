@@ -14,11 +14,13 @@ namespace sprint0Real.EnemyStuff.BatStuff
 
         private float jukeTimer = 0f;
         private float jukeDelay = 0f;
-        private bool PerchFlag = true;
-        private float PerchDelay = 1f;
+        private bool PerchFlag = false;
+        private bool SlowedDown = false;
+        private float PerchDelay = 5f;
         private float PerchTimer = 0f;
         private float UnPerchDelay = 3f;
         private float UnPerchTimer = 0f;
+        private float stopTime = 1;
 
         private Random random = new Random();
 
@@ -60,11 +62,22 @@ namespace sprint0Real.EnemyStuff.BatStuff
                 myBat.ChangeDirection();
             }
         }
-        private void TimeToPerch(GameTime time)
+        public void Slowdown(GameTime gameTime)
+        {
+            if (myBat.FPS > 3)
+            {
+                myBat.speed = myBat.speed - myBat.speed / stopTime * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                myBat.FPS = myBat.FPS - myBat.FPS / stopTime * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            }
+            else
+            {
+                SlowedDown = true;
+            }
+        }
+        private void TimeToPerch()
         {
             if (PerchTimer >= PerchDelay)
             { 
-                myBat.Perch(time);
                 PerchFlag = true;
                 PerchTimer = 0;
             }
@@ -74,16 +87,22 @@ namespace sprint0Real.EnemyStuff.BatStuff
             if (UnPerchTimer >= UnPerchDelay)
             {
                 PerchFlag = false;
+                SlowedDown = false;
                 myBat.UnPerch();
                 UnPerchTimer = 0;
             }
         }
         private void Perch(GameTime time)
         {
-            if (PerchFlag)
+            if (PerchFlag && SlowedDown)
             {
+                myBat.Perch();
                 UnPerchTimer += (float)time.ElapsedGameTime.TotalSeconds;
-            } else
+            } else if (PerchFlag)
+            {
+                Slowdown(time);
+            }
+            else if (!PerchFlag)
             {
                 PerchTimer += (float)time.ElapsedGameTime.TotalSeconds;
             }
@@ -96,9 +115,9 @@ namespace sprint0Real.EnemyStuff.BatStuff
             {
                 jukeTimer += (float)time.ElapsedGameTime.TotalSeconds;
             }
+            TimeToPerch();
+            TimeToUnPerch();
             Perch(time);
-            TimeToPerch(time);
-            TimeToUnPerch(); 
             SafeJuke();
             JukeCheck();
         }
