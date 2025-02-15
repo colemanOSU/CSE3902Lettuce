@@ -11,14 +11,6 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="EnemyStuff\OctoRock\**" />
-    <Compile Remove="EnemyStuff\Octo\**" />
-    <EmbeddedResource Remove="EnemyStuff\OctoRock\**" />
-    <EmbeddedResource Remove="EnemyStuff\Octo\**" />
-    <None Remove="EnemyStuff\OctoRock\**" />
-    <None Remove="EnemyStuff\Octo\**" />
-  </ItemGroup>
-  <ItemGroup>
     <None Remove="Icon.ico" />
     <None Remove="Icon.bmp" />
     <None Remove="Items\ItemSprites\BlueBoomerangSprite" />
@@ -45,6 +37,7 @@
     <Folder Include="EnemyStuff\BladeTrapStuff\" />
     <Folder Include="EnemyStuff\SlimeStuff\" />
     <Folder Include="EnemyStuff\SkeletonStuff\" />
+    <Folder Include="Code Reviews\" />
   </ItemGroup>
   <Target Name="RestoreDotnetTools" BeforeTargets="Restore">
     <Message Text="Restoring dotnet tools" Importance="High" />

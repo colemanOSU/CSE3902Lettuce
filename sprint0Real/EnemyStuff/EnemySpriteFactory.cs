@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using sprint0Real.EnemyStuff.BoomerangStuff;
 using sprint0Real.EnemyStuff.DragonStuff;
 using sprint0Real.EnemyStuff.Fireballs;
 using sprint0Real.EnemyStuff.RedGoriyaStuff;
@@ -98,6 +99,50 @@ namespace sprint0Real.EnemyStuff
         public ISprite2 CreateBoomerangSprite()
         {
             return new BoomerangSprite(enemySpriteSheet, myGame._spriteBatch);
+        }
+        public ISprite2 CreateOctoEnemySpriteU()
+        {
+            return new OctoSpriteIdleU(enemySpriteSheet, myGame._spriteBatch);
+        }
+        public ISprite2 CreateOctoEnemySpriteR()
+        {
+            return new OctoSpriteIdleR(enemySpriteSheet, myGame._spriteBatch);
+        }
+        public ISprite2 CreateOctoEnemySpriteD()
+        {
+            return new OctoSpriteIdleD(enemySpriteSheet, myGame._spriteBatch);
+        }
+        public ISprite2 CreateOctoEnemySpriteL()
+        {
+            return new OctoSpriteIdleL(enemySpriteSheet, myGame._spriteBatch);
+        }
+
+
+        public ISprite2 CreateOctoAttackSpriteU()
+        {
+            return new OctoSpriteAttackU(enemySpriteSheet, myGame._spriteBatch);
+        }
+
+        public ISprite2 CreateOctoAttackSpriteR()
+        {
+            return new OctoSpriteAttackR(enemySpriteSheet, myGame._spriteBatch);
+        }
+        public ISprite2 CreateOctoAttackSpriteD()
+        {
+            return new OctoSpriteAttackD(enemySpriteSheet, myGame._spriteBatch);
+        }
+        public ISprite2 CreateOctoAttackSpriteL()
+        {
+            return new OctoSpriteAttackL(enemySpriteSheet, myGame._spriteBatch);
+        }
+        public ISprite2 CreateOctoDamagedSprite()
+        {
+            return new OctoSpriteDamaged(enemySpriteSheet, myGame._spriteBatch);
+        }
+
+        public ISprite2 CreateRockSprite()
+        {
+            return new RockSprite(enemySpriteSheet, myGame._spriteBatch);
         }
 
         // More public ISprite returning methods follow

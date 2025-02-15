@@ -2,23 +2,27 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework.Input;
 using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using sprint0Real.Interfaces;
+using Microsoft.Xna.Framework.Graphics;
+using System.Runtime.CompilerServices;
+using System.Numerics;
+using Microsoft.Xna.Framework;
+using Vector2 = Microsoft.Xna.Framework.Vector2;
 
-namespace sprint0Real.EnemyStuff.RedGoriyaStuff
+namespace sprint0Real.EnemyStuff.DragonStuff
 {
-    public class BoomerangSprite : ISprite2
+    public class OctoSpriteIdleL : ISprite2
     {
         private Texture2D sprites;
         private int currentFrame;
         private int totalFrames;
 
-        public BoomerangSprite(Texture2D spriteSheet, SpriteBatch spriteBatch)
+        public OctoSpriteIdleL(Texture2D spriteSheet, SpriteBatch spriteBatch)
         {
             sprites = spriteSheet;
-            totalFrames = 3;
+            totalFrames = 24;
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
@@ -26,30 +30,29 @@ namespace sprint0Real.EnemyStuff.RedGoriyaStuff
             Rectangle sourceRectangle;
             Rectangle destinationRectangle;
 
-            if (currentFrame == 0)
+            if (currentFrame <= 12)
             {
-                sourceRectangle = new Rectangle(290, 14, 7, 9);
+                sourceRectangle = new Rectangle(51, 11, 15, 16);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 7, 9);
+                (int)location.Y, 15, 16);
             }
-            else if (currentFrame == 1)
+            else 
             {
-                sourceRectangle = new Rectangle(299, 14, 7, 9);
+                sourceRectangle = new Rectangle(76, 11, 15, 16);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 7, 9);
-            }
-            else
-            {
-                sourceRectangle = new Rectangle(308, 14, 7, 9);
-                destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 7, 9);
+                (int)location.Y, 15, 16);
             }
 
             spriteBatch.Draw(sprites, destinationRectangle, sourceRectangle, Color.White);
         }
+
         public void Update()
         {
-            currentFrame = (currentFrame + 1) % totalFrames;
+            currentFrame++;
+            if (currentFrame == totalFrames)
+            {
+                currentFrame = 0;
+            }
         }
     }
 }
