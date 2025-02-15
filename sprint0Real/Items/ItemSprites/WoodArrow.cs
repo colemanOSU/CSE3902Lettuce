@@ -13,13 +13,9 @@ namespace sprint0Real.Items.ItemSprites
 
         private Texture2D _texture;
         private Game1 myGame;
-        private int frameCount = 4;
-        private float _frameSpeed = 0.2f;
-        private int _currentFrame;
         private Vector2 startPosition;
         private Vector2 velocity;
         private double _timer;
-        private bool flag = false;
         private bool isMoving = true;
         private Vector2 _position;
         private double delayTimer;
