@@ -14,6 +14,7 @@ using sprint0Real.EnemyStuff.Fireballs;
 using sprint0Real.EnemyStuff.HandStuff;
 using sprint0Real.EnemyStuff.RedGoriyaStuff;
 using sprint0Real.EnemyStuff.SlimeStuff;
+using sprint0Real.EnemyStuff.SnakeStuff;
 using sprint0Real.EnemyStuff.ZolStuff;
 using sprint0Real.Interfaces;
 
@@ -169,6 +170,10 @@ namespace sprint0Real.EnemyStuff
         public ISprite2 CreateBubbleSprite()
         {
             return new BubbleSprite(enemySpriteSheet, myGame._spriteBatch);
+        }
+        public ISprite2 CreateSnakeSprite()
+        {
+            return new SnakeSprite(enemySpriteSheet, myGame._spriteBatch);
         }
         // More public ISprite returning methods follow
         // ...
