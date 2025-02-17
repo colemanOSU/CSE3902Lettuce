@@ -16,6 +16,7 @@ namespace sprint0Real.GameState
         
         private KeyboardState currentKeyState;
         private KeyboardState previousKeyState;
+        private MouseState mouseState;
         private int frameCount = 4;
         private float _frameSpeed = 0.2f;
         private int _currentFrame = 0;
@@ -32,8 +33,9 @@ namespace sprint0Real.GameState
         public GameStates Update(GameTime gameTime)
         {
             currentKeyState = Keyboard.GetState();
+            mouseState = Mouse.GetState();
 
-            if (!isAnimating && currentKeyState.IsKeyDown(Keys.Enter) && previousKeyState.IsKeyUp(Keys.Enter))
+            if (!isAnimating && currentKeyState.IsKeyDown(Keys.Enter) && previousKeyState.IsKeyUp(Keys.Enter) || !isAnimating && mouseState.LeftButton == ButtonState.Pressed)
             {
                 isAnimating = true;
             }
