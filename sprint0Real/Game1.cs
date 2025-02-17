@@ -54,17 +54,15 @@ namespace sprint0Real
         public IBlock currentBlock;
         public IItemtemp currentItem;
         
-        //TextSprite text = new TextSprite();
         List<IController> controllerList;
 
         public ILinkState LinkState;
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+
             controllerList = new List<IController>();
             controllerList.Add(new KeyboardController(this));
-            //controllerList.Add(new MouseController());
 
             LinkState = new LinkStateMachine(this);
 
@@ -76,23 +74,16 @@ namespace sprint0Real
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             
             font1 = Content.Load<SpriteFont>("MyMenuFont");
-            // TODO: use this.Content to load your game content here
            
-            //Loading Block Content
+            //Load Sprite Sheets
             blockSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - Dungeon Tileset");
-            currentBlock = new BlockSpriteFloorTile(blockSheet);
-
-            //Loading Item Content
             itemSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - Items & Weapons");
-            currentItem = new Heart(itemSheet);
-
             linkSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - Link");
-            linkSprite = new FaceRightSprite(linkSheet, this);
-            weaponItems = new NullSprite(linkSheet, this);
 
             EnemySpriteFactory.Instance.LoadAllTextures(Content);
             EnemySpriteFactory.Instance.LoadGame(this);
-            EnemyCycle = new EnemyCycleExample();
+
+            ResetGame();
 
             // Don't need EnemyPage yet
             // EnemyPage.Instance.AddEnemies();
@@ -145,7 +136,6 @@ namespace sprint0Real
             //EnemyPage.Instance.Draw(_spriteBatch);
             EnemyCycle.Draw(_spriteBatch);
 
-            //text.Update(_spriteBatch, font1);
             _spriteBatch.End();
 
             
@@ -158,6 +148,7 @@ namespace sprint0Real
             currentBlock = new BlockSpriteFloorTile(blockSheet);
             currentItem = new Heart(itemSheet);
             linkSprite = new ResetLink(linkSheet, this);
+            weaponItems = new NullSprite(linkSheet, this);
             EnemyCycle = new EnemyCycleExample();
             currentBlockIndex = 1;
             Link = new Link(this);

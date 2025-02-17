@@ -7,14 +7,14 @@ using sprint0Real.ItemTempSprites;
 
 namespace sprint0Real.Commands
 {
-    public class PreviousTempItemCommand : ICommand
+    public class ShowNextItemCommand : ICommand
     {
         private Dictionary<int, IItemtemp> tempItems;
         private Game1 _game;
         private Texture2D _texture;
         private int _currentItem;
 
-        public PreviousTempItemCommand(Game1 game, Texture2D itemTexture)
+        public ShowNextItemCommand(Game1 game, Texture2D itemTexture)
         {
             _game = game;
             _texture = itemTexture;
@@ -64,13 +64,13 @@ namespace sprint0Real.Commands
 
             if (tempItems.ContainsKey(_currentItem))
             {
-                if (_currentItem == 1) //if at first block go to last
+                if (_currentItem == 33) //if at last block start over
                 {
-                    _currentItem = 33;
+                    _currentItem = 1;
                 }
-                else //decrement to previous block
+                else //increment to next block
                 {
-                    _currentItem--;
+                    _currentItem++;
                 }
 
                 _game.currentItem = tempItems[_currentItem];
