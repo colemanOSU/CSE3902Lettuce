@@ -29,9 +29,11 @@ namespace sprint0Real.Commands
                         break;
                     case Link.Direction.Right:
                         myGame.linkSprite = new UseRightSprite(myGame.linkSheet, myGame);
+                        myGame.itemSprite = new SwordUseRight(myGame.linkSheet, myGame);
                         break;
                     case Link.Direction.Up:
                         myGame.linkSprite = new UseUpSprite(myGame.linkSheet, myGame);
+                        myGame.itemSprite = new SwordUseUp(myGame.linkSheet, myGame);
                         break;
                     case Link.Direction.Down:
                         myGame.linkSprite = new UseDownSprite(myGame.linkSheet, myGame);

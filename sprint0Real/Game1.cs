@@ -37,6 +37,8 @@ namespace sprint0Real
 
         //temp
         public IItem tempItem;
+        public IItemSprite itemSprite;
+
         //temp
 
         public EnemyCycleExample EnemyCycle;
@@ -123,13 +125,19 @@ namespace sprint0Real
                 tempItem.Draw(_spriteBatch);
             }
 
+            if (itemSprite != null)
+            {
+                itemSprite.Draw(_spriteBatch);
+                itemSprite.Update(gameTime, _spriteBatch);
+            }
+
             currentBlock.Draw(_spriteBatch);
             currentItem.Draw(_spriteBatch);
 
 
             linkSprite.Update(gameTime, _spriteBatch);
-
             linkSprite.Draw(_spriteBatch);
+
             weaponItems.Update(gameTime,_spriteBatch);
             weaponItems.Draw(_spriteBatch);
 
