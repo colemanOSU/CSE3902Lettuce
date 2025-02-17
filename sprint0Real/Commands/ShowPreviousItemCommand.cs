@@ -21,26 +21,21 @@ namespace sprint0Real.Commands
 
             tempItems = new Dictionary<int, IItemtemp>()
             {
-
-                { 1, new Sword(_texture) },
-                { 2, new Bomb(_texture) },
-                { 3, new Boomerang(_texture) },
-                { 4, new Bow(_texture) },
-                { 5, new WhiteSword(_texture) },
-                { 6, new MagicalSword(_texture) },
-                { 7, new MagicalShield(_texture) },
-                { 8, new MagicalBoomerang(_texture) },
-                { 9, new Arrow(_texture) },
-                { 10, new Heart(_texture) },
-                { 11, new ContainerHeart(_texture) },
-                { 12, new Fairy(_texture) },
-                { 13, new Clock(_texture) },
-                { 14, new Rupy(_texture) },
-                { 15, new FiveRupies(_texture) },
-                { 16, new LifePotion(_texture) },
-                { 17, new SecondPotion(_texture) },
-                { 18, new Letter(_texture) },
-                { 19, new Food(_texture) },
+                { 4, new Clock(_texture) },
+                { 6, new FiveRupies(_texture) },
+                { 7, new LifePotion(_texture) },
+                { 8, new SecondPotion(_texture) },
+                { 9, new Letter(_texture) },
+                { 10, new Food(_texture) },
+                { 11, new Sword(_texture) },
+                { 12, new WhiteSword(_texture) },
+                { 13, new MagicalSword(_texture) },
+                { 14, new MagicalShield(_texture) },
+                { 15, new Boomerang(_texture) },
+                { 16, new MagicalBoomerang(_texture) },
+                { 17, new Bomb(_texture) },
+                { 18, new Bow(_texture) },
+                { 19, new Arrow(_texture) },
                 { 20, new BlueCandle(_texture) },
                 { 21, new RedCandle(_texture) },
                 { 22, new BlueRing(_texture) },
@@ -55,7 +50,10 @@ namespace sprint0Real.Commands
                 { 31, new MagicalKey(_texture) },
                 { 32, new Map(_texture) },
                 { 33, new Compass(_texture) },
-
+                { 2, new ContainerHeart(_texture) },
+                { 1, new Heart(_texture) },
+                { 3, new Fairy(_texture) },
+                { 5, new Rupy(_texture) },
              };
 
         }
@@ -68,7 +66,7 @@ namespace sprint0Real.Commands
             {
                 if (_currentItem == 1) //if at first block go to last
                 {
-                    _currentItem = 4;
+                    _currentItem = 33;
                 }
                 else //decrement to previous block
                 {
