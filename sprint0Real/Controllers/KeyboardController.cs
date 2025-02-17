@@ -32,14 +32,10 @@ namespace sprint0Real.Controllers
             itemTexture = _game.Content.Load<Texture2D>("NES - The Legend of Zelda - Items & Weapons");
 
 
-            /*
-            commands.Add(Keys.D0, new QuitCommand(_game));
-            commands.Add(Keys.NumPad0, new QuitCommand(_game));
-            */
             commands.Add(Keys.Y, new NextBlockCommand(_game, blockTexture));
             commands.Add(Keys.T, new PreviousBlockCommand(_game, blockTexture));
-            commands.Add(Keys.I, new NextTempItemCommand(_game,  itemTexture));
-            commands.Add(Keys.U, new PreviousTempItemCommand(_game, itemTexture));
+            commands.Add(Keys.I, new ShowNextItemCommand(_game,  itemTexture));
+            commands.Add(Keys.U, new ShowPreviousItemCommand(_game, itemTexture));
             commands.Add(Keys.E, new DamageLinkCommand(_game));
             commands.Add(Keys.D, new MoveRightCommand(_game));
             commands.Add(Keys.A, new MoveLeftCommand(_game));
@@ -53,8 +49,6 @@ namespace sprint0Real.Controllers
             commands.Add(Keys.N, new AttackCommand(_game));
             commands.Add(Keys.Q, new QuitCommand(_game));
             commands.Add(Keys.R, new ResetCommand(_game));
-            //commands.Add(Keys.U, new NextItemCommand(_game));
-            //commands.Add(Keys.I, new LastItemCommand(_game));
             commands.Add(Keys.D1, new ItemChangeCommand(_game, 1));
             commands.Add(Keys.D2, new ItemChangeCommand(_game, 2));
             commands.Add(Keys.D3, new ItemChangeCommand(_game, 3));
