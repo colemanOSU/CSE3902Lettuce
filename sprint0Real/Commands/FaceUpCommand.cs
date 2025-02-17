@@ -9,16 +9,14 @@ namespace sprint0Real.Commands
     public class FaceUpCommand : ICommand
     {
         private Game1 myGame;
-        private bool IsMoving;
-        public FaceUpCommand(Game1 game, bool MovementKeyIsDown)
+        public FaceUpCommand(Game1 game)
         {
             myGame = game;
-            bool IsMoving = MovementKeyIsDown;
         }
 
         public void Execute()
         {
-            if (myGame.Link.CanMove() && !IsMoving)
+            if (myGame.Link.CanMove())
             {
                 myGame.linkSprite = new FaceUpSprite(myGame.linkSheet, myGame);
             }
