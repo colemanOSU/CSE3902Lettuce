@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using sprint0Real.Controllers;
 using sprint0Real.Interfaces;
 using sprint0Real.LinkSprites;
 
@@ -9,16 +10,19 @@ namespace sprint0Real.Commands
     public class FaceRightCommand : ICommand
     {
         private readonly Game1 myGame;
-        public FaceRightCommand(Game1 game)
+        private bool IsMoving;
+        public FaceRightCommand(Game1 game, bool MovementKeyIsDown)
         {
             myGame = game;
+            IsMoving = MovementKeyIsDown;
         }
 
         public void Execute()
         {
-            if (myGame.Link.CanMove())
+            if (myGame.Link.CanMove() && !IsMoving)
             {
                 myGame.linkSprite = new FaceRightSprite(myGame.linkSheet, myGame);
+
             }
         }
     }
