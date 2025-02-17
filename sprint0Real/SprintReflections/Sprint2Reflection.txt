@@ -1,5 +1,13 @@
 ﻿Sprint 2 Reflection
-	Our team performed well in Sprint 2 and were able to implement the entirety of the functionality needed for Sprint 2 before the due date. We successfully distributed work among team members early into the project to ensure as much time to work on the code as possible. We organized weekly meetings to discuss the project and work done. In the rest of the semester there are a few things we can improve upon for project management. Team members completed their tasks at different times throughout the project which led to the entire project being slightly behind schedule up until the last few days. We also need to improve upon communication for the next Sprint. Although we had weekly meetings, we did not have full participation and sometimes without warning. We also can communicate more planning before jumping into the code because although our entire project works together, the different elements are implemented differently by each member which could be changed in the future so that the code is more cohesive and easy to follow. It could also clean up some classes such as game and the controller classes.
+
+	Our team performed well in Sprint 2 and were able to implement the entirety of the functionality needed for Sprint 2 before the due date. 
+	We successfully distributed work among team members early into the project to ensure as much time to work on the code as possible. We organized 
+	weekly meetings to discuss the project and work done. In the rest of the semester there are a few things we can improve upon for project management. 
+	Team members completed their tasks at different times throughout the project which led to the entire project being slightly behind schedule up until 
+	the last few days. We also need to improve upon communication for the next Sprint. Although we had weekly meetings, we did not have full 
+	participation and sometimes without warning. We also can communicate more planning before jumping into the code because although our entire project 
+	works together, the different elements are implemented differently by each member which could be changed in the future so that the code is more 
+	cohesive and easy to follow. It could also clean up some classes such as game and the controller classes.
 
 Sprint Burndown Link:
 https://app.zenhub.com/workspaces/cse-3902-team-lettuce-6798df69730d2b0029f3d1a2/reports/burndown?milestoneId=Z2lkOi8vcmFwdG9yL1NwcmludC8yOTcwNjc5
