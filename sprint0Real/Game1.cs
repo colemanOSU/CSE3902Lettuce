@@ -11,6 +11,7 @@ using System.Diagnostics;
 using sprint0Real.Controllers;
 using sprint0Real.EnemyStuff;
 using sprint0Real.ItemTempSprites;
+using sprint0Real.GameState;
 
 namespace sprint0Real
 {
@@ -29,6 +30,8 @@ namespace sprint0Real
         public int currentBlockIndex;
         public int currentItemIndex;
 
+        private GameStates currentGameState;
+        private TitleScreen titleScreen;
 
         public ILink Link;
         public ILinkSprite linkSprite;
@@ -63,7 +66,8 @@ namespace sprint0Real
 
             controllerList = new List<IController>();
             controllerList.Add(new KeyboardController(this));
-
+            currentGameState = GameStates.TitleScreen;
+            titleScreen = new TitleScreen();
             LinkState = new LinkStateMachine(this);
 
             base.Initialize();
@@ -71,6 +75,7 @@ namespace sprint0Real
 
         protected override void LoadContent()
         {
+            titleScreen.LoadContent(GraphicsDevice, Content);
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             
             font1 = Content.Load<SpriteFont>("MyMenuFont");
@@ -93,27 +98,40 @@ namespace sprint0Real
 
         protected override void Update(GameTime gameTime)
         {
+            switch (currentGameState)
+            {
+                case GameStates.TitleScreen:
+                    currentGameState = titleScreen.Update(gameTime);
+                    break;
 
+                case GameStates.GamePlay:
+                
             foreach (IController controller in controllerList)
             {
                 //sprite = controller.Update(sprite);
                 controller.Update(gameTime);
 
             }
-
             currentBlock.Update(gameTime);
             currentItem.Update(gameTime);
             LinkState.Update(gameTime);
             
-
             //EnemyPage.Instance.Update(gameTime);
             EnemyCycle.Update(gameTime);
-
+                    break;
+            }
         }
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+            switch (currentGameState)
+            {
+                case GameStates.TitleScreen:
+                    titleScreen.Draw(_spriteBatch, GraphicsDevice);
+                    break;
 
+                case GameStates.GamePlay:
+                 
             _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp);
 
 
@@ -138,13 +156,16 @@ namespace sprint0Real
 
             _spriteBatch.End();
 
-            
+                    break;
+            }
 
             base.Draw(gameTime);
         }
 
         public void ResetGame()
         {
+            this.titleScreen.isAnimating = false;
+            currentGameState = GameStates.TitleScreen;
             currentBlock = new BlockSpriteFloorTile(blockSheet);
             currentItem = new Heart(itemSheet);
             linkSprite = new ResetLink(linkSheet, this);
