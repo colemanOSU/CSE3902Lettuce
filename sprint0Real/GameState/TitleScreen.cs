@@ -25,15 +25,22 @@ namespace sprint0Real.GameState
         private Rectangle destinationRectangle;
         public bool isAnimating = false;
         private double _timer = 0;
+        Game1 _game;
         public void LoadContent(GraphicsDevice graphicsDevice, ContentManager content)
         {
             title = content.Load<Texture2D>("TitleScreen");
         }
 
-        public GameStates Update(GameTime gameTime)
+        public GameStates Update(GameTime gameTime, Game1 game)
         {
             currentKeyState = Keyboard.GetState();
             mouseState = Mouse.GetState();
+            _game = game;
+
+            if (currentKeyState.IsKeyDown(Keys.Q))
+            {
+                _game.Exit();
+            }
 
             if (!isAnimating && currentKeyState.IsKeyDown(Keys.Enter) && previousKeyState.IsKeyUp(Keys.Enter) || !isAnimating && mouseState.LeftButton == ButtonState.Pressed)
             {

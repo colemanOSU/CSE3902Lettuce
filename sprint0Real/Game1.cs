@@ -103,7 +103,7 @@ namespace sprint0Real
             switch (currentGameState)
             {
                 case GameStates.TitleScreen:
-                    currentGameState = titleScreen.Update(gameTime);
+                    currentGameState = titleScreen.Update(gameTime, this);
                     break;
 
                 case GameStates.GamePlay:

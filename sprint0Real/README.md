@@ -18,3 +18,5 @@ CONTROLS:
 	O and P: Cycle Through Displayed Enemy
 	Q: Quit The Program
 	R: Reset Program
+	ENTER: Start Game from title screen
+	ClICK: Start Game from title screen
