@@ -20,6 +20,7 @@ namespace sprint0Real.Items.ItemSprites
 
         public MagicSword(Texture2D texture, Game1 game)
         {
+        
             _texture = texture;
             myGame = game;
             _timer = 0;
