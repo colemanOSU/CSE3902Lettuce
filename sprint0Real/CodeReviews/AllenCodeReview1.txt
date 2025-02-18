@@ -2,6 +2,7 @@ Author: Allen Sluss
 Date: 2/16/2024
 Sprint 2
 I'm reviewing Jian's code for BTrapBehavior.cs
+About 5 minutes to complete
 
 
 For the most part the code is pretty good. Some personal suggestions I have could be 
