@@ -66,14 +66,14 @@ namespace sprint0Real.Controllers
             //Commands for when key is released. Subject to change.
             releaseCommands = new Dictionary<Keys, ICommand>();
 
-            releaseCommands.Add(Keys.D, new FaceRightCommand(_game));
-            releaseCommands.Add(Keys.A, new FaceLeftCommand(_game));
-            releaseCommands.Add(Keys.W, new FaceUpCommand(_game));
-            releaseCommands.Add(Keys.S, new FaceDownCommand(_game));
-            releaseCommands.Add(Keys.Right, new FaceRightCommand(_game));
-            releaseCommands.Add(Keys.Left, new FaceLeftCommand(_game));
-            releaseCommands.Add(Keys.Up, new FaceUpCommand(_game));
-            releaseCommands.Add(Keys.Down, new FaceDownCommand(_game));
+            releaseCommands.Add(Keys.D, new FaceRightCommand(_game, MovementKeyIsDown));
+            releaseCommands.Add(Keys.A, new FaceLeftCommand(_game, MovementKeyIsDown));
+            releaseCommands.Add(Keys.W, new FaceUpCommand(_game, MovementKeyIsDown));
+            releaseCommands.Add(Keys.S, new FaceDownCommand(_game, MovementKeyIsDown));
+            releaseCommands.Add(Keys.Right, new FaceRightCommand(_game, MovementKeyIsDown));
+            releaseCommands.Add(Keys.Left, new FaceLeftCommand(_game, MovementKeyIsDown));
+            releaseCommands.Add(Keys.Up, new FaceUpCommand(_game, MovementKeyIsDown));
+            releaseCommands.Add(Keys.Down, new FaceDownCommand(_game, MovementKeyIsDown));
 
 
             foreach (Keys key in commands.Keys)
