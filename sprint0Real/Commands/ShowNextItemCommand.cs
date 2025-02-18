@@ -64,7 +64,7 @@ namespace sprint0Real.Commands
 
             if (tempItems.ContainsKey(_currentItem))
             {
-                if (_currentItem == 4) //if at last block start over
+                if (_currentItem == 33) //if at last block start over
                 {
                     _currentItem = 1;
                 }

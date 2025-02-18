@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using sprint0Real.Interfaces;
+using sprint0Real.ItemUseSprites;
 using sprint0Real.LinkSprites;
 
 namespace sprint0Real.Commands
@@ -26,6 +27,7 @@ namespace sprint0Real.Commands
                 {
                     case Link.Direction.Left:
                         myGame.linkSprite = new UseLeftSprite(myGame.linkSheet, myGame);
+                        myGame.itemSprite = new SwordUseLeft(myGame.linkSheet, myGame);
                         break;
                     case Link.Direction.Right:
                         myGame.linkSprite = new UseRightSprite(myGame.linkSheet, myGame);
@@ -37,6 +39,8 @@ namespace sprint0Real.Commands
                         break;
                     case Link.Direction.Down:
                         myGame.linkSprite = new UseDownSprite(myGame.linkSheet, myGame);
+                        myGame.itemSprite = new SwordUseDown(myGame.linkSheet, myGame);
+
                         break;
                 }
                 

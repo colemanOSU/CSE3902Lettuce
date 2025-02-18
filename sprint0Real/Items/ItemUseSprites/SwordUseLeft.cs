@@ -3,32 +3,32 @@ using Microsoft.Xna.Framework;
 using sprint0Real.Interfaces;
 using sprint0Real.Items.ItemSprites;
 
-
-namespace sprint0Real.ItemUseSprites
+namespace sprint0Real.LinkSprites
 {
-    internal class SwordUseRight : IItemSprite
+    internal class SwordUseLeft : IItemSprite
     {
         private Texture2D _texture;
         private Game1 myGame;
-        private float _frameSpeed = 2f;
-        private Rectangle sourceRectangle;
+        private float _frameSpeed = 2f;  
+        private Rectangle sourceRectangle;  
         private Rectangle destinationRectangle;
+        private Vector2 org = new Vector2(0);  
 
-        private bool isMoving = true;
+        private bool isMoving = true;  
 
-        public SwordUseRight(Texture2D texture, Game1 game)
+        public SwordUseLeft(Texture2D texture, Game1 game)
         {
             _texture = texture;
             myGame = game;
             destinationRectangle = myGame.Link.GetLocation();
-            sourceRectangle = new Rectangle(10, 154, 16, 16);
+            sourceRectangle = new Rectangle(10, 154, 16, 16);  
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             if (isMoving)
             {
-                spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
+                spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White, 0, org, SpriteEffects.FlipHorizontally, 0f);
             }
         }
 
@@ -36,11 +36,11 @@ namespace sprint0Real.ItemUseSprites
         {
             if (isMoving)
             {
-                destinationRectangle.X += 4;
+                destinationRectangle.X -= 4;
 
-                if (destinationRectangle.X >= 750)
+                if (destinationRectangle.X <= 0)
                 {
-                    isMoving = false;
+                    isMoving = false;  
                 }
             }
         }
