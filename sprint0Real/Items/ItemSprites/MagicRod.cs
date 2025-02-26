@@ -17,7 +17,7 @@ namespace sprint0Real.Items.ItemSprites
         private int _currentFrame;
         private double _timer;
         private bool flag = false;
-
+        public Rectangle CollisionBox => destinationRectangle;
         public MagicRod(Texture2D texture, Game1 game)
         {
             _texture = texture;

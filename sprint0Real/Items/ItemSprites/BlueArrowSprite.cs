@@ -23,7 +23,7 @@ namespace sprint0Real.Items.ItemSprites
         private bool isDelaying = false;
         private Vector2 finalPosition;
         private Link.Direction arrowDirection;
-
+        public Rectangle CollisionBox => destinationRectangle;
 
         public BlueArrowSprite(Texture2D texture, Game1 game)
         {

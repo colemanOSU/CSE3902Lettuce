@@ -24,7 +24,7 @@ namespace sprint0Real.Items.ItemSprites
         private bool isDelaying = false;
         private Link.Direction swordDirection;
 
-
+        public Rectangle CollisionBox => destinationRectangle;
         public WhiteSwordSprite(Texture2D texture, Game1 game)
         {
 

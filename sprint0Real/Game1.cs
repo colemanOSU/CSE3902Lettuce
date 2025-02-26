@@ -46,6 +46,8 @@ namespace sprint0Real
         public IItem tempItem;
         public IItemSprite itemSprite;
 
+        public bool isCollide = false;
+
         //temp
 
         public EnemyCycleExample EnemyCycle;
@@ -75,6 +77,7 @@ namespace sprint0Real
             currentGameState = GameStates.TitleScreen;
             titleScreen = new TitleScreen();
             LinkState = new LinkStateMachine(this);
+            collisionTool = new RectDetection();
 
             base.Initialize();
         }
@@ -124,6 +127,18 @@ namespace sprint0Real
             
             //EnemyPage.Instance.Update(gameTime);
             EnemyCycle.Update(gameTime);
+
+                    //collision detection
+            isCollide = collisionTool.CheckCollision(currentBlock.CollisionBox, linkSprite.CollisionBox);
+                    if (isCollide)
+                    {
+                        System.Diagnostics.Debug.WriteLine("Collision detected!");
+                    }
+                    else
+                    {
+                        System.Diagnostics.Debug.WriteLine("Nothing!");
+                    }
+
                     break;
             }
         }

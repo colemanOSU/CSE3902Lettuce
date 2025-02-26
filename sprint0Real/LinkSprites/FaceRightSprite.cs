@@ -17,8 +17,7 @@ namespace sprint0Real.LinkSprites
 
         private Rectangle sourceRectangle = new(35, 11, 16, 16);
         private Rectangle destinationRectangle;
-
-
+        public Rectangle CollisionBox => destinationRectangle;
 
         public FaceRightSprite(Texture2D texture, Game1 game)
         {

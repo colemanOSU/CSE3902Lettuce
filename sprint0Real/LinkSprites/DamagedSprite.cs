@@ -15,6 +15,7 @@ namespace sprint0Real.LinkSprites
         private float _frameSpeed = 0.2f;
         private int _currentFrame;
         private double _timer;
+        public Rectangle CollisionBox => destinationRectangle;
 
         public DamagedSprite(Game1 game, Texture2D linkSheet)
         {

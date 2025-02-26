@@ -9,7 +9,7 @@ namespace sprint0Real.BlockSprites
     {
         public Rectangle sourceRectangle = new Rectangle(984, 28, 16, 16);
         public Rectangle destinationRectangle = new Rectangle(200, 200, 40, 40);
-
+        public Rectangle CollisionBox => destinationRectangle;
         public Texture2D _texture;
 
         public BlockSpriteBlack(Texture2D texture)

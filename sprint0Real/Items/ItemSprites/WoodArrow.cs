@@ -24,7 +24,7 @@ namespace sprint0Real.Items.ItemSprites
         private Vector2 finalPosition;
         private Link.Direction arrowDirection;
 
-
+        public Rectangle CollisionBox => destinationRectangle;
         public WoodArrow(Texture2D texture, Game1 game)
         {
             

@@ -23,7 +23,7 @@ namespace sprint0Real.Items.ItemSprites
         private double delayDuration = 0.5;
         private bool isDelaying = false;
         private Link.Direction swordDirection;
-
+        public Rectangle CollisionBox => destinationRectangle;
 
         public WoodSwordSprite(Texture2D texture, Game1 game)
         {

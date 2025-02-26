@@ -22,7 +22,7 @@ namespace sprint0Real.Items.ItemSprites
         private float speed = 200f;
         private float _frameSpeed = 0.2f;
         private int _frameCount = 3;
-
+        public Rectangle CollisionBox => destinationRectangle;
         public WoodBoomerangSprite(Texture2D texture, Game1 game)
         {
             _texture = texture;

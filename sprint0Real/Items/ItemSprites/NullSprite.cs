@@ -7,8 +7,8 @@ namespace sprint0Real.Items.ItemSprites
 {
     internal class NullSprite : ILinkSprite
     {
-        
-        
+
+        public Rectangle CollisionBox => new Rectangle(0,0,0,0);
         public NullSprite(Texture2D texture, Game1 game)
         {
         }

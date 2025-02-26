@@ -15,7 +15,7 @@ namespace sprint0Real.LinkSprites
         private Rectangle frame2Rec = new(1, 11, 16, 16);
         private Rectangle sourceRectangle = new(35, 11, 16, 16);
         private Rectangle destinationRectangle = new(200, 200, 16, 16);
-
+        public Rectangle CollisionBox => destinationRectangle;
         private Texture2D _texture;
         private Game1 myGame;
         private int frameCount = 0;
@@ -33,8 +33,9 @@ namespace sprint0Real.LinkSprites
 
         public void Update(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            myGame.Link.MoveInDirection(Link.Direction.Down);
 
+            myGame.Link.MoveInDirection(Link.Direction.Down);
+            destinationRectangle = new Rectangle(myGame.Link.GetLocation().X, myGame.Link.GetLocation().Y, destinationRectangle.Width, destinationRectangle.Height);
             frameCount++;
             if (frameCount < 10)
             {

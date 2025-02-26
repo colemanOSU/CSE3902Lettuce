@@ -24,7 +24,7 @@ namespace sprint0Real.LinkSprites
         private bool flag = false;
         private Rectangle sourceRectangle = new(141, 11, 16, 16);
         private Rectangle destinationRectangle;
-
+        public Rectangle CollisionBox => destinationRectangle;
 
 
         public UseUpSprite(Texture2D texture, Game1 game)

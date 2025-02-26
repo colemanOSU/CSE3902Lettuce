@@ -23,7 +23,7 @@ namespace sprint0Real.Items.ItemSprites
         private bool isDelaying = false;
         private float travelDistance = 180f;
         private Vector2 finalPosition;
-
+        public Rectangle CollisionBox => destinationRectangle;
         public FireSprite(Texture2D texture, Game1 game)
         {
 

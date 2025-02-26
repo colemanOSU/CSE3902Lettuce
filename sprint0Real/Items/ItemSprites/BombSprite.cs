@@ -19,7 +19,7 @@ namespace sprint0Real.Items.ItemSprites
         private bool animationComplete = false;
         private Rectangle sourceRectangle;
         private Rectangle destinationRectangle;
-
+        public Rectangle CollisionBox => destinationRectangle;
         public BombSprite(Texture2D texture, Game1 game)
         {
             _texture = texture;

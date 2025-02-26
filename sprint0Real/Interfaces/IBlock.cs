@@ -10,6 +10,7 @@ namespace sprint0Real.Interfaces
         void Update(GameTime gametime);
 
         void Draw(SpriteBatch spriteBatch);
+        public Rectangle CollisionBox { get; }
 
     }
 }
