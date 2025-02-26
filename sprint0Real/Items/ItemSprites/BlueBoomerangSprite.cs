@@ -30,6 +30,12 @@ namespace sprint0Real.Items.ItemSprites
             startPosition = new(game.Link.GetLocation().X, game.Link.GetLocation().Y);
             _position = startPosition;
             SetVelocity(game.Link.GetFacing());
+            destinationRectangle = new Rectangle((int)_position.X, (int)_position.Y, 8 * 3, 16 * 3);
+        }
+
+        public Rectangle Rect
+        {
+            get { return destinationRectangle; }
         }
 
         private void SetVelocity(Link.Direction direction)
@@ -47,7 +53,6 @@ namespace sprint0Real.Items.ItemSprites
         public void Draw(SpriteBatch spriteBatch)
         {
             sourceRectangle = new Rectangle(91 + 9 * _currentFrame, 185, 8, 16);
-            destinationRectangle = new Rectangle((int)_position.X, (int)_position.Y, 8 * 3, 16 * 3);
             spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
         }
 
@@ -55,6 +60,7 @@ namespace sprint0Real.Items.ItemSprites
         {
             _timer += gameTime.ElapsedGameTime.TotalSeconds;
             _position += velocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            destinationRectangle = new Rectangle((int)_position.X, (int)_position.Y, 8 * 3, 16 * 3);
             Vector2 temp = new(myGame.Link.GetLocation().X, myGame.Link.GetLocation().Y);
 
             if (!isReturning && Vector2.Distance(_position, startPosition) >= travelDistance)

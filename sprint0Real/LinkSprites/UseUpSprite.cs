@@ -34,7 +34,6 @@ namespace sprint0Real.LinkSprites
             _timer = 0;
             destinationRectangle = myGame.Link.GetLocation();
         }
-
         public void Draw(SpriteBatch spriteBatch)
         {
             if (!flag)

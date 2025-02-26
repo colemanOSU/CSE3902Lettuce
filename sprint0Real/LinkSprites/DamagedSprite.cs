@@ -23,6 +23,7 @@ namespace sprint0Real.LinkSprites
             _timer = 0;
             destinationRectangle = _game.Link.GetLocation();
         }
+
         public void Update(GameTime gameTime, SpriteBatch spriteBatch)
         {
             _timer += gameTime.ElapsedGameTime.TotalSeconds * 2;

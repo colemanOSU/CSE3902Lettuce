@@ -5,13 +5,9 @@ using System.Collections.Generic;
 
 namespace sprint0Real.Interfaces
 {
-    public interface IBlock
+    public interface ICollision
     {
         void Update(GameTime gametime);
-
-        void Draw(SpriteBatch spriteBatch);
-
-        Rectangle Rect {  get; }
 
     }
 }

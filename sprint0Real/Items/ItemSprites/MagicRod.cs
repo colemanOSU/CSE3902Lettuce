@@ -25,93 +25,26 @@ namespace sprint0Real.Items.ItemSprites
             _timer = 0;
             destinationRectangle = new Rectangle(game.Link.GetLocation().X + 13, game.Link.GetLocation().Y + 1, 14 * 3, 14 * 3);
         }
+        public Rectangle Rect
+        {
+            get { return destinationRectangle; }
+        }
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            
             switch (myGame.Link.GetFacing())
             {
                 case Link.Direction.Right:
-                    switch (_currentFrame)
-                    {
-                        case 0: 
-                            sourceRectangle = new(311, 82, 13, 8);
-                            destinationRectangle = new(myGame.Link.GetLocation().X + 14*3, myGame.Link.GetLocation().Y + 5*3, 13 * 3, 8 * 3);
-                            break;
-                        case 1:
-                            sourceRectangle = new(337, 81, 11, 11);
-                            destinationRectangle = new(myGame.Link.GetLocation().X + 12*3, myGame.Link.GetLocation().Y + 4*3, 11 * 3, 11 * 3);
-                            break;
-                        case 2:
-                            sourceRectangle = new(364, 84, 4, 4);
-                            destinationRectangle = new(myGame.Link.GetLocation().X + 15*3, myGame.Link.GetLocation().Y + 7*3, 4 * 3, 4 * 3);
-                            break;
-                        case 3:
-                            flag = true;
-                            break;
-                    }
                     spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
                     break;
                 case Link.Direction.Left:
-                    switch (_currentFrame)
-                    {
-                        case 0:
-                            sourceRectangle = new(311, 82, 13, 8);
-                            destinationRectangle = new(myGame.Link.GetLocation().X - 11*3, myGame.Link.GetLocation().Y + 15, 13 * 3, 8 * 3);
-                            break;
-                        case 1:
-                            sourceRectangle = new(337, 81, 11, 11);
-                            destinationRectangle = new(myGame.Link.GetLocation().X - 7*3, myGame.Link.GetLocation().Y + 12, 11 * 3, 11 * 3);
-                            break;
-                        case 2:
-                            sourceRectangle = new(364, 84, 4, 4);
-                            destinationRectangle = new(myGame.Link.GetLocation().X - 3*3, myGame.Link.GetLocation().Y + 21, 4 * 3, 4 * 3);
-                            break;
-                        case 3:
-                            flag = true;
-                            break;
-                    }
                     spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White, 0, Vector2.Zero, SpriteEffects.FlipHorizontally, 0);
                     break;
                 case Link.Direction.Up:
-                    switch (_currentFrame)
-                    {
-                        case 0:
-                            sourceRectangle = new(300, 97, 8, 13);
-                            destinationRectangle = new(myGame.Link.GetLocation().X + 3*3, myGame.Link.GetLocation().Y - 13*3, 8 * 3, 13 * 3);
-                            break;
-                        case 1: 
-                            sourceRectangle = new(317, 98, 8, 11);
-                            destinationRectangle = new(myGame.Link.GetLocation().X + 3*3, myGame.Link.GetLocation().Y - 11*3, 8 * 3, 11 * 3);
-                            break;
-                        case 2:
-                            sourceRectangle = new(334, 106, 8, 3);
-                            destinationRectangle = new(myGame.Link.GetLocation().X + 9, myGame.Link.GetLocation().Y -12, 8 * 3, 3 * 3);
-                            break;
-                        case 3:
-                            flag = true;
-                            break;
-                    }
                     spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
                     break;
                 case Link.Direction.Down:
-                    switch (_currentFrame)
-                    {
-                        case 0:
-                            sourceRectangle = new(302, 61, 8, 12);
-                            destinationRectangle = new(myGame.Link.GetLocation().X + 15, myGame.Link.GetLocation().Y + 15*3, 8 * 3, 12 * 3);
-                            break;
-                        case 1:
-                            sourceRectangle = new(321, 61, 5, 9);
-                            destinationRectangle = new(myGame.Link.GetLocation().X + 21, myGame.Link.GetLocation().Y + 14*3, 5 * 3, 9 * 3);
-                            break;
-                        case 2:
-                            sourceRectangle = new(338, 61, 4, 5);
-                            destinationRectangle = new(myGame.Link.GetLocation().X + 21, myGame.Link.GetLocation().Y + 14*3, 4 * 3, 5 * 3);
-                            break;
-                        case 3:
-                            flag = true;
-                            break;
-                    }
                     spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
                     break;
             }
@@ -126,6 +59,92 @@ namespace sprint0Real.Items.ItemSprites
                 _currentFrame = (_currentFrame + 1) % frameCount;
                 _timer -= _frameSpeed;
             }
+
+            //update destination rectangle for collision handling and draw
+            switch (myGame.Link.GetFacing())
+            {
+                case Link.Direction.Right:
+                    switch (_currentFrame)
+                    {
+                        case 0:
+                            sourceRectangle = new(311, 82, 13, 8);
+                            destinationRectangle = new(myGame.Link.GetLocation().X + 14 * 3, myGame.Link.GetLocation().Y + 5 * 3, 13 * 3, 8 * 3);
+                            break;
+                        case 1:
+                            sourceRectangle = new(337, 81, 11, 11);
+                            destinationRectangle = new(myGame.Link.GetLocation().X + 12 * 3, myGame.Link.GetLocation().Y + 4 * 3, 11 * 3, 11 * 3);
+                            break;
+                        case 2:
+                            sourceRectangle = new(364, 84, 4, 4);
+                            destinationRectangle = new(myGame.Link.GetLocation().X + 15 * 3, myGame.Link.GetLocation().Y + 7 * 3, 4 * 3, 4 * 3);
+                            break;
+                        case 3:
+                            flag = true;
+                            break;
+                    }
+                    break;
+                case Link.Direction.Left:
+                    switch (_currentFrame)
+                    {
+                        case 0:
+                            sourceRectangle = new(311, 82, 13, 8);
+                            destinationRectangle = new(myGame.Link.GetLocation().X - 11 * 3, myGame.Link.GetLocation().Y + 15, 13 * 3, 8 * 3);
+                            break;
+                        case 1:
+                            sourceRectangle = new(337, 81, 11, 11);
+                            destinationRectangle = new(myGame.Link.GetLocation().X - 7 * 3, myGame.Link.GetLocation().Y + 12, 11 * 3, 11 * 3);
+                            break;
+                        case 2:
+                            sourceRectangle = new(364, 84, 4, 4);
+                            destinationRectangle = new(myGame.Link.GetLocation().X - 3 * 3, myGame.Link.GetLocation().Y + 21, 4 * 3, 4 * 3);
+                            break;
+                        case 3:
+                            flag = true;
+                            break;
+                    }
+                    break;
+                case Link.Direction.Up:
+                    switch (_currentFrame)
+                    {
+                        case 0:
+                            sourceRectangle = new(300, 97, 8, 13);
+                            destinationRectangle = new(myGame.Link.GetLocation().X + 3 * 3, myGame.Link.GetLocation().Y - 13 * 3, 8 * 3, 13 * 3);
+                            break;
+                        case 1:
+                            sourceRectangle = new(317, 98, 8, 11);
+                            destinationRectangle = new(myGame.Link.GetLocation().X + 3 * 3, myGame.Link.GetLocation().Y - 11 * 3, 8 * 3, 11 * 3);
+                            break;
+                        case 2:
+                            sourceRectangle = new(334, 106, 8, 3);
+                            destinationRectangle = new(myGame.Link.GetLocation().X + 9, myGame.Link.GetLocation().Y - 12, 8 * 3, 3 * 3);
+                            break;
+                        case 3:
+                            flag = true;
+                            break;
+                    }
+                    break;
+                case Link.Direction.Down:
+                    switch (_currentFrame)
+                    {
+                        case 0:
+                            sourceRectangle = new(302, 61, 8, 12);
+                            destinationRectangle = new(myGame.Link.GetLocation().X + 15, myGame.Link.GetLocation().Y + 15 * 3, 8 * 3, 12 * 3);
+                            break;
+                        case 1:
+                            sourceRectangle = new(321, 61, 5, 9);
+                            destinationRectangle = new(myGame.Link.GetLocation().X + 21, myGame.Link.GetLocation().Y + 14 * 3, 5 * 3, 9 * 3);
+                            break;
+                        case 2:
+                            sourceRectangle = new(338, 61, 4, 5);
+                            destinationRectangle = new(myGame.Link.GetLocation().X + 21, myGame.Link.GetLocation().Y + 14 * 3, 4 * 3, 5 * 3);
+                            break;
+                        case 3:
+                            flag = true;
+                            break;
+                    }
+                    break;
+            }
+
             if (flag == true)
             {
                 myGame.Link.SetCanMove(true);

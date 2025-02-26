@@ -45,6 +45,17 @@ namespace sprint0Real
         //temp
 
         public EnemyCycleExample EnemyCycle;
+        public ICollision _collisionDetection;
+        public IBlock currentBlock;
+        public IItemtemp currentItem;
+
+        List<IController> controllerList;
+        
+        //temp for collision detection testing
+        //List<IEnemy> enemies;
+        List<IBlock> blocks;
+
+        public ILinkState LinkState;
 
         public Game1()
         {
@@ -55,13 +66,6 @@ namespace sprint0Real
             Link = new Link(this);
             currentItemIndex = 1;
         }
-
-        public IBlock currentBlock;
-        public IItemtemp currentItem;
-        
-        List<IController> controllerList;
-
-        public ILinkState LinkState;
 
         protected override void Initialize()
         {
@@ -108,15 +112,17 @@ namespace sprint0Real
 
                 case GameStates.GamePlay:
                 
-            foreach (IController controller in controllerList)
-            {
-                //sprite = controller.Update(sprite);
-                controller.Update(gameTime);
+                     foreach (IController controller in controllerList)
+                     {
+                         //sprite = controller.Update(sprite);
+                         controller.Update(gameTime);
 
-            }
-            currentBlock.Update(gameTime);
-            currentItem.Update(gameTime);
-            LinkState.Update(gameTime);
+                     }
+                     currentBlock.Update(gameTime);
+                     currentItem.Update(gameTime);
+                     LinkState.Update(gameTime);
+
+                    _collisionDetection.Update(gameTime);
             
             //EnemyPage.Instance.Update(gameTime);
             EnemyCycle.Update(gameTime);
@@ -174,7 +180,11 @@ namespace sprint0Real
         {
             this.titleScreen.isAnimating = false;
             currentGameState = GameStates.TitleScreen;
-            currentBlock = new BlockSpriteFloorTile(blockSheet);
+
+            blocks = new List<IBlock>();
+            //enemies = new List<IEnemy>();
+
+            currentBlock = new BlockSpriteFloorTile(blockSheet, new Vector2(300,300));
             currentItem = new Heart(itemSheet);
             linkSprite = new ResetLink(linkSheet, this);
             weaponItems = new NullSprite(linkSheet, this);
@@ -183,6 +193,11 @@ namespace sprint0Real
             Link = new Link(this);
             currentItemIndex = 1;
             LinkState = new LinkStateMachine(this);
+
+            //temp for collision detection testin
+            blocks.Add(currentBlock);
+            _collisionDetection = new CollisionDetection(Link, blocks, this);
+
             //Update with other objects in game...
 
         }
