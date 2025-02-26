@@ -52,6 +52,41 @@ namespace sprint0Real.EnemyStuff.BatStuff
             }
         }
 
+        public void hitWall()
+        {
+            switch (currentState)
+            {
+                case BatStates.Right:
+                    myBat.location.X += myBat.speed;
+                    break;
+                case BatStates.Left:
+                    myBat.location.X -= myBat.speed;
+                    break;
+                case BatStates.Up:
+                    myBat.location.Y += myBat.speed;
+                    break;
+                case BatStates.Down:
+                    myBat.location.Y -= myBat.speed;
+                    break;
+                case BatStates.LeftUp:
+                    myBat.location.X -= SqrtSpeed;
+                    myBat.location.Y += SqrtSpeed;
+                    break;
+                case BatStates.LeftDown:
+                    myBat.location.X -= SqrtSpeed;
+                    myBat.location.Y -= SqrtSpeed;
+                    break;
+                case BatStates.RightUp:
+                    myBat.location.X += SqrtSpeed;
+                    myBat.location.Y += SqrtSpeed;
+                    break;
+                case BatStates.RightDown:
+                    myBat.location.X += SqrtSpeed;
+                    myBat.location.Y += SqrtSpeed;
+                    break;
+            }
+        }
+
         public void Update()
         {
             switch (currentState)
