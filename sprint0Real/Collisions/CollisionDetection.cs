@@ -7,7 +7,7 @@ using sprint0Real.Interfaces;
 using sprint0Real.Commands;
 using System.Diagnostics;
 
-namespace sprint0Real
+namespace sprint0Real.Collisions
 {
     public class CollisionDetection : ICollision
     {
@@ -17,12 +17,12 @@ namespace sprint0Real
         private Game1 game;
         public CollisionDetection(ILink link, List<IBlock> blocks, Game1 game)
         {
-            this.linkSprite = link;
+            linkSprite = link;
             //this.enemies = enemies;
             this.blocks = blocks;
             this.game = game;
         }
-        
+
         public void Update(GameTime gametime)
         {
             checkLinkBlockCollisions();
