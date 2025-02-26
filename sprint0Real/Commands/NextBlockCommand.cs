@@ -13,24 +13,26 @@ namespace sprint0Real.Commands
         private Game1 _game;
         private Texture2D _texture;
         private int _currentBlock;
+        private Vector2 _position;
 
         public NextBlockCommand(Game1 game, Texture2D blockTexture)
         {
             _game = game;
             _texture = blockTexture;
+            _position = new Vector2(300, 300);
 
             blocks = new Dictionary<int, IBlock>()
             {
-                { 1, new BlockSpriteFloorTile(_texture) },
-                { 2, new BlockSpriteFloorBlock(_texture) },
-                { 3, new BlockSpriteStatueFaceRight(_texture) },
-                { 4, new BlockSpriteStatueFaceLeft(_texture) },
-                { 5, new BlockSpriteBlack(_texture) },
-                { 6, new BlockSpriteSpecks(_texture) },
-                { 7, new BlockSpriteNavy(_texture) },
-                { 8, new BlockSpriteStairs(_texture) },
-                { 9, new BlockSpriteBricks(_texture) },
-                { 10, new BlockSpriteStripes(_texture) }
+                { 1, new BlockSpriteFloorTile(_texture, _position) },
+                { 2, new BlockSpriteFloorBlock(_texture, _position) },
+                { 3, new BlockSpriteStatueFaceRight(_texture, _position) },
+                { 4, new BlockSpriteStatueFaceLeft(_texture, _position) },
+                { 5, new BlockSpriteBlack(_texture, _position) },
+                { 6, new BlockSpriteSpecks(_texture, _position) },
+                { 7, new BlockSpriteNavy(_texture, _position) },
+                { 8, new BlockSpriteStairs(_texture, _position) },
+                { 9, new BlockSpriteBricks(_texture, _position) },
+                { 10, new BlockSpriteStripes(_texture, _position) }
              };
 
         }

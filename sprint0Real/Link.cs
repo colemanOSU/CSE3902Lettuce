@@ -150,4 +150,8 @@ public class Link : ILink
     {
         isDamaged = ToDamage;
     }
+    public Rectangle Rect
+    {
+        get { return destinationRectangle; }
+    }
 }

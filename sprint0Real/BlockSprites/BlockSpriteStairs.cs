@@ -7,24 +7,35 @@ namespace sprint0Real.BlockSprites
 {
     public class BlockSpriteStairs : IBlock
     {
-        public Rectangle sourceRectangle = new Rectangle(1035, 28, 16, 16);
-        public Rectangle destinationRectangle = new Rectangle(200, 200, 40, 40);
+        private int width = 16;
+        private int height = 16;
+        public Rectangle sourceRectangle;
+        public Rectangle destinationRectangle;
+        public Vector2 position;
 
-        public Texture2D _texture;
+        public Texture2D texture;
 
-        public BlockSpriteStairs(Texture2D texture)
+        public BlockSpriteStairs(Texture2D texture, Vector2 startPos)
         {
-            _texture = texture;
+            this.texture = texture;
+            this.position = startPos;
+            sourceRectangle = new Rectangle(1035, 28, width, height);
+            destinationRectangle = new Rectangle((int)position.X, (int)position.Y, width * 2, height * 2);
+            //destination(200, 200)
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
+            spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, Color.White);
         }
 
         public void Update(GameTime gametime)
         {
             //nothing, static
+        }
+        public Rectangle Rect
+        {
+            get { return destinationRectangle; }
         }
     }
 }

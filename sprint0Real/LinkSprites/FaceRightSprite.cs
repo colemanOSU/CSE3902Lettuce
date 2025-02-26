@@ -34,6 +34,7 @@ namespace sprint0Real.LinkSprites
 
         public void Update(GameTime gameTime, SpriteBatch spriteBatch)
         {
+            destinationRectangle = myGame.Link.GetLocation();
             //Static Sprite, no need to update
         }
     }

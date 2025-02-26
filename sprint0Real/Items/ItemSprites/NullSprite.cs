@@ -7,8 +7,11 @@ namespace sprint0Real.Items.ItemSprites
 {
     internal class NullSprite : ILinkSprite
     {
-        
-        
+
+        public Rectangle Rect
+        {
+            get { return new Rectangle(0, 0, 0, 0); }
+        }
         public NullSprite(Texture2D texture, Game1 game)
         {
         }

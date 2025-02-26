@@ -5,6 +5,7 @@ namespace sprint0Real.Interfaces
 {
     public interface ILink
     {
+        Rectangle Rect { get; }
         public void MoveInDirection(Direction dir);
 
         public Rectangle GetLocation();

@@ -26,6 +26,11 @@ namespace sprint0Real.Items.ItemSprites
             myGame = game;
             _position = new(game.Link.GetLocation().X,game.Link.GetLocation().Y);
             SetPosition(game.Link.GetFacing());
+            destinationRectangle = new Rectangle((int)_position.X, (int)_position.Y, isDelaying ? 8 * 3 : 16 * 3, 16 * 3);
+        }
+        public Rectangle Rect
+        {
+            get { return destinationRectangle; }
         }
 
         private void SetPosition(Link.Direction direction)
@@ -43,7 +48,6 @@ namespace sprint0Real.Items.ItemSprites
         public void Draw(SpriteBatch spriteBatch)
         {
             sourceRectangle = new Rectangle(isDelaying ? 129 : 138 + 17 * _currentFrame, 185, isDelaying ? 8 : 16, 16);
-            destinationRectangle = new Rectangle((int)_position.X, (int)_position.Y, isDelaying ? 8*3 : 16*3, 16*3);
             spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
         }
 
@@ -58,6 +62,7 @@ namespace sprint0Real.Items.ItemSprites
                 isDelaying = false;
                 isAnimating = true;
                 _timer = 0;
+                destinationRectangle = new Rectangle((int)_position.X, (int)_position.Y, isDelaying ? 8 * 3 : 16 * 3, 16 * 3);
             }
             
             if (isAnimating && _timer >= _frameSpeed)

@@ -12,5 +12,7 @@ namespace sprint0Real.Interfaces
     {
         void Update(GameTime time);
         void Draw(SpriteBatch spriteBatch);
+
+       // Rectangle Rect {  get; }
     }
 }

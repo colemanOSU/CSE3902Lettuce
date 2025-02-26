@@ -15,7 +15,8 @@ namespace sprint0Real.LinkSprites
         private Rectangle frame1Rec = new(35 + 17, 11, 16, 16);
         private Rectangle frame2Rec = new(35, 11, 16, 16);
         private Rectangle sourceRectangle = new(35, 11, 16, 16);
-        private Rectangle destinationRectangle = new(200, 200, 16, 16);
+        //private Rectangle destinationRectangle = new(200, 200, 16, 16);
+        private Rectangle destinationRectangle;
 
         private Texture2D _texture;
         private Game1 myGame;
@@ -25,6 +26,7 @@ namespace sprint0Real.LinkSprites
         {
             _texture = texture;
             myGame = game;
+            destinationRectangle = new Rectangle((int)myGame.Link.GetLocation().X, (int)myGame.Link.GetLocation().Y, 16, 16);
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -35,6 +37,7 @@ namespace sprint0Real.LinkSprites
         public void Update(GameTime gameTime, SpriteBatch spriteBatch)
         {
             myGame.Link.MoveInDirection(Link.Direction.Right);
+            destinationRectangle = new Rectangle((int)myGame.Link.GetLocation().X, (int)myGame.Link.GetLocation().Y, 16, 16);
 
             frameCount++;
             if (frameCount < 10)

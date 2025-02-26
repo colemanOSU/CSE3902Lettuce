@@ -38,6 +38,10 @@ namespace sprint0Real.Items.ItemSprites
             destinationRectangle = new Rectangle((int)_position.X, (int)_position.Y, 16 * 3, 16 * 3);
 
         }
+        public Rectangle Rect
+        {
+            get { return destinationRectangle; }
+        }
         public void GetPosition(Link.Direction direction)
         {
             switch (direction)
@@ -68,22 +72,18 @@ namespace sprint0Real.Items.ItemSprites
                 {
                     case Link.Direction.Right:
                         sourceRectangle = new(10, 154, 16, 16);
-                        destinationRectangle = new((int)_position.X, (int)_position.Y, 16 * 3, 16 * 3);
                         spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
                         break;
                     case Link.Direction.Left:
                         sourceRectangle = new(10, 154, 16, 16);
-                        destinationRectangle = new((int)_position.X, (int)_position.Y, 16 * 3, 16 * 3);
                         spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White, 0, Vector2.Zero, SpriteEffects.FlipHorizontally, 0);
                         break;
                     case Link.Direction.Up:
                         sourceRectangle = new(1, 154, 8, 16);
-                        destinationRectangle = new((int)_position.X, (int)_position.Y, 8 * 3, 16 * 3);
                         spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
                         break;
                     case Link.Direction.Down:
                         sourceRectangle = new(1, 154, 8, 16);
-                        destinationRectangle = new((int)_position.X, (int)_position.Y, 8 * 3, 16 * 3);
                         spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White, 0, Vector2.Zero, SpriteEffects.FlipVertically, 0);
                         break;
                 }
@@ -94,6 +94,22 @@ namespace sprint0Real.Items.ItemSprites
 
         public void Update(GameTime gameTime, SpriteBatch spriteBatch)
         {
+            switch (swordDirection)
+            {
+                case Link.Direction.Right:
+                    destinationRectangle = new((int)_position.X, (int)_position.Y, 16 * 3, 16 * 3);
+                    break;
+                case Link.Direction.Left:
+                    destinationRectangle = new((int)_position.X, (int)_position.Y, 16 * 3, 16 * 3);
+                    break;
+                case Link.Direction.Up:
+                    destinationRectangle = new((int)_position.X, (int)_position.Y, 8 * 3, 16 * 3);
+                    break;
+                case Link.Direction.Down:
+                    destinationRectangle = new((int)_position.X, (int)_position.Y, 8 * 3, 16 * 3);
+                    break;
+            }
+
             _timer += gameTime.ElapsedGameTime.TotalSeconds * 2;
             if (isMoving)
             {

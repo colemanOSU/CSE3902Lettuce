@@ -38,6 +38,11 @@ namespace sprint0Real.Items.ItemSprites
             destinationRectangle = new Rectangle((int)_position.X, (int)_position.Y, 16 * 3, 16 * 3);
 
         }
+
+        public Rectangle Rect
+        {
+            get { return destinationRectangle; }
+        }
         public void GetPosition(Link.Direction direction)
         {
             switch (direction)
@@ -123,6 +128,7 @@ namespace sprint0Real.Items.ItemSprites
             if (isMoving)
             {
                 _position += velocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                destinationRectangle = new Rectangle((int)_position.X, (int)_position.Y, destinationRectangle.Width, destinationRectangle.Height);
                 if (_timer >= 2)
                 {
                     isMoving = false;

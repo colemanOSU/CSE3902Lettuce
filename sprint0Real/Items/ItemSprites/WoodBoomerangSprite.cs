@@ -31,6 +31,10 @@ namespace sprint0Real.Items.ItemSprites
             _position = startPosition;
             SetVelocity(game.Link.GetFacing());
         }
+        public Rectangle Rect
+        {
+            get { return destinationRectangle; }
+        }
 
         private void SetVelocity(Link.Direction direction)
         {
@@ -47,12 +51,12 @@ namespace sprint0Real.Items.ItemSprites
         public void Draw(SpriteBatch spriteBatch)
         {
             sourceRectangle = new Rectangle(64 + 9 * _currentFrame, 185, 8, 16);
-            destinationRectangle = new Rectangle((int)_position.X, (int)_position.Y, 8 * 3, 16 * 3);
             spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
         }
 
         public void Update(GameTime gameTime,SpriteBatch spriteBatch)
         {
+            destinationRectangle = new Rectangle((int)_position.X, (int)_position.Y, 8 * 3, 16 * 3);
             _timer += gameTime.ElapsedGameTime.TotalSeconds;
             _position += velocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
 

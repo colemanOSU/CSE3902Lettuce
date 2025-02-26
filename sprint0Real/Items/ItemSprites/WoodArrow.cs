@@ -38,6 +38,10 @@ namespace sprint0Real.Items.ItemSprites
             destinationRectangle = new Rectangle((int)_position.X, (int)_position.Y, 16*3, 16 * 3);
 
         }
+        public Rectangle Rect
+        {
+            get { return destinationRectangle; }
+        }
         public void GetPosition(Link.Direction direction)
         {
             switch (direction)
@@ -65,6 +69,7 @@ namespace sprint0Real.Items.ItemSprites
             if (isDelaying)
             {
                 sourceRectangle = new(53, 189, 8, 8);
+                
                 switch (arrowDirection)
                 {
                     case Link.Direction.Right:
@@ -83,7 +88,7 @@ namespace sprint0Real.Items.ItemSprites
                         destinationRectangle = new Rectangle( (int)finalPosition.X + 5,(int)finalPosition.Y + (16 * 3),8 * 3, 8 * 3);
                         break;
                 }
-
+                
                 spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
                 return;
             }
@@ -119,9 +124,14 @@ namespace sprint0Real.Items.ItemSprites
         public void Update(GameTime gameTime, SpriteBatch spriteBatch)
         {
             _timer += gameTime.ElapsedGameTime.TotalSeconds*2;
+
+
             if (isMoving)
             {
                 _position += velocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+                //update destination rectangle for collision handling
+                destinationRectangle = new Rectangle((int)_position.X, (int)_position.Y, 16 * 3, 16 * 3);
                 if (_timer > 1)
                 {
                     isMoving = false;
