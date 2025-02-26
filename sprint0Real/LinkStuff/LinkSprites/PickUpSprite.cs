@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using sprint0Real.Interfaces;
 using Microsoft.Xna.Framework.Input;
 
-namespace sprint0Real.LinkSprites
+namespace sprint0Real.LinkStuff.LinkSprites
 {
     internal class PickUpSprite : ILinkSprite
     {

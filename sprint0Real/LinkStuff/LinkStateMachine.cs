@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Input;
 using sprint0Real.Commands;
 using sprint0Real.Interfaces;
 using System.Data.Common;
-namespace sprint0Real
+namespace sprint0Real.LinkStuff
 {
     public class LinkStateMachine : ILinkState
     {
@@ -16,11 +16,11 @@ namespace sprint0Real
         private int DamageLoops;
         public LinkStateMachine(Game1 game)
         {
-            this.Link = game.Link;
+            Link = game.Link;
             DamageFrameCount = 0;
             DamageLoops = 0;
         }
-        public void DamageLink() 
+        public void DamageLink()
         {
             Link.SetIsDamaged(true);
         }

@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using sprint0Real.Interfaces;
 
-namespace sprint0Real.LinkSprites
+namespace sprint0Real.LinkStuff.LinkSprites
 {
     internal class MoveDownSprite : ILinkSprite
     {
@@ -25,7 +25,7 @@ namespace sprint0Real.LinkSprites
         {
             _texture = texture;
             myGame = game;
-            destinationRectangle = new Rectangle((int)myGame.Link.GetLocation().X, (int)myGame.Link.GetLocation().Y, 16, 16);
+            destinationRectangle = new Rectangle(myGame.Link.GetLocation().X, myGame.Link.GetLocation().Y, 16, 16);
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -36,7 +36,7 @@ namespace sprint0Real.LinkSprites
         public void Update(GameTime gameTime, SpriteBatch spriteBatch)
         {
             myGame.Link.MoveInDirection(Link.Direction.Down);
-            destinationRectangle = new Rectangle((int)myGame.Link.GetLocation().X, (int)myGame.Link.GetLocation().Y, 16, 16);
+            destinationRectangle = new Rectangle(myGame.Link.GetLocation().X, myGame.Link.GetLocation().Y, 16, 16);
 
             frameCount++;
             if (frameCount < 10)

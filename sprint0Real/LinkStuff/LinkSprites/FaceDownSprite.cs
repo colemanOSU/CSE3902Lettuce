@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using sprint0Real.Interfaces;
 using Microsoft.Xna.Framework.Input;
 
-namespace sprint0Real.LinkSprites
+namespace sprint0Real.LinkStuff.LinkSprites
 {
     internal class FaceDownSprite : ILinkSprite
     {
@@ -33,7 +33,7 @@ namespace sprint0Real.LinkSprites
             spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, myGame.Link.GetLinkColor());
         }
 
-        
+
 
 
         public void Update(GameTime gameTime, SpriteBatch spriteBatch)

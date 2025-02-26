@@ -11,9 +11,9 @@ using sprint0Real.Commands;
 using System.Xml.Linq;
 using sprint0Real.Items.ItemSprites;
 
-namespace sprint0Real.LinkSprites
+namespace sprint0Real.LinkStuff.LinkSprites
 {
-    internal class UseDownSprite : ILinkSprite
+    internal class UseLeftSprite : ILinkSprite
     {
         private Texture2D _texture;
         private Game1 myGame;
@@ -22,11 +22,11 @@ namespace sprint0Real.LinkSprites
         private int _currentFrame;
         private double _timer;
         private bool flag = false;
-        private Rectangle sourceRectangle = new(107, 11, 16, 16);
+        private Rectangle sourceRectangle = new(124, 11, 16, 16);
         private Rectangle destinationRectangle;
 
 
-        public UseDownSprite(Texture2D texture, Game1 game)
+        public UseLeftSprite(Texture2D texture, Game1 game)
         {
             _texture = texture;
             myGame = game;
@@ -44,17 +44,17 @@ namespace sprint0Real.LinkSprites
                         myGame.Link.DrawWeaponSprite();
                         break;
                     case 2:
-                        sourceRectangle = new(1, 11, 16, 16);
+                        sourceRectangle = new(52, 11, 16, 16);
                         break;
                     case 3:
-                        sourceRectangle = new(18, 11, 16, 16);
+                        sourceRectangle = new(35, 11, 16, 16);
                         flag = true;
                         myGame.Link.SetCanMove(true);
                         myGame.Link.SetCanAttack(true);
                         break;
                 }
             }
-            spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, myGame.Link.GetLinkColor());
+            spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, myGame.Link.GetLinkColor(), 0, Vector2.Zero, SpriteEffects.FlipHorizontally, 0);
             
         }
 
@@ -66,7 +66,7 @@ namespace sprint0Real.LinkSprites
                 _currentFrame = (_currentFrame + 1) % frameCount;
                 _timer -= _frameSpeed;
             }
-            
+           
         }
     }
 }

@@ -9,11 +9,13 @@ using sprint0Real.Interfaces;
 using Microsoft.Xna.Framework.Input;
 using sprint0Real.Commands;
 using System.Xml.Linq;
+using System.Linq.Expressions;
+using System.Reflection.Metadata.Ecma335;
 using sprint0Real.Items.ItemSprites;
 
-namespace sprint0Real.LinkSprites
+namespace sprint0Real.LinkStuff.LinkSprites
 {
-    internal class UseLeftSprite : ILinkSprite
+    internal class UseRightSprite : ILinkSprite
     {
         private Texture2D _texture;
         private Game1 myGame;
@@ -25,8 +27,7 @@ namespace sprint0Real.LinkSprites
         private Rectangle sourceRectangle = new(124, 11, 16, 16);
         private Rectangle destinationRectangle;
 
-
-        public UseLeftSprite(Texture2D texture, Game1 game)
+        public UseRightSprite(Texture2D texture, Game1 game)
         {
             _texture = texture;
             myGame = game;
@@ -48,14 +49,15 @@ namespace sprint0Real.LinkSprites
                         break;
                     case 3:
                         sourceRectangle = new(35, 11, 16, 16);
-                        flag = true;
                         myGame.Link.SetCanMove(true);
                         myGame.Link.SetCanAttack(true);
+                        flag = true;
                         break;
                 }
             }
-            spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, myGame.Link.GetLinkColor(), 0, Vector2.Zero, SpriteEffects.FlipHorizontally, 0);
-            
+            spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, myGame.Link.GetLinkColor());
+
+
         }
 
         public void Update(GameTime gameTime, SpriteBatch spriteBatch)
@@ -66,7 +68,8 @@ namespace sprint0Real.LinkSprites
                 _currentFrame = (_currentFrame + 1) % frameCount;
                 _timer -= _frameSpeed;
             }
-           
+
+
         }
     }
 }
