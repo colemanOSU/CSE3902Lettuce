@@ -6,13 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using sprint0Real.Interfaces;
+using Microsoft.Xna.Framework.Input;
 
-namespace sprint0Real.LinkSprites
+namespace sprint0Real.LinkStuff.LinkSprites
 {
-    internal class MoveUpSprite : ILinkSprite
+    internal class MoveRightSprite : ILinkSprite
     {
-        private Rectangle frame1Rec = new(69 + 17, 11, 16, 16);
-        private Rectangle frame2Rec = new(69, 11, 16, 16);
+        private Rectangle frame1Rec = new(35 + 17, 11, 16, 16);
+        private Rectangle frame2Rec = new(35, 11, 16, 16);
         private Rectangle sourceRectangle = new(35, 11, 16, 16);
         //private Rectangle destinationRectangle = new(200, 200, 16, 16);
         private Rectangle destinationRectangle;
@@ -21,22 +22,22 @@ namespace sprint0Real.LinkSprites
         private Game1 myGame;
         private int frameCount = 0;
 
-        public MoveUpSprite(Texture2D texture, Game1 game)
+        public MoveRightSprite(Texture2D texture, Game1 game)
         {
             _texture = texture;
             myGame = game;
-            destinationRectangle = new Rectangle((int)myGame.Link.GetLocation().X, (int)myGame.Link.GetLocation().Y, 16, 16);
+            destinationRectangle = new Rectangle(myGame.Link.GetLocation().X, myGame.Link.GetLocation().Y, 16, 16);
         }
+
         public void Draw(SpriteBatch spriteBatch)
         {
-            //Draws all right facing sprites flipped horizontally
-            spriteBatch.Draw(_texture, myGame.Link.GetLocation(), sourceRectangle, myGame.Link.GetLinkColor(), 0, Vector2.Zero, SpriteEffects.FlipHorizontally, 0);
+            spriteBatch.Draw(_texture, myGame.Link.GetLocation(), sourceRectangle, myGame.Link.GetLinkColor());
         }
 
         public void Update(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            myGame.Link.MoveInDirection(Link.Direction.Up);
-            destinationRectangle = new Rectangle((int)myGame.Link.GetLocation().X, (int)myGame.Link.GetLocation().Y, 16, 16);
+            myGame.Link.MoveInDirection(Link.Direction.Right);
+            destinationRectangle = new Rectangle(myGame.Link.GetLocation().X, myGame.Link.GetLocation().Y, 16, 16);
 
             frameCount++;
             if (frameCount < 10)

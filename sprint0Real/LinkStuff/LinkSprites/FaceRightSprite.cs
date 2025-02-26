@@ -8,19 +8,19 @@ using System.Threading.Tasks;
 using sprint0Real.Interfaces;
 using Microsoft.Xna.Framework.Input;
 
-namespace sprint0Real.LinkSprites
+namespace sprint0Real.LinkStuff.LinkSprites
 {
-    internal class FaceUpSprite : ILinkSprite
+    internal class FaceRightSprite : ILinkSprite
     {
         private Texture2D _texture;
         private Game1 myGame;
 
-        private Rectangle sourceRectangle = new(69, 11, 16, 16);
+        private Rectangle sourceRectangle = new(35, 11, 16, 16);
         private Rectangle destinationRectangle;
 
 
 
-        public FaceUpSprite(Texture2D texture, Game1 game)
+        public FaceRightSprite(Texture2D texture, Game1 game)
         {
             _texture = texture;
             myGame = game;
@@ -34,6 +34,7 @@ namespace sprint0Real.LinkSprites
 
         public void Update(GameTime gameTime, SpriteBatch spriteBatch)
         {
+            destinationRectangle = myGame.Link.GetLocation();
             //Static Sprite, no need to update
         }
     }

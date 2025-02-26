@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using sprint0Real.Interfaces;
 using sprint0Real.LinkSprites;
 using sprint0Real;
+using sprint0Real.LinkStuff;
 public class Link : ILink
 {
     private Rectangle destinationRectangle;

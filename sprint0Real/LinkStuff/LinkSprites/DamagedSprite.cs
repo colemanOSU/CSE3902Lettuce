@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using sprint0Real.Interfaces;
 using System.Collections.Generic;
 
-namespace sprint0Real.LinkSprites
+namespace sprint0Real.LinkStuff.LinkSprites
 {
     public class DamagedSprite : ILinkSprite
     {

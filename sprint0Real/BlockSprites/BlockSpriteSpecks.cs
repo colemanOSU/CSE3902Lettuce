@@ -20,7 +20,7 @@ namespace sprint0Real.BlockSprites
             this.texture = texture;
             this.position = startPos;
             sourceRectangle = new Rectangle(1001, 28, width, height);
-            destinationRectangle = new Rectangle((int)position.X, (int)position.Y, width * 2, height * 2);
+            destinationRectangle = new Rectangle((int)position.X, (int)position.Y, width * 3, height * 3);
             //destination(200, 200)
         }
 

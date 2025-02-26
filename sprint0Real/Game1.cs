@@ -5,7 +5,7 @@ using sprint0Real.BlockSprites;
 using sprint0Real.Items.ItemSprites;
 using sprint0Real.Interfaces;
 using System;
-using sprint0Real.LinkSprites;
+using sprint0Real.LinkStuff.LinkSprites;
 using System.Collections.Generic;
 using System.Diagnostics;
 using sprint0Real.Controllers;
@@ -13,6 +13,7 @@ using sprint0Real.EnemyStuff;
 using sprint0Real.ItemTempSprites;
 using sprint0Real.GameState;
 using sprint0Real.Collisions;
+using sprint0Real.LinkStuff;
 
 namespace sprint0Real
 {

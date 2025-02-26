@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using sprint0Real.Interfaces;
-using sprint0Real.LinkSprites;
+using sprint0Real.LinkStuff.LinkSprites;
 
 namespace sprint0Real.Commands
 {

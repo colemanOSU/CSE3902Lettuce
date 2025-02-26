@@ -9,53 +9,52 @@ using sprint0Real.Interfaces;
 using Microsoft.Xna.Framework.Input;
 using sprint0Real.Commands;
 using System.Xml.Linq;
-using System.Linq.Expressions;
-using System.Reflection.Metadata.Ecma335;
 using sprint0Real.Items.ItemSprites;
 
-namespace sprint0Real.LinkSprites
+namespace sprint0Real.LinkStuff.LinkSprites
 {
-    internal class UseRightSprite : ILinkSprite
+    internal class UseUpSprite : ILinkSprite
     {
         private Texture2D _texture;
         private Game1 myGame;
-        private int frameCount = 4; 
+        private int frameCount = 4;
         private float _frameSpeed = 0.2f;
         private int _currentFrame;
         private double _timer;
         private bool flag = false;
-        private Rectangle sourceRectangle = new(124, 11, 16, 16);
+        private Rectangle sourceRectangle = new(141, 11, 16, 16);
         private Rectangle destinationRectangle;
 
-        public UseRightSprite(Texture2D texture, Game1 game)
+
+
+        public UseUpSprite(Texture2D texture, Game1 game)
         {
             _texture = texture;
             myGame = game;
             _timer = 0;
             destinationRectangle = myGame.Link.GetLocation();
         }
-
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (!flag) { 
-            switch (_currentFrame)
+            if (!flag)
             {
-                case 1:
-                    myGame.Link.DrawWeaponSprite();
-                    break;
-                case 2:
-                    sourceRectangle = new(52, 11, 16, 16);
-                    break;
-                case 3:
-                    sourceRectangle = new(35, 11, 16, 16);
+                switch (_currentFrame)
+                {
+                    case 1:
+                        myGame.Link.DrawWeaponSprite();
+                        break;
+                    case 2:
+                        sourceRectangle = new(69, 11, 16, 16);
+                        break;
+                    case 3:
+                        sourceRectangle = new(86, 11, 16, 16);
+                        flag = true;
                         myGame.Link.SetCanMove(true);
                         myGame.Link.SetCanAttack(true);
-                        flag = true;
-                    break;
-            }
+                        break;
+                }
             }
             spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, myGame.Link.GetLinkColor());
-            
 
         }
 
@@ -67,7 +66,6 @@ namespace sprint0Real.LinkSprites
                 _currentFrame = (_currentFrame + 1) % frameCount;
                 _timer -= _frameSpeed;
             }
-            
 
         }
     }

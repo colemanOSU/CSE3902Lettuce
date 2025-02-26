@@ -8,24 +8,25 @@ using System.Threading.Tasks;
 using sprint0Real.Interfaces;
 using Microsoft.Xna.Framework.Input;
 
-namespace sprint0Real.LinkSprites
+namespace sprint0Real.LinkStuff.LinkSprites
 {
-    internal class ResetLink : ILinkSprite
+    internal class FaceUpSprite : ILinkSprite
     {
         private Texture2D _texture;
         private Game1 myGame;
 
-        private Rectangle sourceRectangle = new(35, 11, 16, 16);
+        private Rectangle sourceRectangle = new(69, 11, 16, 16);
         private Rectangle destinationRectangle;
 
 
 
-        public ResetLink(Texture2D texture, Game1 game)
+        public FaceUpSprite(Texture2D texture, Game1 game)
         {
             _texture = texture;
             myGame = game;
-            destinationRectangle = new Rectangle(200, 200, 50, 50);
+            destinationRectangle = myGame.Link.GetLocation();
         }
+
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, myGame.Link.GetLinkColor());
