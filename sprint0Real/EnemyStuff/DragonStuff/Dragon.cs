@@ -43,6 +43,13 @@ namespace sprint0Real.EnemyStuff.DragonStuff
             stateMachine.TakeDamage();
         }
 
+        public void hitWall()
+        {
+            stateMachine.hitWall();
+            stateMachine.ChangeDirection();
+        }
+
+
         public void Attack()
         {
             DragonAttack attack = new DragonAttack(location, new Vector2(EnemySpriteFactory.Instance.myGame.Link.GetLocation().X, EnemySpriteFactory.Instance.myGame.Link.GetLocation().Y));

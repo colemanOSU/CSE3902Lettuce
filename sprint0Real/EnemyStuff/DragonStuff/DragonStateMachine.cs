@@ -52,6 +52,22 @@ namespace sprint0Real.EnemyStuff.DragonStuff
             myDragon.mySprite = EnemySpriteFactory.Instance.CreateDragonEnemySprite();
         }
 
+        public void hitWall()
+        {
+            switch (currentState)
+            {
+                case DragonState.Idle:
+                    myDragon.location.X -= myDragon.speed;
+                    break;
+                case DragonState.Attack:
+                    myDragon.location.X -= myDragon.speed;
+                    break;
+                case DragonState.Damaged:
+                    myDragon.location.X -= myDragon.speed;
+                    break;
+            }
+        }
+
         public void Update()
         {
             switch (currentState)

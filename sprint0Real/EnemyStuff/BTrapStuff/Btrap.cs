@@ -36,6 +36,11 @@ namespace sprint0Real.EnemyStuff.BTrapStuff
             stateMachine.ChangeDirection();
         }
 
+        public void hitWall()
+        {
+            stateMachine.hitWall();
+        }
+
         public void Return()
         {
             stateMachine.Return();
