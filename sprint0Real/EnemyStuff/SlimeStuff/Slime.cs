@@ -40,7 +40,11 @@ namespace sprint0Real.EnemyStuff.SlimeStuff
         {
             CurrentMap.Instance.DeStage(this);
         }
-
+        public void hitWall()
+        {
+            stateMachine.hitWall();
+            stateMachine.ChangeDirection();
+        }
         public void Update(GameTime gameTime)
         {
             stateMachine.Update();

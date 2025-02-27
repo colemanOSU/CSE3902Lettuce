@@ -1,4 +1,5 @@
-﻿using sprint0Real.Interfaces;
+﻿using sprint0Real.EnemyStuff.SkeletonStuff;
+using sprint0Real.Interfaces;
 using System;
 
 namespace sprint0Real.EnemyStuff.SlimeStuff
@@ -31,6 +32,25 @@ namespace sprint0Real.EnemyStuff.SlimeStuff
                     break;
                 case 3:
                     currentState = SlimeStates.Down;
+                    break;
+            }
+        }
+
+        public void hitWall()
+        {
+            switch (currentState)
+            {
+                case SlimeStates.Right:
+                    mySlime.location.X += mySlime.speed;
+                    break;
+                case SlimeStates.Left:
+                    mySlime.location.X -= mySlime.speed;
+                    break;
+                case SlimeStates.Up:
+                    mySlime.location.Y += mySlime.speed;
+                    break;
+                case SlimeStates.Down:
+                    mySlime.location.Y -= mySlime.speed;
                     break;
             }
         }
