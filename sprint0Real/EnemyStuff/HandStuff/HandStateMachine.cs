@@ -1,4 +1,5 @@
-﻿using sprint0Real.Interfaces;
+﻿using sprint0Real.EnemyStuff.DragonStuff;
+using sprint0Real.Interfaces;
 using System;
 
 namespace sprint0Real.EnemyStuff.HandStuff
@@ -34,7 +35,24 @@ namespace sprint0Real.EnemyStuff.HandStuff
                     break;
             }
         }
-
+        public void hitWall()
+        {
+            switch (currentState)
+            {
+                case HandStates.Right:
+                    myHand.location.X += myHand.speed;
+                    break;
+                case HandStates.Left:
+                    myHand.location.X -= myHand.speed;
+                    break;
+                case HandStates.Up:
+                    myHand.location.Y += myHand.speed;
+                    break;
+                case HandStates.Down:
+                    myHand.location.Y -= myHand.speed;
+                    break;
+            }
+        }
         public void Update()
         {
             switch (currentState)
