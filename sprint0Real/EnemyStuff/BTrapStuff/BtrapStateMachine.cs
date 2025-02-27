@@ -5,7 +5,8 @@ namespace sprint0Real.EnemyStuff.BTrapStuff
 {
     public class BTrapStateMachine : IStateMachine
     {
-        private enum BTrapStates {Left, Right, Up, Down}
+        private enum BTrapStates { Left, Right, Up, Down }
+        private bool ret = false;
         private BTrapStates currentState = BTrapStates.Right;
         private BTrap myBTrap;
         private Random random = new Random();
@@ -14,7 +15,19 @@ namespace sprint0Real.EnemyStuff.BTrapStuff
         {
             myBTrap = BTrap;
         }
-
+        public void hitWall()
+        {
+            if (ret)
+            {
+                ret = false;
+                ChangeDirection();
+            }
+            else
+            {
+                ret = true;
+                Return();
+            }
+        }
         public void ChangeDirection()
         {
             int nextDirection = random.Next(0, 4);
