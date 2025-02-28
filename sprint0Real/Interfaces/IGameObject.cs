@@ -8,11 +8,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace sprint0Real.Interfaces
 {
-    public interface IMap
+    public interface IGameObject
     {
-        public void Stage(IEnemy enemy);
-        public void DeStage(IEnemy enemy);
-        public void Update(GameTime gameTime);
-        public void Draw(SpriteBatch spriteBatch);
+        void Update(GameTime gameTime);
+        void Draw(SpriteBatch spriteBatch);
     }
 }

@@ -13,22 +13,18 @@ using sprint0Real.EnemyStuff.Fireballs;
 
 namespace sprint0Real.Levels
 {
-    public class EnemyPage : IMap
+    public class EnemyPage
     {
-        private List<IEnemy> enemyList;
-        private List<IBlock> blockList;
-        private List<IItem> itemList;
+        public List<IGameObject> gameObjects;
 
-
-        // Temporary for Sprit 2. Enemy Page should not have a parameter when initilizing
         public EnemyPage()
         {
-            enemyList = new List<IEnemy>();
+            gameObjects = new List<IGameObject>();
         }
 
         public void Update(GameTime time)
         {
-            foreach (IEnemy enemy in enemyList)
+            foreach (IEnemy enemy in gameObjects)
             {
                 enemy.Update(time);
             }
@@ -36,19 +32,19 @@ namespace sprint0Real.Levels
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            foreach (IEnemy enemy in enemyList)
+            foreach (IEnemy enemy in gameObjects)
             {
                 enemy.Draw(spriteBatch);
             }
         }
         public void Stage(IEnemy enemy)
         {
-            enemyList.Add(enemy);
+            gameObjects.Add(enemy);
         }
 
         public void DeStage(IEnemy enemy)
         {
-            enemyList.Remove(enemy);
+            gameObjects.Remove(enemy);
         }
     }
 }

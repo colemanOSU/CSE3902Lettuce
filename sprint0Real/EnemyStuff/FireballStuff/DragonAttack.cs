@@ -16,7 +16,6 @@ namespace sprint0Real.EnemyStuff.Fireballs
         private Vector2 destination2;
         private Vector2 destination3;
         private int DeltaAngle = 20;
-        private IMap map;
 
         public DragonAttack(Vector2 start, Vector2 final)
         {

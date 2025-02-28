@@ -5,9 +5,9 @@ using System.Collections.Generic;
 
 namespace sprint0Real.Interfaces
 {
-    public interface IItem
+    public interface IItem : IGameObject
     {
-        //public void Update(SpriteBatch spriteBatch, Texture2D marioSheet);
+        //public void Update(SpriteBatch spriteBatch);
 
         public void Draw(SpriteBatch _spriteBatch);
 

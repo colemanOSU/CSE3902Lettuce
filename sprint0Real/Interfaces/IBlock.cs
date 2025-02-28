@@ -6,7 +6,7 @@ using sprint0Real.Collisions;
 
 namespace sprint0Real.Interfaces
 {
-    public interface IBlock
+    public interface IBlock : IGameObject
     {
         void Update(GameTime gametime);
 

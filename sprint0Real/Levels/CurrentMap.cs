@@ -15,9 +15,9 @@ namespace sprint0Real.Levels
         // to that stage.
 
         private static CurrentMap instance = new CurrentMap();
-        private IMap myMap;
-        private List<IEnemy> stagingAdd;
-        private List<IEnemy> stagingRemove;
+        private EnemyPage myMap;
+        private List<IGameObject> stagingAdd;
+        private List<IGameObject> stagingRemove;
         public static CurrentMap Instance
         {
             get
@@ -27,14 +27,13 @@ namespace sprint0Real.Levels
         }
         private CurrentMap()
         { 
-            stagingAdd = new List<IEnemy>();
-            stagingRemove = new List<IEnemy>();
+            stagingAdd = new List<IGameObject>();
+            stagingRemove = new List<IGameObject>();
         }
 
-        public void SetMap(IMap enemy)
+        public List<IGameObject> MapList()
         {
-            // REMEMBER TO FIX THIS AFTER SPRINT 2
-            myMap = enemy;
+            return myMap.gameObjects;
         }
 
         public void Stage(IEnemy enemy)
