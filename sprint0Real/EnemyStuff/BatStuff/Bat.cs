@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0Real.Interfaces;
+using sprint0Real.Levels;
 
 namespace sprint0Real.EnemyStuff.BatStuff
 {

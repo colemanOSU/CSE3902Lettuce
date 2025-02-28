@@ -46,7 +46,6 @@ namespace sprint0Real
 
         //temp
 
-        public EnemyCycleExample EnemyCycle;
         public ICollision _collisionDetection;
         public IBlock currentBlock;
         public IItemtemp currentItem;
@@ -127,7 +126,6 @@ namespace sprint0Real
                     _collisionDetection.Update(gameTime);
             
             //EnemyPage.Instance.Update(gameTime);
-            EnemyCycle.Update(gameTime);
                     break;
             }
         }
@@ -168,7 +166,6 @@ namespace sprint0Real
             weaponItems.Draw(_spriteBatch);
 
             //EnemyPage.Instance.Draw(_spriteBatch);
-            EnemyCycle.Draw(_spriteBatch);
 
             _spriteBatch.End();
 
@@ -190,7 +187,6 @@ namespace sprint0Real
             currentItem = new Heart(itemSheet);
             linkSprite = new ResetLink(linkSheet, this);
             weaponItems = new NullSprite(linkSheet, this);
-            EnemyCycle = new EnemyCycleExample();
             currentBlockIndex = 1;
             Link = new Link(this);
             currentItemIndex = 1;

@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using sprint0Real.EnemyStuff.GoriyaStuff;
 using sprint0Real.EnemyStuff.RedGoriyaStuff;
 using sprint0Real.Interfaces;
+using sprint0Real.Levels;
 
 namespace sprint0Real.EnemyStuff.ZolStuff
 {

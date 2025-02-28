@@ -11,25 +11,24 @@ using Microsoft.Xna.Framework.Graphics;
 using sprint0Real.EnemyStuff.Fireballs;
 
 
-namespace sprint0Real.EnemyStuff
+namespace sprint0Real.Levels
 {
     public class EnemyPage : IMap
     {
         private List<IEnemy> enemyList;
+        private List<IBlock> blockList;
+        private List<IItem> itemList;
+
 
         // Temporary for Sprit 2. Enemy Page should not have a parameter when initilizing
-        public EnemyPage(IEnemy enemy)
+        public EnemyPage()
         {
             enemyList = new List<IEnemy>();
-            enemyList.Add(enemy);
-
-            // Add enemies to be spawned here
-            //enemyList.Add(new Dragon(new Vector2(5, 5)));
         }
 
         public void Update(GameTime time)
         {
-            foreach(IEnemy enemy in enemyList)
+            foreach (IEnemy enemy in enemyList)
             {
                 enemy.Update(time);
             }

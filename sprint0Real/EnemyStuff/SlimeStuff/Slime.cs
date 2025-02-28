@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using sprint0Real.EnemyStuff.GoriyaStuff;
 using sprint0Real.EnemyStuff.RedGoriyaStuff;
 using sprint0Real.Interfaces;
+using sprint0Real.Levels;
 
 namespace sprint0Real.EnemyStuff.SlimeStuff
 {
@@ -40,11 +41,7 @@ namespace sprint0Real.EnemyStuff.SlimeStuff
         {
             CurrentMap.Instance.DeStage(this);
         }
-        public void hitWall()
-        {
-            stateMachine.hitWall();
-            stateMachine.ChangeDirection();
-        }
+
         public void Update(GameTime gameTime)
         {
             stateMachine.Update();

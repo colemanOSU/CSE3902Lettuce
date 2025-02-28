@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using sprint0Real.EnemyStuff.GoriyaStuff;
 using sprint0Real.EnemyStuff.RedGoriyaStuff;
 using sprint0Real.Interfaces;
+using sprint0Real.Levels;
 
 namespace sprint0Real.EnemyStuff.SkeletonStuff
 {
@@ -29,12 +30,6 @@ namespace sprint0Real.EnemyStuff.SkeletonStuff
             stateMachine = new SkeletonStateMachine(this);
             behavior = new SkeletonBehavior(this);
             mySprite = EnemySpriteFactory.Instance.CreateSkeletonSprite();
-        }
-
-        public void hitWall()
-        {
-            stateMachine.hitWall();
-            stateMachine.ChangeDirection();
         }
 
         public void ChangeDirection()

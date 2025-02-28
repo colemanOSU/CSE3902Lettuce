@@ -7,13 +7,13 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0Real.Interfaces;
 
-namespace sprint0Real.EnemyStuff
+namespace sprint0Real.Levels
 {
     public class CurrentMap
     {
         // Functions as a singleton that holds the current stage, and as an interface between what should be added
         // to that stage.
-        
+
         private static CurrentMap instance = new CurrentMap();
         private IMap myMap;
         private List<IEnemy> stagingAdd;
@@ -26,7 +26,7 @@ namespace sprint0Real.EnemyStuff
             }
         }
         private CurrentMap()
-        {
+        { 
             stagingAdd = new List<IEnemy>();
             stagingRemove = new List<IEnemy>();
         }

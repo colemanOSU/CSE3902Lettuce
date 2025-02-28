@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0Real.Interfaces;
+using sprint0Real.Levels;
 
 namespace sprint0Real.EnemyStuff.HandStuff
 {
@@ -24,11 +25,6 @@ namespace sprint0Real.EnemyStuff.HandStuff
             mySprite = EnemySpriteFactory.Instance.CreateHandSprite();
         }
 
-        public void hitWall()
-        {
-            stateMachine.hitWall();
-            stateMachine.ChangeDirection();
-        }
         public void ChangeDirection()
         {
             stateMachine.ChangeDirection();

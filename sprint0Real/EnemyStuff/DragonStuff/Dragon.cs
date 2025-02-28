@@ -45,7 +45,7 @@ namespace sprint0Real.EnemyStuff.DragonStuff
 
         public void hitWall()
         {
-            stateMachine.hitWall();
+            //stateMachine.hitWall();
             stateMachine.ChangeDirection();
         }
 

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using sprint0Real.EnemyStuff.RedGoriya;
 using sprint0Real.EnemyStuff.RedGoriyaStuff;
+using sprint0Real.Levels;
 
 namespace sprint0Real.EnemyStuff.BoomerangStuff
 {
