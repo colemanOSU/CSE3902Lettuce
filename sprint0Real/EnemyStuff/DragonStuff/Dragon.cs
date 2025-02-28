@@ -81,5 +81,12 @@ namespace sprint0Real.EnemyStuff.DragonStuff
         {
             mySprite.Draw(spriteBatch, location);
         }
+        public Rectangle Rect
+        {
+            get
+            {
+                return new Rectangle((int)location.X, (int)location.Y, 48, 64);
+            }
+        }
     }
 }

@@ -43,5 +43,12 @@ namespace sprint0Real.EnemyStuff.Fireballs
             stateMachine.Update();
             mySprite.Update();
         }
+        public Rectangle Rect
+        {
+            get
+            {
+                return new Rectangle((int)location.X, (int)location.Y, 14, 30);
+            }
+        }
     }
 }
