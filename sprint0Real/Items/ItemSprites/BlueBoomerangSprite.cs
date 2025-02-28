@@ -22,6 +22,7 @@ namespace sprint0Real.Items.ItemSprites
         private float speed = 200f;
         private float _frameSpeed = 0.2f;
         private int _frameCount = 3;
+        private Vector2 _finalPos;
 
         public BlueBoomerangSprite(Texture2D texture, Game1 game)
         {
@@ -58,21 +59,29 @@ namespace sprint0Real.Items.ItemSprites
 
         public void Update(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            _timer += gameTime.ElapsedGameTime.TotalSeconds;
-            _position += velocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            _finalPos = new(myGame.Link.GetLocation().X, myGame.Link.GetLocation().Y);
             destinationRectangle = new Rectangle((int)_position.X, (int)_position.Y, 8 * 3, 16 * 3);
-            Vector2 temp = new(myGame.Link.GetLocation().X, myGame.Link.GetLocation().Y);
+            _timer += gameTime.ElapsedGameTime.TotalSeconds;
+
 
             if (!isReturning && Vector2.Distance(_position, startPosition) >= travelDistance)
             {
                 isReturning = true;
-                velocity *= -1;
             }
-            else if (isReturning && Vector2.Distance(_position, startPosition) < 5f)
+            if (isReturning)
+            {
+                Vector2 direction = _finalPos - _position;
+
+                if (direction.Length() > 0)
+                    direction.Normalize();
+
+                velocity = direction * speed;
+            }
+            _position += velocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (isReturning && Vector2.Distance(_position, _finalPos) < 5f)
             {
                 myGame.weaponItems = new NullSprite(_texture, myGame);
             }
-
             if (_timer > _frameSpeed)
             {
                 _currentFrame = (_currentFrame + 1) % _frameCount;
