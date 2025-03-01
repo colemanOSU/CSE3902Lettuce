@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LevelData>
+	<Name>Entrance</Name>
+	<Background>Insert Spirtesheet</Background>
+	
+	<Objects>
+		<Object>
+			<Type>BlockType</Type>
+			<Location>BlockLocation</Location>
+		</Object>
+		<Object>
+			<Type>BlockType</Type>
+			<Location>BlockLocation</Location>
+		</Object>
+	</Objects>
+	
+	<MapHitBoxes>
+		<HitBox>
+			<Type></Type>
+			<Size></Size>
+			<Location></Location>
+		</HitBox>
+	</MapHitBoxes>
+
+	<Neighbors>
+		<Neighbor>
+			<Side>Left</Side>
+			<Name>BlueItemRoom</Name>
+		</Neighbor>
+	</Neighbors>
+</LevelData>
