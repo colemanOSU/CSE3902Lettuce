@@ -14,6 +14,7 @@ using sprint0Real.ItemTempSprites;
 using sprint0Real.GameState;
 using sprint0Real.Collisions;
 using sprint0Real.LinkStuff;
+using sprint0Real.Levels;
 
 namespace sprint0Real
 {
@@ -94,11 +95,9 @@ namespace sprint0Real
 
             EnemySpriteFactory.Instance.LoadAllTextures(Content);
             EnemySpriteFactory.Instance.LoadGame(this);
+            LevelLoader.Instance.LoadLevels();
 
             ResetGame();
-
-            // Don't need EnemyPage yet
-            // EnemyPage.Instance.AddEnemies();
 
             tempItem = null;
         }
@@ -124,8 +123,8 @@ namespace sprint0Real
                      LinkState.Update(gameTime);
 
                     _collisionDetection.Update(gameTime);
-            
-            //EnemyPage.Instance.Update(gameTime);
+                    CurrentMap.Instance.Update(gameTime);
+
                     break;
             }
         }
@@ -165,7 +164,7 @@ namespace sprint0Real
             weaponItems.Update(gameTime,_spriteBatch);
             weaponItems.Draw(_spriteBatch);
 
-            //EnemyPage.Instance.Draw(_spriteBatch);
+            CurrentMap.Instance.Draw(_spriteBatch);
 
             _spriteBatch.End();
 

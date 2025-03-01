@@ -4,14 +4,7 @@
 	<Background>Insert Spirtesheet</Background>
 	
 	<Objects>
-		<Object>
-			<Type>BlockType</Type>
-			<Location>BlockLocation</Location>
-		</Object>
-		<Object>
-			<Type>BlockType</Type>
-			<Location>BlockLocation</Location>
-		</Object>
+		<Object Type="sprint0Real.EnemyStuff.DragonStuff.Dragon" x="3" y="5"/>
 	</Objects>
 	
 	<MapHitBoxes>

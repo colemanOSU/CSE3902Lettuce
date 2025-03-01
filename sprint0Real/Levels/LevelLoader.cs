@@ -6,9 +6,10 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Xml.Schema;
 using Microsoft.Xna.Framework;
 using sprint0Real.Interfaces;
-using static System.Net.WebRequestMethods;
+using sprint0Real.EnemyStuff;
 
 namespace sprint0Real.Levels
 {
@@ -24,14 +25,14 @@ namespace sprint0Real.Levels
             }
         }
 
-        void LoadLevels()
+        public void LoadLevels()
         {
-            foreach (String fileName in Directory.GetFiles("C: \\Users\\icebe\\Source\\Repos\\CSE3902Lettuce\\sprint0Real\\Levels\\Level Files\\"))
+            foreach (String fileName in Directory.GetFiles("C:\\Users\\icebe\\Source\\Repos\\CSE3902Lettuce\\sprint0Real\\Levels\\Level Files\\"))
             {
                 EnemyPage newMap = new EnemyPage();
                 XmlDocument xml = new XmlDocument();
-                xml.LoadXml(fileName);
-                foreach(XmlElement Object in xml.SelectNodes("Objects"))
+                xml.Load(fileName);
+                foreach(XmlElement Object in xml.SelectNodes("//Objects/Object"))
                 {
                     Type type = Type.GetType(Object.GetAttribute("Type"));
                     int x = Int32.Parse(Object.GetAttribute("x"));
@@ -52,7 +53,7 @@ namespace sprint0Real.Levels
                 {
                     newMap.AddNeighbor(Neighbor.GetAttribute("Side"), Neighbor.GetAttribute("Name"));
                 }
-                Maps.Add(xml.GetElementById("Name").GetAttribute("Name"), newMap);
+                Maps.Add(xml.SelectSingleNode("/LevelData/Name").InnerText, newMap);
             }
             CurrentMap.Instance.SetMap(Maps["Entrance"]);
         }
