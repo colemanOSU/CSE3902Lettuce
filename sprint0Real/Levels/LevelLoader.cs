@@ -27,7 +27,8 @@ namespace sprint0Real.Levels
 
         public void LoadLevels()
         {
-            foreach (String fileName in Directory.GetFiles("C:\\Users\\icebe\\Source\\Repos\\CSE3902Lettuce\\sprint0Real\\Levels\\Level Files\\"))
+            String path = Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "Levels", "Level Files");
+            foreach (String fileName in Directory.GetFiles(path))
             {
                 EnemyPage newMap = new EnemyPage();
                 XmlDocument xml = new XmlDocument();
@@ -54,6 +55,8 @@ namespace sprint0Real.Levels
                     newMap.AddNeighbor(Neighbor.GetAttribute("Side"), Neighbor.GetAttribute("Name"));
                 }
                 Maps.Add(xml.SelectSingleNode("/LevelData/Name").InnerText, newMap);
+                //Maps.backgroundset(String)
+                //Maps.Door
             }
             CurrentMap.Instance.SetMap(Maps["Entrance"]);
         }

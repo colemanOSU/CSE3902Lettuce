@@ -18,7 +18,7 @@ namespace sprint0Real.Levels
         private List<IGameObject> gameObjects;
         private List<ICollisionBoxes> RoomCollisions;
         private Dictionary<String, String> Neighbors;
-        private Texture2D Background;
+        private LevelBackground background;
 
         /* DELETE LATER
          * This should allow RoomTransitioncCommand to look like:
@@ -26,7 +26,6 @@ namespace sprint0Real.Levels
          * CurrentMap.Instance.myMap = LevelLoader.Instance.Maps[NextMapName];
          * Collisions.ObjectList = CurrentMap.Instance.GameObjectList();
          * Collisions.RoomCollisions = CurrentMap.Instance.RoomCollisionsList();
-         * 
          */
 
         public EnemyPage()
@@ -34,6 +33,7 @@ namespace sprint0Real.Levels
             gameObjects = new List<IGameObject>();
         }
 
+        
         public List<IGameObject> ReturnList()
         {
             return gameObjects;
