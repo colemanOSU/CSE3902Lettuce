@@ -26,6 +26,7 @@ namespace sprint0Real.EnemyStuff
         public Game1 myGame;
         private Texture2D bossesSheet;
         private Texture2D enemySpriteSheet;
+        private Texture2D DungeonTileSet;
         // More private Texture2Ds follow
         // ...
         private static EnemySpriteFactory instance = new EnemySpriteFactory();
@@ -47,7 +48,8 @@ namespace sprint0Real.EnemyStuff
         public void LoadAllTextures(ContentManager content)
         {
             bossesSheet = content.Load<Texture2D>("Bosses");
-            enemySpriteSheet = content.Load<Texture2D>("Dungeon Enemies"); 
+            enemySpriteSheet = content.Load<Texture2D>("Dungeon Enemies");
+            DungeonTileSet = content.Load<Texture2D>("NES - The Legend of Zelda - Dungeon Tileset");
             // More Content.Load calls follow
             //...
         }
@@ -179,6 +181,11 @@ namespace sprint0Real.EnemyStuff
         public ISprite2 CreateSnakeSprite()
         {
             return new SnakeSprite(enemySpriteSheet, myGame._spriteBatch);
+        }
+
+        public Texture2D ReturnDungeonTileSheet()
+        {
+            return DungeonTileSet;
         }
         // More public ISprite returning methods follow
         // ...

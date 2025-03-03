@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LevelData>
+	<Name>Entrance</Name>
+	<Exterior>Insert</Exterior>
+	<Interior>Insert</Interior>
+	<Doors Left="Open" Right="Closed" Up="Locked" Down="Sealed"/>
+	
+	<Objects>
+		<Object Type="sprint0Real.EnemyStuff.DragonStuff.Dragon" x="3" y="5"/>
+		<Object Type="sprint0Real.EnemyStuff.DragonStuff.Dragon" x="100" y="100"/>
+	</Objects>
+	
+	<MapHitBoxes>
+		<HitBox Type="" x="" y="" width="" height=""/>
+	</MapHitBoxes>
+
+	<Neighbors>
+		<Neighbor>
+			<Side>Left</Side>
+			<Name>BlueItemRoom</Name>
+		</Neighbor>
+	</Neighbors>
+</LevelData>

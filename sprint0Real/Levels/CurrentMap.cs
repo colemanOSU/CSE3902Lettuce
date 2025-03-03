@@ -31,9 +31,14 @@ namespace sprint0Real.Levels
             stagingRemove = new List<IGameObject>();
         }
 
+        public void SetMap(EnemyPage newMap)
+        {
+            myMap = newMap;
+        }
+
         public List<IGameObject> MapList()
         {
-            return myMap.gameObjects;
+            return myMap.ReturnList();
         }
 
         public void Stage(IEnemy enemy)
