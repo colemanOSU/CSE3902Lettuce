@@ -70,5 +70,14 @@ namespace sprint0Real.EnemyStuff.BatStuff
         {
             mySprite.Draw(spriteBatch, location);
         }
+
+        public Rectangle Rect
+        {
+            get
+            {
+                //30x30 is size of sprite, change if sprite size is different
+                return new Rectangle((int)location.X, (int)location.Y, 30, 30);
+            }
+        }
     }
 }

@@ -60,5 +60,12 @@ namespace sprint0Real.EnemyStuff.BubbleStuff
         {
             mySprite.Draw(spriteBatch, location);
         }
+        public Rectangle Rect
+        {
+            get
+            {
+                return new Rectangle((int)location.X, (int)location.Y, 28, 30);
+            }
+        }
     }
 }

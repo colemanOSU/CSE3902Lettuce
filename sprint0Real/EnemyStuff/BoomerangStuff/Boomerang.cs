@@ -62,5 +62,12 @@ namespace sprint0Real.EnemyStuff.BoomerangStuff
             mySprite.Update();
             stateMachine.Update();
         }
+        public Rectangle Rect
+        {
+            get
+            {
+                return new Rectangle((int)location.X, (int)location.Y, 14, 18);
+            }
+        }
     }
 }

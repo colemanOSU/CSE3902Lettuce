@@ -54,8 +54,7 @@ namespace sprint0Real
         List<IController> controllerList;
         
         //temp for collision detection testing
-        //List<IEnemy> enemies;
-        List<IBlock> blocks;
+        List<IGameObject> objects;
 
         public ILinkState LinkState;
 
@@ -179,9 +178,6 @@ namespace sprint0Real
             this.titleScreen.isAnimating = false;
             currentGameState = GameStates.TitleScreen;
 
-            blocks = new List<IBlock>();
-            //enemies = new List<IEnemy>();
-
             currentBlock = new BlockSpriteFloorTile(blockSheet, new Vector2(300,300));
             currentItem = new Heart(itemSheet);
             linkSprite = new ResetLink(linkSheet, this);
@@ -191,9 +187,11 @@ namespace sprint0Real
             currentItemIndex = 1;
             LinkState = new LinkStateMachine(this);
 
-            //temp for collision detection testin
-            blocks.Add(currentBlock);
-            _collisionDetection = new CollisionDetection(Link, blocks, this);
+            //temp for collision detection testing
+            objects = new List<IGameObject>();
+            objects.Add(currentBlock);
+            objects.Add(Link);
+            _collisionDetection = new CollisionDetection(objects);
 
             //Update with other objects in game...
 
