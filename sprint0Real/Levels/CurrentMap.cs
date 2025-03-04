@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using sprint0Real.Collisions;
 using sprint0Real.Interfaces;
 
 namespace sprint0Real.Levels
@@ -18,6 +19,8 @@ namespace sprint0Real.Levels
         private EnemyPage myMap;
         private List<IGameObject> stagingAdd;
         private List<IGameObject> stagingRemove;
+
+        private CollisionDetection collisionDetection = new CollisionDetection();
         public static CurrentMap Instance
         {
             get
@@ -64,6 +67,8 @@ namespace sprint0Real.Levels
                 myMap.DeStage(enemy);
             }
             stagingRemove.Clear();
+
+            collisionDetection.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)
