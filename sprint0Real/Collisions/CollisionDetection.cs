@@ -11,11 +11,11 @@ namespace sprint0Real.Collisions
 {
     public class CollisionDetection : ICollision
     {
-        //Assuming implement IGameObject for all obejects in the game
-        private List<IGameObject> gameObjectsInRoom;
-        public CollisionDetection(List<IGameObject> objects)
+        private List<IGameObject> gameObjectsInRoom = new List<IGameObject>();
+
+        public void UpdateRoomObjects(List<IGameObject> objects)
         {
-            this.gameObjectsInRoom = objects;
+            gameObjectsInRoom = objects;
         }
 
         public void Update(GameTime gametime)

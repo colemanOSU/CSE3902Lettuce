@@ -47,14 +47,10 @@ namespace sprint0Real
 
         //temp
 
-        public ICollision _collisionDetection;
         public IBlock currentBlock;
         public IItemtemp currentItem;
 
         List<IController> controllerList;
-        
-        //temp for collision detection testing
-        List<IGameObject> objects;
 
         public ILinkState LinkState;
 
@@ -121,7 +117,6 @@ namespace sprint0Real
                      currentItem.Update(gameTime);
                      LinkState.Update(gameTime);
 
-                    _collisionDetection.Update(gameTime);
                     CurrentMap.Instance.Update(gameTime);
 
                     break;
@@ -186,12 +181,6 @@ namespace sprint0Real
             Link = new Link(this);
             currentItemIndex = 1;
             LinkState = new LinkStateMachine(this);
-
-            //temp for collision detection testing
-            objects = new List<IGameObject>();
-            objects.Add(currentBlock);
-            objects.Add(Link);
-            _collisionDetection = new CollisionDetection(objects);
 
             //Update with other objects in game...
 
