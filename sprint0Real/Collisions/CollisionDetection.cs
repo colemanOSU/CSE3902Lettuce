@@ -14,6 +14,9 @@ namespace sprint0Real.Collisions
         private List<IGameObject> gameObjectsInRoom = new List<IGameObject>();
         private Link link;
         public CollisionDirections recentCollisionDirection;
+        private CollisionHandler collisionHandler = new CollisionHandler("Collisions/CollisionCommands.xml");
+
+        private Dictionary<(IGameObject, IGameObject), bool> executedCollisions = new Dictionary<(IGameObject, IGameObject), bool>(); // Track executed collisions
         public void UpdateRoomObjects(List<IGameObject> objects, ILink link)
         {
             gameObjectsInRoom = objects;
@@ -25,19 +28,36 @@ namespace sprint0Real.Collisions
             CheckCollisions();
         }
 
+
         public void CheckCollisions()
         {
-            foreach (var objA in gameObjectsInRoom)
+            for (int i = 0; i < gameObjectsInRoom.Count; i++)
             {
-                foreach (var objB in gameObjectsInRoom)
+                var objA = gameObjectsInRoom[i];
+                for (int j = i + 1; j < gameObjectsInRoom.Count; j++) // Only check each pair once
                 {
-                    if (objA == objB) continue; //don't need to check object against itself
+                    var objB = gameObjectsInRoom[j];
 
                     if (objA.Rect.Intersects(objB.Rect))
                     {
                         DetectCollisionType(objA, objB);
+                        HandleCollisionOnce(objA, objB);
                     }
                 }
+            }
+
+        }
+        private void HandleCollisionOnce(IGameObject objA, IGameObject objB)
+        {
+            // Check if the collision has already been executed for this pair of objects
+            if (!executedCollisions.ContainsKey((objA, objB)) && !executedCollisions.ContainsKey((objB, objA)))
+            {
+                // If not, handle the collision
+                collisionHandler.HandleCollision(objA, objB, recentCollisionDirection);
+
+                // Mark the collision as executed
+                executedCollisions[(objA, objB)] = true;
+                executedCollisions[(objB, objA)] = true; // Add both directions (since collisions are symmetric)
             }
         }
 
@@ -81,6 +101,11 @@ namespace sprint0Real.Collisions
                 //Debug.WriteLine("Collision from Right of " + objB.GetType().Name);
             }
 
+        }
+        public void ResetExecutedCollisions()
+        {
+            // Reset the executed collisions at the end of the frame
+            executedCollisions.Clear();
         }
 
     }

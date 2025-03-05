@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using sprint0Real.BlockSprites;
+using sprint0Real.Collisions;
 using sprint0Real.Interfaces;
 
 namespace sprint0Real.Commands

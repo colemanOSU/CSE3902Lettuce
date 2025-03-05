@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CollisionCommands>
+	<Collision>
+		<ObjectA>Dragon</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Up</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.testTempCommand</Command>
+	</Collision>
+</CollisionCommands>

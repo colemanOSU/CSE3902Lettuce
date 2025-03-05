@@ -124,6 +124,9 @@ namespace sprint0Real
 
                     collisionDetection.UpdateRoomObjects(CurrentMap.Instance.MapList(), Link);
                     collisionDetection.Update(gameTime);
+                    // Reset executed collisions to allow new collisions to be handled in the next frame
+                    collisionDetection.ResetExecutedCollisions();
+
                     CurrentMap.Instance.Update(gameTime);
 
                     break;
