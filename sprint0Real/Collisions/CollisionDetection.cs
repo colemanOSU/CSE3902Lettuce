@@ -89,6 +89,7 @@ namespace sprint0Real.Collisions
             else if (objA is Link && objB is IEnemy)
             {
                 Debug.WriteLine("Link hits enemy");
+                //link.SetIsDamaged(true);
             }
         }
     }
