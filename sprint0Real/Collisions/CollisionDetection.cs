@@ -60,22 +60,22 @@ namespace sprint0Real.Collisions
                 if (minOverlap == overlapTop)
                 {
                     Debug.WriteLine("Collision from Top of Block");
-                    //TODO
+                    link.SetMomentumInDirection(Link.Direction.Down, false);
                 }
                 else if (minOverlap == overlapBottom)
                 {
                     Debug.WriteLine("Collision from Bottom of Block");
-                    //TODO
+                    link.SetMomentumInDirection(Link.Direction.Up, false);
                 }
                 else if (minOverlap == overlapLeft)
                 {
                     Debug.WriteLine("Collision from Left of Block");
-                    //TODO
+                    link.SetMomentumInDirection(Link.Direction.Right, false);
                 }
                 else if (minOverlap == overlapRight)
                 {
                     Debug.WriteLine("Collision from Right of Block");
-                    //TODO
+                    link.SetMomentumInDirection(Link.Direction.Left, false);
                 }
             }
             else if (objA is IEnemy enemy && objB is IBlock)

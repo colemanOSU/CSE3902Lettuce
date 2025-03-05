@@ -54,6 +54,7 @@ namespace sprint0Real
 
         public ILinkState LinkState;
 
+        public ICollision CollisionChecker;
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -72,6 +73,8 @@ namespace sprint0Real
             currentGameState = GameStates.TitleScreen;
             titleScreen = new TitleScreen();
             LinkState = new LinkStateMachine(this);
+            CollisionChecker = new CollisionDetection();
+            
 
             base.Initialize();
         }
@@ -106,8 +109,16 @@ namespace sprint0Real
                     break;
 
                 case GameStates.GamePlay:
-                
-                     foreach (IController controller in controllerList)
+
+                    //TEMP
+                    List<IGameObject> tempList = new List<IGameObject>();
+                    tempList.Add(currentBlock);
+                    tempList.Add(Link);
+                    CollisionChecker.UpdateRoomObjects(tempList);
+                    //TEMP
+                    //TODO: DELETE TEMPORARY CODE
+
+                    foreach (IController controller in controllerList)
                      {
                          //sprite = controller.Update(sprite);
                          controller.Update(gameTime);
@@ -116,6 +127,9 @@ namespace sprint0Real
                      currentBlock.Update(gameTime);
                      currentItem.Update(gameTime);
                      LinkState.Update(gameTime);
+                     CollisionChecker.Update(gameTime);
+
+                    Link.ApplyMomentum();
 
                     CurrentMap.Instance.Update(gameTime);
 
@@ -133,36 +147,37 @@ namespace sprint0Real
 
                 case GameStates.GamePlay:
                  
-            _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp);
+                _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp);
 
 
-            //TEMP ITEM
-            if (tempItem != null)
-            {
-                tempItem.Draw(_spriteBatch);
-            }
+                //TEMP ITEM
+                if (tempItem != null)
+                {
+                    tempItem.Draw(_spriteBatch);
+                }
 
-            if (itemSprite != null)
-            {
-                itemSprite.Draw(_spriteBatch);
-                itemSprite.Update(gameTime, _spriteBatch);
-            }
+                if (itemSprite != null)
+                {
+                    itemSprite.Draw(_spriteBatch);
+                    itemSprite.Update(gameTime, _spriteBatch);
+                }
 
-            currentBlock.Draw(_spriteBatch);
-            currentItem.Draw(_spriteBatch);
+                currentBlock.Draw(_spriteBatch);
+                currentItem.Draw(_spriteBatch);
 
 
-            linkSprite.Update(gameTime, _spriteBatch);
-            linkSprite.Draw(_spriteBatch);
 
-            weaponItems.Update(gameTime,_spriteBatch);
-            weaponItems.Draw(_spriteBatch);
+                linkSprite.Update(gameTime, _spriteBatch);
+                linkSprite.Draw(_spriteBatch);
 
-            CurrentMap.Instance.Draw(_spriteBatch);
+                weaponItems.Update(gameTime,_spriteBatch);
+                weaponItems.Draw(_spriteBatch);
 
-            _spriteBatch.End();
+                CurrentMap.Instance.Draw(_spriteBatch);
 
-                    break;
+                _spriteBatch.End();
+
+                        break;
             }
 
             base.Draw(gameTime);

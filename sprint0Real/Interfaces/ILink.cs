@@ -11,6 +11,8 @@ namespace sprint0Real.Interfaces
 
         public void SetLocation(Rectangle location);
 
+        public void ApplyMomentum();
+
         public bool CanMove();
 
         public bool CanAttack();
