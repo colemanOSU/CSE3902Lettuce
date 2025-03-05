@@ -54,6 +54,16 @@ namespace sprint0Real.Levels
                 {
                     newMap.AddNeighbor(Neighbor.GetAttribute("Side"), Neighbor.GetAttribute("Name"));
                 }
+
+                /*
+                newMap.background.SetRoomExterior(xml.GetElementById("Door").GetAttribute());
+                newMap.background.SetRoomInterior();
+                newMap.background.SetDoorLeft();
+                newMap.background.SetDoorRight();
+                newMap.background.SetDoorDown();
+                newMap.background.SetDoorUp();
+                */
+
                 Maps.Add(xml.SelectSingleNode("/LevelData/Name").InnerText, newMap);
                 //Maps.backgroundset(String)
                 //Maps.Door
