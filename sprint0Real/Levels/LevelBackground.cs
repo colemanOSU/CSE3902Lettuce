@@ -19,30 +19,31 @@ namespace sprint0Real.Levels
         private Rectangle RightDoor;
         private Rectangle UpDoor;
         private Rectangle DownDoor;
+        private BackgroundCatalogue catalogue = new BackgroundCatalogue();
 
-        public void SetRoomInterior(Rectangle rectange)
+        public void SetRoomInterior(String sprite)
         {
-            RoomInterior = rectange;
+            RoomInterior = catalogue.InteriorCatalogue[sprite];
         }
-        public void SetRoomExterior(Rectangle rectange)
+        public void SetRoomExterior(String sprite)
         {
-            RoomInterior = rectange;
+            RoomExterior = catalogue.ExteriorCatalogue[sprite];
         }
-        public void SetDoorLeft(Rectangle rectange)
+        public void SetLeftDoor(String sprite)
         {
-            RoomInterior = rectange;
+            LeftDoor = catalogue.LeftDoorCatalogue[sprite];
         }
-        public void SetDoorRight(Rectangle rectange)
+        public void SetRightDoor(String sprite)
         {
-            RoomInterior = rectange;
+            RightDoor = catalogue.RightDoorCatalogue[sprite];
         }
-        public void SetDoorUp(Rectangle rectange)
+        public void SetUpDoor(String sprite)
         {
-            RoomInterior = rectange;
+            UpDoor = catalogue.UpDoorCatalogue[sprite];
         }
-        public void SetDoorDown(Rectangle rectange)
+        public void SetDownDoor(String sprite)
         {
-            RoomInterior = rectange;
+            DownDoor = catalogue.DownDoorCatalogue[sprite];
         }
 
         public void Draw(SpriteBatch spriteBatch)

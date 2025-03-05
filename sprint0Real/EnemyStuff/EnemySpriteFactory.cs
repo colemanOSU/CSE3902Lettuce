@@ -18,6 +18,7 @@ using sprint0Real.EnemyStuff.SnakeStuff;
 using sprint0Real.EnemyStuff.ZolStuff;
 using sprint0Real.Interfaces;
 using sprint0Real.EnemyStuff.SlimeStuff;
+using sprint0Real.EnemyStuff.DeathSprites;
 
 namespace sprint0Real.EnemyStuff
 {
@@ -27,6 +28,7 @@ namespace sprint0Real.EnemyStuff
         private Texture2D bossesSheet;
         private Texture2D enemySpriteSheet;
         private Texture2D DungeonTileSet;
+        private Texture2D Deathsprites;
         // More private Texture2Ds follow
         // ...
         private static EnemySpriteFactory instance = new EnemySpriteFactory();
@@ -50,6 +52,7 @@ namespace sprint0Real.EnemyStuff
             bossesSheet = content.Load<Texture2D>("Bosses");
             enemySpriteSheet = content.Load<Texture2D>("Dungeon Enemies");
             DungeonTileSet = content.Load<Texture2D>("NES - The Legend of Zelda - Dungeon Tileset");
+            Deathsprites = content.Load<Texture2D>("NES_-_The_Legend_of_Zelda_-_Enemy_Death");
             // More Content.Load calls follow
             //...
         }
@@ -107,7 +110,7 @@ namespace sprint0Real.EnemyStuff
 
         public ISprite2 CreateBoomerangSprite()
         {
-            return new BoomerangSprite(enemySpriteSheet, myGame._spriteBatch);
+            return new BoomerangSprite(enemySpriteSheet);
         }
         public ISprite2 CreateOctoEnemySpriteU()
         {
@@ -186,6 +189,11 @@ namespace sprint0Real.EnemyStuff
         public Texture2D ReturnDungeonTileSheet()
         {
             return DungeonTileSet;
+        }
+
+        public ISprite2 CreateDeathSprite()
+        {
+            return new DeathSprite(Deathsprites);
         }
         // More public ISprite returning methods follow
         // ...
