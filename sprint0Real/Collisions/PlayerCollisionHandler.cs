@@ -10,29 +10,32 @@ namespace sprint0Real.Collisions
 {
     internal class PlayerCollisionHandler
     {
-        /*
-        void HandleBlockCollision(IBlock block, ICollision side)
-        {
-            switch(side){
-                case Left:
+        
+        void LinkBlockCollisionLeft(Game1 game){
 
-                case Right:
-
-                case Top:
-
-                case Bottom:
-
-                case None:
-
-                defaut:
-
-
-            }
         }
-        void HandleEnemyCollision(IEnemy enemy, ICollision side)
+        void LinkBlockCollisionUp(Game1 game)
         {
 
+        }
+        void LinkBlockCollisionRight(Game1 game){
+
+        }
+        void LinkBlockCollisionDown(Game1 game)
+        {
+
+        }
+        /*
+        void LinkEnemyCollision(Game1 game)
+        {
+            private Game1 myGame = game;
+            myGame.Link.DamageLink();
         }
         */
+        void HandleItemCollision(Game1 game)
+        {
+            
+        }
+        
     }
 }
