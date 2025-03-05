@@ -113,7 +113,7 @@ public class Link : ILink
     }
 
     //Used to handle collision
-    public void SetMomentumInDirection(Direction dir, bool IsMoving)
+    public void StopMomentumInDirection(Direction dir)
     {   
 
         switch (dir)

@@ -13,6 +13,8 @@ namespace sprint0Real.Interfaces
 
         public void ApplyMomentum();
 
+        public void StopMomentumInDirection(Direction dir);
+
         public bool CanMove();
 
         public bool CanAttack();
