@@ -54,6 +54,10 @@ namespace sprint0Real
 
         public ILinkState LinkState;
 
+        private CollisionDetection collisionDetection;
+
+
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -72,6 +76,7 @@ namespace sprint0Real
             currentGameState = GameStates.TitleScreen;
             titleScreen = new TitleScreen();
             LinkState = new LinkStateMachine(this);
+            collisionDetection = new CollisionDetection();
 
             base.Initialize();
         }
@@ -117,6 +122,8 @@ namespace sprint0Real
                      currentItem.Update(gameTime);
                      LinkState.Update(gameTime);
 
+                    collisionDetection.UpdateRoomObjects(CurrentMap.Instance.MapList(), Link);
+                    collisionDetection.Update(gameTime);
                     CurrentMap.Instance.Update(gameTime);
 
                     break;

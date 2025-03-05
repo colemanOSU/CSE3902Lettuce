@@ -11,10 +11,11 @@ namespace sprint0Real.Interfaces
     public interface IGameObject
     {
         //included in individual interfaces
-        /*
+        
         void Update(GameTime gameTime);
+        
         void Draw(SpriteBatch spriteBatch);
-        */
+        
         Rectangle Rect { get; }
     }
 }

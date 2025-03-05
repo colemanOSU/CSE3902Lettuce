@@ -41,7 +41,7 @@ namespace sprint0Real.Levels
 
         public void Update(GameTime time)
         {
-            foreach (IEnemy enemy in gameObjects)
+            foreach (IGameObject enemy in gameObjects)
             {
                 enemy.Update(time);
             }
@@ -59,7 +59,7 @@ namespace sprint0Real.Levels
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            foreach (IEnemy enemy in gameObjects)
+            foreach (IGameObject enemy in gameObjects)
             {
                 enemy.Draw(spriteBatch);
             }

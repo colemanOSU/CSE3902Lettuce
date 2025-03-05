@@ -12,10 +12,12 @@ namespace sprint0Real.Collisions
     public class CollisionDetection : ICollision
     {
         private List<IGameObject> gameObjectsInRoom = new List<IGameObject>();
-
-        public void UpdateRoomObjects(List<IGameObject> objects)
+        private Link link;
+        public CollisionDirections recentCollisionDirection;
+        public void UpdateRoomObjects(List<IGameObject> objects, ILink link)
         {
             gameObjectsInRoom = objects;
+            objects.Add(link);
         }
 
         public void Update(GameTime gametime)
@@ -39,58 +41,48 @@ namespace sprint0Real.Collisions
             }
         }
 
+
+
         public void DetectCollisionType(IGameObject objA, IGameObject objB)
         {
-            if (objA is Link link && objB is IBlock block)
-            {
-                Debug.WriteLine("Link hits Block");
 
-                Rectangle linkRect = link.Rect;
-                Rectangle blockRect = block.Rect;
+            Rectangle rectA = objA.Rect;
+            Rectangle rectB = objB.Rect;
 
-                //calculate overlap
-                int overlapBottom = blockRect.Bottom - linkRect.Top;
-                int overlapTop = linkRect.Bottom - blockRect.Top;
-                int overlapRight = blockRect.Right - linkRect.Left;
-                int overlapLeft = linkRect.Right - blockRect.Left;
+            recentCollisionDirection = CollisionDirections.Default;
 
-                //find smallest overlap
-                int minOverlap = MathHelper.Min(MathHelper.Min(overlapTop, overlapBottom), MathHelper.Min(overlapLeft, overlapRight));
+            //calculate overlap
+            int overlapBottom = rectB.Bottom - rectA.Top;
+            int overlapTop = rectA.Bottom - rectB.Top;
+            int overlapRight = rectB.Right - rectA.Left;
+            int overlapLeft = rectA.Right - rectB.Left;
 
-                if (minOverlap == overlapTop)
-                {
-                    Debug.WriteLine("Collision from Top of Block");
-                    //TODO
-                }
-                else if (minOverlap == overlapBottom)
-                {
-                    Debug.WriteLine("Collision from Bottom of Block");
-                    //TODO
-                }
-                else if (minOverlap == overlapLeft)
-                {
-                    Debug.WriteLine("Collision from Left of Block");
-                    //TODO
-                }
-                else if (minOverlap == overlapRight)
-                {
-                    Debug.WriteLine("Collision from Right of Block");
-                    //TODO
-                }
-            }
-            else if (objA is IEnemy enemy && objB is IBlock)
+            //find smallest overlap
+            int minOverlap = MathHelper.Min(MathHelper.Min(overlapTop, overlapBottom), MathHelper.Min(overlapLeft, overlapRight));
+
+            if (minOverlap == overlapTop)
             {
-                Debug.WriteLine("Enemy hits block");
+                recentCollisionDirection = CollisionDirections.Up;
+                //Debug.WriteLine("Collision from Top of " + objB.GetType().Name);
             }
-            else if (objA is Link && objB is IItem item)
+            else if (minOverlap == overlapBottom)
             {
-                Debug.WriteLine("Link hits item");
+                recentCollisionDirection = CollisionDirections.Down;
+                //Debug.WriteLine("Collision from Bottom of " + objB.GetType().Name);
             }
-            else if (objA is Link && objB is IEnemy)
+            else if (minOverlap == overlapLeft)
             {
-                Debug.WriteLine("Link hits enemy");
+                recentCollisionDirection = CollisionDirections.Left;
+                //Debug.WriteLine("Collision from Left of " + objB.GetType().Name);
             }
+            else if (minOverlap == overlapRight)
+            {
+                recentCollisionDirection = CollisionDirections.Right;
+                //Debug.WriteLine("Collision from Right of " + objB.GetType().Name);
+            }
+
         }
+
     }
 }
 
