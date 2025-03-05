@@ -18,12 +18,12 @@ namespace sprint0Real.Collisions
             gameObjectsInRoom = objects;
         }
 
-        public void Update(GameTime gametime)
+        public void Update(GameTime gametime, Game1 myGame)
         {
-            CheckCollisions();
+            CheckCollisions(myGame);
         }
 
-        public void CheckCollisions()
+        public void CheckCollisions(Game1 myGame)
         {
             foreach (var objA in gameObjectsInRoom)
             {
@@ -33,13 +33,13 @@ namespace sprint0Real.Collisions
 
                     if (objA.Rect.Intersects(objB.Rect))
                     {
-                        DetectCollisionType(objA, objB);
+                        DetectCollisionType(objA, objB, myGame);
                     }
                 }
             }
         }
 
-        public void DetectCollisionType(IGameObject objA, IGameObject objB)
+        public void DetectCollisionType(IGameObject objA, IGameObject objB, Game1 myGame)
         {
             if (objA is Link link && objB is IBlock block)
             {
@@ -87,6 +87,7 @@ namespace sprint0Real.Collisions
             else if (objA is Link && objB is IItem item)
             {
                 Debug.WriteLine("Link hits item");
+                new PickUpItem(myGame).Execute();
                 
             }
             else if (objA is Link && objB is IEnemy)

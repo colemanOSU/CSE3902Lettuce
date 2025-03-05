@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace sprint0Real.Interfaces
 {
-    public interface IItemtemp
+    public interface IItemtemp : IGameObject
     {
         void Update(GameTime gametime);
 

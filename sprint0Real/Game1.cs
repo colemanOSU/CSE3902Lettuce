@@ -114,6 +114,7 @@ namespace sprint0Real
                     List<IGameObject> tempList = new List<IGameObject>();
                     tempList.Add(currentBlock);
                     tempList.Add(Link);
+                    tempList.Add(currentItem);
                     CollisionChecker.UpdateRoomObjects(tempList);
                     //TEMP
                     //TODO: DELETE TEMPORARY CODE
@@ -127,7 +128,12 @@ namespace sprint0Real
                      currentBlock.Update(gameTime);
                      currentItem.Update(gameTime);
                      LinkState.Update(gameTime);
-                     CollisionChecker.Update(gameTime);
+
+                    //NOTE:
+                    //I hate hate hate passing game as a parameter to so many things
+                    //Will address when I have the time to
+                    //Which is not right now
+                     CollisionChecker.Update(gameTime, this);
 
                     Link.ApplyMomentum();
 

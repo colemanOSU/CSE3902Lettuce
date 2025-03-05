@@ -4,6 +4,7 @@ using sprint0Real.Interfaces;
 using sprint0Real.LinkSprites;
 using sprint0Real;
 using sprint0Real.LinkStuff;
+using Microsoft.Xna.Framework.Graphics;
 public class Link : ILink
 {
     private Rectangle destinationRectangle;
@@ -14,6 +15,7 @@ public class Link : ILink
     private ItemStateMachine itemStateMachine;
     private Color LinkSpriteColor;
     private Vector2 MomentumVector;
+    public Texture2D linkSheet;
 
     public const int SPEED = 2;
 

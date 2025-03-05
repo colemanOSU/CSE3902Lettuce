@@ -49,5 +49,10 @@ namespace sprint0Real.ItemTempSprites
             }
 
         }
+
+        public Rectangle Rect
+        {
+            get { return destinationRectangle; }
+        }
     }
 }
