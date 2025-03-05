@@ -9,5 +9,7 @@ namespace sprint0Real.Interfaces
     {
         void Update(GameTime gametime);
 
+        void UpdateRoomObjects(List<IGameObject> objects);
+
     }
 }

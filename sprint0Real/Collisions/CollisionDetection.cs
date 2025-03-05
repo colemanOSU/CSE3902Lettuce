@@ -11,90 +11,86 @@ namespace sprint0Real.Collisions
 {
     public class CollisionDetection : ICollision
     {
-        private List<IBlock> blocks;
-        private List<IEnemy> enemies;
-        private ILink linkSprite;
-        private Game1 game;
-        public CollisionDetection(ILink link, List<IBlock> blocks, Game1 game)
+        private List<IGameObject> gameObjectsInRoom = new List<IGameObject>();
+
+        public void UpdateRoomObjects(List<IGameObject> objects)
         {
-            linkSprite = link;
-            //this.enemies = enemies;
-            this.blocks = blocks;
-            this.game = game;
+            gameObjectsInRoom = objects;
         }
 
         public void Update(GameTime gametime)
         {
-            checkLinkBlockCollisions();
-            //checkLinkEnemyCollisions();
-            //checkEnemyBlockCollisions();
+            CheckCollisions();
         }
 
-        private void checkLinkBlockCollisions()
+        public void CheckCollisions()
         {
-            foreach (var block in blocks)
+            foreach (var objA in gameObjectsInRoom)
             {
-                if (linkSprite.Rect.Intersects(block.Rect))
+                foreach (var objB in gameObjectsInRoom)
                 {
-                    Rectangle linkRect = linkSprite.Rect;
-                    Rectangle blockRect = block.Rect;
+                    if (objA == objB) continue; //don't need to check object against itself
 
-                    //calculate overlap
-                    int overlapBottom = blockRect.Bottom - linkRect.Top;
-                    int overlapTop = linkRect.Bottom - blockRect.Top;
-                    int overlapRight = blockRect.Right - linkRect.Left;
-                    int overlapLeft = linkRect.Right - blockRect.Left;
-
-                    //find smallest overlap
-                    int minOverlap = MathHelper.Min(MathHelper.Min(overlapTop, overlapBottom), MathHelper.Min(overlapLeft, overlapRight));
-
-                    if (minOverlap == overlapTop)
+                    if (objA.Rect.Intersects(objB.Rect))
                     {
-                        Debug.WriteLine("Collision from Top of Block");
-                        //TODO
-                    }
-                    else if (minOverlap == overlapBottom)
-                    {
-                        Debug.WriteLine("Collision from Bottom of Block");
-                        //TODO
-                    }
-                    else if(minOverlap == overlapLeft)
-                    {
-                        Debug.WriteLine("Collision from Left of Block");
-                        //TODO
-                    }
-                    else if(minOverlap == overlapRight)
-                    {
-                        Debug.WriteLine("Collision from Right of Block");
-                        //TODO
+                        DetectCollisionType(objA, objB);
                     }
                 }
             }
         }
-        /*
-        private void checkLinkEnemyCollisions()
+
+        public void DetectCollisionType(IGameObject objA, IGameObject objB)
         {
-            foreach (var enemy in enemies)
+            if (objA is Link link && objB is IBlock block)
             {
-                if (linkSprite.Rect.Intersects(enemy.Rect))
+                Debug.WriteLine("Link hits Block");
+
+                Rectangle linkRect = link.Rect;
+                Rectangle blockRect = block.Rect;
+
+                //calculate overlap
+                int overlapBottom = blockRect.Bottom - linkRect.Top;
+                int overlapTop = linkRect.Bottom - blockRect.Top;
+                int overlapRight = blockRect.Right - linkRect.Left;
+                int overlapLeft = linkRect.Right - blockRect.Left;
+
+                //find smallest overlap
+                int minOverlap = MathHelper.Min(MathHelper.Min(overlapTop, overlapBottom), MathHelper.Min(overlapLeft, overlapRight));
+
+                if (minOverlap == overlapTop)
                 {
-                    //handle
+                    Debug.WriteLine("Collision from Top of Block");
+                    link.StopMomentumInDirection(Link.Direction.Down);
                 }
+                else if (minOverlap == overlapBottom)
+                {
+                    Debug.WriteLine("Collision from Bottom of Block");
+                    link.StopMomentumInDirection(Link.Direction.Up);
+                }
+                else if (minOverlap == overlapLeft)
+                {
+                    Debug.WriteLine("Collision from Left of Block");
+                    link.StopMomentumInDirection(Link.Direction.Right);
+                }
+                else if (minOverlap == overlapRight)
+                {
+                    Debug.WriteLine("Collision from Right of Block");
+                    link.StopMomentumInDirection(Link.Direction.Left);
+                }
+            }
+            else if (objA is IEnemy enemy && objB is IBlock)
+            {
+                Debug.WriteLine("Enemy hits block");
+            }
+            else if (objA is Link && objB is IItem item)
+            {
+                Debug.WriteLine("Link hits item");
+            }
+            else if (objA is Link && objB is IEnemy)
+            {
+                Debug.WriteLine("Link hits enemy");
             }
         }
-
-       private void checkEnemyBlockCollisions()
-        {
-            foreach (var enemy in enemies)
-            {
-                foreach (var block in blocks)
-                {
-                    if (enemy.Rect.Intersects(block.Rect))
-                    {
-                        //handle
-                    }
-                }
-            }
-        }*/
     }
 }
+

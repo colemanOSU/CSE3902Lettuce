@@ -53,5 +53,13 @@ namespace sprint0Real.EnemyStuff.BladeTrapStuff
         {
             mySprite.Draw(spriteBatch, location);
         }
+        public Rectangle Rect
+        {
+            get
+            {
+                //change 30x30 if sprite drawn changes
+                return new Rectangle((int)location.X, (int)location.Y, 30, 30);
+            }
+        }
     }
 }

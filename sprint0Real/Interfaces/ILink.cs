@@ -3,14 +3,17 @@ using static Link;
 
 namespace sprint0Real.Interfaces
 {
-    public interface ILink
+    public interface ILink : IGameObject
     {
-        Rectangle Rect { get; }
         public void MoveInDirection(Direction dir);
 
         public Rectangle GetLocation();
 
         public void SetLocation(Rectangle location);
+
+        public void ApplyMomentum();
+
+        public void StopMomentumInDirection(Direction dir);
 
         public bool CanMove();
 
