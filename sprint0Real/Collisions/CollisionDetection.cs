@@ -12,7 +12,7 @@ namespace sprint0Real.Collisions
     public class CollisionDetection : ICollision
     {
         private List<IGameObject> gameObjectsInRoom = new List<IGameObject>();
-
+        private Link myLink;
         public void UpdateRoomObjects(List<IGameObject> objects)
         {
             gameObjectsInRoom = objects;
@@ -44,8 +44,10 @@ namespace sprint0Real.Collisions
             if (objA is Link link && objB is IBlock block)
             {
                 Debug.WriteLine("Link hits Block");
+                
+                myLink = link;
 
-                Rectangle linkRect = link.Rect;
+                Rectangle linkRect = myLink.Rect;
                 Rectangle blockRect = block.Rect;
 
                 //calculate overlap
@@ -60,22 +62,22 @@ namespace sprint0Real.Collisions
                 if (minOverlap == overlapTop)
                 {
                     Debug.WriteLine("Collision from Top of Block");
-                    link.StopMomentumInDirection(Link.Direction.Down);
+                    myLink.StopMomentumInDirection(Link.Direction.Down);
                 }
                 else if (minOverlap == overlapBottom)
                 {
                     Debug.WriteLine("Collision from Bottom of Block");
-                    link.StopMomentumInDirection(Link.Direction.Up);
+                    myLink.StopMomentumInDirection(Link.Direction.Up);
                 }
                 else if (minOverlap == overlapLeft)
                 {
                     Debug.WriteLine("Collision from Left of Block");
-                    link.StopMomentumInDirection(Link.Direction.Right);
+                    myLink.StopMomentumInDirection(Link.Direction.Right);
                 }
                 else if (minOverlap == overlapRight)
                 {
                     Debug.WriteLine("Collision from Right of Block");
-                    link.StopMomentumInDirection(Link.Direction.Left);
+                    myLink.StopMomentumInDirection(Link.Direction.Left);
                 }
             }
             else if (objA is IEnemy enemy && objB is IBlock)
@@ -85,11 +87,12 @@ namespace sprint0Real.Collisions
             else if (objA is Link && objB is IItem item)
             {
                 Debug.WriteLine("Link hits item");
+                
             }
             else if (objA is Link && objB is IEnemy)
             {
                 Debug.WriteLine("Link hits enemy");
-                //link.SetIsDamaged(true);
+                myLink.SetIsDamaged(true);
             }
         }
     }

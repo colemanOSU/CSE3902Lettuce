@@ -21,7 +21,7 @@ namespace sprint0Real.Commands
         {
             myGame.Link.SetCanAttack(false);
             myGame.Link.SetCanMove(false);
-                myGame.linkSprite = new PickUpSprite(myGame.linkSheet, myGame);
+            myGame.linkSprite = new PickUpSprite(myGame.linkSheet, myGame);
         }
     }
 }

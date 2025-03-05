@@ -13,7 +13,7 @@ namespace sprint0Real.Commands
         public FaceDownCommand(Game1 game, bool MovementKeyIsDown)
         {
             myGame = game;
-            bool IsMoving = MovementKeyIsDown;
+            IsMoving = MovementKeyIsDown;
         }
 
         public void Execute()
