@@ -65,8 +65,6 @@ namespace sprint0Real.Levels
                 myMap.DeStage(enemy);
             }
             stagingRemove.Clear();
-
-            collisionDetection.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)

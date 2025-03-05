@@ -37,5 +37,13 @@ namespace sprint0Real.EnemyStuff.DeathSprites
             }
             CurrentMap.Instance.DeStage(this);
         }
+
+        public Rectangle Rect
+        {
+            get
+            {
+                return destinationRectangle;
+            }
+        }
     }
 }
