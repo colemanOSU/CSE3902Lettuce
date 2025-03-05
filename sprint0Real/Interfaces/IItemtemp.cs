@@ -11,7 +11,7 @@ namespace sprint0Real.Interfaces
 
         void Draw(SpriteBatch spriteBatch);
 
-        bool CanBePickedUp();
+        //bool CanBePickedUp();
 
     }
 }
