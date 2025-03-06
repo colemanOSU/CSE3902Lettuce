@@ -25,6 +25,7 @@ namespace sprint0Real.Items.ItemSprites
         private Link.Direction swordDirection;
 
 
+
         public MagicSword(Texture2D texture, Game1 game)
         {
 

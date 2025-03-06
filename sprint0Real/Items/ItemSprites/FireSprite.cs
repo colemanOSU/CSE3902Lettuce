@@ -24,6 +24,7 @@ namespace sprint0Real.Items.ItemSprites
         private float travelDistance = 180f;
         private Vector2 finalPosition;
 
+
         public FireSprite(Texture2D texture, Game1 game)
         {
 

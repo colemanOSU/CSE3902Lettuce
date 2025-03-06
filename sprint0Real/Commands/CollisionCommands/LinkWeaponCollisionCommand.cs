@@ -13,18 +13,19 @@ namespace sprint0Real.Commands.CollisionCommands
 {
     public class LinkWeaponCollisionCommand : ICollisionCommand
     {
-        private readonly ILinkSprite weapon;
-        private readonly IEnemy enemy;
+        private readonly Game1 _game;
 
-        public LinkWeaponCollisionCommand(ILinkSprite weapon, IEnemy enemy)
+        public LinkWeaponCollisionCommand(Game1 game)
         {
-            this.weapon = weapon;
-            this.enemy = enemy;
+            _game = game;
         }
 
         public void Execute(IGameObject objA, IGameObject objB, CollisionDirections direction)
         {
-            Console.WriteLine($"Weapon {weapon.GetType().Name} hit enemy {enemy.GetType().Name}!");
+            if (Rectangle.Intersect(objA.Rect, objB.Rect))
+            {
+                System.Diagnostics.Debug.WriteLine("enemy was hit");
+            }
         }
     }
 }

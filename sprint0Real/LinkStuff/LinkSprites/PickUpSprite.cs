@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace sprint0Real.LinkStuff.LinkSprites
 {
-    internal class PickUpSprite : ILinkSprite
+    internal class PickUpSprite : ILinkSpriteTemp
     {
         private Texture2D _texture;
         private Game1 myGame;

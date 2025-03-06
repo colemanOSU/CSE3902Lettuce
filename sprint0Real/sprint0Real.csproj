@@ -11,6 +11,9 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Interfaces\IEnemyProjectiles].cs" />
+  </ItemGroup>
+  <ItemGroup>
     <None Remove="Content\NES - The Legend of Zelda - Dungeon Tileset.png" />
     <None Remove="Icon.ico" />
     <None Remove="Icon.bmp" />

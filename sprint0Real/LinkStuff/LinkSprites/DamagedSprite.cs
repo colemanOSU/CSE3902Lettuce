@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace sprint0Real.LinkStuff.LinkSprites
 {
-    public class DamagedSprite : ILinkSprite
+    public class DamagedSprite : ILinkSpriteTemp
     {
         private Game1 _game;
         private Texture2D _link;

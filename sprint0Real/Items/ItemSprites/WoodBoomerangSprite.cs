@@ -24,6 +24,7 @@ namespace sprint0Real.Items.ItemSprites
         private int _frameCount = 3;
         private Vector2 _finalPos;
 
+
         public WoodBoomerangSprite(Texture2D texture, Game1 game)
         {
             _texture = texture;

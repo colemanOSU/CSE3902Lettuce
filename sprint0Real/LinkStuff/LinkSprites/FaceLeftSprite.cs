@@ -9,7 +9,7 @@ using sprint0Real.Interfaces;
 
 namespace sprint0Real.LinkStuff.LinkSprites
 {
-    internal class FaceLeftSprite : ILinkSprite
+    internal class FaceLeftSprite : ILinkSpriteTemp
     {
         private Rectangle sourceRectangle = new(35, 11, 16, 16);
         private Rectangle destinationRectangle;

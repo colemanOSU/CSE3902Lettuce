@@ -39,7 +39,7 @@ namespace sprint0Real
         private TitleScreen titleScreen;
 
         public ILink Link;
-        public ILinkSprite linkSprite;
+        public ILinkSpriteTemp linkSprite;
 
         public ILinkSprite weaponItems;
 
@@ -149,7 +149,6 @@ namespace sprint0Real
                      //CollisionChecker.Update(gameTime, this);
 
                     Link.ApplyMomentum();
-
                     CurrentMap.Instance.Update(gameTime);
 
                     break;
@@ -189,7 +188,7 @@ namespace sprint0Real
                 linkSprite.Update(gameTime, _spriteBatch);
                 linkSprite.Draw(_spriteBatch);
 
-                weaponItems.Update(gameTime,_spriteBatch);
+                weaponItems.Update(gameTime);
                 weaponItems.Draw(_spriteBatch);
 
             

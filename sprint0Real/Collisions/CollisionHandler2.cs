@@ -14,6 +14,7 @@ namespace sprint0Real.Collisions
     {
         private Dictionary<(Type, Type), ICollisionCommand> collisionCommands;
         private Game1 game;
+
         public CollisionHandler2(Game1 game)
         {
             this.game = game;

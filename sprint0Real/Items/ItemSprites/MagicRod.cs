@@ -18,6 +18,7 @@ namespace sprint0Real.Items.ItemSprites
         private double _timer;
         private bool flag = false;
 
+
         public MagicRod(Texture2D texture, Game1 game)
         {
             _texture = texture;

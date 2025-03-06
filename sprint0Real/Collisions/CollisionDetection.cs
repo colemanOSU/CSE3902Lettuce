@@ -32,7 +32,6 @@ namespace sprint0Real.Collisions
         {
             gameObjectsInRoom = objects;
             objects.Add(link);
-            objects.Add(weapon);
         }
 
         public void Update(GameTime gametime)

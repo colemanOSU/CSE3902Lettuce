@@ -13,7 +13,7 @@ using sprint0Real.Items.ItemSprites;
 
 namespace sprint0Real.LinkStuff.LinkSprites
 {
-    internal class UseDownSprite : ILinkSprite
+    internal class UseDownSprite : ILinkSpriteTemp
     {
         private Texture2D _texture;
         private Game1 myGame;
