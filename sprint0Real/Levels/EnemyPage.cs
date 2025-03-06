@@ -66,9 +66,9 @@ namespace sprint0Real.Levels
         public void Draw(SpriteBatch spriteBatch)
         {
             background.Draw(spriteBatch);
-            foreach (IEnemy enemy in gameObjects)
+            foreach (IGameObject gameObject in gameObjects)
             {
-                enemy.Draw(spriteBatch);
+                gameObject.Draw(spriteBatch);
             }
         }
         public void Stage(IGameObject gameObject)
