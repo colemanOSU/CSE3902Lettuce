@@ -32,7 +32,18 @@ namespace sprint0Real.BlockSprites
 
         public void Update(GameTime gametime)
         {
-            //nothing, static
+            destinationRectangle.X = (int)position.X;
+            destinationRectangle.Y = (int)position.Y;
+        }
+        public void Move(Vector2 direction)
+        {
+            position += direction;
+
+        }
+        public Vector2 Position
+        {
+            get { return position; }
+            set { position = value; }
         }
         public Rectangle Rect
         {
