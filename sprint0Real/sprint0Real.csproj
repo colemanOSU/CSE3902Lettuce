@@ -11,6 +11,7 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Content\NES - The Legend of Zelda - Dungeon Tileset.png" />
     <None Remove="Icon.ico" />
     <None Remove="Icon.bmp" />
     <None Remove="Items\ItemSprites\BlueBoomerangSprite" />

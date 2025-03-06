@@ -140,7 +140,7 @@ namespace sprint0Real
                 case GameStates.GamePlay:
                  
             _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp);
-
+            CurrentMap.Instance.Draw(_spriteBatch);
 
             //TEMP ITEM
             if (tempItem != null)
@@ -164,7 +164,7 @@ namespace sprint0Real
             weaponItems.Update(gameTime,_spriteBatch);
             weaponItems.Draw(_spriteBatch);
 
-            CurrentMap.Instance.Draw(_spriteBatch);
+            
 
             _spriteBatch.End();
 

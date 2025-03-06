@@ -19,6 +19,7 @@ namespace sprint0Real.Levels
         private Rectangle RightDoor;
         private Rectangle UpDoor;
         private Rectangle DownDoor;
+        private int Multiple = 3;
         private BackgroundCatalogue catalogue = new BackgroundCatalogue();
 
         public void SetRoomInterior(String sprite)
@@ -48,16 +49,18 @@ namespace sprint0Real.Levels
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            Rectangle destinationRectangleInterior = new Rectangle(123, 123,3, 51);
-            Rectangle destinationRectangleExterior = new Rectangle(123, 123, 3, 51);
-            Rectangle destinationRectangleLeftDoor = new Rectangle(123, 123, 3, 51);
-            Rectangle destinationRectangleRightDoor = new Rectangle(123, 123, 3, 51);
-            Rectangle destinationRectangleDownDoor = new Rectangle(123, 123, 3, 51);
-            Rectangle destinationRectangleUpDoor = new Rectangle(123, 123, 3, 51);
+            Rectangle destinationRectangleInterior = new Rectangle(32 * Multiple, 32 * Multiple, 192 * Multiple, 112 * Multiple);
+            Rectangle destinationRectangleExterior = new Rectangle(0, 0, 256 * Multiple, 176 * Multiple);
 
+            Rectangle destinationRectangleLeftDoor = new Rectangle(0, 72 * Multiple, 32 * Multiple, 32 * Multiple);
+            Rectangle destinationRectangleRightDoor = new Rectangle(225 * Multiple, 72 * Multiple, 32 * Multiple, 32 * Multiple);
+            Rectangle destinationRectangleDownDoor = new Rectangle(113 * Multiple, 0, 32 * Multiple, 32 * Multiple);
+            Rectangle destinationRectangleUpDoor = new Rectangle(113 * Multiple, 144 * Multiple, 32 * Multiple, 32 * Multiple);
 
+            
             spriteBatch.Draw(spriteSheet, destinationRectangleInterior, RoomInterior, Color.White);
             spriteBatch.Draw(spriteSheet, destinationRectangleExterior, RoomExterior, Color.White);
+
             spriteBatch.Draw(spriteSheet, destinationRectangleLeftDoor, LeftDoor, Color.White);
             spriteBatch.Draw(spriteSheet, destinationRectangleRightDoor, RightDoor, Color.White);
             spriteBatch.Draw(spriteSheet, destinationRectangleDownDoor, UpDoor, Color.White);
