@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using sprint0Real.Interfaces;
 
+
 namespace sprint0Real.BlockSprites
 {
     public class BlockSpriteBlack : IBlock
@@ -15,10 +16,10 @@ namespace sprint0Real.BlockSprites
 
         public Texture2D texture;
 
-        public BlockSpriteBlack(Texture2D texture, Vector2 startPos)
+        public BlockSpriteBlack(Vector2 startPos)
         {
-            this.texture = texture;
-            this.position = startPos;
+            texture = BlockSpriteFactory.Instance.GetDungeonTileSet();
+            position = startPos;
 
             sourceRectangle = new Rectangle(984, 28, width, height);
             destinationRectangle = new Rectangle((int)position.X, (int)position.Y, width * 3, height * 3);
@@ -36,7 +37,7 @@ namespace sprint0Real.BlockSprites
         }
         public void Move(Vector2 direction)
         {
-            position += direction; 
+            position += direction;
 
             //example of how to move: block.Move(new Vector2(-1, 0)); // Move left
         }

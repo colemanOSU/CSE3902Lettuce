@@ -24,16 +24,16 @@ namespace sprint0Real.Commands
 
             blocks = new Dictionary<int, IBlock>()
             {
-                { 1, new BlockSpriteFloorTile(_texture, _position) },
-                { 2, new BlockSpriteFloorBlock(_texture, _position) },
-                { 3, new BlockSpriteStatueFaceRight(_texture, _position) },
-                { 4, new BlockSpriteStatueFaceLeft(_texture, _position) },
-                { 5, new BlockSpriteBlack(_texture, _position) },
-                { 6, new BlockSpriteSpecks(_texture, _position) },
-                { 7, new BlockSpriteNavy(_texture, _position) },
-                { 8, new BlockSpriteStairs(_texture, _position) },
-                { 9, new BlockSpriteBricks(_texture, _position) },
-                { 10, new BlockSpriteStripes(_texture, _position) }
+                { 1, new BlockSpriteFloorTile(_position) },
+                { 2, new BlockSpriteFloorBlock(_position) },
+                { 3, new BlockSpriteStatueFaceRight(_position) },
+                { 4, new BlockSpriteStatueFaceLeft(_position) },
+                { 5, new BlockSpriteBlack(_position) },
+                { 6, new BlockSpriteSpecks(_position) },
+                { 7, new BlockSpriteNavy(_position) },
+                { 8, new BlockSpriteStairs(_position) },
+                { 9, new BlockSpriteBricks(_position) },
+                { 10, new BlockSpriteStripes(_position) }
              };
 
         }
