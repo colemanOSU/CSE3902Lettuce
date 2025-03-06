@@ -12,6 +12,12 @@ namespace sprint0Real.Commands.CollisionCommands
 {
     public class LinkEnemyCollisionCommand : ICollisionCommand
     {
+        private Game1 game;
+
+        public LinkEnemyCollisionCommand(Game1 game)
+        {
+            this.game = game;
+        }
         public void Execute(IGameObject objA, IGameObject objB, CollisionDirections direction)
         {
 

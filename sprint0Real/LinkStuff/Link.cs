@@ -6,6 +6,7 @@ using sprint0Real;
 using sprint0Real.LinkStuff;
 using Microsoft.Xna.Framework.Graphics;
 using System.Diagnostics;
+using sprint0Real.LinkStuff.LinkSprites;
 public class Link : ILink
 {
     private Rectangle destinationRectangle;
@@ -54,7 +55,7 @@ public class Link : ILink
         if (!isDamaged) //Avoid Damage if already in damageed state
         {
             isDamaged = true;
-            stateMachine?.DamageLink(); 
+            stateMachine?.DamageLink();
         }
     }
 
