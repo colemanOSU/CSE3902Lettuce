@@ -1,8 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <CollisionCommands>
+
+	<!-- Enemy Link Collision-->
+
+	<!-- Dragon-->
 	<Collision>
-		<!-- Enemy Link Collision-->
-		<!-- Dragon-->
 		<ObjectA>Dragon</ObjectA>
 		<ObjectB>Link</ObjectB>
 		<Direction>Up</Direction>
@@ -48,6 +50,306 @@
 	<Collision>
 		<ObjectA>Link</ObjectA>
 		<ObjectB>FireBall</ObjectB>
+		<Direction>Left</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<!-- Bat-->
+	<Collision>
+		<ObjectA>Bat</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Up</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<Collision>
+		<ObjectA>Bat</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Down</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<Collision>
+		<ObjectA>Bat</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Right</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<Collision>
+		<ObjectA>Bat</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Left</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<!-- BladeTrap-->
+	<Collision>
+		<ObjectA>BladeTrap</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Up</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<Collision>
+		<ObjectA>BladeTrap</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Down</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<Collision>
+		<ObjectA>BladeTrap</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Right</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<Collision>
+		<ObjectA>BladeTrap</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Left</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<!-- Boomerang-->
+	<Collision>
+		<ObjectA>Boomerang</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Up</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<Collision>
+		<ObjectA>Boomerang</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Down</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<Collision>
+		<ObjectA>Boomerang</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Right</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<Collision>
+		<ObjectA>Boomerang</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Left</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<!-- Bubble-->
+	<Collision>
+		<ObjectA>Bubble</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Up</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<Collision>
+		<ObjectA>Bubble</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Down</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<Collision>
+		<ObjectA>Bubble</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Right</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<Collision>
+		<ObjectA>Bubble</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Left</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<!-- Hand-->
+	<Collision>
+		<ObjectA>Hand</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Up</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<Collision>
+		<ObjectA>Hand</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Down</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<Collision>
+		<ObjectA>Hand</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Right</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<Collision>
+		<ObjectA>Hand</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Left</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<!-- Octo-->
+	<Collision>
+		<ObjectA>Octo</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Up</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<Collision>
+		<ObjectA>Octo</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Down</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<Collision>
+		<ObjectA>Octo</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Right</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<Collision>
+		<ObjectA>Octo</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Left</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<!-- Rock-->
+	<Collision>
+		<ObjectA>Rock</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Up</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<Collision>
+		<ObjectA>Rock</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Down</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<Collision>
+		<ObjectA>Rock</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Right</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<Collision>
+		<ObjectA>Rock</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Left</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<!-- RedGoriya-->
+	<Collision>
+		<ObjectA>Goriya</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Up</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<Collision>
+		<ObjectA>Goriya</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Down</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<Collision>
+		<ObjectA>Goriya</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Right</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<Collision>
+		<ObjectA>Goriya</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Left</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<!-- Skeleton-->
+	<Collision>
+		<ObjectA>Skeleton</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Up</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<Collision>
+		<ObjectA>Skeleton</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Down</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<Collision>
+		<ObjectA>Skeleton</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Right</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<Collision>
+		<ObjectA>Skeleton</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Left</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<!-- Slime-->
+	<Collision>
+		<ObjectA>Slime</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Up</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<Collision>
+		<ObjectA>Slime</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Down</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<Collision>
+		<ObjectA>Slime</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Right</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<Collision>
+		<ObjectA>Slime</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Left</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<!-- Snake-->
+	<Collision>
+		<ObjectA>Snake</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Up</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<Collision>
+		<ObjectA>Snake</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Down</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<Collision>
+		<ObjectA>Snake</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Right</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<Collision>
+		<ObjectA>Snake</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Left</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<!-- Zol-->
+	<Collision>
+		<ObjectA>Zol</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Up</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<Collision>
+		<ObjectA>Zol</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Down</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<Collision>
+		<ObjectA>Zol</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Right</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<Collision>
+		<ObjectA>Zol</ObjectA>
+		<ObjectB>Link</ObjectB>
 		<Direction>Left</Direction>
 		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
 	</Collision>

@@ -15,9 +15,16 @@ namespace sprint0Real.Collisions
 
         private Link link;
         public CollisionDirections recentCollisionDirection;
-        private CollisionHandler collisionHandler = new CollisionHandler("Collisions/CollisionCommands.xml");
+        private CollisionHandler collisionHandler;
+        private Game1 game; //passing in game right now because need it for more commands, probably could take out if we alter how things are set up
 
         private Dictionary<(IGameObject, IGameObject), bool> executedCollisions = new Dictionary<(IGameObject, IGameObject), bool>(); // Track executed collisions
+
+        public CollisionDetection(Game1 game)
+        {
+            this.game = game;
+            collisionHandler = new CollisionHandler("Collisions/CollisionCommands.xml", game);
+        }
         public void UpdateRoomObjects(List<IGameObject> objects, ILink link)
 
         {
@@ -31,7 +38,6 @@ namespace sprint0Real.Collisions
         }
 
         public void CheckCollisions()
-
         {
             for (int i = 0; i < gameObjectsInRoom.Count; i++)
             {

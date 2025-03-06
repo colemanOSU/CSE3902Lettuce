@@ -77,7 +77,7 @@ namespace sprint0Real
             titleScreen = new TitleScreen();
             LinkState = new LinkStateMachine(this);
 
-            collisionDetection = new CollisionDetection();
+            collisionDetection = new CollisionDetection(this);
 
             base.Initialize();
         }

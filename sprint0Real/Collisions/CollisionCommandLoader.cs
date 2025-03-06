@@ -17,12 +17,14 @@ namespace sprint0Real.Collisions
         private Dictionary<(string, string, CollisionDirections), ICollisionCommand> collisionResponses;
         private string xmlFilePath;
         private LinkStateMachine linkStateMachine;
+        private Game1 game;
 
-        public CollisionCommandLoader(string xmlPath)
+        public CollisionCommandLoader(string xmlPath, Game1 game)
         {
             xmlFilePath = xmlPath;
             collisionResponses = new Dictionary<(string, string, CollisionDirections), ICollisionCommand>();
             LoadCommandsFromXml();
+            this.game = game;
         }
 
         public ICollisionCommand GetCommand(string objectA, string objectB, CollisionDirections direction)
@@ -74,7 +76,7 @@ namespace sprint0Real.Collisions
 
             if (commandType != null && typeof(ICollisionCommand).IsAssignableFrom(commandType))
             {
-                return (ICollisionCommand)Activator.CreateInstance(commandType);
+                return (ICollisionCommand)Activator.CreateInstance(commandType, game);
             }
 
             return null;

@@ -12,10 +12,12 @@ namespace sprint0Real.Collisions
     public class CollisionHandler
     {
         private CollisionCommandLoader commandLoader;
+        private Game1 game;
 
-        public CollisionHandler(string xmlPath)
+        public CollisionHandler(string xmlPath, Game1 game)
         {
-            commandLoader = new CollisionCommandLoader(xmlPath);
+            this.game = game;
+            commandLoader = new CollisionCommandLoader(xmlPath, game);
         }
 
         public void HandleCollision(IGameObject objA, IGameObject objB, CollisionDirections direction)
