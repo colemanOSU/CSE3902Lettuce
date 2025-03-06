@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,16 +22,16 @@ namespace sprint0Real.Commands.CollisionCommands
         public void Execute(IGameObject objA, IGameObject objB, CollisionDirections direction)
         {
 
-            // Check if objA is a Dragon
+            // Check if objA is Link
             if (objA is Link linkA)
             {
-                //pick up item
+                linkA.PickUpItem();
             }
 
-            // Check if objB is a Dragon
+            // Check if objB is Link
             if (objB is Link linkB)
             {
-                //pick up item
+                linkB.PickUpItem();
             }
             
         }
