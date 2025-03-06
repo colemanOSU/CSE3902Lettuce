@@ -17,9 +17,43 @@ namespace sprint0Real.Levels
         public Dictionary<String, Rectangle> DownDoorCatalogue;
         public BackgroundCatalogue()
         {
-            InteriorCatalogue.Add("Default", new Rectangle(12, 12, 12, 12));
-            InteriorCatalogue.Add("EntranceInteior", new Rectangle(12, 12, 12, 12));
-            InteriorCatalogue.Add("DungeonInterior", new Rectangle(12, 12, 12, 12));
+            InteriorCatalogue = new Dictionary<String, Rectangle>();
+            ExteriorCatalogue = new Dictionary<String, Rectangle>();
+            LeftDoorCatalogue = new Dictionary<String, Rectangle>();
+            RightDoorCatalogue = new Dictionary<String, Rectangle>();
+            UpDoorCatalogue = new Dictionary<String, Rectangle>();
+            DownDoorCatalogue = new Dictionary<String, Rectangle>();
+
+            InteriorCatalogue.Add("Default", new Rectangle(1, 192, 180, 105));
+            InteriorCatalogue.Add("EntranceInteior", new Rectangle(196, 192, 180, 105));
+            InteriorCatalogue.Add("SandInterior", new Rectangle(586, 421, 180, 105));
+
+            ExteriorCatalogue.Add("DungeonInterior", new Rectangle(421, 1009, 256, 160));
+            ExteriorCatalogue.Add("Default", new Rectangle(521, 11, 256, 176));
+
+            UpDoorCatalogue.Add("Default", new Rectangle(815, 10, 32, 32));
+            UpDoorCatalogue.Add("Open", new Rectangle(848, 10, 32, 32));
+            UpDoorCatalogue.Add("Locked", new Rectangle(881, 10, 32, 32));
+            UpDoorCatalogue.Add("Sealed", new Rectangle(914, 10, 32, 32));
+            UpDoorCatalogue.Add("Breached", new Rectangle(947, 10, 32, 32));
+
+            LeftDoorCatalogue.Add("Default", new Rectangle(815, 44, 32, 32));
+            LeftDoorCatalogue.Add("Open", new Rectangle(848, 44, 32, 32));
+            LeftDoorCatalogue.Add("Locked", new Rectangle(881, 44, 32, 32));
+            LeftDoorCatalogue.Add("Sealed", new Rectangle(914, 44, 32, 32));
+            LeftDoorCatalogue.Add("Breached", new Rectangle(947, 44, 32, 32));
+
+            RightDoorCatalogue.Add("Default", new Rectangle(815, 73, 32, 32));
+            RightDoorCatalogue.Add("Open", new Rectangle(846, 73, 32, 32));
+            RightDoorCatalogue.Add("Locked", new Rectangle(881, 73, 32, 32));
+            RightDoorCatalogue.Add("Sealed", new Rectangle(914, 73, 32, 32));
+            RightDoorCatalogue.Add("Breached", new Rectangle(947, 73, 32, 32));
+
+            DownDoorCatalogue.Add("Default", new Rectangle(815, 109, 32, 32));
+            DownDoorCatalogue.Add("Open", new Rectangle(848, 109, 32, 32));
+            DownDoorCatalogue.Add("Locked", new Rectangle(881, 109, 32, 32));
+            DownDoorCatalogue.Add("Sealed", new Rectangle(914, 109, 32, 32));
+            DownDoorCatalogue.Add("Breached", new Rectangle(947, 109, 32, 32));
         }
 
     }

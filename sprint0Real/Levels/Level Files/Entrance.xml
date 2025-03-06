@@ -3,7 +3,7 @@
 	<Name>Entrance</Name>
 	<Exterior>Insert</Exterior>
 	<Interior>Insert</Interior>
-	<Doors Left="Open" Right="Closed" Up="Locked" Down="Sealed"/>
+	<Door ID="Door" Exterior ="Default" Interior ="Default" Left="Open" Right="Sealed" Up="Locked" Down="Breached"/>
 	
 	<Objects>
 		<Object Type="sprint0Real.EnemyStuff.DragonStuff.Dragon" x="3" y="5"/>

@@ -31,6 +31,7 @@ namespace sprint0Real.Levels
         public EnemyPage()
         {
             gameObjects = new List<IGameObject>();
+            background = new LevelBackground();
         }
 
         
@@ -64,11 +65,11 @@ namespace sprint0Real.Levels
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            foreach (IGameObject enemy in gameObjects)
+            background.Draw(spriteBatch);
+            foreach (IEnemy enemy in gameObjects)
             {
                 enemy.Draw(spriteBatch);
             }
-            //background.Draw(spriteBatch);
         }
         public void Stage(IGameObject gameObject)
         {
