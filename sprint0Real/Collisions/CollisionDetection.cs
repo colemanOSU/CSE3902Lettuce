@@ -17,7 +17,7 @@ namespace sprint0Real.Collisions
         public CollisionDirections recentCollisionDirection;
         private CollisionHandler collisionHandler;
         private Game1 game; //passing in game right now because need it for more commands, probably could take out if we alter how things are set up
-
+        
         private Dictionary<(IGameObject, IGameObject), bool> executedCollisions = new Dictionary<(IGameObject, IGameObject), bool>(); // Track executed collisions
 
         public CollisionDetection(Game1 game)

@@ -1,0 +1,12 @@
+AUTHOR: Kelly Coleman
+SUBJECT: CollisionDetection.cs
+AUTHOR OF SUBJECT: Andie Stewart
+FOCUS: Readability
+SPRINT: 3
+DATE: 6 March 2025
+TIME TAKEN TO COMPLETE: 10 Minutes
+
+In terms of readability, this file is not bad at all. If there was an area to critique, one might wish for slightly more informative comments, 
+particularly in regards to each individual process's role in the overall journey. Yet this is a relatively minor complaint. Variables are 
+generally well named and the class well organized enough.The jury of 1 is still out on the decision to have collision handling done through an
+XML file, but progress moves steadily on like a mammoth glacier which no man can cease nor slow. Overall unremarkable readability.

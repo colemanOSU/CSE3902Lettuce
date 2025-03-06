@@ -1,0 +1,23 @@
+AUTHOR: Kelly Coleman
+SUBJECT: CollisionDetection.cs
+AUTHOR OF SUBJECT: Andie Stewart
+FOCUS: Maintainability
+SPRINT: 3
+DATE: 6 March 2025
+TIME TAKEN TO COMPLETE: 15 Minutes
+
+I have some qualms with the implementation of this class. Collision detection happening
+in O(n^2) hurts me deeply, but not enough to write something better myself. But that
+doesn't matter now. What matters is the maintainability. This class was warily well
+written with wieldy working in mind. The actual collision handling is handidly handled
+in a seperate class (good cohesion!), meaning that significant changes to its
+implementation (such as freeing it from the scourge of an xml file) without much grief.
+
+The current method of checking for rectangle overlaps and finding the direction with
+least overlap is functional and works for the current project, but could well spell
+disaster if we were to implement, say, much faster game objects. However, given the 
+shall-we-say methodical pace of most NES games, I think this is not to great a fear to 
+bear for this project and we need not let it keep us up at night.
+
+Overall this class is at a standard level of maintainability without need for much
+alteration as far as I can see.
