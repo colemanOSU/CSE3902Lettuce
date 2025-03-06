@@ -26,5 +26,15 @@ namespace sprint0Real.ItemTempSprites
         {
             //nothing, static
         }
+
+        public bool CanBePickedUp()
+        {
+            return true;
+        }
+
+        public Rectangle Rect
+        {
+            get { return destinationRectangle; }
+        }
     }
 }

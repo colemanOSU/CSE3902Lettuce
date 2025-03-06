@@ -22,7 +22,7 @@ namespace sprint0Real.Commands
         }
         public void Execute()
         {
-            _link.Damaged();
+            _link.SetIsDamaged(true);
             _game.linkSprite = new DamagedSprite(_game, _game.linkSheet);
 
         }

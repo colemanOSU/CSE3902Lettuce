@@ -16,9 +16,9 @@ namespace sprint0Real.Levels
     public class EnemyPage
     {
         private List<IGameObject> gameObjects;
-        private List<ICollisionBoxes> RoomCollisions;
+        private List<ICollisionBoxes> Hitboxes;
         private Dictionary<String, String> Neighbors;
-        private LevelBackground background;
+        public LevelBackground background;
 
         /* DELETE LATER
          * This should allow RoomTransitioncCommand to look like:
@@ -34,9 +34,14 @@ namespace sprint0Real.Levels
         }
 
         
-        public List<IGameObject> ReturnList()
+        public List<IGameObject> ReturnGameObjectList()
         {
             return gameObjects;
+        }
+
+        public List<ICollisionBoxes> ReturnHitboxList()
+        {
+            return Hitboxes;
         }
 
         public void Update(GameTime time)
@@ -54,7 +59,7 @@ namespace sprint0Real.Levels
 
         public void AddCollisionBox(ICollisionBoxes collisionBox)
         {
-            RoomCollisions.Add(collisionBox);
+            Hitboxes.Add(collisionBox);
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -63,6 +68,7 @@ namespace sprint0Real.Levels
             {
                 enemy.Draw(spriteBatch);
             }
+            //background.Draw(spriteBatch);
         }
         public void Stage(IGameObject gameObject)
         {

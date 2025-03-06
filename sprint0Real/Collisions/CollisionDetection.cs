@@ -12,24 +12,26 @@ namespace sprint0Real.Collisions
     public class CollisionDetection : ICollision
     {
         private List<IGameObject> gameObjectsInRoom = new List<IGameObject>();
+
         private Link link;
         public CollisionDirections recentCollisionDirection;
         private CollisionHandler collisionHandler = new CollisionHandler("Collisions/CollisionCommands.xml");
 
         private Dictionary<(IGameObject, IGameObject), bool> executedCollisions = new Dictionary<(IGameObject, IGameObject), bool>(); // Track executed collisions
         public void UpdateRoomObjects(List<IGameObject> objects, ILink link)
+
         {
             gameObjectsInRoom = objects;
             objects.Add(link);
         }
 
-        public void Update(GameTime gametime)
+        public void Update(GameTime gametime, Game1 myGame)
         {
-            CheckCollisions();
+            CheckCollisions(myGame);
         }
 
-
         public void CheckCollisions()
+
         {
             for (int i = 0; i < gameObjectsInRoom.Count; i++)
             {
@@ -94,6 +96,7 @@ namespace sprint0Real.Collisions
             {
                 recentCollisionDirection = CollisionDirections.Left;
                 //Debug.WriteLine("Collision from Left of " + objB.GetType().Name);
+                
             }
             else if (minOverlap == overlapRight)
             {

@@ -12,6 +12,6 @@ namespace sprint0Real.Interfaces
 
         void Draw(SpriteBatch spriteBatch);
 
-
+        
     }
 }

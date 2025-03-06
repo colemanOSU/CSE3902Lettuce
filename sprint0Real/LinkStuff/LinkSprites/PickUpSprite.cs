@@ -14,6 +14,7 @@ namespace sprint0Real.LinkStuff.LinkSprites
     {
         private Texture2D _texture;
         private Game1 myGame;
+        private int frame;
 
         private Rectangle sourceRectangle = new(213, 11, 16, 16);
         private Rectangle destinationRectangle;
@@ -25,6 +26,7 @@ namespace sprint0Real.LinkStuff.LinkSprites
             _texture = texture;
             myGame = game;
             destinationRectangle = myGame.Link.GetLocation();
+            frame = 0;
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -34,7 +36,13 @@ namespace sprint0Real.LinkStuff.LinkSprites
 
         public void Update(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            //Static Sprite, no need to update
+            frame++;
+            if (frame >= 10)
+            {
+                myGame.Link.SetCanAttack(true);
+                myGame.Link.SetCanMove(true);
+                sourceRectangle = new(35, 11, 16, 16);
+            }
         }
     }
 }

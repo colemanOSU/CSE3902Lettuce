@@ -85,7 +85,9 @@ namespace sprint0Real.Controllers
         {
             var KeyboardState = Keyboard.GetState();
 
-            MovementKeyIsDown = KeyboardState.IsKeyDown(Keys.A) || KeyboardState.IsKeyDown(Keys.W) || KeyboardState.IsKeyDown(Keys.S) || KeyboardState.IsKeyDown(Keys.D);
+            //This variable is to help with logic when two movement keys are pressed simultaneously.
+            MovementKeyIsDown = KeyboardState.IsKeyDown(Keys.A) || KeyboardState.IsKeyDown(Keys.W) || KeyboardState.IsKeyDown(Keys.S) || KeyboardState.IsKeyDown(Keys.D)
+                || KeyboardState.IsKeyDown(Keys.Left) || KeyboardState.IsKeyDown(Keys.Up) || KeyboardState.IsKeyDown(Keys.Down) || KeyboardState.IsKeyDown(Keys.Right);
 
             
 

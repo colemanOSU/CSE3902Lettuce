@@ -46,14 +46,14 @@ namespace sprint0Real.EnemyStuff.BoomerangStuff
             Hit = true;
         }
 
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            mySprite.Draw(spriteBatch, location);
-        }
-
         public void Caught()
         {
             behavior.Caught();
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            mySprite.Draw(spriteBatch, location);
         }
 
         public void Update(GameTime time)

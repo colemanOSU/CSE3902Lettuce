@@ -6,6 +6,7 @@ using sprint0Real.Interfaces;
 
 namespace sprint0Real.ItemTempSprites
 {
+    //It's spelled Rupee but hell if I'm going to change it at this point.
     public class Rupy : IItemtemp
     {
         private int frameWidth = 8;
@@ -49,6 +50,11 @@ namespace sprint0Real.ItemTempSprites
                 currentFrame.Y = (currentFrameIndex * frameHeight);
             }
 
+        }
+
+        public Rectangle Rect
+        {
+            get { return destinationRectangle; }
         }
     }
 }

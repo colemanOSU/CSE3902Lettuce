@@ -38,15 +38,15 @@ namespace sprint0Real.Levels
 
         public List<IGameObject> MapList()
         {
-            return myMap.ReturnList();
+            return myMap.ReturnGameObjectList();
         }
 
-        public void Stage(IEnemy enemy)
+        public void Stage(IGameObject enemy)
         {
             stagingAdd.Add(enemy);
         }
 
-        public void DeStage(IEnemy enemy)
+        public void DeStage(IGameObject enemy)
         {
             stagingRemove.Add(enemy);
         }
@@ -54,12 +54,12 @@ namespace sprint0Real.Levels
         public void Update(GameTime gameTime)
         {
             myMap.Update(gameTime);
-            foreach (IEnemy enemy in stagingAdd)
+            foreach (IGameObject enemy in stagingAdd)
             {
                 myMap.Stage(enemy);
             }
             stagingAdd.Clear();
-            foreach (IEnemy enemy in stagingRemove)
+            foreach (IGameObject enemy in stagingRemove)
             {
                 myMap.DeStage(enemy);
             }
