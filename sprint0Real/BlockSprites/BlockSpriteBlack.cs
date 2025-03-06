@@ -22,7 +22,6 @@ namespace sprint0Real.BlockSprites
 
             sourceRectangle = new Rectangle(984, 28, width, height);
             destinationRectangle = new Rectangle((int)position.X, (int)position.Y, width * 3, height * 3);
-            //destination(200, 200)
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -32,9 +31,20 @@ namespace sprint0Real.BlockSprites
 
         public void Update(GameTime gametime)
         {
-            //nothing, static
+            destinationRectangle.X = (int)position.X;
+            destinationRectangle.Y = (int)position.Y;
         }
+        public void Move(Vector2 direction)
+        {
+            position += direction; 
 
+            //example of how to move: block.Move(new Vector2(-1, 0)); // Move left
+        }
+        public Vector2 Position
+        {
+            get { return position; }
+            set { position = value; }
+        }
         public Rectangle Rect
         {
             get { return destinationRectangle; }
