@@ -15,9 +15,9 @@ namespace sprint0Real.BlockSprites
 
         public Texture2D texture;
 
-        public BlockSpriteNavy(Texture2D texture, Vector2 startPos)
+        public BlockSpriteNavy(Vector2 startPos)
         {
-            this.texture = texture;
+            this.texture = BlockSpriteFactory.Instance.GetDungeonTileSet();
             this.position = startPos;
 
             sourceRectangle = new Rectangle(1018, 28, width, height);

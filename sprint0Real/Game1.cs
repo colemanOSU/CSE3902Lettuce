@@ -15,6 +15,7 @@ using sprint0Real.GameState;
 using sprint0Real.Collisions;
 using sprint0Real.LinkStuff;
 using sprint0Real.Levels;
+using System.Reflection.Metadata;
 
 namespace sprint0Real
 {
@@ -96,6 +97,7 @@ namespace sprint0Real
 
             EnemySpriteFactory.Instance.LoadAllTextures(Content);
             EnemySpriteFactory.Instance.LoadGame(this);
+            BlockSpriteFactory.Instance.LoadAllTextures(Content);
             LevelLoader.Instance.LoadLevels();
 
             ResetGame();
@@ -203,7 +205,7 @@ namespace sprint0Real
             this.titleScreen.isAnimating = false;
             currentGameState = GameStates.TitleScreen;
 
-            currentBlock = new BlockSpriteFloorTile(blockSheet, new Vector2(300,300));
+            currentBlock = new BlockSpriteFloorTile(new Vector2(300,300));
             currentItem = new Heart(itemSheet);
             linkSprite = new ResetLink(linkSheet, this);
             weaponItems = new NullSprite(linkSheet, this);
