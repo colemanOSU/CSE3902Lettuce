@@ -98,6 +98,7 @@ namespace sprint0Real
             LevelLoader.Instance.LoadLevels();
 
             ResetGame();
+            collisionDetection.UpdateRoomObjects(CurrentMap.Instance.MapList(), Link);
 
             tempItem = null;
         }
@@ -122,7 +123,6 @@ namespace sprint0Real
                      currentItem.Update(gameTime);
                      LinkState.Update(gameTime);
 
-                    collisionDetection.UpdateRoomObjects(CurrentMap.Instance.MapList(), Link);
                     collisionDetection.Update(gameTime);
                     // Reset executed collisions to allow new collisions to be handled in the next frame
                     collisionDetection.ResetExecutedCollisions();

@@ -1,9 +1,54 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <CollisionCommands>
 	<Collision>
+		<!-- Enemy Link Collision-->
+		<!-- Dragon-->
 		<ObjectA>Dragon</ObjectA>
 		<ObjectB>Link</ObjectB>
 		<Direction>Up</Direction>
-		<Command>sprint0Real.Commands.CollisionCommands.testTempCommand</Command>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<Collision>
+		<ObjectA>Dragon</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Down</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<Collision>
+		<ObjectA>Dragon</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Right</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<Collision>
+		<ObjectA>Dragon</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Left</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<!-- FireBall-->
+	<Collision>
+		<ObjectA>Link</ObjectA>
+		<ObjectB>FireBall</ObjectB>
+		<Direction>Up</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<Collision>
+		<ObjectA>Link</ObjectA>
+		<ObjectB>FireBall</ObjectB>
+		<Direction>Down</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<Collision>
+		<ObjectA>Link</ObjectA>
+		<ObjectB>FireBall</ObjectB>
+		<Direction>Right</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
+	</Collision>
+	<Collision>
+		<ObjectA>Link</ObjectA>
+		<ObjectB>FireBall</ObjectB>
+		<Direction>Left</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkEnemyCollisionCommand</Command>
 	</Collision>
 </CollisionCommands>
