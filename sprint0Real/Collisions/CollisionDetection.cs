@@ -15,7 +15,8 @@ namespace sprint0Real.Collisions
 
         private Link link;
         public CollisionDirections recentCollisionDirection;
-        private CollisionHandler collisionHandler;
+        //private CollisionHandler collisionHandler;
+        private CollisionHandler2 collisionHandler;
         private Game1 game; //passing in game right now because need it for more commands, probably could take out if we alter how things are set up
         
         private Dictionary<(IGameObject, IGameObject), bool> executedCollisions = new Dictionary<(IGameObject, IGameObject), bool>(); // Track executed collisions
@@ -23,7 +24,8 @@ namespace sprint0Real.Collisions
         public CollisionDetection(Game1 game)
         {
             this.game = game;
-            collisionHandler = new CollisionHandler("Collisions/CollisionCommands.xml", game);
+            //collisionHandler = new CollisionHandler("Collisions/CollisionCommands.xml", game);
+            collisionHandler = new CollisionHandler2(game);
         }
         public void UpdateRoomObjects(List<IGameObject> objects, ILink link)
 
@@ -48,7 +50,7 @@ namespace sprint0Real.Collisions
 
                     if (objA.Rect.Intersects(objB.Rect))
                     {
-                        DetectCollisionType(objA, objB);
+                        DetectCollisionDirection(objA, objB);
                         HandleCollisionOnce(objA, objB);
                     }
                 }
@@ -69,9 +71,7 @@ namespace sprint0Real.Collisions
             }
         }
 
-
-
-        public void DetectCollisionType(IGameObject objA, IGameObject objB)
+        public void DetectCollisionDirection(IGameObject objA, IGameObject objB)
         {
 
             Rectangle rectA = objA.Rect;

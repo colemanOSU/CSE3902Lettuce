@@ -40,7 +40,7 @@ public class Link : ILink
         canMove = true;
         canAttack = true;
         Facing = Direction.Right;
-        //stateMachine = new LinkStateMachine(this);
+        stateMachine = new LinkStateMachine(this);
         itemStateMachine = new ItemStateMachine(game);
         LinkSpriteColor = Color.White;
         isDamaged = false;
@@ -181,6 +181,10 @@ public class Link : ILink
     public void SetFacing(Direction facing)
     {
         Facing = facing;
+    }
+    public void PickUpItem()
+    {
+        stateMachine?.PickUpItem();
     }
 
     // Make the compiler happy
