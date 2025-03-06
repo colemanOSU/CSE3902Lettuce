@@ -14,9 +14,9 @@ namespace sprint0Real.LinkStuff
         private double DamageFrameCount;
 
         private int DamageLoops;
-        public LinkStateMachine(Game1 game)
+        public LinkStateMachine(ILink link)
         {
-            Link = game.Link;
+            Link = link;
             DamageFrameCount = 0;
             DamageLoops = 0;
         }

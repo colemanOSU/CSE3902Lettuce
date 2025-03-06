@@ -2,19 +2,21 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using sprint0Real.Interfaces;
+using sprint0Real.TreasureItemSprites;
 
 namespace sprint0Real.ItemTempSprites
 {
     public class RedRing : IItemtemp
     {
         public Rectangle sourceRectangle = new Rectangle(169, 3, 7, 9);
-        public Rectangle destinationRectangle = new Rectangle(400, 400, 28, 36);
+        public Rectangle destinationRectangle;
 
         public Texture2D _texture;
 
-        public RedRing(Texture2D texture)
+        public RedRing(Vector2 pos)
         {
-            _texture = texture;
+            destinationRectangle = new Rectangle((int)pos.X, (int)pos.Y, 28, 36);
+            _texture = TreasureItemSpriteFactory.Instance.GetItemSpriteSheet();
         }
 
         public void Draw(SpriteBatch spriteBatch)

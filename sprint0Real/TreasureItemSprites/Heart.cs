@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using sprint0Real.Interfaces;
+using sprint0Real.TreasureItemSprites;
 
 namespace sprint0Real.ItemTempSprites
 {
@@ -14,13 +15,14 @@ namespace sprint0Real.ItemTempSprites
         private double timeSinceLastFrame = 0;
         private double timePerFrame = 150;
         private Rectangle currentFrame;
-        public Rectangle destinationRectangle = new Rectangle(400, 400, 28, 32);
+        public Rectangle destinationRectangle;
 
         public Texture2D _texture;
 
-        public Heart(Texture2D texture)
+        public Heart(Vector2 pos)
         {
-            _texture = texture;
+            destinationRectangle = new Rectangle((int)pos.X, (int)pos.Y, 28, 32);
+            _texture = TreasureItemSpriteFactory.Instance.GetItemSpriteSheet();
             currentFrame = new Rectangle(0, 0, frameWidth, frameHeight);
         }
 

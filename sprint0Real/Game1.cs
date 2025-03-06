@@ -16,6 +16,7 @@ using sprint0Real.Collisions;
 using sprint0Real.LinkStuff;
 using sprint0Real.Levels;
 using System.Reflection.Metadata;
+using sprint0Real.TreasureItemSprites;
 
 namespace sprint0Real
 {
@@ -76,9 +77,9 @@ namespace sprint0Real
             controllerList.Add(new KeyboardController(this));
             currentGameState = GameStates.TitleScreen;
             titleScreen = new TitleScreen();
-            LinkState = new LinkStateMachine(this);
+            LinkState = new LinkStateMachine(Link);
 
-            collisionDetection = new CollisionDetection(this);
+            //collisionDetection = new CollisionDetection(this);
 
             base.Initialize();
         }
@@ -98,6 +99,7 @@ namespace sprint0Real
             EnemySpriteFactory.Instance.LoadAllTextures(Content);
             EnemySpriteFactory.Instance.LoadGame(this);
             BlockSpriteFactory.Instance.LoadAllTextures(Content);
+            TreasureItemSpriteFactory.Instance.LoadAllTextures(Content);
             LevelLoader.Instance.LoadLevels();
 
             ResetGame();
@@ -133,7 +135,7 @@ namespace sprint0Real
 
                      }
                      currentBlock.Update(gameTime);
-                     currentItem.Update(gameTime);
+                     //currentItem.Update(gameTime);
                      LinkState.Update(gameTime);
 
                     collisionDetection.Update(gameTime);
@@ -180,7 +182,7 @@ namespace sprint0Real
                 }
 
                 currentBlock.Draw(_spriteBatch);
-                currentItem.Draw(_spriteBatch);
+                //currentItem.Draw(_spriteBatch);
 
 
 
@@ -206,13 +208,15 @@ namespace sprint0Real
             currentGameState = GameStates.TitleScreen;
 
             currentBlock = new BlockSpriteFloorTile(new Vector2(300,300));
-            currentItem = new Heart(itemSheet);
+            //currentItem = new Heart(new Vector2(0, 0));
             linkSprite = new ResetLink(linkSheet, this);
             weaponItems = new NullSprite(linkSheet, this);
             currentBlockIndex = 1;
             Link = new Link(this);
             currentItemIndex = 1;
-            LinkState = new LinkStateMachine(this);
+            LinkState = new LinkStateMachine(Link);
+
+            collisionDetection = new CollisionDetection(this);
 
             //Update with other objects in game...
 

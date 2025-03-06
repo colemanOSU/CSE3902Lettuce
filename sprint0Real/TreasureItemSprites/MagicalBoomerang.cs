@@ -2,19 +2,21 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using sprint0Real.Interfaces;
+using sprint0Real.TreasureItemSprites;
 
 namespace sprint0Real.ItemTempSprites
 {
     public class MagicalBoomerang : IItemtemp
     {
         public Rectangle sourceRectangle = new Rectangle(129, 19, 5, 8);
-        public Rectangle destinationRectangle = new Rectangle(400, 400, 20, 32);
+        public Rectangle destinationRectangle;
 
         public Texture2D _texture;
 
-        public MagicalBoomerang(Texture2D texture)
+        public MagicalBoomerang(Vector2 pos)
         {
-            _texture = texture;
+            destinationRectangle = new Rectangle((int)pos.X, (int)pos.Y, 20, 32);
+            _texture = TreasureItemSpriteFactory.Instance.GetItemSpriteSheet();
         }
 
         public void Draw(SpriteBatch spriteBatch)

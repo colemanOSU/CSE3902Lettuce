@@ -2,19 +2,21 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using sprint0Real.Interfaces;
+using sprint0Real.TreasureItemSprites;
 
 namespace sprint0Real.ItemTempSprites
 {
     public class MagicalSword : IItemtemp
     {
         public Rectangle sourceRectangle = new Rectangle(112, 0, 8, 16);
-        public Rectangle destinationRectangle = new Rectangle(400, 400, 32, 64);
+        public Rectangle destinationRectangle;
 
         public Texture2D _texture;
 
-        public MagicalSword(Texture2D texture)
+        public MagicalSword(Vector2 pos)
         {
-            _texture = texture;
+            destinationRectangle = new Rectangle((int)pos.X, (int)pos.Y, 32, 64);
+            _texture = TreasureItemSpriteFactory.Instance.GetItemSpriteSheet();
         }
 
         public void Draw(SpriteBatch spriteBatch)

@@ -2,19 +2,21 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using sprint0Real.Interfaces;
+using sprint0Real.TreasureItemSprites;
 
 namespace sprint0Real.ItemTempSprites
 {
     public class Compass : IItemtemp
     {
         public Rectangle sourceRectangle = new Rectangle(258, 1, 11, 12);
-        public Rectangle destinationRectangle = new Rectangle(400, 400, 44, 48);
+        public Rectangle destinationRectangle;
 
         public Texture2D _texture;
 
-        public Compass(Texture2D texture)
+        public Compass(Vector2 pos)
         {
-            _texture = texture;
+            destinationRectangle = new Rectangle((int)pos.X, (int)pos.Y, 44, 48);
+            _texture = TreasureItemSpriteFactory.Instance.GetItemSpriteSheet();
         }
 
         public void Draw(SpriteBatch spriteBatch)

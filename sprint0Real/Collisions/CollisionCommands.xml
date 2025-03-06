@@ -606,4 +606,32 @@
 		<Direction>Left</Direction>
 		<Command>sprint0Real.Commands.CollisionCommands.LinkBlockCollisionCommand</Command>
 	</Collision>
+
+	<!-- Item Link Collision-->
+
+	<!-- Map-->
+	<Collision>
+		<ObjectA>Map</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Up</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkItemCollisionCommand</Command>
+	</Collision>
+	<Collision>
+		<ObjectA>Map</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Down</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkItemCollisionCommand</Command>
+	</Collision>
+	<Collision>
+		<ObjectA>Map</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Right</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkItemCollisionCommand</Command>
+	</Collision>
+	<Collision>
+		<ObjectA>Map</ObjectA>
+		<ObjectB>Link</ObjectB>
+		<Direction>Left</Direction>
+		<Command>sprint0Real.Commands.CollisionCommands.LinkItemCollisionCommand</Command>
+	</Collision>
 </CollisionCommands>
