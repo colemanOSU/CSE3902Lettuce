@@ -25,9 +25,9 @@ namespace sprint0Real.Collisions
             objects.Add(link);
         }
 
-        public void Update(GameTime gametime, Game1 myGame)
+        public void Update(GameTime gametime)
         {
-            CheckCollisions(myGame);
+            CheckCollisions();
         }
 
         public void CheckCollisions()

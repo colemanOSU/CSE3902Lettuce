@@ -115,11 +115,12 @@ namespace sprint0Real
                 case GameStates.GamePlay:
 
                     //TEMP
+                    /*
                     List<IGameObject> tempList = new List<IGameObject>();
                     tempList.Add(currentBlock);
                     tempList.Add(Link);
                     tempList.Add(currentItem);
-                    CollisionChecker.UpdateRoomObjects(tempList);
+                    CollisionChecker.UpdateRoomObjects(tempList);*/
                     //TEMP
                     //TODO: DELETE TEMPORARY CODE
 
@@ -143,7 +144,7 @@ namespace sprint0Real
                     //Which is not right now
                      //CollisionChecker.Update(gameTime, this);
 
-                    //Link.ApplyMomentum();
+                    Link.ApplyMomentum();
 
                     CurrentMap.Instance.Update(gameTime);
 

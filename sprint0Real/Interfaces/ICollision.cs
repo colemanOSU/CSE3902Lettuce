@@ -7,9 +7,9 @@ namespace sprint0Real.Interfaces
 {
     public interface ICollision
     {
-        void Update(GameTime gametime, Game1 myGame);
+        void Update(GameTime gametime);
 
-        void UpdateRoomObjects(List<IGameObject> objects);
+        void UpdateRoomObjects(List<IGameObject> objects, ILink link);
 
     }
 }
