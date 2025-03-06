@@ -9,6 +9,7 @@
 		<Object Type="sprint0Real.EnemyStuff.DragonStuff.Dragon" x="3" y="5"/>
 		<Object Type="sprint0Real.EnemyStuff.DragonStuff.Dragon" x="100" y="100"/>
 		<Object Type="sprint0Real.BlockSprites.BlockSpriteBlack" x="200" y="200"/>
+		<Object Type="sprint0Real.ItemTempSprites.Map" x="400" y="400"/>
 	</Objects>
 	
 	<MapHitBoxes>

@@ -2,19 +2,21 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using sprint0Real.Interfaces;
+using sprint0Real.TreasureItemSprites;
 
 namespace sprint0Real.ItemTempSprites
 {
     public class Clock : IItemtemp
     {
         public Rectangle sourceRectangle = new Rectangle(58, 0, 11, 16);
-        public Rectangle destinationRectangle = new Rectangle(400, 400, 44, 64);
+        public Rectangle destinationRectangle;
 
         public Texture2D _texture;
 
-        public Clock(Texture2D texture)
+        public Clock(Vector2 pos)
         {
-            _texture = texture;
+            destinationRectangle = new Rectangle((int)pos.X, (int)pos.Y, 44, 64);
+            _texture = TreasureItemSpriteFactory.Instance.GetItemSpriteSheet();
         }
 
         public void Draw(SpriteBatch spriteBatch)
