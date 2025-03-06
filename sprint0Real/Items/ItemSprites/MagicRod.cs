@@ -51,7 +51,7 @@ namespace sprint0Real.Items.ItemSprites
 
         }
 
-        public void Update(GameTime gameTime, SpriteBatch spriteBatch)
+        public void Update(GameTime gameTime)
         {
             _timer += gameTime.ElapsedGameTime.TotalSeconds * 2;
             if (_timer > _frameSpeed)

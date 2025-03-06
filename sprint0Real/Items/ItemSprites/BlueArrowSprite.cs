@@ -24,7 +24,6 @@ namespace sprint0Real.Items.ItemSprites
         private Vector2 finalPosition;
         private Link.Direction arrowDirection;
 
-
         public BlueArrowSprite(Texture2D texture, Game1 game)
         {
 
@@ -122,7 +121,7 @@ namespace sprint0Real.Items.ItemSprites
 
         }
 
-        public void Update(GameTime gameTime, SpriteBatch spriteBatch)
+        public void Update(GameTime gameTime)
         {
             _timer += gameTime.ElapsedGameTime.TotalSeconds * 2;
             if (isMoving)

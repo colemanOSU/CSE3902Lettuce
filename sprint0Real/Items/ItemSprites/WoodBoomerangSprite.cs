@@ -56,7 +56,7 @@ namespace sprint0Real.Items.ItemSprites
             spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
         }
 
-        public void Update(GameTime gameTime,SpriteBatch spriteBatch)
+        public void Update(GameTime gameTime)
         {
             _finalPos = new(myGame.Link.GetLocation().X, myGame.Link.GetLocation().Y);
             destinationRectangle = new Rectangle((int)_position.X, (int)_position.Y, 8 * 3, 16 * 3);

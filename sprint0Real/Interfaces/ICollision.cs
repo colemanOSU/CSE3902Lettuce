@@ -9,7 +9,7 @@ namespace sprint0Real.Interfaces
     {
         void Update(GameTime gametime);
 
-        void UpdateRoomObjects(List<IGameObject> objects, ILink link);
+        void UpdateRoomObjects(List<IGameObject> objects, ILink link,ILinkSprite weapon);
 
     }
 }

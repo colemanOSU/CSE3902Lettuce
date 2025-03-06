@@ -103,7 +103,7 @@ namespace sprint0Real
             LevelLoader.Instance.LoadLevels();
 
             ResetGame();
-            collisionDetection.UpdateRoomObjects(CurrentMap.Instance.MapList(), Link);
+            collisionDetection.UpdateRoomObjects(CurrentMap.Instance.MapList(), Link, weaponItems);
 
             tempItem = null;
         }

@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using sprint0Real.Interfaces;
 using sprint0Real.Items.ItemSprites;
 using System.Collections;
+using sprint0Real.Levels;
 
 namespace sprint0Real.LinkSprites
 {
@@ -93,6 +94,7 @@ namespace sprint0Real.LinkSprites
                     CurrentItem = Item.MagicSword;
                     break;
             }
+
         }
         public void DrawWeaponSprite()
         {
@@ -131,7 +133,7 @@ namespace sprint0Real.LinkSprites
             
 
             }
-            
+
         }
     }
 }

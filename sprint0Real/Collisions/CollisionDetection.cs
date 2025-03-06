@@ -27,11 +27,12 @@ namespace sprint0Real.Collisions
             //collisionHandler = new CollisionHandler("Collisions/CollisionCommands.xml", game);
             collisionHandler = new CollisionHandler2(game);
         }
-        public void UpdateRoomObjects(List<IGameObject> objects, ILink link)
+        public void UpdateRoomObjects(List<IGameObject> objects, ILink link,ILinkSprite weapon)
 
         {
             gameObjectsInRoom = objects;
             objects.Add(link);
+            objects.Add(weapon);
         }
 
         public void Update(GameTime gametime)

@@ -15,7 +15,7 @@ namespace sprint0Real.Items.ItemSprites
         public NullSprite(Texture2D texture, Game1 game)
         {
         }
-        public void Update(GameTime gametime, SpriteBatch spriteBatch)
+        public void Update(GameTime gametime)
         {
            //static
         }

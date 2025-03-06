@@ -51,7 +51,7 @@ namespace sprint0Real.Items.ItemSprites
             spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
         }
 
-        public void Update(GameTime gameTime,SpriteBatch spriteBatch)
+        public void Update(GameTime gameTime)
         {
             if (animationComplete) return;
 
