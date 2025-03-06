@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using sprint0Real.Collisions;
 using sprint0Real.Interfaces;
 using sprint0Real.ItemTempSprites;
 
@@ -76,6 +77,10 @@ namespace sprint0Real.Commands
                 _game.currentItem = tempItems[_currentItem];
                 _game.currentItemIndex = _currentItem; //update index
             }
+        }
+        public void Initialize(IGameObject objA, IGameObject objB, CollisionDirections direction)
+        {
+            //for collision detection
         }
     }
 }

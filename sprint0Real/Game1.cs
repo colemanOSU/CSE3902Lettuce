@@ -54,7 +54,10 @@ namespace sprint0Real
 
         public ILinkState LinkState;
 
-        public ICollision CollisionChecker;
+        private CollisionDetection collisionDetection;
+
+
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -73,8 +76,8 @@ namespace sprint0Real
             currentGameState = GameStates.TitleScreen;
             titleScreen = new TitleScreen();
             LinkState = new LinkStateMachine(this);
-            CollisionChecker = new CollisionDetection();
-            
+
+            collisionDetection = new CollisionDetection();
 
             base.Initialize();
         }
@@ -96,6 +99,7 @@ namespace sprint0Real
             LevelLoader.Instance.LoadLevels();
 
             ResetGame();
+            collisionDetection.UpdateRoomObjects(CurrentMap.Instance.MapList(), Link);
 
             tempItem = null;
         }
@@ -129,13 +133,17 @@ namespace sprint0Real
                      currentItem.Update(gameTime);
                      LinkState.Update(gameTime);
 
+                    collisionDetection.Update(gameTime);
+                    // Reset executed collisions to allow new collisions to be handled in the next frame
+                    collisionDetection.ResetExecutedCollisions();
+
                     //NOTE:
                     //I hate hate hate passing game as a parameter to so many things
                     //Will address when I have the time to
                     //Which is not right now
-                     CollisionChecker.Update(gameTime, this);
+                     //CollisionChecker.Update(gameTime, this);
 
-                    Link.ApplyMomentum();
+                    //Link.ApplyMomentum();
 
                     CurrentMap.Instance.Update(gameTime);
 

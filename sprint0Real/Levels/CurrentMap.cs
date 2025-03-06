@@ -31,7 +31,6 @@ namespace sprint0Real.Levels
             stagingAdd = new List<IGameObject>();
             stagingRemove = new List<IGameObject>();
         }
-
         public void SetMap(EnemyPage newMap)
         {
             myMap = newMap;
