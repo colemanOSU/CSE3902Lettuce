@@ -1,0 +1,10 @@
+﻿Author: Andrea Stewart
+Date: 02/16/2025
+Sprint 2
+This review took me around 20 minutes.
+I am revieweing Kelly Coleman's code for Link.cs
+
+Overall, the code for the Link class looks really good. It is simple and easy to follow. A hypothetical change would be using a SpriteFactory to make
+the code more cohesive with the enemy code in the game. I would also find a way to put the class into a folder for more organiation. There is a Damaged 
+function that I am not sure if it is there to make the compiler happy or can be removed. I would reccomend adding a comment if it is necessary similar 
+to the other empty functions.

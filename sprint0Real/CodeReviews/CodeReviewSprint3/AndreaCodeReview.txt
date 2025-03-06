@@ -1,0 +1,10 @@
+﻿Author: Andrea Stewart
+Date: 03/06/2025
+Sprint 3
+This review took me around 20 minutes.
+I am revieweing Allen's LevelLoader.cs
+
+Overall I think this code looks really good, it parses the XML where the data is stored. The class is also fairly consice and does not rely on a lot of outside classes.
+I also like how it uses a singleton pattern to ensure there is only one loader. One thing I would add to this class is error handling since it is loading a file in case 
+something isn't put together as we planned. You could also define constants at the start of the file for the attribute names such as 
+"private const string ATTR_TYPE = "Type"" and use the const when getting the attributes.
