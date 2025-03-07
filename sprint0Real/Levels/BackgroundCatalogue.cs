@@ -49,11 +49,11 @@ namespace sprint0Real.Levels
             RightDoorCatalogue.Add("Sealed", new Rectangle(914, 77, 32, 32));
             RightDoorCatalogue.Add("Breached", new Rectangle(947, 77, 32, 32));
 
-            DownDoorCatalogue.Add("Default", new Rectangle(815, 109, 32, 32));
-            DownDoorCatalogue.Add("Open", new Rectangle(848, 109, 32, 32));
+            DownDoorCatalogue.Add("Default", new Rectangle(815, 110, 32, 32));
+            DownDoorCatalogue.Add("Open", new Rectangle(848, 110, 32, 32));
             DownDoorCatalogue.Add("Locked", new Rectangle(881, 110, 32, 32));
-            DownDoorCatalogue.Add("Sealed", new Rectangle(914, 109, 32, 32));
-            DownDoorCatalogue.Add("Breached", new Rectangle(947, 109, 32, 32));
+            DownDoorCatalogue.Add("Sealed", new Rectangle(914, 110, 32, 32));
+            DownDoorCatalogue.Add("Breached", new Rectangle(947, 110, 32, 32));
         }
 
     }
