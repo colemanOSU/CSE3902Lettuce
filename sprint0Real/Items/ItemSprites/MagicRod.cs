@@ -7,6 +7,17 @@ namespace sprint0Real.Items.ItemSprites
 {
     internal class MagicRod : ILinkSprite
     {
+        public bool IsActive { get; private set; } = false; // Start inactive
+
+        public void Disable()
+        {
+            IsActive = false; // This keeps the weapon in memory but disables it
+        }
+
+        public void Activate()
+        {
+            IsActive = true;
+        }
         private Rectangle sourceRectangle = new(124, 78, 14, 14);
         private Rectangle destinationRectangle;
 
@@ -17,6 +28,7 @@ namespace sprint0Real.Items.ItemSprites
         private int _currentFrame;
         private double _timer;
         private bool flag = false;
+
 
         public MagicRod(Texture2D texture, Game1 game)
         {
@@ -32,7 +44,7 @@ namespace sprint0Real.Items.ItemSprites
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            
+            if (flag) return;
             switch (myGame.Link.GetFacing())
             {
                 case Link.Direction.Right:
@@ -51,7 +63,7 @@ namespace sprint0Real.Items.ItemSprites
 
         }
 
-        public void Update(GameTime gameTime, SpriteBatch spriteBatch)
+        public void Update(GameTime gameTime)
         {
             _timer += gameTime.ElapsedGameTime.TotalSeconds * 2;
             if (_timer > _frameSpeed)

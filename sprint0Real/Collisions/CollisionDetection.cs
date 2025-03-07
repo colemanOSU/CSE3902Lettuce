@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Input;
 using sprint0Real.Interfaces;
 using sprint0Real.Commands;
 using System.Diagnostics;
+using sprint0Real.Items.ItemSprites;
 
 namespace sprint0Real.Collisions
 {
@@ -17,6 +18,7 @@ namespace sprint0Real.Collisions
         public CollisionDirections recentCollisionDirection;
         //private CollisionHandler collisionHandler;
         private CollisionHandler2 collisionHandler;
+        public bool isWeaponActive = false;
         private Game1 game; //passing in game right now because need it for more commands, probably could take out if we alter how things are set up
         
         private Dictionary<(IGameObject, IGameObject), bool> executedCollisions = new Dictionary<(IGameObject, IGameObject), bool>(); // Track executed collisions
@@ -27,7 +29,7 @@ namespace sprint0Real.Collisions
             //collisionHandler = new CollisionHandler("Collisions/CollisionCommands.xml", game);
             collisionHandler = new CollisionHandler2(game);
         }
-        public void UpdateRoomObjects(List<IGameObject> objects, ILink link)
+        public void UpdateRoomObjects(List<IGameObject> objects, ILink link,ILinkSprite weapon)
 
         {
             gameObjectsInRoom = objects;
@@ -44,11 +46,12 @@ namespace sprint0Real.Collisions
             for (int i = 0; i < gameObjectsInRoom.Count; i++)
             {
                 var objA = gameObjectsInRoom[i];
+
                 for (int j = i + 1; j < gameObjectsInRoom.Count; j++) // Only check each pair once
                 {
                     var objB = gameObjectsInRoom[j];
 
-                    if (objA.Rect.Intersects(objB.Rect))
+                    if (objA.Rect.Intersects(objB.Rect) && objA is not ILinkSprite && objB is not ILinkSprite || objA.Rect.Intersects(objB.Rect) && objA is ILinkSprite && isWeaponActive || objB is ILinkSprite)
                     {
                         DetectCollisionDirection(objA, objB);
                         HandleCollisionOnce(objA, objB);

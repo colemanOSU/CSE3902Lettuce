@@ -7,6 +7,17 @@ namespace sprint0Real.Items.ItemSprites
 {
     internal class BombSprite : ILinkSprite
     {
+        public bool IsActive { get; private set; } = false; // Start inactive
+
+        public void Disable()
+        {
+            IsActive = false; // This keeps the weapon in memory but disables it
+        }
+
+        public void Activate()
+        {
+            IsActive = true;
+        }
         private readonly Texture2D _texture;
         private readonly Game1 myGame;
         private readonly float _frameSpeed = 0.2f;
@@ -19,6 +30,7 @@ namespace sprint0Real.Items.ItemSprites
         private bool animationComplete = false;
         private Rectangle sourceRectangle;
         private Rectangle destinationRectangle;
+
 
         public BombSprite(Texture2D texture, Game1 game)
         {
@@ -47,11 +59,12 @@ namespace sprint0Real.Items.ItemSprites
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            if (animationComplete) return;
             sourceRectangle = new Rectangle(isDelaying ? 129 : 138 + 17 * _currentFrame, 185, isDelaying ? 8 : 16, 16);
             spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
         }
 
-        public void Update(GameTime gameTime,SpriteBatch spriteBatch)
+        public void Update(GameTime gameTime)
         {
             if (animationComplete) return;
 

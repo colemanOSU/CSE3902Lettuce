@@ -6,7 +6,7 @@ using static Link;
 
 namespace sprint0Real.ItemUseSprites
 {
-    internal class SwordUseUp : IItemSprite
+    internal class SwordUseUp : ILinkSprite
     {
         private Texture2D _texture;
         private Game1 myGame;
@@ -15,7 +15,17 @@ namespace sprint0Real.ItemUseSprites
         private Rectangle destinationRectangle;
 
         private bool isMoving = true;
+        public bool IsActive { get; private set; } = false; // Start inactive
 
+        public void Disable()
+        {
+            IsActive = false; // This keeps the weapon in memory but disables it
+        }
+
+        public void Activate()
+        {
+            IsActive = true;
+        }
         public SwordUseUp(Texture2D texture, Game1 game)
         {
             _texture = texture;
@@ -23,7 +33,10 @@ namespace sprint0Real.ItemUseSprites
             destinationRectangle = myGame.Link.GetLocation();
             sourceRectangle = new Rectangle(1, 154, 8, 16);
         }
-
+        public Rectangle Rect
+        {
+            get { return destinationRectangle; }
+        }
         public void Draw(SpriteBatch spriteBatch)
         {
             if (isMoving)
@@ -32,7 +45,7 @@ namespace sprint0Real.ItemUseSprites
             }
         }
 
-        public void Update(GameTime gameTime, SpriteBatch spriteBatch)
+        public void Update(GameTime gameTime)
         {
             if (isMoving)
             {

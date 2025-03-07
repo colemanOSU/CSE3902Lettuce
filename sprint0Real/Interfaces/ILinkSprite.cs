@@ -8,10 +8,14 @@ using System.Threading.Tasks;
 
 namespace sprint0Real.Interfaces
 {
-    public interface ILinkSprite
+    public interface ILinkSprite : IGameObject
     {
-        public void Update(GameTime gametime, SpriteBatch spriteBatch);
+        public bool IsActive { get;
+        }
+        void Activate();
+        void Disable();
+        public new void Update(GameTime gametime);
 
-        public void Draw(SpriteBatch spriteBatch);
+        public new void Draw(SpriteBatch spriteBatch);
     }
 }

@@ -8,6 +8,17 @@ namespace sprint0Real.Items.ItemSprites
 {
     internal class BlueBoomerangSprite : ILinkSprite
     {
+        public bool IsActive { get; private set; } = false; // Start inactive
+
+        public void Disable()
+        {
+            IsActive = false; // This keeps the weapon in memory but disables it
+        }
+
+        public void Activate()
+        {
+            IsActive = true;
+        }
         private Rectangle sourceRectangle;
         private Rectangle destinationRectangle;
         private Texture2D _texture;
@@ -23,6 +34,7 @@ namespace sprint0Real.Items.ItemSprites
         private float _frameSpeed = 0.2f;
         private int _frameCount = 3;
         private Vector2 _finalPos;
+
 
         public BlueBoomerangSprite(Texture2D texture, Game1 game)
         {
@@ -53,11 +65,12 @@ namespace sprint0Real.Items.ItemSprites
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            sourceRectangle = new Rectangle(91 + 9 * _currentFrame, 185, 8, 16);
+            if (isReturning && Vector2.Distance(_position, _finalPos) < 5f) return;
+                sourceRectangle = new Rectangle(91 + 9 * _currentFrame, 185, 8, 16);
             spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
         }
 
-        public void Update(GameTime gameTime, SpriteBatch spriteBatch)
+        public void Update(GameTime gameTime)
         {
             _finalPos = new(myGame.Link.GetLocation().X, myGame.Link.GetLocation().Y);
             destinationRectangle = new Rectangle((int)_position.X, (int)_position.Y, 8 * 3, 16 * 3);

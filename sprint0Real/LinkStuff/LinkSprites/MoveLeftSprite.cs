@@ -9,7 +9,7 @@ using sprint0Real.Interfaces;
 
 namespace sprint0Real.LinkStuff.LinkSprites
 {
-    internal class MoveLeftSprite : ILinkSprite
+    internal class MoveLeftSprite : ILinkSpriteTemp
     {
         private Rectangle frame1Rec = new(35 + 17, 11, 16, 16);
         private Rectangle frame2Rec = new(35, 11, 16, 16);

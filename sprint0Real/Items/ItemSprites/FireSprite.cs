@@ -3,16 +3,31 @@ using Microsoft.Xna.Framework;
 using sprint0Real.Interfaces;
 using sprint0Real.Commands;
 using System.Linq.Expressions;
+using Microsoft.VisualBasic;
+using sprint0Real.Collisions;
+using sprint0Real.Levels;
 
 namespace sprint0Real.Items.ItemSprites
 {
+
     internal class FireSprite : ILinkSprite
     {
+        public bool IsActive { get; private set; } = false; // Start inactive
+
+        public void Disable()
+        {
+            IsActive = false; // This keeps the weapon in memory but disables it
+        }
+
+        public void Activate()
+        {
+            IsActive = true;
+        }
         private Rectangle sourceRectangle = new(191, 185, 16, 16);
         private Rectangle destinationRectangle;
 
         private Texture2D _texture;
-        private Game1 myGame;
+        private readonly Game1 myGame;
         private Vector2 startPosition;
         private Vector2 velocity;
         private double _timer;
@@ -23,6 +38,7 @@ namespace sprint0Real.Items.ItemSprites
         private bool isDelaying = false;
         private float travelDistance = 180f;
         private Vector2 finalPosition;
+
 
         public FireSprite(Texture2D texture, Game1 game)
         {
@@ -76,7 +92,7 @@ namespace sprint0Real.Items.ItemSprites
 
         }
 
-        public void Update(GameTime gameTime, SpriteBatch spriteBatch)
+        public void Update(GameTime gameTime)
         {
             _timer += gameTime.ElapsedGameTime.TotalSeconds * 2;
             if (isMoving)
@@ -99,7 +115,7 @@ namespace sprint0Real.Items.ItemSprites
                 if (delayTimer >= delayDuration)
                 {
                     isDelaying = false;
-                    myGame.weaponItems = new NullSprite(_texture, myGame);
+                    myGame.weaponItems = new NullSprite(_texture,myGame);
                 }
             }
         }

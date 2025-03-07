@@ -17,6 +17,7 @@ using sprint0Real.LinkStuff;
 using sprint0Real.Levels;
 using System.Reflection.Metadata;
 using sprint0Real.TreasureItemSprites;
+using sprint0Real.LinkSprites;
 
 namespace sprint0Real
 {
@@ -39,7 +40,7 @@ namespace sprint0Real
         private TitleScreen titleScreen;
 
         public ILink Link;
-        public ILinkSprite linkSprite;
+        public ILinkSpriteTemp linkSprite;
 
         public ILinkSprite weaponItems;
 
@@ -56,9 +57,9 @@ namespace sprint0Real
 
         public ILinkState LinkState;
 
-        private CollisionDetection collisionDetection;
+        public CollisionDetection collisionDetection;
 
-
+        private ItemStateMachine itemStateMachine;
 
         public Game1()
         {
@@ -78,6 +79,7 @@ namespace sprint0Real
             currentGameState = GameStates.TitleScreen;
             titleScreen = new TitleScreen();
             LinkState = new LinkStateMachine(Link);
+            itemStateMachine = new ItemStateMachine(this);
 
             //collisionDetection = new CollisionDetection(this);
 
@@ -103,8 +105,7 @@ namespace sprint0Real
             LevelLoader.Instance.LoadLevels();
 
             ResetGame();
-            collisionDetection.UpdateRoomObjects(CurrentMap.Instance.MapList(), Link);
-
+            collisionDetection.UpdateRoomObjects(CurrentMap.Instance.MapList(), Link, weaponItems);
             tempItem = null;
         }
 
@@ -118,6 +119,7 @@ namespace sprint0Real
 
                 case GameStates.GamePlay:
 
+                    itemStateMachine.setActive();
                     //TEMP
                     /*
                     List<IGameObject> tempList = new List<IGameObject>();
@@ -149,7 +151,6 @@ namespace sprint0Real
                      //CollisionChecker.Update(gameTime, this);
 
                     Link.ApplyMomentum();
-
                     CurrentMap.Instance.Update(gameTime);
 
                     break;
@@ -165,8 +166,8 @@ namespace sprint0Real
                     break;
 
                 case GameStates.GamePlay:
-                 
-            _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp);
+                    
+                    _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp);
             CurrentMap.Instance.Draw(_spriteBatch);
 
                 //TEMP ITEM
@@ -183,18 +184,12 @@ namespace sprint0Real
 
                 currentBlock.Draw(_spriteBatch);
                 //currentItem.Draw(_spriteBatch);
-
-
-
                 linkSprite.Update(gameTime, _spriteBatch);
                 linkSprite.Draw(_spriteBatch);
 
-                weaponItems.Update(gameTime,_spriteBatch);
-                weaponItems.Draw(_spriteBatch);
 
-            
 
-                _spriteBatch.End();
+                    _spriteBatch.End();
 
                         break;
             }

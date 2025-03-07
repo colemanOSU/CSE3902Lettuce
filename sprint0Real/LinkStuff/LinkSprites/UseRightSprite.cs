@@ -15,7 +15,7 @@ using sprint0Real.Items.ItemSprites;
 
 namespace sprint0Real.LinkStuff.LinkSprites
 {
-    internal class UseRightSprite : ILinkSprite
+    internal class UseRightSprite : ILinkSpriteTemp
     {
         private Texture2D _texture;
         private Game1 myGame;

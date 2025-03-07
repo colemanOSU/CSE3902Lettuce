@@ -14,6 +14,7 @@ namespace sprint0Real.Collisions
     {
         private Dictionary<(Type, Type), ICollisionCommand> collisionCommands;
         private Game1 game;
+
         public CollisionHandler2(Game1 game)
         {
             this.game = game;
@@ -27,6 +28,9 @@ namespace sprint0Real.Collisions
 
             collisionCommands.Add((typeof(ILink), typeof(IItemtemp)), new LinkItemCollisionCommand(game));
             collisionCommands.Add((typeof(IItemtemp), typeof(ILink)), new LinkItemCollisionCommand(game));
+
+            collisionCommands.Add((typeof(ILinkSprite),typeof(IEnemy)), new LinkWeaponCollisionCommand(game));
+            collisionCommands.Add((typeof(IEnemy), typeof(ILinkSprite)), new LinkWeaponCollisionCommand(game));
         }
         private Type GetGeneralType(IGameObject obj)
         {
@@ -34,6 +38,7 @@ namespace sprint0Real.Collisions
             if (obj is IItemtemp) return typeof(IItemtemp); 
             if (obj is ILink) return typeof(ILink); 
             if (obj is IBlock) return typeof(IBlock);
+            if (obj is ILinkSprite) return typeof(ILinkSprite);
             return obj.GetType();                      //Default to concrete type for anything else
         }
         public void HandleCollision(IGameObject objA, IGameObject objB, CollisionDirections direction)

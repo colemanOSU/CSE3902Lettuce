@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace sprint0Real.LinkStuff.LinkSprites
 {
-    internal class MoveRightSprite : ILinkSprite
+    internal class MoveRightSprite : ILinkSpriteTemp
     {
         private Rectangle frame1Rec = new(35 + 17, 11, 16, 16);
         private Rectangle frame2Rec = new(35, 11, 16, 16);
