@@ -7,6 +7,17 @@ namespace sprint0Real.Items.ItemSprites
 {
     internal class BombSprite : ILinkSprite
     {
+        public bool IsActive { get; private set; } = false; // Start inactive
+
+        public void Disable()
+        {
+            IsActive = false; // This keeps the weapon in memory but disables it
+        }
+
+        public void Activate()
+        {
+            IsActive = true;
+        }
         private readonly Texture2D _texture;
         private readonly Game1 myGame;
         private readonly float _frameSpeed = 0.2f;

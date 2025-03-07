@@ -8,6 +8,17 @@ namespace sprint0Real.Items.ItemSprites
 {
     internal class BlueBoomerangSprite : ILinkSprite
     {
+        public bool IsActive { get; private set; } = false; // Start inactive
+
+        public void Disable()
+        {
+            IsActive = false; // This keeps the weapon in memory but disables it
+        }
+
+        public void Activate()
+        {
+            IsActive = true;
+        }
         private Rectangle sourceRectangle;
         private Rectangle destinationRectangle;
         private Texture2D _texture;

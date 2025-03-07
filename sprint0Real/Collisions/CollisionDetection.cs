@@ -59,6 +59,7 @@ namespace sprint0Real.Collisions
             for (int i = 0; i < gameObjectsInRoom.Count; i++)
             {
                 var objA = gameObjectsInRoom[i];
+
                 for (int j = i + 1; j < gameObjectsInRoom.Count; j++) // Only check each pair once
                 {
                     var objB = gameObjectsInRoom[j];

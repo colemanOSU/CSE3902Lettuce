@@ -9,6 +9,17 @@ namespace sprint0Real.Items.ItemSprites
 {
     internal class WhiteSwordSprite : ILinkSprite
     {
+        public bool IsActive { get; private set; } = false; // Start inactive
+
+        public void Disable()
+        {
+            IsActive = false; // This keeps the weapon in memory but disables it
+        }
+
+        public void Activate()
+        {
+            IsActive = true;
+        }
         private Rectangle sourceRectangle = new(45, 154, 16, 16);
         private Rectangle destinationRectangle;
 

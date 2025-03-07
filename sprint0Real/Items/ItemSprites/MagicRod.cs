@@ -7,6 +7,17 @@ namespace sprint0Real.Items.ItemSprites
 {
     internal class MagicRod : ILinkSprite
     {
+        public bool IsActive { get; private set; } = false; // Start inactive
+
+        public void Disable()
+        {
+            IsActive = false; // This keeps the weapon in memory but disables it
+        }
+
+        public void Activate()
+        {
+            IsActive = true;
+        }
         private Rectangle sourceRectangle = new(124, 78, 14, 14);
         private Rectangle destinationRectangle;
 
