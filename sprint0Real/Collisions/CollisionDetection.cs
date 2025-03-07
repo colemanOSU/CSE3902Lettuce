@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Input;
 using sprint0Real.Interfaces;
 using sprint0Real.Commands;
 using System.Diagnostics;
+using sprint0Real.Items.ItemSprites;
 
 namespace sprint0Real.Collisions
 {
@@ -32,6 +33,13 @@ namespace sprint0Real.Collisions
         {
             gameObjectsInRoom = objects;
             objects.Add(link);
+            gameObjectsInRoom.RemoveAll(obj => obj == game.weaponItems && game.weaponItems is NullSprite);
+
+            if (weapon != null && weapon is not NullSprite && !gameObjectsInRoom.Contains(weapon))
+            {
+                gameObjectsInRoom.Add(weapon);
+            }
+
         }
 
         public void Update(GameTime gametime)

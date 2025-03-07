@@ -3,6 +3,9 @@ using Microsoft.Xna.Framework;
 using sprint0Real.Interfaces;
 using sprint0Real.Commands;
 using System.Linq.Expressions;
+using Microsoft.VisualBasic;
+using sprint0Real.Collisions;
+using sprint0Real.Levels;
 
 namespace sprint0Real.Items.ItemSprites
 {
@@ -12,7 +15,7 @@ namespace sprint0Real.Items.ItemSprites
         private Rectangle destinationRectangle;
 
         private Texture2D _texture;
-        private Game1 myGame;
+        private readonly Game1 myGame;
         private Vector2 startPosition;
         private Vector2 velocity;
         private double _timer;
@@ -100,7 +103,7 @@ namespace sprint0Real.Items.ItemSprites
                 if (delayTimer >= delayDuration)
                 {
                     isDelaying = false;
-                    myGame.weaponItems = new NullSprite(_texture, myGame);
+                    myGame.weaponItems = new NullSprite(_texture,myGame);
                 }
             }
         }

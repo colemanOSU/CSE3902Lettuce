@@ -56,7 +56,7 @@ namespace sprint0Real
 
         public ILinkState LinkState;
 
-        private CollisionDetection collisionDetection;
+        public CollisionDetection collisionDetection;
 
 
 
@@ -104,7 +104,6 @@ namespace sprint0Real
 
             ResetGame();
             collisionDetection.UpdateRoomObjects(CurrentMap.Instance.MapList(), Link, weaponItems);
-
             tempItem = null;
         }
 
@@ -117,7 +116,11 @@ namespace sprint0Real
                     break;
 
                 case GameStates.GamePlay:
-
+                    if (weaponItems is NullSprite || weaponItems is null)
+                    {
+                        CurrentMap.Instance.MapList().Remove(weaponItems);
+                        collisionDetection.UpdateRoomObjects(CurrentMap.Instance.MapList(), Link, weaponItems);
+                    }
                     //TEMP
                     /*
                     List<IGameObject> tempList = new List<IGameObject>();
@@ -182,18 +185,12 @@ namespace sprint0Real
 
                 currentBlock.Draw(_spriteBatch);
                 //currentItem.Draw(_spriteBatch);
-
-
-
                 linkSprite.Update(gameTime, _spriteBatch);
                 linkSprite.Draw(_spriteBatch);
 
-                weaponItems.Update(gameTime);
-                weaponItems.Draw(_spriteBatch);
+                
 
-            
-
-                _spriteBatch.End();
+                    _spriteBatch.End();
 
                         break;
             }

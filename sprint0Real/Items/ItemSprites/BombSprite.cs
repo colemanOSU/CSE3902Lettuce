@@ -48,6 +48,7 @@ namespace sprint0Real.Items.ItemSprites
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            if (animationComplete) return;
             sourceRectangle = new Rectangle(isDelaying ? 129 : 138 + 17 * _currentFrame, 185, isDelaying ? 8 : 16, 16);
             spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
         }

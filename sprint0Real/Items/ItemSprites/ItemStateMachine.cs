@@ -98,7 +98,11 @@ namespace sprint0Real.LinkSprites
         }
         public void DrawWeaponSprite()
         {
-            
+            if (myGame.weaponItems != null && myGame.weaponItems is not NullSprite)
+            {
+                CurrentMap.Instance.MapList().Remove(myGame.weaponItems); 
+                myGame.collisionDetection.UpdateRoomObjects(CurrentMap.Instance.MapList(), myGame.Link, new NullSprite(myGame.linkSheet, myGame)); 
+            }
             switch (CurrentItem) {
                 case Item.WoodSword:
                     myGame.weaponItems = new WoodSwordSprite(myGame.linkSheet, myGame);
@@ -130,10 +134,8 @@ namespace sprint0Real.LinkSprites
                 case Item.Fire:
                     myGame.weaponItems = new FireSprite(myGame.linkSheet, myGame);
                     break;  
-            
-
             }
-            
+            myGame.collisionDetection.UpdateRoomObjects(CurrentMap.Instance.MapList(), myGame.Link, myGame.weaponItems);
         }
     }
 }
