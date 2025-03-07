@@ -18,6 +18,7 @@ namespace sprint0Real.Collisions
         public CollisionDirections recentCollisionDirection;
         //private CollisionHandler collisionHandler;
         private CollisionHandler2 collisionHandler;
+        public bool isWeaponActive = false;
         private Game1 game; //passing in game right now because need it for more commands, probably could take out if we alter how things are set up
         
         private Dictionary<(IGameObject, IGameObject), bool> executedCollisions = new Dictionary<(IGameObject, IGameObject), bool>(); // Track executed collisions
@@ -33,11 +34,17 @@ namespace sprint0Real.Collisions
         {
             gameObjectsInRoom = objects;
             objects.Add(link);
-            gameObjectsInRoom.RemoveAll(obj => obj == game.weaponItems && game.weaponItems is NullSprite);
+            
 
             if (weapon != null && weapon is not NullSprite && !gameObjectsInRoom.Contains(weapon))
             {
                 gameObjectsInRoom.Add(weapon);
+                isWeaponActive = true;
+            }
+            else
+            {
+                gameObjectsInRoom.RemoveAll(obj => obj == game.weaponItems && game.weaponItems is NullSprite);
+                isWeaponActive = false;
             }
 
         }
@@ -56,7 +63,7 @@ namespace sprint0Real.Collisions
                 {
                     var objB = gameObjectsInRoom[j];
 
-                    if (objA.Rect.Intersects(objB.Rect))
+                    if (objA.Rect.Intersects(objB.Rect) && objA is not ILinkSprite && objB is not ILinkSprite || objA.Rect.Intersects(objB.Rect) && isWeaponActive)
                     {
                         DetectCollisionDirection(objA, objB);
                         HandleCollisionOnce(objA, objB);
