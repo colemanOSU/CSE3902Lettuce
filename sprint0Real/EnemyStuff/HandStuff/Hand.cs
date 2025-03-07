@@ -29,7 +29,15 @@ namespace sprint0Real.EnemyStuff.HandStuff
         {
             stateMachine.ChangeDirection();
         }
-
+        public void hitWall()
+        {
+            stateMachine.hitWall();
+            stateMachine.ChangeDirection();
+        }
+        public void hitLink()
+        {
+            Despawn();
+        }
         public void Despawn()
         {
             CurrentMap.Instance.DeStage(this);

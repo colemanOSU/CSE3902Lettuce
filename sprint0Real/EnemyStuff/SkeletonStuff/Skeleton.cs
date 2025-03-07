@@ -31,7 +31,15 @@ namespace sprint0Real.EnemyStuff.SkeletonStuff
             behavior = new SkeletonBehavior(this);
             mySprite = EnemySpriteFactory.Instance.CreateSkeletonSprite();
         }
-
+        public void hitWall()
+        {
+            stateMachine.hitWall();
+            stateMachine.ChangeDirection();
+        }
+        public void hitLink()
+        {
+            Despawn();
+        }
         public void ChangeDirection()
         {
             stateMachine.ChangeDirection();
