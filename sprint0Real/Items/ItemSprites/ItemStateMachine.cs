@@ -113,6 +113,7 @@ namespace sprint0Real.LinkSprites
 
         public void DrawWeaponSprite()
         {
+            CurrentMap.Instance.MapList().RemoveAll(obj => obj is ILinkSprite && obj != myGame.weaponItems);
             if (myGame.weaponItems != null && myGame.weaponItems.GetType() == GetWeaponType(CurrentItem))
             {
                 return; 

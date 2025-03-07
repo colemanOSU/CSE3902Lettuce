@@ -34,16 +34,6 @@ namespace sprint0Real.Collisions
         {
             gameObjectsInRoom = objects;
             objects.Add(link);
-            gameObjectsInRoom.RemoveAll(obj => obj is ILinkSprite && obj != weapon);
-
-            if (weapon != null && weapon is IGameObject && !(weapon is NullSprite))
-            {
-                if (!gameObjectsInRoom.Contains(weapon))
-                {
-                    gameObjectsInRoom.Add(weapon);
-                    Debug.WriteLine("Weapon added to gameObjectsInRoom");
-                }
-            }
         }
 
         public void Update(GameTime gametime)
