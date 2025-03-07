@@ -1,5 +1,9 @@
 Author: Allen Sluss
 Date: 2/16/2024
 Sprint 2
-I'm reviewing Jian's code for .cs
+I'm reviewing Jian's code for Hand.cs
 About 5 minutes to complete
+
+The code is pretty clean. The code added since last time is mostly the same minus a few extra lines and the lines work. The only worries that I have is that the work might 
+not be used in the future. This can be easily changed by just moving the contents of hitwall into some other command so that when a wall is hit, instead of calling hitwall,
+just changes direction. 
