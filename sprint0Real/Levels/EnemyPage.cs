@@ -32,6 +32,7 @@ namespace sprint0Real.Levels
         {
             gameObjects = new List<IGameObject>();
             background = new LevelBackground();
+            AddBorderWalls();
         }
 
         
@@ -80,5 +81,13 @@ namespace sprint0Real.Levels
         {
             gameObjects.Remove(gameObject);
         }
+        public void AddBorderWalls()
+        {
+            gameObjects.Add(new WallObject(new Rectangle(0, 0, 800, 20))); 
+            gameObjects.Add(new WallObject(new Rectangle(20, 480, 800, 20))); 
+            gameObjects.Add(new WallObject(new Rectangle(0, 0, 20, 600))); 
+            gameObjects.Add(new WallObject(new Rectangle(780, 0, 20, 600))); 
+        }
+
     }
 }
