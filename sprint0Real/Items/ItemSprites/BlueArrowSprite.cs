@@ -8,7 +8,7 @@ namespace sprint0Real.Items.ItemSprites
 {
     internal class BlueArrowSprite : ILinkSprite
     {
-        public bool IsActive { get; private set; } = false; // Start inactive
+        public bool IsActive { get; private set; } = true; // Start inactive
 
         public void Disable()
         {

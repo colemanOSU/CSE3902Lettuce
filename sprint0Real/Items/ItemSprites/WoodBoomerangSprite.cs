@@ -64,6 +64,8 @@ namespace sprint0Real.Items.ItemSprites
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            if (isReturning && Vector2.Distance(_position, _finalPos) < 5f) return;
+            if(!IsActive) return;
             sourceRectangle = new Rectangle(64 + 9 * _currentFrame, 185, 8, 16);
             spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
         }
@@ -91,8 +93,12 @@ namespace sprint0Real.Items.ItemSprites
             _position += velocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (isReturning && Vector2.Distance(_position, _finalPos) < 5f)
             {
+                velocity = Vector2.Zero; 
+                _position = _finalPos; 
                 myGame.weaponItems = new NullSprite(_texture, myGame);
+                IsActive = false;
             }
+
             if (_timer > _frameSpeed)
             {
                 _currentFrame = (_currentFrame + 1) % _frameCount;

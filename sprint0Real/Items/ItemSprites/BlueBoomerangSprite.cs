@@ -65,7 +65,8 @@ namespace sprint0Real.Items.ItemSprites
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            sourceRectangle = new Rectangle(91 + 9 * _currentFrame, 185, 8, 16);
+            if (isReturning && Vector2.Distance(_position, _finalPos) < 5f) return;
+                sourceRectangle = new Rectangle(91 + 9 * _currentFrame, 185, 8, 16);
             spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
         }
 

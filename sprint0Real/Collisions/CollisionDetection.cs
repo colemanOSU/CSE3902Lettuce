@@ -34,19 +34,16 @@ namespace sprint0Real.Collisions
         {
             gameObjectsInRoom = objects;
             objects.Add(link);
-            
+            gameObjectsInRoom.RemoveAll(obj => obj is ILinkSprite && obj != weapon);
 
-            if (weapon != null && weapon is not NullSprite && !gameObjectsInRoom.Contains(weapon))
+            if (weapon != null && weapon is IGameObject && !(weapon is NullSprite))
             {
-                gameObjectsInRoom.Add(weapon);
-                isWeaponActive = true;
+                if (!gameObjectsInRoom.Contains(weapon))
+                {
+                    gameObjectsInRoom.Add(weapon);
+                    Debug.WriteLine("Weapon added to gameObjectsInRoom");
+                }
             }
-            else
-            {
-                gameObjectsInRoom.RemoveAll(obj => obj == game.weaponItems && game.weaponItems is NullSprite);
-                isWeaponActive = false;
-            }
-
         }
 
         public void Update(GameTime gametime)
@@ -64,7 +61,7 @@ namespace sprint0Real.Collisions
                 {
                     var objB = gameObjectsInRoom[j];
 
-                    if (objA.Rect.Intersects(objB.Rect) && objA is not ILinkSprite && objB is not ILinkSprite || objA.Rect.Intersects(objB.Rect) && isWeaponActive)
+                    if (objA.Rect.Intersects(objB.Rect) && objA is not ILinkSprite && objB is not ILinkSprite || objA.Rect.Intersects(objB.Rect) && objA is ILinkSprite && isWeaponActive || objB is ILinkSprite)
                     {
                         DetectCollisionDirection(objA, objB);
                         HandleCollisionOnce(objA, objB);

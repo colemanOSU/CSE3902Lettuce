@@ -23,7 +23,7 @@ namespace sprint0Real.Commands.CollisionCommands
 
         public void Execute(IGameObject weapon, IGameObject enemy, CollisionDirections direction)
         {
-            if (game.collisionDetection.isWeaponActive)
+            if (weapon.Rect.Intersects(enemy.Rect) && game.weaponItems.IsActive)
             {
                 System.Diagnostics.Debug.WriteLine("Enemy was hit!");
             }

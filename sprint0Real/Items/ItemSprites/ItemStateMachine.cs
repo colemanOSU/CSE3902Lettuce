@@ -4,6 +4,9 @@ using sprint0Real.Interfaces;
 using sprint0Real.Items.ItemSprites;
 using System.Collections;
 using sprint0Real.Levels;
+using System;
+using sprint0Real.ItemTempSprites;
+using System.Diagnostics;
 
 namespace sprint0Real.LinkSprites
 {
@@ -96,46 +99,81 @@ namespace sprint0Real.LinkSprites
             }
 
         }
+        public void setActive()
+        {
+            if (myGame.weaponItems is NullSprite)
+            {
+                myGame.weaponItems.Disable();
+            }
+            else
+            {
+                myGame.weaponItems.Activate();
+            }
+        }
+
         public void DrawWeaponSprite()
         {
-            if (myGame.weaponItems != null && myGame.weaponItems is not NullSprite)
+            if (myGame.weaponItems != null && myGame.weaponItems.GetType() == GetWeaponType(CurrentItem))
             {
-                CurrentMap.Instance.MapList().Remove(myGame.weaponItems); 
-                myGame.collisionDetection.UpdateRoomObjects(CurrentMap.Instance.MapList(), myGame.Link, new NullSprite(myGame.linkSheet, myGame)); 
+                return; 
             }
-            switch (CurrentItem) {
-                case Item.WoodSword:
-                    myGame.weaponItems = new WoodSwordSprite(myGame.linkSheet, myGame);
-                    break;
-                case Item.Whitesword:
-                    myGame.weaponItems = new WhiteSwordSprite(myGame.linkSheet, myGame);
-                    break;
-                case Item.MagicSword:
-                    myGame.weaponItems = new MagicSword(myGame.linkSheet, myGame);
-                        break;
-                case Item.MagicRod:
-                    myGame.weaponItems = new MagicRod(myGame.linkSheet, myGame);
-                    break;
-                case Item.WoodArrow:
-                    myGame.weaponItems = new WoodArrow(myGame.linkSheet, myGame);
-                    break;
-                case Item.BlueArrow:
-                    myGame.weaponItems = new BlueArrowSprite(myGame.linkSheet, myGame);
-                    break;
-                case Item.WoodBoomerang:
-                    myGame.weaponItems = new WoodBoomerangSprite(myGame.linkSheet, myGame);
-                    break;
-                case Item.BlueBoomerang:
-                    myGame.weaponItems = new BlueBoomerangSprite(myGame.linkSheet, myGame);
-                    break;
-                case Item.Bomb:
-                    myGame.weaponItems = new BombSprite(myGame.linkSheet, myGame);
-                    break;
-                case Item.Fire:
-                    myGame.weaponItems = new FireSprite(myGame.linkSheet, myGame);
-                    break;  
+
+            if (myGame.weaponItems != null && !(myGame.weaponItems is NullSprite))
+            {
+                CurrentMap.Instance.MapList().Remove(myGame.weaponItems);
+                Debug.WriteLine($"Removed old weapon: {myGame.weaponItems.GetType().Name}");
             }
-            myGame.collisionDetection.UpdateRoomObjects(CurrentMap.Instance.MapList(), myGame.Link, myGame.weaponItems);
+
+            ILinkSprite newWeapon = CreateWeaponInstance(CurrentItem);
+
+            if (newWeapon != null)
+            {
+                myGame.weaponItems = newWeapon;
+
+                if (!CurrentMap.Instance.MapList().Contains(myGame.weaponItems))
+                {
+                    CurrentMap.Instance.MapList().Add(myGame.weaponItems);
+                    Debug.WriteLine($"Added new weapon: {myGame.weaponItems.GetType().Name}");
+                }
+            }
         }
+
+
+
+        private Type GetWeaponType(Item item)
+        {
+            return item switch
+            {
+                Item.WoodSword => typeof(WoodSwordSprite),
+                Item.Whitesword => typeof(WhiteSwordSprite),
+                Item.MagicRod => typeof(MagicRod),
+                Item.WoodArrow => typeof(WoodArrow),
+                Item.BlueArrow => typeof(BlueArrowSprite),
+                Item.WoodBoomerang => typeof(WoodBoomerangSprite),
+                Item.BlueBoomerang => typeof(BlueBoomerangSprite),
+                Item.Bomb => typeof(BombSprite),
+                Item.Fire => typeof(FireSprite),
+                _ => typeof(NullSprite),
+            };
+        }
+
+   
+        private ILinkSprite CreateWeaponInstance(Item item)
+        {
+            return item switch
+            {
+                Item.WoodSword => new WoodSwordSprite(myGame.linkSheet,myGame),
+                Item.Whitesword => new WhiteSwordSprite(myGame.linkSheet, myGame),
+                Item.MagicRod => new MagicRod(myGame.linkSheet, myGame),
+                Item.WoodArrow => new WoodArrow(myGame.linkSheet, myGame),
+                Item.BlueArrow => new BlueArrowSprite(myGame.linkSheet, myGame),
+                Item.WoodBoomerang => new WoodBoomerangSprite(myGame.linkSheet, myGame),
+                Item.BlueBoomerang => new BlueBoomerangSprite(myGame.linkSheet, myGame),
+                Item.Bomb => new BombSprite(myGame.linkSheet, myGame),
+                Item.Fire => new FireSprite(myGame.linkSheet, myGame),
+                _ => new NullSprite(myGame.linkSheet, myGame),
+            };
+        }
+
     }
 }

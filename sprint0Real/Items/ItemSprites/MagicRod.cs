@@ -44,7 +44,7 @@ namespace sprint0Real.Items.ItemSprites
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            
+            if (flag) return;
             switch (myGame.Link.GetFacing())
             {
                 case Link.Direction.Right:
