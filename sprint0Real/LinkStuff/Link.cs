@@ -30,8 +30,6 @@ public class Link : ILink
         None
     }
 
-
-
     private Direction Facing;
 
     public Link(Game1 game)
@@ -114,7 +112,6 @@ public class Link : ILink
     //Used to handle collision
     public void StopMomentumInDirection(Direction dir)
     {   
-
         switch (dir)
         {
             case Direction.Up:

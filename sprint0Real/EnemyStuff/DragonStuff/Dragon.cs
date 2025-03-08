@@ -49,7 +49,6 @@ namespace sprint0Real.EnemyStuff.DragonStuff
             stateMachine.ChangeDirection();
         }
 
-
         public void Attack()
         {
             DragonAttack attack = new DragonAttack(location, new Vector2(EnemySpriteFactory.Instance.myGame.Link.GetLocation().X, EnemySpriteFactory.Instance.myGame.Link.GetLocation().Y));

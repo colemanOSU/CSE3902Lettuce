@@ -27,7 +27,6 @@ namespace sprint0Real
         public GraphicsDeviceManager _graphics;
         public SpriteBatch _spriteBatch;
 
-
         public Texture2D linkSheet;
         Texture2D blockSheet;
         Texture2D itemSheet;
