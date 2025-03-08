@@ -1,0 +1,9 @@
+Author: Jenny Ding
+Date: 03/7/2025
+Sprint 3
+I'm reviewing Kelly's code for LinkStateMachine.cs
+This review took me about 10 minutes
+
+The code has very good readability, it is easy to follow and interpret. This file currently implements methods to set Link to the damaged state, letting Link change colors when the method is called. 
+One tiny comment I would make on the readability is to change DamageFrameCount = DamageFrameCount + 0.2 to DamagedFrameCount += 0.2.
+In general, the code is pretty maintainable, it is functional and is in good conditional for future extension/maintenance
