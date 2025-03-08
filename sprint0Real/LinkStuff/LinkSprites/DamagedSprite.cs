@@ -66,8 +66,6 @@ namespace sprint0Real.LinkStuff.LinkSprites
             }
             Rectangle sourceRectangle = new Rectangle(0 + _horizontal, 232 + _verticle, 16, 16);
             spriteBatch.Draw(_link, destinationRectangle, sourceRectangle, Color.White);
-
-
         }
     }
 }

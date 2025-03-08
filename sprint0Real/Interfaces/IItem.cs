@@ -7,9 +7,5 @@ namespace sprint0Real.Interfaces
 {
     public interface IItem : IGameObject
     {
-        //public void Update(SpriteBatch spriteBatch);
-
-        public void Draw(SpriteBatch _spriteBatch);
-
     }
 }
