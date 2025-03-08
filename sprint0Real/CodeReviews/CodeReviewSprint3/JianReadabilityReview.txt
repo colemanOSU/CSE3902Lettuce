@@ -1,4 +1,4 @@
-AUTHOR: Kelly Coleman
+AUTHOR: Jian Wang
 SUBJECT: LinkWallCollisionCommand.cs
 AUTHOR OF SUBJECT: Ariv Puri
 FOCUS: Readability

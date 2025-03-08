@@ -1,4 +1,4 @@
-AUTHOR: Kelly Coleman
+AUTHOR: Jian wang
 SUBJECT: EnemyPage.cs (in levels folder)
 AUTHOR OF SUBJECT: Ariv Puri
 FOCUS: Maintainablilty
