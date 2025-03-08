@@ -23,6 +23,9 @@ namespace sprint0Real.Collisions
             collisionCommands.Add((typeof(IBlock), typeof(ILink)), new LinkBlockCollisionCommand(game));
             collisionCommands.Add((typeof(ILink), typeof(IBlock)), new LinkBlockCollisionCommand(game));
 
+            collisionCommands.Add((typeof(ILink), typeof(WallObject)), new LinkWallCollisionCommand(game));
+            collisionCommands.Add((typeof(WallObject), typeof(ILink)), new LinkWallCollisionCommand(game));
+
             collisionCommands.Add((typeof(ILink), typeof(IEnemy)), new LinkEnemyCollisionCommand(game));
             collisionCommands.Add((typeof(IEnemy), typeof(ILink)), new LinkEnemyCollisionCommand(game));
 
