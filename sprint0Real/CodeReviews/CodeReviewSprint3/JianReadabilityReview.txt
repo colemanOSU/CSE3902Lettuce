@@ -1,14 +1,12 @@
 AUTHOR: Kelly Coleman
-SUBJECT: wallobject.cs
+SUBJECT: LinkWallCollisionCommand.cs
 AUTHOR OF SUBJECT: Ariv Puri
 FOCUS: Readability
 SPRINT: 3
 DATE: 7 March 2025
 TIME TAKEN TO COMPLETE: 8 Minutes
 
-
-
-In terms of readability, this file is not bad at all. If there was an area to critique, one might wish for slightly more informative comments, 
-particularly in regards to each individual process's role in the overall journey. Yet this is a relatively minor complaint. Variables are 
-generally well named and the class well organized enough.The jury of 1 is still out on the decision to have collision handling done through an
-XML file, but progress moves steadily on like a mammoth glacier which no man can cease nor slow. Overall unremarkable readability.
+Although this file is really readable due to the small amount of code and minimal methods, I would have the code _game = game; removed as there is no
+point in the whole file where you need to use _game. I would also add some more comments and/or rename the varibales as stuff like ObjA and objB are 
+really vague and Link link and Link link2 also dont really have any meaning to it that makes it understandable/readable. Other than that this peice of 
+code is readable and all the code in it makes sense. Due to me understanding what your Link link and ObjA is and the small amount of code in this file.
