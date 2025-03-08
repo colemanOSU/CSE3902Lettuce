@@ -1,0 +1,13 @@
+Author: Ariv Puri
+Date: 03/07/2025
+Sprint 3
+This review took me around 10 minutes.
+I am revieweing Jenny's code ItemStateMachine.cs for Readability
+
+This file was written in a previous sprint but was rewritten by Jenny to fit with parts of the game implemented in this sprint.
+
+This class is solid when it comes to readability. The initial comment makes it very easy to understand the goal of the class and the well named
+variables make it easy to follow what is going on through each line of code. Jenny also included lines that write to the console depending on different 
+things occuring during the game, making it even easier to follow what is going on. Although it is very time consuming my only critique would be to add more 
+comments throughout the class specifying what is going on in different parts of the code for people who may not be able to follow solely by the variable
+names, but it is not necessary and a very minor critique.

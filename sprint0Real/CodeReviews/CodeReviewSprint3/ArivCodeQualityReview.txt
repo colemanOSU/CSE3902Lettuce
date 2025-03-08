@@ -1,0 +1,13 @@
+Author: Ariv Puri
+Date: 03/07/2025
+Sprint 3
+This review took me around 10 minutes.
+I am revieweing Jenny's code ItemStateMachine.cs for Code Quality
+
+This file was written in a previous sprint but was rewritten by Jenny to fit with parts of the game implemented in this sprint.
+
+This class is solid when it comes to code quality. The class uses enum to hold the items link can use very well and makes it easy to cycle 
+through useable items. The switch expression is also very nice and simple. Another plus is that the function DrawWeaponSprite ensures that old
+weapon objects are removed before adding new ones. I do have a few critiques though. It may be be beneficial to seperate itemStateMachine from
+GameStateMachine and create a seperate GameStateMachine to handle functions like setActive and DrawWeaponSprite. Another much smaller critique 
+is the magic numbers.
