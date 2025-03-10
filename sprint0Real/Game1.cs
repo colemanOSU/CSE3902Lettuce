@@ -18,6 +18,7 @@ using sprint0Real.Levels;
 using System.Reflection.Metadata;
 using sprint0Real.TreasureItemSprites;
 using sprint0Real.LinkSprites;
+using sprint0Real.Commands;
 
 namespace sprint0Real
 {
@@ -35,7 +36,8 @@ namespace sprint0Real
         public int currentBlockIndex;
         public int currentItemIndex;
 
-        private GameStates currentGameState;
+        //TEMP SET PUBLIC UNTIL BETTER SOLUTION FOUND
+        public GameStates currentGameState;
         private TitleScreen titleScreen;
 
         public ILink Link;
@@ -64,6 +66,9 @@ namespace sprint0Real
         public const int SCREENHEIGHT = 400;
         public const int SCREENMIDX = SCREENWIDTH / 2;
         public const int SCREENMIDY = SCREENHEIGHT / 2;
+
+        //TEMP PAUSE
+        public bool isPaused;
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -79,6 +84,9 @@ namespace sprint0Real
             currentBlockIndex = 1;
             Link = new Link(this);  
             currentItemIndex = 1;
+
+            //TEMP PAUSE
+            isPaused = false;
         }
 
         protected override void Initialize()
@@ -126,7 +134,14 @@ namespace sprint0Real
                 case GameStates.TitleScreen:
                     currentGameState = titleScreen.Update(gameTime, this);
                     break;
+                case GameStates.Pause:
+                    foreach (IController controller in controllerList)
+                    {
+                        //sprite = controller.Update(sprite);
+                        controller.Update(gameTime);
 
+                    }
+                    break;
                 case GameStates.GamePlay:
 
                     itemStateMachine.setActive();
@@ -175,6 +190,28 @@ namespace sprint0Real
                     titleScreen.Draw(_spriteBatch, GraphicsDevice);
                     break;
 
+                case GameStates.Pause:
+                    //We still want things to be drawn, just not updated
+                    _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp);
+                    CurrentMap.Instance.Draw(_spriteBatch);
+
+                    //TEMP ITEM
+                    if (tempItem != null)
+                    {
+                        tempItem.Draw(_spriteBatch);
+                    }
+
+                    if (itemSprite != null)
+                    {
+                        itemSprite.Draw(_spriteBatch);
+                    }
+
+                    currentBlock.Draw(_spriteBatch);
+                    //currentItem.Draw(_spriteBatch);
+                    linkSprite.Draw(_spriteBatch);
+
+                    _spriteBatch.End();
+                    break;
                 case GameStates.GamePlay:
                     
                     _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp);
@@ -201,7 +238,7 @@ namespace sprint0Real
 
                     _spriteBatch.End();
 
-                        break;
+                    break;
             }
 
             base.Draw(gameTime);

@@ -11,6 +11,7 @@ namespace sprint0Real.GameState
         TitleScreen,
         GamePlay,
         Options,
+        Pause,
         Exit
     }
     internal class GameState
