@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Security.AccessControl;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0Real.Collisions;
@@ -18,7 +16,10 @@ namespace sprint0Real.Levels
         private static CurrentMap instance = new CurrentMap();
         private EnemyPage myMap;
         private List<IGameObject> stagingAdd;
-        private List<IGameObject> stagingRemove;
+        private List<IGameObject> stagingRemove; 
+
+        private List<ICollisionBoxes> stageCollision;
+        private List<ICollisionBoxes> removeCollision;
         public static CurrentMap Instance
         {
             get
@@ -30,15 +31,21 @@ namespace sprint0Real.Levels
         { 
             stagingAdd = new List<IGameObject>();
             stagingRemove = new List<IGameObject>();
+            stageCollision = new List<ICollisionBoxes>();
+            removeCollision = new List<ICollisionBoxes>();
         }
         public void SetMap(EnemyPage newMap)
         {
             myMap = newMap;
         }
 
-        public List<IGameObject> MapList()
+        public List<IGameObject> ObjectList()
         {
             return myMap.ReturnGameObjectList();
+        }
+        public List<ICollisionBoxes> CollisionList()
+        {
+            return myMap.ReturnHitboxList();
         }
 
         public void Stage(IGameObject enemy)
@@ -64,6 +71,16 @@ namespace sprint0Real.Levels
                 myMap.DeStage(enemy);
             }
             stagingRemove.Clear();
+            foreach(ICollisionBoxes box in stageCollision)
+            {
+                myMap.AddCollisionBox(box);
+            }
+            stageCollision.Clear();
+            foreach (ICollisionBoxes box in removeCollision)
+            {
+                myMap.DeStageCollision(box);
+            }
+            removeCollision.Clear();
         }
 
         public void Draw(SpriteBatch spriteBatch)

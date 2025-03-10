@@ -2,7 +2,8 @@
 
 namespace sprint0Real.Interfaces
 {
-    public interface ICollisionBoxes: IObject
+    public interface IObject
     {
+        Rectangle Rect { get; }
     }
 }

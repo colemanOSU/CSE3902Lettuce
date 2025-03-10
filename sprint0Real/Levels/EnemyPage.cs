@@ -16,7 +16,7 @@ namespace sprint0Real.Levels
     public class EnemyPage
     {
         private List<IGameObject> gameObjects;
-        private List<ICollisionBoxes> Hitboxes;
+        private List<ICollisionBoxes> hitboxes;
         private Dictionary<String, String> Neighbors;
         public LevelBackground background;
 
@@ -31,22 +31,19 @@ namespace sprint0Real.Levels
         public EnemyPage()
         {
             gameObjects = new List<IGameObject>();
+            hitboxes = new List<ICollisionBoxes>();
             background = new LevelBackground();
 
             AddBorderWalls();
         }
-
-        
         public List<IGameObject> ReturnGameObjectList()
         {
             return gameObjects;
         }
-
         public List<ICollisionBoxes> ReturnHitboxList()
         {
-            return Hitboxes;
+            return hitboxes;
         }
-
         public void Update(GameTime time)
         {
             foreach (IGameObject enemy in gameObjects)
@@ -54,17 +51,14 @@ namespace sprint0Real.Levels
                 enemy.Update(time);
             }
         }
-
         public void AddNeighbor(String side, String name)
         {
             Neighbors.Add(side, name);
         }
-
         public void AddCollisionBox(ICollisionBoxes collisionBox)
         {
-            Hitboxes.Add(collisionBox);
+            hitboxes.Add(collisionBox);
         }
-
         public void Draw(SpriteBatch spriteBatch)
         {
             background.Draw(spriteBatch);
@@ -77,10 +71,17 @@ namespace sprint0Real.Levels
         {
             gameObjects.Add(gameObject);
         }
-
         public void DeStage(IGameObject gameObject)
         {
             gameObjects.Remove(gameObject);
+        }
+        public void StageCollision(ICollisionBoxes collisionBox)
+        {
+            hitboxes.Add(collisionBox);
+        }
+        public void DeStageCollision(ICollisionBoxes collisionBox)
+        {
+            hitboxes.Remove(collisionBox);
         }
         public void AddBorderWalls()
         {

@@ -6,20 +6,24 @@ using System.Text;
 using System.Threading.Tasks;
 using sprint0Real.BlockSprites;
 using sprint0Real.Commands.CollisionCommands;
+using sprint0Real.Commands.CollisionCommands2;
 using sprint0Real.Interfaces;
 
 namespace sprint0Real.Collisions
 {
     public class CollisionHandler2
     {
-        private Dictionary<(Type, Type), ICollisionCommand> collisionCommands;
+        private Dictionary<(String, String), ICollisionCommand2> collisionCommands;
         private Game1 game;
 
+        // Maybe make these strings
         public CollisionHandler2(Game1 game)
         {
             this.game = game;
+            collisionCommands = new Dictionary<(String, String), ICollisionCommand2>();
 
-            collisionCommands = new Dictionary<(Type, Type), ICollisionCommand>();
+            collisionCommands.Add(("Link", "Dragon"),  new LinkEnemyCommand());
+            /*
             collisionCommands.Add((typeof(IBlock), typeof(ILink)), new LinkBlockCollisionCommand(game));
             collisionCommands.Add((typeof(ILink), typeof(IBlock)), new LinkBlockCollisionCommand(game));
 
@@ -34,6 +38,7 @@ namespace sprint0Real.Collisions
 
             collisionCommands.Add((typeof(ILinkSprite),typeof(IEnemy)), new LinkWeaponCollisionCommand(game));
             collisionCommands.Add((typeof(IEnemy), typeof(ILinkSprite)), new LinkWeaponCollisionCommand(game));
+            */
         }
         private Type GetGeneralType(IGameObject obj)
         {
@@ -44,11 +49,11 @@ namespace sprint0Real.Collisions
             if (obj is ILinkSprite) return typeof(ILinkSprite);
             return obj.GetType();                      //Default to concrete type for anything else
         }
-        public void HandleCollision(IGameObject objA, IGameObject objB, CollisionDirections direction)
+        public void HandleCollision(IObject objA, IObject objB, CollisionDirections direction)
         {
-            var key = (GetGeneralType(objA), GetGeneralType(objB));
+            //var key = (GetGeneralType(objA), GetGeneralType(objB));
 
-            if (collisionCommands.TryGetValue(key, out ICollisionCommand command))
+            if (collisionCommands.TryGetValue((objA.GetType().ToString(), objB.GetType().ToString()), out ICollisionCommand2 command))
             {
                 command.Execute(objA, objB, direction);
             }

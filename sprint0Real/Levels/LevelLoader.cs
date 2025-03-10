@@ -10,6 +10,7 @@ using System.Xml.Schema;
 using Microsoft.Xna.Framework;
 using sprint0Real.Interfaces;
 using sprint0Real.EnemyStuff;
+using sprint0Real.EnemyStuff.DragonStuff;
 
 namespace sprint0Real.Levels
 {
@@ -17,6 +18,7 @@ namespace sprint0Real.Levels
     {
         Dictionary<String, EnemyPage> Maps = new Dictionary<String, EnemyPage>();
         private static LevelLoader instance = new LevelLoader();
+        private TypeCatalogue catalogue = new TypeCatalogue();
         public static LevelLoader Instance
         {
             get
@@ -35,14 +37,14 @@ namespace sprint0Real.Levels
                 xml.Load(fileName);
                 foreach(XmlElement Object in xml.SelectNodes("//Objects/Object"))
                 {
-                    Type type = Type.GetType(Object.GetAttribute("Type"));
+                    Type type = Type.GetType(catalogue.ReturnGameObjectType(Object.GetAttribute("Type")));
                     int x = Int32.Parse(Object.GetAttribute("x"));
                     int y = Int32.Parse(Object.GetAttribute("y"));
                     newMap.Stage((IGameObject)Activator.CreateInstance(type, new Vector2(x, y)));
                 }
                 foreach(XmlElement MapHitBox in xml.SelectNodes("MapHitBoxes"))
                 {
-                    Type type = Type.GetType(MapHitBox.GetAttribute("Type"));
+                    Type type = Type.GetType(catalogue.ReturnCollisionBoxCatalogue(MapHitBox.GetAttribute("Type")));
                     int x = Int32.Parse(MapHitBox.GetAttribute("x"));
                     int y = Int32.Parse(MapHitBox.GetAttribute("y"));
                     int width = Int32.Parse(MapHitBox.GetAttribute("width"));
@@ -54,7 +56,6 @@ namespace sprint0Real.Levels
                 {
                     newMap.AddNeighbor(Neighbor.GetAttribute("Side"), Neighbor.GetAttribute("Name"));
                 }
-
 
                 newMap.background.SetRoomExterior(xml.SelectSingleNode("/LevelData/Door").Attributes["Exterior"].Value);
                 newMap.background.SetRoomInterior(xml.SelectSingleNode("/LevelData/Door").Attributes["Interior"].Value);
