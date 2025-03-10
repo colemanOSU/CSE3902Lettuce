@@ -195,7 +195,5 @@ namespace sprint0Real.EnemyStuff
         {
             return new DeathSprite(Deathsprites);
         }
-        // More public ISprite returning methods follow
-        // ...
     }
 }

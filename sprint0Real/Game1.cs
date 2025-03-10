@@ -106,8 +106,7 @@ namespace sprint0Real
             LevelLoader.Instance.LoadLevels();
 
             ResetGame();
-            collisionDetection.LoadLink(Link);
-            collisionDetection.UpdateRoomObjects();
+            collisionDetection.Load(Link);
             tempItem = null;
         }
 

@@ -14,8 +14,7 @@ namespace sprint0Real.Collisions
 {
     public class CollisionDetection
     {
-        private List<IGameObject> gameObjectsInRoom;
-        private List<ICollisionBoxes> collisionBoxesInRoom;
+        private List<IObject> gameObjectsInRoom;
         private ILink link;
         //private CollisionHandler collisionHandler;
         private CollisionHandler2 collisionHandler;
@@ -30,15 +29,15 @@ namespace sprint0Real.Collisions
             //collisionHandler = new CollisionHandler("Collisions/CollisionCommands.xml", game);
             collisionHandler = new CollisionHandler2(game);
         }
-        public void LoadLink(ILink Link)
+        public void Load(ILink Link)
         {
+            UpdateRoomObjects();
             link = Link;
         }
 
         public void UpdateRoomObjects()
         {
             gameObjectsInRoom = CurrentMap.Instance.ObjectList();
-            collisionBoxesInRoom = CurrentMap.Instance.CollisionList();
         }
 
         public void Update(GameTime gametime)
@@ -48,35 +47,17 @@ namespace sprint0Real.Collisions
 
         public void CheckCollisions()
         {
-            /*
-            for (int i = 0; i < gameObjectsInRoom.Count; i++)
-            {
-                var objA = gameObjectsInRoom[i];
-
-                for (int j = i + 1; j < gameObjectsInRoom.Count; j++) // Only check each pair once
-                {
-                    var objB = gameObjectsInRoom[j];
-
-                    if (objA.Rect.Intersects(objB.Rect) && objA is not ILinkSprite && objB is not ILinkSprite || objA.Rect.Intersects(objB.Rect) && objA is ILinkSprite && isWeaponActive || objB is ILinkSprite)
-                    {
-                        CollisionDirections direction = DetectCollisionDirection(objA, objB);
-                        collisionHandler.HandleCollision(objA, objB, direction);
-                    }
-                }
-            }
-            */
-
             // Link against all game objects
             // Link against all collisionBoxes
             // Enemies against Link Projectiles
             // Enemies against Borders 
             foreach(IEnemy enemy in gameObjectsInRoom.OfType<IEnemy>())
             {
-                if (ILink.rect)
+                if (link.Rect.Intersects(enemy.Rect))
                 {
-                    
+                    collisionHandler.HandleCollision(link, enemy);
                 }
-                foreach (ICollisionBoxes collision in collisionBoxesInRoom)
+                foreach (ICollisionBoxes collision in gameObjectsInRoom.OfType<ICollisionBoxes>())
                 {
                     if (enemy.Rect.Intersects(collision.Rect))
                     {
@@ -84,50 +65,6 @@ namespace sprint0Real.Collisions
                     }
                 }
             }
-
-
         }
-
-        public CollisionDirections DetectCollisionDirection(IObject objA, IObject objB)
-        {
-
-            Rectangle rectA = objA.Rect;
-            Rectangle rectB = objB.Rect;
-
-            CollisionDirections recentCollisionDirection = CollisionDirections.Default;
-
-            //calculate overlap
-            int overlapBottom = rectB.Bottom - rectA.Top;
-            int overlapTop = rectA.Bottom - rectB.Top;
-            int overlapRight = rectB.Right - rectA.Left;
-            int overlapLeft = rectA.Right - rectB.Left;
-
-            //find smallest overlap
-            int minOverlap = MathHelper.Min(MathHelper.Min(overlapTop, overlapBottom), MathHelper.Min(overlapLeft, overlapRight));
-
-            if (minOverlap == overlapTop)
-            {
-                recentCollisionDirection = CollisionDirections.Up;
-                //Debug.WriteLine("Collision from Top of " + objB.GetType().Name);
-            }
-            else if (minOverlap == overlapBottom)
-            {
-                recentCollisionDirection = CollisionDirections.Down;
-                //Debug.WriteLine("Collision from Bottom of " + objB.GetType().Name);
-            }
-            else if (minOverlap == overlapLeft)
-            {
-                recentCollisionDirection = CollisionDirections.Left;
-                //Debug.WriteLine("Collision from Left of " + objB.GetType().Name);
-                
-            }
-            else if (minOverlap == overlapRight)
-            {
-                recentCollisionDirection = CollisionDirections.Right;
-                //Debug.WriteLine("Collision from Right of " + objB.GetType().Name);
-            }
-            return recentCollisionDirection;
-        }
-
     }
 }

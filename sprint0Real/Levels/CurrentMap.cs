@@ -15,11 +15,8 @@ namespace sprint0Real.Levels
 
         private static CurrentMap instance = new CurrentMap();
         private EnemyPage myMap;
-        private List<IGameObject> stagingAdd;
-        private List<IGameObject> stagingRemove; 
-
-        private List<ICollisionBoxes> stageCollision;
-        private List<ICollisionBoxes> removeCollision;
+        private List<IObject> stagingAdd;
+        private List<IObject> stagingRemove; 
         public static CurrentMap Instance
         {
             get
@@ -29,58 +26,42 @@ namespace sprint0Real.Levels
         }
         private CurrentMap()
         { 
-            stagingAdd = new List<IGameObject>();
-            stagingRemove = new List<IGameObject>();
-            stageCollision = new List<ICollisionBoxes>();
-            removeCollision = new List<ICollisionBoxes>();
+            stagingAdd = new List<IObject>();
+            stagingRemove = new List<IObject>();
         }
         public void SetMap(EnemyPage newMap)
         {
             myMap = newMap;
         }
 
-        public List<IGameObject> ObjectList()
+        public List<IObject> ObjectList()
         {
-            return myMap.ReturnGameObjectList();
-        }
-        public List<ICollisionBoxes> CollisionList()
-        {
-            return myMap.ReturnHitboxList();
+            return myMap.ReturnObjectList();
         }
 
-        public void Stage(IGameObject enemy)
+        public void Stage(IObject enemy)
         {
             stagingAdd.Add(enemy);
         }
 
-        public void DeStage(IGameObject enemy)
+        public void DeStage(IObject thing)
         {
-            stagingRemove.Add(enemy);
+            stagingRemove.Add(thing);
         }
 
         public void Update(GameTime gameTime)
         {
             myMap.Update(gameTime);
-            foreach (IGameObject enemy in stagingAdd)
+            foreach (IObject thing in stagingAdd)
             {
-                myMap.Stage(enemy);
+                myMap.Stage(thing);
             }
             stagingAdd.Clear();
-            foreach (IGameObject enemy in stagingRemove)
+            foreach (IObject thing in stagingRemove)
             {
-                myMap.DeStage(enemy);
+                myMap.DeStage(thing);
             }
             stagingRemove.Clear();
-            foreach(ICollisionBoxes box in stageCollision)
-            {
-                myMap.AddCollisionBox(box);
-            }
-            stageCollision.Clear();
-            foreach (ICollisionBoxes box in removeCollision)
-            {
-                myMap.DeStageCollision(box);
-            }
-            removeCollision.Clear();
         }
 
         public void Draw(SpriteBatch spriteBatch)

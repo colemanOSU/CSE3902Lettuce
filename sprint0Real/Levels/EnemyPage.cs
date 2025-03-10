@@ -15,8 +15,7 @@ namespace sprint0Real.Levels
 {
     public class EnemyPage
     {
-        private List<IGameObject> gameObjects;
-        private List<ICollisionBoxes> hitboxes;
+        private List<IObject> gameObjects;
         private Dictionary<String, String> Neighbors;
         public LevelBackground background;
 
@@ -30,23 +29,18 @@ namespace sprint0Real.Levels
 
         public EnemyPage()
         {
-            gameObjects = new List<IGameObject>();
-            hitboxes = new List<ICollisionBoxes>();
+            gameObjects = new List<IObject>();
             background = new LevelBackground();
 
             AddBorderWalls();
         }
-        public List<IGameObject> ReturnGameObjectList()
+        public List<IObject> ReturnObjectList()
         {
             return gameObjects;
         }
-        public List<ICollisionBoxes> ReturnHitboxList()
-        {
-            return hitboxes;
-        }
         public void Update(GameTime time)
         {
-            foreach (IGameObject enemy in gameObjects)
+            foreach (IGameObject enemy in gameObjects.OfType<IGameObject>())
             {
                 enemy.Update(time);
             }
@@ -55,33 +49,22 @@ namespace sprint0Real.Levels
         {
             Neighbors.Add(side, name);
         }
-        public void AddCollisionBox(ICollisionBoxes collisionBox)
-        {
-            hitboxes.Add(collisionBox);
-        }
+
         public void Draw(SpriteBatch spriteBatch)
         {
             background.Draw(spriteBatch);
-            foreach (IGameObject gameObject in gameObjects)
+            foreach (IGameObject gameObject in gameObjects.OfType<IGameObject>())
             {
                 gameObject.Draw(spriteBatch);
             }
         }
-        public void Stage(IGameObject gameObject)
+        public void Stage(IObject thing)
         {
-            gameObjects.Add(gameObject);
+            gameObjects.Add(thing);
         }
-        public void DeStage(IGameObject gameObject)
+        public void DeStage(IObject thing)
         {
-            gameObjects.Remove(gameObject);
-        }
-        public void StageCollision(ICollisionBoxes collisionBox)
-        {
-            hitboxes.Add(collisionBox);
-        }
-        public void DeStageCollision(ICollisionBoxes collisionBox)
-        {
-            hitboxes.Remove(collisionBox);
+            gameObjects.Remove(thing);
         }
         public void AddBorderWalls()
         {

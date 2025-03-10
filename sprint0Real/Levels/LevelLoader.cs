@@ -49,7 +49,7 @@ namespace sprint0Real.Levels
                     int y = Int32.Parse(MapHitBox.GetAttribute("y"));
                     int width = Int32.Parse(MapHitBox.GetAttribute("width"));
                     int height = Int32.Parse(MapHitBox.GetAttribute("height"));
-                    newMap.AddCollisionBox((ICollisionBoxes)Activator.CreateInstance(type, new Rectangle(x, y, width, height)));
+                    newMap.Stage((ICollisionBoxes)Activator.CreateInstance(type, new Rectangle(x, y, width, height)));
                 }
 
                 foreach(XmlElement Neighbor in xml.SelectNodes("Neighbors"))
