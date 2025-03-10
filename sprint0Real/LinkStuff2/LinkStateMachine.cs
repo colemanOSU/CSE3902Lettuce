@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Xna.Framework;
 using sprint0Real.Interfaces;
 
 
@@ -18,12 +14,26 @@ namespace sprint0Real.LinkStuff2
             myLink = link;
         }
 
+        public void TakeDamage()
+        {
+
+        }
+
         public void Update()
         {
             switch (currentState)
             {
                 case LinkState.UpMoving:
-                    //myLink.destinationRectangle.Offset(myLink.SPEED);
+                    myLink.momentumVector = new Vector2(0, -myLink.SPEED);
+                    break;
+                case LinkState.DownMoving:
+                    myLink.momentumVector = new Vector2(0, myLink.SPEED);
+                    break;
+                case LinkState.LeftMoving:
+                    myLink.momentumVector = new Vector2(-myLink.SPEED, 0);
+                    break;
+                case LinkState.RightMoving:
+                    myLink.momentumVector = new Vector2(myLink.SPEED, 0);
                     break;
             }
         }

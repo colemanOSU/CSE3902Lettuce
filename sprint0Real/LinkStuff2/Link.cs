@@ -17,19 +17,20 @@ namespace sprint0Real.LinkStuff2
         private ILinkSprite mySprite;
         private LinkStateMachine stateMachine;
         private Color LinkSpriteColor;
-        private Vector2 momentumVector;
         
         private List<IItem> bag;
         private IItem CurrentItem;
         private int FPS = 24;
         private float timer;
-        private int health = 10;
+
+        public Vector2 momentumVector;
+        public int health = 10;
         public int SPEED = 2;
 
         public  Link()
         {
             stateMachine = new LinkStateMachine(this);
-            //mySprite = LinkSpriteFactory.Instance.Create();
+            mySprite = LinkSpriteFactory.Instance.Create();
         }
 
         public void PickUpItem(IItem item)

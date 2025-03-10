@@ -1,11 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using sprint0Real.BlockSprites;
 using sprint0Real.Items.ItemSprites;
 using sprint0Real.Interfaces;
 using System;
-using sprint0Real.LinkStuff.LinkSprites;
 using System.Collections.Generic;
 using System.Diagnostics;
 using sprint0Real.Controllers;
@@ -13,7 +11,7 @@ using sprint0Real.EnemyStuff;
 using sprint0Real.ItemTempSprites;
 using sprint0Real.GameState;
 using sprint0Real.Collisions;
-using sprint0Real.LinkStuff;
+using sprint0Real.LinkStuff2;
 using sprint0Real.Levels;
 using System.Reflection.Metadata;
 using sprint0Real.TreasureItemSprites;
@@ -27,7 +25,6 @@ namespace sprint0Real
         public GraphicsDeviceManager _graphics;
         public SpriteBatch _spriteBatch;
 
-        public Texture2D linkSheet;
         Texture2D blockSheet;
         Texture2D itemSheet;
         
@@ -38,23 +35,9 @@ namespace sprint0Real
         private GameStates currentGameState;
         private TitleScreen titleScreen;
 
-        public ILink Link;
-        public ILinkSpriteTemp linkSprite;
-
-        public ILinkSprite weaponItems;
-
-        //temp
-        public IItem tempItem;
-        public IItemSprite itemSprite;
-
-        //temp
-
-        public IBlock currentBlock;
-        public IItemtemp currentItem;
+        public Link Link;
 
         List<IController> controllerList;
-
-        public ILinkState LinkState;
 
         public CollisionDetection collisionDetection;
 
@@ -77,10 +60,8 @@ namespace sprint0Real
             controllerList.Add(new KeyboardController(this));
             currentGameState = GameStates.TitleScreen;
             titleScreen = new TitleScreen();
-            LinkState = new LinkStateMachine(Link);
             itemStateMachine = new ItemStateMachine(this);
 
-            //collisionDetection = new CollisionDetection(this);
 
             base.Initialize();
         }
@@ -97,6 +78,7 @@ namespace sprint0Real
             itemSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - Items & Weapons");
             linkSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - Link");
 
+            Link = new Link();
             EnemySpriteFactory.Instance.LoadAllTextures(Content);
             EnemySpriteFactory.Instance.LoadGame(this);
             BlockSpriteFactory.Instance.LoadAllTextures(Content);
@@ -105,7 +87,6 @@ namespace sprint0Real
 
             ResetGame();
             collisionDetection.UpdateRoomObjects(CurrentMap.Instance.MapList(), Link, weaponItems);
-            tempItem = null;
         }
 
         protected override void Update(GameTime gameTime)
@@ -117,8 +98,6 @@ namespace sprint0Real
                     break;
 
                 case GameStates.GamePlay:
-
-                    itemStateMachine.setActive();
                     //TEMP
                     /*
                     List<IGameObject> tempList = new List<IGameObject>();
@@ -135,9 +114,7 @@ namespace sprint0Real
                          controller.Update(gameTime);
 
                      }
-                     currentBlock.Update(gameTime);
                      //currentItem.Update(gameTime);
-                     LinkState.Update(gameTime);
 
                     collisionDetection.Update(gameTime);
                     // Reset executed collisions to allow new collisions to be handled in the next frame
@@ -149,7 +126,7 @@ namespace sprint0Real
                     //Which is not right now
                      //CollisionChecker.Update(gameTime, this);
 
-                    Link.ApplyMomentum();
+                    Link.Update(gameTime);
                     CurrentMap.Instance.Update(gameTime);
 
                     break;
@@ -167,32 +144,12 @@ namespace sprint0Real
                 case GameStates.GamePlay:
                     
                     _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp);
-            CurrentMap.Instance.Draw(_spriteBatch);
-
-                //TEMP ITEM
-                if (tempItem != null)
-                {
-                    tempItem.Draw(_spriteBatch);
-                }
-
-                if (itemSprite != null)
-                {
-                    itemSprite.Draw(_spriteBatch);
-                    itemSprite.Update(gameTime, _spriteBatch);
-                }
-
-                currentBlock.Draw(_spriteBatch);
-                //currentItem.Draw(_spriteBatch);
-                linkSprite.Update(gameTime, _spriteBatch);
-                linkSprite.Draw(_spriteBatch);
-
-
-
+                    CurrentMap.Instance.Draw(_spriteBatch);
+                    Link.Draw(_spriteBatch);
                     _spriteBatch.End();
 
                         break;
             }
-
             base.Draw(gameTime);
         }
 

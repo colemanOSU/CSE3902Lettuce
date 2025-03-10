@@ -8,5 +8,4 @@ namespace sprint0Real.LinkStuff2
 {
     public enum LinkState {UpStatic, DownStatic, LeftStatic, RightStatic, UpMoving, DownMoving, LeftMoving, RightMoving, UpAttacking, DownAttacking, LeftAttacking, RightAttacking, GotItem};
 
-
 }
