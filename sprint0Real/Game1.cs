@@ -60,13 +60,24 @@ namespace sprint0Real
 
         private ItemStateMachine itemStateMachine;
 
+        public const int SCREENWIDTH = 800;
+        public const int SCREENHEIGHT = 400;
+        public const int SCREENMIDX = SCREENWIDTH / 2;
+        public const int SCREENMIDY = SCREENHEIGHT / 2;
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
+            
+            //Code to change resolution of game.
+            //Left at default values for monogame for now
+            _graphics.PreferredBackBufferWidth = SCREENWIDTH;
+            _graphics.PreferredBackBufferHeight = SCREENHEIGHT;
+            _graphics.ApplyChanges();
+
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
             currentBlockIndex = 1;
-            Link = new Link(this);
+            Link = new Link(this);  
             currentItemIndex = 1;
         }
 
@@ -157,7 +168,7 @@ namespace sprint0Real
         }
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
             switch (currentGameState)
             {
                 case GameStates.TitleScreen:
@@ -167,7 +178,7 @@ namespace sprint0Real
                 case GameStates.GamePlay:
                     
                     _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp);
-            CurrentMap.Instance.Draw(_spriteBatch);
+                    CurrentMap.Instance.Draw(_spriteBatch);
 
                 //TEMP ITEM
                 if (tempItem != null)
