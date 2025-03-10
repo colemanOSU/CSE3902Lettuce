@@ -19,7 +19,7 @@ namespace sprint0Real.Levels
         private Rectangle RightDoor;
         private Rectangle UpDoor;
         private Rectangle DownDoor;
-        private int Multiple = 2;
+        private int Multiple = 3;
         private BackgroundCatalogue catalogue = new BackgroundCatalogue();
 
         public void SetRoomInterior(String sprite)

@@ -8,14 +8,13 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace sprint0Real.Interfaces
 {
-    public interface IGameObject
+    public interface IGameObject : IObject
     {
         //included in individual interfaces
         
         void Update(GameTime gameTime);
         
         void Draw(SpriteBatch spriteBatch);
-        
-        Rectangle Rect { get; }
+
     }
 }

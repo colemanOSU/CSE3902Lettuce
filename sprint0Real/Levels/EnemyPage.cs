@@ -15,8 +15,7 @@ namespace sprint0Real.Levels
 {
     public class EnemyPage
     {
-        private List<IGameObject> gameObjects;
-        private List<ICollisionBoxes> Hitboxes;
+        private List<IObject> gameObjects;
         private Dictionary<String, String> Neighbors;
         public LevelBackground background;
 
@@ -30,57 +29,42 @@ namespace sprint0Real.Levels
 
         public EnemyPage()
         {
-            gameObjects = new List<IGameObject>();
+            gameObjects = new List<IObject>();
             background = new LevelBackground();
 
             AddBorderWalls();
         }
-
-        
-        public List<IGameObject> ReturnGameObjectList()
+        public List<IObject> ReturnObjectList()
         {
             return gameObjects;
         }
-
-        public List<ICollisionBoxes> ReturnHitboxList()
-        {
-            return Hitboxes;
-        }
-
         public void Update(GameTime time)
         {
-            foreach (IGameObject enemy in gameObjects)
+            foreach (IGameObject enemy in gameObjects.OfType<IGameObject>())
             {
                 enemy.Update(time);
             }
         }
-
         public void AddNeighbor(String side, String name)
         {
             Neighbors.Add(side, name);
         }
 
-        public void AddCollisionBox(ICollisionBoxes collisionBox)
-        {
-            Hitboxes.Add(collisionBox);
-        }
-
         public void Draw(SpriteBatch spriteBatch)
         {
             background.Draw(spriteBatch);
-            foreach (IGameObject gameObject in gameObjects)
+            foreach (IGameObject gameObject in gameObjects.OfType<IGameObject>())
             {
                 gameObject.Draw(spriteBatch);
             }
         }
-        public void Stage(IGameObject gameObject)
+        public void Stage(IObject thing)
         {
-            gameObjects.Add(gameObject);
+            gameObjects.Add(thing);
         }
-
-        public void DeStage(IGameObject gameObject)
+        public void DeStage(IObject thing)
         {
-            gameObjects.Remove(gameObject);
+            gameObjects.Remove(thing);
         }
         public void AddBorderWalls()
         {

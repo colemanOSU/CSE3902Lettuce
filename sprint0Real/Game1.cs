@@ -55,7 +55,9 @@ namespace sprint0Real
 
         protected override void Initialize()
         {
-
+            _graphics.PreferredBackBufferWidth = 768;
+            _graphics.PreferredBackBufferHeight = 528;
+            _graphics.ApplyChanges();
             controllerList = new List<IController>();
             controllerList.Add(new KeyboardController(this));
             currentGameState = GameStates.TitleScreen;
@@ -117,8 +119,6 @@ namespace sprint0Real
                      //currentItem.Update(gameTime);
 
                     collisionDetection.Update(gameTime);
-                    // Reset executed collisions to allow new collisions to be handled in the next frame
-                    collisionDetection.ResetExecutedCollisions();
 
                     //NOTE:
                     //I hate hate hate passing game as a parameter to so many things
