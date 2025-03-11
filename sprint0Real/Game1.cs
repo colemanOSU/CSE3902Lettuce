@@ -68,12 +68,11 @@ namespace sprint0Real
 
         private ItemStateMachine itemStateMachine;
 
-        //The screen height is specifically calculated to match the original game's height
+        //The screen height is specifically calculated to match the original game's
         //Important for menu transitions to function properly.
         //The screen width is mostly arbitrary. 
-
-        public const int SCREENHEIGHT = 912;
-        public const int SCREENWIDTH = 1042;
+        public const int SCREENHEIGHT = (88 + 56 + 8) * 3 * 2;
+        public const int SCREENWIDTH = (int)(SCREENHEIGHT * (256 / 224.0));
         public const int SCREENMIDX = SCREENWIDTH / 2;
         public const int SCREENMIDY = SCREENHEIGHT / 2;
         public const int RENDERSCALE = 3;
