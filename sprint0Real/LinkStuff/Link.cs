@@ -112,6 +112,8 @@ public class Link : ILink
     //Used to handle collision
     public void StopMomentumInDirection(Direction dir)
     {   
+        MomentumVector = new Vector2(0, 0);
+        /*
         switch (dir)
         {
             case Direction.Up:
@@ -139,6 +141,7 @@ public class Link : ILink
                 }
                 break;
         }
+        */
     }
     public Rectangle GetLocation()
     {

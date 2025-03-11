@@ -37,14 +37,14 @@ namespace sprint0Real.Levels
                 xml.Load(fileName);
                 foreach(XmlElement Object in xml.SelectNodes("//Objects/Object"))
                 {
-                    Type type = Type.GetType(catalogue.ReturnGameObjectType(Object.GetAttribute("Type")));
+                    Type type = Type.GetType(catalogue.ReturnObjectType(Object.GetAttribute("Type")));
                     int x = Int32.Parse(Object.GetAttribute("x"));
                     int y = Int32.Parse(Object.GetAttribute("y"));
                     newMap.Stage((IGameObject)Activator.CreateInstance(type, new Vector2(x, y)));
                 }
-                foreach(XmlElement MapHitBox in xml.SelectNodes("MapHitBoxes"))
+                foreach(XmlElement MapHitBox in xml.SelectNodes("//MapHitBoxes/HitBox"))
                 {
-                    Type type = Type.GetType(catalogue.ReturnCollisionBoxCatalogue(MapHitBox.GetAttribute("Type")));
+                    Type type = Type.GetType(catalogue.ReturnObjectType(MapHitBox.GetAttribute("Type")));
                     int x = Int32.Parse(MapHitBox.GetAttribute("x"));
                     int y = Int32.Parse(MapHitBox.GetAttribute("y"));
                     int width = Int32.Parse(MapHitBox.GetAttribute("width"));

@@ -10,28 +10,21 @@ namespace sprint0Real.Levels
 {
     public class TypeCatalogue
     {
-        private Dictionary<String, String> gameObjectCatalogue;
-        private Dictionary<String, String> collisionBoxCatalogue;
+        private Dictionary<String, String> objectCatalogue;
         public TypeCatalogue()
         {
-            gameObjectCatalogue = new Dictionary<String, String>();
-            collisionBoxCatalogue = new Dictionary<String, String>();
+            objectCatalogue = new Dictionary<String, String>();
 
-            gameObjectCatalogue.Add("Dragon", "sprint0Real.EnemyStuff.DragonStuff.Dragon");
-            gameObjectCatalogue.Add("BlackBlock", "sprint0Real.BlockSprites.BlockSpriteBlack");
-            gameObjectCatalogue.Add("Map", "sprint0Real.ItemTempSprites.Map");
+            objectCatalogue.Add("Dragon", "sprint0Real.EnemyStuff.DragonStuff.Dragon");
+            objectCatalogue.Add("BlackBlock", "sprint0Real.BlockSprites.BlockSpriteBlack");
+            objectCatalogue.Add("Map", "sprint0Real.ItemTempSprites.Map");
 
-            collisionBoxCatalogue.Add("Border", "sprint0Real.CollisionBoxes.RoomBorderBox");
+            objectCatalogue.Add("Border", "sprint0Real.CollisionBoxes.Border");
         }
 
-        public String ReturnGameObjectType(String type)
+        public String ReturnObjectType(String type)
         {
-            return gameObjectCatalogue[type];
-        }
-
-        public String ReturnCollisionBoxCatalogue(String type)
-        {
-            return collisionBoxCatalogue[type];
+            return objectCatalogue[type];
         }
     }
 }

@@ -9,6 +9,7 @@ using System.Diagnostics;
 using sprint0Real.Items.ItemSprites;
 using sprint0Real.Levels;
 using System.Linq;
+using System;
 
 namespace sprint0Real.Collisions
 {
@@ -47,24 +48,31 @@ namespace sprint0Real.Collisions
 
         public void CheckCollisions()
         {
-            // Link against all game objects
-            // Link against all collisionBoxes
-            // Enemies against Link Projectiles
             // Enemies against Borders 
             foreach(IEnemy enemy in gameObjectsInRoom.OfType<IEnemy>())
             {
-                if (link.Rect.Intersects(enemy.Rect))
-                {
-                    collisionHandler.HandleCollision(link, enemy);
-                }
                 foreach (ICollisionBoxes collision in gameObjectsInRoom.OfType<ICollisionBoxes>())
                 {
                     if (enemy.Rect.Intersects(collision.Rect))
                     {
-                        //HandleCollisionOnce(enemy, collision);
+                        collisionHandler.HandleCollision(enemy, collision);
                     }
                 }
+                // Enemies against Link Projectiles
+                foreach (ILinkHitboxes enemyDamage in gameObjectsInRoom.OfType<ILinkHitboxes>())
+                {
+                    collisionHandler.HandleCollision(enemy, enemyDamage);
+                }
             }
+            // Link against all collisionBoxes
+            foreach (ITouchesLink source in gameObjectsInRoom.OfType<ITouchesLink>())
+            {
+                if (link.Rect.Intersects(source.Rect))
+                {
+                    collisionHandler.HandleCollision(link, source);
+                }
+            }
+            // Walls against stuff that touches the wall
         }
     }
 }

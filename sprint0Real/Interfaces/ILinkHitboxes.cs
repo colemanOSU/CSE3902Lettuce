@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace sprint0Real.Interfaces
 {
-    public interface ITouchesLink : IObject
+    public interface ILinkHitboxes : ICollisionBoxes
     {
     }
 }

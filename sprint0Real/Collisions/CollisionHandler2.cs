@@ -24,6 +24,8 @@ namespace sprint0Real.Collisions
             collisionCommands = new Dictionary<(String, String), ICollisionCommand2>();
 
             collisionCommands.Add(("Link", "Dragon"),  new LinkEnemyCommand());
+
+            collisionCommands.Add(("Link", "Border"), new LinkBorderCommand());
         }
         private Type GetGeneralType(IGameObject obj)
         {
