@@ -29,6 +29,8 @@ namespace sprint0Real
         public SpriteBatch _spriteBatch;
 
         public Texture2D linkSheet;
+        public Texture2D UISheet;
+
         Texture2D blockSheet;
         Texture2D itemSheet;
         
@@ -42,6 +44,9 @@ namespace sprint0Real
 
         public ILink Link;
         public ILinkSpriteTemp linkSprite;
+
+        //For menus and UIs
+        public IUI UISprite;
 
         public ILinkSprite weaponItems;
 
@@ -63,9 +68,10 @@ namespace sprint0Real
         private ItemStateMachine itemStateMachine;
 
         public const int SCREENWIDTH = 800;
-        public const int SCREENHEIGHT = 400;
+        public const int SCREENHEIGHT = 1000;
         public const int SCREENMIDX = SCREENWIDTH / 2;
         public const int SCREENMIDY = SCREENHEIGHT / 2;
+        public const int RENDERSCALE = 3;
 
         //TEMP PAUSE
         public bool isPaused;
@@ -74,7 +80,7 @@ namespace sprint0Real
             _graphics = new GraphicsDeviceManager(this);
             
             //Code to change resolution of game.
-            //Left at default values for monogame for now
+
             _graphics.PreferredBackBufferWidth = SCREENWIDTH;
             _graphics.PreferredBackBufferHeight = SCREENHEIGHT;
             _graphics.ApplyChanges();
@@ -115,6 +121,7 @@ namespace sprint0Real
             blockSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - Dungeon Tileset");
             itemSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - Items & Weapons");
             linkSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - Link");
+            UISheet = Content.Load<Texture2D>("NES - The Legend of Zelda - HUD & Pause Screen");
 
             EnemySpriteFactory.Instance.LoadAllTextures(Content);
             EnemySpriteFactory.Instance.LoadGame(this);
@@ -209,6 +216,7 @@ namespace sprint0Real
                     currentBlock.Draw(_spriteBatch);
                     //currentItem.Draw(_spriteBatch);
                     linkSprite.Draw(_spriteBatch);
+                    UISprite.Draw(_spriteBatch);
 
                     _spriteBatch.End();
                     break;
@@ -234,6 +242,9 @@ namespace sprint0Real
                 linkSprite.Update(gameTime, _spriteBatch);
                 linkSprite.Draw(_spriteBatch);
 
+                    UISprite.Update(gameTime, _spriteBatch);
+                UISprite.Draw(_spriteBatch);
+
 
 
                     _spriteBatch.End();
@@ -252,6 +263,7 @@ namespace sprint0Real
             currentBlock = new BlockSpriteFloorTile(new Vector2(300,300));
             //currentItem = new Heart(new Vector2(0, 0));
             linkSprite = new ResetLink(linkSheet, this);
+            UISprite = new UI(UISheet);
             weaponItems = new NullSprite(linkSheet, this);
             currentBlockIndex = 1;
             Link = new Link(this);
