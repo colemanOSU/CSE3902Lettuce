@@ -47,6 +47,7 @@ namespace sprint0Real
 
         //For menus and UIs
         public IUI UISprite;
+        public IUI MenuUISprite;
 
         public ILinkSprite weaponItems;
 
@@ -67,8 +68,11 @@ namespace sprint0Real
 
         private ItemStateMachine itemStateMachine;
 
-        public const int SCREENWIDTH = 800;
-        public const int SCREENHEIGHT = 1000;
+        //The screen height is specifically calculated to match the original game's
+        //Important for menu transitions to function properly.
+        //The screen width is mostly arbitrary. 
+        public const int SCREENHEIGHT = (88 + 56 + 8) * 3 * 2;
+        public const int SCREENWIDTH = (int)(SCREENHEIGHT * (256 / 224.0));
         public const int SCREENMIDX = SCREENWIDTH / 2;
         public const int SCREENMIDY = SCREENHEIGHT / 2;
         public const int RENDERSCALE = 3;
@@ -194,6 +198,7 @@ namespace sprint0Real
             switch (currentGameState)
             {
                 case GameStates.TitleScreen:
+                 
                     titleScreen.Draw(_spriteBatch, GraphicsDevice);
                     break;
 
@@ -217,6 +222,7 @@ namespace sprint0Real
                     //currentItem.Draw(_spriteBatch);
                     linkSprite.Draw(_spriteBatch);
                     UISprite.Draw(_spriteBatch);
+                    MenuUISprite.Draw(_spriteBatch);
 
                     _spriteBatch.End();
                     break;
@@ -245,7 +251,8 @@ namespace sprint0Real
                     UISprite.Update(gameTime, _spriteBatch);
                 UISprite.Draw(_spriteBatch);
 
-
+                    MenuUISprite.Update(gameTime, _spriteBatch);
+                    MenuUISprite.Draw(_spriteBatch);
 
                     _spriteBatch.End();
 
@@ -264,6 +271,7 @@ namespace sprint0Real
             //currentItem = new Heart(new Vector2(0, 0));
             linkSprite = new ResetLink(linkSheet, this);
             UISprite = new UI(UISheet);
+            MenuUISprite = new MenuUI(UISheet);
             weaponItems = new NullSprite(linkSheet, this);
             currentBlockIndex = 1;
             Link = new Link(this);
