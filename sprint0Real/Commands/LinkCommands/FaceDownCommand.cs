@@ -5,13 +5,13 @@ using sprint0Real.Collisions;
 using sprint0Real.Interfaces;
 using sprint0Real.LinkStuff.LinkSprites;
 
-namespace sprint0Real.Commands
+namespace sprint0Real.Commands.LinkCommands
 {
-    public class FaceLeftCommand : ICommand
+    public class FaceDownCommand : ICommand
     {
         private Game1 myGame;
         private bool IsMoving;
-        public FaceLeftCommand(Game1 game, bool MovementKeyIsDown)
+        public FaceDownCommand(Game1 game, bool MovementKeyIsDown)
         {
             myGame = game;
             IsMoving = MovementKeyIsDown;
@@ -21,7 +21,7 @@ namespace sprint0Real.Commands
         {
             if (myGame.Link.CanMove() && !IsMoving)
             {
-                myGame.linkSprite = new FaceLeftSprite(myGame.linkSheet, myGame);
+                myGame.linkSprite = new FaceDownSprite(myGame.linkSheet, myGame);
             }
         }
     }

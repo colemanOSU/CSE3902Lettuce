@@ -2,28 +2,26 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using sprint0Real.Collisions;
-using sprint0Real.Controllers;
 using sprint0Real.Interfaces;
 using sprint0Real.LinkStuff.LinkSprites;
 
-namespace sprint0Real.Commands
+namespace sprint0Real.Commands.LinkCommands
 {
-    public class FaceRightCommand : ICommand
+    public class FaceUpCommand : ICommand
     {
-        private readonly Game1 myGame;
+        private Game1 myGame;
         private bool IsMoving;
-        public FaceRightCommand(Game1 game, bool MovementKeyIsDown)
+        public FaceUpCommand(Game1 game, bool MovementKeyIsDown)
         {
             myGame = game;
-            IsMoving = MovementKeyIsDown;
+            bool IsMoving = MovementKeyIsDown;
         }
 
         public void Execute()
         {
             if (myGame.Link.CanMove() && !IsMoving)
             {
-                myGame.linkSprite = new FaceRightSprite(myGame.linkSheet, myGame);
-
+                myGame.linkSprite = new FaceUpSprite(myGame.linkSheet, myGame);
             }
         }
     }

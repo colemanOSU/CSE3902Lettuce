@@ -5,21 +5,20 @@ using sprint0Real.Collisions;
 using sprint0Real.Interfaces;
 using sprint0Real.LinkSprites;
 
-namespace sprint0Real.Commands
+namespace sprint0Real.Commands.ItemCommands
 {
-    public class LastItemCommand : ICommand
+    public class ItemChangeCommand : ICommand
     {
         private Game1 _game;
         private int _command;
-        private Game1 game;
-
-        public LastItemCommand(Game1 game)
+        public ItemChangeCommand(Game1 game, int commandNum)
         {
-            this.game = game;
+            _game = game;
+            _command = commandNum;
         }
         public void Execute()
         {
-            _game.Link.LastItem();
+            _game.Link.SetItem(_command, _game);
         }
     }
 }

@@ -10,13 +10,14 @@ using sprint0Real.Collisions;
 using sprint0Real.Interfaces;
 using sprint0Real.LinkStuff.LinkSprites;
 
-namespace sprint0Real.Commands
+namespace sprint0Real.Commands.LinkCommands
 {
     public class DamagedStateCommand : ICommand
     {
         private ILink _link;
         private Game1 _game;
-        public DamagedStateCommand(Game1 game) {
+        public DamagedStateCommand(Game1 game)
+        {
             _link = game.Link;
             _game = game;
         }

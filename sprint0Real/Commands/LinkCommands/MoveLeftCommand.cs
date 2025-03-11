@@ -5,12 +5,12 @@ using sprint0Real.Collisions;
 using sprint0Real.Interfaces;
 using sprint0Real.LinkStuff.LinkSprites;
 
-namespace sprint0Real.Commands
+namespace sprint0Real.Commands.LinkCommands
 {
-    public class MoveUpCommand : ICommand
+    public class MoveLeftCommand : ICommand
     {
         private Game1 myGame;
-        public MoveUpCommand(Game1 game)
+        public MoveLeftCommand(Game1 game)
         {
             myGame = game;
         }
@@ -19,8 +19,8 @@ namespace sprint0Real.Commands
         {
             if (myGame.Link.CanMove())
             {
-                myGame.Link.SetFacing(Link.Direction.Up);
-                myGame.linkSprite = new MoveUpSprite(myGame.linkSheet, myGame);
+                myGame.Link.SetFacing(Link.Direction.Left);
+                myGame.linkSprite = new MoveLeftSprite(myGame.linkSheet, myGame);
             }
         }
     }

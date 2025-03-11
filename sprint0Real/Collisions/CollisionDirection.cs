@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace sprint0Real.Collisions
 {
-    public enum CollisionDirections
+    public enum Directions
     {
         Left,
         Right,

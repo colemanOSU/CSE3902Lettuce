@@ -87,8 +87,7 @@ namespace sprint0Real
             TreasureItemSpriteFactory.Instance.LoadAllTextures(Content);
             LevelLoader.Instance.LoadLevels();
 
-            ResetGame();
-            collisionDetection.UpdateRoomObjects(CurrentMap.Instance.MapList(), Link, weaponItems);
+            collisionDetection.UpdateRoomObjects();
         }
 
         protected override void Update(GameTime gameTime)
@@ -158,19 +157,8 @@ namespace sprint0Real
             this.titleScreen.isAnimating = false;
             currentGameState = GameStates.TitleScreen;
 
-            currentBlock = new BlockSpriteFloorTile(new Vector2(300,300));
-            //currentItem = new Heart(new Vector2(0, 0));
-            linkSprite = new ResetLink(linkSheet, this);
-            weaponItems = new NullSprite(linkSheet, this);
-            currentBlockIndex = 1;
-            Link = new Link(this);
-            currentItemIndex = 1;
-            LinkState = new LinkStateMachine(Link);
-
-            collisionDetection = new CollisionDetection(this);
-
-            //Update with other objects in game...
-
+            Link.Reset();
+            CurrentMap.Instance.Reset();
         }
     }
 }

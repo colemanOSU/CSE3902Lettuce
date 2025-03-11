@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using sprint0Real.Interfaces;
 using sprint0Real.Levels;
 using sprint0Real.LinkStuff2.Interface;
 using sprint0Real.LinkStuff2.Items;
@@ -14,7 +15,7 @@ namespace sprint0Real.LinkStuff2
     public class Link
     {
         public Rectangle destinationRectangle;
-        private ILinkSprite mySprite;
+        private ISprite3 mySprite;
         private LinkStateMachine stateMachine;
         private Color LinkSpriteColor;
         
@@ -32,7 +33,6 @@ namespace sprint0Real.LinkStuff2
             stateMachine = new LinkStateMachine(this);
             mySprite = LinkSpriteFactory.Instance.Create();
         }
-
         public void PickUpItem(IItem item)
         {
             bag.Add(item);
@@ -57,6 +57,10 @@ namespace sprint0Real.LinkStuff2
         public void SetLocation()
         {
 
+        }
+        public void SetColor(Color newColor)
+        {
+            LinkSpriteColor = newColor;
         }
 
         public void Draw(SpriteBatch spriteBatch)

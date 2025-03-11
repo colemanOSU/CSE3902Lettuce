@@ -5,22 +5,20 @@ using sprint0Real.Collisions;
 using sprint0Real.Interfaces;
 using sprint0Real.LinkSprites;
 
-namespace sprint0Real.Commands
+namespace sprint0Real.Commands.LinkCommands
 {
-    public class NextItemCommand : ICommand
+    public class DamageLinkCommand : ICommand
     {
-        private Game1 _game;
-        private int _command;
-        private Game1 game;
-
-        public NextItemCommand(Game1 game)
+        private Game1 myGame;
+        public DamageLinkCommand(Game1 game)
         {
-            this.game = game;
+            myGame = game;
         }
 
         public void Execute()
         {
-            _game.Link.NextItem();
+            myGame.Link.DamageLink();
+            myGame.LinkState.DamageLink();
         }
     }
 }
