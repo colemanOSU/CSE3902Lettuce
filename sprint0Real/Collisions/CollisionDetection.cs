@@ -48,6 +48,7 @@ namespace sprint0Real.Collisions
 
         public void CheckCollisions()
         {
+            
             // Enemies against Borders 
             foreach(IEnemy enemy in gameObjectsInRoom.OfType<IEnemy>())
             {
@@ -64,6 +65,7 @@ namespace sprint0Real.Collisions
                     collisionHandler.HandleCollision(enemy, enemyDamage);
                 }
             }
+           
             // Link against all collisionBoxes
             foreach (ITouchesLink source in gameObjectsInRoom.OfType<ITouchesLink>())
             {

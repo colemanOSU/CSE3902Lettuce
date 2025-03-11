@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,8 @@ namespace sprint0Real.Commands.CollisionCommands2
     {
         public void Execute(IObject Link, IObject Enemy, CollisionDirections direction)
         {
-              ((Link)Link).StopMomentumInDirection(direction.ToLinkDirection());
+            ((Link)Link).StopMomentumInDirection(direction.ToLinkDirection());
+            Debug.WriteLine(DateTime.Now.ToString());
         }
     }
 }
