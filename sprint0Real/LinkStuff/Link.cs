@@ -116,25 +116,25 @@ public class Link : ILink
         switch (dir)
         {
             case Direction.Up:
-                if (MomentumVector.Y < 0)
-                {
-                    MomentumVector = new Vector2(MomentumVector.X, 0);
-                }
-                break;
-            case Direction.Down:
                 if (MomentumVector.Y > 0)
                 {
                     MomentumVector = new Vector2(MomentumVector.X, 0);
                 }
                 break;
+            case Direction.Down:
+                if (MomentumVector.Y < 0)
+                {
+                    MomentumVector = new Vector2(MomentumVector.X, 0);
+                }
+                break;
             case Direction.Left:
-                if (MomentumVector.X < 0)
+                if (MomentumVector.X > 0)
                 {
                     MomentumVector = new Vector2(0, MomentumVector.Y);
                 }
                 break;
             case Direction.Right:
-                if (MomentumVector.X > 0)
+                if (MomentumVector.X < 0)
                 {
                     MomentumVector = new Vector2(0, MomentumVector.Y);
                 }

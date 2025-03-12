@@ -16,7 +16,7 @@
 		<HitBox Type="Border" x="429" y="432" width="336" height="96"/>
 		<HitBox Type="Border" x="0" y="432" width="336" height="96"/>
 		<HitBox Type="Border" x="669" y="312" width="96" height="216"/>
-		<HitBox Type="Border" x="0" y="432" width="96" height="216"/>
+		<HitBox Type="Border" x="0" y="312" width="96" height="216"/>
 		
 		<HitBox Type="Border" x="0" y="0" width="336" height="96"/>
 		<HitBox Type="Border" x="429" y="0" width="336" height="96"/>

@@ -13,8 +13,7 @@ namespace sprint0Real.Commands.CollisionCommands2
     {
         public void Execute(IObject Link, IObject Enemy, CollisionDirections direction)
         {
-            ((Link)Link).StopMomentumInDirection(direction.ToLinkDirection());
-            Debug.WriteLine(DateTime.Now.ToString());
+            ((Link)Link).StopMomentumInDirection(direction.ToLinkDirection());        
         }
     }
 }
