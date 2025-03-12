@@ -15,6 +15,7 @@ namespace sprint0Real.Controllers
         private Dictionary<Keys, ICommand> commands;
         private Dictionary<Keys, ICommand> releaseCommands;
         private Dictionary<Keys, ICommand> MenuCommands;
+        private Dictionary<Keys, ICommand> PauseCommands;
 
         private Dictionary<Keys, bool> keyPreviouslyPressed;
 
@@ -53,6 +54,7 @@ namespace sprint0Real.Controllers
             commands.Add(Keys.Q, new QuitCommand(_game));
             commands.Add(Keys.R, new ResetCommand(_game));
             commands.Add(Keys.P, new PauseCommand(_game));
+            commands.Add(Keys.M, new MenuCommand(_game));
 
             commands.Add(Keys.D1, new ItemChangeCommand(_game, 1));
             commands.Add(Keys.D2, new ItemChangeCommand(_game, 2));
@@ -82,9 +84,14 @@ namespace sprint0Real.Controllers
             //Commands for when game is in a menu. Subject to change.
             MenuCommands = new Dictionary<Keys, ICommand>();
 
-            MenuCommands.Add(Keys.P, new PauseCommand(_game));
             MenuCommands.Add(Keys.Q, new QuitCommand(_game));
+            MenuCommands.Add(Keys.M, new UnMenuCommand(_game));
 
+            //Commands for when game is Paused. Subject to change.
+            PauseCommands = new Dictionary<Keys, ICommand>();
+
+            PauseCommands.Add(Keys.P, new PauseCommand(_game));
+            PauseCommands.Add(Keys.Q, new QuitCommand(_game));
 
             foreach (Keys key in commands.Keys)
             {
@@ -96,6 +103,10 @@ namespace sprint0Real.Controllers
                 keyPreviouslyPressed[key] = false;
             }
 
+            foreach (Keys key in PauseCommands.Keys)
+            {
+                keyPreviouslyPressed[key] = false;
+            }
         }
         public void Update(GameTime gameTime)
         {
@@ -106,6 +117,21 @@ namespace sprint0Real.Controllers
             //Only executes commands for current game state (i.e. Paused or not)
 
             if (_game.currentGameState == GameState.GameStates.Pause)
+            {
+                foreach (var command in PauseCommands)
+                {
+                    Keys key = command.Key;
+                    bool isKeyDown = KeyboardState.IsKeyDown(key);
+
+                    if (isKeyDown && !keyPreviouslyPressed[key])
+                    {
+                        command.Value.Execute();
+                    }
+                    //update state
+                    keyPreviouslyPressed[key] = isKeyDown;
+                }
+            }
+            else if (_game.currentGameState == GameState.GameStates.Menu)
             {
                 foreach (var command in MenuCommands)
                 {
@@ -119,7 +145,8 @@ namespace sprint0Real.Controllers
                     //update state
                     keyPreviouslyPressed[key] = isKeyDown;
                 }
-            } else {
+            }
+            else {
 
                 MovementKeyIsDown = KeyboardState.IsKeyDown(Keys.A) || KeyboardState.IsKeyDown(Keys.S) || KeyboardState.IsKeyDown(Keys.D) || KeyboardState.IsKeyDown(Keys.W) ||
                     KeyboardState.IsKeyDown(Keys.Right) || KeyboardState.IsKeyDown(Keys.Left) || KeyboardState.IsKeyDown(Keys.Down) || KeyboardState.IsKeyDown(Keys.Up);

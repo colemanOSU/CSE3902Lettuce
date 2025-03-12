@@ -68,6 +68,11 @@ namespace sprint0Real
 
         private ItemStateMachine itemStateMachine;
 
+        //TEMP CAMERA
+        private Camera _camera;
+        public Vector2 CameraTarget;
+        public bool InMenu;
+
         //The screen height is specifically calculated to match the original game's
         //Important for menu transitions to function properly.
         //The screen width is mostly arbitrary. 
@@ -97,6 +102,8 @@ namespace sprint0Real
 
             //TEMP PAUSE
             isPaused = false;
+            CameraTarget = new Vector2(SCREENMIDX, SCREENMIDY);
+            InMenu = false;
         }
 
         protected override void Initialize()
@@ -112,6 +119,8 @@ namespace sprint0Real
             //collisionDetection = new CollisionDetection(this);
 
             base.Initialize();
+            _camera = new Camera();
+            _camera.Center = new Vector2(SCREENMIDX, SCREENMIDY);
         }
 
         protected override void LoadContent()
@@ -153,18 +162,17 @@ namespace sprint0Real
 
                     }
                     break;
+                case GameStates.Menu:
+                    foreach (IController controller in controllerList)
+                    {
+                        //sprite = controller.Update(sprite);
+                        controller.Update(gameTime);
+
+                    }
+                    break;
                 case GameStates.GamePlay:
 
                     itemStateMachine.setActive();
-                    //TEMP
-                    /*
-                    List<IGameObject> tempList = new List<IGameObject>();
-                    tempList.Add(currentBlock);
-                    tempList.Add(Link);
-                    tempList.Add(currentItem);
-                    CollisionChecker.UpdateRoomObjects(tempList);*/
-                    //TEMP
-                    //TODO: DELETE TEMPORARY CODE
 
                     foreach (IController controller in controllerList)
                      {
@@ -195,6 +203,7 @@ namespace sprint0Real
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
+            Matrix transform;
             switch (currentGameState)
             {
                 case GameStates.TitleScreen:
@@ -204,22 +213,43 @@ namespace sprint0Real
 
                 case GameStates.Pause:
                     //We still want things to be drawn, just not updated
-                    _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp);
+                    transform = Matrix.CreateTranslation(-_camera.GetTopLeft().X, -_camera.GetTopLeft().Y, 0);
+                    _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, transform);
+
+                    _camera.MoveToward(_camera.Center);
+
                     CurrentMap.Instance.Draw(_spriteBatch);
+                    linkSprite.Draw(_spriteBatch);
+                    UISprite.Draw(_spriteBatch);
+                    MenuUISprite.Draw(_spriteBatch);
 
-                    //TEMP ITEM
-                    if (tempItem != null)
+                    _spriteBatch.End();
+                    break;
+                case GameStates.MenuTransition:
+                    //We still want things to be drawn, just not updated
+                    transform = Matrix.CreateTranslation(-_camera.GetTopLeft().X, -_camera.GetTopLeft().Y, 0);
+                    _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, transform);
+
+                    if (_camera.MoveToward(CameraTarget))
                     {
-                        tempItem.Draw(_spriteBatch);
+                        currentGameState = (InMenu) ? GameStates.Menu : GameStates.GamePlay;
                     }
 
-                    if (itemSprite != null)
-                    {
-                        itemSprite.Draw(_spriteBatch);
-                    }
+                    CurrentMap.Instance.Draw(_spriteBatch);
+                    linkSprite.Draw(_spriteBatch);
+                    UISprite.Draw(_spriteBatch);
+                    MenuUISprite.Draw(_spriteBatch);
 
-                    currentBlock.Draw(_spriteBatch);
-                    //currentItem.Draw(_spriteBatch);
+                    _spriteBatch.End();
+                    break;
+                case GameStates.Menu:
+                    //We still want things to be drawn, just not updated
+                    transform = Matrix.CreateTranslation(-_camera.GetTopLeft().X, -_camera.GetTopLeft().Y, 0);
+                    _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, transform);
+
+                    _camera.MoveToward(_camera.Center);
+
+                    CurrentMap.Instance.Draw(_spriteBatch);
                     linkSprite.Draw(_spriteBatch);
                     UISprite.Draw(_spriteBatch);
                     MenuUISprite.Draw(_spriteBatch);
@@ -243,7 +273,7 @@ namespace sprint0Real
                     itemSprite.Update(gameTime, _spriteBatch);
                 }
 
-                currentBlock.Draw(_spriteBatch);
+                //currentBlock.Draw(_spriteBatch);
                 //currentItem.Draw(_spriteBatch);
                 linkSprite.Update(gameTime, _spriteBatch);
                 linkSprite.Draw(_spriteBatch);
