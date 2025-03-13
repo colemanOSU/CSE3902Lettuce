@@ -75,12 +75,22 @@ namespace sprint0Real
 
         //The screen height is specifically calculated to match the original game's
         //Important for menu transitions to function properly.
-        //The screen width is mostly arbitrary. 
-        public const int SCREENHEIGHT = (88 + 56 + 8) * 3 * 2;
-        public const int SCREENWIDTH = (int)(SCREENHEIGHT * (256 / 224.0));
+        //The screen width is mostly arbitrary.
+
+
+        //This number determines the scale at which sprites will load in on the coordinate plane
+        //If I cared more we would have it set up so that everything renders on a 1:1 basis and
+        //would simply zoom in the camera to size it as we pleased. Alas.
+        public const int RENDERSCALE = 3;
+
+        //As levels render relative to center of screen alongside camera transitions being
+        //hardcoded numbers, I would not mess with these numbers unless you really know
+        //what you're doing!
+        public const int SCREENHEIGHT = 240 * RENDERSCALE;
+        public const int SCREENWIDTH = 256 * RENDERSCALE;
         public const int SCREENMIDX = SCREENWIDTH / 2;
         public const int SCREENMIDY = SCREENHEIGHT / 2;
-        public const int RENDERSCALE = 3;
+        
 
         //TEMP PAUSE
         public bool isPaused;

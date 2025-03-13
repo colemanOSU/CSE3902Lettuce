@@ -54,12 +54,12 @@ namespace sprint0Real.Levels
             int InteriorWidth = (192 * Game1.RENDERSCALE);
             int InteriorHeight = (112 * Game1.RENDERSCALE);
             int InteriorXCoord = Game1.SCREENMIDX - InteriorWidth / 2;
-            int InteriorYCoord = Game1.SCREENMIDY - InteriorHeight / 2;
+            int InteriorYCoord = Game1.SCREENMIDY - InteriorHeight / 2 + 30 * Game1.RENDERSCALE;
 
             int ExteriorWidth = (256 * Game1.RENDERSCALE);
             int ExteriorHeight = (176 * Game1.RENDERSCALE);
             int ExteriorXCoord = Game1.SCREENMIDX - ExteriorWidth / 2;
-            int ExteriorYCoord = Game1.SCREENMIDY - ExteriorHeight / 2;
+            int ExteriorYCoord = Game1.SCREENMIDY - ExteriorHeight / 2 + 30 * Game1.RENDERSCALE;
 
 
             Rectangle destinationRectangleInterior = new Rectangle(InteriorXCoord, InteriorYCoord, InteriorWidth, InteriorHeight);

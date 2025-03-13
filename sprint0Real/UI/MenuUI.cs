@@ -22,7 +22,7 @@ public class MenuUI : IUI
         MapSourceRectangle = new Rectangle(258, 112, 256, 88);
         ItemSourceRectangle = new Rectangle(1, 11, 256, 88);
         UIXCoord = Game1.SCREENMIDX - (128 * Scale);
-        UIYCoord = Game1.SCREENMIDY - (88 + 56 + 88) * Scale;
+        UIYCoord = Game1.SCREENMIDY - (88 + 56 + 88 - 30) * Scale;
         MapDestinationRectangle = new Rectangle(UIXCoord, UIYCoord, 256 * Scale, 88 * Scale);
         ItemDestinationRectangle = new Rectangle(UIXCoord, UIYCoord - 88 * Scale, 256 * Scale, 88 * Scale);
 

@@ -22,7 +22,7 @@ public class UI : IUI
     public UI(Texture2D uITexture)
     {
         UIXCoord = Game1.SCREENMIDX - (128 * Scale);
-        UIYCoord = Game1.SCREENMIDY - (88 * Scale) - 56 * Scale;
+        UIYCoord = Game1.SCREENMIDY - (88 * Scale) - 56 * Scale + 30 * Game1.RENDERSCALE;
         DestinationRectangle = new Rectangle(UIXCoord, UIYCoord, 256 * Scale, 56 * Scale);
         SourceRectangle = new Rectangle(258, 11, 256, 56);
 
