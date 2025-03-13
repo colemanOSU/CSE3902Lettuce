@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using sprint0Real;
 using sprint0Real.Interfaces;
+using sprint0Real.LinkStuff;
 using System.Diagnostics;
 
 
@@ -17,6 +18,8 @@ public class UI : IUI
     private Rectangle[] KeyDigits;
     private Rectangle[] BombDigits;
     private Rectangle[] HealthBar;
+
+    private Inventory.Swords CurrentSword;
 
     private int MaxHealth;
     public UI(Texture2D uITexture)
@@ -61,10 +64,15 @@ public class UI : IUI
         {
             spriteBatch.Draw(UITexture, new Rectangle(UIXCoord + 176 * Scale + (i * 8 * Scale), UIYCoord + 32 * Scale, 8 * Scale, 8 * Scale), HealthBar[i], Color.White);
         }
+
+        //Sword Sprite
+        spriteBatch.Draw(UITexture, new Rectangle(UIXCoord + 152 * Scale, UIYCoord + 24 * Scale, 8 * Scale, 16 * Scale), new Rectangle(555 + ((int)CurrentSword) * 9, 137, 8, 16), Color.White);
     }
 
-    public void Update(GameTime gametime, SpriteBatch spriteBatch)
+    public void Update(GameTime gametime, SpriteBatch spriteBatch, ILink link)
     {
+        Inventory inv = link.GetInventory();
+
         //Amount set to arbitrary number for testing purposes
         RupeeDigits = UIHelper.CounterHelper(05);
         KeyDigits = UIHelper.CounterHelper(99);
@@ -72,6 +80,8 @@ public class UI : IUI
 
         //Health Set to Arbitrary number for testing purposes
         HealthBar = UIHelper.HealthbarHelper(MaxHealth, 4);
+
+        CurrentSword = inv.CurrentSword;
     }
 }
 

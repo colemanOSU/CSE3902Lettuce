@@ -32,9 +32,11 @@ public class MenuUI : IUI
     {
         spriteBatch.Draw(UITexture, MapDestinationRectangle, MapSourceRectangle, Color.White);
         spriteBatch.Draw(UITexture, ItemDestinationRectangle, ItemSourceRectangle, Color.White);
+
+
     }
 
-    public void Update(GameTime gametime, SpriteBatch spriteBatch)
+    public void Update(GameTime gametime, SpriteBatch spriteBatch, ILink link)
     {
 
     }

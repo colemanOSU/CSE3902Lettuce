@@ -7,6 +7,7 @@ using sprint0Real.LinkStuff;
 using Microsoft.Xna.Framework.Graphics;
 using System.Diagnostics;
 using sprint0Real.LinkStuff.LinkSprites;
+using System.Security.Cryptography;
 public class Link : ILink
 {
     private Rectangle destinationRectangle;
@@ -18,6 +19,8 @@ public class Link : ILink
     private Color LinkSpriteColor;
     private Vector2 MomentumVector;
     public Texture2D linkSheet;
+
+    public Inventory inventory;
 
     public const int SPEED = 2;
 
@@ -43,6 +46,7 @@ public class Link : ILink
         LinkSpriteColor = Color.White;
         isDamaged = false;
         MomentumVector = new Vector2(0, 0);
+        inventory = new Inventory();
     }
     public void Damaged()
     {
@@ -221,4 +225,8 @@ public class Link : ILink
         //need to draw IGameObject
     }
 
+    public Inventory GetInventory()
+    {
+        return inventory;
+    }
 }

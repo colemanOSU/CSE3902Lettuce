@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using sprint0Real.LinkStuff;
 using static Link;
 
 namespace sprint0Real.Interfaces
@@ -41,5 +42,7 @@ namespace sprint0Real.Interfaces
         public void SetIsDamaged(bool toDamage);
 
         public void SetLinkColor(Color color);
+
+        public Inventory GetInventory();
     }
 }

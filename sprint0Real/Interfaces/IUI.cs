@@ -10,7 +10,7 @@ namespace sprint0Real.Interfaces
 {
     public interface IUI
     {
-        public void Update(GameTime gametime, SpriteBatch spriteBatch);
+        public void Update(GameTime gametime, SpriteBatch spriteBatch, ILink link);
 
         public void Draw(SpriteBatch spriteBatch);
     }

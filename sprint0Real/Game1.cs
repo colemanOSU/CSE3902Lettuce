@@ -292,10 +292,10 @@ namespace sprint0Real
                 linkSprite.Update(gameTime, _spriteBatch);
                 linkSprite.Draw(_spriteBatch);
 
-                    UISprite.Update(gameTime, _spriteBatch);
+                    UISprite.Update(gameTime, _spriteBatch, Link);
                 UISprite.Draw(_spriteBatch);
 
-                    MenuUISprite.Update(gameTime, _spriteBatch);
+                    MenuUISprite.Update(gameTime, _spriteBatch, Link);
                     MenuUISprite.Draw(_spriteBatch);
 
                     _spriteBatch.End();
