@@ -20,6 +20,7 @@ public class UI : IUI
     private Rectangle[] HealthBar;
 
     private Inventory.Swords CurrentSword;
+    private Inventory.Items CurrentItem;
 
     private int MaxHealth;
     public UI(Texture2D uITexture)
@@ -67,6 +68,13 @@ public class UI : IUI
 
         //Sword Sprite
         spriteBatch.Draw(UITexture, new Rectangle(UIXCoord + 152 * Scale, UIYCoord + 24 * Scale, 8 * Scale, 16 * Scale), new Rectangle(555 + ((int)CurrentSword) * 9, 137, 8, 16), Color.White);
+
+        //Current Item Sprite
+        //Don't bother rendering if no item is equipped
+        if (CurrentItem != 0)
+        {
+            spriteBatch.Draw(UITexture, new Rectangle(UIXCoord + 128 * Scale, UIYCoord + 24 * Scale, 8 * Scale, 16 * Scale), UIHelper.ItemSpriteHelper(CurrentItem), Color.White);
+        }
     }
 
     public void Update(GameTime gametime, SpriteBatch spriteBatch, ILink link)
@@ -82,6 +90,7 @@ public class UI : IUI
         HealthBar = UIHelper.HealthbarHelper(MaxHealth, 4);
 
         CurrentSword = inv.CurrentSword;
+        CurrentItem = inv.CurrentItem;
     }
 }
 

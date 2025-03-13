@@ -18,7 +18,7 @@ namespace sprint0Real.LinkStuff
 
         //Keeps track of currently equipped item.
         //Starts as set to null.
-        public Items? CurrentItem { get; set; }
+        public Items CurrentItem { get; set; }
         public Swords CurrentSword { get; set; }
 
         public enum Swords
@@ -29,14 +29,19 @@ namespace sprint0Real.LinkStuff
         }
         public enum Items
         {
+            NONE,
             Boomerang,
             M_Boomerang,
             Bomb,
-            Bow,
-            Candle,
+            Arrow,
+            Silver_Arrow,
+            Blue_Candle,
+            Red_Candle,
             Flute,
             Meat,
-            Potion,
+            Note,
+            Blue_Potion,
+            Red_Potion,
             Staff
         }
 
@@ -46,7 +51,7 @@ namespace sprint0Real.LinkStuff
             {
                 InventoryList.Add(item, false);
             }
-            CurrentItem = null;
+            CurrentItem = Items.Boomerang;
             CurrentSword = Swords.Wood_Sword;
         }
 

@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using sprint0Real;
 using sprint0Real.Interfaces;
+using sprint0Real.LinkStuff;
 using System;
 using System.Diagnostics;
 
@@ -69,5 +70,56 @@ public static class UIHelper
         }
 
 		return ReturnArray;
+	}
+
+    //Oh how I wish there was an easier way to do this.
+    //I would just edit the spritesheet to make the sprites evenly spaced
+    //but other classes have already hard-coded those numbers
+	//A thousand years of punishment for me (╥﹏╥)
+    public static Rectangle ItemSpriteHelper(Inventory.Items item)
+	{
+		int X = 490;
+
+		switch (item)
+		{
+			case Inventory.Items.Boomerang:
+				X = 584;
+				break;
+            case Inventory.Items.M_Boomerang:
+                X = 593;
+                break;
+            case Inventory.Items.Arrow:
+                X = 615;
+                break;
+            case Inventory.Items.Silver_Arrow:
+                X = 624;
+                break;
+            case Inventory.Items.Blue_Candle:
+                X = 644;
+                break;
+            case Inventory.Items.Red_Candle:
+                X = 653;
+                break;
+            case Inventory.Items.Flute:
+                X = 664;
+                break;
+            case Inventory.Items.Meat:
+                X = 675;
+                break;
+            case Inventory.Items.Note:
+                X = 686;
+                break;
+            case Inventory.Items.Blue_Potion:
+                X = 695;
+                break;
+            case Inventory.Items.Red_Potion:
+                X = 704;
+                break;
+            case Inventory.Items.Staff:
+                X = 715;
+                break;
+        }
+
+		return new Rectangle(X, 137, 8, 16);
 	}
 }
