@@ -20,7 +20,7 @@ namespace sprint0Real.Commands
             //myGame.currentGameState = (myGame.currentGameState == GameState.GameStates.Pause) ? GameState.GameStates.GamePlay : GameState.GameStates.Pause;
             myGame.currentGameState = GameState.GameStates.MenuTransition;
             myGame.InMenu = true;
-            myGame.CameraTarget = new Vector2(Game1.SCREENMIDX, Game1.SCREENMIDY - 300);
+            myGame.CameraTarget = new Vector2(Game1.SCREENMIDX, Game1.SCREENMIDY - (176 + 56 + 8) * Game1.RENDERSCALE);
         }
     }
 }

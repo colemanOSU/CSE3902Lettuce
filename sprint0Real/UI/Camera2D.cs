@@ -21,7 +21,7 @@ public class Camera
     private Vector2 _quarterScreen;
     public Vector2 GetTopLeft() => Center - _quarterScreen;
 
-    private float CamSpeed = 6;
+    private float CamSpeed = 12;
     public Camera()
     {
         _quarterScreen = new Vector2(Game1.SCREENWIDTH / 2, Game1.SCREENHEIGHT / 2);
