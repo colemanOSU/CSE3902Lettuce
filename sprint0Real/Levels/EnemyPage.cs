@@ -31,8 +31,6 @@ namespace sprint0Real.Levels
         {
             gameObjects = new List<IObject>();
             background = new LevelBackground();
-
-            AddBorderWalls();
         }
         public List<IObject> ReturnObjectList()
         {
@@ -50,6 +48,11 @@ namespace sprint0Real.Levels
             Neighbors.Add(side, name);
         }
 
+        public String GetNeighbor(String direction)
+        {
+            return Neighbors[direction];
+        }
+
         public void Draw(SpriteBatch spriteBatch)
         {
             background.Draw(spriteBatch);
@@ -65,13 +68,6 @@ namespace sprint0Real.Levels
         public void DeStage(IObject thing)
         {
             gameObjects.Remove(thing);
-        }
-        public void AddBorderWalls()
-        {
-            gameObjects.Add(new WallObject(new Rectangle(0, 0, 800, 20)));
-            gameObjects.Add(new WallObject(new Rectangle(20, 480, 800, 20)));
-            gameObjects.Add(new WallObject(new Rectangle(0, 0, 20, 600)));
-            gameObjects.Add(new WallObject(new Rectangle(780, 0, 20, 600)));
         }
     }
 }

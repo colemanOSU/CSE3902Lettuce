@@ -8,6 +8,7 @@
 	<Objects>
 		<Object Type="Dragon" x="3" y="5"/>
 		<Object Type="Dragon" x="100" y="100"/>
+		<Object Type="Goriya" x="200" y="50"/>
 		<Object Type="BlackBlock" x="200" y="200"/>
 		<Object Type="Map" x="400" y="400"/>
 	</Objects>
@@ -22,6 +23,11 @@
 		<HitBox Type="Border" x="429" y="0" width="336" height="96"/>
 		<HitBox Type="Border" x="0" y="0" width="96" height="216"/>
 		<HitBox Type="Border" x="669" y="0" width="96" height="216"/>
+
+		<HitBox Type="RoomTransitionBox" x="0" y="216" width="96" height="96"/>
+		<HitBox Type="RoomTransitionBox" x="672" y="216" width="96" height="96"/>
+		<HitBox Type="RoomTransitionBox" x="336" y="0" width="96" height="96"/>
+		<HitBox Type="RoomTransitionBox" x="336" y="432" width="96" height="96"/>
 	</MapHitBoxes>
 
 	<Neighbors>

@@ -24,18 +24,10 @@ namespace sprint0Real.Collisions
             collisionCommands = new Dictionary<(String, String), ICollisionCommand2>();
 
             collisionCommands.Add(("Link", "Dragon"),  new LinkEnemyCommand());
-
             collisionCommands.Add(("Link", "Border"), new LinkBorderCommand());
+            collisionCommands.Add(("Link", "RoomTransitionBox"), new RoomTransitionCommand());
         }
-        private Type GetGeneralType(IGameObject obj)
-        {
-            if (obj is IEnemy) return typeof(IEnemy);  
-            if (obj is IItemtemp) return typeof(IItemtemp); 
-            if (obj is ILink) return typeof(ILink); 
-            if (obj is IBlock) return typeof(IBlock);
-            if (obj is ILinkSprite) return typeof(ILinkSprite);
-            return obj.GetType();                      //Default to concrete type for anything else
-        }
+
         public void HandleCollision(IObject objA, IObject objB)
         {
             //var key = (GetGeneralType(objA), GetGeneralType(objB));

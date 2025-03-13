@@ -16,10 +16,12 @@ namespace sprint0Real.Levels
             objectCatalogue = new Dictionary<String, String>();
 
             objectCatalogue.Add("Dragon", "sprint0Real.EnemyStuff.DragonStuff.Dragon");
+            objectCatalogue.Add("Goriya", "sprint0Real.EnemyStuff.RedGoriyaStuff.Goriya");
             objectCatalogue.Add("BlackBlock", "sprint0Real.BlockSprites.BlockSpriteBlack");
             objectCatalogue.Add("Map", "sprint0Real.ItemTempSprites.Map");
 
             objectCatalogue.Add("Border", "sprint0Real.CollisionBoxes.Border");
+            objectCatalogue.Add("RoomTransitionBox", "sprint0Real.CollisionBoxes.RoomTransitionBox");
         }
 
         public String ReturnObjectType(String type)

@@ -39,6 +39,11 @@ namespace sprint0Real.Levels
             return myMap.ReturnObjectList();
         }
 
+        public String GetNeighbor(String direction)
+        {
+            return myMap.GetNeighbor(direction);
+        }
+
         public void Stage(IObject enemy)
         {
             stagingAdd.Add(enemy);

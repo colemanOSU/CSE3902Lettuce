@@ -11,12 +11,13 @@ using Microsoft.Xna.Framework;
 using sprint0Real.Interfaces;
 using sprint0Real.EnemyStuff;
 using sprint0Real.EnemyStuff.DragonStuff;
+using System.Diagnostics;
 
 namespace sprint0Real.Levels
 {
     public class LevelLoader
     {
-        Dictionary<String, EnemyPage> Maps = new Dictionary<String, EnemyPage>();
+        private Dictionary<String, EnemyPage> Maps = new Dictionary<String, EnemyPage>();
         private static LevelLoader instance = new LevelLoader();
         private TypeCatalogue catalogue = new TypeCatalogue();
         public static LevelLoader Instance
@@ -38,6 +39,7 @@ namespace sprint0Real.Levels
                 foreach(XmlElement Object in xml.SelectNodes("//Objects/Object"))
                 {
                     Type type = Type.GetType(catalogue.ReturnObjectType(Object.GetAttribute("Type")));
+                    Debug.WriteLine(catalogue.ReturnObjectType(Object.GetAttribute("Type")));
                     int x = Int32.Parse(Object.GetAttribute("x"));
                     int y = Int32.Parse(Object.GetAttribute("y"));
                     newMap.Stage((IGameObject)Activator.CreateInstance(type, new Vector2(x, y)));
@@ -69,6 +71,10 @@ namespace sprint0Real.Levels
                 //Maps.Door
             }
             CurrentMap.Instance.SetMap(Maps["Entrance"]);
+        }
+        public EnemyPage RetrieveMap(String nextMap)
+        {
+            return Maps[nextMap];
         }
     }
 }
