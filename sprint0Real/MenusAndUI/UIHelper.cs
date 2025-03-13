@@ -72,6 +72,9 @@ public static class UIHelper
 		return ReturnArray;
 	}
 
+
+	//Returns the proper SourceRectangle for a given item
+
     //Oh how I wish there was an easier way to do this.
     //I would just edit the spritesheet to make the sprites evenly spaced
     //but other classes have already hard-coded those numbers
@@ -87,6 +90,9 @@ public static class UIHelper
 				break;
             case Inventory.Items.M_Boomerang:
                 X = 593;
+                break;
+            case Inventory.Items.Bomb:
+                X = 604;
                 break;
             case Inventory.Items.Arrow:
                 X = 615;

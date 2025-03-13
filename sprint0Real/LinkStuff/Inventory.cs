@@ -47,11 +47,12 @@ namespace sprint0Real.LinkStuff
 
         public Inventory()
         {
+            //All items set to true by default for testing
             foreach (Items item in Enum.GetValues(typeof(Items)))
             {
-                InventoryList.Add(item, false);
+                InventoryList.Add(item, true);
             }
-            CurrentItem = Items.Boomerang;
+            CurrentItem = Items.Silver_Arrow;
             CurrentSword = Swords.Wood_Sword;
         }
 

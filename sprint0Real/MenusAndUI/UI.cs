@@ -44,8 +44,8 @@ public class UI : IUI
     public void Draw(SpriteBatch spriteBatch)
     {
         spriteBatch.Draw(UITexture, DestinationRectangle, SourceRectangle, Color.White);
+        spriteBatch.Draw(UITexture, new Rectangle(UIXCoord, UIYCoord - 8 * Scale, 256 * Scale, 8 * Scale), new Rectangle(258, 59, 256, 8), Color.White);
 
-        
         //Rupee Counter Ones Digit and Ten Digit
         spriteBatch.Draw(UITexture, new Rectangle(UIXCoord + 104 * Scale, UIYCoord + 16 * Scale, 8 * Scale, 8 * Scale), RupeeDigits[1], Color.White);
         spriteBatch.Draw(UITexture, new Rectangle(UIXCoord + 112 * Scale, UIYCoord + 16 * Scale, 8 * Scale, 8 * Scale), RupeeDigits[0], Color.White);
@@ -77,7 +77,7 @@ public class UI : IUI
         }
     }
 
-    public void Update(GameTime gametime, SpriteBatch spriteBatch, ILink link)
+    public void Update(GameTime gametime, ILink link)
     {
         Inventory inv = link.GetInventory();
 

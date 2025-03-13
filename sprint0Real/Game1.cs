@@ -178,9 +178,17 @@ namespace sprint0Real
                     {
                         //sprite = controller.Update(sprite);
                         controller.Update(gameTime);
+                        MenuUISprite.Update(gameTime, Link);
+                        UISprite.Update(gameTime, Link);
 
                     }
                     break;
+
+                case GameStates.MenuTransition:
+                    MenuUISprite.Update(gameTime, Link);
+                    UISprite.Update(gameTime, Link);
+                    break;
+
                 case GameStates.GamePlay:
 
                     itemStateMachine.setActive();
@@ -252,6 +260,7 @@ namespace sprint0Real
                     CurrentMap.Instance.Draw(_spriteBatch);
                     linkSprite.Draw(_spriteBatch);
                     UISprite.Draw(_spriteBatch);
+                    MenuUISprite.Update(gameTime, Link);
                     MenuUISprite.Draw(_spriteBatch);
 
                     _spriteBatch.End();
@@ -266,6 +275,8 @@ namespace sprint0Real
                     CurrentMap.Instance.Draw(_spriteBatch);
                     linkSprite.Draw(_spriteBatch);
                     UISprite.Draw(_spriteBatch);
+
+                    MenuUISprite.Update(gameTime, Link);
                     MenuUISprite.Draw(_spriteBatch);
 
                     _spriteBatch.End();
@@ -292,11 +303,8 @@ namespace sprint0Real
                 linkSprite.Update(gameTime, _spriteBatch);
                 linkSprite.Draw(_spriteBatch);
 
-                    UISprite.Update(gameTime, _spriteBatch, Link);
-                UISprite.Draw(_spriteBatch);
-
-                    MenuUISprite.Update(gameTime, _spriteBatch, Link);
-                    MenuUISprite.Draw(_spriteBatch);
+                    UISprite.Update(gameTime, Link);
+                    UISprite.Draw(_spriteBatch);
 
                     _spriteBatch.End();
 
@@ -324,6 +332,7 @@ namespace sprint0Real
             LinkState = new LinkStateMachine(Link);
 
             collisionDetection = new CollisionDetection(this);
+  
 
             //Update with other objects in game...
 
