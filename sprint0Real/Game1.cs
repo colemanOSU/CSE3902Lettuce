@@ -48,6 +48,7 @@ namespace sprint0Real
         //For menus and UIs
         public IUI UISprite;
         public IUI MenuUISprite;
+        public IUI PauseUISprite;
 
         public ILinkSprite weaponItems;
 
@@ -228,10 +229,13 @@ namespace sprint0Real
 
                     _camera.MoveToward(_camera.Center);
 
+
                     CurrentMap.Instance.Draw(_spriteBatch);
                     linkSprite.Draw(_spriteBatch);
                     UISprite.Draw(_spriteBatch);
                     MenuUISprite.Draw(_spriteBatch);
+
+                    PauseUISprite.Draw(_spriteBatch);
 
                     _spriteBatch.End();
                     break;
@@ -312,6 +316,7 @@ namespace sprint0Real
             linkSprite = new ResetLink(linkSheet, this);
             UISprite = new UI(UISheet);
             MenuUISprite = new MenuUI(UISheet);
+            PauseUISprite = new PauseUI(UISheet);
             weaponItems = new NullSprite(linkSheet, this);
             currentBlockIndex = 1;
             Link = new Link(this);
