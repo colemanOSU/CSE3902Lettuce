@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using sprint0Real.EnemyStuff.DragonStuff;
+using sprint0Real.EnemyStuff.RedGoriya;
 using sprint0Real.Interfaces;
 
 namespace sprint0Real.Levels
@@ -16,7 +17,7 @@ namespace sprint0Real.Levels
             objectCatalogue = new Dictionary<String, String>();
 
             objectCatalogue.Add("Dragon", "sprint0Real.EnemyStuff.DragonStuff.Dragon");
-            objectCatalogue.Add("Goriya", "sprint0Real.EnemyStuff.RedGoriyaStuff.Goriya");
+            objectCatalogue.Add("Goriya", "sprint0Real.EnemyStuff.RedGoriya.Goriya");
             objectCatalogue.Add("BlackBlock", "sprint0Real.BlockSprites.BlockSpriteBlack");
             objectCatalogue.Add("Map", "sprint0Real.ItemTempSprites.Map");
 

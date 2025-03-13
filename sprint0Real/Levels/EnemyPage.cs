@@ -31,6 +31,7 @@ namespace sprint0Real.Levels
         {
             gameObjects = new List<IObject>();
             background = new LevelBackground();
+            Neighbors = new Dictionary<string, string>();
         }
         public List<IObject> ReturnObjectList()
         {

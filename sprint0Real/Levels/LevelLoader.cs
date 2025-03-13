@@ -12,6 +12,7 @@ using sprint0Real.Interfaces;
 using sprint0Real.EnemyStuff;
 using sprint0Real.EnemyStuff.DragonStuff;
 using System.Diagnostics;
+using sprint0Real.EnemyStuff.RedGoriya;
 
 namespace sprint0Real.Levels
 {
@@ -54,7 +55,7 @@ namespace sprint0Real.Levels
                     newMap.Stage((ICollisionBoxes)Activator.CreateInstance(type, new Rectangle(x, y, width, height)));
                 }
 
-                foreach(XmlElement Neighbor in xml.SelectNodes("Neighbors"))
+                foreach(XmlElement Neighbor in xml.SelectNodes("//Neighbors/Neighbor"))
                 {
                     newMap.AddNeighbor(Neighbor.GetAttribute("Side"), Neighbor.GetAttribute("Name"));
                 }
