@@ -49,13 +49,26 @@ namespace sprint0Real.Levels
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            Rectangle destinationRectangleInterior = new Rectangle((32 * Multiple), (32 * Multiple), (192 * Multiple), (112 * Multiple));
-            Rectangle destinationRectangleExterior = new Rectangle(0, 0, (256 * Multiple), (176 * Multiple));
+            //What do the numbers mean Mason???
 
-            Rectangle destinationRectangleLeftDoor = new Rectangle(0, (72 * Multiple), (32 * Multiple), (32 * Multiple));
-            Rectangle destinationRectangleRightDoor = new Rectangle((224 * Multiple), (72 * Multiple), (32 * Multiple), (32 * Multiple));
-            Rectangle destinationRectangleDownDoor = new Rectangle((112 * Multiple), 0, (32 * Multiple), (32 * Multiple));
-            Rectangle destinationRectangleUpDoor = new Rectangle((112 * Multiple), (144 * Multiple), (32 * Multiple), (32 * Multiple));
+            int InteriorWidth = (192 * Game1.RENDERSCALE);
+            int InteriorHeight = (112 * Game1.RENDERSCALE);
+            int InteriorXCoord = Game1.SCREENMIDX - InteriorWidth / 2;
+            int InteriorYCoord = Game1.SCREENMIDY - InteriorHeight / 2 + 30 * Game1.RENDERSCALE;
+
+            int ExteriorWidth = (256 * Game1.RENDERSCALE);
+            int ExteriorHeight = (176 * Game1.RENDERSCALE);
+            int ExteriorXCoord = Game1.SCREENMIDX - ExteriorWidth / 2;
+            int ExteriorYCoord = Game1.SCREENMIDY - ExteriorHeight / 2 + 30 * Game1.RENDERSCALE;
+
+
+            Rectangle destinationRectangleInterior = new Rectangle(InteriorXCoord, InteriorYCoord, InteriorWidth, InteriorHeight);
+            Rectangle destinationRectangleExterior = new Rectangle(ExteriorXCoord, ExteriorYCoord, ExteriorWidth, ExteriorHeight);
+
+            Rectangle destinationRectangleLeftDoor = new Rectangle(ExteriorXCoord, ExteriorYCoord + (72 * Game1.RENDERSCALE), (32 * Game1.RENDERSCALE), (32 * Game1.RENDERSCALE));
+            Rectangle destinationRectangleRightDoor = new Rectangle(ExteriorXCoord + (224 * Game1.RENDERSCALE), ExteriorYCoord + (72 * Game1.RENDERSCALE), (32 * Game1.RENDERSCALE), (32 * Game1.RENDERSCALE));
+            Rectangle destinationRectangleDownDoor = new Rectangle(ExteriorXCoord + (112 * Game1.RENDERSCALE), ExteriorYCoord, (32 * Game1.RENDERSCALE), (32 * Game1.RENDERSCALE));
+            Rectangle destinationRectangleUpDoor = new Rectangle(ExteriorXCoord + (112 * Game1.RENDERSCALE), ExteriorYCoord + (144 * Game1.RENDERSCALE), (32 * Game1.RENDERSCALE), (32 * Game1.RENDERSCALE));
 
             
             spriteBatch.Draw(spriteSheet, destinationRectangleInterior, RoomInterior, Color.White);

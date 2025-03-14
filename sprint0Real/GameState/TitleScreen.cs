@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
 namespace sprint0Real.GameState
 {
+    //NOTE FROM KELLY:
+    //I absolutely adore that we're emulating the visual deloading in the title screen
+    //as it would be if it ran on the NES. How whimsical.
 
     internal class TitleScreen
     {
@@ -71,7 +74,7 @@ namespace sprint0Real.GameState
 
         public void Draw(SpriteBatch spriteBatch, GraphicsDevice graphicsDevice)
         {
-            spriteBatch.Begin();
+            spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp);
 
             if(_currentFrame == 3)
             {
@@ -79,11 +82,11 @@ namespace sprint0Real.GameState
             }
             else
             {
-            sourceRectangle = new Rectangle(1 + 257 * _currentFrame, 11, 256, 224);
+                sourceRectangle = new Rectangle(1 + 257 * _currentFrame, 11, 256, 224);
                 destinationRectangle = new Rectangle(0, 0, graphicsDevice.Viewport.Width, graphicsDevice.Viewport.Height);
                 spriteBatch.Draw(title, destinationRectangle, sourceRectangle, Color.White);
-            
-                }
+
+            }
             spriteBatch.End();
         }
     }
