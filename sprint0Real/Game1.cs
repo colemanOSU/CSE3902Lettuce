@@ -87,6 +87,8 @@ namespace sprint0Real
         //As levels render relative to center of screen alongside camera transitions being
         //hardcoded numbers, I would not mess with these numbers unless you really know
         //what you're doing!
+
+        //Someone didn't heed my comment. Woe!
         public const int SCREENHEIGHT = 240 * RENDERSCALE;
         public const int SCREENWIDTH = 256 * RENDERSCALE;
         public const int SCREENMIDX = SCREENWIDTH / 2;

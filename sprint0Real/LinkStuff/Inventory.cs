@@ -52,7 +52,7 @@ namespace sprint0Real.LinkStuff
             {
                 InventoryList.Add(item, true);
             }
-            CurrentItem = Items.Silver_Arrow;
+            CurrentItem = Items.Boomerang;
             CurrentSword = Swords.Wood_Sword;
         }
 
