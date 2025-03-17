@@ -49,7 +49,7 @@ namespace sprint0Real.Levels
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            //What do the numbers mean Mason???
+            //"X" and "Y" refer to the coordinates of the top left corner of the sprite
 
             int InteriorWidth = (192 * Game1.RENDERSCALE);
             int InteriorHeight = (112 * Game1.RENDERSCALE);
