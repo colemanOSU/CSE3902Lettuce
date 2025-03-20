@@ -42,14 +42,14 @@ namespace sprint0Real.Levels
                     Type type = Type.GetType(catalogue.ReturnObjectType(Object.GetAttribute("Type")));
                     Debug.WriteLine(catalogue.ReturnObjectType(Object.GetAttribute("Type")));
                     int x = Int32.Parse(Object.GetAttribute("x"));
-                    int y = Int32.Parse(Object.GetAttribute("y"));
+                    int y = Int32.Parse(Object.GetAttribute("y")) + 186;
                     newMap.Stage((IGameObject)Activator.CreateInstance(type, new Vector2(x, y)));
                 }
                 foreach(XmlElement MapHitBox in xml.SelectNodes("//MapHitBoxes/HitBox"))
                 {
                     Type type = Type.GetType(catalogue.ReturnObjectType(MapHitBox.GetAttribute("Type")));
                     int x = Int32.Parse(MapHitBox.GetAttribute("x"));
-                    int y = Int32.Parse(MapHitBox.GetAttribute("y"));
+                    int y = Int32.Parse(MapHitBox.GetAttribute("y")) + 186;
                     int width = Int32.Parse(MapHitBox.GetAttribute("width"));
                     int height = Int32.Parse(MapHitBox.GetAttribute("height"));
                     newMap.Stage((ICollisionBoxes)Activator.CreateInstance(type, new Rectangle(x, y, width, height)));

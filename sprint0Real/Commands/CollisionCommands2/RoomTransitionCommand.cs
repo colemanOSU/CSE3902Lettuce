@@ -15,7 +15,7 @@ namespace sprint0Real.Commands.CollisionCommands2
             EnemyPage nextMap = LevelLoader.Instance.RetrieveMap(neighbor);
             CurrentMap.Instance.SetMap(nextMap);
             // Adjust this to be right
-            ((Link)Link).SetLocation(new Rectangle(200, 200, 19, 19));
+            ((Link)Link).SetLocation(new Rectangle(200, 300, 50, 50));
         }
     }
 }

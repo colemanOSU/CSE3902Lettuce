@@ -37,7 +37,7 @@ public class Link : ILink
 
     public Link(Game1 game)
 	{
-        destinationRectangle = new Rectangle(200, 200, 50, 50);
+        destinationRectangle = new Rectangle(200, 300, 50, 50);
         canMove = true;
         canAttack = true;
         Facing = Direction.Right;

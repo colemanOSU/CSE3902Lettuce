@@ -29,6 +29,6 @@
 	</MapHitBoxes>
 
 	<Neighbors>
-		<Neighbor Side="Left" Name="LeftOfEntrance"/>
+		<Neighbor Side="Left" Name="Entrance"/>
 	</Neighbors>
 </LevelData>
