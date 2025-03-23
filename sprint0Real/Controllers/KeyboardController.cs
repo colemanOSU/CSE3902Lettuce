@@ -51,7 +51,7 @@ namespace sprint0Real.Controllers
             commands.Add(Keys.Down, new MoveDownCommand(_game));
             commands.Add(Keys.Z, new AttackCommand(_game));
             commands.Add(Keys.N, new AttackCommand(_game));
-            commands.Add(Keys.M, new UseCurrentItemCommand(_game));
+            commands.Add(Keys.B, new UseCurrentItemCommand(_game));
             commands.Add(Keys.Q, new QuitCommand(_game));
             commands.Add(Keys.R, new ResetCommand(_game));
             commands.Add(Keys.P, new PauseCommand(_game));
