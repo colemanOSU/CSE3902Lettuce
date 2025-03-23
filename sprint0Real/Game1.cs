@@ -47,7 +47,7 @@ namespace sprint0Real
 
         //For menus and UIs
         public IUI UISprite;
-        public IUI MenuUISprite;
+        public MenuUI MenuUISprite;
         public IUI PauseUISprite;
 
         public ILinkSprite weaponItems;

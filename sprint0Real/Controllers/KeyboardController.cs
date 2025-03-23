@@ -86,6 +86,14 @@ namespace sprint0Real.Controllers
 
             MenuCommands.Add(Keys.Q, new QuitCommand(_game));
             MenuCommands.Add(Keys.M, new UnMenuCommand(_game));
+            MenuCommands.Add(Keys.D, new MoveSelectorRightCommand(_game));
+            MenuCommands.Add(Keys.A, new MoveSelectorLeftCommand(_game));
+            MenuCommands.Add(Keys.W, new MoveSelectorVerticalCommand(_game));
+            MenuCommands.Add(Keys.S, new MoveSelectorVerticalCommand(_game));
+            MenuCommands.Add(Keys.Right, new MoveSelectorRightCommand(_game));
+            MenuCommands.Add(Keys.Left, new MoveSelectorLeftCommand(_game));
+            MenuCommands.Add(Keys.Up, new MoveSelectorVerticalCommand(_game));
+            MenuCommands.Add(Keys.Down, new MoveSelectorVerticalCommand(_game));
 
             //Commands for when game is Paused. Subject to change.
             PauseCommands = new Dictionary<Keys, ICommand>();

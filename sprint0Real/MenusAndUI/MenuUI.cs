@@ -8,26 +8,38 @@ using sprint0Real.MenusAndUI;
 using System.Diagnostics;
 
 
-public class MenuUI : IUI
+public class MenuUI
 {
     private Texture2D UITexture;
     private Rectangle MapDestinationRectangle;
     private Rectangle MapSourceRectangle;
     private Rectangle ItemDestinationRectangle;
     private Rectangle ItemSourceRectangle;
+
+    private Rectangle ItemSelectSourceRectangle;
+    private Rectangle ItemSelectDestinationRectangle;
+    private Rectangle ItemSelectRed = new Rectangle(519, 137, 16, 16);
+    private Rectangle ItemSelectBlue = new Rectangle(536, 137, 16, 16);
+
     private int Scale = Game1.RENDERSCALE;
     private int UIXCoord;
     private int UIYCoord;
     private int ItemYCoord;
+    private int ItemSelectFrameCount;
 
     private Inventory.Items CurrentItem;
     private Inventory inv;
+
+    private int XSelect, YSelect;
+    private Inventory.Items[,] DisplayInventory;
 
     public MenuUI(Texture2D uITexture)
     {
         UITexture = uITexture;
         MapSourceRectangle = new Rectangle(258, 112, 256, 88);
         ItemSourceRectangle = new Rectangle(1, 11, 256, 88);
+        ItemSelectSourceRectangle = ItemSelectRed;
+
         UIXCoord = Game1.SCREENMIDX - (128 * Scale);
         UIYCoord = Game1.SCREENMIDY - (88 + 56 + 88 - 30) * Scale;
         MapDestinationRectangle = new Rectangle(UIXCoord, UIYCoord, 256 * Scale, 88 * Scale);
@@ -35,6 +47,9 @@ public class MenuUI : IUI
         ItemYCoord = UIYCoord - 88 * Scale;
         ItemDestinationRectangle = new Rectangle(UIXCoord, ItemYCoord, 256 * Scale, 88 * Scale);
 
+        XSelect = 0;
+        YSelect = 0;
+        ItemSelectFrameCount = 1;
     }
 
     public void Draw(SpriteBatch spriteBatch)
@@ -42,11 +57,15 @@ public class MenuUI : IUI
         spriteBatch.Draw(UITexture, MapDestinationRectangle, MapSourceRectangle, Color.White);
         spriteBatch.Draw(UITexture, ItemDestinationRectangle, ItemSourceRectangle, Color.White);
 
+        spriteBatch.Draw(UITexture, ItemSelectDestinationRectangle, ItemSelectSourceRectangle, Color.White);
+
+
+
         //Current Item Sprite
-        //spriteBatch.Draw(UITexture, new Rectangle(UIXCoord + 68 * Scale, ItemYCoord + 48 * Scale, 8 * Scale, 16 * Scale), UIHelper.ItemSpriteHelper(CurrentItem), Color.White);
+        spriteBatch.Draw(UITexture, new Rectangle(UIXCoord + 68 * Scale, ItemYCoord + 48 * Scale, 8 * Scale, 16 * Scale), UIHelper.ItemSpriteHelper(CurrentItem), Color.White);
 
 
-        Inventory.Items[,] DisplayInventory = MenuToDisplay.MenuRealizer(inv);
+        //Inventory.Items[,] DisplayInventory = MenuToDisplay.MenuRealizer(inv);
 
         for (int i = 0; i < 2; i++)
         {
@@ -73,9 +92,101 @@ public class MenuUI : IUI
     public void Update(GameTime gametime, ILink link)
     {
         inv = link.GetInventory();
-
+        DisplayInventory = MenuToDisplay.MenuRealizer(inv);
 
         CurrentItem = inv.CurrentItem;
+
+
+        ItemSelectDestinationRectangle = new Rectangle(UIXCoord + Scale * (128 + XSelect * 24), ItemYCoord + Scale * (48 + YSelect * 16), 16 * Scale, 16 * Scale);
+
+
+
+        if (ItemSelectFrameCount <= 20) ItemSelectSourceRectangle = ItemSelectRed;
+        else if (ItemSelectFrameCount <= 40) ItemSelectSourceRectangle = ItemSelectBlue;
+        if (ItemSelectFrameCount >= 41) ItemSelectFrameCount = 0;
+        ItemSelectFrameCount++;
+    }
+
+    public void MoveSelectorRight()
+    {
+        int TempXSelect = XSelect;
+        for (int i = 0; i < 3; i++)
+        {
+            TempXSelect++;
+            if (TempXSelect >= 4) TempXSelect = 0;
+
+            if (DisplayInventory[YSelect, TempXSelect] != 0)
+            {
+                XSelect = TempXSelect;
+                inv.CurrentItem = DisplayInventory[YSelect, XSelect];
+                return;
+            }
+        }
+        //Only does this if there are no other items in row;
+        //Allows items to be switched even without contiguous inventory.
+        YSelect = (YSelect == 0) ? 1 : 0;
+        TempXSelect = XSelect;
+        for (int i = 0; i < 3; i++)
+        {
+            TempXSelect++;
+            if (TempXSelect >= 4) TempXSelect = 0;
+
+            if (DisplayInventory[YSelect, TempXSelect] != 0)
+            {
+                XSelect = TempXSelect;
+                inv.CurrentItem = DisplayInventory[YSelect, XSelect];
+                return;
+            }
+        }
+        YSelect = (YSelect == 0) ? 1 : 0;
+    }
+
+    public void MoveSelectorLeft()
+    {
+        int TempXSelect = XSelect;
+        for (int i = 0; i < 3; i++)
+        {
+            TempXSelect--;
+            if (TempXSelect < 0) TempXSelect = 3;
+
+            if (DisplayInventory[YSelect, TempXSelect] != 0)
+            {
+                XSelect = TempXSelect;
+                inv.CurrentItem = DisplayInventory[YSelect, XSelect];
+                return;
+            }
+        }
+        //Only does this if there are no other items in row;
+        //Allows items to be switched even without contiguous inventory.
+        YSelect = (YSelect == 0) ? 1 : 0;
+        TempXSelect = XSelect;
+        for (int i = 0; i < 3; i++)
+        {
+            TempXSelect--;
+            if (TempXSelect < 0) TempXSelect = 3;
+
+            if (DisplayInventory[YSelect, TempXSelect] != 0)
+            {
+                XSelect = TempXSelect;
+                inv.CurrentItem = DisplayInventory[YSelect, XSelect];
+                return;
+            }
+        }
+        YSelect = (YSelect == 0) ? 1 : 0;
+    }
+
+    public void MoveSelectorVertical()
+    {
+        int TempYSelect = (YSelect == 0) ? 1 : 0;
+    
+        if (DisplayInventory[TempYSelect, XSelect] != 0)
+        {
+            YSelect = TempYSelect; 
+            inv.CurrentItem = DisplayInventory[YSelect, XSelect];
+                
+        }
+
+
     }
 }
 
