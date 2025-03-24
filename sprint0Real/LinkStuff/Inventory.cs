@@ -21,7 +21,7 @@ namespace sprint0Real.LinkStuff
         public Items CurrentItem { get; set; }
         public Swords CurrentSword { get; set; }
 
-        public int KeyCount { get; set; }
+        public int KeyCount { get; private set; }
 
         public int RupeeCount { get; set; }
 
@@ -77,6 +77,18 @@ namespace sprint0Real.LinkStuff
             return InventoryList.GetValueOrDefault(item);
         }
         
-        
+        public void KeyGet()
+        {
+            KeyCount++;
+        }
+
+        public void KeyUse()
+        {
+            if (KeyCount <= 0)
+            {
+                throw new NotImplementedException();
+            }
+            KeyCount--;
+        }
     }
 }
