@@ -1,0 +1,9 @@
+Sprint 3 Reflection
+
+	The team was generally pretty busy this sprint, combined with the large amount of requirements not an idea amount of work was able to be completed. Some problems the team
+	still has for this sprint was that some of the disjoint parts of sprint 2 are beginning to come together and trying to make the separatly implemented parts work together has
+	been a challenge. However by the end of spring break the team should be back on track. This is one issue that the team will need to work together for the next sprint, namely,
+	planning out how things will the game as a whole will work together, this was some people will not be forced to do unused work. 
+
+	Sprint Burndown Link:
+	https://app.zenhub.com/workspaces/cse-3902-team-lettuce-6798df69730d2b0029f3d1a2/reports/burndown?milestoneId=Z2lkOi8vcmFwdG9yL1NwcmludC8yOTcwNjc5

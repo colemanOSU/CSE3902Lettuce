@@ -9,7 +9,7 @@ using sprint0Real.Interfaces;
 
 namespace sprint0Real.EnemyStuff.Fireballs
 {
-    public class FireBall : IEnemy
+    public class FireBall : IProjectile
     {
         private FireballBehavior behavior;
         private FireBallStateMachine stateMachine;

@@ -113,7 +113,7 @@ namespace sprint0Real.LinkSprites
 
         public void DrawWeaponSprite()
         {
-            CurrentMap.Instance.MapList().RemoveAll(obj => obj is ILinkSprite && obj != myGame.weaponItems);
+            CurrentMap.Instance.ObjectList().RemoveAll(obj => obj is ILinkSprite && obj != myGame.weaponItems);
             if (myGame.weaponItems != null && myGame.weaponItems.GetType() == GetWeaponType(CurrentItem))
             {
                 return; 
@@ -121,7 +121,7 @@ namespace sprint0Real.LinkSprites
 
             if (myGame.weaponItems != null && !(myGame.weaponItems is NullSprite))
             {
-                CurrentMap.Instance.MapList().Remove(myGame.weaponItems);
+                CurrentMap.Instance.ObjectList().Remove(myGame.weaponItems);
                 Debug.WriteLine($"Removed old weapon: {myGame.weaponItems.GetType().Name}");
             }
 
@@ -131,9 +131,9 @@ namespace sprint0Real.LinkSprites
             {
                 myGame.weaponItems = newWeapon;
 
-                if (!CurrentMap.Instance.MapList().Contains(myGame.weaponItems))
+                if (!CurrentMap.Instance.ObjectList().Contains(myGame.weaponItems))
                 {
-                    CurrentMap.Instance.MapList().Add(myGame.weaponItems);
+                    CurrentMap.Instance.ObjectList().Add(myGame.weaponItems);
                     Debug.WriteLine($"Added new weapon: {myGame.weaponItems.GetType().Name}");
                 }
             }

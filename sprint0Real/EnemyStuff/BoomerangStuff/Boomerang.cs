@@ -12,7 +12,7 @@ using sprint0Real.Interfaces;
 
 namespace sprint0Real.EnemyStuff.BoomerangStuff
 {
-    public class Boomerang : IEnemy
+    public class Boomerang : IProjectile
     {
         private BoomerangBehavior behavior;
         private BoomerangStateMachine stateMachine;

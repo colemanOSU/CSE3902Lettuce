@@ -7,6 +7,7 @@ using sprint0Real.LinkStuff;
 using Microsoft.Xna.Framework.Graphics;
 using System.Diagnostics;
 using sprint0Real.LinkStuff.LinkSprites;
+using System.Security.Cryptography;
 public class Link : ILink
 {
     private Rectangle destinationRectangle;
@@ -19,6 +20,8 @@ public class Link : ILink
     private Vector2 MomentumVector;
     public Texture2D linkSheet;
 
+    public Inventory inventory;
+
     public const int SPEED = 2;
 
     public enum Direction
@@ -30,13 +33,11 @@ public class Link : ILink
         None
     }
 
-
-
     private Direction Facing;
 
     public Link(Game1 game)
 	{
-        destinationRectangle = new Rectangle(200, 200, 50, 50);
+        destinationRectangle = new Rectangle(200, 300, 50, 50);
         canMove = true;
         canAttack = true;
         Facing = Direction.Right;
@@ -45,6 +46,7 @@ public class Link : ILink
         LinkSpriteColor = Color.White;
         isDamaged = false;
         MomentumVector = new Vector2(0, 0);
+        inventory = new Inventory();
     }
     public void Damaged()
     {
@@ -114,29 +116,29 @@ public class Link : ILink
     //Used to handle collision
     public void StopMomentumInDirection(Direction dir)
     {   
-
+        
         switch (dir)
         {
             case Direction.Up:
-                if (MomentumVector.Y < 0)
-                {
-                    MomentumVector = new Vector2(MomentumVector.X, 0);
-                }
-                break;
-            case Direction.Down:
                 if (MomentumVector.Y > 0)
                 {
                     MomentumVector = new Vector2(MomentumVector.X, 0);
                 }
                 break;
+            case Direction.Down:
+                if (MomentumVector.Y < 0)
+                {
+                    MomentumVector = new Vector2(MomentumVector.X, 0);
+                }
+                break;
             case Direction.Left:
-                if (MomentumVector.X < 0)
+                if (MomentumVector.X > 0)
                 {
                     MomentumVector = new Vector2(0, MomentumVector.Y);
                 }
                 break;
             case Direction.Right:
-                if (MomentumVector.X > 0)
+                if (MomentumVector.X < 0)
                 {
                     MomentumVector = new Vector2(0, MomentumVector.Y);
                 }
@@ -224,4 +226,8 @@ public class Link : ILink
         //need to draw IGameObject
     }
 
+    public Inventory GetInventory()
+    {
+        return inventory;
+    }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using sprint0Real.EnemyStuff.BatStuff;
 using sprint0Real.EnemyStuff.BoomerangStuff;
 using sprint0Real.EnemyStuff.RedGoriya;
 using sprint0Real.EnemyStuff.RedGoriyaStuff;
@@ -43,7 +44,24 @@ namespace sprint0Real.EnemyStuff.GoriyaStuff
                     break;
             }
         }
-
+        public void hitWall()
+        {
+            switch (currentState)
+            {
+                case GoriyaState.Right:
+                    myGoriya.location.X += myGoriya.speed;
+                    break;
+                case GoriyaState.Left:
+                    myGoriya.location.X -= myGoriya.speed;
+                    break;
+                case GoriyaState.Up:
+                    myGoriya.location.Y += myGoriya.speed;
+                    break;
+                case GoriyaState.Down:
+                    myGoriya.location.Y -= myGoriya.speed;
+                    break;
+            }
+        }
         public void TakeDamage()
         {
             myGoriya.health -= 1;

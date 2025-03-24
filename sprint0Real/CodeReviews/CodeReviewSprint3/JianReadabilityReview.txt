@@ -1,0 +1,12 @@
+AUTHOR: Jian Wang
+SUBJECT: LinkWallCollisionCommand.cs
+AUTHOR OF SUBJECT: Ariv Puri
+FOCUS: Readability
+SPRINT: 3
+DATE: 7 March 2025
+TIME TAKEN TO COMPLETE: 8 Minutes
+
+Although this file is really readable due to the small amount of code and minimal methods, I would have the code _game = game; removed as there is no
+point in the whole file where you need to use _game. I would also add some more comments and/or rename the varibales as stuff like ObjA and objB are 
+really vague and Link link and Link link2 also dont really have any meaning to it that makes it understandable/readable. Other than that this peice of 
+code is readable and all the code in it makes sense. Due to me understanding what your Link link and ObjA is and the small amount of code in this file.

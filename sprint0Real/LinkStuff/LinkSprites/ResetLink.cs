@@ -24,7 +24,7 @@ namespace sprint0Real.LinkStuff.LinkSprites
         {
             _texture = texture;
             myGame = game;
-            destinationRectangle = new Rectangle(200, 200, 50, 50);
+            destinationRectangle = new Rectangle(200, 300, 50, 50);
         }
         public void Draw(SpriteBatch spriteBatch)
         {

@@ -43,7 +43,10 @@ namespace sprint0Real.EnemyStuff.BatStuff
             stateMachine.hitWall();
             stateMachine.ChangeDirection();
         }
-
+        public void hitLink()
+        {
+            Despawn();
+        }
         public void ChangeDirection()
         {
             stateMachine.ChangeDirection();

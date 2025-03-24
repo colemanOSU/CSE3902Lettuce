@@ -8,10 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace sprint0Real.Interfaces
 {
-    public interface IEnemy : IGameObject
+    public interface IEnemy : IDamagesLink, IGameObject
     {
-        void Update(GameTime time);
-        void Draw(SpriteBatch spriteBatch);
-
     }
 }

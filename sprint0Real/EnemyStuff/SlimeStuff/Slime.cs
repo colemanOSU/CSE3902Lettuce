@@ -31,7 +31,15 @@ namespace sprint0Real.EnemyStuff.SlimeStuff
             behavior = new SlimeBehavior(this);
             mySprite = EnemySpriteFactory.Instance.CreateSlimeSprite();
         }
-
+        public void hitWall()
+        {
+            stateMachine.hitWall();
+            stateMachine.ChangeDirection();
+        }
+        public void hitLink()
+        {
+            Despawn();
+        }
         public void ChangeDirection()
         {
             stateMachine.ChangeDirection();

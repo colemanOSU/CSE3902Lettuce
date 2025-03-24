@@ -1,7 +1,0 @@
-Author: Jenny Ding
-Date: 02/17/2025
-Sprint 2
-I'm reviewing Ariv's code for SwordUseRight.cs
-This review took me about 5 minutes
-
-The code is very simple to understand, it draws the sword sprite in a projectile toward the right side of link upon an boolean called isMoving. There are 3 other files that performs similar actions but goes in the other three directions. I would suggest in the future maybe put all 4 in the same file and use the Link.GetFacing() function in the Link class to identify which direction the sword flys toward. Overall the code has very good readability and maintainability

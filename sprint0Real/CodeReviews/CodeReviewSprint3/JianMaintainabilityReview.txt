@@ -1,0 +1,12 @@
+AUTHOR: Jian wang
+SUBJECT: EnemyPage.cs (in levels folder)
+AUTHOR OF SUBJECT: Ariv Puri
+FOCUS: Maintainablilty
+SPRINT: 3
+DATE: 7 March 2025
+TIME TAKEN TO COMPLETE: 7 Minutes
+
+This is very similar to how the enemies are put onto the map so I was able to easily able to understand this file quickly. This is very maintainable, 
+It is designed to be able to add and remove stuf from the cirrent staging of the map and can easily add new objects and be able to remove them. 
+The only critique that I would add would to ensure that the physical wall should not be hard coded as stuff like dungeon walls(the border) will not 
+have proper hitboxes as they cover the whole screen while they can't use AddBorderWalls() b/c the walls are hard coded for the outside border only.

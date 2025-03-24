@@ -9,6 +9,7 @@ using sprint0Real.EnemyStuff.BoomerangStuff;
 using sprint0Real.EnemyStuff.GoriyaStuff;
 using sprint0Real.EnemyStuff.RedGoriyaStuff;
 using sprint0Real.Interfaces;
+using sprint0Real.Levels;
 
 namespace sprint0Real.EnemyStuff.RedGoriya
 {
@@ -33,6 +34,20 @@ namespace sprint0Real.EnemyStuff.RedGoriya
             behavior = new GoriyaBehavior(this);
             mySprite = EnemySpriteFactory.Instance.CreateGoriyaRightSprite();
             
+        }
+        public void hitWall()
+        {
+            stateMachine.hitWall();
+            stateMachine.ChangeDirection();
+        }
+        public void hitLink()
+        {
+            Despawn();
+        }
+
+        public void Despawn()
+        {
+            CurrentMap.Instance.DeStage(this);
         }
 
         public void ChangeDirection()
