@@ -243,7 +243,6 @@ namespace sprint0Real
                     CurrentMap.Instance.Draw(_spriteBatch);
                     linkSprite.Draw(_spriteBatch);
                     UISprite.Draw(_spriteBatch);
-                    MenuUISprite.Draw(_spriteBatch);
 
                     PauseUISprite.Draw(_spriteBatch);
 
