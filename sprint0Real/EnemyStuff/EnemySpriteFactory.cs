@@ -8,14 +8,11 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0Real.EnemyStuff.BatStuff;
 using sprint0Real.EnemyStuff.BoomerangStuff;
-using sprint0Real.EnemyStuff.BubbleStuff;
 using sprint0Real.EnemyStuff.DragonStuff;
 using sprint0Real.EnemyStuff.Fireballs;
 using sprint0Real.EnemyStuff.HandStuff;
 using sprint0Real.EnemyStuff.RedGoriyaStuff;
 using sprint0Real.EnemyStuff.BTrapStuff;
-using sprint0Real.EnemyStuff.SnakeStuff;
-using sprint0Real.EnemyStuff.ZolStuff;
 using sprint0Real.Interfaces;
 using sprint0Real.EnemyStuff.SlimeStuff;
 using sprint0Real.EnemyStuff.DeathSprites;
@@ -112,47 +109,7 @@ namespace sprint0Real.EnemyStuff
         {
             return new BoomerangSprite(enemySpriteSheet);
         }
-        public ISprite2 CreateOctoEnemySpriteU()
-        {
-            return new OctoSpriteIdleU(enemySpriteSheet, myGame._spriteBatch);
-        }
-        public ISprite2 CreateOctoEnemySpriteR()
-        {
-            return new OctoSpriteIdleR(enemySpriteSheet, myGame._spriteBatch);
-        }
-        public ISprite2 CreateOctoEnemySpriteD()
-        {
-            return new OctoSpriteIdleD(enemySpriteSheet, myGame._spriteBatch);
-        }
-        public ISprite2 CreateOctoEnemySpriteL()
-        {
-            return new OctoSpriteIdleL(enemySpriteSheet, myGame._spriteBatch);
-        }
-        public ISprite2 CreateOctoAttackSpriteU()
-        {
-            return new OctoSpriteAttackU(enemySpriteSheet, myGame._spriteBatch);
-        }
-
-        public ISprite2 CreateOctoAttackSpriteR()
-        {
-            return new OctoSpriteAttackR(enemySpriteSheet, myGame._spriteBatch);
-        }
-        public ISprite2 CreateOctoAttackSpriteD()
-        {
-            return new OctoSpriteAttackD(enemySpriteSheet, myGame._spriteBatch);
-        }
-        public ISprite2 CreateOctoAttackSpriteL()
-        {
-            return new OctoSpriteAttackL(enemySpriteSheet, myGame._spriteBatch);
-        }
-        public ISprite2 CreateOctoDamagedSprite()
-        {
-            return new OctoSpriteDamaged(enemySpriteSheet, myGame._spriteBatch);
-        }
-        public ISprite2 CreateRockSprite()
-        {
-            return new RockSprite(enemySpriteSheet, myGame._spriteBatch);
-        }
+        
         public ISprite2 CreateSkeletonSprite()
         {
             return new SkeletonSprite(enemySpriteSheet, myGame._spriteBatch);
@@ -165,10 +122,6 @@ namespace sprint0Real.EnemyStuff
         {
             return new SlimeSprite(enemySpriteSheet, myGame._spriteBatch);
         }
-        public ISprite2 CreateZolSprite()
-        {
-            return new ZolSprite(enemySpriteSheet, myGame._spriteBatch);
-        }
         public ISprite2 CreateHandSprite()
         {
             return new HandSprite(enemySpriteSheet, myGame._spriteBatch);
@@ -177,15 +130,6 @@ namespace sprint0Real.EnemyStuff
         {
             return new BatSprite(enemySpriteSheet, myGame._spriteBatch);
         }
-        public ISprite2 CreateBubbleSprite()
-        {
-            return new BubbleSprite(enemySpriteSheet, myGame._spriteBatch);
-        }
-        public ISprite2 CreateSnakeSprite()
-        {
-            return new SnakeSprite(enemySpriteSheet, myGame._spriteBatch);
-        }
-
         public Texture2D ReturnDungeonTileSheet()
         {
             return DungeonTileSet;
