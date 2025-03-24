@@ -21,6 +21,10 @@ namespace sprint0Real.LinkStuff
         public Items CurrentItem { get; set; }
         public Swords CurrentSword { get; set; }
 
+        public int KeyCount { get; set; }
+
+        public int RupeeCount { get; set; }
+
         public enum Swords
         {
             Wood_Sword,
@@ -55,6 +59,8 @@ namespace sprint0Real.LinkStuff
             ObtainItem(Items.Boomerang);
             CurrentItem = Items.Boomerang;
             CurrentSword = Swords.Wood_Sword;
+            KeyCount = 0;
+            RupeeCount = 0;
         }
 
         //Marks item as accessible within inventory
