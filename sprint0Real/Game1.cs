@@ -19,6 +19,8 @@ using System.Reflection.Metadata;
 using sprint0Real.TreasureItemSprites;
 using sprint0Real.LinkSprites;
 using sprint0Real.Commands;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
 
 namespace sprint0Real
 {
@@ -160,6 +162,8 @@ namespace sprint0Real
             ResetGame();
             collisionDetection.Load(Link);
             tempItem = null;
+            Song song = Content.Load<Song>("01 - Intro");
+            MediaPlayer.Play(song);
         }
 
         protected override void Update(GameTime gameTime)
