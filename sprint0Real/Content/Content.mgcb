@@ -19,6 +19,42 @@
 /processorParam:Quality=Best
 /build:01 - Intro.mp3
 
+#begin 03 - Item.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:03 - Item.mp3
+
+#begin 04 - Dungeon.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:04 - Dungeon.mp3
+
+#begin 05 - Secret.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:05 - Secret.mp3
+
+#begin 06 - Triforce.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:06 - Triforce.mp3
+
+#begin 07 - Game Over.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:07 - Game Over.mp3
+
+#begin 10 - Ending.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:10 - Ending.mp3
+
 #begin Bosses.png
 /importer:TextureImporter
 /processor:TextureProcessor
