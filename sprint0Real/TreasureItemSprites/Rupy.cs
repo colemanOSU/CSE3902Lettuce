@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Input;
 using sprint0Real.Interfaces;
 using sprint0Real.TreasureItemSprites;
 
-namespace sprint0Real.ItemTempSprites
+namespace sprint0Real.TreasureItemSprites
 {
     //It's spelled Rupee but hell if I'm going to change it at this point.
     public class Rupy : ITreasureItems

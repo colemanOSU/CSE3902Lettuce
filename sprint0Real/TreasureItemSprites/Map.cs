@@ -4,9 +4,9 @@ using Microsoft.Xna.Framework.Input;
 using sprint0Real.Interfaces;
 using sprint0Real.TreasureItemSprites;
 
-namespace sprint0Real.ItemTempSprites
+namespace sprint0Real.TreasureItemSprites
 {
-    public class Map : ITreasureItems, ITouchesLink
+    public class Map : ITreasureItems
     {
         public Rectangle sourceRectangle = new Rectangle(88, 0, 8, 16);
         public Rectangle destinationRectangle;

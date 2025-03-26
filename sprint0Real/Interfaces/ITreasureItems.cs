@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace sprint0Real.Interfaces
 {
-    public interface ITreasureItems : IGameObject
+    public interface ITreasureItems : IGameObject, ITouchesLink
     {
         //void Update(GameTime gametime);
 

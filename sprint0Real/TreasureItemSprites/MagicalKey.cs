@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using sprint0Real.Interfaces;
 using sprint0Real.TreasureItemSprites;
 
-namespace sprint0Real.ItemTempSprites
+namespace sprint0Real.TreasureItemSprites
 {
     public class MagicalKey : ITreasureItems
     {

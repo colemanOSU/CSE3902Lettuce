@@ -13,6 +13,7 @@ using sprint0Real.Interfaces;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
+using sprint0Real.TreasureItemSprites;
 
 namespace sprint0Real.Collisions
 {
@@ -31,9 +32,10 @@ namespace sprint0Real.Collisions
             collisionCommands.Add(("Link", "Dragon"),  new LinkEnemyCommand());
             collisionCommands.Add(("Link", "Border"), new LinkBorderCommand());
             collisionCommands.Add(("Link", "RoomTransitionBox"), new RoomTransitionCommand());
+            collisionCommands.Add(("Enemy", "WoodSwordSprite"), new DamageEnemyCollisionCommand());
 
             collisionCommands.Add(("Link", "FireBall"), new LinkEnemyCommand());
-            collisionCommands.Add(("Link", "Map"), new LinkItemCollisionCommand());
+            collisionCommands.Add(("Link", "TreasureItem"), new LinkItemCollisionCommand());
             
             collisionCommands.Add(("Link", "BlockSpriteBlack"), new LinkBlockCollisionCommand2());
             collisionCommands.Add(("Link", "BlockSpriteBricks"), new LinkBlockCollisionCommand2());
@@ -56,8 +58,21 @@ namespace sprint0Real.Collisions
         public void HandleCollision(IObject objA, IObject objB)
         {
             //var key = (GetGeneralType(objA), GetGeneralType(objB));
+            string typeA = objA.GetType().Name;
+            string typeB;
+
             CollisionDirections direction = DetectCollisionDirection(objA, objB);
-            if (collisionCommands.TryGetValue((objA.GetType().Name.ToString(), objB.GetType().Name.ToString()), out ICollisionCommand2 command))
+
+            if (objB is ITreasureItems)
+            {
+                typeB = "TreasureItem"; //Generalized key for all treasure items
+            }
+            else
+            {
+                typeB = objB.GetType().Name;
+            }
+
+            if (collisionCommands.TryGetValue((typeA, typeB), out ICollisionCommand2 command))
             {
                 command.Execute(objA, objB, direction);
             }

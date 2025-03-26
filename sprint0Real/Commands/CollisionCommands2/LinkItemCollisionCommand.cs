@@ -5,9 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using sprint0Real.Collisions;
 using sprint0Real.Interfaces;
-using sprint0Real.ItemTempSprites;
-using sprint0Real.Levels;
 using sprint0Real.TreasureItemSprites;
+using sprint0Real.Levels;
 
 namespace sprint0Real.Commands.CollisionCommands2
 {

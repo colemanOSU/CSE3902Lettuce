@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using sprint0Real.Collisions;
 using sprint0Real.Interfaces;
-using sprint0Real.ItemTempSprites;
+using sprint0Real.TreasureItemSprites;
 
 namespace sprint0Real.Commands
 {

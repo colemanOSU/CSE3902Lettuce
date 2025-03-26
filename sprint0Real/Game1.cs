@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using sprint0Real.Controllers;
 using sprint0Real.EnemyStuff;
-using sprint0Real.ItemTempSprites;
+using sprint0Real.TreasureItemSprites;
 using sprint0Real.GameState;
 using sprint0Real.Collisions;
 using sprint0Real.LinkStuff;
