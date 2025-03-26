@@ -4,12 +4,13 @@ using Microsoft.Xna.Framework.Input;
 using sprint0Real.Interfaces;
 using sprint0Real.TreasureItemSprites;
 
-namespace sprint0Real.ItemTempSprites
+namespace sprint0Real.TreasureItemSprites
 {
-    public class ContainerHeart : IItemtemp
+    public class ContainerHeart : ITreasureItems
     {
         public Rectangle sourceRectangle = new Rectangle(25, 1, 13, 13);
         public Rectangle destinationRectangle;
+        public bool IsActive { get; set; } = true;
 
         public Texture2D _texture;
 
@@ -21,7 +22,14 @@ namespace sprint0Real.ItemTempSprites
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
+            if (IsActive)
+            {
+                spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
+            }
+        }
+        public void CollectItem()
+        {
+            IsActive = false;
         }
 
         public void Update(GameTime gametime)

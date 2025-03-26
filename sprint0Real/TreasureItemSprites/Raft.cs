@@ -4,24 +4,31 @@ using Microsoft.Xna.Framework.Input;
 using sprint0Real.Interfaces;
 using sprint0Real.TreasureItemSprites;
 
-namespace sprint0Real.ItemTempSprites
+namespace sprint0Real.TreasureItemSprites
 {
-    public class Raft : IItemtemp
+    public class Raft : ITreasureItems
     {
         public Rectangle sourceRectangle = new Rectangle(193, 0, 14, 16);
         public Rectangle destinationRectangle;
 
         public Texture2D _texture;
+        public bool IsActive { get; set; } = true;
 
         public Raft(Vector2 pos)
         {
             destinationRectangle = new Rectangle((int)pos.X, (int)pos.Y, 56, 64);
             _texture = TreasureItemSpriteFactory.Instance.GetItemSpriteSheet();
         }
-
+        public void CollectItem()
+        {
+            IsActive = false;
+        }
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
+            if (IsActive)
+            {
+                spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
+            }
         }
 
         public void Update(GameTime gametime)
