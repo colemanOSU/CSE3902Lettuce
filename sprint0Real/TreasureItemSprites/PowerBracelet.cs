@@ -6,22 +6,29 @@ using sprint0Real.TreasureItemSprites;
 
 namespace sprint0Real.ItemTempSprites
 {
-    public class PowerBracelet : IItemtemp
+    public class PowerBracelet : ITreasureItems
     {
         public Rectangle sourceRectangle = new Rectangle(175, 1, 9, 14);
         public Rectangle destinationRectangle;
 
         public Texture2D _texture;
+        public bool IsActive { get; set; } = true;
 
         public PowerBracelet(Vector2 pos)
         {
             destinationRectangle = new Rectangle((int)pos.X, (int)pos.Y, 36, 56);
             _texture = TreasureItemSpriteFactory.Instance.GetItemSpriteSheet();
         }
-
+        public void CollectItem()
+        {
+            IsActive = false;
+        }
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
+            if (IsActive)
+            {
+                spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
+            }
         }
 
         public void Update(GameTime gametime)

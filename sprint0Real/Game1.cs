@@ -59,13 +59,14 @@ namespace sprint0Real
         //temp
 
         public IBlock currentBlock;
-        public IItemtemp currentItem;
+        public ITreasureItems currentItem;
 
         List<IController> controllerList;
 
         public ILinkState LinkState;
 
         public CollisionDetection collisionDetection;
+        public CollisionHandler collisionHandler;
 
         private ItemStateMachine itemStateMachine;
 
@@ -131,6 +132,7 @@ namespace sprint0Real
             LinkState = new LinkStateMachine(Link);
             itemStateMachine = new ItemStateMachine(this);
 
+            collisionHandler = new CollisionHandler(this);
             //collisionDetection = new CollisionDetection(this);
 
             base.Initialize();
@@ -141,6 +143,7 @@ namespace sprint0Real
         protected override void LoadContent()
         {
             titleScreen.LoadContent(GraphicsDevice, Content);
+            collisionHandler.LoadContent(Content);
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             
             font1 = Content.Load<SpriteFont>("MyMenuFont");
@@ -332,7 +335,7 @@ namespace sprint0Real
             currentItemIndex = 1;
             LinkState = new LinkStateMachine(Link);
 
-            collisionDetection = new CollisionDetection(this);
+            collisionDetection = new CollisionDetection(this, collisionHandler);
   
 
             //Update with other objects in game...

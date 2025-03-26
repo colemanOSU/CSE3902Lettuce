@@ -6,12 +6,13 @@ using sprint0Real.TreasureItemSprites;
 
 namespace sprint0Real.ItemTempSprites
 {
-    public class StepLadder : IItemtemp
+    public class StepLadder : ITreasureItems
     {
         public Rectangle sourceRectangle = new Rectangle(208, 0, 16, 16);
         public Rectangle destinationRectangle;
 
         public Texture2D _texture;
+        public bool IsActive { get; set; } = true;
 
         public StepLadder(Vector2 pos)
         {
@@ -21,9 +22,15 @@ namespace sprint0Real.ItemTempSprites
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
+            if (IsActive)
+            {
+                spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
+            }
         }
-
+        public void CollectItem()
+        {
+            IsActive = false;
+        }
         public void Update(GameTime gametime)
         {
             //nothing, static

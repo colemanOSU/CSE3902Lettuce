@@ -6,10 +6,11 @@ using sprint0Real.TreasureItemSprites;
 
 namespace sprint0Real.ItemTempSprites
 {
-    public class Arrow : IItemtemp
+    public class Arrow : ITreasureItems
     {
         public Rectangle sourceRectangle = new Rectangle(154, 0, 5, 16);
         public Rectangle destinationRectangle;
+        public bool IsActive { get; set; } = true;
 
         public Texture2D _texture;
 
@@ -19,9 +20,17 @@ namespace sprint0Real.ItemTempSprites
             destinationRectangle = new Rectangle((int)position.X, (int)position.Y, 20, 64);
         }
 
+        public void CollectItem()
+        {
+            IsActive = false;
+        }
+
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
+            if (IsActive)
+            {
+                spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
+            }
         }
 
         public void Update(GameTime gametime)

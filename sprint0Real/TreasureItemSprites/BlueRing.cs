@@ -6,10 +6,11 @@ using sprint0Real.TreasureItemSprites;
 
 namespace sprint0Real.ItemTempSprites
 {
-    public class BlueRing : IItemtemp
+    public class BlueRing : ITreasureItems
     {
         public Rectangle sourceRectangle = new Rectangle(169, 19, 7, 9);
         public Rectangle destinationRectangle;
+        public bool IsActive { get; set; } = true;
 
         public Texture2D _texture;
 
@@ -18,10 +19,17 @@ namespace sprint0Real.ItemTempSprites
             destinationRectangle = new Rectangle((int)pos.X, (int)pos.Y, 28, 36);
             _texture = TreasureItemSpriteFactory.Instance.GetItemSpriteSheet();
         }
+        public void CollectItem()
+        {
+            IsActive = false;
+        }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
+            if (IsActive)
+            {
+                spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
+            }
         }
 
         public void Update(GameTime gametime)

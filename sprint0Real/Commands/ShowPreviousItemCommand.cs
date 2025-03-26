@@ -10,7 +10,7 @@ namespace sprint0Real.Commands
 {
     public class ShowPreviousItemCommand : ICommand
     {
-        private Dictionary<int, IItemtemp> tempItems;
+        private Dictionary<int, ITreasureItems> tempItems;
         private Game1 _game;
         private Texture2D _texture;
         private int _currentItem;
@@ -22,7 +22,7 @@ namespace sprint0Real.Commands
             _texture = itemTexture;
             _position = new Vector2(0, 0);
 
-            tempItems = new Dictionary<int, IItemtemp>()
+            tempItems = new Dictionary<int, ITreasureItems>()
             {
                 { 4, new Clock(_position) },
                 { 6, new FiveRupies(_position) },

@@ -7,7 +7,7 @@ using sprint0Real.TreasureItemSprites;
 
 namespace sprint0Real.ItemTempSprites
 {
-    public class Heart : IItemtemp
+    public class Heart : ITreasureItems
     {
         private int frameWidth = 7;
         private int frameHeight = 8;
@@ -16,6 +16,7 @@ namespace sprint0Real.ItemTempSprites
         private double timePerFrame = 150;
         private Rectangle currentFrame;
         public Rectangle destinationRectangle;
+        public bool IsActive { get; set; } = true;
 
         public Texture2D _texture;
 
@@ -25,10 +26,17 @@ namespace sprint0Real.ItemTempSprites
             _texture = TreasureItemSpriteFactory.Instance.GetItemSpriteSheet();
             currentFrame = new Rectangle(0, 0, frameWidth, frameHeight);
         }
+        public void CollectItem()
+        {
+            IsActive = false;
+        }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_texture, destinationRectangle, currentFrame, Color.White);
+            if (IsActive)
+            {
+                spriteBatch.Draw(_texture, destinationRectangle, currentFrame, Color.White);
+            }
         }
 
         public void Update(GameTime gametime)
