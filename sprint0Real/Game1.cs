@@ -52,7 +52,8 @@ namespace sprint0Real
         public MenuUI MenuUISprite;
         public IUI PauseUISprite;
 
-        public ILinkSprite weaponItems;
+        public ILinkSprite weaponItemsA;
+        public ILinkSprite weaponItemsB;
 
         //temp
         public IItem tempItem;
@@ -132,7 +133,7 @@ namespace sprint0Real
             currentGameState = GameStates.TitleScreen;
             titleScreen = new TitleScreen();
             LinkState = new LinkStateMachine(Link);
-            itemStateMachine = new ItemStateMachine(this);
+            itemStateMachine = new ItemStateMachine(this, Link.GetInventory());
 
             collisionHandler = new CollisionHandler(this);
             //collisionDetection = new CollisionDetection(this);
@@ -206,6 +207,7 @@ namespace sprint0Real
                         UISprite.Update(gameTime, Link);
 
                     }
+
                     break;
 
                 case GameStates.MenuTransition:
@@ -216,6 +218,7 @@ namespace sprint0Real
                 case GameStates.GamePlay:
 
                     itemStateMachine.setActive();
+                    Link.Update(gameTime);
 
                     foreach (IController controller in controllerList)
                      {
@@ -237,6 +240,7 @@ namespace sprint0Real
 
                     Link.ApplyMomentum();
                     CurrentMap.Instance.Update(gameTime);
+                    
 
                     break;
             }
@@ -346,7 +350,8 @@ namespace sprint0Real
             UISprite = new UI(UISheet);
             MenuUISprite = new MenuUI(UISheet);
             PauseUISprite = new PauseUI(UISheet);
-            weaponItems = new NullSprite(linkSheet, this);
+            weaponItemsA = new NullSprite(linkSheet, this);
+            weaponItemsB = new NullSprite(linkSheet, this);
             currentBlockIndex = 1;
             Link = new Link(this);
             currentItemIndex = 1;

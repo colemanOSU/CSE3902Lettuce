@@ -12,7 +12,7 @@ namespace sprint0Real.Commands
     public class AttackCommand : ICommand
     {
         private Game1 myGame;
-        private int itemSelection;
+        private bool useItem = false;
         public AttackCommand(Game1 game)
         {
             myGame = game;
@@ -28,16 +28,16 @@ namespace sprint0Real.Commands
                 switch (myGame.Link.GetFacing())
                 {
                     case Link.Direction.Left:
-                        myGame.linkSprite = new UseLeftSprite(myGame.linkSheet, myGame);
+                        myGame.linkSprite = new UseLeftSprite(myGame.linkSheet, myGame, useItem);
                         break;
                     case Link.Direction.Right:
-                        myGame.linkSprite = new UseRightSprite(myGame.linkSheet, myGame);
+                        myGame.linkSprite = new UseRightSprite(myGame.linkSheet, myGame, useItem);
                         break;
                     case Link.Direction.Up:
-                        myGame.linkSprite = new UseUpSprite(myGame.linkSheet, myGame);
+                        myGame.linkSprite = new UseUpSprite(myGame.linkSheet, myGame, useItem);
                         break;
                     case Link.Direction.Down:
-                        myGame.linkSprite = new UseDownSprite(myGame.linkSheet, myGame);
+                        myGame.linkSprite = new UseDownSprite(myGame.linkSheet, myGame, useItem);
                         break;
                 }
                 

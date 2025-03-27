@@ -161,7 +161,7 @@ namespace sprint0Real.Items.ItemSprites
             {
                 myGame.Link.SetCanMove(true);
                 myGame.Link.SetCanAttack(true);
-                myGame.weaponItems = new NullSprite(_texture, myGame);
+                myGame.weaponItemsB = new NullSprite(_texture, myGame);
             }
         }
 
