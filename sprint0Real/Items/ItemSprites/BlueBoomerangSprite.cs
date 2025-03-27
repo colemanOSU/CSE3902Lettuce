@@ -93,7 +93,7 @@ namespace sprint0Real.Items.ItemSprites
             _position += velocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (isReturning && Vector2.Distance(_position, _finalPos) < 5f)
             {
-                myGame.weaponItems = new NullSprite(_texture, myGame);
+                myGame.weaponItemsB = new NullSprite(_texture, myGame);
             }
             if (_timer > _frameSpeed)
             {

@@ -24,15 +24,16 @@ namespace sprint0Real.LinkStuff.LinkSprites
         private bool flag = false;
         private Rectangle sourceRectangle = new(141, 11, 16, 16);
         private Rectangle destinationRectangle;
+        private bool _useItem;
 
 
-
-        public UseUpSprite(Texture2D texture, Game1 game)
+        public UseUpSprite(Texture2D texture, Game1 game, bool useItem)
         {
             _texture = texture;
             myGame = game;
             _timer = 0;
             destinationRectangle = myGame.Link.GetLocation();
+            _useItem = useItem;
         }
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -41,7 +42,8 @@ namespace sprint0Real.LinkStuff.LinkSprites
                 switch (_currentFrame)
                 {
                     case 1:
-                        myGame.Link.DrawWeaponSprite();
+                        if (_useItem) myGame.Link.DrawItemSprite();
+                        else myGame.Link.DrawWeaponSprite();
                         break;
                     case 2:
                         sourceRectangle = new(69, 11, 16, 16);

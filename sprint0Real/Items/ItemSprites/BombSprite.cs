@@ -87,7 +87,7 @@ namespace sprint0Real.Items.ItemSprites
                 {
                     isAnimating = false;
                     animationComplete = true;
-                    myGame.weaponItems = new NullSprite(_texture, myGame);
+                    myGame.weaponItemsB = new NullSprite(_texture, myGame);
                 }
             }
         }

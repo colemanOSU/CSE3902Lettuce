@@ -7,6 +7,8 @@ using sprint0Real.Levels;
 using System;
 using sprint0Real.TreasureItemSprites;
 using System.Diagnostics;
+using sprint0Real.LinkStuff;
+using static sprint0Real.LinkStuff.Inventory;
 
 namespace sprint0Real.LinkSprites
 {
@@ -15,6 +17,7 @@ namespace sprint0Real.LinkSprites
     //to play based on the properties of both
     internal class ItemStateMachine
     {
+        /*
         public enum Item
         {
             WoodSword,
@@ -28,42 +31,29 @@ namespace sprint0Real.LinkSprites
             Fire,
             MagicSword
         }
-        private Item CurrentItem;
+        */
+        private Inventory inventory;
+        private Inventory.Items currentItem;
+        private Inventory.Swords currentSwords;
         private int index;
         private Game1 myGame;
-        public ItemStateMachine(Game1 game)
+        public ItemStateMachine(Game1 game, Inventory inv)
         {
             myGame = game;
-            CurrentItem = Item.WoodSword;
             index = 0;
+            inventory = inv;
+            currentItem = inventory.CurrentItem;
+            currentSwords = inventory.CurrentSword;
         }
-        public void nextItem()
+        public void UpdateEquippedItems()
         {
-            if (index == 8)
-            {
-                index = 0;
-            }
-            else
-            {
-                index += 1;
-            }
-            CurrentItem = (Item)index;
-        }
-        public void lastItem()
-        {
-            if (index == 0)
-            {
-                index = 8;
-            }
-            else
-            {
-                index -= 1;
-            }
-            CurrentItem = (Item)index;
+            currentItem = inventory.CurrentItem;
+            currentSwords = inventory.CurrentSword;
+            //System.Diagnostics.Debug.WriteLine($"Updated currentItem: {currentItem}");
         }
         public void SetItem(int num,Game1 game)
         {
-
+            /*
             switch (num)
             {
                 case 1:
@@ -97,81 +87,103 @@ namespace sprint0Real.LinkSprites
                     CurrentItem = Item.MagicSword;
                     break;
             }
+            */
 
         }
         public void setActive()
         {
-            if (myGame.weaponItems is NullSprite)
+            if (myGame.weaponItemsA is NullSprite)
             {
-                myGame.weaponItems.Disable();
+                myGame.weaponItemsA.Disable();
             }
             else
             {
-                myGame.weaponItems.Activate();
+                myGame.weaponItemsA.Activate();
+            }
+            if (myGame.weaponItemsB is NullSprite)
+            {
+                myGame.weaponItemsB.Disable();
+            }
+            else
+            {
+                myGame.weaponItemsB.Activate();
             }
         }
 
         public void DrawWeaponSprite()
         {
-            CurrentMap.Instance.ObjectList().RemoveAll(obj => obj is ILinkSprite && obj != myGame.weaponItems);
-            if (myGame.weaponItems != null && myGame.weaponItems.GetType() == GetWeaponType(CurrentItem))
+            CurrentMap.Instance.ObjectList().RemoveAll(obj => obj is ILinkSprite && obj != myGame.weaponItemsA);
+            CurrentMap.Instance.ObjectList().RemoveAll(obj => obj is ILinkSprite && obj != myGame.weaponItemsB);
+            /*if (myGame.weaponItems != null && myGame.weaponItems.GetType() == GetWeaponType(currentSwords))
             {
                 return; 
-            }
+            }*/
 
-            if (myGame.weaponItems != null && !(myGame.weaponItems is NullSprite))
+            if (myGame.weaponItemsA != null && !(myGame.weaponItemsA is NullSprite))
             {
-                CurrentMap.Instance.ObjectList().Remove(myGame.weaponItems);
-                Debug.WriteLine($"Removed old weapon: {myGame.weaponItems.GetType().Name}");
+                CurrentMap.Instance.ObjectList().Remove(myGame.weaponItemsA);
+                Debug.WriteLine($"Removed old weapon: {myGame.weaponItemsA.GetType().Name}");
             }
+            
 
-            ILinkSprite newWeapon = CreateWeaponInstance(CurrentItem);
+            ILinkSprite newWeapon = CreateWeaponInstance(currentSwords);
 
             if (newWeapon != null)
             {
-                myGame.weaponItems = newWeapon;
+                myGame.weaponItemsA = newWeapon;
 
-                if (!CurrentMap.Instance.ObjectList().Contains(myGame.weaponItems))
+                if (!CurrentMap.Instance.ObjectList().Contains(myGame.weaponItemsA))
                 {
-                    CurrentMap.Instance.ObjectList().Add(myGame.weaponItems);
-                    Debug.WriteLine($"Added new weapon: {myGame.weaponItems.GetType().Name}");
+                    CurrentMap.Instance.ObjectList().Add(myGame.weaponItemsA);
+                    Debug.WriteLine($"Added new weapon: {myGame.weaponItemsA.GetType().Name}");
                 }
             }
         }
-
-
-
-        private Type GetWeaponType(Item item)
+        public void DrawItemSprite()
         {
-            return item switch
+            CurrentMap.Instance.ObjectList().RemoveAll(obj => obj is ILinkSprite && obj != myGame.weaponItemsA);
+
+            CurrentMap.Instance.ObjectList().RemoveAll(obj => obj is ILinkSprite && obj != myGame.weaponItemsB);
+            if (myGame.weaponItemsB != null && !(myGame.weaponItemsB is NullSprite))
             {
-                Item.WoodSword => typeof(WoodSwordSprite),
-                Item.Whitesword => typeof(WhiteSwordSprite),
-                Item.MagicRod => typeof(MagicRod),
-                Item.WoodArrow => typeof(WoodArrow),
-                Item.BlueArrow => typeof(BlueArrowSprite),
-                Item.WoodBoomerang => typeof(WoodBoomerangSprite),
-                Item.BlueBoomerang => typeof(BlueBoomerangSprite),
-                Item.Bomb => typeof(BombSprite),
-                Item.Fire => typeof(FireSprite),
-                _ => typeof(NullSprite),
+                CurrentMap.Instance.ObjectList().Remove(myGame.weaponItemsB);
+                Debug.WriteLine($"Removed old weapon: {myGame.weaponItemsB.GetType().Name}");
+            }
+
+            ILinkSprite newItem = CreateItemInstance(currentItem);
+            if (newItem != null)
+            {
+                myGame.weaponItemsB = newItem;
+
+              if (!CurrentMap.Instance.ObjectList().Contains(myGame.weaponItemsB))
+                {
+                    CurrentMap.Instance.ObjectList().Add(myGame.weaponItemsB);
+                    Debug.WriteLine($"Added new weapon: {myGame.weaponItemsB.GetType().Name}");
+                }
+            }
+        }
+                  
+   
+        private ILinkSprite CreateWeaponInstance(Inventory.Swords sword)
+        {
+            return sword switch
+            {
+                Inventory.Swords.Wood_Sword => new WoodSwordSprite(myGame.linkSheet,myGame),
+                Inventory.Swords.White_Sword => new WhiteSwordSprite(myGame.linkSheet, myGame),
+                _ => new NullSprite(myGame.linkSheet, myGame),
             };
         }
-
-   
-        private ILinkSprite CreateWeaponInstance(Item item)
+        private ILinkSprite CreateItemInstance(Inventory.Items item)
         {
             return item switch
             {
-                Item.WoodSword => new WoodSwordSprite(myGame.linkSheet,myGame),
-                Item.Whitesword => new WhiteSwordSprite(myGame.linkSheet, myGame),
-                Item.MagicRod => new MagicRod(myGame.linkSheet, myGame),
-                Item.WoodArrow => new WoodArrow(myGame.linkSheet, myGame),
-                Item.BlueArrow => new BlueArrowSprite(myGame.linkSheet, myGame),
-                Item.WoodBoomerang => new WoodBoomerangSprite(myGame.linkSheet, myGame),
-                Item.BlueBoomerang => new BlueBoomerangSprite(myGame.linkSheet, myGame),
-                Item.Bomb => new BombSprite(myGame.linkSheet, myGame),
-                Item.Fire => new FireSprite(myGame.linkSheet, myGame),
+                //Inventory.Items.MagicRod => new MagicRod(myGame.linkSheet, myGame),
+                Inventory.Items.Arrow => new WoodArrow(myGame.linkSheet, myGame),
+                Inventory.Items.Silver_Arrow => new BlueArrowSprite(myGame.linkSheet, myGame),
+                Inventory.Items.Boomerang => new WoodBoomerangSprite(myGame.linkSheet, myGame),
+                Inventory.Items.M_Boomerang => new BlueBoomerangSprite(myGame.linkSheet, myGame),
+                Inventory.Items.Bomb => new BombSprite(myGame.linkSheet, myGame),
+                // Inventory.Items.Fire => new FireSprite(myGame.linkSheet, myGame),
                 _ => new NullSprite(myGame.linkSheet, myGame),
             };
         }
