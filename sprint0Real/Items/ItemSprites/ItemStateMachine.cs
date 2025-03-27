@@ -122,7 +122,7 @@ namespace sprint0Real.LinkSprites
             if (myGame.weaponItemsA != null && !(myGame.weaponItemsA is NullSprite))
             {
                 CurrentMap.Instance.ObjectList().Remove(myGame.weaponItemsA);
-                Debug.WriteLine($"Removed old weapon: {myGame.weaponItemsA.GetType().Name}");
+                //Debug.WriteLine($"Removed old weapon: {myGame.weaponItemsA.GetType().Name}");
             }
             
 
@@ -135,7 +135,7 @@ namespace sprint0Real.LinkSprites
                 if (!CurrentMap.Instance.ObjectList().Contains(myGame.weaponItemsA))
                 {
                     CurrentMap.Instance.ObjectList().Add(myGame.weaponItemsA);
-                    Debug.WriteLine($"Added new weapon: {myGame.weaponItemsA.GetType().Name}");
+                    //Debug.WriteLine($"Added new weapon: {myGame.weaponItemsA.GetType().Name}");
                 }
             }
         }
@@ -147,7 +147,8 @@ namespace sprint0Real.LinkSprites
             if (myGame.weaponItemsB != null && !(myGame.weaponItemsB is NullSprite))
             {
                 CurrentMap.Instance.ObjectList().Remove(myGame.weaponItemsB);
-                Debug.WriteLine($"Removed old weapon: {myGame.weaponItemsB.GetType().Name}");
+                //
+                //Debug.WriteLine($"Removed old weapon: {myGame.weaponItemsB.GetType().Name}");
             }
 
             ILinkSprite newItem = CreateItemInstance(currentItem);
@@ -158,7 +159,7 @@ namespace sprint0Real.LinkSprites
               if (!CurrentMap.Instance.ObjectList().Contains(myGame.weaponItemsB))
                 {
                     CurrentMap.Instance.ObjectList().Add(myGame.weaponItemsB);
-                    Debug.WriteLine($"Added new weapon: {myGame.weaponItemsB.GetType().Name}");
+                    //Debug.WriteLine($"Added new weapon: {myGame.weaponItemsB.GetType().Name}");
                 }
             }
         }
