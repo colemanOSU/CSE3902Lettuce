@@ -20,6 +20,7 @@ namespace sprint0Real.Commands.CollisionCommands2
             }
             if (Item is ITreasureItems item)
             {
+                item.CollectItem();
                 CurrentMap.Instance.DeStage(item);
             }
         }

@@ -18,7 +18,6 @@ namespace sprint0Real.TreasureItemSprites
         private Rectangle currentFrame;
         public Rectangle destinationRectangle;
         private int frameXOffset = 72;
-        public bool IsActive { get; set; } = true;
 
         public Texture2D _texture;
 
@@ -30,14 +29,11 @@ namespace sprint0Real.TreasureItemSprites
         }
         public void CollectItem()
         {
-            IsActive = false;
+
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (IsActive)
-            {
-                spriteBatch.Draw(_texture, destinationRectangle, currentFrame, Color.White);
-            }
+            spriteBatch.Draw(_texture, destinationRectangle, currentFrame, Color.White);
         }
 
         public void Update(GameTime gametime)

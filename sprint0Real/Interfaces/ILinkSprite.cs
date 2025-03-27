@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace sprint0Real.Interfaces
 {
-    public interface ILinkSprite : IGameObject
+    public interface ILinkSprite : IGameObject, ILinkHitboxes
     {
         public bool IsActive { get;
         }

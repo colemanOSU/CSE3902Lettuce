@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
+using Microsoft.Xna.Framework.Media;
+
 namespace sprint0Real.GameState
 {
     //NOTE FROM KELLY:
@@ -24,6 +26,7 @@ namespace sprint0Real.GameState
         private float _frameSpeed = 0.2f;
         private int _currentFrame = 0;
         private Texture2D title;
+        private Song introSong;
         private Rectangle sourceRectangle;
         private Rectangle destinationRectangle;
         public bool isAnimating = false;
@@ -32,6 +35,8 @@ namespace sprint0Real.GameState
         public void LoadContent(GraphicsDevice graphicsDevice, ContentManager content)
         {
             title = content.Load<Texture2D>("TitleScreen");
+            introSong = content.Load<Song>("01 - Intro");
+
         }
 
         public GameStates Update(GameTime gameTime, Game1 game)
@@ -39,6 +44,12 @@ namespace sprint0Real.GameState
             currentKeyState = Keyboard.GetState();
             mouseState = Mouse.GetState();
             _game = game;
+
+            if (MediaPlayer.State != MediaState.Playing)
+            {
+                MediaPlayer.Play(introSong);
+                MediaPlayer.IsRepeating = true; // Keep it looping if desired
+            }
 
             if (currentKeyState.IsKeyDown(Keys.Q))
             {
@@ -63,6 +74,7 @@ namespace sprint0Real.GameState
                     if (_currentFrame >= frameCount)
                     {
                     _currentFrame = 0;
+                    MediaPlayer.Stop();
                     return GameStates.GamePlay;
                 }
                 }

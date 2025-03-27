@@ -12,7 +12,6 @@ namespace sprint0Real.TreasureItemSprites
         public Rectangle destinationRectangle;
 
         public Texture2D _texture;
-        public bool IsActive { get; set; } = true;
 
         public Recorder(Vector2 pos)
         {
@@ -22,14 +21,11 @@ namespace sprint0Real.TreasureItemSprites
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (IsActive)
-            {
-                spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
-            }
+            spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
         }
         public void CollectItem()
         {
-            IsActive = false;
+
         }
         public void Update(GameTime gametime)
         {
