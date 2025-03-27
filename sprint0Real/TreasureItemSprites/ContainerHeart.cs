@@ -1,15 +1,18 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using sprint0Real.Interfaces;
 using sprint0Real.TreasureItemSprites;
 
-namespace sprint0Real.ItemTempSprites
+namespace sprint0Real.TreasureItemSprites
 {
-    public class ContainerHeart : IItemtemp
+    public class ContainerHeart : ITreasureItems
     {
         public Rectangle sourceRectangle = new Rectangle(25, 1, 13, 13);
         public Rectangle destinationRectangle;
+        public SoundEffect ContainerHeartPickedUp;
+        public bool IsActive { get; set; } = true;
 
         public Texture2D _texture;
 
@@ -17,11 +20,19 @@ namespace sprint0Real.ItemTempSprites
         {
             destinationRectangle = new Rectangle((int)pos.X, (int)pos.Y, 52, 52);
             _texture = TreasureItemSpriteFactory.Instance.GetItemSpriteSheet();
+            ContainerHeartPickedUp = TreasureItemSpriteFactory.Instance.GetSoundEffect("ContainerHeart");
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
+            if (IsActive)
+            {
+                spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
+            }
+        }
+        public void CollectItem()
+        {
+            ContainerHeartPickedUp.Play();
         }
 
         public void Update(GameTime gametime)

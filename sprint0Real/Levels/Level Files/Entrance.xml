@@ -8,8 +8,9 @@
 	<Objects>
 		<Object Type="Dragon" x="0" y="0"/>
 		<Object Type="Dragon" x="100" y="100"/>
-		<Object Type="BlackBlock" x="200" y="200"/>
-		<Object Type="Map" x="400" y="400"/>
+		<Object Type="NavyBlock" x="200" y="200"/>
+		<Object Type="Map" x="350" y="350"/>
+		<Object Type="ContainerHeart" x="500" y="200"/>
 	</Objects>
 	
 	<MapHitBoxes>

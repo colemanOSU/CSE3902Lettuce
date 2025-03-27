@@ -4,9 +4,9 @@ using Microsoft.Xna.Framework.Input;
 using sprint0Real.Interfaces;
 using sprint0Real.TreasureItemSprites;
 
-namespace sprint0Real.ItemTempSprites
+namespace sprint0Real.TreasureItemSprites
 {
-    public class Compass : IItemtemp
+    public class Compass : ITreasureItems
     {
         public Rectangle sourceRectangle = new Rectangle(258, 1, 11, 12);
         public Rectangle destinationRectangle;
@@ -24,6 +24,10 @@ namespace sprint0Real.ItemTempSprites
             spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);
         }
 
+        public void CollectItem()
+        {
+
+        }
         public void Update(GameTime gametime)
         {
             //nothing, static

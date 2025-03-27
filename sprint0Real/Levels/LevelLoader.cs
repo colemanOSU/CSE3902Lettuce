@@ -13,6 +13,7 @@ using sprint0Real.EnemyStuff;
 using sprint0Real.EnemyStuff.DragonStuff;
 using System.Diagnostics;
 using sprint0Real.EnemyStuff.RedGoriya;
+using static Link;
 
 namespace sprint0Real.Levels
 {

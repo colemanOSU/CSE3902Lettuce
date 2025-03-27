@@ -4,9 +4,9 @@ using Microsoft.Xna.Framework.Input;
 using sprint0Real.Interfaces;
 using sprint0Real.TreasureItemSprites;
 
-namespace sprint0Real.ItemTempSprites
+namespace sprint0Real.TreasureItemSprites
 {
-    public class PowerBracelet : IItemtemp
+    public class PowerBracelet : ITreasureItems
     {
         public Rectangle sourceRectangle = new Rectangle(175, 1, 9, 14);
         public Rectangle destinationRectangle;
@@ -18,7 +18,10 @@ namespace sprint0Real.ItemTempSprites
             destinationRectangle = new Rectangle((int)pos.X, (int)pos.Y, 36, 56);
             _texture = TreasureItemSpriteFactory.Instance.GetItemSpriteSheet();
         }
+        public void CollectItem()
+        {
 
+        }
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, Color.White);

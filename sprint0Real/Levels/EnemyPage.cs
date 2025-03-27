@@ -51,7 +51,7 @@ namespace sprint0Real.Levels
 
         public String GetNeighbor(String direction)
         {
-            return Neighbors[direction];
+            return Neighbors.ContainsKey(direction) ? Neighbors[direction] : null;
         }
 
         public void Draw(SpriteBatch spriteBatch)

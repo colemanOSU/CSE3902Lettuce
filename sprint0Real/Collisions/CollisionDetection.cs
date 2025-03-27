@@ -18,17 +18,18 @@ namespace sprint0Real.Collisions
         private List<IObject> gameObjectsInRoom;
         private ILink link;
         //private CollisionHandler collisionHandler;
-        private CollisionHandler2 collisionHandler;
+        private CollisionHandler collisionHandler;
         public bool isWeaponActive = false;
         private Game1 game; //passing in game right now because need it for more commands, probably could take out if we alter how things are set up
         
         private Dictionary<(IObject, IObject), bool> executedCollisions = new Dictionary<(IObject, IObject), bool>(); // Track executed collisions
 
-        public CollisionDetection(Game1 game)
+        public CollisionDetection(Game1 game, CollisionHandler collisionHandler)
         {
             this.game = game;
             //collisionHandler = new CollisionHandler("Collisions/CollisionCommands.xml", game);
-            collisionHandler = new CollisionHandler2(game);
+            //collisionHandler = new CollisionHandler(game);
+            this.collisionHandler = collisionHandler;
         }
         public void Load(ILink Link)
         {
@@ -62,7 +63,10 @@ namespace sprint0Real.Collisions
                 // Enemies against Link Projectiles
                 foreach (ILinkHitboxes enemyDamage in gameObjectsInRoom.OfType<ILinkHitboxes>())
                 {
-                    collisionHandler.HandleCollision(enemy, enemyDamage);
+                    if (enemy.Rect.Intersects(enemyDamage.Rect))
+                    {
+                        collisionHandler.HandleCollision(enemy, enemyDamage);
+                    }
                 }
             }
            

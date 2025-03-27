@@ -5,10 +5,10 @@ using Microsoft.Xna.Framework.Input;
 using sprint0Real.Interfaces;
 using sprint0Real.TreasureItemSprites;
 
-namespace sprint0Real.ItemTempSprites
+namespace sprint0Real.TreasureItemSprites
 {
     //It's spelled Rupee but hell if I'm going to change it at this point.
-    public class Rupy : IItemtemp
+    public class Rupy : ITreasureItems
     {
         private int frameWidth = 8;
         private int frameHeight = 16;
@@ -27,7 +27,10 @@ namespace sprint0Real.ItemTempSprites
             _texture = TreasureItemSpriteFactory.Instance.GetItemSpriteSheet();
             currentFrame = new Rectangle(frameXOffset, 0, frameWidth, frameHeight);
         }
+        public void CollectItem()
+        {
 
+        }
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(_texture, destinationRectangle, currentFrame, Color.White);

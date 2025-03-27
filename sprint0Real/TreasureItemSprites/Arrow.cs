@@ -4,9 +4,9 @@ using Microsoft.Xna.Framework.Input;
 using sprint0Real.Interfaces;
 using sprint0Real.TreasureItemSprites;
 
-namespace sprint0Real.ItemTempSprites
+namespace sprint0Real.TreasureItemSprites
 {
-    public class Arrow : IItemtemp
+    public class Arrow : ITreasureItems
     {
         public Rectangle sourceRectangle = new Rectangle(154, 0, 5, 16);
         public Rectangle destinationRectangle;
@@ -17,6 +17,11 @@ namespace sprint0Real.ItemTempSprites
         {
             _texture = TreasureItemSpriteFactory.Instance.GetItemSpriteSheet();
             destinationRectangle = new Rectangle((int)position.X, (int)position.Y, 20, 64);
+        }
+
+        public void CollectItem()
+        {
+            
         }
 
         public void Draw(SpriteBatch spriteBatch)

@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using sprint0Real.Controllers;
 using sprint0Real.EnemyStuff;
-using sprint0Real.ItemTempSprites;
+using sprint0Real.TreasureItemSprites;
 using sprint0Real.GameState;
 using sprint0Real.Collisions;
 using sprint0Real.LinkStuff;
@@ -19,6 +19,8 @@ using System.Reflection.Metadata;
 using sprint0Real.TreasureItemSprites;
 using sprint0Real.LinkSprites;
 using sprint0Real.Commands;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
 
 namespace sprint0Real
 {
@@ -59,13 +61,14 @@ namespace sprint0Real
         //temp
 
         public IBlock currentBlock;
-        public IItemtemp currentItem;
+        public ITreasureItems currentItem;
 
         List<IController> controllerList;
 
         public ILinkState LinkState;
 
         public CollisionDetection collisionDetection;
+        public CollisionHandler collisionHandler;
 
         private ItemStateMachine itemStateMachine;
 
@@ -131,6 +134,7 @@ namespace sprint0Real
             LinkState = new LinkStateMachine(Link);
             itemStateMachine = new ItemStateMachine(this);
 
+            collisionHandler = new CollisionHandler(this);
             //collisionDetection = new CollisionDetection(this);
 
             base.Initialize();
@@ -141,9 +145,11 @@ namespace sprint0Real
         protected override void LoadContent()
         {
             titleScreen.LoadContent(GraphicsDevice, Content);
+            collisionHandler.LoadContent(Content);
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             
             font1 = Content.Load<SpriteFont>("MyMenuFont");
+
            
             //Load Sprite Sheets
             blockSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - Dungeon Tileset");
@@ -160,6 +166,20 @@ namespace sprint0Real
             ResetGame();
             collisionDetection.Load(Link);
             tempItem = null;
+            
+            //Uncomment for a cacaphony 
+
+            /*
+            // For mp3 files use song
+            Song song = Content.Load<Song>("01 - Intro");
+            MediaPlayer.Play(song);
+            // For .wav files use SoundEffect
+            SoundEffect soundEffect = Content.Load<SoundEffect>("LOZ_Secret");
+            // To make the soundEffect loop, make a soundEffectInstance
+            SoundEffectInstance soundEffectInstance = soundEffect.CreateInstance();
+            soundEffectInstance.IsLooped = true;
+            soundEffectInstance.Play();
+            */
         }
 
         protected override void Update(GameTime gameTime)
@@ -243,7 +263,6 @@ namespace sprint0Real
                     CurrentMap.Instance.Draw(_spriteBatch);
                     linkSprite.Draw(_spriteBatch);
                     UISprite.Draw(_spriteBatch);
-                    MenuUISprite.Draw(_spriteBatch);
 
                     PauseUISprite.Draw(_spriteBatch);
 
@@ -333,7 +352,7 @@ namespace sprint0Real
             currentItemIndex = 1;
             LinkState = new LinkStateMachine(Link);
 
-            collisionDetection = new CollisionDetection(this);
+            collisionDetection = new CollisionDetection(this, collisionHandler);
   
 
             //Update with other objects in game...

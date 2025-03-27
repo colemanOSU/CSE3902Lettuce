@@ -5,9 +5,11 @@ using sprint0Real.LinkSprites;
 using sprint0Real;
 using sprint0Real.LinkStuff;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Media;
 using System.Diagnostics;
 using sprint0Real.LinkStuff.LinkSprites;
 using System.Security.Cryptography;
+using Microsoft.Xna.Framework.Audio;
 public class Link : ILink
 {
     private Rectangle destinationRectangle;
@@ -19,6 +21,7 @@ public class Link : ILink
     private Color LinkSpriteColor;
     private Vector2 MomentumVector;
     public Texture2D linkSheet;
+    private SoundEffect linkHurt;
 
     public Inventory inventory;
 
@@ -47,6 +50,7 @@ public class Link : ILink
         isDamaged = false;
         MomentumVector = new Vector2(0, 0);
         inventory = new Inventory();
+        linkHurt = game.Content.Load<SoundEffect>("LOZ_Link_Hurt");
     }
     public void Damaged()
     {
@@ -58,6 +62,7 @@ public class Link : ILink
         {
             isDamaged = true;
             stateMachine?.DamageLink();
+            linkHurt.Play();
         }
     }
 

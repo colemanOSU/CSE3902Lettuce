@@ -5,9 +5,9 @@ using Microsoft.Xna.Framework.Input;
 using sprint0Real.Interfaces;
 using sprint0Real.TreasureItemSprites;
 
-namespace sprint0Real.ItemTempSprites
+namespace sprint0Real.TreasureItemSprites
 {
-    public class Fairy : IItemtemp
+    public class Fairy : ITreasureItems
     {
         private int frameWidth = 8;
         private int frameHeight = 16;
@@ -25,6 +25,10 @@ namespace sprint0Real.ItemTempSprites
             destinationRectangle = new Rectangle((int)pos.X, (int)pos.Y, 32, 64);
             _texture = TreasureItemSpriteFactory.Instance.GetItemSpriteSheet();
             currentFrame = new Rectangle(frameXOffset, 0, frameWidth, frameHeight);
+        }
+        public void CollectItem()
+        {
+
         }
 
         public void Draw(SpriteBatch spriteBatch)

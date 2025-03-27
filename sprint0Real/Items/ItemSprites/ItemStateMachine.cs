@@ -5,7 +5,7 @@ using sprint0Real.Items.ItemSprites;
 using System.Collections;
 using sprint0Real.Levels;
 using System;
-using sprint0Real.ItemTempSprites;
+using sprint0Real.TreasureItemSprites;
 using System.Diagnostics;
 
 namespace sprint0Real.LinkSprites
