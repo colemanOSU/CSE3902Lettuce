@@ -7,7 +7,7 @@ using System.Linq.Expressions;
 
 namespace sprint0Real.Items.ItemSprites
 {
-    internal class WoodSwordSprite : ILinkSprite, ILinkHitboxes
+    internal class WoodSwordSprite : ILinkSprite
     {
         public bool IsActive { get; private set; } = false; // Start inactive
 

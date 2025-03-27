@@ -21,7 +21,9 @@ namespace sprint0Real.Collisions
     {
         private Dictionary<(String, String), ICollisionCommand2> collisionCommands;
         private Game1 game;
-        private SoundEffect walkingOnStairs;
+        private SoundEffect playerHurt;
+        ContentManager _content;
+
 
         // Maybe make these strings
         public CollisionHandler(Game1 game)
@@ -32,12 +34,12 @@ namespace sprint0Real.Collisions
             collisionCommands.Add(("Link", "Dragon"),  new LinkEnemyCommand());
             collisionCommands.Add(("Link", "Border"), new LinkBorderCommand());
             collisionCommands.Add(("Link", "RoomTransitionBox"), new RoomTransitionCommand());
-            collisionCommands.Add(("Enemy", "WoodSwordSprite"), new DamageEnemyCollisionCommand());
+            //collisionCommands.Add(("Enemy", "LinkWeapon"), new DamageEnemyCollisionCommand()); TODO not working
 
             collisionCommands.Add(("Link", "FireBall"), new LinkEnemyCommand());
             collisionCommands.Add(("Link", "TreasureItem"), new LinkItemCollisionCommand());
             
-            collisionCommands.Add(("Link", "BlockSpriteBlack"), new LinkBlockCollisionCommand2());
+            collisionCommands.Add(("Link", "BlockSpriteBlack"), new LinkStairsCollisionCommand());
             collisionCommands.Add(("Link", "BlockSpriteBricks"), new LinkBlockCollisionCommand2());
             collisionCommands.Add(("Link", "BlockSpriteFloorBlock"), new LinkBlockCollisionCommand2());
             collisionCommands.Add(("Link", "BlockSpriteFloorTile"), new LinkBlockCollisionCommand2());
@@ -46,13 +48,15 @@ namespace sprint0Real.Collisions
             collisionCommands.Add(("Link", "BlockSpriteStatueFaceLeft"), new LinkBlockCollisionCommand2());
             collisionCommands.Add(("Link", "BlockSpriteStatueFaceRight"), new LinkBlockCollisionCommand2());
             collisionCommands.Add(("Link", "BlockSpriteStripes"), new LinkBlockCollisionCommand2());
-            //collisionCommands.Add(("Link", "BlockSpriteStairs"), new LinkStairsCollisionCommand());
+            collisionCommands.Add(("Link", "BlockSpriteStairs"), new LinkStairsCollisionCommand());
 
         }
-        
+
         public void LoadContent(ContentManager content)
         {
+            this._content = content;
             //TODO Load Audio for commands
+            playerHurt = content.Load<SoundEffect>("LOZ_Link_Hurt");
         }
 
         public void HandleCollision(IObject objA, IObject objB)

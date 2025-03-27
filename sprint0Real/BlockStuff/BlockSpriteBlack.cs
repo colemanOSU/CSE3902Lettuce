@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using sprint0Real.Interfaces;
@@ -13,6 +14,7 @@ namespace sprint0Real.BlockSprites
         public Rectangle sourceRectangle;
         public Rectangle destinationRectangle;
         public Vector2 position;
+        private SoundEffect stairsSound;
 
         public Texture2D texture;
 
@@ -23,6 +25,11 @@ namespace sprint0Real.BlockSprites
 
             sourceRectangle = new Rectangle(984, 28, width, height);
             destinationRectangle = new Rectangle((int)position.X, (int)position.Y, width * 3, height * 3);
+        }
+        public void TakeStairs()
+        {
+            stairsSound = BlockSpriteFactory.Instance.GetSoundEffect();
+            stairsSound.Play();
         }
 
         public void Draw(SpriteBatch spriteBatch)

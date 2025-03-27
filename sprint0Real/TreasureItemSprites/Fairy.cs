@@ -19,7 +19,6 @@ namespace sprint0Real.TreasureItemSprites
         private int frameXOffset = 40;
 
         public Texture2D _texture;
-        public bool IsActive { get; set; } = true;
 
         public Fairy(Vector2 pos)
         {
@@ -29,15 +28,12 @@ namespace sprint0Real.TreasureItemSprites
         }
         public void CollectItem()
         {
-            IsActive = false;
+
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (IsActive)
-            {
-                spriteBatch.Draw(_texture, destinationRectangle, currentFrame, Color.White);
-            }
+            spriteBatch.Draw(_texture, destinationRectangle, currentFrame, Color.White);
         }
 
         public void Update(GameTime gametime)
