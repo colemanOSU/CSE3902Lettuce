@@ -3,7 +3,7 @@
 	<Name>Level8</Name>
 	<Exterior>Insert</Exterior>
 	<Interior>Insert</Interior>
-	<Door Exterior ="Default" Interior ="Default" Left="Open" Right="Sealed" Up="Locked" Down="Locked"/>
+	<Door Exterior ="Default" Interior ="Default" Left="Sealed" Right="Open" Up="Default" Down="Locked"/>
 	
 	<Objects>
 		<Object Type="Dragon" x="0" y="0"/>
@@ -25,12 +25,13 @@
 
 		<HitBox Type="RoomTransitionBox" x="0" y="216" width="96" height="96"/>
 		<HitBox Type="RoomTransitionBox" x="672" y="216" width="96" height="96"/>
-		<HitBox Type="RoomTransitionBox" x="336" y="0" width="96" height="96"/>
-		<HitBox Type="Border" x="336" y="432" width="96" height="96"/>
+		<HitBox Type="Border" x="336" y="0" width="96" height="96"/>
+		<HitBox Type="RoomTransitionBox" x="336" y="432" width="96" height="96"/>
 	</MapHitBoxes>
 
 	<Neighbors>
-		<Neighbor Side="Right" Name="RightOfEntrance"/>
-		<Neighbor Side="Left" Name="LeftOfEntrance"/>
+		<Neighbor Side="Down" Name="Level6"/>
+		<Neighbor Side="Right" Name="Level3"/>
+		<Neighbor Side="Left" Name="Level11"/>
 	</Neighbors>
 </LevelData>

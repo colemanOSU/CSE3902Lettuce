@@ -32,5 +32,6 @@
 	<Neighbors>
 		<Neighbor Side="Right" Name="RightOfEntrance"/>
 		<Neighbor Side="Left" Name="LeftOfEntrance"/>
+		<Neighbor Side="Up" Name="Level1"/>
 	</Neighbors>
 </LevelData>

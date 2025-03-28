@@ -3,7 +3,7 @@
 	<Name>Level11</Name>
 	<Exterior>Insert</Exterior>
 	<Interior>Insert</Interior>
-	<Door Exterior ="Default" Interior ="Default" Left="Open" Right="Sealed" Up="Locked" Down="Locked"/>
+	<Door Exterior ="Default" Interior ="Default" Left="Default" Right="Open" Up="Default" Down="Default"/>
 	
 	<Objects>
 		<Object Type="Dragon" x="0" y="0"/>
@@ -30,7 +30,6 @@
 	</MapHitBoxes>
 
 	<Neighbors>
-		<Neighbor Side="Right" Name="RightOfEntrance"/>
-		<Neighbor Side="Left" Name="LeftOfEntrance"/>
+		<Neighbor Side="Right" Name="Level8"/>
 	</Neighbors>
 </LevelData>
