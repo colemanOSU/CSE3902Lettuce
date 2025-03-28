@@ -3,7 +3,7 @@
 	<Name>RightOfEntrance</Name>
 	<Exterior>Insert</Exterior>
 	<Interior>Insert</Interior>
-	<Door Exterior ="Default" Interior ="Default" Left="Sealed" Right="Open" Up="Sealed" Down="Sealed"/>
+	<Door Exterior ="Default" Interior ="Default" Left="Default" Right="Open" Up="Default" Down="Default"/>
 
 	<Objects>
 		<Object Type="Goriya" x="40" y="23"/>
@@ -23,7 +23,7 @@
 		<HitBox Type="Border" x="669" y="0" width="96" height="216"/>
 
 		<HitBox Type="Border" x="0" y="216" width="96" height="96"/>
-		<HitBox Type="RoomTransitionBox" x="672" y="216" width="80" height="96"/>
+		<HitBox Type="RoomTransitionBox" x="672" y="216" width="96" height="96"/>
 		<HitBox Type="Border" x="336" y="0" width="96" height="96"/>
 		<HitBox Type="Border" x="336" y="432" width="96" height="96"/>
 	</MapHitBoxes>
