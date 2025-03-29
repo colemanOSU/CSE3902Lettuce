@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using sprint0Real.CollisionBoxes;
 using sprint0Real.Collisions;
 using sprint0Real.Interfaces;
 using sprint0Real.Levels;
@@ -16,7 +17,7 @@ namespace sprint0Real.Commands.CollisionCommands2
         }
         public void Execute(IObject Link, IObject transitionBox, CollisionDirections direction)
         {
-            String neighbor = CurrentMap.Instance.GetNeighbor(direction.ToString());
+            String neighbor = CurrentMap.Instance.GetNeighbor(((RoomTransitionBox)transitionBox).Direction);
             EnemyPage nextMap = LevelLoader.Instance.RetrieveMap(neighbor);
             CurrentMap.Instance.SetMap(nextMap);
             collisionDetector.UpdateRoomObjects();

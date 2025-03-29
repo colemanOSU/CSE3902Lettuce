@@ -14,6 +14,7 @@ using sprint0Real.EnemyStuff.DragonStuff;
 using System.Diagnostics;
 using sprint0Real.EnemyStuff.RedGoriya;
 using static Link;
+using sprint0Real.CollisionBoxes;
 
 namespace sprint0Real.Levels
 {
@@ -48,12 +49,21 @@ namespace sprint0Real.Levels
                 }
                 foreach(XmlElement MapHitBox in xml.SelectNodes("//MapHitBoxes/HitBox"))
                 {
-                    Type type = Type.GetType(catalogue.ReturnObjectType(MapHitBox.GetAttribute("Type")));
+                    string boxType = MapHitBox.GetAttribute("Type");
+                    Type type = Type.GetType(catalogue.ReturnObjectType(boxType));
                     int x = Int32.Parse(MapHitBox.GetAttribute("x"));
                     int y = Int32.Parse(MapHitBox.GetAttribute("y")) + 186;
                     int width = Int32.Parse(MapHitBox.GetAttribute("width"));
                     int height = Int32.Parse(MapHitBox.GetAttribute("height"));
-                    newMap.Stage((ICollisionBoxes)Activator.CreateInstance(type, new Rectangle(x, y, width, height)));
+                    if (boxType == "RoomTransitionBox")
+                    {
+                        string direction = MapHitBox.GetAttribute("direction");
+                        newMap.Stage((RoomTransitionBox)Activator.CreateInstance(type, new Rectangle(x, y, width, height), direction));
+                    }
+                    else
+                    {
+                        newMap.Stage((ICollisionBoxes)Activator.CreateInstance(type, new Rectangle(x, y, width, height)));
+                    }
                 }
 
                 foreach(XmlElement Neighbor in xml.SelectNodes("//Neighbors/Neighbor"))
