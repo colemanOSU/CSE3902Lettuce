@@ -9,11 +9,17 @@ namespace sprint0Real.Commands.CollisionCommands2
 {
     public class RoomTransitionCommand : ICollisionCommand2
     {
+        CollisionDetection collisionDetector;
+        public RoomTransitionCommand(CollisionDetection collisionDetector) 
+        { 
+            this.collisionDetector = collisionDetector;
+        }
         public void Execute(IObject Link, IObject transitionBox, CollisionDirections direction)
         {
             String neighbor = CurrentMap.Instance.GetNeighbor(direction.ToString());
             EnemyPage nextMap = LevelLoader.Instance.RetrieveMap(neighbor);
             CurrentMap.Instance.SetMap(nextMap);
+            collisionDetector.UpdateRoomObjects();
             // Adjust this to be right
             ((Link)Link).SetLocation(new Rectangle(200, 300, 50, 50));
         }

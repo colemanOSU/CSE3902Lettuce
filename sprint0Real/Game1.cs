@@ -135,8 +135,8 @@ namespace sprint0Real
             LinkState = new LinkStateMachine(Link);
             itemStateMachine = new ItemStateMachine(this, Link.GetInventory());
 
+            //collisionDetection = new CollisionDetection(this, collisionHandler);
             collisionHandler = new CollisionHandler(this);
-            //collisionDetection = new CollisionDetection(this);
 
             base.Initialize();
             _camera = new Camera();
@@ -165,6 +165,7 @@ namespace sprint0Real
             LevelLoader.Instance.LoadLevels();
 
             ResetGame();
+            collisionHandler.LoadCommands();
             collisionDetection.Load(Link);
             tempItem = null;
             

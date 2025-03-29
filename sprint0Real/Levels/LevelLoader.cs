@@ -69,8 +69,6 @@ namespace sprint0Real.Levels
                 newMap.background.SetUpDoor(xml.SelectSingleNode("/LevelData/Door").Attributes["Up"].Value);
 
                 Maps.Add(xml.SelectSingleNode("/LevelData/Name").InnerText, newMap);
-                //Maps.backgroundset(String)
-                //Maps.Door
             }
             CurrentMap.Instance.SetMap(Maps["Entrance"]);
         }

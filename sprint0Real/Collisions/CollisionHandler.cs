@@ -30,15 +30,18 @@ namespace sprint0Real.Collisions
         {
             this.game = game;
             collisionCommands = new Dictionary<(String, String), ICollisionCommand2>();
+        }
 
-            collisionCommands.Add(("Link", "Dragon"),  new LinkEnemyCommand());
+        public void LoadCommands()
+        {
+            collisionCommands.Add(("Link", "Dragon"), new LinkEnemyCommand());
             collisionCommands.Add(("Link", "Border"), new LinkBorderCommand());
-            collisionCommands.Add(("Link", "RoomTransitionBox"), new RoomTransitionCommand());
+            collisionCommands.Add(("Link", "RoomTransitionBox"), new RoomTransitionCommand(game.collisionDetection));
             //collisionCommands.Add(("Enemy", "LinkWeapon"), new DamageEnemyCollisionCommand()); TODO not working
 
             collisionCommands.Add(("Link", "FireBall"), new LinkEnemyCommand());
             collisionCommands.Add(("Link", "TreasureItem"), new LinkItemCollisionCommand());
-            
+
             collisionCommands.Add(("Link", "BlockSpriteBlack"), new LinkStairsCollisionCommand());
             collisionCommands.Add(("Link", "BlockSpriteBricks"), new LinkBlockCollisionCommand2());
             collisionCommands.Add(("Link", "BlockSpriteFloorBlock"), new LinkBlockCollisionCommand2());
@@ -49,7 +52,6 @@ namespace sprint0Real.Collisions
             collisionCommands.Add(("Link", "BlockSpriteStatueFaceRight"), new LinkBlockCollisionCommand2());
             collisionCommands.Add(("Link", "BlockSpriteStripes"), new LinkBlockCollisionCommand2());
             collisionCommands.Add(("Link", "BlockSpriteStairs"), new LinkStairsCollisionCommand());
-
         }
 
         public void LoadContent(ContentManager content)

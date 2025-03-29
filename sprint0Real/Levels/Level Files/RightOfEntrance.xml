@@ -23,7 +23,7 @@
 		<HitBox Type="Border" x="669" y="0" width="96" height="216"/>
 
 		<HitBox Type="Border" x="0" y="216" width="96" height="96"/>
-		<HitBox Type="RoomTransitionBox" x="672" y="216" width="96" height="96"/>
+		<HitBox Type="Border" x="672" y="216" width="96" height="96"/>
 		<HitBox Type="Border" x="336" y="0" width="96" height="96"/>
 		<HitBox Type="Border" x="336" y="432" width="96" height="96"/>
 	</MapHitBoxes>
