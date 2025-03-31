@@ -33,7 +33,7 @@ namespace sprint0Real.Collisions
         }
         public void LoadCommands()
         {
-            collisionCommands.Add(("Link", "Dragon"), new LinkEnemyCommand());
+            collisionCommands.Add(("Link", "enemy"), new LinkEnemyCommand());
             collisionCommands.Add(("Link", "Border"), new LinkBorderCommand());
             collisionCommands.Add(("Link", "RoomTransitionBox"), new RoomTransitionCommand(game.collisionDetection));
             //collisionCommands.Add(("Enemy", "LinkWeapon"), new DamageEnemyCollisionCommand()); TODO not working
