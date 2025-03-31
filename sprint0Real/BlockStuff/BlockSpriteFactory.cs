@@ -13,6 +13,7 @@ namespace sprint0Real.BlockSprites
     {
         private static BlockSpriteFactory instance = new BlockSpriteFactory();
         private Texture2D dungeonTileSet;
+        private SoundEffect stairs;
 
         public static BlockSpriteFactory Instance => instance;
 
@@ -21,6 +22,12 @@ namespace sprint0Real.BlockSprites
         public void LoadAllTextures(ContentManager content)
         {
             dungeonTileSet = content.Load<Texture2D>("NES - The Legend of Zelda - Dungeon Tileset");
+            stairs = content.Load<SoundEffect>("LOZ_Stairs"); //WRONG AUDIO
+        }
+
+        public SoundEffect GetSoundEffect()
+        {
+            return stairs;
         }
 
         public Texture2D GetDungeonTileSet()

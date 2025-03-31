@@ -15,7 +15,7 @@ namespace sprint0Real.LinkSprites
 
     //This class is passed an item and the Link object and determines the correct sprite
     //to play based on the properties of both
-    public class ItemStateMachine
+    internal class ItemStateMachine
     {
         /*
         public enum Item

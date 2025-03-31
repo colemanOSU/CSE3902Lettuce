@@ -235,12 +235,6 @@
 /processorParam:Quality=Best
 /build:LOZ_Stairs.wav
 
-#begin LOZ_Stairs.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:LOZ_Stairs.wav
-
 #begin LOZ_Sword_Combined.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
