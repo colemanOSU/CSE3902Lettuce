@@ -39,8 +39,8 @@ namespace sprint0Real.Items.ItemSprites
             _position = new(game.Link.GetLocation().X,game.Link.GetLocation().Y);
             SetPosition(game.Link.GetFacing());
             destinationRectangle = new Rectangle((int)_position.X, (int)_position.Y, isDelaying ? 8 * 3 : 16 * 3, 16 * 3);
-            bombDrop = SoundEffectFactory.Instance.getBombDrop();
-            bombExplode = SoundEffectFactory.Instance.GetBombExplode();
+            //bombDrop = SoundEffectFactory.Instance.getBombDrop();
+            //bombExplode = SoundEffectFactory.Instance.GetBombExplode();
         }
         public Rectangle Rect
         {
