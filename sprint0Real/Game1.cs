@@ -16,7 +16,6 @@ using sprint0Real.Collisions;
 using sprint0Real.LinkStuff;
 using sprint0Real.Levels;
 using System.Reflection.Metadata;
-using sprint0Real.TreasureItemSprites;
 using sprint0Real.LinkSprites;
 using sprint0Real.Commands;
 using Microsoft.Xna.Framework.Audio;
@@ -145,7 +144,6 @@ namespace sprint0Real
         protected override void LoadContent()
         {
             titleScreen.LoadContent(GraphicsDevice, Content);
-            collisionHandler.LoadContent(Content);
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             
             font1 = Content.Load<SpriteFont>("MyMenuFont");
@@ -160,6 +158,7 @@ namespace sprint0Real
             EnemySpriteFactory.Instance.LoadAllTextures(Content);
             EnemySpriteFactory.Instance.LoadGame(this);
             BlockSpriteFactory.Instance.LoadAllTextures(Content);
+            SoundEffectFactory.Instance.LoadAllTextures(Content);
             TreasureItemSpriteFactory.Instance.LoadAllTextures(Content);
             LevelLoader.Instance.LoadLevels();
 

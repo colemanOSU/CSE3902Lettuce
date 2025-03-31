@@ -7,13 +7,16 @@ using sprint0Real.Levels;
 using System;
 using sprint0Real.TreasureItemSprites;
 using System.Diagnostics;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Audio;
+using sprint0Real.BlockSprites;
 
 namespace sprint0Real.LinkSprites
 {
 
     //This class is passed an item and the Link object and determines the correct sprite
     //to play based on the properties of both
-    internal class ItemStateMachine
+    public class ItemStateMachine
     {
         public enum Item
         {
@@ -31,11 +34,14 @@ namespace sprint0Real.LinkSprites
         private Item CurrentItem;
         private int index;
         private Game1 myGame;
+        private ContentManager content;
+        private SoundEffect soundEffect;
         public ItemStateMachine(Game1 game)
         {
             myGame = game;
             CurrentItem = Item.WoodSword;
             index = 0;
+            this.content = game.Content;
         }
         public void nextItem()
         {

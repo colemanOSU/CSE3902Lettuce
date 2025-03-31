@@ -11,6 +11,11 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Content\TheLegendofZeldaCartoonSoundEffects\**" />
+    <EmbeddedResource Remove="Content\TheLegendofZeldaCartoonSoundEffects\**" />
+    <None Remove="Content\TheLegendofZeldaCartoonSoundEffects\**" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Remove="Interfaces\IEnemyProjectiles].cs" />
   </ItemGroup>
   <ItemGroup>

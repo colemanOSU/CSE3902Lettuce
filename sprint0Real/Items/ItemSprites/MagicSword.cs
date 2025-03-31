@@ -4,12 +4,16 @@ using Microsoft.Xna.Framework;
 using sprint0Real.Interfaces;
 using sprint0Real.Commands;
 using System.Linq.Expressions;
+using Microsoft.Xna.Framework.Audio;
+using sprint0Real.LinkSprites;
 
 namespace sprint0Real.Items.ItemSprites
 {
     internal class MagicSword : ILinkSprite
     {
         public bool IsActive { get; private set; } = false; // Start inactive
+        private SoundEffect soundEffect;
+        private bool soundPlayed = false;
 
         public void Disable()
         {
@@ -48,6 +52,7 @@ namespace sprint0Real.Items.ItemSprites
             GetPosition(swordDirection);
             _position = startPosition;
             destinationRectangle = new Rectangle((int)_position.X, (int)_position.Y, 16 * 3, 16 * 3);
+            soundEffect = SoundEffectFactory.Instance.GetWeaponSoundEffect(ItemStateMachine.Item.MagicSword);
 
         }
         public Rectangle Rect
@@ -106,6 +111,11 @@ namespace sprint0Real.Items.ItemSprites
 
         public void Update(GameTime gameTime)
         {
+            if (!soundPlayed)
+            {
+                soundEffect.Play();
+                soundPlayed = true;
+            }
             _timer += gameTime.ElapsedGameTime.TotalSeconds * 2;
             switch (swordDirection)
             {

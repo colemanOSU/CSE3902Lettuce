@@ -11,7 +11,7 @@ namespace sprint0Real.TreasureItemSprites
     {
         public Rectangle sourceRectangle = new Rectangle(25, 1, 13, 13);
         public Rectangle destinationRectangle;
-        public SoundEffect ContainerHeartPickedUp;
+        private SoundEffect soundEffect;
         public bool IsActive { get; set; } = true;
 
         public Texture2D _texture;
@@ -20,7 +20,7 @@ namespace sprint0Real.TreasureItemSprites
         {
             destinationRectangle = new Rectangle((int)pos.X, (int)pos.Y, 52, 52);
             _texture = TreasureItemSpriteFactory.Instance.GetItemSpriteSheet();
-            ContainerHeartPickedUp = TreasureItemSpriteFactory.Instance.GetSoundEffect("ContainerHeart");
+            soundEffect = SoundEffectFactory.Instance.getFanfareSoundEffect();
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -32,7 +32,7 @@ namespace sprint0Real.TreasureItemSprites
         }
         public void CollectItem()
         {
-            ContainerHeartPickedUp.Play();
+            soundEffect.Play();
         }
 
         public void Update(GameTime gametime)

@@ -31,10 +31,10 @@ namespace sprint0Real.Collisions
             this.game = game;
             collisionCommands = new Dictionary<(String, String), ICollisionCommand2>();
 
-            collisionCommands.Add(("Link", "Dragon"),  new LinkEnemyCommand());
+            collisionCommands.Add(("Link", "enemy"),  new LinkEnemyCommand());
             collisionCommands.Add(("Link", "Border"), new LinkBorderCommand());
             collisionCommands.Add(("Link", "RoomTransitionBox"), new RoomTransitionCommand());
-            //collisionCommands.Add(("Enemy", "LinkWeapon"), new DamageEnemyCollisionCommand()); TODO not working
+            collisionCommands.Add(("Enemy", "LinkWeapon"), new DamageEnemyCollisionCommand());
 
             collisionCommands.Add(("Link", "FireBall"), new LinkEnemyCommand());
             collisionCommands.Add(("Link", "TreasureItem"), new LinkItemCollisionCommand());
@@ -52,13 +52,6 @@ namespace sprint0Real.Collisions
 
         }
 
-        public void LoadContent(ContentManager content)
-        {
-            this._content = content;
-            //TODO Load Audio for commands
-            playerHurt = content.Load<SoundEffect>("LOZ_Link_Hurt");
-        }
-
         public void HandleCollision(IObject objA, IObject objB)
         {
             //var key = (GetGeneralType(objA), GetGeneralType(objB));
@@ -70,6 +63,14 @@ namespace sprint0Real.Collisions
             if (objB is ITreasureItems)
             {
                 typeB = "TreasureItem"; //Generalized key for all treasure items
+            }
+            else if (objB is IEnemy)
+            {
+                typeB = "enemy";
+            }
+            else if (objB is ILinkHitboxes)
+            {
+                typeB = "LinkWeapon";
             }
             else
             {
