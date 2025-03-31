@@ -27,34 +27,40 @@ namespace sprint0Real.Collisions
 
         // Maybe make these strings
         public CollisionHandler(Game1 game)
-{
-    this.game = game;
-    collisionCommands = new Dictionary<(String, String), ICollisionCommand2>();
-    LoadCommands();
-}
-public void LoadCommands()
-{
+        {
+            this.game = game;
+            collisionCommands = new Dictionary<(String, String), ICollisionCommand2>();
+        }
 
-    collisionCommands.Add(("Link", "enemy"),  new LinkEnemyCommand());
-    collisionCommands.Add(("Link", "Border"), new LinkBorderCommand());
-    collisionCommands.Add(("Link", "RoomTransitionBox"), new RoomTransitionCommand());
-    collisionCommands.Add(("Enemy", "LinkWeapon"), new DamageEnemyCollisionCommand());
+        public void LoadCommands()
+        {
+            collisionCommands.Add(("Link", "Dragon"), new LinkEnemyCommand());
+            collisionCommands.Add(("Link", "Border"), new LinkBorderCommand());
+            collisionCommands.Add(("Link", "RoomTransitionBox"), new RoomTransitionCommand(game.collisionDetection));
+            //collisionCommands.Add(("Enemy", "LinkWeapon"), new DamageEnemyCollisionCommand()); TODO not working
 
-    collisionCommands.Add(("Link", "FireBall"), new LinkEnemyCommand());
-    collisionCommands.Add(("Link", "TreasureItem"), new LinkItemCollisionCommand());
-    
-    collisionCommands.Add(("Link", "BlockSpriteBlack"), new LinkStairsCollisionCommand());
-    collisionCommands.Add(("Link", "BlockSpriteBricks"), new LinkBlockCollisionCommand2());
-    collisionCommands.Add(("Link", "BlockSpriteFloorBlock"), new LinkBlockCollisionCommand2());
-    collisionCommands.Add(("Link", "BlockSpriteFloorTile"), new LinkBlockCollisionCommand2());
-    collisionCommands.Add(("Link", "BlockSpriteNavy"), new LinkBlockCollisionCommand2());
-    collisionCommands.Add(("Link", "BlockSpriteSpecks"), new LinkBlockCollisionCommand2());
-    collisionCommands.Add(("Link", "BlockSpriteStatueFaceLeft"), new LinkBlockCollisionCommand2());
-    collisionCommands.Add(("Link", "BlockSpriteStatueFaceRight"), new LinkBlockCollisionCommand2());
-    collisionCommands.Add(("Link", "BlockSpriteStripes"), new LinkBlockCollisionCommand2());
-    collisionCommands.Add(("Link", "BlockSpriteStairs"), new LinkStairsCollisionCommand());
+            collisionCommands.Add(("Link", "FireBall"), new LinkEnemyCommand());
+            collisionCommands.Add(("Link", "TreasureItem"), new LinkItemCollisionCommand());
 
-}
+            collisionCommands.Add(("Link", "BlockSpriteBlack"), new LinkStairsCollisionCommand());
+            collisionCommands.Add(("Link", "BlockSpriteBricks"), new LinkBlockCollisionCommand2());
+            collisionCommands.Add(("Link", "BlockSpriteFloorBlock"), new LinkBlockCollisionCommand2());
+            collisionCommands.Add(("Link", "BlockSpriteFloorTile"), new LinkBlockCollisionCommand2());
+            collisionCommands.Add(("Link", "BlockSpriteNavy"), new LinkBlockCollisionCommand2());
+            collisionCommands.Add(("Link", "BlockSpriteSpecks"), new LinkBlockCollisionCommand2());
+            collisionCommands.Add(("Link", "BlockSpriteStatueFaceLeft"), new LinkBlockCollisionCommand2());
+            collisionCommands.Add(("Link", "BlockSpriteStatueFaceRight"), new LinkBlockCollisionCommand2());
+            collisionCommands.Add(("Link", "BlockSpriteStripes"), new LinkBlockCollisionCommand2());
+            collisionCommands.Add(("Link", "BlockSpriteStairs"), new LinkStairsCollisionCommand());
+        }
+
+        public void LoadContent(ContentManager content)
+        {
+            this._content = content;
+            //TODO Load Audio for commands
+            playerHurt = content.Load<SoundEffect>("LOZ_Link_Hurt");
+        }
+
         public void HandleCollision(IObject objA, IObject objB)
         {
             //var key = (GetGeneralType(objA), GetGeneralType(objB));
@@ -66,14 +72,6 @@ public void LoadCommands()
             if (objB is ITreasureItems)
             {
                 typeB = "TreasureItem"; //Generalized key for all treasure items
-            }
-            else if (objB is IEnemy)
-            {
-                typeB = "enemy";
-            }
-            else if (objB is ILinkHitboxes)
-            {
-                typeB = "LinkWeapon";
             }
             else
             {

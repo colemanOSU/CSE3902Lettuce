@@ -195,7 +195,7 @@ public class Link : ILink
     }
     public void PickUpItem()
     {
-        //stateMachine.PickUpItem();
+        stateMachine?.PickUpItem();
     }
 
     // Make the compiler happy
