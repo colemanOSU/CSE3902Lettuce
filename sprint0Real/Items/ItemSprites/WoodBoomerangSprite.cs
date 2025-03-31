@@ -105,7 +105,7 @@ namespace sprint0Real.Items.ItemSprites
             {
                 velocity = Vector2.Zero; 
                 _position = _finalPos; 
-                myGame.weaponItems = new NullSprite(_texture, myGame);
+                myGame.weaponItemsB = new NullSprite(_texture, myGame);
                 IsActive = false;
             }
 

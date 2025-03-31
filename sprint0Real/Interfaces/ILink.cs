@@ -30,6 +30,7 @@ namespace sprint0Real.Interfaces
         public void Damaged();
         public void SetItem(int num,Game1 game);
         public void DrawWeaponSprite();
+        public void DrawItemSprite();
         public void NextItem();
         public void LastItem();
 

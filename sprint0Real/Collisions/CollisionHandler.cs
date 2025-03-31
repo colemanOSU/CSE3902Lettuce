@@ -27,35 +27,34 @@ namespace sprint0Real.Collisions
 
         // Maybe make these strings
         public CollisionHandler(Game1 game)
-        {
-            this.game = game;
-            collisionCommands = new Dictionary<(String, String), ICollisionCommand2>();
-            LoadCommands();
-        }
-        public void LoadCommands()
-        {
+{
+    this.game = game;
+    collisionCommands = new Dictionary<(String, String), ICollisionCommand2>();
+    LoadCommands();
+}
+public void LoadCommands()
+{
 
-            collisionCommands.Add(("Link", "enemy"),  new LinkEnemyCommand());
-            collisionCommands.Add(("Link", "Border"), new LinkBorderCommand());
-            collisionCommands.Add(("Link", "RoomTransitionBox"), new RoomTransitionCommand());
-            collisionCommands.Add(("Enemy", "LinkWeapon"), new DamageEnemyCollisionCommand());
+    collisionCommands.Add(("Link", "enemy"),  new LinkEnemyCommand());
+    collisionCommands.Add(("Link", "Border"), new LinkBorderCommand());
+    collisionCommands.Add(("Link", "RoomTransitionBox"), new RoomTransitionCommand());
+    collisionCommands.Add(("Enemy", "LinkWeapon"), new DamageEnemyCollisionCommand());
 
-            collisionCommands.Add(("Link", "FireBall"), new LinkEnemyCommand());
-            collisionCommands.Add(("Link", "TreasureItem"), new LinkItemCollisionCommand());
-            
-            collisionCommands.Add(("Link", "BlockSpriteBlack"), new LinkStairsCollisionCommand());
-            collisionCommands.Add(("Link", "BlockSpriteBricks"), new LinkBlockCollisionCommand2());
-            collisionCommands.Add(("Link", "BlockSpriteFloorBlock"), new LinkBlockCollisionCommand2());
-            collisionCommands.Add(("Link", "BlockSpriteFloorTile"), new LinkBlockCollisionCommand2());
-            collisionCommands.Add(("Link", "BlockSpriteNavy"), new LinkBlockCollisionCommand2());
-            collisionCommands.Add(("Link", "BlockSpriteSpecks"), new LinkBlockCollisionCommand2());
-            collisionCommands.Add(("Link", "BlockSpriteStatueFaceLeft"), new LinkBlockCollisionCommand2());
-            collisionCommands.Add(("Link", "BlockSpriteStatueFaceRight"), new LinkBlockCollisionCommand2());
-            collisionCommands.Add(("Link", "BlockSpriteStripes"), new LinkBlockCollisionCommand2());
-            collisionCommands.Add(("Link", "BlockSpriteStairs"), new LinkStairsCollisionCommand());
+    collisionCommands.Add(("Link", "FireBall"), new LinkEnemyCommand());
+    collisionCommands.Add(("Link", "TreasureItem"), new LinkItemCollisionCommand());
+    
+    collisionCommands.Add(("Link", "BlockSpriteBlack"), new LinkStairsCollisionCommand());
+    collisionCommands.Add(("Link", "BlockSpriteBricks"), new LinkBlockCollisionCommand2());
+    collisionCommands.Add(("Link", "BlockSpriteFloorBlock"), new LinkBlockCollisionCommand2());
+    collisionCommands.Add(("Link", "BlockSpriteFloorTile"), new LinkBlockCollisionCommand2());
+    collisionCommands.Add(("Link", "BlockSpriteNavy"), new LinkBlockCollisionCommand2());
+    collisionCommands.Add(("Link", "BlockSpriteSpecks"), new LinkBlockCollisionCommand2());
+    collisionCommands.Add(("Link", "BlockSpriteStatueFaceLeft"), new LinkBlockCollisionCommand2());
+    collisionCommands.Add(("Link", "BlockSpriteStatueFaceRight"), new LinkBlockCollisionCommand2());
+    collisionCommands.Add(("Link", "BlockSpriteStripes"), new LinkBlockCollisionCommand2());
+    collisionCommands.Add(("Link", "BlockSpriteStairs"), new LinkStairsCollisionCommand());
 
-        }
-
+}
         public void HandleCollision(IObject objA, IObject objB)
         {
             //var key = (GetGeneralType(objA), GetGeneralType(objB));

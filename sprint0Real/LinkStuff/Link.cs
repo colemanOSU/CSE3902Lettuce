@@ -45,11 +45,11 @@ public class Link : ILink
         canAttack = true;
         Facing = Direction.Right;
         stateMachine = new LinkStateMachine(this);
-        itemStateMachine = new ItemStateMachine(game);
         LinkSpriteColor = Color.White;
         isDamaged = false;
         MomentumVector = new Vector2(0, 0);
         inventory = new Inventory();
+        itemStateMachine = new ItemStateMachine(game, inventory);
         linkHurt = game.Content.Load<SoundEffect>("LOZ_Link_Hurt");
     }
     public void Damaged()
@@ -84,6 +84,10 @@ public class Link : ILink
     public void DrawWeaponSprite()
     {
         itemStateMachine.DrawWeaponSprite();
+    }
+    public void DrawItemSprite()
+    {
+        itemStateMachine.DrawItemSprite();
     }
 
     //Moves Link's rendering rectangle in one of four directions
@@ -224,6 +228,7 @@ public class Link : ILink
 
     public void Update(GameTime gameTime)
     {
+        itemStateMachine.UpdateEquippedItems();
         //need to update IGameObject
     }
     public void Draw(SpriteBatch spriteBatch)

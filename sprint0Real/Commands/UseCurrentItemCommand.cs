@@ -12,6 +12,7 @@ namespace sprint0Real.Commands
     public class UseCurrentItemCommand : ICommand
     {
         private Game1 myGame;
+        private bool useItem = true;
         public UseCurrentItemCommand(Game1 game)
         {
             myGame = game;
@@ -25,7 +26,22 @@ namespace sprint0Real.Commands
             {
                 myGame.Link.SetCanAttack(false);
                 myGame.Link.SetCanMove(false);
-                
+                switch (myGame.Link.GetFacing())
+                {
+                    case Link.Direction.Left:
+                        myGame.linkSprite = new UseLeftSprite(myGame.linkSheet, myGame, useItem);
+                        break;
+                    case Link.Direction.Right:
+                        myGame.linkSprite = new UseRightSprite(myGame.linkSheet, myGame, useItem);
+                        break;
+                    case Link.Direction.Up:
+                        myGame.linkSprite = new UseUpSprite(myGame.linkSheet, myGame, useItem);
+                        break;
+                    case Link.Direction.Down:
+                        myGame.linkSprite = new UseDownSprite(myGame.linkSheet, myGame, useItem);
+                        break;
+                }
+
             }
 
         }

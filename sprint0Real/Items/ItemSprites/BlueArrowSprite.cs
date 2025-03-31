@@ -163,7 +163,7 @@ namespace sprint0Real.Items.ItemSprites
                 if (delayTimer >= delayDuration)
                 {
                     isDelaying = false;
-                    myGame.weaponItems = new NullSprite(_texture, myGame);
+                    myGame.weaponItemsB = new NullSprite(_texture, myGame);
                 }
             }
         }
