@@ -3,16 +3,13 @@ using Microsoft.Xna.Framework;
 using sprint0Real.Interfaces;
 using sprint0Real.Commands;
 using System.Linq.Expressions;
-using Microsoft.Xna.Framework.Audio;
-using sprint0Real.LinkSprites;
 
 namespace sprint0Real.Items.ItemSprites
 {
     internal class BlueArrowSprite : ILinkSprite
     {
         public bool IsActive { get; private set; } = true; // Start inactive
-        private SoundEffect soundEffect;
-        private bool soundPlayed = false;
+
         public void Disable()
         {
             IsActive = false; // This keeps the weapon in memory but disables it
@@ -138,11 +135,6 @@ namespace sprint0Real.Items.ItemSprites
 
         public void Update(GameTime gameTime)
         {
-            if (!soundPlayed)
-            {
-                soundEffect.Play();
-                soundPlayed = true;
-            }
             _timer += gameTime.ElapsedGameTime.TotalSeconds * 2;
             if (isMoving)
             {

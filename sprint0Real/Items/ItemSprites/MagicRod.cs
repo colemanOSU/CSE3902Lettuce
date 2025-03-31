@@ -2,16 +2,12 @@
 using Microsoft.Xna.Framework;
 using sprint0Real.Interfaces;
 using sprint0Real.Commands;
-using Microsoft.Xna.Framework.Audio;
-using sprint0Real.LinkSprites;
 
 namespace sprint0Real.Items.ItemSprites
 {
     internal class MagicRod : ILinkSprite
     {
         public bool IsActive { get; private set; } = false; // Start inactive
-        private SoundEffect magicRodSoundEffect;
-        private bool SoundPlayed = false;
 
         public void Disable()
         {
@@ -75,11 +71,6 @@ namespace sprint0Real.Items.ItemSprites
             {
                 _currentFrame = (_currentFrame + 1) % frameCount;
                 _timer -= _frameSpeed;
-            }
-            if (!SoundPlayed)
-            {
-                magicRodSoundEffect.Play();
-                SoundPlayed = true;
             }
 
             //update destination rectangle for collision handling and draw
