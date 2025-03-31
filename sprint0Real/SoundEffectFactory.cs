@@ -44,6 +44,7 @@ namespace sprint0Real
         {
             return stairs;
         }
+        /*
         public SoundEffect GetWeaponSoundEffect(Item item)
         {
             switch (item)
@@ -82,7 +83,7 @@ namespace sprint0Real
                     break;
             }
             return LinkWeapon;
-        }
+        }*/
         public SoundEffect GetBombExplode()
         {
             return bombExplode;
