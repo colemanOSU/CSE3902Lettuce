@@ -7,9 +7,8 @@ using sprint0Real.Levels;
 using System;
 using sprint0Real.TreasureItemSprites;
 using System.Diagnostics;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Audio;
-using sprint0Real.BlockSprites;
+using sprint0Real.LinkStuff;
+using static sprint0Real.LinkStuff.Inventory;
 
 namespace sprint0Real.LinkSprites
 {
@@ -34,14 +33,11 @@ namespace sprint0Real.LinkSprites
         private Item CurrentItem;
         private int index;
         private Game1 myGame;
-        private ContentManager content;
-        private SoundEffect soundEffect;
         public ItemStateMachine(Game1 game)
         {
             myGame = game;
             CurrentItem = Item.WoodSword;
             index = 0;
-            this.content = game.Content;
         }
         public void nextItem()
         {
