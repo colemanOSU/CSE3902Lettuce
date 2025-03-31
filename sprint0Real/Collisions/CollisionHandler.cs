@@ -29,15 +29,14 @@ namespace sprint0Real.Collisions
         public CollisionHandler(Game1 game)
 {
     this.game = game;
-    collisionCommands = new Dictionary<(String, String), ICollisionCommand2>();
-    LoadCommands();
+            collisionCommands = new Dictionary<(String, String), ICollisionCommand2>();
 }
 public void LoadCommands()
 {
 
     collisionCommands.Add(("Link", "enemy"),  new LinkEnemyCommand());
     collisionCommands.Add(("Link", "Border"), new LinkBorderCommand());
-    collisionCommands.Add(("Link", "RoomTransitionBox"), new RoomTransitionCommand());
+    collisionCommands.Add(("Link", "RoomTransitionBox"), new RoomTransitionCommand(game.collisionDetection));
     collisionCommands.Add(("Enemy", "LinkWeapon"), new DamageEnemyCollisionCommand());
 
             collisionCommands.Add(("Link", "FireBall"), new LinkEnemyCommand());
