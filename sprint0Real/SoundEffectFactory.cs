@@ -26,6 +26,11 @@ namespace sprint0Real
         private SoundEffect HeartPickup;
         private SoundEffect RupeePickup;
         private SoundEffect Fanfare;
+        private SoundEffect boomerangOrArrow;
+        private SoundEffect swordShoot;
+        private SoundEffect bombDrop;
+        private SoundEffect magicRod;
+
         public static SoundEffectFactory Instance => instance;
         private SoundEffectFactory() { }
         public void LoadAllTextures(ContentManager Content)
@@ -37,12 +42,33 @@ namespace sprint0Real
             Fanfare = content.Load<SoundEffect>("LOZ_Fanfare");
             HeartPickup = content.Load<SoundEffect>("LOZ_Get_Heart");
             RupeePickup = content.Load<SoundEffect>("LOZ_Get_Rupee");
+            boomerangOrArrow = content.Load<SoundEffect>("LOZ_Arrow_Boomerang");
+            swordShoot = content.Load<SoundEffect>("LOZ_Sword_shoot");
+            bombDrop = content.Load<SoundEffect>("LOZ_Bomb_Drop");
+            magicRod = content.Load<SoundEffect>("LOZ_MagicalRod");
+
 
         }
 
         public SoundEffect getBlockSoundEffect()
         {
             return stairs;
+        }
+        public SoundEffect getSwordShoot()
+        {
+            return swordShoot;
+        }
+        public SoundEffect getBombDrop()
+        {
+            return bombDrop;
+        }
+        public SoundEffect getArrowOrBoomerang()
+        {
+            return boomerangOrArrow;
+        }
+        public SoundEffect getMagicRod()
+        {
+            return magicRod;
         }
         /*
         public SoundEffect GetWeaponSoundEffect(Item item)

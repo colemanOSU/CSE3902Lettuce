@@ -53,7 +53,7 @@ namespace sprint0Real.Items.ItemSprites
             GetPosition(swordDirection);
             _position = startPosition;
             destinationRectangle = new Rectangle((int)_position.X, (int)_position.Y, 16 * 3, 16 * 3);
-            //swordShootSoundEffect = SoundEffectFactory.Instance.GetWeaponSoundEffect(ItemStateMachine.Item.WoodSword);
+            swordShootSoundEffect = SoundEffectFactory.Instance.getSwordShoot();
 
         }
         public Rectangle Rect

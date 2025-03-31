@@ -40,7 +40,7 @@ namespace sprint0Real.Items.ItemSprites
             myGame = game;
             _timer = 0;
             destinationRectangle = new Rectangle(game.Link.GetLocation().X + 13, game.Link.GetLocation().Y + 1, 14 * 3, 14 * 3);
-            //magicRodSoundEffect = SoundEffectFactory.Instance.GetWeaponSoundEffect(ItemStateMachine.Item.MagicRod);
+            magicRodSoundEffect = SoundEffectFactory.Instance.getMagicRod();
         }
         public Rectangle Rect
         {
