@@ -6,6 +6,8 @@ using System.Linq.Expressions;
 using Microsoft.VisualBasic;
 using sprint0Real.Collisions;
 using sprint0Real.Levels;
+using sprint0Real.LinkSprites;
+using Microsoft.Xna.Framework.Audio;
 
 namespace sprint0Real.Items.ItemSprites
 {
@@ -13,7 +15,8 @@ namespace sprint0Real.Items.ItemSprites
     internal class FireSprite : ILinkSprite
     {
         public bool IsActive { get; private set; } = false; // Start inactive
-
+        private SoundEffect soundEffect;
+        private bool soundPlayed = false;
         public void Disable()
         {
             IsActive = false; // This keeps the weapon in memory but disables it
@@ -50,6 +53,7 @@ namespace sprint0Real.Items.ItemSprites
             GetPosition(game.Link.GetFacing());
             _position = startPosition;
             destinationRectangle = new Rectangle((int)_position.X, (int)_position.Y, 16 * 3, 16 * 3);
+            soundEffect = SoundEffectFactory.Instance.GetWeaponSoundEffect(ItemStateMachine.Item.Fire);
 
         }
         public Rectangle Rect
@@ -94,6 +98,11 @@ namespace sprint0Real.Items.ItemSprites
 
         public void Update(GameTime gameTime)
         {
+            if (!soundPlayed)
+            {
+                soundEffect.Play();
+                soundPlayed = true;
+            }
             _timer += gameTime.ElapsedGameTime.TotalSeconds * 2;
             if (isMoving)
             {

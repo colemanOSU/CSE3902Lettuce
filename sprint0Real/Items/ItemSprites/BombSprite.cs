@@ -2,12 +2,18 @@
 using Microsoft.Xna.Framework;
 using sprint0Real.Interfaces;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Audio;
+using sprint0Real.LinkSprites;
 
 namespace sprint0Real.Items.ItemSprites
 {
     internal class BombSprite : ILinkSprite
     {
         public bool IsActive { get; private set; } = false; // Start inactive
+        private SoundEffect bombDrop;
+        private SoundEffect bombExplode;
+        bool dropSoundPlayed = false;
+        bool explodeSoundPlayed = false;
 
         public void Disable()
         {
@@ -39,6 +45,8 @@ namespace sprint0Real.Items.ItemSprites
             _position = new(game.Link.GetLocation().X,game.Link.GetLocation().Y);
             SetPosition(game.Link.GetFacing());
             destinationRectangle = new Rectangle((int)_position.X, (int)_position.Y, isDelaying ? 8 * 3 : 16 * 3, 16 * 3);
+            bombDrop = SoundEffectFactory.Instance.GetWeaponSoundEffect(ItemStateMachine.Item.Bomb);
+            bombExplode = SoundEffectFactory.Instance.GetBombExplode();
         }
         public Rectangle Rect
         {
@@ -70,6 +78,12 @@ namespace sprint0Real.Items.ItemSprites
 
             _timer += gameTime.ElapsedGameTime.TotalSeconds;
 
+            if (!dropSoundPlayed)
+            {
+                bombDrop.Play();
+                dropSoundPlayed = true;
+            }
+
             if (_timer >= 1 && isDelaying)
             {
                 isDelaying = false;
@@ -80,6 +94,11 @@ namespace sprint0Real.Items.ItemSprites
             
             if (isAnimating && _timer >= _frameSpeed)
             {
+                if (!explodeSoundPlayed)
+                {
+                    bombExplode.Play();
+                    explodeSoundPlayed = true;
+                }
                 _currentFrame++;
                 _timer -= _frameSpeed;
 

@@ -3,13 +3,16 @@ using Microsoft.Xna.Framework;
 using sprint0Real.Interfaces;
 using sprint0Real.Commands;
 using System;
+using Microsoft.Xna.Framework.Audio;
+using sprint0Real.LinkSprites;
 
 namespace sprint0Real.Items.ItemSprites
 {
     internal class BlueBoomerangSprite : ILinkSprite
     {
         public bool IsActive { get; private set; } = false; // Start inactive
-
+        private SoundEffect soundEffect;
+        private bool soundPlayed = false;
         public void Disable()
         {
             IsActive = false; // This keeps the weapon in memory but disables it
@@ -44,6 +47,7 @@ namespace sprint0Real.Items.ItemSprites
             _position = startPosition;
             SetVelocity(game.Link.GetFacing());
             destinationRectangle = new Rectangle((int)_position.X, (int)_position.Y, 8 * 3, 16 * 3);
+            soundEffect = SoundEffectFactory.Instance.GetWeaponSoundEffect(ItemStateMachine.Item.BlueBoomerang);
         }
 
         public Rectangle Rect
@@ -76,6 +80,11 @@ namespace sprint0Real.Items.ItemSprites
             destinationRectangle = new Rectangle((int)_position.X, (int)_position.Y, 8 * 3, 16 * 3);
             _timer += gameTime.ElapsedGameTime.TotalSeconds;
 
+            if (!soundPlayed)
+            {
+                soundEffect.Play();
+                soundPlayed = true;
+            }
 
             if (!isReturning && Vector2.Distance(_position, startPosition) >= travelDistance)
             {

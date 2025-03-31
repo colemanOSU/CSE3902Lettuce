@@ -3,12 +3,16 @@ using Microsoft.Xna.Framework;
 using sprint0Real.Interfaces;
 using sprint0Real.Commands;
 using System.Linq.Expressions;
+using sprint0Real.LinkSprites;
+using Microsoft.Xna.Framework.Audio;
 
 namespace sprint0Real.Items.ItemSprites
 {
     internal class WoodArrow : ILinkSprite
     {
         public bool IsActive { get; private set; } = false; // Start inactive
+        private SoundEffect soundEffect;
+        private bool soundPlayed = false;
 
         public void Disable()
         {
@@ -48,6 +52,7 @@ namespace sprint0Real.Items.ItemSprites
             GetPosition(arrowDirection);
             _position = startPosition;
             destinationRectangle = new Rectangle((int)_position.X, (int)_position.Y, 16*3, 16 * 3);
+            soundEffect = SoundEffectFactory.Instance.GetWeaponSoundEffect(ItemStateMachine.Item.WoodArrow);
 
         }
         public Rectangle Rect
@@ -137,6 +142,11 @@ namespace sprint0Real.Items.ItemSprites
         {
             _timer += gameTime.ElapsedGameTime.TotalSeconds*2;
 
+            if (!soundPlayed)
+            {
+                soundEffect.Play();
+                soundPlayed = true;
+            }
 
             if (isMoving)
             {

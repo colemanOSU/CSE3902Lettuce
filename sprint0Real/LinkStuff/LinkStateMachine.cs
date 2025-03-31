@@ -7,6 +7,8 @@ using sprint0Real.Interfaces;
 using System.Data.Common;
 using System;
 using System.Diagnostics;
+using sprint0Real.LinkStuff.LinkSprites;
+using Microsoft.Xna.Framework.Content;
 namespace sprint0Real.LinkStuff
 {
     public class LinkStateMachine : ILinkState
@@ -14,6 +16,9 @@ namespace sprint0Real.LinkStuff
 
         private ILink Link;
         private double DamageFrameCount;
+        private bool isPickingUpItem;
+        private double pickUpTimer;
+        private Link.Direction previousDirection;
 
         private int DamageLoops;
         public LinkStateMachine(ILink link)
@@ -21,6 +26,8 @@ namespace sprint0Real.LinkStuff
             Link = link;
             DamageFrameCount = 0;
             DamageLoops = 0;
+            isPickingUpItem = false;
+            pickUpTimer = 0;
         }
         public void DamageLink()
         {
