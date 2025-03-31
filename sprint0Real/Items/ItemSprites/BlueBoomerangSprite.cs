@@ -47,7 +47,7 @@ namespace sprint0Real.Items.ItemSprites
             _position = startPosition;
             SetVelocity(game.Link.GetFacing());
             destinationRectangle = new Rectangle((int)_position.X, (int)_position.Y, 8 * 3, 16 * 3);
-            //soundEffect = SoundEffectFactory.Instance.getArrowOrBoomerang();
+            soundEffect = SoundEffectFactory.Instance.getArrowOrBoomerang();
         }
 
         public Rectangle Rect
