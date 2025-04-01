@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using sprint0Real.Interfaces;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Audio;
 
 namespace sprint0Real.Items.ItemSprites
 {
@@ -30,6 +31,10 @@ namespace sprint0Real.Items.ItemSprites
         private bool animationComplete = false;
         private Rectangle sourceRectangle;
         private Rectangle destinationRectangle;
+        private SoundEffect bombDrop;
+        private SoundEffect bombExplode;
+        private bool SoundDropPlayed = false;
+        private bool SoundExplodePlayed = false;
 
 
         public BombSprite(Texture2D texture, Game1 game)
@@ -39,8 +44,8 @@ namespace sprint0Real.Items.ItemSprites
             _position = new(game.Link.GetLocation().X,game.Link.GetLocation().Y);
             SetPosition(game.Link.GetFacing());
             destinationRectangle = new Rectangle((int)_position.X, (int)_position.Y, isDelaying ? 8 * 3 : 16 * 3, 16 * 3);
-            //bombDrop = SoundEffectFactory.Instance.getBombDrop();
-            //bombExplode = SoundEffectFactory.Instance.GetBombExplode();
+            bombDrop = SoundEffectFactory.Instance.getBombDrop();
+            bombExplode = SoundEffectFactory.Instance.GetBombExplode();
         }
         public Rectangle Rect
         {
@@ -68,6 +73,11 @@ namespace sprint0Real.Items.ItemSprites
 
         public void Update(GameTime gameTime)
         {
+            if (!SoundDropPlayed)
+            {
+                bombDrop.Play();
+                SoundDropPlayed = true;
+            }
             if (animationComplete) return;
 
             _timer += gameTime.ElapsedGameTime.TotalSeconds;
@@ -82,6 +92,11 @@ namespace sprint0Real.Items.ItemSprites
             
             if (isAnimating && _timer >= _frameSpeed)
             {
+                if (!SoundExplodePlayed)
+                {
+                    bombExplode.Play();
+                    SoundExplodePlayed = true;
+                }
                 _currentFrame++;
                 _timer -= _frameSpeed;
 

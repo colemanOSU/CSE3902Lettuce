@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using sprint0Real.Interfaces;
 using sprint0Real.Commands;
 using System.Linq.Expressions;
+using Microsoft.Xna.Framework.Audio;
 
 namespace sprint0Real.Items.ItemSprites
 {
@@ -35,7 +36,8 @@ namespace sprint0Real.Items.ItemSprites
         private bool isDelaying = false;
         private Vector2 finalPosition;
         private Link.Direction arrowDirection;
-
+        private SoundEffect soundEffect;
+        private bool SoundPlayed = false;
 
         public WoodArrow(Texture2D texture, Game1 game)
         {
@@ -136,6 +138,11 @@ namespace sprint0Real.Items.ItemSprites
 
         public void Update(GameTime gameTime)
         {
+            if (!SoundPlayed)
+            {
+                soundEffect.Play();
+                SoundPlayed = true;
+            }
             _timer += gameTime.ElapsedGameTime.TotalSeconds*2;
 
 

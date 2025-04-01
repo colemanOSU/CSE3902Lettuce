@@ -46,8 +46,6 @@ namespace sprint0Real
             swordShoot = content.Load<SoundEffect>("LOZ_Sword_shoot");
             bombDrop = content.Load<SoundEffect>("LOZ_Bomb_Drop");
             magicRod = content.Load<SoundEffect>("LOZ_MagicalRod");
-
-
         }
 
         public SoundEffect getBlockSoundEffect()

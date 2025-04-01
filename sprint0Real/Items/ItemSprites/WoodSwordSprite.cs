@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 using sprint0Real.Interfaces;
 using sprint0Real.Commands;
 using System.Linq.Expressions;
+using Microsoft.Xna.Framework.Audio;
 
 namespace sprint0Real.Items.ItemSprites
 {
@@ -35,7 +36,8 @@ namespace sprint0Real.Items.ItemSprites
         private double delayDuration = 0.5;
         private bool isDelaying = false;
         private Link.Direction swordDirection;
-
+        private SoundEffect swordShootSoundEffect;
+        private bool SoundPlayed = false;
 
 
         public WoodSwordSprite(Texture2D texture, Game1 game)
@@ -108,6 +110,11 @@ namespace sprint0Real.Items.ItemSprites
 
         public void Update(GameTime gameTime)
         {
+            if (!SoundPlayed)
+            {
+                swordShootSoundEffect.Play();
+                SoundPlayed = true;
+            }
             switch (swordDirection)
             {
                 case Link.Direction.Right:
