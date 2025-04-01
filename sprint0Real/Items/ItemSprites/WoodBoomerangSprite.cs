@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using sprint0Real.Interfaces;
 using sprint0Real.Commands;
 using System;
+using Microsoft.Xna.Framework.Audio;
 
 namespace sprint0Real.Items.ItemSprites
 {
@@ -34,7 +35,8 @@ namespace sprint0Real.Items.ItemSprites
         private float _frameSpeed = 0.2f;
         private int _frameCount = 3;
         private Vector2 _finalPos;
-
+        private SoundEffect soundEffect;
+        private bool SoundPlayed = false;
 
         public WoodBoomerangSprite(Texture2D texture, Game1 game)
         {
@@ -43,7 +45,7 @@ namespace sprint0Real.Items.ItemSprites
             startPosition = new(game.Link.GetLocation().X,game.Link.GetLocation().Y);
             _position = startPosition;
             SetVelocity(game.Link.GetFacing());
-            //soundEffect = SoundEffectFactory.Instance.GetWeaponSoundEffect(ItemStateMachine.Item.WoodBoomerang);
+            soundEffect = SoundEffectFactory.Instance.getArrowOrBoomerang();
 
         }
         public Rectangle Rect
@@ -73,6 +75,11 @@ namespace sprint0Real.Items.ItemSprites
 
         public void Update(GameTime gameTime)
         {
+            if (!SoundPlayed)
+            {
+                soundEffect.Play();
+                SoundPlayed = true;
+            }
             _finalPos = new(myGame.Link.GetLocation().X, myGame.Link.GetLocation().Y);
             destinationRectangle = new Rectangle((int)_position.X, (int)_position.Y, 8 * 3, 16 * 3);
             _timer += gameTime.ElapsedGameTime.TotalSeconds;

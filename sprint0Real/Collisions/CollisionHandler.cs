@@ -34,10 +34,10 @@ namespace sprint0Real.Collisions
 public void LoadCommands()
 {
 
-    collisionCommands.Add(("Link", "enemy"),  new LinkEnemyCommand());
-    collisionCommands.Add(("Link", "Border"), new LinkBorderCommand());
-    collisionCommands.Add(("Link", "RoomTransitionBox"), new RoomTransitionCommand(game.collisionDetection));
-    collisionCommands.Add(("Enemy", "LinkWeapon"), new DamageEnemyCollisionCommand());
+            collisionCommands.Add(("Link", "enemy"),  new LinkEnemyCommand());
+            collisionCommands.Add(("Link", "Border"), new LinkBorderCommand());
+            collisionCommands.Add(("Link", "RoomTransitionBox"), new RoomTransitionCommand(game.collisionDetection));
+            collisionCommands.Add(("Enemy", "LinkWeapon"), new DamageEnemyCollisionCommand());
 
             collisionCommands.Add(("Link", "FireBall"), new LinkEnemyCommand());
             collisionCommands.Add(("Link", "TreasureItem"), new LinkItemCollisionCommand());
@@ -54,13 +54,6 @@ public void LoadCommands()
             collisionCommands.Add(("Link", "BlockSpriteStairs"), new LinkStairsCollisionCommand());
         }
 
-        public void LoadContent(ContentManager content)
-        {
-            this._content = content;
-            //TODO Load Audio for commands
-            playerHurt = content.Load<SoundEffect>("LOZ_Link_Hurt");
-        }
-
         public void HandleCollision(IObject objA, IObject objB)
         {
             //var key = (GetGeneralType(objA), GetGeneralType(objB));
@@ -72,6 +65,10 @@ public void LoadCommands()
             if (objB is ITreasureItems)
             {
                 typeB = "TreasureItem"; //Generalized key for all treasure items
+            }
+            else if(objB is IEnemy)
+            {
+                typeB = "enemy";
             }
             else
             {
