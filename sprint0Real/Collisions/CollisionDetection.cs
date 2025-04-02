@@ -27,8 +27,6 @@ namespace sprint0Real.Collisions
         public CollisionDetection(Game1 game, CollisionHandler collisionHandler)
         {
             this.game = game;
-            //collisionHandler = new CollisionHandler("Collisions/CollisionCommands.xml", game);
-            //collisionHandler = new CollisionHandler(game);
             this.collisionHandler = collisionHandler;
         }
         public void Load(ILink Link)

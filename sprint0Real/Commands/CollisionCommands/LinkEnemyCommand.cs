@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Content;
 
 namespace sprint0Real.Commands.CollisionCommands2
 {
-    public class LinkEnemyCommand() : ICollisionCommand2
+    public class LinkEnemyCommand() : ICollisionCommand
     {
         public void Execute(IObject Link, IObject Enemy, CollisionDirections direction)
         {

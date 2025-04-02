@@ -30,6 +30,8 @@ namespace sprint0Real
         private SoundEffect swordShoot;
         private SoundEffect bombDrop;
         private SoundEffect magicRod;
+        private SoundEffect EnemyHit;
+        private SoundEffect EnemyDie;
 
         public static SoundEffectFactory Instance => instance;
         private SoundEffectFactory() { }
@@ -46,6 +48,8 @@ namespace sprint0Real
             swordShoot = content.Load<SoundEffect>("LOZ_Sword_shoot");
             bombDrop = content.Load<SoundEffect>("LOZ_Bomb_Drop");
             magicRod = content.Load<SoundEffect>("LOZ_MagicalRod");
+            EnemyHit = content.Load<SoundEffect>("LOZ_Enemy_Hit");
+            EnemyDie = content.Load<SoundEffect>("LOZ_Enemy_Die");
         }
 
         public SoundEffect getBlockSoundEffect()
@@ -68,46 +72,15 @@ namespace sprint0Real
         {
             return magicRod;
         }
-        /*
-        public SoundEffect GetWeaponSoundEffect(Item item)
+       
+        public SoundEffect getEnemyHit()
         {
-            switch (item)
-            {
-                case Item.WoodSword:
-                    LinkWeapon = content.Load<SoundEffect>("LOZ_Sword_shoot");
-                    break;
-                case Item.Whitesword:
-                    LinkWeapon = content.Load<SoundEffect>("LOZ_Sword_shoot");
-                    break;
-                case Item.Bomb:
-                    LinkWeapon = content.Load<SoundEffect>("LOZ_Bomb_Drop");
-                    break;
-                case Item.MagicRod:
-                    LinkWeapon = content.Load<SoundEffect>("LOZ_MagicalRod");
-                    break;
-                case Item.MagicSword:
-                    LinkWeapon = content.Load<SoundEffect>("LOZ_Sword_shoot");
-                    //not sure if right audio?
-                    break;
-                case Item.BlueArrow:
-                    LinkWeapon = content.Load<SoundEffect>("LOZ_Arrow_Boomerang");
-                    break;
-                case Item.WoodArrow:
-                    LinkWeapon = content.Load<SoundEffect>("LOZ_Arrow_Boomerang");
-                    break;
-                case Item.WoodBoomerang:
-                    LinkWeapon = content.Load<SoundEffect>("LOZ_Arrow_Boomerang");
-                    break;
-                case Item.BlueBoomerang:
-                    LinkWeapon = content.Load<SoundEffect>("LOZ_Arrow_Boomerang");
-                    break;
-                case Item.Fire:
-                    LinkWeapon = content.Load<SoundEffect>("LOZ_Sword_shoot");
-                    //not sure if right audio?
-                    break;
-            }
-            return LinkWeapon;
-        }*/
+            return EnemyHit;
+        }
+        public SoundEffect getEnemyDie()
+        {
+            return EnemyDie;
+        }
         public SoundEffect GetBombExplode()
         {
             return bombExplode;

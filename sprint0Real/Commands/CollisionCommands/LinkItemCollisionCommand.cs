@@ -10,7 +10,7 @@ using sprint0Real.Levels;
 
 namespace sprint0Real.Commands.CollisionCommands2
 {
-    internal class LinkItemCollisionCommand : ICollisionCommand2
+    internal class LinkItemCollisionCommand : ICollisionCommand
     {
         public void Execute(IObject Link, IObject Item, CollisionDirections direction)
         {

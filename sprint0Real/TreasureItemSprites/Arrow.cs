@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using sprint0Real.Interfaces;
@@ -10,6 +11,8 @@ namespace sprint0Real.TreasureItemSprites
     {
         public Rectangle sourceRectangle = new Rectangle(154, 0, 5, 16);
         public Rectangle destinationRectangle;
+        private SoundEffect soundEffect;
+        private bool SoundPlayed = false;
 
         public Texture2D _texture;
 
@@ -17,11 +20,16 @@ namespace sprint0Real.TreasureItemSprites
         {
             _texture = TreasureItemSpriteFactory.Instance.GetItemSpriteSheet();
             destinationRectangle = new Rectangle((int)position.X, (int)position.Y, 20, 64);
+            soundEffect = SoundEffectFactory.Instance.getItemSoundEffect();
         }
 
         public void CollectItem()
         {
-            
+            if (!SoundPlayed)
+            {
+                soundEffect.Play();
+                SoundPlayed = true;
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)

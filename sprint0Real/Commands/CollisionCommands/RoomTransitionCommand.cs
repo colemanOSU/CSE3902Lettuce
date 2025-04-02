@@ -8,7 +8,7 @@ using sprint0Real.Levels;
 
 namespace sprint0Real.Commands.CollisionCommands2
 {
-    public class RoomTransitionCommand : ICollisionCommand2
+    public class RoomTransitionCommand : ICollisionCommand
     {
         CollisionDetection collisionDetector;
         TransitionDirections transitionDirections;
