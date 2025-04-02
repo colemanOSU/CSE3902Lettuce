@@ -23,36 +23,6 @@ namespace sprint0Real.EnemyStuff.BatStuff
         private float stopTime = 1;
 
         private Random random = new Random();
-
-        private void SafeJuke()
-        {
-            // THIS IS BAD CODE FIX!!!
-            if (myBat.location.X > EnemySpriteFactory.Instance.myGame._graphics.PreferredBackBufferWidth - 48)
-            {
-                jukeTimer = 0;
-                myBat.location.X = EnemySpriteFactory.Instance.myGame._graphics.PreferredBackBufferWidth - 48;
-                myBat.ChangeDirection();
-            }
-            else if (myBat.location.X < 0)
-            {
-                jukeTimer = 0;
-                myBat.location.X = 0;
-                myBat.ChangeDirection();
-            }
-            else if (myBat.location.Y > EnemySpriteFactory.Instance.myGame._graphics.PreferredBackBufferHeight - 48)
-            {
-                jukeTimer = 0;
-                myBat.location.Y = EnemySpriteFactory.Instance.myGame._graphics.PreferredBackBufferHeight - 48;
-                myBat.ChangeDirection();
-            }
-            else if (myBat.location.Y < 0)
-            {
-                jukeTimer = 0;
-                myBat.location.Y = 0;
-                myBat.ChangeDirection();
-            }
-
-        }
         private void JukeCheck()
         {
             if (jukeDelay <= jukeTimer)
@@ -118,7 +88,6 @@ namespace sprint0Real.EnemyStuff.BatStuff
             TimeToPerch();
             TimeToUnPerch();
             Perch(time);
-            SafeJuke();
             JukeCheck();
         }
     }

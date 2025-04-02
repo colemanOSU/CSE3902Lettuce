@@ -13,6 +13,7 @@ using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0Real.TreasureItemSprites;
+using sprint0Real.Commands.CollisionCommands;
 
 namespace sprint0Real.Collisions
 {
@@ -33,10 +34,10 @@ namespace sprint0Real.Collisions
 public void LoadCommands()
 {
 
-            collisionCommands.Add(("Link", "enemy"),  new LinkEnemyCommand());
+            collisionCommands.Add(("Link", "Enemy"),  new LinkEnemyCommand());
             collisionCommands.Add(("Link", "Border"), new LinkBorderCommand());
             collisionCommands.Add(("Link", "RoomTransitionBox"), new RoomTransitionCommand(game.collisionDetection));
-            collisionCommands.Add(("enemy", "LinkWeapon"), new DamageEnemyCollisionCommand());
+            collisionCommands.Add(("Enemy", "LinkWeapon"), new DamageEnemyCollisionCommand());
 
             collisionCommands.Add(("Link", "EnemyProjectile"), new LinkEnemyCommand());
             collisionCommands.Add(("Link", "TreasureItem"), new LinkItemCollisionCommand());
@@ -51,6 +52,7 @@ public void LoadCommands()
             collisionCommands.Add(("Link", "BlockSpriteStatueFaceRight"), new LinkBlockCollisionCommand());
             collisionCommands.Add(("Link", "BlockSpriteStripes"), new LinkBlockCollisionCommand());
             collisionCommands.Add(("Link", "BlockSpriteStairs"), new LinkStairsCollisionCommand());
+            collisionCommands.Add(("Enemy", "Border"), new EnemyBorderCommand());
         }
 
         public void HandleCollision(IObject objA, IObject objB)
@@ -62,7 +64,7 @@ public void LoadCommands()
 
             if (objA is IEnemy)
             {
-                typeA = "enemy";
+                typeA = "Enemy";
             }
             else
             {
@@ -77,7 +79,7 @@ public void LoadCommands()
             }
             else if(objB is IEnemy)
             {
-                typeB = "enemy";
+                typeB = "Enemy";
             }
             else if (objB is ILinkSprite)
             {

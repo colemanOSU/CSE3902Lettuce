@@ -12,8 +12,9 @@ namespace sprint0Real.EnemyStuff.BatStuff
         private bool Perched = false;
         private int health = 1;
 
-        public ISprite2 mySprite;
-        public Vector2 location;
+        private ISprite2 sprite;
+        private Vector2 Location;
+
         public float speed = 2f;
         public float FPS = 10;
         private float timer = 0f;
@@ -21,10 +22,10 @@ namespace sprint0Real.EnemyStuff.BatStuff
 
         public Bat(Vector2 start)
         {
-            location = start;
+            Location = start;
             stateMachine = new BatStateMachine(this);
             behavior = new BatBehavior(this);
-            mySprite = EnemySpriteFactory.Instance.CreateBatSprite();
+            sprite = EnemySpriteFactory.Instance.CreateBatSprite();
         }
 
         public void Perch()
@@ -44,10 +45,6 @@ namespace sprint0Real.EnemyStuff.BatStuff
         public void TakeDamage(int damage)
         {
             stateMachine.TakeDamage(damage);
-        }
-        public void hitLink()
-        {
-            Despawn();
         }
         public void ChangeDirection()
         {
@@ -94,6 +91,16 @@ namespace sprint0Real.EnemyStuff.BatStuff
             {
                 health = value;
             }
+        }
+        public ISprite2 mySprite
+        {
+            get {  return sprite; }
+            set { sprite = value; }
+        }
+        public Vector2 location
+        {
+            get { return Location; }
+            set { location = value; }
         }
     }
 }

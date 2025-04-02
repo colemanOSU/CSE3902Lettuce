@@ -64,18 +64,7 @@ namespace sprint0Real.EnemyStuff.DragonStuff
 
         public void Update()
         {
-            switch (currentState)
-            {
-                case DragonState.Idle:
-                    myDragon.location.X += myDragon.speed;
-                    break;
-                case DragonState.Attack:
-                    myDragon.location.X += myDragon.speed;
-                    break;
-                case DragonState.Damaged:
-                    myDragon.location.X += myDragon.speed;
-                    break;
-            }
+            myDragon.location = new Vector2(myDragon.location.X + myDragon.speed, myDragon.location.Y);
         }
     }
 }
