@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0Real.Interfaces;
 using sprint0Real.Levels;
@@ -16,6 +17,7 @@ namespace sprint0Real.EnemyStuff.HandStuff
 
         private int FPS = 6;
         private float timer = 0f;
+        private int health = 1;
 
         public Hand(Vector2 start)
         {
@@ -29,10 +31,9 @@ namespace sprint0Real.EnemyStuff.HandStuff
         {
             stateMachine.ChangeDirection();
         }
-        public void hitWall()
+        public void TakeDamage(int damage)
         {
-            stateMachine.hitWall();
-            stateMachine.ChangeDirection();
+            stateMachine.TakeDamage(damage);
         }
         public void hitLink()
         {
@@ -67,6 +68,11 @@ namespace sprint0Real.EnemyStuff.HandStuff
             {
                 return new Rectangle((int)location.X, (int)location.Y, 30, 30);
             }
+        }
+        public int Health
+        {
+            get { return Health; }
+            set { Health = value; }
         }
     }
 }

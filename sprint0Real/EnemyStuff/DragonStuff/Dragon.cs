@@ -19,7 +19,7 @@ namespace sprint0Real.EnemyStuff.DragonStuff
         public ISprite2 mySprite;
         public Vector2 location;
         public int speed = 2;
-        public int health = 10;
+        private int health = 10;
 
         private int FPS = 6;
         private float timer = 0f;
@@ -37,10 +37,10 @@ namespace sprint0Real.EnemyStuff.DragonStuff
             stateMachine.ChangeDirection();
         }
 
-        public void TakeDamage()
+        public void TakeDamage(int damage)
         {
             behavior.TakeDamage();
-            stateMachine.TakeDamage();
+            stateMachine.TakeDamage(damage);
         }
 
         public void hitWall()
@@ -87,5 +87,11 @@ namespace sprint0Real.EnemyStuff.DragonStuff
                 return new Rectangle((int)location.X, (int)location.Y, 48, 64);
             }
         }
+        public int Health
+        {
+            get { return health; }
+            set { health = value; }
+        }
+
     }
 }

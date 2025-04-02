@@ -1,4 +1,5 @@
 ﻿using sprint0Real.Interfaces;
+using sprint0Real.Levels;
 using System;
 
 namespace sprint0Real.EnemyStuff.BatStuff
@@ -19,6 +20,15 @@ namespace sprint0Real.EnemyStuff.BatStuff
         public void Perched()
         {
             currentState = BatStates.Perched;
+        }
+
+        public void TakeDamage(int damage)
+        {
+            myBat.Health -= damage; 
+            if (myBat.Health < 0)
+            {
+                CurrentMap.Instance.DeStage(myBat);
+            }
         }
         public void ChangeDirection()
         {

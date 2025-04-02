@@ -32,6 +32,11 @@ namespace sprint0Real.EnemyStuff.BTrapStuff
             mySprite = EnemySpriteFactory.Instance.CreateBTrapSprite();
         }
 
+        public void TakeDamage(int damage)
+        {
+            //doesn't take damage
+        }
+
         public void ChangeDirection()
         {
             stateMachine.ChangeDirection();

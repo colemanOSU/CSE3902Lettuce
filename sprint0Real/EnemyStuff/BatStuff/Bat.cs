@@ -10,6 +10,8 @@ namespace sprint0Real.EnemyStuff.BatStuff
         private BatStateMachine stateMachine;
         private BatBehavior behavior;
         private bool Perched = false;
+        private int health = 1;
+
         public ISprite2 mySprite;
         public Vector2 location;
         public float speed = 2f;
@@ -38,10 +40,10 @@ namespace sprint0Real.EnemyStuff.BatStuff
             Perched = false;
             stateMachine.ChangeDirection();
         }
-        public void hitWall()
+        
+        public void TakeDamage(int damage)
         {
-            stateMachine.hitWall();
-            stateMachine.ChangeDirection();
+            stateMachine.TakeDamage(damage);
         }
         public void hitLink()
         {
@@ -80,6 +82,17 @@ namespace sprint0Real.EnemyStuff.BatStuff
             {
                 //30x30 is size of sprite, change if sprite size is different
                 return new Rectangle((int)location.X, (int)location.Y, 30, 30);
+            }
+        }
+        public int Health
+        {
+            get
+            {
+                return health;
+            }
+            set
+            {
+                health = value;
             }
         }
     }

@@ -62,10 +62,10 @@ namespace sprint0Real.EnemyStuff.GoriyaStuff
                     break;
             }
         }
-        public void TakeDamage()
+        public void TakeDamage(int damage)
         {
-            myGoriya.health -= 1;
-            if (myGoriya.health <= 0)
+            myGoriya.Health -= damage;
+            if (myGoriya.Health <= 0)
             {
                 CurrentMap.Instance.DeStage(myGoriya);
             }

@@ -33,11 +33,11 @@ namespace sprint0Real.EnemyStuff.DragonStuff
             myDragon.speed *= -1;
         }
 
-        public void TakeDamage()
+        public void TakeDamage(int damage)
         {
-            myDragon.health -= 1;
+            myDragon.Health -= damage;
             currentState = DragonState.Damaged;
-            if (myDragon.health <= 0)
+            if (myDragon.Health <= 0)
             {
                 if (!DieSoundPlayed)
                 {

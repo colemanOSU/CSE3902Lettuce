@@ -1,5 +1,6 @@
 ﻿using sprint0Real.EnemyStuff.DragonStuff;
 using sprint0Real.Interfaces;
+using sprint0Real.Levels;
 using System;
 
 namespace sprint0Real.EnemyStuff.HandStuff
@@ -53,6 +54,17 @@ namespace sprint0Real.EnemyStuff.HandStuff
                     break;
             }
         }
+
+        public void TakeDamage(int damage)
+        {
+            myHand.Health -= damage;
+            if (myHand.Health <= 0)
+            {
+                CurrentMap.Instance.DeStage(myHand);
+            }
+        }
+        
+
         public void Update()
         {
             switch (currentState)

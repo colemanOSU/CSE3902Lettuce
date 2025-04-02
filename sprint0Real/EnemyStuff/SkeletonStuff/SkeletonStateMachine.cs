@@ -18,6 +18,15 @@ namespace sprint0Real.EnemyStuff.SkeletonStuff
             mySkeleton = Skeleton;
         }
 
+        public void TakeDamage(int damage)
+        {
+            mySkeleton.Health -= damage;
+            if (mySkeleton.Health <= 0)
+            {
+                CurrentMap.Instance.DeStage(mySkeleton);
+            }
+        }
+
         public void ChangeDirection()
         {
             int nextDirection = random.Next(0, 4);

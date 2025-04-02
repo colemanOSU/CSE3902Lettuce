@@ -21,7 +21,7 @@ namespace sprint0Real.EnemyStuff.RedGoriya
         public ISprite2 mySprite;
         public Vector2 location;
         public int speed = 2;
-        public int health = 10;
+        private int health = 10;
         public Boomerang boomerang;
         private int FPS = 6;
         private float timer = 0f;
@@ -55,10 +55,10 @@ namespace sprint0Real.EnemyStuff.RedGoriya
             stateMachine.ChangeDirection();
         }
 
-        public void TakeDamage()
+        public void TakeDamage(int damage)
         {
             behavior.TakeDamage();
-            stateMachine.TakeDamage();
+            stateMachine.TakeDamage(damage);
         }
 
         public void Attack()
@@ -96,6 +96,11 @@ namespace sprint0Real.EnemyStuff.RedGoriya
             {
                 return new Rectangle((int)location.X, (int)location.Y, 30, 30);
             }
+        }
+        public int Health
+        {
+            get { return Health; }
+            set { Health = value; }
         }
     }
 }
