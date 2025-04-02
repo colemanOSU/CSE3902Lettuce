@@ -8,8 +8,11 @@ using sprint0Real.Interfaces;
 
 namespace sprint0Real.Commands
 {
-    public class PreviousBlockCommand : ICommand
+    public class PreviousBlockCommand //: ICommand
     {
+        //PROBABLY CAN DELETE ENTIRE CLASS
+
+        /*
         private Dictionary<int, IBlock> blocks;
         private Game1 _game;
         private Texture2D _texture;
@@ -56,6 +59,6 @@ namespace sprint0Real.Commands
                 _game.currentBlock = blocks[_currentBlock];
                 _game.currentBlockIndex = _currentBlock; //update index
             }
-        }
+        }*/
     }
 }

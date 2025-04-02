@@ -8,8 +8,11 @@ using sprint0Real.TreasureItemSprites;
 
 namespace sprint0Real.Commands
 {
-    public class ShowPreviousItemCommand : ICommand
+    public class ShowPreviousItemCommand// : ICommand
     {
+        //PROBABLY CAN DELETE ENTIRE CLASS
+
+        /*
         private Dictionary<int, ITreasureItems> tempItems;
         private Game1 _game;
         private Texture2D _texture;
@@ -83,6 +86,6 @@ namespace sprint0Real.Commands
         public void Initialize(IGameObject objA, IGameObject objB, CollisionDirections direction)
         {
             //for collision detection
-        }
+        }*/
     }
 }

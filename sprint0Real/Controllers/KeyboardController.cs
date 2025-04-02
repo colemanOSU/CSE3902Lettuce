@@ -38,8 +38,8 @@ namespace sprint0Real.Controllers
 
             //commands.Add(Keys.Y, new NextBlockCommand(_game, blockTexture));
             //commands.Add(Keys.T, new PreviousBlockCommand(_game, blockTexture));
-            commands.Add(Keys.I, new ShowNextItemCommand(_game,  itemTexture));
-            commands.Add(Keys.U, new ShowPreviousItemCommand(_game, itemTexture));
+            //commands.Add(Keys.I, new ShowNextItemCommand(_game,  itemTexture));
+            //commands.Add(Keys.U, new ShowPreviousItemCommand(_game, itemTexture));
             commands.Add(Keys.E, new DamageLinkCommand(_game));
             commands.Add(Keys.D, new MoveRightCommand(_game));
             commands.Add(Keys.A, new MoveLeftCommand(_game));
