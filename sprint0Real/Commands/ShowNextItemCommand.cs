@@ -8,9 +8,11 @@ using sprint0Real.TreasureItemSprites;
 
 namespace sprint0Real.Commands
 {
-    public class ShowNextItemCommand : ICommand
+    public class ShowNextItemCommand// : ICommand
     {
-        private Dictionary<int, ITreasureItems> tempItems;
+        //PROBABLY CAN DELETE ENTIRE CLASS
+
+        /*private Dictionary<int, ITreasureItems> tempItems;
         private Game1 _game;
         private Texture2D _texture;
         private int _currentItem;
@@ -79,6 +81,6 @@ namespace sprint0Real.Commands
                 _game.currentItem = tempItems[_currentItem];
                 _game.currentItemIndex = _currentItem; //update index
             }
-        }
+        }*/
     }
 }
