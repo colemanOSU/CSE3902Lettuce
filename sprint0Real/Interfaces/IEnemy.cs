@@ -10,5 +10,6 @@ namespace sprint0Real.Interfaces
 {
     public interface IEnemy : IDamagesLink, IGameObject
     {
+        //void TakeDamage(); Want to add
     }
 }
