@@ -100,7 +100,7 @@ namespace sprint0Real.EnemyStuff.BatStuff
         public Vector2 location
         {
             get { return Location; }
-            set { location = value; }
+            set { Location = value; }
         }
     }
 }

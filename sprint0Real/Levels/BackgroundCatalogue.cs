@@ -25,7 +25,7 @@ namespace sprint0Real.Levels
             DownDoorCatalogue = new Dictionary<String, Rectangle>();
 
             InteriorCatalogue.Add("Default", new Rectangle(1, 192, 192, 112));
-            InteriorCatalogue.Add("EntranceInteior", new Rectangle(196, 192, 192, 112));
+            InteriorCatalogue.Add("EntranceInterior", new Rectangle(196, 192, 192, 112));
             InteriorCatalogue.Add("SandInterior", new Rectangle(586, 421, 192, 112));
 
             ExteriorCatalogue.Add("DungeonInterior", new Rectangle(421, 1009, 256, 160));

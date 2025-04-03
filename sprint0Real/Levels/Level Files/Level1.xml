@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <LevelData>
 	<Name>Level1</Name>
-	<Exterior>Insert</Exterior>
-	<Interior>Insert</Interior>
 	<Door Exterior ="Default" Interior ="Default" Left="Default" Right="Default" Up="Open" Down="Open"/>
 	
 	<Objects>
-		
+		<Object Type="Skeleton" x="192" y="2"/>
+		<Object Type="Skeleton" x="192" y="144"/>
+		<Object Type="Skeleton" x="240" y="240"/>
 	</Objects>
 	
 	<MapHitBoxes>
@@ -20,10 +20,10 @@
 		<HitBox Type="Border" x="0" y="0" width="96" height="216"/>
 		<HitBox Type="Border" x="669" y="0" width="96" height="216"/>
 
-		<HitBox Type="Border" x="0" y="216" width="96" height="96"/>
-		<HitBox Type="Border" x="672" y="216" width="96" height="96"/>
-		<HitBox Type="RoomTransitionBox" x="336" y="0" width="96" height="96"/>
-		<HitBox Type="RoomTransitionBox" x="336" y="432" width="96" height="96"/>
+		<HitBox Type="Border" x="0" y="216" width="96" height="96" />
+		<HitBox Type="Border" x="672" y="216" width="80" height="96" />
+		<HitBox Type="RoomTransitionBox" x="336" y="0" width="96" height="96" direction="Up"/>
+		<HitBox Type="RoomTransitionBox" x="336" y="432" width="96" height="96" direction="Down"/>
 	</MapHitBoxes>
 
 	<Neighbors>
