@@ -59,7 +59,7 @@ namespace sprint0Real.Collisions
                     }
                 }
                 // Enemies against Link Projectiles
-                foreach (ILinkHitboxes enemyDamage in gameObjectsInRoom.OfType<ILinkHitboxes>())
+                foreach (ILinkSprite enemyDamage in gameObjectsInRoom.OfType<ILinkSprite>())
                 {
                     if (enemy.Rect.Intersects(enemyDamage.Rect))
                     {
