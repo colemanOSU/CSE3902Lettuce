@@ -28,6 +28,7 @@ namespace sprint0Real.TreasureItemSprites
                 soundEffect.Play();
                 SoundPlayed = true;
             }
+            
         }
 
         public void Draw(SpriteBatch spriteBatch)
