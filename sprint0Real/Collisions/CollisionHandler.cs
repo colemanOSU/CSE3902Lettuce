@@ -7,19 +7,19 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using sprint0Real.BlockSprites;
-using sprint0Real.Commands.CollisionCommands;
 using sprint0Real.Commands.CollisionCommands2;
 using sprint0Real.Interfaces;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0Real.TreasureItemSprites;
+using sprint0Real.Commands.CollisionCommands;
 
 namespace sprint0Real.Collisions
 {
     public class CollisionHandler
     {
-        private Dictionary<(String, String), ICollisionCommand2> collisionCommands;
+        private Dictionary<(String, String), ICollisionCommand> collisionCommands;
         private Game1 game;
         private SoundEffect playerHurt;
         ContentManager _content;
@@ -27,43 +27,49 @@ namespace sprint0Real.Collisions
 
         // Maybe make these strings
         public CollisionHandler(Game1 game)
-        {
-            this.game = game;
-            collisionCommands = new Dictionary<(String, String), ICollisionCommand2>();
+{
+    this.game = game;
+            collisionCommands = new Dictionary<(String, String), ICollisionCommand>();
+}
+public void LoadCommands()
+{
 
-            collisionCommands.Add(("Link", "Dragon"),  new LinkEnemyCommand());
+            collisionCommands.Add(("Link", "Enemy"),  new LinkEnemyCommand());
             collisionCommands.Add(("Link", "Border"), new LinkBorderCommand());
-            collisionCommands.Add(("Link", "RoomTransitionBox"), new RoomTransitionCommand());
-            //collisionCommands.Add(("Enemy", "LinkWeapon"), new DamageEnemyCollisionCommand()); TODO not working
+            collisionCommands.Add(("Link", "RoomTransitionBox"), new RoomTransitionCommand(game.collisionDetection));
+            collisionCommands.Add(("Enemy", "LinkWeapon"), new DamageEnemyCollisionCommand());
 
-            collisionCommands.Add(("Link", "FireBall"), new LinkEnemyCommand());
+            collisionCommands.Add(("Link", "EnemyProjectile"), new LinkEnemyCommand());
             collisionCommands.Add(("Link", "TreasureItem"), new LinkItemCollisionCommand());
-            
+
             collisionCommands.Add(("Link", "BlockSpriteBlack"), new LinkStairsCollisionCommand());
-            collisionCommands.Add(("Link", "BlockSpriteBricks"), new LinkBlockCollisionCommand2());
-            collisionCommands.Add(("Link", "BlockSpriteFloorBlock"), new LinkBlockCollisionCommand2());
-            collisionCommands.Add(("Link", "BlockSpriteFloorTile"), new LinkBlockCollisionCommand2());
-            collisionCommands.Add(("Link", "BlockSpriteNavy"), new LinkBlockCollisionCommand2());
-            collisionCommands.Add(("Link", "BlockSpriteSpecks"), new LinkBlockCollisionCommand2());
-            collisionCommands.Add(("Link", "BlockSpriteStatueFaceLeft"), new LinkBlockCollisionCommand2());
-            collisionCommands.Add(("Link", "BlockSpriteStatueFaceRight"), new LinkBlockCollisionCommand2());
-            collisionCommands.Add(("Link", "BlockSpriteStripes"), new LinkBlockCollisionCommand2());
+            collisionCommands.Add(("Link", "BlockSpriteBricks"), new LinkBlockCollisionCommand());
+            collisionCommands.Add(("Link", "BlockSpriteFloorBlock"), new LinkBlockCollisionCommand());
+            collisionCommands.Add(("Link", "BlockSpriteFloorTile"), new LinkBlockCollisionCommand());
+            collisionCommands.Add(("Link", "BlockSpriteNavy"), new LinkBlockCollisionCommand());
+            collisionCommands.Add(("Link", "BlockSpriteSpecks"), new LinkBlockCollisionCommand());
+            collisionCommands.Add(("Link", "BlockSpriteStatueFaceLeft"), new LinkBlockCollisionCommand());
+            collisionCommands.Add(("Link", "BlockSpriteStatueFaceRight"), new LinkBlockCollisionCommand());
+            collisionCommands.Add(("Link", "BlockSpriteStripes"), new LinkBlockCollisionCommand());
             collisionCommands.Add(("Link", "BlockSpriteStairs"), new LinkStairsCollisionCommand());
-
-        }
-
-        public void LoadContent(ContentManager content)
-        {
-            this._content = content;
-            //TODO Load Audio for commands
-            playerHurt = content.Load<SoundEffect>("LOZ_Link_Hurt");
+            collisionCommands.Add(("Enemy", "Border"), new EnemyBorderCommand());
         }
 
         public void HandleCollision(IObject objA, IObject objB)
         {
             //var key = (GetGeneralType(objA), GetGeneralType(objB));
-            string typeA = objA.GetType().Name;
+
+            string typeA;
             string typeB;
+
+            if (objA is IEnemy)
+            {
+                typeA = "Enemy";
+            }
+            else
+            {
+                typeA = objA.GetType().Name;
+            }
 
             CollisionDirections direction = DetectCollisionDirection(objA, objB);
 
@@ -71,12 +77,24 @@ namespace sprint0Real.Collisions
             {
                 typeB = "TreasureItem"; //Generalized key for all treasure items
             }
+            else if(objB is IEnemy)
+            {
+                typeB = "Enemy";
+            }
+            else if (objB is ILinkSprite)
+            {
+                typeB = "LinkWeapon";
+            }
+            else if (objB is IProjectile)
+            {
+                typeB = "EnemyProjectile";
+            }
             else
             {
                 typeB = objB.GetType().Name;
             }
 
-            if (collisionCommands.TryGetValue((typeA, typeB), out ICollisionCommand2 command))
+            if (collisionCommands.TryGetValue((typeA, typeB), out ICollisionCommand command))
             {
                 command.Execute(objA, objB, direction);
             }

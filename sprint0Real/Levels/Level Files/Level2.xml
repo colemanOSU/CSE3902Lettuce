@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LevelData>
+	<Name>Level2</Name>
+	<Door Exterior ="Default" Interior ="Default" Left="Open" Right="Open" Up="Breached" Down="Open"/>
+	
+	<Objects>
+		<Object Type="Skeleton" x="336" y="96"/>
+		<Object Type="Skeleton" x="432" y="96"/>
+		<Object Type="Skeleton" x="336" y="192"/>
+		<Object Type="Skeleton" x="192" y="288"/>
+		<Object Type="Skeleton" x="480" y="288"/>
+	</Objects>
+	
+	<MapHitBoxes>
+		<HitBox Type="Border" x="429" y="432" width="336" height="96"/>
+		<HitBox Type="Border" x="0" y="432" width="336" height="96"/>
+		<HitBox Type="Border" x="669" y="312" width="96" height="216"/>
+		<HitBox Type="Border" x="0" y="312" width="96" height="216"/>
+		
+		<HitBox Type="Border" x="0" y="0" width="336" height="96"/>
+		<HitBox Type="Border" x="429" y="0" width="336" height="96"/>
+		<HitBox Type="Border" x="0" y="0" width="96" height="216"/>
+		<HitBox Type="Border" x="669" y="0" width="96" height="216"/>
+
+		<HitBox Type="RoomTransitionBox" x="0" y="216" width="96" height="96" direction="Left"/>
+		<HitBox Type="RoomTransitionBox" x="672" y="216" width="80" height="96" direction="Right"/>
+		<HitBox Type="RoomTransitionBox" x="336" y="0" width="96" height="96" direction="Up"/>
+		<HitBox Type="RoomTransitionBox" x="336" y="432" width="96" height="96" direction="Down"/>
+	</MapHitBoxes>
+
+	<Neighbors>
+		<Neighbor Side="Right" Name="Level7"/>
+		<Neighbor Side="Left" Name="Level6"/>
+		<Neighbor Side="Up" Name="Level3"/>
+		<Neighbor Side="Down" Name="Level1"/>
+	</Neighbors>
+</LevelData>

@@ -16,20 +16,20 @@ namespace sprint0Real.EnemyStuff.DragonStuff
         private DragonStateMachine stateMachine;
         private DragonBehavior behavior;
 
-        public ISprite2 mySprite;
-        public Vector2 location;
+        public ISprite2 sprite;
+        public Vector2 Location;
         public int speed = 2;
-        public int health = 10;
+        private int health = 10;
 
         private int FPS = 6;
         private float timer = 0f;
 
         public Dragon(Vector2 placement)
         {
-            location = placement;
+            Location = placement;
             stateMachine = new DragonStateMachine(this);
             behavior = new DragonBehavior(this);
-            mySprite = EnemySpriteFactory.Instance.CreateDragonEnemySprite();
+            sprite = EnemySpriteFactory.Instance.CreateDragonEnemySprite();
         }
 
         public void ChangeDirection()
@@ -37,10 +37,10 @@ namespace sprint0Real.EnemyStuff.DragonStuff
             stateMachine.ChangeDirection();
         }
 
-        public void TakeDamage()
+        public void TakeDamage(int damage)
         {
             behavior.TakeDamage();
-            stateMachine.TakeDamage();
+            stateMachine.TakeDamage(damage);
         }
 
         public void hitWall()
@@ -86,6 +86,21 @@ namespace sprint0Real.EnemyStuff.DragonStuff
             {
                 return new Rectangle((int)location.X, (int)location.Y, 48, 64);
             }
+        }
+        public int Health
+        {
+            get { return health; }
+            set { health = value; }
+        }
+        public ISprite2 mySprite
+        {
+            get { return sprite; }
+            set { sprite = value; }
+        }
+        public Vector2 location
+        {
+            get { return Location; }
+            set { Location = value; }
         }
     }
 }

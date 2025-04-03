@@ -4,6 +4,7 @@ using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework.Audio;
 using sprint0Real.Interfaces;
 using sprint0Real.Levels;
 
@@ -16,11 +17,14 @@ namespace sprint0Real.EnemyStuff.DragonStuff
         private enum DragonState { Idle, Attack, Damaged };
         private DragonState currentState = DragonState.Idle;
         private Dragon myDragon;
+        private SoundEffect EnemyDie;
+        private bool DieSoundPlayed = false;
 
         // All the transitions possible
         public DragonStateMachine(Dragon dragon)
         {
             myDragon = dragon;
+            EnemyDie = SoundEffectFactory.Instance.getEnemyDie();
         }
 
         public void ChangeDirection()
@@ -29,12 +33,17 @@ namespace sprint0Real.EnemyStuff.DragonStuff
             myDragon.speed *= -1;
         }
 
-        public void TakeDamage()
+        public void TakeDamage(int damage)
         {
-            myDragon.health -= 1;
+            myDragon.Health -= damage;
             currentState = DragonState.Damaged;
-            if (myDragon.health <= 0)
+            if (myDragon.Health <= 0)
             {
+                if (!DieSoundPlayed)
+                {
+                    EnemyDie.Play();
+                    DieSoundPlayed=true;
+                }
                 CurrentMap.Instance.DeStage(myDragon);
             }
             else
@@ -55,18 +64,7 @@ namespace sprint0Real.EnemyStuff.DragonStuff
 
         public void Update()
         {
-            switch (currentState)
-            {
-                case DragonState.Idle:
-                    myDragon.location.X += myDragon.speed;
-                    break;
-                case DragonState.Attack:
-                    myDragon.location.X += myDragon.speed;
-                    break;
-                case DragonState.Damaged:
-                    myDragon.location.X += myDragon.speed;
-                    break;
-            }
+            myDragon.location = new Vector2(myDragon.location.X + myDragon.speed, myDragon.location.Y);
         }
     }
 }

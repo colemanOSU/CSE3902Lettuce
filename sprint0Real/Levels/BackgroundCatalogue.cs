@@ -25,7 +25,7 @@ namespace sprint0Real.Levels
             DownDoorCatalogue = new Dictionary<String, Rectangle>();
 
             InteriorCatalogue.Add("Default", new Rectangle(1, 192, 192, 112));
-            InteriorCatalogue.Add("EntranceInteior", new Rectangle(196, 192, 192, 112));
+            InteriorCatalogue.Add("EntranceInterior", new Rectangle(196, 192, 192, 112));
             InteriorCatalogue.Add("SandInterior", new Rectangle(586, 421, 192, 112));
 
             ExteriorCatalogue.Add("DungeonInterior", new Rectangle(421, 1009, 256, 160));
@@ -44,7 +44,7 @@ namespace sprint0Real.Levels
             LeftDoorCatalogue.Add("Breached", new Rectangle(947, 44, 32, 32));
 
             RightDoorCatalogue.Add("Default", new Rectangle(815, 77, 32, 32));
-            RightDoorCatalogue.Add("Open", new Rectangle(846, 77, 32, 32));
+            RightDoorCatalogue.Add("Open", new Rectangle(848, 77, 32, 32));
             RightDoorCatalogue.Add("Locked", new Rectangle(881, 77, 32, 32));
             RightDoorCatalogue.Add("Sealed", new Rectangle(914, 77, 32, 32));
             RightDoorCatalogue.Add("Breached", new Rectangle(947, 77, 32, 32));

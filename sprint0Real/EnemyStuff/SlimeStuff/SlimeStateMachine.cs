@@ -16,6 +16,14 @@ namespace sprint0Real.EnemyStuff.SlimeStuff
             mySlime = Slime;
         }
 
+        public void TakeDamage(int damage)
+        {
+            mySlime.Health -= damage;
+            if (mySlime.Health <= 0)
+            {
+                mySlime.Despawn();
+            }
+        }
         public void ChangeDirection()
         {
             int nextDirection = random.Next(0, 4);

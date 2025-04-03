@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using sprint0Real.Interfaces;
 using sprint0Real.Commands;
+using Microsoft.Xna.Framework.Audio;
 
 namespace sprint0Real.Items.ItemSprites
 {
@@ -28,6 +29,8 @@ namespace sprint0Real.Items.ItemSprites
         private int _currentFrame;
         private double _timer;
         private bool flag = false;
+        private SoundEffect magicRodSoundEffect;
+        private bool SoundPlayed = false;
 
 
         public MagicRod(Texture2D texture, Game1 game)
@@ -36,6 +39,7 @@ namespace sprint0Real.Items.ItemSprites
             myGame = game;
             _timer = 0;
             destinationRectangle = new Rectangle(game.Link.GetLocation().X + 13, game.Link.GetLocation().Y + 1, 14 * 3, 14 * 3);
+            magicRodSoundEffect = SoundEffectFactory.Instance.getMagicRod();
         }
         public Rectangle Rect
         {
@@ -65,6 +69,11 @@ namespace sprint0Real.Items.ItemSprites
 
         public void Update(GameTime gameTime)
         {
+            if (!SoundPlayed)
+            {
+                magicRodSoundEffect.Play();
+                SoundPlayed = true;
+            }
             _timer += gameTime.ElapsedGameTime.TotalSeconds * 2;
             if (_timer > _frameSpeed)
             {

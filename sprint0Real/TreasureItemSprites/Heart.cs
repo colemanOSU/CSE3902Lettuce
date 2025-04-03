@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using sprint0Real.Interfaces;
@@ -16,7 +17,8 @@ namespace sprint0Real.TreasureItemSprites
         private double timePerFrame = 150;
         private Rectangle currentFrame;
         public Rectangle destinationRectangle;
-
+        private SoundEffect soundEffect;
+        private bool SoundPlayed = false;
         public Texture2D _texture;
 
         public Heart(Vector2 pos)
@@ -24,10 +26,15 @@ namespace sprint0Real.TreasureItemSprites
             destinationRectangle = new Rectangle((int)pos.X, (int)pos.Y, 28, 32);
             _texture = TreasureItemSpriteFactory.Instance.GetItemSpriteSheet();
             currentFrame = new Rectangle(0, 0, frameWidth, frameHeight);
+            soundEffect = SoundEffectFactory.Instance.getHeartSoundEffect();
         }
         public void CollectItem()
         {
-
+            if (!SoundPlayed)
+            {
+                soundEffect.Play();
+                SoundPlayed = true;
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)

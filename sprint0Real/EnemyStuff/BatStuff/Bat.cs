@@ -10,8 +10,11 @@ namespace sprint0Real.EnemyStuff.BatStuff
         private BatStateMachine stateMachine;
         private BatBehavior behavior;
         private bool Perched = false;
-        public ISprite2 mySprite;
-        public Vector2 location;
+        private int health = 1;
+
+        private ISprite2 sprite;
+        private Vector2 Location;
+
         public float speed = 2f;
         public float FPS = 10;
         private float timer = 0f;
@@ -19,10 +22,10 @@ namespace sprint0Real.EnemyStuff.BatStuff
 
         public Bat(Vector2 start)
         {
-            location = start;
+            Location = start;
             stateMachine = new BatStateMachine(this);
             behavior = new BatBehavior(this);
-            mySprite = EnemySpriteFactory.Instance.CreateBatSprite();
+            sprite = EnemySpriteFactory.Instance.CreateBatSprite();
         }
 
         public void Perch()
@@ -38,14 +41,10 @@ namespace sprint0Real.EnemyStuff.BatStuff
             Perched = false;
             stateMachine.ChangeDirection();
         }
-        public void hitWall()
+        
+        public void TakeDamage(int damage)
         {
-            stateMachine.hitWall();
-            stateMachine.ChangeDirection();
-        }
-        public void hitLink()
-        {
-            Despawn();
+            stateMachine.TakeDamage(damage);
         }
         public void ChangeDirection()
         {
@@ -81,6 +80,27 @@ namespace sprint0Real.EnemyStuff.BatStuff
                 //30x30 is size of sprite, change if sprite size is different
                 return new Rectangle((int)location.X, (int)location.Y, 30, 30);
             }
+        }
+        public int Health
+        {
+            get
+            {
+                return health;
+            }
+            set
+            {
+                health = value;
+            }
+        }
+        public ISprite2 mySprite
+        {
+            get {  return sprite; }
+            set { sprite = value; }
+        }
+        public Vector2 location
+        {
+            get { return Location; }
+            set { Location = value; }
         }
     }
 }

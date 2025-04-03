@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0Real.EnemyStuff.GoriyaStuff;
 using sprint0Real.EnemyStuff.RedGoriyaStuff;
@@ -23,6 +24,7 @@ namespace sprint0Real.EnemyStuff.SkeletonStuff
 
         private int FPS = 6;
         private float timer = 0f;
+        private int health = 1;
 
         public Skeleton(Vector2 start)
         {
@@ -36,6 +38,12 @@ namespace sprint0Real.EnemyStuff.SkeletonStuff
             stateMachine.hitWall();
             stateMachine.ChangeDirection();
         }
+
+        public void TakeDamage(int damage)
+        {
+            stateMachine.TakeDamage(damage);
+        }
+
         public void hitLink()
         {
             Despawn();
@@ -74,6 +82,11 @@ namespace sprint0Real.EnemyStuff.SkeletonStuff
             {
                 return new Rectangle((int)location.X, (int)location.Y, 30, 30);
             }
+        }
+        public int Health
+        {
+            get { return Health; }
+            set { Health = value; }
         }
     }
 }

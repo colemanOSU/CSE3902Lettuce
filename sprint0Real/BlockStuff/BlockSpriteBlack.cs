@@ -15,6 +15,7 @@ namespace sprint0Real.BlockSprites
         public Rectangle destinationRectangle;
         public Vector2 position;
         private SoundEffect stairsSound;
+        private bool SoundPlayed = false;
 
         public Texture2D texture;
 
@@ -28,8 +29,12 @@ namespace sprint0Real.BlockSprites
         }
         public void TakeStairs()
         {
-            stairsSound = BlockSpriteFactory.Instance.GetSoundEffect();
-            stairsSound.Play();
+            stairsSound = SoundEffectFactory.Instance.getBlockSoundEffect();
+            if (!SoundPlayed)
+            {
+                stairsSound.Play();
+                SoundPlayed = true;
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)

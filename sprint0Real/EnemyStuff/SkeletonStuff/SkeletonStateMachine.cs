@@ -1,5 +1,7 @@
-﻿using sprint0Real.EnemyStuff.HandStuff;
+﻿using sprint0Real.EnemyStuff.DragonStuff;
+using sprint0Real.EnemyStuff.HandStuff;
 using sprint0Real.Interfaces;
+using sprint0Real.Levels;
 using System;
 
 namespace sprint0Real.EnemyStuff.SkeletonStuff
@@ -14,6 +16,15 @@ namespace sprint0Real.EnemyStuff.SkeletonStuff
         public SkeletonStateMachine(Skeleton Skeleton)
         {
             mySkeleton = Skeleton;
+        }
+
+        public void TakeDamage(int damage)
+        {
+            mySkeleton.Health -= damage;
+            if (mySkeleton.Health <= 0)
+            {
+                CurrentMap.Instance.DeStage(mySkeleton);
+            }
         }
 
         public void ChangeDirection()

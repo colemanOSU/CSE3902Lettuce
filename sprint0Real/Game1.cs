@@ -16,7 +16,6 @@ using sprint0Real.Collisions;
 using sprint0Real.LinkStuff;
 using sprint0Real.Levels;
 using System.Reflection.Metadata;
-using sprint0Real.TreasureItemSprites;
 using sprint0Real.LinkSprites;
 using sprint0Real.Commands;
 using Microsoft.Xna.Framework.Audio;
@@ -33,16 +32,12 @@ namespace sprint0Real
         public Texture2D linkSheet;
         public Texture2D UISheet;
 
-        Texture2D blockSheet;
-        Texture2D itemSheet;
-        
         SpriteFont font1;
-        public int currentBlockIndex;
-        public int currentItemIndex;
 
         //TEMP SET PUBLIC UNTIL BETTER SOLUTION FOUND
         public GameStates currentGameState;
         private TitleScreen titleScreen;
+        private Song Dungeon;
 
         public ILink Link;
         public ILinkSpriteTemp linkSprite;
@@ -58,11 +53,6 @@ namespace sprint0Real
         //temp
         public IItem tempItem;
         public IItemSprite itemSprite;
-
-        //temp
-
-        public IBlock currentBlock;
-        public ITreasureItems currentItem;
 
         List<IController> controllerList;
 
@@ -113,9 +103,7 @@ namespace sprint0Real
 
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
-            currentBlockIndex = 1;
-            Link = new Link(this);  
-            currentItemIndex = 1;
+            Link = new Link(this); 
 
             //TEMP PAUSE
             isPaused = false;
@@ -134,9 +122,8 @@ namespace sprint0Real
             titleScreen = new TitleScreen();
             LinkState = new LinkStateMachine(Link);
             itemStateMachine = new ItemStateMachine(this, Link.GetInventory());
-
             collisionHandler = new CollisionHandler(this);
-            //collisionDetection = new CollisionDetection(this);
+
 
             base.Initialize();
             _camera = new Camera();
@@ -146,25 +133,26 @@ namespace sprint0Real
         protected override void LoadContent()
         {
             titleScreen.LoadContent(GraphicsDevice, Content);
-            collisionHandler.LoadContent(Content);
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             
             font1 = Content.Load<SpriteFont>("MyMenuFont");
 
            
             //Load Sprite Sheets
-            blockSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - Dungeon Tileset");
-            itemSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - Items & Weapons");
             linkSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - Link");
             UISheet = Content.Load<Texture2D>("NES - The Legend of Zelda - HUD & Pause Screen");
 
+            Dungeon = Content.Load<Song>("04 - Dungeon");
+
             EnemySpriteFactory.Instance.LoadAllTextures(Content);
             EnemySpriteFactory.Instance.LoadGame(this);
+            SoundEffectFactory.Instance.LoadAllTextures(Content);
             BlockSpriteFactory.Instance.LoadAllTextures(Content);
             TreasureItemSpriteFactory.Instance.LoadAllTextures(Content);
             LevelLoader.Instance.LoadLevels();
 
             ResetGame();
+            collisionHandler.LoadCommands();
             collisionDetection.Load(Link);
             tempItem = null;
             
@@ -217,6 +205,13 @@ namespace sprint0Real
 
                 case GameStates.GamePlay:
 
+                    if (MediaPlayer.Queue.ActiveSong != Dungeon)
+                    {
+                        MediaPlayer.Stop(); // Stop any currently playing song
+                        MediaPlayer.Play(Dungeon);
+                        MediaPlayer.IsRepeating = true; // Loop the dungeon music
+                    }
+
                     itemStateMachine.setActive();
                     Link.Update(gameTime);
 
@@ -226,8 +221,6 @@ namespace sprint0Real
                          controller.Update(gameTime);
 
                      }
-                     currentBlock.Update(gameTime);
-                     //currentItem.Update(gameTime);
                      LinkState.Update(gameTime);
 
                     collisionDetection.Update(gameTime);
@@ -322,9 +315,6 @@ namespace sprint0Real
                     itemSprite.Draw(_spriteBatch);
                     itemSprite.Update(gameTime, _spriteBatch);
                 }
-
-                //currentBlock.Draw(_spriteBatch);
-                //currentItem.Draw(_spriteBatch);
                 linkSprite.Update(gameTime, _spriteBatch);
                 linkSprite.Draw(_spriteBatch);
 
@@ -344,23 +334,16 @@ namespace sprint0Real
             this.titleScreen.isAnimating = false;
             currentGameState = GameStates.TitleScreen;
 
-            currentBlock = new BlockSpriteFloorTile(new Vector2(300,300));
-            //currentItem = new Heart(new Vector2(0, 0));
             linkSprite = new ResetLink(linkSheet, this);
             UISprite = new UI(UISheet);
             MenuUISprite = new MenuUI(UISheet);
             PauseUISprite = new PauseUI(UISheet);
             weaponItemsA = new NullSprite(linkSheet, this);
             weaponItemsB = new NullSprite(linkSheet, this);
-            currentBlockIndex = 1;
             Link = new Link(this);
-            currentItemIndex = 1;
             LinkState = new LinkStateMachine(Link);
 
             collisionDetection = new CollisionDetection(this, collisionHandler);
-  
-
-            //Update with other objects in game...
 
         }
     }

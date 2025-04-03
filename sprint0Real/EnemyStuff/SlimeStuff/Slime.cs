@@ -23,6 +23,7 @@ namespace sprint0Real.EnemyStuff.SlimeStuff
 
         private int FPS = 6;
         private float timer = 0f;
+        private int health = 1;
 
         public Slime(Vector2 start)
         {
@@ -36,10 +37,12 @@ namespace sprint0Real.EnemyStuff.SlimeStuff
             stateMachine.hitWall();
             stateMachine.ChangeDirection();
         }
-        public void hitLink()
+        
+        public void TakeDamage(int damage)
         {
-            Despawn();
+            stateMachine.TakeDamage(damage);
         }
+
         public void ChangeDirection()
         {
             stateMachine.ChangeDirection();
@@ -74,6 +77,11 @@ namespace sprint0Real.EnemyStuff.SlimeStuff
             {
                 return new Rectangle((int)location.X, (int)location.Y, 14, 20);
             }
+        }
+        public int Health
+        {
+            get { return Health; }
+            set { Health = value; }
         }
     }
 }

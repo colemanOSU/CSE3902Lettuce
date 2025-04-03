@@ -32,22 +32,6 @@ namespace sprint0Real.EnemyStuff.DragonStuff
         {
             myDragon = dragon;
         }
-
-        private void SafeJuke()
-        {
-            if (myDragon.location.X >= EnemySpriteFactory.Instance.myGame._graphics.PreferredBackBufferWidth - 48)
-            {
-                jukeTimer = 0;
-                myDragon.location.X = EnemySpriteFactory.Instance.myGame._graphics.PreferredBackBufferWidth - 48;
-                myDragon.ChangeDirection();
-            }
-            else if (myDragon.location.X <= 0)
-            {
-                jukeTimer = 0;
-                myDragon.location.X = 0;
-                myDragon.ChangeDirection();
-            }
-        }
         private void JukeCheck()
         {
             if (jukeDelay <= jukeTimer)
@@ -87,7 +71,6 @@ namespace sprint0Real.EnemyStuff.DragonStuff
             
             JukeCheck();
             // Gotta make sure the dragon doesn't juke it's way off screen
-            SafeJuke();
             AttackCheck();
             AttackFinish();
 

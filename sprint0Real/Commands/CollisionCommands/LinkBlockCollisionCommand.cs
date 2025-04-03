@@ -6,31 +6,16 @@ using System.Threading.Tasks;
 using sprint0Real.Collisions;
 using sprint0Real.Interfaces;
 
-namespace sprint0Real.Commands.CollisionCommands
+namespace sprint0Real.Commands.CollisionCommands2
 {
-    public class LinkBlockCollisionCommand : ICollisionCommand
+    internal class LinkBlockCollisionCommand : ICollisionCommand
     {
-        private Game1 game;
-
-        public LinkBlockCollisionCommand(Game1 game)
+        public void Execute(IObject Link, IObject Block, CollisionDirections direction)
         {
-            this.game = game;
-        }
-        public void Execute(IGameObject objA, IGameObject objB, CollisionDirections direction)
-        {
-
-            // Check if objA is a Dragon
-            if (objA is Link linkA)
+            if (Link is Link linkA)
             {
                 linkA.StopMomentumInDirection(direction.ToLinkDirection());
             }
-
-            // Check if objB is a Dragon
-            if (objB is Link linkB)
-            {
-                linkB.StopMomentumInDirection(direction.ToLinkDirection());
-            }
-
         }
     }
 }

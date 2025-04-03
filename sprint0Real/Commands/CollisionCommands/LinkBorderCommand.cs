@@ -9,7 +9,7 @@ using sprint0Real.Interfaces;
 
 namespace sprint0Real.Commands.CollisionCommands2
 {
-    public class LinkBorderCommand : ICollisionCommand2
+    public class LinkBorderCommand : ICollisionCommand
     {
         public void Execute(IObject Link, IObject Enemy, CollisionDirections direction)
         {

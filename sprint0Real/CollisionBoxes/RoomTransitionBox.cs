@@ -11,15 +11,26 @@ namespace sprint0Real.CollisionBoxes
     public class RoomTransitionBox : ICollisionBoxes, ITouchesLink
     {
         Rectangle myDestinationRectangle;
-        public RoomTransitionBox(Rectangle destinationRectangle)
+        private String direction;
+        public RoomTransitionBox(Rectangle destinationRectangle, String direction)
         {
             myDestinationRectangle = destinationRectangle;
+            this.direction = direction;
         }
         public Rectangle Rect
         {
             get
             {
                 return myDestinationRectangle;
+            }
+        }
+
+        public String Direction
+        {
+            get
+            {
+                return direction;
+
             }
         }
     }
