@@ -25,7 +25,7 @@ public class Link : ILink
 
     public Inventory inventory;
 
-    public const int SPEED = 10;
+    public const int SPEED = 4;
 
     public enum Direction
     {

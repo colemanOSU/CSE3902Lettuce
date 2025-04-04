@@ -203,6 +203,10 @@ namespace sprint0Real
                     UISprite.Update(gameTime, Link);
                     break;
 
+                case GameStates.LevelTransition:
+
+                    break;
+
                 case GameStates.GamePlay:
 
                     if (MediaPlayer.Queue.ActiveSong != Dungeon)
@@ -283,6 +287,22 @@ namespace sprint0Real
 
                     _spriteBatch.End();
                     break;
+                case GameStates.LevelTransition:
+                    //We still want things to be drawn, just not updated
+                    transform = Matrix.CreateTranslation(-_camera.GetTopLeft().X, -_camera.GetTopLeft().Y, 0);
+                    _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, transform);
+
+                    if (_camera.MoveToward(CameraTarget))
+                    {
+                        currentGameState = (InMenu) ? GameStates.Menu : GameStates.GamePlay;
+                    }
+
+                    CurrentMap.Instance.Draw(_spriteBatch);
+                    linkSprite.Draw(_spriteBatch);
+                    UISprite.Draw(_spriteBatch);
+
+                    _spriteBatch.End();
+                    break;
                 case GameStates.Menu:
                     //We still want things to be drawn, just not updated
                     transform = Matrix.CreateTranslation(-_camera.GetTopLeft().X, -_camera.GetTopLeft().Y, 0);
@@ -300,8 +320,8 @@ namespace sprint0Real
                     _spriteBatch.End();
                     break;
                 case GameStates.GamePlay:
-                    
-                    _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp);
+                    transform = Matrix.CreateTranslation(-_camera.GetTopLeft().X, -_camera.GetTopLeft().Y, 0);
+                    _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, transform);
                     CurrentMap.Instance.Draw(_spriteBatch);
 
                 //TEMP ITEM
