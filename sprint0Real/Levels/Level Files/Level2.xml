@@ -9,6 +9,11 @@
 		<Object Type="Skeleton" x="336" y="192"/>
 		<Object Type="Skeleton" x="192" y="288"/>
 		<Object Type="Skeleton" x="480" y="288"/>
+
+		<Object Type="BlockTile" x="96" y="96"/>
+		<Object Type="BlockTile" x="432" y="96"/>
+		<Object Type="BlockTile" x="96" y="192"/>
+		<Object Type="BlockTile" x="432" y="192"/>
 	</Objects>
 	
 	<MapHitBoxes>

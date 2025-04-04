@@ -7,6 +7,11 @@
 		<Object Type="Goriya" x="384" y="0"/>
 		<Object Type="Goriya" x="384" y="240"/>
 		<Object Type="Goriya" x="480" y="48"/>
+
+		<Object Type="BlockTile" x="96" y="96"/>
+		<Object Type="BlockTile" x="432" y="96"/>
+		<Object Type="BlockTile" x="96" y="192"/>
+		<Object Type="BlockTile" x="432" y="192"/>
 	</Objects>
 	
 	<MapHitBoxes>
