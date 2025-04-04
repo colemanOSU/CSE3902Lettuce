@@ -4,9 +4,24 @@
 	<Door Exterior ="Default" Interior ="EntranceInterior" Left="Open" Right="Open" Up="Locked" Down="Locked"/>
 	
 	<Objects>
+		
 	</Objects>
 	
 	<MapHitBoxes>
+		<!--
+		<HitBox Type="Border" x="144" y="144" width="48" height="48"/>
+		<HitBox Type="Border" x="288" y="144" width="48" height="48"/>
+		<HitBox Type="Border" x="432" y="144" width="48" height="48"/>
+		<HitBox Type="Border" x="576" y="144" width="48" height="48"/>
+		<HitBox Type="Border" x="144" y="240" width="48" height="48"/>
+		<HitBox Type="Border" x="288" y="240" width="48" height="48"/>
+		<HitBox Type="Border" x="432" y="240" width="48" height="48"/>
+		<HitBox Type="Border" x="576" y="240" width="48" height="48"/>
+		<HitBox Type="Border" x="144" y="336" width="48" height="48"/>
+		<HitBox Type="Border" x="288" y="336" width="48" height="48"/>
+		<HitBox Type="Border" x="432" y="336" width="48" height="48"/>
+		<HitBox Type="Border" x="576" y="336" width="48" height="48"/>
+		-->
 		<HitBox Type="Border" x="429" y="432" width="336" height="96"/>
 		<HitBox Type="Border" x="0" y="432" width="336" height="96"/>
 		<HitBox Type="Border" x="669" y="312" width="96" height="216"/>

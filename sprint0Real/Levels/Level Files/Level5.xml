@@ -1,8 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <LevelData>
 	<Name>Level5</Name>
-	<Exterior>Insert</Exterior>
-	<Interior>Insert</Interior>
 	<Door Exterior ="Default" Interior ="Level5" Left="Locked" Right="Default" Up="Default" Down="Open"/>
 	
 	<Objects>

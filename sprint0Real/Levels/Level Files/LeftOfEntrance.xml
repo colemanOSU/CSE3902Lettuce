@@ -1,8 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <LevelData>
 	<Name>LeftOfEntrance</Name>
-	<Exterior>Insert</Exterior>
-	<Interior>Insert</Interior>
 	<Door Exterior ="Default" Interior ="Default" Left="Default" Right="Open" Up="Default" Down="Default"/>
 
 	<Objects>

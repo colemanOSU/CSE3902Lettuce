@@ -1,8 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <LevelData>
 	<Name>Level4</Name>
-	<Exterior>Insert</Exterior>
-	<Interior>Insert</Interior>
 	<Door Exterior ="Default" Interior ="Level4" Left="Default" Right="Default" Up="Locked" Down="Open"/>
 	
 	<Objects>
@@ -12,6 +10,8 @@
 	</Objects>
 	
 	<MapHitBoxes>
+
+
 		<HitBox Type="Border" x="429" y="432" width="336" height="96"/>
 		<HitBox Type="Border" x="0" y="432" width="336" height="96"/>
 		<HitBox Type="Border" x="669" y="312" width="96" height="216"/>

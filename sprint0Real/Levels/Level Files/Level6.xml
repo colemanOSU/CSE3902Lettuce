@@ -1,8 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <LevelData>
 	<Name>Level6</Name>
-	<Exterior>Insert</Exterior>
-	<Interior>Insert</Interior>
 	<Door Exterior ="Default" Interior ="Default" Left="Default" Right="Sealed" Up="Locked" Down="Default"/>
 	
 	<Objects>
@@ -12,6 +10,13 @@
 		<Object Type="Bat" x="192" y="240"/>
 		<Object Type="Bat" x="432" y="0"/>
 		<Object Type="Bat" x="432" y="336"/>
+
+		<Object Type="BlockTile" x="240" y="96"/>
+		<Object Type="BlockTile" x="288" y="96"/>
+		<Object Type="BlockTile" x="240" y="144"/>
+		<Object Type="BlockTile" x="288" y="144"/>
+		<Object Type="BlockTile" x="240" y="192"/>
+		<Object Type="BlockTile" x="288" y="192"/>
 	</Objects>
 	
 	<MapHitBoxes>
