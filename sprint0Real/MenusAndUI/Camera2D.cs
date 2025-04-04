@@ -27,6 +27,10 @@ public class Camera
         _quarterScreen = new Vector2(Game1.SCREENWIDTH / 2, Game1.SCREENHEIGHT / 2);
     }
 
+    //Returns true when camera reaches target. Best used in while loop
+    //Where MoveToward is continuously called until target is reached.
+
+    //target is the center of the position you want the camera to move towards.
     public bool MoveToward(Vector2 target)
     {
         //figure out which direction to move the camera,
