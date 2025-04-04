@@ -1,15 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <LevelData>
 	<Name>Level3</Name>
-	<Exterior>Insert</Exterior>
-	<Interior>Insert</Interior>
 	<Door Exterior ="Default" Interior ="Default" Left="Open" Right="Locked" Up="Open" Down="Breached"/>
 	
 	<Objects>
-		<Object Type="Dragon" x="0" y="0"/>
-		<Object Type="Dragon" x="100" y="100"/>
-		<Object Type="BlackBlock" x="200" y="200"/>
-		<Object Type="Map" x="400" y="400"/>
+		<Object Type="Slime" x="144" y="0"/>
+		<Object Type="Slime" x="192" y="144"/>
+		<Object Type="Slime" x="192" y="240"/>
+		<Object Type="Slime" x="384" y="0"/>
+		<Object Type="Slime" x="432" y="144"/>
 	</Objects>
 	
 	<MapHitBoxes>
@@ -23,10 +22,10 @@
 		<HitBox Type="Border" x="0" y="0" width="96" height="216"/>
 		<HitBox Type="Border" x="669" y="0" width="96" height="216"/>
 
-		<HitBox Type="RoomTransitionBox" x="0" y="216" width="96" height="96"/>
-		<HitBox Type="RoomTransitionBox" x="672" y="216" width="96" height="96"/>
-		<HitBox Type="RoomTransitionBox" x="336" y="0" width="96" height="96"/>
-		<HitBox Type="RoomTransitionBox" x="336" y="432" width="96" height="96"/>
+		<HitBox Type="RoomTransitionBox" x="0" y="216" width="96" height="96" direction="Left"/>
+		<HitBox Type="RoomTransitionBox" x="672" y="216" width="80" height="96" direction="Right"/>
+		<HitBox Type="RoomTransitionBox" x="336" y="0" width="96" height="96" direction="Up"/>
+		<HitBox Type="RoomTransitionBox" x="336" y="432" width="96" height="96" direction="Down"/>
 	</MapHitBoxes>
 
 	<Neighbors>

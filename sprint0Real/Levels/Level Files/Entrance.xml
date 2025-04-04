@@ -4,10 +4,6 @@
 	<Door Exterior ="Default" Interior ="EntranceInterior" Left="Open" Right="Open" Up="Locked" Down="Locked"/>
 	
 	<Objects>
-		<Object Type="Dragon" x="100" y="0"/>
-		<Object Type="Dragon" x="100" y="100"/>
-		<Object Type="NavyBlock" x="0" y="0"/>
-		<Object Type="Map" x="400" y="400"/>
 	</Objects>
 	
 	<MapHitBoxes>

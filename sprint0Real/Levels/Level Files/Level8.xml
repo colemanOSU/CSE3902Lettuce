@@ -6,10 +6,9 @@
 	<Door Exterior ="Default" Interior ="Default" Left="Sealed" Right="Open" Up="Default" Down="Locked"/>
 	
 	<Objects>
-		<Object Type="Dragon" x="0" y="0"/>
-		<Object Type="Dragon" x="100" y="100"/>
-		<Object Type="BlackBlock" x="200" y="200"/>
-		<Object Type="Map" x="400" y="400"/>
+		<Object Type="Slime" x="192" y="192"/>
+		<Object Type="Slime" x="288" y="96"/>
+		<Object Type="Slime" x="288" y="288"/>
 	</Objects>
 	
 	<MapHitBoxes>
@@ -23,10 +22,10 @@
 		<HitBox Type="Border" x="0" y="0" width="96" height="216"/>
 		<HitBox Type="Border" x="669" y="0" width="96" height="216"/>
 
-		<HitBox Type="RoomTransitionBox" x="0" y="216" width="96" height="96"/>
-		<HitBox Type="RoomTransitionBox" x="672" y="216" width="96" height="96"/>
-		<HitBox Type="Border" x="336" y="0" width="96" height="96"/>
-		<HitBox Type="RoomTransitionBox" x="336" y="432" width="96" height="96"/>
+		<HitBox Type="RoomTransitionBox" x="0" y="216" width="96" height="96" direction="Left"/>
+		<HitBox Type="RoomTransitionBox" x="672" y="216" width="80" height="96" direction="Right"/>
+		<HitBox Type="Border" x="336" y="0" width="96" height="96" direction="Up"/>
+		<HitBox Type="RoomTransitionBox" x="336" y="432" width="96" height="96" direction="Down"/>
 	</MapHitBoxes>
 
 	<Neighbors>

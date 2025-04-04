@@ -27,6 +27,11 @@ namespace sprint0Real.Levels
             InteriorCatalogue.Add("Default", new Rectangle(1, 192, 192, 112));
             InteriorCatalogue.Add("EntranceInterior", new Rectangle(196, 192, 192, 112));
             InteriorCatalogue.Add("SandInterior", new Rectangle(586, 421, 192, 112));
+            InteriorCatalogue.Add("SolidBlack", new Rectangle(975, 880, 192, 112));
+            InteriorCatalogue.Add("Level4", new Rectangle(585, 307, 192, 112));
+            InteriorCatalogue.Add("Level5", new Rectangle(196, 422, 192, 112));
+            InteriorCatalogue.Add("Level13", new Rectangle(780, 306, 192, 112));
+            InteriorCatalogue.Add("Level14", new Rectangle(975, 308, 192, 112));
 
             ExteriorCatalogue.Add("DungeonInterior", new Rectangle(421, 1009, 256, 160));
             ExteriorCatalogue.Add("Default", new Rectangle(521, 11, 256, 176));
