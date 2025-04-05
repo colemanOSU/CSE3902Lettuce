@@ -38,7 +38,7 @@ namespace sprint0Real.LinkSprites
         private int bombCount;
         private int index;
         private Game1 myGame;
-        private double itemUseCooldown = 1000; 
+        private double itemUseCooldown = 1000;
         private double timeSinceLastUse = 0;
         private bool isNoItem = false;
         public ItemStateMachine(Game1 game, Inventory inv)
@@ -59,7 +59,7 @@ namespace sprint0Real.LinkSprites
 
             //System.Diagnostics.Debug.WriteLine($"Updated currentItem: {currentItem}");
         }
-        public void SetItem(int num,Game1 game)
+        public void SetItem(int num, Game1 game)
         {
             /*
             switch (num)
@@ -120,12 +120,13 @@ namespace sprint0Real.LinkSprites
 
         public void DrawWeaponSprite()
         {
-         
+            CurrentMap.Instance.ObjectList().RemoveAll(obj => obj is ILinkSprite && obj != myGame.weaponItemsA);
+            CurrentMap.Instance.ObjectList().RemoveAll(obj => obj is ILinkSprite && obj != myGame.weaponItemsB);
             if (myGame.weaponItemsA != null && !(myGame.weaponItemsA is NullSprite))
             {
                 CurrentMap.Instance.ObjectList().Remove(myGame.weaponItemsA);
             }
-            
+
 
             ILinkSprite newWeapon = CreateWeaponInstance(currentSwords);
 
@@ -141,7 +142,9 @@ namespace sprint0Real.LinkSprites
         }
         public void DrawItemSprite()
         {
-            if (isNoItem) return;
+            if (isNoItem && currentItem == Inventory.Items.Bomb) return;
+            CurrentMap.Instance.ObjectList().RemoveAll(obj => obj is ILinkSprite && obj != myGame.weaponItemsA);
+            CurrentMap.Instance.ObjectList().RemoveAll(obj => obj is ILinkSprite && obj != myGame.weaponItemsB);
             if (myGame.weaponItemsB != null && !(myGame.weaponItemsB is NullSprite))
             {
                 CurrentMap.Instance.ObjectList().Remove(myGame.weaponItemsB);
@@ -161,7 +164,8 @@ namespace sprint0Real.LinkSprites
         }
         public ILinkSprite TryUseItem(Inventory.Items currentItem)
         {
-            UpdateEquippedItems(new GameTime()); 
+
+            UpdateEquippedItems(new GameTime());
 
             ILinkSprite item = CreateItemInstance(currentItem);
 
@@ -194,7 +198,7 @@ namespace sprint0Real.LinkSprites
         {
             return sword switch
             {
-                Inventory.Swords.Wood_Sword => new WoodSwordSprite(myGame.linkSheet,myGame),
+                Inventory.Swords.Wood_Sword => new WoodSwordSprite(myGame.linkSheet, myGame),
                 Inventory.Swords.White_Sword => new WhiteSwordSprite(myGame.linkSheet, myGame),
                 _ => new NullSprite(myGame.linkSheet, myGame),
             };
