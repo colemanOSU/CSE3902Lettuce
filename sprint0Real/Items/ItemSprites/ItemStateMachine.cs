@@ -35,8 +35,12 @@ namespace sprint0Real.LinkSprites
         private Inventory inventory;
         private Inventory.Items currentItem;
         private Inventory.Swords currentSwords;
+        private int bombCount;
         private int index;
         private Game1 myGame;
+        private double itemUseCooldown = 1000; 
+        private double timeSinceLastUse = 0;
+        private bool isNoItem = false;
         public ItemStateMachine(Game1 game, Inventory inv)
         {
             myGame = game;
@@ -44,11 +48,15 @@ namespace sprint0Real.LinkSprites
             inventory = inv;
             currentItem = inventory.CurrentItem;
             currentSwords = inventory.CurrentSword;
+            bombCount = inventory.BombCount;
         }
-        public void UpdateEquippedItems()
+        public void UpdateEquippedItems(GameTime gameTime)
         {
+            timeSinceLastUse += gameTime.ElapsedGameTime.TotalMilliseconds;
             currentItem = inventory.CurrentItem;
             currentSwords = inventory.CurrentSword;
+            bombCount = inventory.BombCount;
+
             //System.Diagnostics.Debug.WriteLine($"Updated currentItem: {currentItem}");
         }
         public void SetItem(int num,Game1 game)
@@ -112,17 +120,10 @@ namespace sprint0Real.LinkSprites
 
         public void DrawWeaponSprite()
         {
-            CurrentMap.Instance.ObjectList().RemoveAll(obj => obj is ILinkSprite && obj != myGame.weaponItemsA);
-            CurrentMap.Instance.ObjectList().RemoveAll(obj => obj is ILinkSprite && obj != myGame.weaponItemsB);
-            /*if (myGame.weaponItems != null && myGame.weaponItems.GetType() == GetWeaponType(currentSwords))
-            {
-                return; 
-            }*/
-
+         
             if (myGame.weaponItemsA != null && !(myGame.weaponItemsA is NullSprite))
             {
                 CurrentMap.Instance.ObjectList().Remove(myGame.weaponItemsA);
-                //Debug.WriteLine($"Removed old weapon: {myGame.weaponItemsA.GetType().Name}");
             }
             
 
@@ -135,36 +136,60 @@ namespace sprint0Real.LinkSprites
                 if (!CurrentMap.Instance.ObjectList().Contains(myGame.weaponItemsA))
                 {
                     CurrentMap.Instance.ObjectList().Add(myGame.weaponItemsA);
-                    //Debug.WriteLine($"Added new weapon: {myGame.weaponItemsA.GetType().Name}");
                 }
             }
         }
         public void DrawItemSprite()
         {
-            CurrentMap.Instance.ObjectList().RemoveAll(obj => obj is ILinkSprite && obj != myGame.weaponItemsA);
-
-            CurrentMap.Instance.ObjectList().RemoveAll(obj => obj is ILinkSprite && obj != myGame.weaponItemsB);
+            if (isNoItem) return;
             if (myGame.weaponItemsB != null && !(myGame.weaponItemsB is NullSprite))
             {
                 CurrentMap.Instance.ObjectList().Remove(myGame.weaponItemsB);
-                //
-                //Debug.WriteLine($"Removed old weapon: {myGame.weaponItemsB.GetType().Name}");
             }
 
-            ILinkSprite newItem = CreateItemInstance(currentItem);
+            ILinkSprite newItem = TryUseItem(currentItem);
+
             if (newItem != null)
             {
                 myGame.weaponItemsB = newItem;
 
-              if (!CurrentMap.Instance.ObjectList().Contains(myGame.weaponItemsB))
+                if (!CurrentMap.Instance.ObjectList().Contains(myGame.weaponItemsB))
                 {
                     CurrentMap.Instance.ObjectList().Add(myGame.weaponItemsB);
-                    //Debug.WriteLine($"Added new weapon: {myGame.weaponItemsB.GetType().Name}");
                 }
             }
         }
-                  
-   
+        public ILinkSprite TryUseItem(Inventory.Items currentItem)
+        {
+            UpdateEquippedItems(new GameTime()); 
+
+            ILinkSprite item = CreateItemInstance(currentItem);
+
+            if (currentItem == Inventory.Items.Bomb)
+            {
+                if (inventory.BombCount > 0 && timeSinceLastUse >= itemUseCooldown)
+                {
+                    isNoItem = false;
+                    inventory.BombUse();
+                    timeSinceLastUse = 0;
+                    Debug.WriteLine($"Bomb used!");
+                }
+                else if (inventory.BombCount <= 0)
+                {
+                    Debug.WriteLine($"No bombs left!");
+                    isNoItem = true;
+                }
+            }
+            else
+            {
+                if (timeSinceLastUse >= itemUseCooldown)
+                {
+                    timeSinceLastUse = 0;
+                }
+            }
+            return item;
+        }
+
         private ILinkSprite CreateWeaponInstance(Inventory.Swords sword)
         {
             return sword switch
