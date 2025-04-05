@@ -47,7 +47,7 @@ namespace sprint0Real.EnemyStuff.Fireballs
         {
             get
             {
-                return new Rectangle((int)location.X, (int)location.Y, 14, 30);
+                return new Rectangle((int)location.X, (int)location.Y, 7 * Game1.RENDERSCALE, 15 * Game1.RENDERSCALE);
             }
         }
     }

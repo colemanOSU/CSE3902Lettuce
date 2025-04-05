@@ -32,52 +32,52 @@ namespace sprint0Real.EnemyStuff.RedGoriyaStuff
                 // White
                 sourceRectangle = new Rectangle(310, 28, 15, 15);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 30, 30);
+                (int)location.Y, 16 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
             }
             else if (currentFrame == 1)
             {
                 // Teal
                 sourceRectangle = new Rectangle(383, 28, 15, 15);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 30, 30);
+                (int)location.Y, 16 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
             }
             else if (currentFrame == 2)
             {
                 // Red
                 sourceRectangle = new Rectangle(241, 11, 15, 15);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 30, 30);
+                (int)location.Y, 16 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
             }
             else if (currentFrame == 3)
             {
                 // Blue
                 sourceRectangle = new Rectangle(241, 28, 15, 15);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 30, 30);
+                (int)location.Y, 16 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
             }
             else if (currentFrame == 4)
             {
                 sourceRectangle = new Rectangle(119, 78, 15, 15);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 30, 30);
+                (int)location.Y, 16 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
             }
             else if (currentFrame == 5)
             {
                 sourceRectangle = new Rectangle(121, 95, 15, 15);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 30, 30);
+                (int)location.Y, 16 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
             }
             else if (currentFrame == 6)
             {
                 sourceRectangle = new Rectangle(99, 78, 15, 15);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 30, 30);
+                (int)location.Y, 16 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
             }
             else
             {
                 sourceRectangle = new Rectangle(98, 95, 15, 15);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 30, 30);
+                (int)location.Y, 16 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
             }
 
             spriteBatch.Draw(sprites, destinationRectangle, sourceRectangle, Color.White);

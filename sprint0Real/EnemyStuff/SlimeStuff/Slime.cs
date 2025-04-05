@@ -75,7 +75,7 @@ namespace sprint0Real.EnemyStuff.SlimeStuff
         {
             get
             {
-                return new Rectangle((int)location.X, (int)location.Y, 14, 20);
+                return new Rectangle((int)location.X, (int)location.Y, 7 * Game1.RENDERSCALE, 10 * Game1.RENDERSCALE);
             }
         }
         public int Health

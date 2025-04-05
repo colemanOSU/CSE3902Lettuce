@@ -80,7 +80,7 @@ namespace sprint0Real.EnemyStuff.SkeletonStuff
         {
             get
             {
-                return new Rectangle((int)location.X, (int)location.Y, 30, 30);
+                return new Rectangle((int)location.X, (int)location.Y, 16 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
             }
         }
         public int Health

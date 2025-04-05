@@ -30,25 +30,25 @@ namespace sprint0Real.EnemyStuff.Fireballs
             {
                 sourceRectangle = new Rectangle(101, 11, 7, 15);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 14, 30);
+                (int)location.Y, 7 * Game1.RENDERSCALE, 15 * Game1.RENDERSCALE);
             }
             else if (currentFrame == 1)
             {
                 sourceRectangle = new Rectangle(110, 11, 7, 15);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 14, 30);
+                (int)location.Y, 7 * Game1.RENDERSCALE, 15 * Game1.RENDERSCALE);
             }
             else if (currentFrame == 2)
             {
                 sourceRectangle = new Rectangle(119, 11, 7, 15);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 14, 30);
+                (int)location.Y, 7 * Game1.RENDERSCALE, 15 * Game1.RENDERSCALE);
             }
             else
             {
                 sourceRectangle = new Rectangle(128, 11, 7, 15);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 14, 30);
+                (int)location.Y, 7 * Game1.RENDERSCALE, 15 * Game1.RENDERSCALE);
             }
             spriteBatch.Draw(sprites, destinationRectangle, sourceRectangle, Color.White);
         }
