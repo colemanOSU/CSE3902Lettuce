@@ -21,6 +21,9 @@ public class UI : IUI
 
     private ILink link;
 
+    private Rectangle LinkMarkerSource = new Rectangle(519, 126, 3, 3);
+    private Point LinkMarkerOffset;
+
     private Inventory.Swords CurrentSword;
     private Inventory.Items CurrentItem;
     public UI(Texture2D uITexture, ILink link)
@@ -38,6 +41,9 @@ public class UI : IUI
 
         HealthBar = UIHelper.HealthbarHelper(link.GetMaxHealth(), link.GetCurrentHealth());
         this.link = link;
+
+
+        LinkMarkerOffset = new Point(0, 0);
     }
 
     public void Draw(SpriteBatch spriteBatch)
@@ -79,6 +85,10 @@ public class UI : IUI
         {
             spriteBatch.Draw(UITexture, new Rectangle(UIXCoord + 16 * Scale, UIYCoord + 8 * Scale, 64 * Scale, 40 * Scale), new Rectangle(650, 1, 64, 40), Color.White);
         }
+
+        //Draw Link's marker on the map
+        //Is drawn even if the Map is not obtained
+        spriteBatch.Draw(UITexture, new Rectangle(UIXCoord + (42 + 8 * LinkMarkerOffset.X) * Scale, UIYCoord + (44 - 4 * LinkMarkerOffset.Y) * Scale, 3 * Scale, 3 * Scale), LinkMarkerSource, Color.White);
     }
 
     public void Update(GameTime gametime, ILink link)
@@ -95,6 +105,26 @@ public class UI : IUI
 
         CurrentSword = inv.CurrentSword;
         CurrentItem = inv.CurrentItem;
+    }
+
+    public void MoveLinkMapMarker(Link.Direction direction)
+    {
+        switch (direction)
+        {
+            case Link.Direction.Up:
+                LinkMarkerOffset = new Point(LinkMarkerOffset.X, LinkMarkerOffset.Y + 1);
+                break;
+            case Link.Direction.Down:
+                LinkMarkerOffset = new Point(LinkMarkerOffset.X, LinkMarkerOffset.Y - 1);
+                break;
+            case Link.Direction.Right:
+                LinkMarkerOffset = new Point(LinkMarkerOffset.X + 1, LinkMarkerOffset.Y);
+                break;
+            case Link.Direction.Left:
+                LinkMarkerOffset = new Point(LinkMarkerOffset.X - 1, LinkMarkerOffset.Y);
+                break;
+        }
+
     }
 }
 

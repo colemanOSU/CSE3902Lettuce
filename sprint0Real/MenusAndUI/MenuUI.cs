@@ -53,6 +53,7 @@ public class MenuUI
         XSelect = 0;
         YSelect = 0;
         ItemSelectFrameCount = 1;
+
     }
 
     public void Draw(SpriteBatch spriteBatch)
@@ -99,6 +100,8 @@ public class MenuUI
         {
             spriteBatch.Draw(UITexture, new Rectangle(UIXCoord + Scale * (44), UIYCoord + Scale * (64), 15 * Scale, 16 * Scale), new Rectangle(612, 156, 15, 16), Color.White);
         }
+
+
 
     }
 
@@ -200,8 +203,9 @@ public class MenuUI
                 
         }
 
-
     }
+
+
 }
 
 
