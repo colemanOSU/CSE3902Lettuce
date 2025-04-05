@@ -32,8 +32,6 @@ public class UI : IUI
 
         UITexture = uITexture;
 
-        this.link = link; 
-
         RupeeDigits = UIHelper.CounterHelper(00);
         KeyDigits = UIHelper.CounterHelper(00);
         BombDigits = UIHelper.CounterHelper(00);
@@ -78,16 +76,16 @@ public class UI : IUI
         }
     }
 
-    public void Update(GameTime gametime)
+    public void Update(GameTime gametime, ILink link)
     {
         Inventory inv = link.GetInventory();
 
-        //Amount set to arbitrary number for testing purposes
         RupeeDigits = UIHelper.CounterHelper(inv.RupeeCount);
         KeyDigits = UIHelper.CounterHelper(inv.KeyCount);
         BombDigits = UIHelper.CounterHelper(inv.BombCount);
 
-        //Health Set to Arbitrary number for testing purposes
+
+
         HealthBar = UIHelper.HealthbarHelper(link.GetMaxHealth(), link.GetCurrentHealth());
 
         CurrentSword = inv.CurrentSword;
