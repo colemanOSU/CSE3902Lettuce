@@ -25,6 +25,13 @@ namespace sprint0Real.LinkStuff
 
         public int RupeeCount { get; set; }
 
+        public int BombCount { get; set; }
+
+        //Original game has ability to increase max bombs
+        //Hell if we're implementing that though
+        private const int MAXBOMBS = 12;
+
+        private const int MAXRUPEES = 99;
         public enum Swords
         {
             Wood_Sword,
@@ -61,6 +68,9 @@ namespace sprint0Real.LinkStuff
             CurrentSword = Swords.Wood_Sword;
             KeyCount = 0;
             RupeeCount = 0;
+
+            //We'll give 'em some bombs to play with.
+            BombCount = 4;
         }
 
         //Marks item as accessible within inventory
@@ -89,6 +99,31 @@ namespace sprint0Real.LinkStuff
                 throw new NotImplementedException();
             }
             KeyCount--;
+        }
+
+        public void PickUpBomb()
+        {
+            BombCount += 4;
+            if (BombCount > MAXBOMBS) BombCount = MAXBOMBS;
+        }
+
+        public void BombUse()
+        {
+            BombCount--;
+            //Just for insurance
+            if (BombCount < 0) BombCount = 0;
+        }
+
+        public void PickUpRupee(int amount)
+        {
+            RupeeCount += amount;
+            if (RupeeCount > MAXRUPEES) RupeeCount = MAXRUPEES;
+        }
+
+        public void RupeeUse(int amount)
+        {
+            RupeeCount -= amount;
+            if (RupeeCount < 0) RupeeCount = 0;
         }
     }
 }

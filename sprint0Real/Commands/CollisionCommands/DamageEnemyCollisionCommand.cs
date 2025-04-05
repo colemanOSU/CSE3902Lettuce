@@ -17,19 +17,15 @@ namespace sprint0Real.Commands.CollisionCommands2
         private bool hitPlayed = false;
         public void Execute(IObject enemy, IObject enemyDamage, CollisionDirections direction)
         {
-            //enemyHit = SoundEffectFactory.Instance.getEnemyHit();
+            enemyHit = SoundEffectFactory.Instance.getEnemyHit();
             if (!hitPlayed)
             {
                 enemyHit.Play();
                 hitPlayed = true;
             }
-            if (enemy is Dragon enemyA)
+            if (enemy is IEnemy enemyA)
             {
                 enemyA.TakeDamage(1);
-            }
-            if(enemyDamage is Dragon enemyB)
-            {
-                enemyB.TakeDamage(1);
             }
         }
     }

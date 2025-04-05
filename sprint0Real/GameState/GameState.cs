@@ -13,7 +13,8 @@ namespace sprint0Real.GameState
         Menu,
         MenuTransition,
         Pause,
-        Exit
+        Exit,
+        LevelTransition
     }
     internal class GameState
     {

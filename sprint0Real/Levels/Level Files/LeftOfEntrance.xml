@@ -1,14 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <LevelData>
 	<Name>LeftOfEntrance</Name>
-	<Exterior>Insert</Exterior>
-	<Interior>Insert</Interior>
 	<Door Exterior ="Default" Interior ="Default" Left="Default" Right="Open" Up="Default" Down="Default"/>
 
 	<Objects>
-		<Object Type="Goriya" x="40" y="23"/>
-		<Object Type="BlackBlock" x="200" y="200"/>
-		<Object Type="Map" x="400" y="400"/>
 		<Object Type="Bat" x="96" y="96" />
 		<Object Type="Bat" x="192" y="144" />
 		<Object Type="Bat" x="96" y="288" />

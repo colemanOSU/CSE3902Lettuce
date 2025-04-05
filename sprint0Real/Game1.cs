@@ -192,7 +192,7 @@ namespace sprint0Real
                         //sprite = controller.Update(sprite);
                         controller.Update(gameTime);
                         MenuUISprite.Update(gameTime, Link);
-                        UISprite.Update(gameTime, Link);
+                        UISprite.Update(gameTime);
 
                     }
 
@@ -200,7 +200,11 @@ namespace sprint0Real
 
                 case GameStates.MenuTransition:
                     MenuUISprite.Update(gameTime, Link);
-                    UISprite.Update(gameTime, Link);
+                    UISprite.Update(gameTime);
+                    break;
+
+                case GameStates.LevelTransition:
+
                     break;
 
                 case GameStates.GamePlay:
@@ -283,6 +287,22 @@ namespace sprint0Real
 
                     _spriteBatch.End();
                     break;
+                case GameStates.LevelTransition:
+                    //We still want things to be drawn, just not updated
+                    transform = Matrix.CreateTranslation(-_camera.GetTopLeft().X, -_camera.GetTopLeft().Y, 0);
+                    _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, transform);
+
+                    if (_camera.MoveToward(CameraTarget))
+                    {
+                        currentGameState = (InMenu) ? GameStates.Menu : GameStates.GamePlay;
+                    }
+
+                    CurrentMap.Instance.Draw(_spriteBatch);
+                    linkSprite.Draw(_spriteBatch);
+                    UISprite.Draw(_spriteBatch);
+
+                    _spriteBatch.End();
+                    break;
                 case GameStates.Menu:
                     //We still want things to be drawn, just not updated
                     transform = Matrix.CreateTranslation(-_camera.GetTopLeft().X, -_camera.GetTopLeft().Y, 0);
@@ -300,8 +320,8 @@ namespace sprint0Real
                     _spriteBatch.End();
                     break;
                 case GameStates.GamePlay:
-                    
-                    _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp);
+                    transform = Matrix.CreateTranslation(-_camera.GetTopLeft().X, -_camera.GetTopLeft().Y, 0);
+                    _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, transform);
                     CurrentMap.Instance.Draw(_spriteBatch);
 
                 //TEMP ITEM
@@ -318,7 +338,7 @@ namespace sprint0Real
                 linkSprite.Update(gameTime, _spriteBatch);
                 linkSprite.Draw(_spriteBatch);
 
-                    UISprite.Update(gameTime, Link);
+                    UISprite.Update(gameTime);
                     UISprite.Draw(_spriteBatch);
 
                     _spriteBatch.End();
@@ -335,7 +355,7 @@ namespace sprint0Real
             currentGameState = GameStates.TitleScreen;
 
             linkSprite = new ResetLink(linkSheet, this);
-            UISprite = new UI(UISheet);
+            UISprite = new UI(UISheet, Link);
             MenuUISprite = new MenuUI(UISheet);
             PauseUISprite = new PauseUI(UISheet);
             weaponItemsA = new NullSprite(linkSheet, this);

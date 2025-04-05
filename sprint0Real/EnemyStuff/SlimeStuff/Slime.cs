@@ -80,8 +80,8 @@ namespace sprint0Real.EnemyStuff.SlimeStuff
         }
         public int Health
         {
-            get { return Health; }
-            set { Health = value; }
+            get { return health; }
+            set { health = value; }
         }
     }
 }

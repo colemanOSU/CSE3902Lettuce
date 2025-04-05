@@ -45,5 +45,12 @@ namespace sprint0Real.Interfaces
         public void SetLinkColor(Color color);
 
         public Inventory GetInventory();
+
+        public int GetCurrentHealth();
+        public void OffsetCurrentHealth(int amount);
+
+        public int GetMaxHealth();
+
+        public void SetMaxHealth(int amount);
     }
 }

@@ -24,8 +24,10 @@ public class Link : ILink
     private SoundEffect linkHurt;
 
     public Inventory inventory;
+    private int MaxHealth { get; set; }
+    private int CurrentHealth { get; set; }
 
-    public const int SPEED = 2;
+    public const int SPEED = 4;
 
     public enum Direction
     {
@@ -50,6 +52,8 @@ public class Link : ILink
         MomentumVector = new Vector2(0, 0);
         inventory = new Inventory();
         itemStateMachine = new ItemStateMachine(game, inventory);
+        MaxHealth = 8;
+        CurrentHealth = MaxHealth;
         linkHurt = game.Content.Load<SoundEffect>("LOZ_Link_Hurt");
     }
     public void Damaged()
@@ -239,5 +243,27 @@ public class Link : ILink
     public Inventory GetInventory()
     {
         return inventory;
+    }
+
+    public int GetCurrentHealth()
+    {
+        return CurrentHealth;
+    }
+
+    public void OffsetCurrentHealth(int amount)
+    {
+        CurrentHealth += amount;
+        if (CurrentHealth > MaxHealth) CurrentHealth = MaxHealth;
+        if (CurrentHealth < 0) CurrentHealth = 0;
+    }
+
+    public int GetMaxHealth()
+    {
+        return MaxHealth;
+    }
+
+    public void SetMaxHealth(int amount)
+    {
+        MaxHealth = amount;
     }
 }

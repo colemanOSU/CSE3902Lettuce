@@ -22,6 +22,7 @@ namespace sprint0Real.Levels
             objectCatalogue.Add("NavyBlock", "sprint0Real.BlockSprites.BlockSpriteNavy");
             objectCatalogue.Add("Map", "sprint0Real.TreasureItemSprites.Map");
             objectCatalogue.Add("ContainerHeart", "sprint0Real.TreasureItemSprites.ContainerHeart");
+            objectCatalogue.Add("BlockTile", "sprint0Real.BlockSprites.BlockSpriteFloorBlock");
             
             objectCatalogue.Add("Bat", "sprint0Real.EnemyStuff.BatStuff.Bat");
             objectCatalogue.Add("Skeleton", "sprint0Real.EnemyStuff.SkeletonStuff.Skeleton");

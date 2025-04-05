@@ -24,6 +24,7 @@ namespace sprint0Real.LinkStuff
         }
         public void DamageLink()
         {
+            Link.OffsetCurrentHealth(-1);
             Link.SetIsDamaged(true);
         }
         public void PickUpItem()
