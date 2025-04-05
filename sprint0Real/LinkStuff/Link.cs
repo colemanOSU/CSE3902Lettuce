@@ -247,7 +247,6 @@ public class Link : ILink
 
     public int GetCurrentHealth()
     {
-        Debug.WriteLine("Ret: " + CurrentHealth);
         return CurrentHealth;
     }
 
@@ -256,7 +255,6 @@ public class Link : ILink
         CurrentHealth += amount;
         if (CurrentHealth > MaxHealth) CurrentHealth = MaxHealth;
         if (CurrentHealth < 0) CurrentHealth = 0;
-        Debug.WriteLine("Inv " + CurrentHealth);
     }
 
     public int GetMaxHealth()
