@@ -232,7 +232,7 @@ public class Link : ILink
 
     public void Update(GameTime gameTime)
     {
-        itemStateMachine.UpdateEquippedItems();
+        itemStateMachine.UpdateEquippedItems(gameTime);
         //need to update IGameObject
     }
     public void Draw(SpriteBatch spriteBatch)
