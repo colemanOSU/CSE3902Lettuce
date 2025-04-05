@@ -192,7 +192,7 @@ namespace sprint0Real
                         //sprite = controller.Update(sprite);
                         controller.Update(gameTime);
                         MenuUISprite.Update(gameTime, Link);
-                        UISprite.Update(gameTime, Link);
+                        UISprite.Update(gameTime);
 
                     }
 
@@ -200,7 +200,7 @@ namespace sprint0Real
 
                 case GameStates.MenuTransition:
                     MenuUISprite.Update(gameTime, Link);
-                    UISprite.Update(gameTime, Link);
+                    UISprite.Update(gameTime);
                     break;
 
                 case GameStates.LevelTransition:
@@ -338,7 +338,7 @@ namespace sprint0Real
                 linkSprite.Update(gameTime, _spriteBatch);
                 linkSprite.Draw(_spriteBatch);
 
-                    UISprite.Update(gameTime, Link);
+                    UISprite.Update(gameTime);
                     UISprite.Draw(_spriteBatch);
 
                     _spriteBatch.End();

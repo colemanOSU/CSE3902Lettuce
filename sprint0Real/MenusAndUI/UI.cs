@@ -78,14 +78,14 @@ public class UI : IUI
         }
     }
 
-    public void Update(GameTime gametime, ILink link)
+    public void Update(GameTime gametime)
     {
         Inventory inv = link.GetInventory();
 
         //Amount set to arbitrary number for testing purposes
-        RupeeDigits = UIHelper.CounterHelper(05);
-        KeyDigits = UIHelper.CounterHelper(99);
-        BombDigits = UIHelper.CounterHelper(03);
+        RupeeDigits = UIHelper.CounterHelper(inv.RupeeCount);
+        KeyDigits = UIHelper.CounterHelper(inv.KeyCount);
+        BombDigits = UIHelper.CounterHelper(inv.BombCount);
 
         //Health Set to Arbitrary number for testing purposes
         HealthBar = UIHelper.HealthbarHelper(link.GetMaxHealth(), link.GetCurrentHealth());

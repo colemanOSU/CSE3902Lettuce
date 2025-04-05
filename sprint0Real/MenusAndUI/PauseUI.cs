@@ -24,7 +24,7 @@ public class PauseUI : IUI
     }
 
     //Static sprite, no need to update
-    public void Update(GameTime gametime, ILink link)
+    public void Update(GameTime gametime)
     {
 
     }
