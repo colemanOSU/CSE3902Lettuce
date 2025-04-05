@@ -19,7 +19,6 @@ namespace sprint0Real.Commands
 
             
         }
-        //TODO
         public void Execute()
         {
             if (myGame.Link.CanAttack())
