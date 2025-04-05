@@ -11,6 +11,7 @@ namespace sprint0Real.Commands.CollisionCommands2
     public class TransitionDirections
     {
         private Dictionary<String, Rectangle> TransitionLinkPlacement = new Dictionary<String, Rectangle>();
+        
         public TransitionDirections() {
             TransitionLinkPlacement.Add("Left", new Rectangle(288, 288, 50, 50));
             TransitionLinkPlacement.Add("Right", new Rectangle(288, 288, 50, 50));

@@ -64,7 +64,7 @@ namespace sprint0Real
         private ItemStateMachine itemStateMachine;
 
         //TEMP CAMERA
-        private Camera _camera;
+        public Camera _camera;
         public Vector2 CameraTarget;
         public bool InMenu;
 
@@ -292,9 +292,9 @@ namespace sprint0Real
                     transform = Matrix.CreateTranslation(-_camera.GetTopLeft().X, -_camera.GetTopLeft().Y, 0);
                     _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, transform);
 
-                    if (_camera.MoveToward(CameraTarget))
+                    if (_camera.MoveToward(_camera.target))
                     {
-                        currentGameState = (InMenu) ? GameStates.Menu : GameStates.GamePlay;
+                        currentGameState = GameStates.GamePlay;
                     }
 
                     CurrentMap.Instance.Draw(_spriteBatch);
