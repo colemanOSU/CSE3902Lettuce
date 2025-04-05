@@ -120,7 +120,8 @@ namespace sprint0Real.LinkSprites
 
         public void DrawWeaponSprite()
         {
-         
+            CurrentMap.Instance.ObjectList().RemoveAll(obj => obj is ILinkSprite && obj != myGame.weaponItemsA);
+            CurrentMap.Instance.ObjectList().RemoveAll(obj => obj is ILinkSprite && obj != myGame.weaponItemsB);
             if (myGame.weaponItemsA != null && !(myGame.weaponItemsA is NullSprite))
             {
                 CurrentMap.Instance.ObjectList().Remove(myGame.weaponItemsA);
@@ -141,7 +142,9 @@ namespace sprint0Real.LinkSprites
         }
         public void DrawItemSprite()
         {
-            if (isNoItem) return;
+            if (isNoItem && currentItem == Inventory.Items.Bomb) return;
+            CurrentMap.Instance.ObjectList().RemoveAll(obj => obj is ILinkSprite && obj != myGame.weaponItemsA);
+            CurrentMap.Instance.ObjectList().RemoveAll(obj => obj is ILinkSprite && obj != myGame.weaponItemsB);
             if (myGame.weaponItemsB != null && !(myGame.weaponItemsB is NullSprite))
             {
                 CurrentMap.Instance.ObjectList().Remove(myGame.weaponItemsB);
@@ -161,6 +164,7 @@ namespace sprint0Real.LinkSprites
         }
         public ILinkSprite TryUseItem(Inventory.Items currentItem)
         {
+            
             UpdateEquippedItems(new GameTime()); 
 
             ILinkSprite item = CreateItemInstance(currentItem);
