@@ -4,19 +4,19 @@ using Microsoft.Xna.Framework.Input;
 using sprint0Real.Collisions;
 using sprint0Real.Interfaces;
 
-namespace sprint0Real.Commands
+namespace sprint0Real.Commands.KeyboardCommands
 {
-    public class ResetCommand : ICommand
+    public class QuitCommand : ICommand
     {
         private Game1 _game;
-        public ResetCommand(Game1 game)
+        public QuitCommand(Game1 game)
         {
             _game = game;
         }
 
         public void Execute()
         {
-            _game.ResetGame();
+            _game.Exit();
         }
     }
 }

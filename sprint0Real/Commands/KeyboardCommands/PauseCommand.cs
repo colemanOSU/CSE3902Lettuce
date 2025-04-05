@@ -5,7 +5,7 @@ using sprint0Real.Interfaces;
 using sprint0Real.LinkStuff.LinkSprites;
 using System.Diagnostics;
 
-namespace sprint0Real.Commands
+namespace sprint0Real.Commands.KeyboardCommands
 {
     public class PauseCommand : ICommand
     {
@@ -17,7 +17,7 @@ namespace sprint0Real.Commands
 
         public void Execute()
         {
-            myGame.currentGameState = (myGame.currentGameState == GameState.GameStates.Pause) ? GameState.GameStates.GamePlay : GameState.GameStates.Pause;
+            myGame.currentGameState = myGame.currentGameState == GameState.GameStates.Pause ? GameState.GameStates.GamePlay : GameState.GameStates.Pause;
         }
     }
 }

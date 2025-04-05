@@ -6,7 +6,7 @@ using sprint0Real.Collisions;
 using sprint0Real.Interfaces;
 using sprint0Real.TreasureItemSprites;
 
-namespace sprint0Real.Commands
+namespace sprint0Real.Commands.KeyboardCommands
 {
     public class ShowPreviousItemCommand// : ICommand
     {

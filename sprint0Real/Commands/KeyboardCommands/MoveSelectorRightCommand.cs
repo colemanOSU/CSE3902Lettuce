@@ -5,19 +5,19 @@ using sprint0Real.Interfaces;
 using sprint0Real.LinkStuff.LinkSprites;
 using System.Diagnostics;
 
-namespace sprint0Real.Commands
+namespace sprint0Real.Commands.KeyboardCommands
 {
-    public class MoveSelectorVerticalCommand : ICommand
+    public class MoveSelectorLeftCommand : ICommand
     {
         private Game1 myGame;
-        public MoveSelectorVerticalCommand(Game1 game)
+        public MoveSelectorLeftCommand(Game1 game)
         {
             myGame = game;
         }
 
         public void Execute()
         {
-            myGame.MenuUISprite.MoveSelectorVertical();
+            myGame.MenuUISprite.MoveSelectorLeft();
         }
     }
 }

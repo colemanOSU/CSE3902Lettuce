@@ -6,9 +6,9 @@ using sprint0Real.BlockSprites;
 using sprint0Real.Collisions;
 using sprint0Real.Interfaces;
 
-namespace sprint0Real.Commands
+namespace sprint0Real.Commands.KeyboardCommands
 {
-    public class NextBlockCommand// : ICommand
+    public class PreviousBlockCommand //: ICommand
     {
         //PROBABLY CAN DELETE ENTIRE CLASS
 
@@ -19,7 +19,7 @@ namespace sprint0Real.Commands
         private int _currentBlock;
         private Vector2 _position;
 
-        public NextBlockCommand(Game1 game, Texture2D blockTexture)
+        public PreviousBlockCommand(Game1 game, Texture2D blockTexture)
         {
             _game = game;
             _texture = blockTexture;
@@ -43,17 +43,17 @@ namespace sprint0Real.Commands
 
         public void Execute()
         {
-            int _currentBlock = _game.currentBlockIndex;
+            _currentBlock = _game.currentBlockIndex;
 
             if (blocks.ContainsKey(_currentBlock))
             {
-                if (_currentBlock == 10) //if at last block start over
+                if (_currentBlock == 1) //if at first block go to last
                 {
-                    _currentBlock = 1;
+                    _currentBlock = 10;
                 }
-                else //increment to next block
+                else //decrement to previous block
                 {
-                    _currentBlock++;
+                    _currentBlock--;
                 }
 
                 _game.currentBlock = blocks[_currentBlock];

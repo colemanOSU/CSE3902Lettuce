@@ -5,12 +5,12 @@ using sprint0Real.Interfaces;
 using sprint0Real.LinkStuff.LinkSprites;
 using System.Diagnostics;
 
-namespace sprint0Real.Commands
+namespace sprint0Real.Commands.KeyboardCommands
 {
-    public class MenuCommand : ICommand
+    public class UnMenuCommand : ICommand
     {
         private Game1 myGame;
-        public MenuCommand(Game1 game)
+        public UnMenuCommand(Game1 game)
         {
             myGame = game;
         }
@@ -19,8 +19,8 @@ namespace sprint0Real.Commands
         {
             //myGame.currentGameState = (myGame.currentGameState == GameState.GameStates.Pause) ? GameState.GameStates.GamePlay : GameState.GameStates.Pause;
             myGame.currentGameState = GameState.GameStates.MenuTransition;
-            myGame.InMenu = true;
-            myGame.CameraTarget = new Vector2(Game1.SCREENMIDX, Game1.SCREENMIDY - (176 + 4) * Game1.RENDERSCALE);
+            myGame.InMenu = false;
+            myGame.CameraTarget = new Vector2(Game1.SCREENMIDX, Game1.SCREENMIDY);
         }
     }
 }

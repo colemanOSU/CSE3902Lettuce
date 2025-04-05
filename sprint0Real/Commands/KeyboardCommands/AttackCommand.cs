@@ -7,7 +7,7 @@ using sprint0Real.ItemUseSprites;
 using sprint0Real.Levels;
 using sprint0Real.LinkStuff.LinkSprites;
 
-namespace sprint0Real.Commands
+namespace sprint0Real.Commands.KeyboardCommands
 {
     public class AttackCommand : ICommand
     {
@@ -17,7 +17,7 @@ namespace sprint0Real.Commands
         {
             myGame = game;
 
-            
+
         }
         public void Execute()
         {
@@ -40,7 +40,7 @@ namespace sprint0Real.Commands
                         myGame.linkSprite = new UseDownSprite(myGame.linkSheet, myGame, useItem);
                         break;
                 }
-                
+
             }
 
         }

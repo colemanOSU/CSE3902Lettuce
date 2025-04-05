@@ -4,7 +4,7 @@ using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using sprint0Real.Commands;
+using sprint0Real.Commands.KeyboardCommands;
 using sprint0Real.Interfaces;
 using sprint0Real.TreasureItemSprites;
 

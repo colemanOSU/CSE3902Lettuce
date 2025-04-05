@@ -1,23 +1,24 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using sprint0Real.Collisions;
 using sprint0Real.Interfaces;
-using sprint0Real.LinkStuff.LinkSprites;
-using System.Diagnostics;
+using sprint0Real.LinkSprites;
 
-namespace sprint0Real.Commands
+namespace sprint0Real.Commands.KeyboardCommands
 {
-    public class MoveSelectorRightCommand : ICommand
+    public class DamageLinkCommand : ICommand
     {
         private Game1 myGame;
-        public MoveSelectorRightCommand(Game1 game)
+        public DamageLinkCommand(Game1 game)
         {
             myGame = game;
         }
 
         public void Execute()
         {
-            myGame.MenuUISprite.MoveSelectorRight();
+            myGame.Link.DamageLink();
+            myGame.LinkState.DamageLink();
         }
     }
 }
