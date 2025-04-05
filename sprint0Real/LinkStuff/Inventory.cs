@@ -56,6 +56,10 @@ namespace sprint0Real.LinkStuff
             Staff
         }
 
+        public bool HasMap { get; set; }
+
+        public bool HasCompass { get; set; }
+
         public Inventory()
         {
             //All items set to true by default for testing
@@ -63,6 +67,8 @@ namespace sprint0Real.LinkStuff
             {
                 InventoryList.Add(item, true);
             }
+            HasMap = true;
+            HasCompass = true;
             ObtainItem(Items.Boomerang);
             CurrentItem = Items.Boomerang;
             CurrentSword = Swords.Wood_Sword;

@@ -27,6 +27,9 @@ public class MenuUI
     private int ItemYCoord;
     private int ItemSelectFrameCount;
 
+    private bool HasMap = false;
+    private bool HasCompass = false;
+
     private Inventory.Items CurrentItem;
     private Inventory inv;
 
@@ -87,6 +90,16 @@ public class MenuUI
             }
         }
 
+        if (HasMap)
+        {
+            spriteBatch.Draw(UITexture, new Rectangle(UIXCoord + Scale * (48), UIYCoord + Scale * (24), 8 * Scale, 16 * Scale), new Rectangle(601, 156, 8, 16), Color.White);
+        }
+
+        if (HasCompass)
+        {
+            spriteBatch.Draw(UITexture, new Rectangle(UIXCoord + Scale * (44), UIYCoord + Scale * (64), 15 * Scale, 16 * Scale), new Rectangle(612, 156, 15, 16), Color.White);
+        }
+
     }
 
     public void Update(GameTime gametime, ILink link)
@@ -99,7 +112,8 @@ public class MenuUI
 
         ItemSelectDestinationRectangle = new Rectangle(UIXCoord + Scale * (128 + XSelect * 24), ItemYCoord + Scale * (48 + YSelect * 16), 16 * Scale, 16 * Scale);
 
-
+        if (!HasMap && inv.HasMap) HasMap = true;
+        if (!HasCompass && inv.HasCompass) HasCompass = true;
 
         if (ItemSelectFrameCount <= 20) ItemSelectSourceRectangle = ItemSelectRed;
         else if (ItemSelectFrameCount <= 40) ItemSelectSourceRectangle = ItemSelectBlue;

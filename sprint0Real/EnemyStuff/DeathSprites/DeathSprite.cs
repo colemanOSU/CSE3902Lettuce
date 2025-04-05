@@ -30,25 +30,25 @@ namespace sprint0Real.EnemyStuff.DeathSprites
             {
                 sourceRectangle = new Rectangle(0, 0, 16, 16);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 32, 32);
+                (int)location.Y, 16 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
             }
             else if (currentFrame == 1)
             {
                 sourceRectangle = new Rectangle(0, 16, 16, 16);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 14, 18);
+                (int)location.Y, 16 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
             }
             else if (currentFrame == 2)
             {
                 sourceRectangle = new Rectangle(308, 14, 7, 9);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 14, 18);
+                (int)location.Y, 16 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
             }
             else
             {
                 sourceRectangle = new Rectangle(308, 14, 7, 9);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 14, 18);
+                (int)location.Y, 16 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
             }
 
             spriteBatch.Draw(sprites, destinationRectangle, sourceRectangle, Color.White);

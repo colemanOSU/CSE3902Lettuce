@@ -74,6 +74,11 @@ public class UI : IUI
         {
             spriteBatch.Draw(UITexture, new Rectangle(UIXCoord + 128 * Scale, UIYCoord + 24 * Scale, 8 * Scale, 16 * Scale), UIHelper.ItemSpriteHelper(CurrentItem), Color.White);
         }
+
+        if (link.GetInventory().HasMap)
+        {
+            spriteBatch.Draw(UITexture, new Rectangle(UIXCoord + 16 * Scale, UIYCoord + 8 * Scale, 64 * Scale, 40 * Scale), new Rectangle(650, 1, 64, 40), Color.White);
+        }
     }
 
     public void Update(GameTime gametime, ILink link)
