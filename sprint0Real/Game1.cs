@@ -355,7 +355,7 @@ namespace sprint0Real
             currentGameState = GameStates.TitleScreen;
 
             linkSprite = new ResetLink(linkSheet, this);
-            UISprite = new UI(UISheet);
+            UISprite = new UI(UISheet, Link);
             MenuUISprite = new MenuUI(UISheet);
             PauseUISprite = new PauseUI(UISheet);
             weaponItemsA = new NullSprite(linkSheet, this);

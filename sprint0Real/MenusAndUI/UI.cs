@@ -19,11 +19,11 @@ public class UI : IUI
     private Rectangle[] BombDigits;
     private Rectangle[] HealthBar;
 
+    private ILink link;
+
     private Inventory.Swords CurrentSword;
     private Inventory.Items CurrentItem;
-
-    private int MaxHealth;
-    public UI(Texture2D uITexture)
+    public UI(Texture2D uITexture, ILink link)
     {
         UIXCoord = Game1.SCREENMIDX - (128 * Scale);
         UIYCoord = Game1.SCREENMIDY - (88 * Scale) - 56 * Scale + 30 * Game1.RENDERSCALE;
@@ -32,13 +32,14 @@ public class UI : IUI
 
         UITexture = uITexture;
 
+        this.link = link; 
+
         RupeeDigits = UIHelper.CounterHelper(00);
         KeyDigits = UIHelper.CounterHelper(00);
         BombDigits = UIHelper.CounterHelper(00);
 
-        MaxHealth = 10;
-        HealthBar = UIHelper.HealthbarHelper(MaxHealth, MaxHealth);
-
+        HealthBar = UIHelper.HealthbarHelper(link.GetMaxHealth(), link.GetCurrentHealth());
+        this.link = link;
     }
 
     public void Draw(SpriteBatch spriteBatch)
@@ -61,7 +62,7 @@ public class UI : IUI
         spriteBatch.Draw(UITexture, new Rectangle(UIXCoord + 112 * Scale, UIYCoord + 40 * Scale, 8 * Scale, 8 * Scale), BombDigits[0], Color.White);
 
         //Health Bar
-        for (int i = 0; i < MaxHealth / 2; i++)
+        for (int i = 0; i < link.GetMaxHealth() / 2; i++)
         {
             spriteBatch.Draw(UITexture, new Rectangle(UIXCoord + 176 * Scale + (i * 8 * Scale), UIYCoord + 32 * Scale, 8 * Scale, 8 * Scale), HealthBar[i], Color.White);
         }
@@ -87,7 +88,7 @@ public class UI : IUI
         BombDigits = UIHelper.CounterHelper(03);
 
         //Health Set to Arbitrary number for testing purposes
-        HealthBar = UIHelper.HealthbarHelper(MaxHealth, 4);
+        HealthBar = UIHelper.HealthbarHelper(link.GetMaxHealth(), link.GetCurrentHealth());
 
         CurrentSword = inv.CurrentSword;
         CurrentItem = inv.CurrentItem;
