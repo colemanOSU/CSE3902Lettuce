@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using sprint0Real.Collisions;
 using sprint0Real.Interfaces;
+using sprint0Real.LinkStuff.LinkSprites;
 
 namespace sprint0Real.Commands.KeyboardCommands
 {
@@ -16,7 +17,7 @@ namespace sprint0Real.Commands.KeyboardCommands
 
         public void Execute()
         {
-            _game.currentGameState = GameState.GameStates.GameOver;
+            _game.linkSprite = new DeathSprite(_game.linkSheet, _game);
         }
     }
 }

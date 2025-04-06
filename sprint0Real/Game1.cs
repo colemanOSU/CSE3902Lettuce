@@ -89,7 +89,7 @@ namespace sprint0Real
         public const int SCREENWIDTH = 256 * RENDERSCALE;
         public const int SCREENMIDX = SCREENWIDTH / 2;
         public const int SCREENMIDY = SCREENHEIGHT / 2;
-        
+
 
         //TEMP PAUSE
         public bool isPaused;
@@ -181,6 +181,7 @@ namespace sprint0Real
                     currentGameState = titleScreen.Update(gameTime, this);
                     break;
                 case GameStates.GameOver:
+                    MediaPlayer.Stop();
                     GameOverScreen.Update(gameTime, this);
                     foreach (IController controller in controllerList)
                     {
@@ -336,12 +337,6 @@ namespace sprint0Real
                 case GameStates.GamePlay:
                     _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, null);
                     CurrentMap.Instance.Draw(_spriteBatch);
-
-                    //TEMP ITEM
-                    if (tempItem != null)
-                    {
-                        tempItem.Draw(_spriteBatch);
-                    }
 
                     if (itemSprite != null)
                     {

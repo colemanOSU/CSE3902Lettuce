@@ -15,6 +15,7 @@ namespace sprint0Real.GameState
         Pause,
         Exit,
         LevelTransition,
+        Dying,
         GameOver
     }
     internal class GameState
