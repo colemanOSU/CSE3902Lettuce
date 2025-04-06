@@ -17,7 +17,7 @@ namespace sprint0Real.Commands.KeyboardCommands
 
         public void Execute()
         {
-            _game.linkSprite = new DeathSprite(_game.linkSheet, _game);
+            _game.currentGameState = GameState.GameStates.Dying;
         }
     }
 }

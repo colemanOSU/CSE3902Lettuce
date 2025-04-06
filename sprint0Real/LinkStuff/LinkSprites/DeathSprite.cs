@@ -18,12 +18,17 @@ namespace sprint0Real.LinkStuff.LinkSprites
         private Rectangle FaceUpSource = new(69, 11, 16, 16);
 
         private int FrameCounter;
-        private const int FRAMESPAN = 8;
+        private const int FRAMESPAN = 6;
         private int Frame;
         private SpriteEffects Flip;
 
         private Texture2D _texture;
         private Game1 myGame;
+
+        private TimeSpan SpentTime;
+
+
+        private Color RenderColor;
 
         public DeathSprite(Texture2D texture, Game1 game)
         {
@@ -33,6 +38,9 @@ namespace sprint0Real.LinkStuff.LinkSprites
             SourceRectangle = FaceDownSource;
             Frame = 0;
             Flip = SpriteEffects.None;
+            RenderColor = Color.White;
+
+            SpentTime = TimeSpan.Zero;
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -43,28 +51,36 @@ namespace sprint0Real.LinkStuff.LinkSprites
 
         public void Update(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            if (FrameCounter >= (FRAMESPAN * 4)) FrameCounter = 0;
-            FrameCounter++;
-            Frame = FrameCounter / FRAMESPAN;
+            SpentTime += gameTime.ElapsedGameTime;
 
-            switch (Frame)
+            if (SpentTime.CompareTo(TimeSpan.FromSeconds(2.0)) == -1)
             {
-                case 0:
-                    SourceRectangle = FaceDownSource;
-                    Flip = SpriteEffects.None;
-                    break;
-                case 1:
-                    SourceRectangle = FaceHorizontalSource;
-                    Flip = SpriteEffects.None;
-                    break;
-                case 2:
-                    SourceRectangle = FaceUpSource;
-                    Flip = SpriteEffects.None;
-                    break;
-                case 3:
-                    SourceRectangle = FaceHorizontalSource;
-                    Flip = SpriteEffects.FlipHorizontally;
-                    break;
+                if (FrameCounter >= (FRAMESPAN * 4)) FrameCounter = 0;
+                FrameCounter++;
+                Frame = FrameCounter / FRAMESPAN;
+
+                switch (Frame)
+                {
+                    case 0:
+                        SourceRectangle = FaceDownSource;
+                        Flip = SpriteEffects.None;
+                        break;
+                    case 1:
+                        SourceRectangle = FaceHorizontalSource;
+                        Flip = SpriteEffects.None;
+                        break;
+                    case 2:
+                        SourceRectangle = FaceUpSource;
+                        Flip = SpriteEffects.None;
+                        break;
+                    case 3:
+                        SourceRectangle = FaceHorizontalSource;
+                        Flip = SpriteEffects.FlipHorizontally;
+                        break;
+                }
+            } else
+            {
+                SourceRectangle = new(160, 241, 16, 16);
             }
         }
     }

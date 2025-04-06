@@ -39,6 +39,7 @@ namespace sprint0Real
         public TitleScreen titleScreen;
         public GameOverUI GameOverScreen;
         public Song Dungeon;
+        public Song GameOverMusic;
 
         public ILink Link;
         public ILinkSpriteTemp linkSprite;
@@ -69,6 +70,11 @@ namespace sprint0Real
         public Vector2 CameraTarget;
         public bool InMenu;
         public Vector2 transitionOffset;
+
+        private bool TempDying;
+
+        private TimeSpan DyingTime;
+        private TimeSpan Span;
 
         //The screen height is specifically calculated to match the original game's
         //Important for menu transitions to function properly.
@@ -145,6 +151,7 @@ namespace sprint0Real
             UISheet = Content.Load<Texture2D>("NES - The Legend of Zelda - HUD & Pause Screen");
 
             Dungeon = Content.Load<Song>("04 - Dungeon");
+            GameOverMusic = Content.Load<Song>("07 - Game Over");
 
             EnemySpriteFactory.Instance.LoadAllTextures(Content);
             EnemySpriteFactory.Instance.LoadGame(this);
@@ -179,6 +186,9 @@ namespace sprint0Real
             {
                 case GameStates.TitleScreen:
                     currentGameState = titleScreen.Update(gameTime, this);
+                    break;
+                case GameStates.Dying:
+
                     break;
                 case GameStates.GameOver:
                     MediaPlayer.Stop();
@@ -249,7 +259,7 @@ namespace sprint0Real
                     Link.ApplyMomentum();
                     CurrentMap.Instance.Update(gameTime);
 
-                    if (Link.GetCurrentHealth() == 0) currentGameState = GameStates.GameOver;
+                    if (Link.GetCurrentHealth() == 0) currentGameState = GameStates.Dying;
 
                     break;
             }
@@ -262,6 +272,30 @@ namespace sprint0Real
             {
                 case GameStates.TitleScreen:
                     titleScreen.Draw(_spriteBatch, GraphicsDevice);
+                    break;
+                case GameStates.Dying:
+                    _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, null);
+
+                    if (TempDying)
+                    {
+                        linkSprite = new DeathSprite(linkSheet, this);
+                        DyingTime = TimeSpan.Zero;
+                        MediaPlayer.Play(GameOverMusic);
+                        TempDying = false;
+                    }
+
+                    DyingTime += gameTime.ElapsedGameTime;
+
+
+                    linkSprite.Update(gameTime, _spriteBatch);
+                    linkSprite.Draw(_spriteBatch);
+
+                    if (TimeSpan.Compare(DyingTime, TimeSpan.FromSeconds(2.7)) != -1)
+                    {
+                        currentGameState = GameStates.GameOver;
+                    }
+
+                    _spriteBatch.End();
                     break;
                 case GameStates.GameOver:
                     GameOverScreen.Draw(_spriteBatch);
@@ -373,6 +407,10 @@ namespace sprint0Real
             LinkState = new LinkStateMachine(Link);
 
             collisionDetection = new CollisionDetection(this, collisionHandler);
+
+            TempDying = true;
+
+            DyingTime = TimeSpan.Zero;
 
         }
     }
