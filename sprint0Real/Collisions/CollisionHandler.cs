@@ -27,16 +27,16 @@ namespace sprint0Real.Collisions
 
         // Maybe make these strings
         public CollisionHandler(Game1 game)
-{
-    this.game = game;
+        {
+            this.game = game;
             collisionCommands = new Dictionary<(String, String), ICollisionCommand>();
-}
+        }
 public void LoadCommands()
 {
 
             collisionCommands.Add(("Link", "Enemy"),  new LinkEnemyCommand());
             collisionCommands.Add(("Link", "Border"), new LinkBorderCommand());
-            collisionCommands.Add(("Link", "RoomTransitionBox"), new RoomTransitionCommand(game.collisionDetection, game._camera));
+            collisionCommands.Add(("Link", "RoomTransitionBox"), new RoomTransitionCommand(game));
             collisionCommands.Add(("Enemy", "LinkWeapon"), new DamageEnemyCollisionCommand());
 
             collisionCommands.Add(("Link", "EnemyProjectile"), new LinkEnemyCommand());

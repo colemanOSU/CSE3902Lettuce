@@ -53,7 +53,26 @@ namespace sprint0Real.Levels
         {
             return Neighbors.ContainsKey(direction) ? Neighbors[direction] : null;
         }
-
+        public void DrawBackground(SpriteBatch spriteBatch)
+        {
+            background.Draw(spriteBatch);
+            foreach (IBlock block in gameObjects.OfType<IBlock>())
+            {
+                block.Draw(spriteBatch);
+            }
+        }
+        // For level transitions
+        public void DrawBackground(SpriteBatch spriteBatch, Vector2 offset)
+        {
+            background.Draw(spriteBatch, offset);
+            foreach (IBlock block in gameObjects.OfType<IBlock>())
+            {
+                // This is a hack to get blocks to show up during level transitions
+                Type type = Type.GetType(block.GetType().ToString());
+                IBlock temp = (IBlock)Activator.CreateInstance(type, block.Position + offset);
+                temp.Draw(spriteBatch);
+            }
+        }
         public void Draw(SpriteBatch spriteBatch)
         {
             background.Draw(spriteBatch);

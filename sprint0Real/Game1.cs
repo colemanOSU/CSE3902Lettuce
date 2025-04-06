@@ -67,6 +67,7 @@ namespace sprint0Real
         public Camera _camera;
         public Vector2 CameraTarget;
         public bool InMenu;
+        public Vector2 transitionOffset;
 
         //The screen height is specifically calculated to match the original game's
         //Important for menu transitions to function properly.
@@ -292,13 +293,17 @@ namespace sprint0Real
 
                     if (_camera.MoveToward(_camera.target))
                     {
+                        _camera.Center = new Vector2(SCREENMIDX, SCREENMIDY);
                         currentGameState = GameStates.GamePlay;
                     }
 
-                    CurrentMap.Instance.Draw(_spriteBatch);
-                    linkSprite.Draw(_spriteBatch);
-                    UISprite.Draw(_spriteBatch);
+                    CurrentMap.Instance.DrawBackground(_spriteBatch, transitionOffset);
+                    CurrentMap.Instance.DrawPreviousBackground(_spriteBatch);
+                    _spriteBatch.End();
 
+                    // Don't want an offset for the UI so a separate spriteBatch is used
+                    _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, null);
+                    UISprite.Draw(_spriteBatch);
                     _spriteBatch.End();
                     break;
                 case GameStates.Menu:
@@ -317,8 +322,7 @@ namespace sprint0Real
                     _spriteBatch.End();
                     break;
                 case GameStates.GamePlay:
-                    transform = Matrix.CreateTranslation(-_camera.GetTopLeft().X, -_camera.GetTopLeft().Y, 0);
-                    _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, transform);
+                    _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, null);
                     CurrentMap.Instance.Draw(_spriteBatch);
 
                     //TEMP ITEM
@@ -340,8 +344,8 @@ namespace sprint0Real
 
                     _spriteBatch.End();
 
-                    break;
                     base.Draw(gameTime);
+                    break;
             }
         }
 
