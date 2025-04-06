@@ -10,8 +10,10 @@ public class UI : IUI
 {
     private Texture2D UITexture;
     private Rectangle DestinationRectangle;
-    private Rectangle SourceRectangle;
-    private int Scale = Game1.RENDERSCALE;
+    private readonly Rectangle SourceRectangle = new Rectangle(258, 11, 256, 56);
+
+    private const int SCALE = Game1.RENDERSCALE;
+
     private int UIXCoord;
     private int UIYCoord;
     private Rectangle[] RupeeDigits;
@@ -19,19 +21,24 @@ public class UI : IUI
     private Rectangle[] BombDigits;
     private Rectangle[] HealthBar;
 
+    private int CompassFrameCounter;
+    private readonly Rectangle CompassRedSource = new Rectangle(537, 126, 3, 3);
+    private readonly Rectangle CompassBlueSource = new Rectangle(546, 126, 3, 3);
+    private Rectangle CompassSource;
+    private readonly Rectangle CompassDestination;
+
     private ILink link;
 
-    private Rectangle LinkMarkerSource = new Rectangle(519, 126, 3, 3);
+    private readonly Rectangle LinkMarkerSource = new Rectangle(519, 126, 3, 3);
     private Point LinkMarkerOffset;
 
     private Inventory.Swords CurrentSword;
     private Inventory.Items CurrentItem;
     public UI(Texture2D uITexture, ILink link)
     {
-        UIXCoord = Game1.SCREENMIDX - (128 * Scale);
-        UIYCoord = Game1.SCREENMIDY - (88 * Scale) - 56 * Scale + 30 * Game1.RENDERSCALE;
-        DestinationRectangle = new Rectangle(UIXCoord, UIYCoord, 256 * Scale, 56 * Scale);
-        SourceRectangle = new Rectangle(258, 11, 256, 56);
+        UIXCoord = Game1.SCREENMIDX - (128 * SCALE);
+        UIYCoord = Game1.SCREENMIDY - (88 * SCALE) - 56 * SCALE + 30 * SCALE;
+        DestinationRectangle = new Rectangle(UIXCoord, UIYCoord, 256 * SCALE, 56 * SCALE);
 
         UITexture = uITexture;
 
@@ -41,7 +48,10 @@ public class UI : IUI
 
         HealthBar = UIHelper.HealthbarHelper(link.GetMaxHealth(), link.GetCurrentHealth());
         this.link = link;
+        CompassDestination = new Rectangle(UIXCoord + 66 * SCALE, UIYCoord + 28 * SCALE, 3 * SCALE, 3 * SCALE);
 
+        CompassSource = CompassBlueSource;
+        CompassFrameCounter = 0;
 
         LinkMarkerOffset = new Point(0, 0);
     }
@@ -49,46 +59,53 @@ public class UI : IUI
     public void Draw(SpriteBatch spriteBatch)
     {
         spriteBatch.Draw(UITexture, DestinationRectangle, SourceRectangle, Color.White);
-        spriteBatch.Draw(UITexture, new Rectangle(UIXCoord, UIYCoord - 8 * Scale, 256 * Scale, 8 * Scale), new Rectangle(258, 59, 256, 8), Color.White);
+        spriteBatch.Draw(UITexture, new Rectangle(UIXCoord, UIYCoord - 8 * SCALE, 256 * SCALE, 8 * SCALE), new Rectangle(258, 59, 256, 8), Color.White);
 
         //Rupee Counter Ones Digit and Ten Digit
-        spriteBatch.Draw(UITexture, new Rectangle(UIXCoord + 104 * Scale, UIYCoord + 16 * Scale, 8 * Scale, 8 * Scale), RupeeDigits[1], Color.White);
-        spriteBatch.Draw(UITexture, new Rectangle(UIXCoord + 112 * Scale, UIYCoord + 16 * Scale, 8 * Scale, 8 * Scale), RupeeDigits[0], Color.White);
-
-        
-        //Rupee Counter Ones Digit and Ten Digit
-        spriteBatch.Draw(UITexture, new Rectangle(UIXCoord + 104 * Scale, UIYCoord + 32 * Scale, 8 * Scale, 8 * Scale), KeyDigits[1], Color.White);
-        spriteBatch.Draw(UITexture, new Rectangle(UIXCoord + 112 * Scale, UIYCoord + 32 * Scale, 8 * Scale, 8 * Scale), KeyDigits[0], Color.White);
+        spriteBatch.Draw(UITexture, new Rectangle(UIXCoord + 104 * SCALE, UIYCoord + 16 * SCALE, 8 * SCALE, 8 * SCALE), RupeeDigits[1], Color.White);
+        spriteBatch.Draw(UITexture, new Rectangle(UIXCoord + 112 * SCALE, UIYCoord + 16 * SCALE, 8 * SCALE, 8 * SCALE), RupeeDigits[0], Color.White);
 
         
         //Rupee Counter Ones Digit and Ten Digit
-        spriteBatch.Draw(UITexture, new Rectangle(UIXCoord + 104 * Scale, UIYCoord + 40 * Scale, 8 * Scale, 8 * Scale), BombDigits[1], Color.White);
-        spriteBatch.Draw(UITexture, new Rectangle(UIXCoord + 112 * Scale, UIYCoord + 40 * Scale, 8 * Scale, 8 * Scale), BombDigits[0], Color.White);
+        spriteBatch.Draw(UITexture, new Rectangle(UIXCoord + 104 * SCALE, UIYCoord + 32 * SCALE, 8 * SCALE, 8 * SCALE), KeyDigits[1], Color.White);
+        spriteBatch.Draw(UITexture, new Rectangle(UIXCoord + 112 * SCALE, UIYCoord + 32 * SCALE, 8 * SCALE, 8 * SCALE), KeyDigits[0], Color.White);
+
+        
+        //Rupee Counter Ones Digit and Ten Digit
+        spriteBatch.Draw(UITexture, new Rectangle(UIXCoord + 104 * SCALE, UIYCoord + 40 * SCALE, 8 * SCALE, 8 * SCALE), BombDigits[1], Color.White);
+        spriteBatch.Draw(UITexture, new Rectangle(UIXCoord + 112 * SCALE, UIYCoord + 40 * SCALE, 8 * SCALE, 8 * SCALE), BombDigits[0], Color.White);
 
         //Health Bar
         for (int i = 0; i < link.GetMaxHealth() / 2; i++)
         {
-            spriteBatch.Draw(UITexture, new Rectangle(UIXCoord + 176 * Scale + (i * 8 * Scale), UIYCoord + 32 * Scale, 8 * Scale, 8 * Scale), HealthBar[i], Color.White);
+            spriteBatch.Draw(UITexture, new Rectangle(UIXCoord + 176 * SCALE + (i * 8 * SCALE), UIYCoord + 32 * SCALE, 8 * SCALE, 8 * SCALE), HealthBar[i], Color.White);
         }
 
         //Sword Sprite
-        spriteBatch.Draw(UITexture, new Rectangle(UIXCoord + 152 * Scale, UIYCoord + 24 * Scale, 8 * Scale, 16 * Scale), new Rectangle(555 + ((int)CurrentSword) * 9, 137, 8, 16), Color.White);
+        spriteBatch.Draw(UITexture, new Rectangle(UIXCoord + 152 * SCALE, UIYCoord + 24 * SCALE, 8 * SCALE, 16 * SCALE), new Rectangle(555 + ((int)CurrentSword) * 9, 137, 8, 16), Color.White);
 
         //Current Item Sprite
         //Don't bother rendering if no item is equipped
         if (CurrentItem != 0)
         {
-            spriteBatch.Draw(UITexture, new Rectangle(UIXCoord + 128 * Scale, UIYCoord + 24 * Scale, 8 * Scale, 16 * Scale), UIHelper.ItemSpriteHelper(CurrentItem), Color.White);
+            spriteBatch.Draw(UITexture, new Rectangle(UIXCoord + 128 * SCALE, UIYCoord + 24 * SCALE, 8 * SCALE, 16 * SCALE), UIHelper.ItemSpriteHelper(CurrentItem), Color.White);
         }
 
         if (link.GetInventory().HasMap)
         {
-            spriteBatch.Draw(UITexture, new Rectangle(UIXCoord + 16 * Scale, UIYCoord + 8 * Scale, 64 * Scale, 40 * Scale), new Rectangle(650, 1, 64, 40), Color.White);
+            spriteBatch.Draw(UITexture, new Rectangle(UIXCoord + 16 * SCALE, UIYCoord + 8 * SCALE, 64 * SCALE, 40 * SCALE), new Rectangle(650, 1, 64, 40), Color.White);
+        }
+
+        if (link.GetInventory().HasCompass)
+        {
+            spriteBatch.Draw(UITexture, CompassDestination, CompassSource, Color.White);
         }
 
         //Draw Link's marker on the map
         //Is drawn even if the Map is not obtained
-        spriteBatch.Draw(UITexture, new Rectangle(UIXCoord + (42 + 8 * LinkMarkerOffset.X) * Scale, UIYCoord + (44 - 4 * LinkMarkerOffset.Y) * Scale, 3 * Scale, 3 * Scale), LinkMarkerSource, Color.White);
+        spriteBatch.Draw(UITexture, new Rectangle(UIXCoord + (42 + 8 * LinkMarkerOffset.X) * SCALE, UIYCoord + (44 - 4 * LinkMarkerOffset.Y) * SCALE, 3 * SCALE, 3 * SCALE), LinkMarkerSource, Color.White);
+
+
     }
 
     public void Update(GameTime gametime, ILink link)
@@ -105,6 +122,13 @@ public class UI : IUI
 
         CurrentSword = inv.CurrentSword;
         CurrentItem = inv.CurrentItem;
+
+        if (inv.HasCompass)
+        {
+            if (CompassFrameCounter >= 32) CompassFrameCounter = 0;
+            CompassFrameCounter++;
+            CompassSource = (CompassFrameCounter / 16 == 0) ? CompassBlueSource : CompassRedSource;
+        }
     }
 
     public void MoveLinkMapMarker(Link.Direction direction)
