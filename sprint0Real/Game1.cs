@@ -37,6 +37,7 @@ namespace sprint0Real
         //TEMP SET PUBLIC UNTIL BETTER SOLUTION FOUND
         public GameStates currentGameState;
         public TitleScreen titleScreen;
+        public GameOverUI GameOverScreen;
         public Song Dungeon;
 
         public ILink Link;
@@ -179,6 +180,14 @@ namespace sprint0Real
                 case GameStates.TitleScreen:
                     currentGameState = titleScreen.Update(gameTime, this);
                     break;
+                case GameStates.GameOver:
+                    GameOverScreen.Update(gameTime, this);
+                    foreach (IController controller in controllerList)
+                    {
+                        controller.Update(gameTime);
+
+                    }
+                    break;
                 case GameStates.Pause:
                     foreach (IController controller in controllerList)
                     {
@@ -238,7 +247,8 @@ namespace sprint0Real
 
                     Link.ApplyMomentum();
                     CurrentMap.Instance.Update(gameTime);
-                    
+
+                    if (Link.GetCurrentHealth() == 0) currentGameState = GameStates.GameOver;
 
                     break;
             }
@@ -252,7 +262,9 @@ namespace sprint0Real
                 case GameStates.TitleScreen:
                     titleScreen.Draw(_spriteBatch, GraphicsDevice);
                     break;
-
+                case GameStates.GameOver:
+                    GameOverScreen.Draw(_spriteBatch);
+                    break;
                 case GameStates.Pause:
                     //We still want things to be drawn, just not updated
                     transform = Matrix.CreateTranslation(-_camera.GetTopLeft().X, -_camera.GetTopLeft().Y, 0);
@@ -358,6 +370,8 @@ namespace sprint0Real
             UISprite = new UI(UISheet, Link);
             MenuUISprite = new MenuUI(UISheet);
             PauseUISprite = new PauseUI(UISheet);
+
+            GameOverScreen = new GameOverUI(UISheet);
             weaponItemsA = new NullSprite(linkSheet, this);
             weaponItemsB = new NullSprite(linkSheet, this);
             Link = new Link(this);
