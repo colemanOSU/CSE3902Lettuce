@@ -1,178 +1,28 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using sprint0Real.BlockSprites;
-using sprint0Real.Items.ItemSprites;
-using sprint0Real.Interfaces;
-using System;
-using sprint0Real.LinkStuff.LinkSprites;
+﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using sprint0Real.Controllers;
-using sprint0Real.EnemyStuff;
-using sprint0Real.TreasureItemSprites;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 using sprint0Real.GameState;
-using sprint0Real.Collisions;
-using sprint0Real.LinkStuff;
+using sprint0Real.Interfaces;
 using sprint0Real.Levels;
-using System.Reflection.Metadata;
-using sprint0Real.LinkSprites;
-using sprint0Real.Commands;
-using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Media;
 
 namespace sprint0Real
 {
-    public class Game1 : Game
-    {  
-
-        public GraphicsDeviceManager _graphics;
-        public SpriteBatch _spriteBatch;
-
-        public Texture2D linkSheet;
-        public Texture2D UISheet;
-
-        SpriteFont font1;
-
-        //TEMP SET PUBLIC UNTIL BETTER SOLUTION FOUND
+    public class GameStateMachine
+    {
         public GameStates currentGameState;
-        public TitleScreen titleScreen;
-        public Song Dungeon;
-
-        public ILink Link;
-        public ILinkSpriteTemp linkSprite;
-
-        //For menus and UIs
-        public IUI UISprite;
-        public MenuUI MenuUISprite;
-        public IUI PauseUISprite;
-
-        public ILinkSprite weaponItemsA;
-        public ILinkSprite weaponItemsB;
-
-        //temp
-        public IItem tempItem;
-        public IItemSprite itemSprite;
-
-        List<IController> controllerList;
-
-        public ILinkState LinkState;
-
-        public CollisionDetection collisionDetection;
-        public CollisionHandler collisionHandler;
-
-        public ItemStateMachine itemStateMachine;
-
-        //TEMP CAMERA
-        public Camera _camera;
-        public Vector2 CameraTarget;
-        public bool InMenu;
-
-        //The screen height is specifically calculated to match the original game's
-        //Important for menu transitions to function properly.
-        //The screen width is mostly arbitrary.
-
-
-        //This number determines the scale at which sprites will load in on the coordinate plane
-        //If I cared more we would have it set up so that everything renders on a 1:1 basis and
-        //would simply zoom in the camera to size it as we pleased. Alas.
-        public const int RENDERSCALE = 3;
-
-        //As levels render relative to center of screen alongside camera transitions being
-        //hardcoded numbers, I would not mess with these numbers unless you really know
-        //what you're doing!
-
-        //Someone didn't heed my comment. Woe!
-        public const int SCREENHEIGHT = 240 * RENDERSCALE;
-        public const int SCREENWIDTH = 256 * RENDERSCALE;
-        public const int SCREENMIDX = SCREENWIDTH / 2;
-        public const int SCREENMIDY = SCREENHEIGHT / 2;
-        
-
-        //TEMP PAUSE
-        public bool isPaused;
-        public Game1()
-        {
-            _graphics = new GraphicsDeviceManager(this);
-            
-            //Code to change resolution of game.
-
-            _graphics.PreferredBackBufferWidth = SCREENWIDTH;
-            _graphics.PreferredBackBufferHeight = SCREENHEIGHT;
-            _graphics.ApplyChanges();
-
-            Content.RootDirectory = "Content";
-            IsMouseVisible = true;
-            Link = new Link(this); 
-
-            //TEMP PAUSE
-            isPaused = false;
-            CameraTarget = new Vector2(SCREENMIDX, SCREENMIDY);
-            InMenu = false;
+        private Game1 myGame;
+        private bool InMenu = false;
+        public GameStateMachine(Game1 game) {
+            myGame = game;
         }
-
-        protected override void Initialize()
+        public void Update()
         {
-            _graphics.PreferredBackBufferWidth = SCREENWIDTH;
-            _graphics.PreferredBackBufferHeight = SCREENHEIGHT;
-            _graphics.ApplyChanges();
-            controllerList = new List<IController>();
-            controllerList.Add(new KeyboardController(this));
-            currentGameState = GameStates.TitleScreen;
-            titleScreen = new TitleScreen();
-            LinkState = new LinkStateMachine(Link);
-            itemStateMachine = new ItemStateMachine(this, Link.GetInventory());
-            collisionHandler = new CollisionHandler(this);
-
-
-            base.Initialize();
-            _camera = new Camera();
-            _camera.Center = new Vector2(SCREENMIDX, SCREENMIDY);
-        }
-
-        protected override void LoadContent()
-        {
-            titleScreen.LoadContent(GraphicsDevice, Content);
-            _spriteBatch = new SpriteBatch(GraphicsDevice);
-            
-            font1 = Content.Load<SpriteFont>("MyMenuFont");
-
-           
-            //Load Sprite Sheets
-            linkSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - Link");
-            UISheet = Content.Load<Texture2D>("NES - The Legend of Zelda - HUD & Pause Screen");
-
-            Dungeon = Content.Load<Song>("04 - Dungeon");
-
-            EnemySpriteFactory.Instance.LoadAllTextures(Content);
-            EnemySpriteFactory.Instance.LoadGame(this);
-            SoundEffectFactory.Instance.LoadAllTextures(Content);
-            BlockSpriteFactory.Instance.LoadAllTextures(Content);
-            TreasureItemSpriteFactory.Instance.LoadAllTextures(Content);
-            LevelLoader.Instance.LoadLevels();
-
-            ResetGame();
-            collisionHandler.LoadCommands();
-            collisionDetection.Load(Link);
-            tempItem = null;
-            
-            //Uncomment for a cacaphony 
-
-            /*
-            // For mp3 files use song
-            Song song = Content.Load<Song>("01 - Intro");
-            MediaPlayer.Play(song);
-            // For .wav files use SoundEffect
-            SoundEffect soundEffect = Content.Load<SoundEffect>("LOZ_Secret");
-            // To make the soundEffect loop, make a soundEffectInstance
-            SoundEffectInstance soundEffectInstance = soundEffect.CreateInstance();
-            soundEffectInstance.IsLooped = true;
-            soundEffectInstance.Play();
-            */
-        }
-
-        protected override void Update(GameTime gameTime)
-        {
+            /**
             switch (currentGameState)
             {
                 case GameStates.TitleScreen:
@@ -241,10 +91,12 @@ namespace sprint0Real
 
                     break;
             }
+            **/
         }
-        protected override void Draw(GameTime gameTime)
+
+        public void Draw()
         {
-            GraphicsDevice.Clear(Color.Black);
+            /**
             Matrix transform;
             switch (currentGameState)
             {
@@ -274,6 +126,7 @@ namespace sprint0Real
 
                     if (_camera.MoveToward(CameraTarget))
                     {
+                        
                         currentGameState = (InMenu) ? GameStates.Menu : GameStates.GamePlay;
                     }
 
@@ -341,26 +194,32 @@ namespace sprint0Real
                     _spriteBatch.End();
 
                     break;
-                    base.Draw(gameTime);
+                    
+            }
+            **/
+        }
+        /**
+        public void RoomTransition()
+        {
+            if (currentGameState == GameStates.LevelTransition)
+            {
+                currentGameState = GameStates.GamePlay;
+            }
+            else
+            {
+                currentGameState = 
             }
         }
-
-        public void ResetGame()
+        public void MenuTransition()
         {
-            this.titleScreen.isAnimating = false;
-            currentGameState = GameStates.TitleScreen;
-
-            linkSprite = new ResetLink(linkSheet, this);
-            UISprite = new UI(UISheet, Link);
-            MenuUISprite = new MenuUI(UISheet);
-            PauseUISprite = new PauseUI(UISheet);
-            weaponItemsA = new NullSprite(linkSheet, this);
-            weaponItemsB = new NullSprite(linkSheet, this);
-            Link = new Link(this);
-            LinkState = new LinkStateMachine(Link);
-
-            collisionDetection = new CollisionDetection(this, collisionHandler);
-
-        }
+            if (currentGameState == GameStates.Menu)
+            {
+                InMenu = true;
+            }
+            else
+            {
+                InMenu = false;
+            }
+        }**/
     }
 }

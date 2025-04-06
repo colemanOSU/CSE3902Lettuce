@@ -46,7 +46,7 @@ namespace sprint0Real.Commands.CollisionCommands2
         }
         public void Execute(IObject Link, IObject transitionBox, CollisionDirections direction)
         {
-            camera.target = TargetLocation(direction);
+            //camera.target = TargetLocation(direction);
             String transitionDirection = ((RoomTransitionBox)transitionBox).Direction;
             String neighbor = CurrentMap.Instance.GetNeighbor(transitionDirection);
             EnemyPage nextMap = LevelLoader.Instance.RetrieveMap(neighbor);

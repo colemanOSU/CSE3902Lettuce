@@ -16,7 +16,7 @@ namespace sprint0Real.GameState
     //I absolutely adore that we're emulating the visual deloading in the title screen
     //as it would be if it ran on the NES. How whimsical.
 
-    internal class TitleScreen
+    public class TitleScreen
     {
         
         private KeyboardState currentKeyState;
