@@ -407,6 +407,8 @@ namespace sprint0Real
             Link = new Link(this);
             LinkState = new LinkStateMachine(Link);
 
+            collisionDetection.Load(Link);
+
             TempDying = true;
 
             DyingTime = TimeSpan.Zero;
