@@ -67,8 +67,8 @@ namespace sprint0Real.LinkStuff
             {
                 InventoryList.Add(item, true);
             }
-            HasMap = false;
-            HasCompass = false;
+            HasMap = true;
+            HasCompass = true;
             ObtainItem(Items.Boomerang);
             CurrentItem = Items.Boomerang;
             CurrentSword = Swords.Wood_Sword;

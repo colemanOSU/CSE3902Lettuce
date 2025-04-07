@@ -7,6 +7,7 @@ using sprint0Real.EnemyStuff.RedGoriya;
 using sprint0Real.EnemyStuff.RedGoriyaStuff;
 using sprint0Real.Interfaces;
 using sprint0Real.Levels;
+using sprint0Real.EnemyStuff.DeathSprites;
 using sprint0Real.TreasureItemStuff;
 
 namespace sprint0Real.EnemyStuff.GoriyaStuff
@@ -20,6 +21,7 @@ namespace sprint0Real.EnemyStuff.GoriyaStuff
         private Random random = new Random();
         private SoundEffect EnemyDie;
         private bool DieSoundPlayed = false;
+        private Death death;
 
         public GoriyaStateMachine(Goriya Goriya)
         {
@@ -80,6 +82,8 @@ namespace sprint0Real.EnemyStuff.GoriyaStuff
                 }
                 DropManager.Instance.OnDeath(myGoriya.location);
                 CurrentMap.Instance.DeStage(myGoriya);
+                death = new Death(myGoriya.location);
+                CurrentMap.Instance.Stage(death);
             }
             else
             {

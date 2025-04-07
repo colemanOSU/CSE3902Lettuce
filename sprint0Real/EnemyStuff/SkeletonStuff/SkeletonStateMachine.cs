@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using sprint0Real.EnemyStuff.BatStuff;
+using sprint0Real.EnemyStuff.DeathSprites;
 using sprint0Real.EnemyStuff.DragonStuff;
 using sprint0Real.EnemyStuff.HandStuff;
 using sprint0Real.Interfaces;
@@ -18,6 +19,7 @@ namespace sprint0Real.EnemyStuff.SkeletonStuff
         private Random random = new Random();
         private SoundEffect EnemyDie;
         private bool DieSoundPlayed = false;
+        private Death death;
         public SkeletonStateMachine(Skeleton Skeleton)
         {
             mySkeleton = Skeleton;
@@ -36,6 +38,8 @@ namespace sprint0Real.EnemyStuff.SkeletonStuff
                 }
                 DropManager.Instance.OnDeath(mySkeleton.location);
                 CurrentMap.Instance.DeStage(mySkeleton);
+                death = new Death(mySkeleton.location);
+                CurrentMap.Instance.Stage(death);
             }
         }
 

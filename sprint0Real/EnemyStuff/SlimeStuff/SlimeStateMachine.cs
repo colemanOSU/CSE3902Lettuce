@@ -1,8 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using sprint0Real.EnemyStuff.BatStuff;
+using sprint0Real.EnemyStuff.DeathSprites;
 using sprint0Real.EnemyStuff.SlimeStuff;
 using sprint0Real.Interfaces;
+using sprint0Real.Levels;
 using sprint0Real.TreasureItemStuff;
 using System;
 
@@ -16,6 +18,7 @@ namespace sprint0Real.EnemyStuff.SlimeStuff
         private Random random = new Random();
         private SoundEffect EnemyDie;
         private bool DieSoundPlayed = false;
+        private Death death;
         public SlimeStateMachine(Slime Slime)
         {
             mySlime = Slime;
@@ -34,6 +37,8 @@ namespace sprint0Real.EnemyStuff.SlimeStuff
                 }
                 DropManager.Instance.OnDeath(mySlime.location);
                 mySlime.Despawn();
+                death = new Death(mySlime.location);
+                CurrentMap.Instance.Stage(death);
             }
         }
         public void ChangeDirection()
