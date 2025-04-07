@@ -412,5 +412,11 @@ namespace sprint0Real
             DyingTime = TimeSpan.Zero;
 
         }
+
+        public void MuteMusic()
+        {
+            MediaPlayer.Stop();
+        }
     }
+
 }
