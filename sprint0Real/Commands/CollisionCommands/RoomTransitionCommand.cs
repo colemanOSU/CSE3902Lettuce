@@ -42,7 +42,6 @@ namespace sprint0Real.Commands.CollisionCommands2
             }
             return target;
         }
-
         private void SetOffset(CollisionDirections direction)
         {
             switch (direction)
@@ -64,6 +63,7 @@ namespace sprint0Real.Commands.CollisionCommands2
         public void Execute(IObject Link, IObject transitionBox, CollisionDirections direction)
         {
             SetOffset(direction);
+            myGame.UISprite.MoveLinkMapMarker(direction.ToLinkDirectionMirror());
             myGame._camera.target = TargetLocation(direction);
             myGame.currentGameState = GameState.GameStates.LevelTransition;
             CurrentMap.Instance.SetPrevious();

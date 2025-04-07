@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using sprint0Real;
 using sprint0Real.Interfaces;
 using sprint0Real.LinkStuff;
+using System;
 using System.Diagnostics;
 
 
@@ -149,6 +150,11 @@ public class UI : IUI
                 break;
         }
 
+    }
+
+    internal void MoveLinkMapMarker(Func<Link.Direction> toLinkDirection)
+    {
+        throw new NotImplementedException();
     }
 }
 
