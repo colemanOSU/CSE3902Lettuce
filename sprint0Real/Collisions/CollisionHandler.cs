@@ -22,8 +22,6 @@ namespace sprint0Real.Collisions
     {
         private Dictionary<(String, String), ICollisionCommand> collisionCommands;
         private Game1 game;
-        private SoundEffect playerHurt;
-        ContentManager _content;
 
 
         // Maybe make these strings

@@ -40,14 +40,14 @@ public class GameOverUI
     }
 
     //Static sprite, no need to update
-    public void Update(GameTime gametime, Game Game)
+    public void Update(GameTime gametime, Game1 Game)
     {
         if (FirstTime)
         {
             PassedTime += gametime.ElapsedGameTime;
             if (TimeSpan.Compare(PassedTime, ScreenLength) != -1)
             {
-                Game.Exit();
+                Game.ResetGame();
             }
 
         }
