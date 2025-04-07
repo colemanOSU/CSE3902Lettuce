@@ -58,6 +58,14 @@ namespace sprint0Real.Collisions
                         collisionHandler.HandleCollision(enemy, collision);
                     }
                 }
+                // Enemies against blocks
+                foreach(IBlock block in gameObjectsInRoom.OfType<IBlock>())
+                {
+                    if (enemy.Rect.Intersects(block.Rect))
+                    {
+                        collisionHandler.HandleCollision(enemy, block);
+                    }
+                }
                 // Enemies against Link Projectiles
                 foreach (ILinkSprite enemyDamage in gameObjectsInRoom.OfType<ILinkSprite>())
                 {
