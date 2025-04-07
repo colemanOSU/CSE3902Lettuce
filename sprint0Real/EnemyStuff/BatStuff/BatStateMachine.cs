@@ -1,6 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
+using sprint0Real.EnemyStuff.DeathSprites;
 using sprint0Real.Interfaces;
 using sprint0Real.Levels;
+using sprint0Real.TreasureItemStuff;
 using System;
 
 namespace sprint0Real.EnemyStuff.BatStuff
@@ -12,11 +15,15 @@ namespace sprint0Real.EnemyStuff.BatStuff
         private Bat myBat;
         private float SqrtSpeed;
         private Random random = new Random();
+        private SoundEffect EnemyDie;
+        private bool DieSoundPlayed = false;
+        private Death death;
 
         public BatStateMachine(Bat Bat)
         {
             myBat = Bat;
             SqrtSpeed = (float)Math.Sqrt((Math.Pow(Bat.speed,2))/2);
+            EnemyDie = SoundEffectFactory.Instance.getEnemyDie();
         }
         public void Perched()
         {
@@ -28,7 +35,16 @@ namespace sprint0Real.EnemyStuff.BatStuff
             myBat.Health -= damage; 
             if (myBat.Health < 0)
             {
+                if (!DieSoundPlayed)
+                {
+                    EnemyDie.Play();
+                    DieSoundPlayed = true;
+                }
+                DropManager.Instance.OnDeath(myBat.location);
                 CurrentMap.Instance.DeStage(myBat);
+                death = new Death(myBat.location);
+                CurrentMap.Instance.Stage(death);
+
             }
         }
         public void ChangeDirection()

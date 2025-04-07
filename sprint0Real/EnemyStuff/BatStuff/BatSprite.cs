@@ -23,15 +23,15 @@ namespace sprint0Real.EnemyStuff.BatStuff
 
             if (currentFrame == 0)
             {
-                sourceRectangle = new Rectangle(183, 14, 15, 15);
+                sourceRectangle = new Rectangle(183, 11, 16, 16);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 30, 30);
+                (int)location.Y, 16 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
             }
             else
             {
-                sourceRectangle = new Rectangle(200, 14, 15, 15);
+                sourceRectangle = new Rectangle(200, 11, 16, 16);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 30, 30);
+                (int)location.Y, 16 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
             }
 
             spriteBatch.Draw(sprites, destinationRectangle, sourceRectangle, Color.White);

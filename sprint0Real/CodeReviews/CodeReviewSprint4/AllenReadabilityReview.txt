@@ -1,0 +1,11 @@
+Author: Allen Sluss
+Date: 4/7/2024
+Sprint 4
+I'm reviewing Kelly's code for MenuUI.cs
+About 5 minutes to complete
+
+There's a lot of clearly named variables at the top of the class, which increases the overall readability of the class. However because there's a lot of them,
+it might be difficult to keep track of all of them while reading the code. Another part of the code that makes it difficult to read is the use of magic numbers
+for some of the arguments in the DestinationRectangles. It might be more readably if there were more temporary variables that store what the value exactly is 
+before initializing a new rectangle. Similarly, moving some of the conditionals into separate functions would work to make the code more readably, reducing the 
+depth of some loops. 

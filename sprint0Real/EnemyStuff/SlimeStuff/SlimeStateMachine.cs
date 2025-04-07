@@ -1,5 +1,11 @@
-﻿using sprint0Real.EnemyStuff.SkeletonStuff;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
+using sprint0Real.EnemyStuff.BatStuff;
+using sprint0Real.EnemyStuff.DeathSprites;
+using sprint0Real.EnemyStuff.SlimeStuff;
 using sprint0Real.Interfaces;
+using sprint0Real.Levels;
+using sprint0Real.TreasureItemStuff;
 using System;
 
 namespace sprint0Real.EnemyStuff.SlimeStuff
@@ -10,10 +16,13 @@ namespace sprint0Real.EnemyStuff.SlimeStuff
         private SlimeStates currentState = SlimeStates.Right;
         private Slime mySlime;
         private Random random = new Random();
-
+        private SoundEffect EnemyDie;
+        private bool DieSoundPlayed = false;
+        private Death death;
         public SlimeStateMachine(Slime Slime)
         {
             mySlime = Slime;
+            EnemyDie = SoundEffectFactory.Instance.getEnemyDie();
         }
 
         public void TakeDamage(int damage)
@@ -21,7 +30,15 @@ namespace sprint0Real.EnemyStuff.SlimeStuff
             mySlime.Health -= damage;
             if (mySlime.Health <= 0)
             {
+                if (!DieSoundPlayed)
+                {
+                    EnemyDie.Play();
+                    DieSoundPlayed = true;
+                }
+                DropManager.Instance.OnDeath(mySlime.location);
                 mySlime.Despawn();
+                death = new Death(mySlime.location);
+                CurrentMap.Instance.Stage(death);
             }
         }
         public void ChangeDirection()
@@ -49,16 +66,16 @@ namespace sprint0Real.EnemyStuff.SlimeStuff
             switch (currentState)
             {
                 case SlimeStates.Right:
-                    mySlime.location.X += mySlime.speed;
+                    mySlime.location = new Vector2(mySlime.location.X - mySlime.speed, mySlime.location.Y);
                     break;
                 case SlimeStates.Left:
-                    mySlime.location.X -= mySlime.speed;
+                    mySlime.location = new Vector2(mySlime.location.X + mySlime.speed, mySlime.location.Y);
                     break;
                 case SlimeStates.Up:
-                    mySlime.location.Y += mySlime.speed;
+                    mySlime.location = new Vector2(mySlime.location.X, mySlime.location.Y - mySlime.speed);
                     break;
                 case SlimeStates.Down:
-                    mySlime.location.Y -= mySlime.speed;
+                    mySlime.location = new Vector2(mySlime.location.X, mySlime.location.Y + mySlime.speed);
                     break;
             }
         }
@@ -68,16 +85,16 @@ namespace sprint0Real.EnemyStuff.SlimeStuff
             switch (currentState)
             {
                 case SlimeStates.Right:
-                    mySlime.location.X -= mySlime.speed;
+                    mySlime.location = new Vector2(mySlime.location.X - mySlime.speed, mySlime.location.Y);
                     break;
                 case SlimeStates.Left:
-                    mySlime.location.X += mySlime.speed;
+                    mySlime.location = new Vector2(mySlime.location.X + mySlime.speed, mySlime.location.Y);
                     break;
                 case SlimeStates.Up:
-                    mySlime.location.Y -= mySlime.speed;
+                    mySlime.location = new Vector2(mySlime.location.X, mySlime.location.Y - mySlime.speed);
                     break;
                 case SlimeStates.Down:
-                    mySlime.location.Y += mySlime.speed;
+                    mySlime.location = new Vector2(mySlime.location.X, mySlime.location.Y + mySlime.speed);
                     break;
             }
         }

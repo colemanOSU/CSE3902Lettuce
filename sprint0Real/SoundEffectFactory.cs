@@ -10,7 +10,9 @@ using Microsoft.Xna.Framework.Graphics;
 using sprint0Real.BlockSprites;
 using sprint0Real.Interfaces;
 using sprint0Real.LinkSprites;
-using sprint0Real.TreasureItemSprites;
+using sprint0Real.TreasureItemStuff;
+using sprint0Real.TreasureItemStuff.TreasureItemSprites;
+
 using static sprint0Real.LinkSprites.ItemStateMachine;
 
 namespace sprint0Real

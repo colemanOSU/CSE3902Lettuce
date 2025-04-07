@@ -12,7 +12,8 @@ using sprint0Real.Interfaces;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
-using sprint0Real.TreasureItemSprites;
+using sprint0Real.TreasureItemStuff;
+using sprint0Real.TreasureItemStuff.TreasureItemSprites;
 using sprint0Real.Commands.CollisionCommands;
 
 namespace sprint0Real.Collisions
@@ -21,22 +22,19 @@ namespace sprint0Real.Collisions
     {
         private Dictionary<(String, String), ICollisionCommand> collisionCommands;
         private Game1 game;
-        private SoundEffect playerHurt;
-        ContentManager _content;
 
 
         // Maybe make these strings
         public CollisionHandler(Game1 game)
-{
-    this.game = game;
+        {
+            this.game = game;
             collisionCommands = new Dictionary<(String, String), ICollisionCommand>();
-}
-public void LoadCommands()
-{
-
+        }
+        public void LoadCommands()
+        {
             collisionCommands.Add(("Link", "Enemy"),  new LinkEnemyCommand());
             collisionCommands.Add(("Link", "Border"), new LinkBorderCommand());
-            collisionCommands.Add(("Link", "RoomTransitionBox"), new RoomTransitionCommand(game.collisionDetection));
+            collisionCommands.Add(("Link", "RoomTransitionBox"), new RoomTransitionCommand(game));
             collisionCommands.Add(("Enemy", "LinkWeapon"), new DamageEnemyCollisionCommand());
 
             collisionCommands.Add(("Link", "EnemyProjectile"), new LinkEnemyCommand());
@@ -53,6 +51,8 @@ public void LoadCommands()
             collisionCommands.Add(("Link", "BlockSpriteStripes"), new LinkBlockCollisionCommand());
             collisionCommands.Add(("Link", "BlockSpriteStairs"), new LinkStairsCollisionCommand());
             collisionCommands.Add(("Enemy", "Border"), new EnemyBorderCommand());
+            collisionCommands.Add(("Enemy", "BlockSpriteFloorBlock"), new EnemyBlockCommand());
+            collisionCommands.Add(("Enemy", "RoomTransitionBox"), new EnemyTransitionBoxes());
         }
 
         public void HandleCollision(IObject objA, IObject objB)

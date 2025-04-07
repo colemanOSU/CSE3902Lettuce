@@ -30,13 +30,13 @@ namespace sprint0Real.EnemyStuff.RedGoriyaStuff
             {
                 sourceRectangle = new Rectangle(39, 78, 15, 15);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 30, 30);
+                (int)location.Y, 16 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
             }
             else
             {
                 sourceRectangle = new Rectangle(58, 78, 15, 15);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 30, 30);
+                (int)location.Y, 16 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
             }
 
             spriteBatch.Draw(sprites, destinationRectangle, sourceRectangle, Color.White);

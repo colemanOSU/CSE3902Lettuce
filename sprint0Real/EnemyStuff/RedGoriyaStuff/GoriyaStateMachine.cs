@@ -1,10 +1,14 @@
 ﻿using System;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using sprint0Real.EnemyStuff.BatStuff;
 using sprint0Real.EnemyStuff.BoomerangStuff;
 using sprint0Real.EnemyStuff.RedGoriya;
 using sprint0Real.EnemyStuff.RedGoriyaStuff;
 using sprint0Real.Interfaces;
 using sprint0Real.Levels;
+using sprint0Real.EnemyStuff.DeathSprites;
+using sprint0Real.TreasureItemStuff;
 
 namespace sprint0Real.EnemyStuff.GoriyaStuff
 {
@@ -15,10 +19,14 @@ namespace sprint0Real.EnemyStuff.GoriyaStuff
         private AttackStates attackStatus = AttackStates.Idle;
         private Goriya myGoriya;
         private Random random = new Random();
+        private SoundEffect EnemyDie;
+        private bool DieSoundPlayed = false;
+        private Death death;
 
         public GoriyaStateMachine(Goriya Goriya)
         {
             myGoriya = Goriya;
+            EnemyDie = SoundEffectFactory.Instance.getEnemyDie();
         }
 
         public void ChangeDirection()
@@ -49,16 +57,16 @@ namespace sprint0Real.EnemyStuff.GoriyaStuff
             switch (currentState)
             {
                 case GoriyaState.Right:
-                    myGoriya.location.X += myGoriya.speed;
+                    myGoriya.location = new Vector2(myGoriya.location.X + myGoriya.speed, myGoriya.location.Y);
                     break;
                 case GoriyaState.Left:
-                    myGoriya.location.X -= myGoriya.speed;
+                    myGoriya.location = new Vector2(myGoriya.location.X - myGoriya.speed, myGoriya.location.Y);
                     break;
                 case GoriyaState.Up:
-                    myGoriya.location.Y += myGoriya.speed;
+                    myGoriya.location = new Vector2(myGoriya.location.X, myGoriya.location.Y+ myGoriya.speed);
                     break;
                 case GoriyaState.Down:
-                    myGoriya.location.Y -= myGoriya.speed;
+                    myGoriya.location = new Vector2(myGoriya.location.X, myGoriya.location.Y - myGoriya.speed);
                     break;
             }
         }
@@ -67,7 +75,15 @@ namespace sprint0Real.EnemyStuff.GoriyaStuff
             myGoriya.Health -= damage;
             if (myGoriya.Health <= 0)
             {
+                if (!DieSoundPlayed)
+                {
+                    EnemyDie.Play();
+                    DieSoundPlayed = true;
+                }
+                DropManager.Instance.OnDeath(myGoriya.location);
                 CurrentMap.Instance.DeStage(myGoriya);
+                death = new Death(myGoriya.location);
+                CurrentMap.Instance.Stage(death);
             }
             else
             {
@@ -108,16 +124,16 @@ namespace sprint0Real.EnemyStuff.GoriyaStuff
                 switch (currentState)
                 {
                     case GoriyaState.Right:
-                        myGoriya.location.X -= myGoriya.speed;
+                        myGoriya.location = new Vector2(myGoriya.location.X - myGoriya.speed, myGoriya.location.Y);
                         break;
                     case GoriyaState.Left:
-                        myGoriya.location.X += myGoriya.speed;
+                        myGoriya.location = new Vector2(myGoriya.location.X + myGoriya.speed, myGoriya.location.Y);
                         break;
                     case GoriyaState.Up:
-                        myGoriya.location.Y -= myGoriya.speed;
+                        myGoriya.location = new Vector2(myGoriya.location.X, myGoriya.location.Y - myGoriya.speed);
                         break;
                     case GoriyaState.Down:
-                        myGoriya.location.Y += myGoriya.speed;
+                        myGoriya.location = new Vector2(myGoriya.location.X, myGoriya.location.Y + myGoriya.speed);
                         break;
                 }
             }

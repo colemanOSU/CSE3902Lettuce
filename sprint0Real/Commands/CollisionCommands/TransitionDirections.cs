@@ -11,10 +11,11 @@ namespace sprint0Real.Commands.CollisionCommands2
     public class TransitionDirections
     {
         private Dictionary<String, Rectangle> TransitionLinkPlacement = new Dictionary<String, Rectangle>();
+        
         public TransitionDirections() {
             TransitionLinkPlacement.Add("Left", new Rectangle(288, 288, 50, 50));
             TransitionLinkPlacement.Add("Right", new Rectangle(288, 288, 50, 50));
-            TransitionLinkPlacement.Add("Up", new Rectangle(288, 288, 10, 10));
+            TransitionLinkPlacement.Add("Up", new Rectangle(288, 288, 50, 50));
             TransitionLinkPlacement.Add("Down", new Rectangle(288, 288, 50, 50));
             TransitionLinkPlacement.Add("Underground", new Rectangle(288, 288, 50, 50));
             TransitionLinkPlacement.Add("Aboveground", new Rectangle(288, 288, 50, 50));

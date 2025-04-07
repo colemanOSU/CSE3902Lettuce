@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
+using Microsoft.Xna.Framework;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Content;
@@ -26,8 +26,9 @@ namespace sprint0Real.EnemyStuff
         private Texture2D enemySpriteSheet;
         private Texture2D DungeonTileSet;
         private Texture2D Deathsprites;
-        // More private Texture2Ds follow
-        // ...
+        private Texture2D OldManSpriteSheet;
+        
+
         private static EnemySpriteFactory instance = new EnemySpriteFactory();
         public static EnemySpriteFactory Instance
         {
@@ -50,6 +51,7 @@ namespace sprint0Real.EnemyStuff
             enemySpriteSheet = content.Load<Texture2D>("Dungeon Enemies");
             DungeonTileSet = content.Load<Texture2D>("NES - The Legend of Zelda - Dungeon Tileset");
             Deathsprites = content.Load<Texture2D>("NES_-_The_Legend_of_Zelda_-_Enemy_Death");
+            OldManSpriteSheet = content.Load<Texture2D>("OldManZelda");
             // More Content.Load calls follow
             //...
         }
@@ -138,6 +140,11 @@ namespace sprint0Real.EnemyStuff
         public ISprite2 CreateDeathSprite()
         {
             return new DeathSprite(Deathsprites);
+        }
+
+        public Texture2D ReturnOldManSpriteSheet()
+        {
+            return OldManSpriteSheet;
         }
     }
 }

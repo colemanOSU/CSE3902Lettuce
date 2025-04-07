@@ -10,7 +10,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using sprint0Real.Controllers;
 using sprint0Real.EnemyStuff;
-using sprint0Real.TreasureItemSprites;
 using sprint0Real.GameState;
 using sprint0Real.Collisions;
 using sprint0Real.LinkStuff;
@@ -20,6 +19,7 @@ using sprint0Real.LinkSprites;
 using sprint0Real.Commands;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
+using sprint0Real.TreasureItemStuff;
 
 namespace sprint0Real
 {
@@ -36,14 +36,16 @@ namespace sprint0Real
 
         //TEMP SET PUBLIC UNTIL BETTER SOLUTION FOUND
         public GameStates currentGameState;
-        private TitleScreen titleScreen;
-        private Song Dungeon;
+        public TitleScreen titleScreen;
+        public GameOverUI GameOverScreen;
+        public Song Dungeon;
+        public Song GameOverMusic;
 
         public ILink Link;
         public ILinkSpriteTemp linkSprite;
 
         //For menus and UIs
-        public IUI UISprite;
+        public UI UISprite;
         public MenuUI MenuUISprite;
         public IUI PauseUISprite;
 
@@ -61,12 +63,18 @@ namespace sprint0Real
         public CollisionDetection collisionDetection;
         public CollisionHandler collisionHandler;
 
-        private ItemStateMachine itemStateMachine;
+        public ItemStateMachine itemStateMachine;
 
         //TEMP CAMERA
-        private Camera _camera;
+        public Camera _camera;
         public Vector2 CameraTarget;
         public bool InMenu;
+        public Vector2 transitionOffset;
+
+        private bool TempDying;
+
+        private TimeSpan DyingTime;
+        private TimeSpan Span;
 
         //The screen height is specifically calculated to match the original game's
         //Important for menu transitions to function properly.
@@ -87,7 +95,7 @@ namespace sprint0Real
         public const int SCREENWIDTH = 256 * RENDERSCALE;
         public const int SCREENMIDX = SCREENWIDTH / 2;
         public const int SCREENMIDY = SCREENHEIGHT / 2;
-        
+
 
         //TEMP PAUSE
         public bool isPaused;
@@ -123,6 +131,8 @@ namespace sprint0Real
             LinkState = new LinkStateMachine(Link);
             itemStateMachine = new ItemStateMachine(this, Link.GetInventory());
             collisionHandler = new CollisionHandler(this);
+            collisionDetection = new CollisionDetection(this, collisionHandler);
+            DropManager.Init(Link);
 
 
             base.Initialize();
@@ -143,6 +153,7 @@ namespace sprint0Real
             UISheet = Content.Load<Texture2D>("NES - The Legend of Zelda - HUD & Pause Screen");
 
             Dungeon = Content.Load<Song>("04 - Dungeon");
+            GameOverMusic = Content.Load<Song>("07 - Game Over");
 
             EnemySpriteFactory.Instance.LoadAllTextures(Content);
             EnemySpriteFactory.Instance.LoadGame(this);
@@ -177,6 +188,18 @@ namespace sprint0Real
             {
                 case GameStates.TitleScreen:
                     currentGameState = titleScreen.Update(gameTime, this);
+                    break;
+                case GameStates.Dying:
+
+                    break;
+                case GameStates.GameOver:
+                    MediaPlayer.Stop();
+                    GameOverScreen.Update(gameTime, this);
+                    foreach (IController controller in controllerList)
+                    {
+                        controller.Update(gameTime);
+
+                    }
                     break;
                 case GameStates.Pause:
                     foreach (IController controller in controllerList)
@@ -227,8 +250,6 @@ namespace sprint0Real
                      }
                      LinkState.Update(gameTime);
 
-                    collisionDetection.Update(gameTime);
-
                     //NOTE:
                     //I hate hate hate passing game as a parameter to so many things
                     //Will address when I have the time to
@@ -236,8 +257,10 @@ namespace sprint0Real
                      //CollisionChecker.Update(gameTime, this);
 
                     Link.ApplyMomentum();
+                    collisionDetection.Update(gameTime);
                     CurrentMap.Instance.Update(gameTime);
-                    
+
+                    if (Link.GetCurrentHealth() == 0) currentGameState = GameStates.Dying;
 
                     break;
             }
@@ -249,15 +272,39 @@ namespace sprint0Real
             switch (currentGameState)
             {
                 case GameStates.TitleScreen:
-                 
                     titleScreen.Draw(_spriteBatch, GraphicsDevice);
                     break;
+                case GameStates.Dying:
+                    _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, null);
 
+                    if (TempDying)
+                    {
+                        linkSprite = new DeathSprite(linkSheet, this);
+                        DyingTime = TimeSpan.Zero;
+                        MediaPlayer.Play(GameOverMusic);
+                        TempDying = false;
+                    }
+
+                    DyingTime += gameTime.ElapsedGameTime;
+
+
+                    linkSprite.Update(gameTime, _spriteBatch);
+                    linkSprite.Draw(_spriteBatch);
+
+                    if (TimeSpan.Compare(DyingTime, TimeSpan.FromSeconds(2.7)) != -1)
+                    {
+                        currentGameState = GameStates.GameOver;
+                    }
+
+                    _spriteBatch.End();
+                    break;
+                case GameStates.GameOver:
+                    GameOverScreen.Draw(_spriteBatch);
+                    break;
                 case GameStates.Pause:
                     //We still want things to be drawn, just not updated
                     transform = Matrix.CreateTranslation(-_camera.GetTopLeft().X, -_camera.GetTopLeft().Y, 0);
                     _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, transform);
-
                     _camera.MoveToward(_camera.Center);
 
 
@@ -292,22 +339,25 @@ namespace sprint0Real
                     transform = Matrix.CreateTranslation(-_camera.GetTopLeft().X, -_camera.GetTopLeft().Y, 0);
                     _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, transform);
 
-                    if (_camera.MoveToward(CameraTarget))
+                    if (_camera.MoveToward(_camera.target))
                     {
-                        currentGameState = (InMenu) ? GameStates.Menu : GameStates.GamePlay;
+                        _camera.Center = new Vector2(SCREENMIDX, SCREENMIDY);
+                        currentGameState = GameStates.GamePlay;
                     }
 
-                    CurrentMap.Instance.Draw(_spriteBatch);
-                    linkSprite.Draw(_spriteBatch);
-                    UISprite.Draw(_spriteBatch);
+                    CurrentMap.Instance.DrawBackground(_spriteBatch, transitionOffset);
+                    CurrentMap.Instance.DrawPreviousBackground(_spriteBatch);
+                    _spriteBatch.End();
 
+                    // Don't want an offset for the UI so a separate spriteBatch is used
+                    _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, null);
+                    UISprite.Draw(_spriteBatch);
                     _spriteBatch.End();
                     break;
                 case GameStates.Menu:
                     //We still want things to be drawn, just not updated
                     transform = Matrix.CreateTranslation(-_camera.GetTopLeft().X, -_camera.GetTopLeft().Y, 0);
                     _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, transform);
-
                     _camera.MoveToward(_camera.Center);
 
                     CurrentMap.Instance.Draw(_spriteBatch);
@@ -320,33 +370,25 @@ namespace sprint0Real
                     _spriteBatch.End();
                     break;
                 case GameStates.GamePlay:
-                    transform = Matrix.CreateTranslation(-_camera.GetTopLeft().X, -_camera.GetTopLeft().Y, 0);
-                    _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, transform);
+                    _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, null);
                     CurrentMap.Instance.Draw(_spriteBatch);
 
-                //TEMP ITEM
-                if (tempItem != null)
-                {
-                    tempItem.Draw(_spriteBatch);
-                }
-
-                if (itemSprite != null)
-                {
-                    itemSprite.Draw(_spriteBatch);
-                    itemSprite.Update(gameTime, _spriteBatch);
-                }
-                linkSprite.Update(gameTime, _spriteBatch);
-                linkSprite.Draw(_spriteBatch);
+                    if (itemSprite != null)
+                    {
+                        itemSprite.Draw(_spriteBatch);
+                        itemSprite.Update(gameTime, _spriteBatch);
+                    }
+                    linkSprite.Update(gameTime, _spriteBatch);
+                    linkSprite.Draw(_spriteBatch);
 
                     UISprite.Update(gameTime, Link);
                     UISprite.Draw(_spriteBatch);
 
                     _spriteBatch.End();
 
+                    base.Draw(gameTime);
                     break;
             }
-
-            base.Draw(gameTime);
         }
 
         public void ResetGame()
@@ -358,13 +400,23 @@ namespace sprint0Real
             UISprite = new UI(UISheet, Link);
             MenuUISprite = new MenuUI(UISheet);
             PauseUISprite = new PauseUI(UISheet);
+
+            GameOverScreen = new GameOverUI(UISheet);
             weaponItemsA = new NullSprite(linkSheet, this);
             weaponItemsB = new NullSprite(linkSheet, this);
             Link = new Link(this);
             LinkState = new LinkStateMachine(Link);
 
-            collisionDetection = new CollisionDetection(this, collisionHandler);
+            TempDying = true;
+
+            DyingTime = TimeSpan.Zero;
 
         }
+
+        public void MuteMusic()
+        {
+            MediaPlayer.Stop();
+        }
     }
+
 }

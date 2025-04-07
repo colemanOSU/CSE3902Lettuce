@@ -15,7 +15,6 @@ namespace sprint0Real.EnemyStuff.DeathSprites
     {
         public ISprite2 mySprite;
         public Rectangle destinationRectangle;
-        private int counter;
 
         public Death(Vector2 start)
         {
@@ -30,12 +29,12 @@ namespace sprint0Real.EnemyStuff.DeathSprites
 
         public void Update(GameTime time)
         {
-            if (counter != 4)
+            mySprite.Update();
+            // Only remove when the death animation is complete.
+            if (mySprite is DeathSprite deathSprite && deathSprite.AnimationComplete)
             {
-                counter++;
-                mySprite.Update();
+                CurrentMap.Instance.DeStage(this);
             }
-            CurrentMap.Instance.DeStage(this);
         }
 
         public Rectangle Rect

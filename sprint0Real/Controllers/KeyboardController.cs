@@ -4,9 +4,11 @@ using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using sprint0Real.Commands;
+using sprint0Real.Commands.KeyboardCommands;
 using sprint0Real.Interfaces;
-using sprint0Real.TreasureItemSprites;
+using sprint0Real.TreasureItemStuff;
+using sprint0Real.TreasureItemStuff.TreasureItemSprites;
+
 
 namespace sprint0Real.Controllers
 {
@@ -16,6 +18,7 @@ namespace sprint0Real.Controllers
         private Dictionary<Keys, ICommand> releaseCommands;
         private Dictionary<Keys, ICommand> MenuCommands;
         private Dictionary<Keys, ICommand> PauseCommands;
+        private Dictionary<Keys, ICommand> GameOverCommands;
 
         private Dictionary<Keys, bool> keyPreviouslyPressed;
 
@@ -32,9 +35,6 @@ namespace sprint0Real.Controllers
 
             keyPreviouslyPressed = new Dictionary<Keys, bool>();
             _game = game;
-            blockTexture = _game.Content.Load<Texture2D>("NES - The Legend of Zelda - Dungeon Tileset");
-            itemTexture = _game.Content.Load<Texture2D>("NES - The Legend of Zelda - Items & Weapons");
-
 
             //commands.Add(Keys.Y, new NextBlockCommand(_game, blockTexture));
             //commands.Add(Keys.T, new PreviousBlockCommand(_game, blockTexture));
@@ -56,6 +56,8 @@ namespace sprint0Real.Controllers
             commands.Add(Keys.R, new ResetCommand(_game));
             commands.Add(Keys.P, new PauseCommand(_game));
             commands.Add(Keys.M, new MenuCommand(_game));
+            commands.Add(Keys.L, new GameOverCommand(_game));
+            commands.Add(Keys.OemQuotes, new MuteCommand(_game));
 
             commands.Add(Keys.D1, new ItemChangeCommand(_game, 1));
             commands.Add(Keys.D2, new ItemChangeCommand(_game, 2));
@@ -102,6 +104,10 @@ namespace sprint0Real.Controllers
             PauseCommands.Add(Keys.P, new PauseCommand(_game));
             PauseCommands.Add(Keys.Q, new QuitCommand(_game));
 
+            GameOverCommands = new Dictionary<Keys, ICommand>();
+
+            GameOverCommands.Add(Keys.Q, new QuitCommand(_game));
+
             foreach (Keys key in commands.Keys)
             {
                 keyPreviouslyPressed[key] = false;
@@ -128,6 +134,21 @@ namespace sprint0Real.Controllers
             if (_game.currentGameState == GameState.GameStates.Pause)
             {
                 foreach (var command in PauseCommands)
+                {
+                    Keys key = command.Key;
+                    bool isKeyDown = KeyboardState.IsKeyDown(key);
+
+                    if (isKeyDown && !keyPreviouslyPressed[key])
+                    {
+                        command.Value.Execute();
+                    }
+                    //update state
+                    keyPreviouslyPressed[key] = isKeyDown;
+                }
+            }
+            else if (_game.currentGameState == GameState.GameStates.GameOver)
+            {
+                foreach (var command in GameOverCommands)
                 {
                     Keys key = command.Key;
                     bool isKeyDown = KeyboardState.IsKeyDown(key);

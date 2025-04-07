@@ -23,35 +23,6 @@ namespace sprint0Real.EnemyStuff.SkeletonStuff
 
         private Random random = new Random();
 
-        private void SafeJuke()
-        {
-            // THIS IS BAD CODE FIX!!!
-            if (mySkeleton.location.X > EnemySpriteFactory.Instance.myGame._graphics.PreferredBackBufferWidth - 48)
-            {
-                jukeTimer = 0;
-                mySkeleton.location.X = EnemySpriteFactory.Instance.myGame._graphics.PreferredBackBufferWidth - 48;
-                mySkeleton.ChangeDirection();
-            }
-            else if (mySkeleton.location.X < 0)
-            {
-                jukeTimer = 0;
-                mySkeleton.location.X = 0;
-                mySkeleton.ChangeDirection();
-            }
-            else if (mySkeleton.location.Y > EnemySpriteFactory.Instance.myGame._graphics.PreferredBackBufferHeight - 48)
-            {
-                jukeTimer = 0;
-                mySkeleton.location.Y = EnemySpriteFactory.Instance.myGame._graphics.PreferredBackBufferHeight - 48;
-                mySkeleton.ChangeDirection();
-            }
-            else if (mySkeleton.location.Y < 0)
-            {
-                jukeTimer = 0;
-                mySkeleton.location.Y = 0;
-                mySkeleton.ChangeDirection();
-            }
-
-        }
         private void JukeCheck()
         {
             if (jukeDelay <= jukeTimer)
@@ -65,7 +36,6 @@ namespace sprint0Real.EnemyStuff.SkeletonStuff
         public void Update(GameTime time)
         {
             jukeTimer += (float)time.ElapsedGameTime.TotalSeconds;
-            SafeJuke();
             JukeCheck();
         }
     }

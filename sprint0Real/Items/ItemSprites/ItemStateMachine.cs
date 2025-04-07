@@ -5,7 +5,8 @@ using sprint0Real.Items.ItemSprites;
 using System.Collections;
 using sprint0Real.Levels;
 using System;
-using sprint0Real.TreasureItemSprites;
+using sprint0Real.TreasureItemStuff;
+using sprint0Real.TreasureItemStuff.TreasureItemSprites;
 using System.Diagnostics;
 using sprint0Real.LinkStuff;
 using static sprint0Real.LinkStuff.Inventory;
@@ -15,7 +16,7 @@ namespace sprint0Real.LinkSprites
 
     //This class is passed an item and the Link object and determines the correct sprite
     //to play based on the properties of both
-    internal class ItemStateMachine
+    public class ItemStateMachine
     {
         /*
         public enum Item
@@ -59,7 +60,7 @@ namespace sprint0Real.LinkSprites
 
             //System.Diagnostics.Debug.WriteLine($"Updated currentItem: {currentItem}");
         }
-        public void SetItem(int num,Game1 game)
+        public void SetItem(int num, Game1 game)
         {
             /*
             switch (num)
@@ -126,7 +127,7 @@ namespace sprint0Real.LinkSprites
             {
                 CurrentMap.Instance.ObjectList().Remove(myGame.weaponItemsA);
             }
-            
+
 
             ILinkSprite newWeapon = CreateWeaponInstance(currentSwords);
 
@@ -198,7 +199,7 @@ namespace sprint0Real.LinkSprites
         {
             return sword switch
             {
-                Inventory.Swords.Wood_Sword => new WoodSwordSprite(myGame.linkSheet,myGame),
+                Inventory.Swords.Wood_Sword => new WoodSwordSprite(myGame.linkSheet, myGame),
                 Inventory.Swords.White_Sword => new WhiteSwordSprite(myGame.linkSheet, myGame),
                 _ => new NullSprite(myGame.linkSheet, myGame),
             };

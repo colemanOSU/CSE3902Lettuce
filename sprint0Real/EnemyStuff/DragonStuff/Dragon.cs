@@ -17,7 +17,7 @@ namespace sprint0Real.EnemyStuff.DragonStuff
         private DragonBehavior behavior;
 
         public ISprite2 sprite;
-        public Vector2 Location;
+        private Vector2 Location;
         public int speed = 2;
         private int health = 10;
 
@@ -84,7 +84,7 @@ namespace sprint0Real.EnemyStuff.DragonStuff
         {
             get
             {
-                return new Rectangle((int)location.X, (int)location.Y, 48, 64);
+                return new Rectangle((int)location.X, (int)location.Y, 24 * Game1.RENDERSCALE, 32 * Game1.RENDERSCALE);
             }
         }
         public int Health

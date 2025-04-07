@@ -31,43 +31,43 @@ namespace sprint0Real.EnemyStuff.RedGoriyaStuff
             {
                 sourceRectangle = new Rectangle(325, 28, 15, 15);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 30, 30);
+                (int)location.Y, 16 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
             }
             else if (currentFrame == 1)
             {
                 sourceRectangle = new Rectangle(399, 28, 15, 15);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 30, 30);
+                (int)location.Y, 16 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
             }
             else if (currentFrame == 2)
             {
                 sourceRectangle = new Rectangle(256, 11, 15, 15);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 30, 30);
+                (int)location.Y, 16 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
             }
             else if (currentFrame == 3)
             {
                 sourceRectangle = new Rectangle(257, 28, 15, 15);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 30, 30);
+                (int)location.Y, 16 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
             }
             else if (currentFrame == 4)
             {
                 sourceRectangle = new Rectangle(343, 28, 15, 15);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 30, 30);
+                (int)location.Y, 16 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
             }
             else if (currentFrame == 5)
             {
                 sourceRectangle = new Rectangle(417, 28, 15, 15);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 30, 30);
+                (int)location.Y, 16 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
             }
             else if (currentFrame == 6)
             {
                 sourceRectangle = new Rectangle(273, 11, 15, 15);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 30, 30);
+                (int)location.Y, 16 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
             }
             else
             {

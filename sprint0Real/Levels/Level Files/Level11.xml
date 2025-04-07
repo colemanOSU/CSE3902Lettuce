@@ -4,7 +4,9 @@
 	<Door Exterior ="Default" Interior ="SolidBlack" Left="Default" Right="Open" Up="Default" Down="Default"/>
 	
 	<Objects>
-		
+		<Object Type="Oldman" x="264" y="96"/>
+		<Object Type="Fire" x="396" y="96"/>
+		<Object Type="Fire" x="132" y="96"/>
 	</Objects>
 	
 	<MapHitBoxes>

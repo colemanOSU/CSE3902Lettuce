@@ -47,36 +47,43 @@ namespace sprint0Real.Collisions
 
         public void CheckCollisions()
         {
-            
-            // Enemies against Borders 
-            foreach(IEnemy enemy in gameObjectsInRoom.OfType<IEnemy>())
-            {
-                foreach (ICollisionBoxes collision in gameObjectsInRoom.OfType<ICollisionBoxes>())
+                // Enemies against Borders 
+                foreach (IEnemy enemy in gameObjectsInRoom.OfType<IEnemy>())
                 {
-                    if (enemy.Rect.Intersects(collision.Rect))
+                    foreach (ICollisionBoxes collision in gameObjectsInRoom.OfType<ICollisionBoxes>())
                     {
-                        collisionHandler.HandleCollision(enemy, collision);
+                        if (enemy.Rect.Intersects(collision.Rect))
+                        {
+                            collisionHandler.HandleCollision(enemy, collision);
+                        }
+                    }
+                    // Enemies against blocks
+                    foreach (IBlock block in gameObjectsInRoom.OfType<IBlock>())
+                    {
+                        if (enemy.Rect.Intersects(block.Rect))
+                        {
+                            collisionHandler.HandleCollision(enemy, block);
+                        }
+                    }
+                    // Enemies against Link Projectiles
+                    foreach (ILinkSprite enemyDamage in gameObjectsInRoom.OfType<ILinkSprite>())
+                    {
+                        if (enemy.Rect.Intersects(enemyDamage.Rect))
+                        {
+                            collisionHandler.HandleCollision(enemy, enemyDamage);
+                        }
                     }
                 }
-                // Enemies against Link Projectiles
-                foreach (ILinkSprite enemyDamage in gameObjectsInRoom.OfType<ILinkSprite>())
+
+                // Link against all collisionBoxes
+                foreach (ITouchesLink source in gameObjectsInRoom.OfType<ITouchesLink>())
                 {
-                    if (enemy.Rect.Intersects(enemyDamage.Rect))
+                    if (link.Rect.Intersects(source.Rect))
                     {
-                        collisionHandler.HandleCollision(enemy, enemyDamage);
+                        collisionHandler.HandleCollision(link, source);
                     }
                 }
-            }
-           
-            // Link against all collisionBoxes
-            foreach (ITouchesLink source in gameObjectsInRoom.OfType<ITouchesLink>())
-            {
-                if (link.Rect.Intersects(source.Rect))
-                {
-                    collisionHandler.HandleCollision(link, source);
-                }
-            }
-            // Walls against stuff that touches the wall
+                // Walls against stuff that touches the wall
         }
     }
 }

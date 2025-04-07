@@ -31,36 +31,6 @@ namespace sprint0Real.EnemyStuff.RedGoriyaStuff
 
 
         private Random random = new Random();
-
-        private void SafeJuke()
-        {
-            // THIS IS BAD CODE FIX!!!
-            if (myGoriya.location.X > EnemySpriteFactory.Instance.myGame._graphics.PreferredBackBufferWidth - 48)
-            {
-                jukeTimer = 0;
-                myGoriya.location.X = EnemySpriteFactory.Instance.myGame._graphics.PreferredBackBufferWidth - 48;
-                myGoriya.ChangeDirection();
-            }
-            else if (myGoriya.location.X < 0)
-            {
-                jukeTimer = 0;
-                myGoriya.location.X = 0;
-                myGoriya.ChangeDirection();
-            }
-            else if (myGoriya.location.Y > EnemySpriteFactory.Instance.myGame._graphics.PreferredBackBufferHeight - 48)
-            {
-                jukeTimer = 0;
-                myGoriya.location.Y = EnemySpriteFactory.Instance.myGame._graphics.PreferredBackBufferHeight - 48;
-                myGoriya.ChangeDirection();
-            }
-            else if (myGoriya.location.Y < 0)
-            {
-                jukeTimer = 0;
-                myGoriya.location.Y = 0;
-                myGoriya.ChangeDirection();
-            }
-            
-        }
         private void JukeCheck()
         {
             if (!attackFlag && jukeDelay <= jukeTimer)
@@ -112,7 +82,6 @@ namespace sprint0Real.EnemyStuff.RedGoriyaStuff
 
             JukeCheck();
             // Gotta make sure the Goriya doesn't juke it's way off screen
-            SafeJuke();
             AttackCheck();
             AttackFinish();
 

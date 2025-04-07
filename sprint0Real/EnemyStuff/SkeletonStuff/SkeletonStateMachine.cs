@@ -1,7 +1,12 @@
-﻿using sprint0Real.EnemyStuff.DragonStuff;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
+using sprint0Real.EnemyStuff.BatStuff;
+using sprint0Real.EnemyStuff.DeathSprites;
+using sprint0Real.EnemyStuff.DragonStuff;
 using sprint0Real.EnemyStuff.HandStuff;
 using sprint0Real.Interfaces;
 using sprint0Real.Levels;
+using sprint0Real.TreasureItemStuff;
 using System;
 
 namespace sprint0Real.EnemyStuff.SkeletonStuff
@@ -12,10 +17,13 @@ namespace sprint0Real.EnemyStuff.SkeletonStuff
         private SkeletonStates currentState = SkeletonStates.Right;
         private Skeleton mySkeleton;
         private Random random = new Random();
-
+        private SoundEffect EnemyDie;
+        private bool DieSoundPlayed = false;
+        private Death death;
         public SkeletonStateMachine(Skeleton Skeleton)
         {
             mySkeleton = Skeleton;
+            EnemyDie = SoundEffectFactory.Instance.getEnemyDie();
         }
 
         public void TakeDamage(int damage)
@@ -23,7 +31,15 @@ namespace sprint0Real.EnemyStuff.SkeletonStuff
             mySkeleton.Health -= damage;
             if (mySkeleton.Health <= 0)
             {
+                if (!DieSoundPlayed)
+                {
+                    EnemyDie.Play();
+                    DieSoundPlayed = true;
+                }
+                DropManager.Instance.OnDeath(mySkeleton.location);
                 CurrentMap.Instance.DeStage(mySkeleton);
+                death = new Death(mySkeleton.location);
+                CurrentMap.Instance.Stage(death);
             }
         }
 
@@ -52,16 +68,16 @@ namespace sprint0Real.EnemyStuff.SkeletonStuff
             switch (currentState)
             {
                 case SkeletonStates.Right:
-                    mySkeleton.location.X += mySkeleton.speed;
+                    mySkeleton.location = new Vector2(mySkeleton.location.X - mySkeleton.speed, mySkeleton.location.Y);
                     break;
                 case SkeletonStates.Left:
-                    mySkeleton.location.X -= mySkeleton.speed;
+                    mySkeleton.location = new Vector2(mySkeleton.location.X + mySkeleton.speed, mySkeleton.location.Y);
                     break;
                 case SkeletonStates.Up:
-                    mySkeleton.location.Y += mySkeleton.speed;
+                    mySkeleton.location = new Vector2(mySkeleton.location.X, mySkeleton.location.Y - mySkeleton.speed);
                     break;
                 case SkeletonStates.Down:
-                    mySkeleton.location.Y -= mySkeleton.speed;
+                    mySkeleton.location = new Vector2(mySkeleton.location.X, mySkeleton.location.Y + mySkeleton.speed);
                     break;
             }
         }
@@ -70,16 +86,16 @@ namespace sprint0Real.EnemyStuff.SkeletonStuff
             switch (currentState)
             {
                 case SkeletonStates.Right:
-                    mySkeleton.location.X -= mySkeleton.speed;
+                    mySkeleton.location = new Vector2(mySkeleton.location.X - mySkeleton.speed, mySkeleton.location.Y);
                     break;
                 case SkeletonStates.Left:
-                    mySkeleton.location.X += mySkeleton.speed;
+                    mySkeleton.location = new Vector2(mySkeleton.location.X + mySkeleton.speed, mySkeleton.location.Y);
                     break;
                 case SkeletonStates.Up:
-                    mySkeleton.location.Y -= mySkeleton.speed;
+                    mySkeleton.location = new Vector2(mySkeleton.location.X, mySkeleton.location.Y - mySkeleton.speed);
                     break;
                 case SkeletonStates.Down:
-                    mySkeleton.location.Y += mySkeleton.speed;
+                    mySkeleton.location = new Vector2(mySkeleton.location.X, mySkeleton.location.Y + mySkeleton.speed);
                     break;
             }
         }

@@ -12,7 +12,7 @@ namespace sprint0Real.Levels
     {
         // Functions as a singleton that holds the current stage, and as an interface between what should be added
         // to that stage.
-
+        private EnemyPage previousMap;
         private static CurrentMap instance = new CurrentMap();
         private EnemyPage myMap;
         private List<IObject> stagingAdd;
@@ -32,6 +32,10 @@ namespace sprint0Real.Levels
         public void SetMap(EnemyPage newMap)
         {
             myMap = newMap;
+        }
+        public void SetPrevious()
+        {
+            previousMap = myMap;
         }
 
         public List<IObject> ObjectList()
@@ -72,6 +76,16 @@ namespace sprint0Real.Levels
         public void Draw(SpriteBatch spriteBatch)
         {
             myMap.Draw(spriteBatch);
+        }
+
+        public void DrawBackground(SpriteBatch spriteBatch, Vector2 offset)
+        {
+            myMap.DrawBackground(spriteBatch, offset);
+        }
+        // For level transitions
+        public void DrawPreviousBackground(SpriteBatch spriteBatch)
+        {
+            previousMap.DrawBackground(spriteBatch);
         }
     }
 }

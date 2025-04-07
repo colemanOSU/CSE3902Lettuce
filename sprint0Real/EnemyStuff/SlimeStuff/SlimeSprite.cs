@@ -30,13 +30,13 @@ namespace sprint0Real.EnemyStuff.SlimeStuff
             {
                 sourceRectangle = new Rectangle(1, 15, 7, 10);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 14, 20);
+                (int)location.Y, 7 * Game1.RENDERSCALE, 10 * Game1.RENDERSCALE);
             }
             else
             {
                 sourceRectangle = new Rectangle(10, 15, 7, 10);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 14, 20);
+                (int)location.Y, 7 * Game1.RENDERSCALE, 10 * Game1.RENDERSCALE);
             }
 
             spriteBatch.Draw(sprites, destinationRectangle, sourceRectangle, Color.White);

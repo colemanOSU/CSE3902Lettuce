@@ -5,8 +5,11 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Audio;
+using sprint0Real.EnemyStuff.BatStuff;
+using sprint0Real.EnemyStuff.DeathSprites;
 using sprint0Real.Interfaces;
 using sprint0Real.Levels;
+using sprint0Real.TreasureItemStuff;
 
 namespace sprint0Real.EnemyStuff.DragonStuff
 {
@@ -19,6 +22,7 @@ namespace sprint0Real.EnemyStuff.DragonStuff
         private Dragon myDragon;
         private SoundEffect EnemyDie;
         private bool DieSoundPlayed = false;
+        private Death death;
 
         // All the transitions possible
         public DragonStateMachine(Dragon dragon)
@@ -44,7 +48,10 @@ namespace sprint0Real.EnemyStuff.DragonStuff
                     EnemyDie.Play();
                     DieSoundPlayed=true;
                 }
+                DropManager.Instance.OnDeath(myDragon.location);
                 CurrentMap.Instance.DeStage(myDragon);
+                death = new Death(myDragon.location);
+                CurrentMap.Instance.Stage(death);
             }
             else
             {

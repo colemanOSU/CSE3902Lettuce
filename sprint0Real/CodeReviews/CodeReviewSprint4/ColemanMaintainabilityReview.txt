@@ -1,0 +1,14 @@
+AUTHOR: Kelly Coleman
+SUBJECT: CollisionHandler.cs
+AUTHOR OF SUBJECT: Andie Stewart
+FOCUS: Maintainability
+SPRINT: 4
+DATE: 7 April 2025
+TIME TAKEN TO COMPLETE: 10 Minutes
+
+Well. This file does not mainly mark as maintainable, mostly. This functionality of obtaining a string
+corresponding to an Object's type... there has to be an easier way to implement it. There must be. As it
+is now you'd have to go into this file and manually add a new conditional and string for every new object
+type you wish to add into the game. No good!!! Even just having a function inherited by all interfaces that
+returns the name of the type would have to be preferable to this. Overall this file gets a thumbs down from me on maintainability :(.
+

@@ -1,10 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace sprint0Real.LinkStuff
 {
@@ -56,6 +51,10 @@ namespace sprint0Real.LinkStuff
             Staff
         }
 
+        public bool HasMap { get; set; }
+
+        public bool HasCompass { get; set; }
+
         public Inventory()
         {
             //All items set to true by default for testing
@@ -63,6 +62,8 @@ namespace sprint0Real.LinkStuff
             {
                 InventoryList.Add(item, true);
             }
+            HasMap = true;
+            HasCompass = true;
             ObtainItem(Items.Boomerang);
             CurrentItem = Items.Boomerang;
             CurrentSword = Swords.Wood_Sword;
@@ -86,7 +87,7 @@ namespace sprint0Real.LinkStuff
         {
             return InventoryList.GetValueOrDefault(item);
         }
-        
+
         public void KeyGet()
         {
             KeyCount++;

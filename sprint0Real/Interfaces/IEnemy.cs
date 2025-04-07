@@ -12,5 +12,6 @@ namespace sprint0Real.Interfaces
     {
         void TakeDamage(int damage);
         void ChangeDirection();
+        Vector2 location { get; set; }
     }
 }

@@ -10,7 +10,7 @@ public class PauseUI : IUI
 
     private Texture2D texture;
 
-    private Rectangle SourceRectangle = new Rectangle(372, 73, 87, 36);
+    private readonly Rectangle SourceRectangle = new(426, 72, 87, 36);
     private Rectangle DestinationRectangle;
     public PauseUI(Texture2D uITexture)
     {

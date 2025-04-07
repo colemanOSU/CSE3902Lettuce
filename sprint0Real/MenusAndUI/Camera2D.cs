@@ -17,7 +17,7 @@ using System;
 public class Camera
 {
     public Vector2 Center { get; set; }
-
+    public Vector2 target {  get; set; }
     private Vector2 _quarterScreen;
     public Vector2 GetTopLeft() => Center - _quarterScreen;
 

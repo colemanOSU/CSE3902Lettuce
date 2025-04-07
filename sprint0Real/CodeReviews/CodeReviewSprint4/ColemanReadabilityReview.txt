@@ -1,0 +1,13 @@
+AUTHOR: Kelly Coleman
+SUBJECT: CollisionHandler.cs
+AUTHOR OF SUBJECT: Andie Stewart (presumably)
+FOCUS: Readability
+SPRINT: 4
+DATE: 7 April 2025
+TIME TAKEN TO COMPLETE: 10 Minutes
+
+In terms of readability, this file is perfectly fine. Variables are named appropriately and succinctly.
+The file is generally well organized and easy enough to read through. The largest obstacle to this file's
+readability is its somehwat peculiar logic. Lots of checking if something is an Object type and then assigning
+it a string of that object type; it certainly seems to work, but is just somewhat offputting on a first read
+as you wonder why it is done that way. Otherwise unremarkable.
