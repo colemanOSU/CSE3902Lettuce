@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
+using sprint0Real.EnemyStuff.DeathSprites;
 using sprint0Real.Interfaces;
 using sprint0Real.Levels;
 using sprint0Real.TreasureItemStuff;
@@ -16,6 +17,7 @@ namespace sprint0Real.EnemyStuff.BatStuff
         private Random random = new Random();
         private SoundEffect EnemyDie;
         private bool DieSoundPlayed = false;
+        private Death death;
 
         public BatStateMachine(Bat Bat)
         {
@@ -40,6 +42,9 @@ namespace sprint0Real.EnemyStuff.BatStuff
                 }
                 DropManager.Instance.OnDeath(myBat.location);
                 CurrentMap.Instance.DeStage(myBat);
+                death = new Death(myBat.location);
+                CurrentMap.Instance.Stage(death);
+
             }
         }
         public void ChangeDirection()
