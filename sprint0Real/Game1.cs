@@ -248,8 +248,6 @@ namespace sprint0Real
                      }
                      LinkState.Update(gameTime);
 
-                    collisionDetection.Update(gameTime);
-
                     //NOTE:
                     //I hate hate hate passing game as a parameter to so many things
                     //Will address when I have the time to
@@ -257,6 +255,7 @@ namespace sprint0Real
                      //CollisionChecker.Update(gameTime, this);
 
                     Link.ApplyMomentum();
+                    collisionDetection.Update(gameTime);
                     CurrentMap.Instance.Update(gameTime);
 
                     if (Link.GetCurrentHealth() == 0) currentGameState = GameStates.Dying;
