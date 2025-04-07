@@ -91,9 +91,14 @@ public class MenuUI
             }
         }
 
+        //This map version is lazy as hell but whatever
+        //What's a functionality
         if (HasMap)
         {
             spriteBatch.Draw(UITexture, new Rectangle(UIXCoord + Scale * (48), UIYCoord + Scale * (24), 8 * Scale, 16 * Scale), new Rectangle(601, 156, 8, 16), Color.White);
+        } else
+        {
+            spriteBatch.Draw(UITexture, new Rectangle(UIXCoord + Scale * (100), UIYCoord + Scale * (12), 100 * Scale, 60 * Scale), new Rectangle(400, 120, 1, 1), Color.White);
         }
 
         if (HasCompass)
