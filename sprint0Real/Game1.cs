@@ -10,7 +10,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using sprint0Real.Controllers;
 using sprint0Real.EnemyStuff;
-using sprint0Real.TreasureItemSprites;
 using sprint0Real.GameState;
 using sprint0Real.Collisions;
 using sprint0Real.LinkStuff;
@@ -20,6 +19,7 @@ using sprint0Real.LinkSprites;
 using sprint0Real.Commands;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
+using sprint0Real.TreasureItemStuff;
 
 namespace sprint0Real
 {
@@ -406,6 +406,7 @@ namespace sprint0Real
             LinkState = new LinkStateMachine(Link);
 
             collisionDetection = new CollisionDetection(this, collisionHandler);
+            DropManager.Init(Link);
 
             TempDying = true;
 

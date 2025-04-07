@@ -5,8 +5,10 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Audio;
+using sprint0Real.EnemyStuff.BatStuff;
 using sprint0Real.Interfaces;
 using sprint0Real.Levels;
+using sprint0Real.TreasureItemStuff;
 
 namespace sprint0Real.EnemyStuff.DragonStuff
 {
@@ -44,6 +46,7 @@ namespace sprint0Real.EnemyStuff.DragonStuff
                     EnemyDie.Play();
                     DieSoundPlayed=true;
                 }
+                DropManager.Instance.OnDeath(myDragon.location);
                 CurrentMap.Instance.DeStage(myDragon);
             }
             else
