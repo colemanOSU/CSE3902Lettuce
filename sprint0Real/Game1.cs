@@ -393,23 +393,30 @@ namespace sprint0Real
 
         public void ResetGame()
         {
+           
             this.titleScreen.isAnimating = false;
             currentGameState = GameStates.TitleScreen;
 
+            CurrentMap.Instance.SetMap(LevelLoader.Instance.RetrieveMap("Entrance"));
+
             linkSprite = new ResetLink(linkSheet, this);
+            Link = new Link(this);
+            collisionDetection.Load(Link);
+            LinkState = new LinkStateMachine(Link);
             UISprite = new UI(UISheet, Link);
             MenuUISprite = new MenuUI(UISheet);
             PauseUISprite = new PauseUI(UISheet);
-
             GameOverScreen = new GameOverUI(UISheet);
+
             weaponItemsA = new NullSprite(linkSheet, this);
             weaponItemsB = new NullSprite(linkSheet, this);
-            Link = new Link(this);
-            LinkState = new LinkStateMachine(Link);
 
             TempDying = true;
 
             DyingTime = TimeSpan.Zero;
+
+            collisionDetection.UpdateRoomObjects();
+            
 
         }
 
