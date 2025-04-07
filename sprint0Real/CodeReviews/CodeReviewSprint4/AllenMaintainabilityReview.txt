@@ -1,0 +1,9 @@
+Author: Allen Sluss
+Date: 4/7/2024
+Sprint 4
+I'm reviewing Kelly's code for MenuUI.cs
+About 5 minutes to complete
+
+The comments that are scattered throughout the document do help to understand what the code is doing, but more could be done. For example, in the Draw function there exists 
+a conditional that goes 5 levels deep. Some of the conditional statements inside should be moved into separate functions so the code is more readable and maintainable. 
+The large number of magic numbers also make it hard to understand what each are doing, meaning that modifying location would become more challenging. 

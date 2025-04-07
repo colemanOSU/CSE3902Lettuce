@@ -131,6 +131,8 @@ namespace sprint0Real
             LinkState = new LinkStateMachine(Link);
             itemStateMachine = new ItemStateMachine(this, Link.GetInventory());
             collisionHandler = new CollisionHandler(this);
+            collisionDetection = new CollisionDetection(this, collisionHandler);
+            DropManager.Init(Link);
 
 
             base.Initialize();
@@ -404,9 +406,6 @@ namespace sprint0Real
             weaponItemsB = new NullSprite(linkSheet, this);
             Link = new Link(this);
             LinkState = new LinkStateMachine(Link);
-
-            collisionDetection = new CollisionDetection(this, collisionHandler);
-            DropManager.Init(Link);
 
             TempDying = true;
 

@@ -1,10 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace sprint0Real.LinkStuff
 {
@@ -92,7 +87,7 @@ namespace sprint0Real.LinkStuff
         {
             return InventoryList.GetValueOrDefault(item);
         }
-        
+
         public void KeyGet()
         {
             KeyCount++;
