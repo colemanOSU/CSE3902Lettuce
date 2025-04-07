@@ -9,13 +9,13 @@ using sprint0Real.Interfaces;
 
 namespace sprint0Real.Commands.CollisionCommands
 {
-    public class EnemyBorderCommand : ICollisionCommand
+    public class EnemyBlockCommand : ICollisionCommand
     {
-        private void Adjust(IEnemy Enemy, ICollisionBoxes Border, CollisionDirections direction)
+        private void Adjust(IEnemy Enemy, IBlock Block, CollisionDirections direction)
         {
 
             Rectangle rectA = Enemy.Rect;
-            Rectangle rectB = Border.Rect;
+            Rectangle rectB = Block.Rect;
 
             //calculate overlap
             int overlapBottom = rectB.Bottom - rectA.Top;
@@ -23,9 +23,10 @@ namespace sprint0Real.Commands.CollisionCommands
             int overlapRight = rectB.Right - rectA.Left;
             int overlapLeft = rectA.Right - rectB.Left;
 
-            switch (direction){
+            switch (direction)
+            {
                 case CollisionDirections.Left:
-                    Enemy.location = new Vector2 (Enemy.location.X - overlapLeft, Enemy.location.Y);
+                    Enemy.location = new Vector2(Enemy.location.X - overlapLeft, Enemy.location.Y);
                     break;
                 case CollisionDirections.Right:
                     Enemy.location = new Vector2(Enemy.location.X + overlapRight, Enemy.location.Y);
@@ -41,9 +42,8 @@ namespace sprint0Real.Commands.CollisionCommands
         }
         public void Execute(IObject objA, IObject objB, CollisionDirections direction)
         {
-
             ((IEnemy)objA).ChangeDirection();
-            Adjust((IEnemy)objA, (ICollisionBoxes)objB, direction);
+            Adjust((IEnemy)objA, (IBlock)objB, direction);
         }
     }
 }
