@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.Xna.Framework;
 using sprint0Real.EnemyStuff.BatStuff;
 using sprint0Real.EnemyStuff.BoomerangStuff;
 using sprint0Real.EnemyStuff.RedGoriya;
@@ -49,16 +50,16 @@ namespace sprint0Real.EnemyStuff.GoriyaStuff
             switch (currentState)
             {
                 case GoriyaState.Right:
-                    myGoriya.location.X += myGoriya.speed;
+                    myGoriya.location = new Vector2(myGoriya.location.X + myGoriya.speed, myGoriya.location.Y);
                     break;
                 case GoriyaState.Left:
-                    myGoriya.location.X -= myGoriya.speed;
+                    myGoriya.location = new Vector2(myGoriya.location.X - myGoriya.speed, myGoriya.location.Y);
                     break;
                 case GoriyaState.Up:
-                    myGoriya.location.Y += myGoriya.speed;
+                    myGoriya.location = new Vector2(myGoriya.location.X, myGoriya.location.Y+ myGoriya.speed);
                     break;
                 case GoriyaState.Down:
-                    myGoriya.location.Y -= myGoriya.speed;
+                    myGoriya.location = new Vector2(myGoriya.location.X, myGoriya.location.Y - myGoriya.speed);
                     break;
             }
         }
@@ -108,16 +109,16 @@ namespace sprint0Real.EnemyStuff.GoriyaStuff
                 switch (currentState)
                 {
                     case GoriyaState.Right:
-                        myGoriya.location.X -= myGoriya.speed;
+                        myGoriya.location = new Vector2(myGoriya.location.X - myGoriya.speed, myGoriya.location.Y);
                         break;
                     case GoriyaState.Left:
-                        myGoriya.location.X += myGoriya.speed;
+                        myGoriya.location = new Vector2(myGoriya.location.X + myGoriya.speed, myGoriya.location.Y);
                         break;
                     case GoriyaState.Up:
-                        myGoriya.location.Y -= myGoriya.speed;
+                        myGoriya.location = new Vector2(myGoriya.location.X, myGoriya.location.Y - myGoriya.speed);
                         break;
                     case GoriyaState.Down:
-                        myGoriya.location.Y += myGoriya.speed;
+                        myGoriya.location = new Vector2(myGoriya.location.X, myGoriya.location.Y + myGoriya.speed);
                         break;
                 }
             }

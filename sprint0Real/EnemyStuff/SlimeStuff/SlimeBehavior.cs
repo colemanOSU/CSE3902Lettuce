@@ -22,36 +22,6 @@ namespace sprint0Real.EnemyStuff.SlimeStuff
 
 
         private Random random = new Random();
-
-        private void SafeJuke()
-        {
-            // THIS IS BAD CODE FIX!!!
-            if (mySlime.location.X > EnemySpriteFactory.Instance.myGame._graphics.PreferredBackBufferWidth - 48)
-            {
-                jukeTimer = 0;
-                mySlime.location.X = EnemySpriteFactory.Instance.myGame._graphics.PreferredBackBufferWidth - 48;
-                mySlime.ChangeDirection();
-            }
-            else if (mySlime.location.X < 0)
-            {
-                jukeTimer = 0;
-                mySlime.location.X = 0;
-                mySlime.ChangeDirection();
-            }
-            else if (mySlime.location.Y > EnemySpriteFactory.Instance.myGame._graphics.PreferredBackBufferHeight - 48)
-            {
-                jukeTimer = 0;
-                mySlime.location.Y = EnemySpriteFactory.Instance.myGame._graphics.PreferredBackBufferHeight - 48;
-                mySlime.ChangeDirection();
-            }
-            else if (mySlime.location.Y < 0)
-            {
-                jukeTimer = 0;
-                mySlime.location.Y = 0;
-                mySlime.ChangeDirection();
-            }
-
-        }
         private void JukeCheck()
         {
             if (jukeDelay <= jukeTimer)
@@ -65,7 +35,6 @@ namespace sprint0Real.EnemyStuff.SlimeStuff
         public void Update(GameTime time)
         {
             jukeTimer += (float)time.ElapsedGameTime.TotalSeconds;
-            SafeJuke();
             JukeCheck();
         }
     }

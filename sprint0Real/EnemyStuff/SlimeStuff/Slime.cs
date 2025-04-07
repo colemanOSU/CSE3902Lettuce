@@ -18,7 +18,7 @@ namespace sprint0Real.EnemyStuff.SlimeStuff
         private SlimeBehavior behavior;
 
         public ISprite2 mySprite;
-        public Vector2 location;
+        private Vector2 Location;
         public int speed = 2;
 
         private int FPS = 6;
@@ -27,7 +27,7 @@ namespace sprint0Real.EnemyStuff.SlimeStuff
 
         public Slime(Vector2 start)
         {
-            location = start;
+            Location = start;
             stateMachine = new SlimeStateMachine(this);
             behavior = new SlimeBehavior(this);
             mySprite = EnemySpriteFactory.Instance.CreateSlimeSprite();
@@ -82,6 +82,12 @@ namespace sprint0Real.EnemyStuff.SlimeStuff
         {
             get { return health; }
             set { health = value; }
+        }
+
+        public Vector2 location
+        {
+            get { return Location; }
+            set { Location = value; }
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using sprint0Real.Interfaces;
+﻿using Microsoft.Xna.Framework;
+using sprint0Real.EnemyStuff.BTrapStuff;
+using sprint0Real.Interfaces;
 using System;
 
 namespace sprint0Real.EnemyStuff.BTrapStuff
@@ -71,16 +73,16 @@ namespace sprint0Real.EnemyStuff.BTrapStuff
             switch (currentState)
             {
                 case BTrapStates.Right:
-                    myBTrap.location.X -= myBTrap.speed;
+                    myBTrap.location = new Vector2(myBTrap.location.X - myBTrap.speed, myBTrap.location.Y);
                     break;
                 case BTrapStates.Left:
-                    myBTrap.location.X += myBTrap.speed;
+                    myBTrap.location = new Vector2(myBTrap.location.X + myBTrap.speed, myBTrap.location.Y);
                     break;
                 case BTrapStates.Up:
-                    myBTrap.location.Y -= myBTrap.speed;
+                    myBTrap.location = new Vector2(myBTrap.location.X, myBTrap.location.Y - myBTrap.speed);
                     break;
                 case BTrapStates.Down:
-                    myBTrap.location.Y += myBTrap.speed;
+                    myBTrap.location = new Vector2(myBTrap.location.X, myBTrap.location.Y + myBTrap.speed);
                     break;
             }
         }

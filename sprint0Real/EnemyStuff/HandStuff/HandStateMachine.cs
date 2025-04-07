@@ -1,4 +1,6 @@
-﻿using sprint0Real.EnemyStuff.DragonStuff;
+﻿using Microsoft.Xna.Framework;
+using sprint0Real.EnemyStuff.DragonStuff;
+using sprint0Real.EnemyStuff.HandStuff;
 using sprint0Real.Interfaces;
 using sprint0Real.Levels;
 using System;
@@ -41,16 +43,16 @@ namespace sprint0Real.EnemyStuff.HandStuff
             switch (currentState)
             {
                 case HandStates.Right:
-                    myHand.location.X += myHand.speed;
+                    myHand.location = new Vector2(myHand.location.X - myHand.speed, myHand.location.Y);
                     break;
                 case HandStates.Left:
-                    myHand.location.X -= myHand.speed;
+                    myHand.location = new Vector2(myHand.location.X + myHand.speed, myHand.location.Y);
                     break;
                 case HandStates.Up:
-                    myHand.location.Y += myHand.speed;
+                    myHand.location = new Vector2(myHand.location.X, myHand.location.Y - myHand.speed);
                     break;
                 case HandStates.Down:
-                    myHand.location.Y -= myHand.speed;
+                    myHand.location = new Vector2(myHand.location.X, myHand.location.Y + myHand.speed);
                     break;
             }
         }
@@ -70,16 +72,16 @@ namespace sprint0Real.EnemyStuff.HandStuff
             switch (currentState)
             {
                 case HandStates.Right:
-                    myHand.location.X -= myHand.speed;
+                    myHand.location = new Vector2(myHand.location.X - myHand.speed, myHand.location.Y);
                     break;
                 case HandStates.Left:
-                    myHand.location.X += myHand.speed;
+                    myHand.location = new Vector2(myHand.location.X + myHand.speed, myHand.location.Y);
                     break;
                 case HandStates.Up:
-                    myHand.location.Y -= myHand.speed;
+                    myHand.location = new Vector2(myHand.location.X, myHand.location.Y - myHand.speed);
                     break;
                 case HandStates.Down:
-                    myHand.location.Y += myHand.speed;
+                    myHand.location = new Vector2(myHand.location.X, myHand.location.Y + myHand.speed);
                     break;
             }
         }

@@ -1,4 +1,5 @@
-﻿using sprint0Real.EnemyStuff.DragonStuff;
+﻿using Microsoft.Xna.Framework;
+using sprint0Real.EnemyStuff.DragonStuff;
 using sprint0Real.EnemyStuff.HandStuff;
 using sprint0Real.Interfaces;
 using sprint0Real.Levels;
@@ -52,16 +53,16 @@ namespace sprint0Real.EnemyStuff.SkeletonStuff
             switch (currentState)
             {
                 case SkeletonStates.Right:
-                    mySkeleton.location.X += mySkeleton.speed;
+                    mySkeleton.location = new Vector2(mySkeleton.location.X - mySkeleton.speed, mySkeleton.location.Y);
                     break;
                 case SkeletonStates.Left:
-                    mySkeleton.location.X -= mySkeleton.speed;
+                    mySkeleton.location = new Vector2(mySkeleton.location.X + mySkeleton.speed, mySkeleton.location.Y);
                     break;
                 case SkeletonStates.Up:
-                    mySkeleton.location.Y += mySkeleton.speed;
+                    mySkeleton.location = new Vector2(mySkeleton.location.X, mySkeleton.location.Y - mySkeleton.speed);
                     break;
                 case SkeletonStates.Down:
-                    mySkeleton.location.Y -= mySkeleton.speed;
+                    mySkeleton.location = new Vector2(mySkeleton.location.X, mySkeleton.location.Y + mySkeleton.speed);
                     break;
             }
         }
@@ -70,16 +71,16 @@ namespace sprint0Real.EnemyStuff.SkeletonStuff
             switch (currentState)
             {
                 case SkeletonStates.Right:
-                    mySkeleton.location.X -= mySkeleton.speed;
+                    mySkeleton.location = new Vector2(mySkeleton.location.X - mySkeleton.speed, mySkeleton.location.Y);
                     break;
                 case SkeletonStates.Left:
-                    mySkeleton.location.X += mySkeleton.speed;
+                    mySkeleton.location = new Vector2(mySkeleton.location.X + mySkeleton.speed, mySkeleton.location.Y);
                     break;
                 case SkeletonStates.Up:
-                    mySkeleton.location.Y -= mySkeleton.speed;
+                    mySkeleton.location = new Vector2(mySkeleton.location.X, mySkeleton.location.Y - mySkeleton.speed);
                     break;
                 case SkeletonStates.Down:
-                    mySkeleton.location.Y += mySkeleton.speed;
+                    mySkeleton.location = new Vector2(mySkeleton.location.X, mySkeleton.location.Y + mySkeleton.speed);
                     break;
             }
         }

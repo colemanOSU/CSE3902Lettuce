@@ -19,7 +19,7 @@ namespace sprint0Real.EnemyStuff.RedGoriya
         private GoriyaBehavior behavior;
 
         public ISprite2 mySprite;
-        public Vector2 location;
+        private Vector2 Location;
         public int speed = 2;
         private int health = 10;
         public Boomerang boomerang;
@@ -29,7 +29,7 @@ namespace sprint0Real.EnemyStuff.RedGoriya
 
         public Goriya(Vector2 placement)
         {
-            location = placement;
+            Location = placement;
             stateMachine = new GoriyaStateMachine(this);
             behavior = new GoriyaBehavior(this);
             mySprite = EnemySpriteFactory.Instance.CreateGoriyaRightSprite();
@@ -101,6 +101,12 @@ namespace sprint0Real.EnemyStuff.RedGoriya
         {
             get { return health; }
             set { health = value; }
+        }
+
+        public Vector2 location
+        {
+            get { return Location; }
+            set { Location = value; }
         }
     }
 }

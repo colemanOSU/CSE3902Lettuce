@@ -1,4 +1,5 @@
-﻿using sprint0Real.EnemyStuff.SkeletonStuff;
+﻿using Microsoft.Xna.Framework;
+using sprint0Real.EnemyStuff.SlimeStuff;
 using sprint0Real.Interfaces;
 using System;
 
@@ -49,16 +50,16 @@ namespace sprint0Real.EnemyStuff.SlimeStuff
             switch (currentState)
             {
                 case SlimeStates.Right:
-                    mySlime.location.X += mySlime.speed;
+                    mySlime.location = new Vector2(mySlime.location.X - mySlime.speed, mySlime.location.Y);
                     break;
                 case SlimeStates.Left:
-                    mySlime.location.X -= mySlime.speed;
+                    mySlime.location = new Vector2(mySlime.location.X + mySlime.speed, mySlime.location.Y);
                     break;
                 case SlimeStates.Up:
-                    mySlime.location.Y += mySlime.speed;
+                    mySlime.location = new Vector2(mySlime.location.X, mySlime.location.Y - mySlime.speed);
                     break;
                 case SlimeStates.Down:
-                    mySlime.location.Y -= mySlime.speed;
+                    mySlime.location = new Vector2(mySlime.location.X, mySlime.location.Y + mySlime.speed);
                     break;
             }
         }
@@ -68,16 +69,16 @@ namespace sprint0Real.EnemyStuff.SlimeStuff
             switch (currentState)
             {
                 case SlimeStates.Right:
-                    mySlime.location.X -= mySlime.speed;
+                    mySlime.location = new Vector2(mySlime.location.X - mySlime.speed, mySlime.location.Y);
                     break;
                 case SlimeStates.Left:
-                    mySlime.location.X += mySlime.speed;
+                    mySlime.location = new Vector2(mySlime.location.X + mySlime.speed, mySlime.location.Y);
                     break;
                 case SlimeStates.Up:
-                    mySlime.location.Y -= mySlime.speed;
+                    mySlime.location = new Vector2(mySlime.location.X, mySlime.location.Y - mySlime.speed);
                     break;
                 case SlimeStates.Down:
-                    mySlime.location.Y += mySlime.speed;
+                    mySlime.location = new Vector2(mySlime.location.X, mySlime.location.Y + mySlime.speed);
                     break;
             }
         }

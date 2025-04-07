@@ -18,7 +18,7 @@ namespace sprint0Real.EnemyStuff.BTrapStuff
         private BTrapBehavior behavior;
 
         public ISprite2 mySprite;
-        public Vector2 location;
+        private Vector2 Location;
         public int speed = 4;
 
         private int FPS = 6;
@@ -26,7 +26,7 @@ namespace sprint0Real.EnemyStuff.BTrapStuff
 
         public BTrap(Vector2 start)
         {
-            location = start;
+            Location = start;
             stateMachine = new BTrapStateMachine(this);
             behavior = new BTrapBehavior(this);
             mySprite = EnemySpriteFactory.Instance.CreateBTrapSprite();
@@ -81,6 +81,12 @@ namespace sprint0Real.EnemyStuff.BTrapStuff
             {
                 return new Rectangle((int)location.X, (int)location.Y, 30, 30);
             }
+        }
+
+        public Vector2 location
+        {
+            get { return Location; }
+            set { Location = value; }
         }
     }
 }

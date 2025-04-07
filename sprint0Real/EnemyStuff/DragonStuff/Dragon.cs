@@ -17,7 +17,7 @@ namespace sprint0Real.EnemyStuff.DragonStuff
         private DragonBehavior behavior;
 
         public ISprite2 sprite;
-        public Vector2 Location;
+        private Vector2 Location;
         public int speed = 2;
         private int health = 10;
 
