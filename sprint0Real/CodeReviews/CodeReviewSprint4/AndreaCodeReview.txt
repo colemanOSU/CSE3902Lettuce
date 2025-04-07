@@ -1,0 +1,22 @@
+﻿Author: Andrea Stewart
+Date: 04/07/2025
+Sprint 4
+This review took around 35 minutes.
+
+Maintainability:
+I am reviewing Allen's RoomTransitionCommand.cs
+
+Overall, I think the class is well written and follows good practices. The class has good encapsulation as the logic for link movement, camera update, and map loading
+are encapsulated into separate private methods. It also follows the ICollisionCommand interface which is a good OOP practice. One suggestion I have is that 504 appears
+multiple times so it could be declared as a constant to avoid using magic numbers. Another suggestion is to avoid using Sting transitionDirection and unify things by
+using the enum CollisionDirections instead. The biggest suggestion I have is to avoid so many responsibilities in one class. This makes it less reusable and maintainable
+so I would reccommend breaking it down futher and maybe adding a transition manager which the command could trigger.
+
+Readability:
+I am reviewing Allen's EnemyPage.cs
+
+EnemyPage looks good with readability, but there are a few areas that can be improved. To start, the method names (i.e Stage, DeStage, AddNeighbor, etc.) are consice
+and descriptive. The class also has a consistent structure and is easy to follow with no major surprises. A few small changes that could improve readability is to 
+ensure the code is following naming conventions. For example, Neighbors should be lowercase since it is a private field. The name should also be updated because it deals with
+all game objects, not just enemies anymore. Last suggestion is to avoid redundant comments or clean up when needed. If the DELETE LATER can be removed now, it is best to
+do so. 
