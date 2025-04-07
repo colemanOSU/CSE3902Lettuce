@@ -31,8 +31,8 @@ namespace sprint0Real.Collisions
             this.game = game;
             collisionCommands = new Dictionary<(String, String), ICollisionCommand>();
         }
-public void LoadCommands()
-{
+        public void LoadCommands()
+        {
 
             collisionCommands.Add(("Link", "Enemy"),  new LinkEnemyCommand());
             collisionCommands.Add(("Link", "Border"), new LinkBorderCommand());

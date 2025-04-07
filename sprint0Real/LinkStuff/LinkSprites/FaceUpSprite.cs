@@ -29,6 +29,7 @@ namespace sprint0Real.LinkStuff.LinkSprites
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            destinationRectangle = myGame.Link.GetLocation();
             spriteBatch.Draw(_texture, destinationRectangle, sourceRectangle, myGame.Link.GetLinkColor());
         }
 
