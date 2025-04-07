@@ -6,7 +6,9 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using sprint0Real.Commands.KeyboardCommands;
 using sprint0Real.Interfaces;
-using sprint0Real.TreasureItemSprites;
+using sprint0Real.TreasureItemStuff;
+using sprint0Real.TreasureItemStuff.TreasureItemSprites;
+
 
 namespace sprint0Real.Controllers
 {

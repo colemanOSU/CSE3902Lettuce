@@ -12,7 +12,8 @@ using sprint0Real.Interfaces;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
-using sprint0Real.TreasureItemSprites;
+using sprint0Real.TreasureItemStuff;
+using sprint0Real.TreasureItemStuff.TreasureItemSprites;
 using sprint0Real.Commands.CollisionCommands;
 
 namespace sprint0Real.Collisions

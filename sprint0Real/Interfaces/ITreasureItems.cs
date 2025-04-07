@@ -10,7 +10,7 @@ namespace sprint0Real.Interfaces
         //void Update(GameTime gametime);
 
         //void Draw(SpriteBatch spriteBatch);
-
+        void Spawn();
         void CollectItem();
         //bool CanBePickedUp();
 
