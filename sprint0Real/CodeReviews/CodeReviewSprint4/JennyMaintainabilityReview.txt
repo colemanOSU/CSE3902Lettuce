@@ -1,0 +1,10 @@
+Author: Jenny Ding
+Date: 4/7/2024
+Sprint 4
+I'm reviewing Jian's code for BTrap.cs
+About 10 minutes to complete
+
+This review is on MAINTAINABILITY
+
+I think the BTrap class is doing well with maintainability by using a state machine and behavior logic to separate the big chunks which allows future maintainability and testing.
+There is only one spot that has magic numbers but I think it is completely fine, one suggestion I would think of is storing the number into a variable to reduce magic numbers.

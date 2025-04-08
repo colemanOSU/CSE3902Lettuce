@@ -20,6 +20,9 @@
     <None Remove="Items\ItemSprites\BlueBoomerangSprite" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CodeReviews\CodeReviewSprint4\JennyReadabilityReview.txt" />
+  </ItemGroup>
+  <ItemGroup>
     <EmbeddedResource Include="Icon.ico">
       <LogicalName>Icon.ico</LogicalName>
     </EmbeddedResource>
