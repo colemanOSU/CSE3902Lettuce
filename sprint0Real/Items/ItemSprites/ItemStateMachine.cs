@@ -39,7 +39,7 @@ namespace sprint0Real.LinkSprites
         private int bombCount;
         private int index;
         private Game1 myGame;
-        private double itemUseCooldown = 1000;
+        private double itemUseCooldown = 100; 
         private double timeSinceLastUse = 0;
         private bool isNoItem = false;
         public ItemStateMachine(Game1 game, Inventory inv)
@@ -165,8 +165,8 @@ namespace sprint0Real.LinkSprites
         }
         public ILinkSprite TryUseItem(Inventory.Items currentItem)
         {
-
-            UpdateEquippedItems(new GameTime());
+            
+            UpdateEquippedItems(new GameTime()); 
 
             ILinkSprite item = CreateItemInstance(currentItem);
 

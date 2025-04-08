@@ -31,8 +31,8 @@ namespace sprint0Real.Collisions
         }
         public void Load(ILink Link)
         {
-            UpdateRoomObjects();
             link = Link;
+            UpdateRoomObjects();
         }
 
         public void UpdateRoomObjects()
