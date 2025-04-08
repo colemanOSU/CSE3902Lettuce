@@ -1,0 +1,11 @@
+Sprint 4 Reflection
+
+	The team worked pretty efficently on this sprint, one thing that we changed from last sprints was a clear distiction in tasks such that the team could have efficent work done
+	without people having to do work that ends up unused. The team also ensured that those who tasks had overlap in areas were communicating properly such that people wouldn't be working 
+	on the same or completly different methods of doing a task. While more communication and deadlines would have proabably been helpful as the amount of agency during this period was a 
+	bit lower as some of the team members had tests in other clases and weren't on a time crunch the team was able to complete their work efficently on on time such that others were able 
+	to ask questions and modify code to make sure that all code worked together. While the team will need to decide on what exactly they want to add for additinal functions are needed in 
+	sprint 5, for the next sprint the team will once again probably work on sepaate features to ensure that work and time is not wasted as the end of the semester comes.
+
+	Sprint Burndown Link:
+	https://app.zenhub.com/workspaces/cse-3902-team-lettuce-6798df69730d2b0029f3d1a2/reports/burndown?milestoneId=Z2lkOi8vcmFwdG9yL1NwcmludC8yOTcwNjgy
