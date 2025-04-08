@@ -20,3 +20,6 @@ CONTROLS:
 	R: Reset Program
 	ENTER: Start Game from title screen
 	ClICK: Start Game from title screen
+
+Known bugs:
+water is walkable (must make deeper)
