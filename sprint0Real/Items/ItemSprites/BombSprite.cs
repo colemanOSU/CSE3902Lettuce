@@ -1,8 +1,7 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
-using sprint0Real.Interfaces;
-using Microsoft.Xna.Framework.Input;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Graphics;
+using sprint0Real.Interfaces;
 
 namespace sprint0Real.Items.ItemSprites
 {
@@ -22,7 +21,7 @@ namespace sprint0Real.Items.ItemSprites
         private readonly Texture2D _texture;
         private readonly Game1 myGame;
         private readonly float _frameSpeed = 0.2f;
-        private readonly int _frameCount = 3; 
+        private readonly int _frameCount = 3;
         private int _currentFrame;
         private double _timer;
         private Vector2 _position;
@@ -41,7 +40,7 @@ namespace sprint0Real.Items.ItemSprites
         {
             _texture = texture;
             myGame = game;
-            _position = new(game.Link.GetLocation().X,game.Link.GetLocation().Y);
+            _position = new(game.Link.GetLocation().X, game.Link.GetLocation().Y);
             SetPosition(game.Link.GetFacing());
             destinationRectangle = new Rectangle((int)_position.X, (int)_position.Y, isDelaying ? 8 * 3 : 16 * 3, 16 * 3);
             bombDrop = SoundEffectFactory.Instance.getBombDrop();
@@ -58,8 +57,8 @@ namespace sprint0Real.Items.ItemSprites
             {
                 Link.Direction.Right => new(myGame.Link.GetLocation().X + 16 * 3, myGame.Link.GetLocation().Y),
                 Link.Direction.Left => new(myGame.Link.GetLocation().X - 9 * 3, myGame.Link.GetLocation().Y),
-                Link.Direction.Up => new(myGame.Link.GetLocation().X + 3*3, myGame.Link.GetLocation().Y - 16*3),
-                Link.Direction.Down => new(myGame.Link.GetLocation().X + 3*3, myGame.Link.GetLocation().Y + 14*3),
+                Link.Direction.Up => new(myGame.Link.GetLocation().X + 3 * 3, myGame.Link.GetLocation().Y - 16 * 3),
+                Link.Direction.Down => new(myGame.Link.GetLocation().X + 3 * 3, myGame.Link.GetLocation().Y + 14 * 3),
                 _ => _position,
             };
         }
@@ -89,7 +88,7 @@ namespace sprint0Real.Items.ItemSprites
                 _timer = 0;
                 destinationRectangle = new Rectangle((int)_position.X, (int)_position.Y, isDelaying ? 8 * 3 : 16 * 3, 16 * 3);
             }
-            
+
             if (isAnimating && _timer >= _frameSpeed)
             {
                 if (!SoundExplodePlayed)
