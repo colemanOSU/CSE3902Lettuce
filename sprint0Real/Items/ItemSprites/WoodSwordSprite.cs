@@ -14,7 +14,11 @@ namespace sprint0Real.Items.ItemSprites
 
         public void Disable()
         {
-            IsActive = false; // This keeps the weapon in memory but disables it
+            IsActive = false; // Add this line to mark as inactive
+            isMoving = false;
+            velocity = Vector2.Zero;
+            isDelaying = false;
+            myGame.weaponItemsA = new NullSprite(_texture, myGame);
         }
 
         public void Activate()
@@ -54,6 +58,7 @@ namespace sprint0Real.Items.ItemSprites
             swordShootSoundEffect = SoundEffectFactory.Instance.getSwordShoot();
 
         }
+        
         public Rectangle Rect
         {
             get { return destinationRectangle; }
@@ -153,6 +158,7 @@ namespace sprint0Real.Items.ItemSprites
                 }
             }
         }
+
 
     }
 }
