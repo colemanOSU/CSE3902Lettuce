@@ -1,0 +1,10 @@
+Author: Jian Wang
+Date: 4/7/2024
+Sprint 4
+I'm reviewing Ariv's code for WeaponSwordSprite.cs
+About 5 minutes to complete
+
+While the code seems pretty maintainable one thing that sticks out to me is the use of magic numbers, while it is fine for our purposues as it is meant 
+to be played in the popup as is. However if anthing were to change in scale you would need to redo all your magic numbers so that it would look good on 
+link. an easy fix would be changing x3 into a variable like scaleing=3 and multiplying it by a scaling factor. Not only that but you could change the vector into 
+a variable like beamSpeed=300 rather than just using 300
