@@ -1,0 +1,12 @@
+Author: Ariv Puri
+Date: 04/07/2025
+Sprint 4
+This review took me around 20 minutes.
+I am revieweing Jenny's code TitelScreen.cs for Maintainability
+
+This file was written in a previous sprint but was rewritten by Jenny to fit with parts of the game implemented in this sprint.
+
+This class is solid when it comes to code quality. The class uses the GameStates enum to manage the transitions between the game states, 
+which is a strength in terms of maintainability. Another strength is that the animation logic is easily modified. Some areas for improvement
+are the magic numbers used. These numbers could be declared as seperate variables prior to using them as magic numbers. Another weakness is 
+the Game1 paramater is passed during the update method rather than the constructor.

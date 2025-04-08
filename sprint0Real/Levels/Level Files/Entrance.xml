@@ -4,6 +4,21 @@
 	<Door Exterior ="Default" Interior ="EntranceInterior" Left="Open" Right="Open" Up="Locked" Down="Locked"/>
 	
 	<Objects>
+		<Object Type="Skeleton" x="50" y="50"/>
+		<Object Type="Map" x="50" y="150"/>
+		<Object Type="Dragon" x="50" y="250"/>
+		<Object Type="Arrow" x="450" y="200"/>
+		<Object Type="Heart" x="350" y="200"/>
+		<Object Type="Fairy" x="450" y="50"/>
+		<Object Type="Rupee" x="150" y="150"/>
+		<Object Type="FiveRupies" x="150" y="250"/>
+		<Object Type="WhiteSword" x="400" y="100"/>
+		<Object Type="Key" x="450" y="240"/>
+		<Object Type="ContainerHeart" x="250" y="50"/>
+		<Object Type="Compass" x="240" y="150"/>
+		<Object Type="LifePotion" x="240" y="250"/>
+		<Object Type="Boomerang" x="400" y="50"/>
+		<Object Type="BlueRing" x="400" y="140"/>
 
 	</Objects>
 	
