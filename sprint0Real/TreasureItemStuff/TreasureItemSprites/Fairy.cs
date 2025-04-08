@@ -22,6 +22,16 @@ namespace sprint0Real.TreasureItemStuff.TreasureItemSprites
         private SoundEffect soundEffect;
         private bool SoundPlayed = false;
 
+        private Vector2 position;
+        private Vector2 initialPosition;
+        private Vector2 velocity = new Vector2(0.5f, 0.5f);
+        private float directionTimer = 0f;
+        private float directionChangeInterval = 0.5f;
+
+        private float maxDriftDistance = 20f; // how far it can drift from spawn point
+        private float lifetime = 8f; // seconds
+        private float lifeTimer = 0f;
+
         public Texture2D _texture;
 
         public Fairy(Vector2 pos)
