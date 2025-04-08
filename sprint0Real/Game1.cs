@@ -411,7 +411,6 @@ namespace sprint0Real
             weaponItemsA = new NullSprite(linkSheet, this);
             weaponItemsB = new NullSprite(linkSheet, this);
 
-            collisionDetection.Load(Link);
 
             TempDying = true;
 
