@@ -115,7 +115,8 @@ public class MenuUI
         inv = link.GetInventory();
         DisplayInventory = MenuToDisplay.MenuRealizer(inv);
 
-        CurrentItem = inv.CurrentItem;
+        CurrentItem =  inv.CurrentItem = DisplayInventory[YSelect, XSelect];
+
 
 
         ItemSelectDestinationRectangle = new Rectangle(UIXCoord + Scale * (128 + XSelect * 24), ItemYCoord + Scale * (48 + YSelect * 16), 16 * Scale, 16 * Scale);
