@@ -39,7 +39,8 @@ namespace sprint0Real.Commands.CollisionCommands2
                     link.OffsetCurrentHealth(link.GetMaxHealth());
                     break;
                 case ContainerHeart:
-                    link.OffsetCurrentHealth(link.GetMaxHealth());
+                    link.SetMaxHealth(link.GetMaxHealth() + 2);
+                    link.OffsetCurrentHealth(2);
                     break;
                 case Key:
                     inv.KeyGet();
