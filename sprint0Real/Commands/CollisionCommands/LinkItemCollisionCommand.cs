@@ -54,14 +54,21 @@ namespace sprint0Real.Commands.CollisionCommands2
                 case Sword:
                     inv.CurrentSword = Inventory.Swords.Wood_Sword;
                     break;
-                case Boomerang:
-                    inv.ObtainItem(Inventory.Items.Boomerang);
+                case Compass:
+                    inv.HasCompass = true;
                     break;
-                case MagicalBoomerang:
-                    inv.ObtainItem(Inventory.Items.M_Boomerang);
+                case Map:
+                    inv.HasMap = true;
                     break;
                 case Bomb:
                     inv.PickUpBomb();
+                    break;
+                case Boomerang:
+                    inv.ObtainItem(Inventory.Items.Boomerang);
+                    if (inv.CurrentItem == Inventory.Items.NONE) inv.CurrentItem = Inventory.Items.Boomerang;
+                    break;
+                case MagicalBoomerang:
+                    inv.ObtainItem(Inventory.Items.M_Boomerang);
                     break;
                 case Arrow:
                     inv.ObtainItem(Inventory.Items.Arrow);
@@ -86,12 +93,6 @@ namespace sprint0Real.Commands.CollisionCommands2
                     break;
                 case SecondPotion:
                     inv.ObtainItem(Inventory.Items.Red_Potion);
-                    break;
-                case Compass:
-                    inv.HasCompass = true;
-                    break;
-                case Map:
-                    inv.HasMap = true;
                     break;
                 //TODO other cases
                 default:

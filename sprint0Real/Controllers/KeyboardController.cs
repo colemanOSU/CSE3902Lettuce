@@ -53,6 +53,7 @@ namespace sprint0Real.Controllers
             commands.Add(Keys.P, new PauseCommand(_game));
             commands.Add(Keys.M, new MenuCommand(_game));
             commands.Add(Keys.L, new GameOverCommand(_game));
+            commands.Add(Keys.H, new KamehamehaCommand(_game));
             commands.Add(Keys.OemQuotes, new MuteCommand(_game));
 
             commands.Add(Keys.D1, new ItemChangeCommand(_game, 1));

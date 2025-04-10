@@ -79,6 +79,12 @@
 /processorParam:TextureFormat=Color
 /build:Dungeon Enemies.png
 
+#begin LinkKamehameha.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:LinkKamehameha.wav
+
 #begin LOZ_Arrow_Boomerang.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor

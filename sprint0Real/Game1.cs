@@ -65,6 +65,8 @@ namespace sprint0Real
 
         public ItemStateMachine itemStateMachine;
 
+        public SoundEffect LinkScream;
+
         //TEMP CAMERA
         public Camera _camera;
         public Vector2 CameraTarget;
@@ -147,7 +149,7 @@ namespace sprint0Real
             
             font1 = Content.Load<SpriteFont>("MyMenuFont");
 
-           
+            LinkScream = Content.Load<SoundEffect>("LinkKamehameha");
             //Load Sprite Sheets
             linkSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - Link");
             UISheet = Content.Load<Texture2D>("NES - The Legend of Zelda - HUD & Pause Screen");
