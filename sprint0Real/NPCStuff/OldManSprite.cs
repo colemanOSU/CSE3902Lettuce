@@ -28,10 +28,9 @@ namespace sprint0Real.NPCStuff
 
             spriteBatch.Draw(sprites, destinationRectangle, sourceRectangle, Color.White);
         }
-
-        void IGameObject.Update(GameTime gameTime)
+        public void Update(GameTime gametime)
         {
-            // No frames to update
+            // Doesn't update
         }
 
         public Rectangle Rect

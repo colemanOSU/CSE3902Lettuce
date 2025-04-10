@@ -39,9 +39,9 @@ namespace sprint0Real.Levels
         }
         public void Update(GameTime time)
         {
-            foreach (IGameObject enemy in gameObjects.OfType<IGameObject>())
+            foreach (IUpdates updatable in gameObjects.OfType<IUpdates>())
             {
-                enemy.Update(time);
+                updatable.Update(time);
             }
         }
         public void AddNeighbor(String side, String name)
@@ -76,7 +76,7 @@ namespace sprint0Real.Levels
         public void Draw(SpriteBatch spriteBatch)
         {
             background.Draw(spriteBatch);
-            foreach (IGameObject gameObject in gameObjects.OfType<IGameObject>())
+            foreach (IDrawn gameObject in gameObjects.OfType<IDrawn>())
             {
                 gameObject.Draw(spriteBatch);
             }
