@@ -19,14 +19,6 @@ namespace sprint0Real.Levels
         private Dictionary<String, String> Neighbors;
         public LevelBackground background;
 
-        /* DELETE LATER
-         * This should allow RoomTransitioncCommand to look like:
-         * String NextMapName = CurrentMap.Instance.myMap.Neighbors[Direction];
-         * CurrentMap.Instance.myMap = LevelLoader.Instance.Maps[NextMapName];
-         * Collisions.ObjectList = CurrentMap.Instance.GameObjectList();
-         * Collisions.RoomCollisions = CurrentMap.Instance.RoomCollisionsList();
-         */
-
         public EnemyPage()
         {
             gameObjects = new List<IObject>();

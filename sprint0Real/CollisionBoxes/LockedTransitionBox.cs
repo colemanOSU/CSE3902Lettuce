@@ -9,35 +9,20 @@ using sprint0Real.Levels;
 
 namespace sprint0Real.CollisionBoxes
 {
-        public class LockedTransitionBox : ICollisionBoxes, ITouchesLink
+    public class LockedTransitionBox : ICollisionBoxes, ITouchesLink
+    {
+        public Rectangle Rect { get; }
+        public String direction { get; }
+        public LockedTransitionBox(Rectangle destinationRectangle, String direction)
         {
-            Rectangle myDestinationRectangle;
-            private String direction;
-            public LockedTransitionBox(Rectangle destinationRectangle, String direction)
-            {
-                myDestinationRectangle = destinationRectangle;
-                this.direction = direction;
-            }
+            Rect = destinationRectangle;
+            this.direction = direction;
+        }
 
         public void Unlock()
         {
-            CurrentMap.Instance.Stage(new RoomTransitionBox(myDestinationRectangle, direction));
+            CurrentMap.Instance.DeStage(this);
+            CurrentMap.Instance.Stage(new RoomTransitionBox(Rect, direction));
         }
-            public Rectangle Rect
-            {
-                get
-                {
-                    return myDestinationRectangle;
-                }
-            }
-
-            public String Direction
-            {
-                get
-                {
-                    return direction;
-
-                }
-            }
-        }
+    }
 }

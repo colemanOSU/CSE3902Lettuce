@@ -67,7 +67,7 @@ namespace sprint0Real.Commands.CollisionCommands2
             myGame._camera.target = TargetLocation(direction);
             myGame.currentGameState = GameState.GameStates.LevelTransition;
             CurrentMap.Instance.SetPrevious();
-            String transitionDirection = ((RoomTransitionBox)transitionBox).Direction;
+            String transitionDirection = ((RoomTransitionBox)transitionBox).direction;
             String neighbor = CurrentMap.Instance.GetNeighbor(transitionDirection);
             EnemyPage nextMap = LevelLoader.Instance.RetrieveMap(neighbor);
             CurrentMap.Instance.SetMap(nextMap);
