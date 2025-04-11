@@ -1,0 +1,10 @@
+﻿Author:  Jenny Ding                           
+Date: 4/7/2024
+Sprint 4
+I'm reviewing Jian's code for BTrap.cs
+About 10 minutes to complete
+
+This review is on READABILITY
+
+for readability, overall it is pretty clear what everything is doing, the variable names are good except for the upper and lower case location. 
+This may cause some confusions while reading the code, so my suggestion would be change the 'private Vector2 Location' to 'public Vector2 Location { get; set; }' and use the variable name Location throughout the file. 

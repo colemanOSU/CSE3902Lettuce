@@ -114,6 +114,7 @@ namespace sprint0Real.LinkSprites
                 myGame.weaponItemsB.Disable();
             }
             else
+
             {
                 myGame.weaponItemsB.Activate();
             }

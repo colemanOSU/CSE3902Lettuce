@@ -18,7 +18,6 @@ namespace sprint0Real.EnemyStuff.BTrapStuff
         }
 
         private float jukeTimer = 0f;
-        private float jukeDelay = 0f;
         private int moving = 0;
 
 

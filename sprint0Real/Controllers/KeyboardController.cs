@@ -36,10 +36,6 @@ namespace sprint0Real.Controllers
             keyPreviouslyPressed = new Dictionary<Keys, bool>();
             _game = game;
 
-            //commands.Add(Keys.Y, new NextBlockCommand(_game, blockTexture));
-            //commands.Add(Keys.T, new PreviousBlockCommand(_game, blockTexture));
-            //commands.Add(Keys.I, new ShowNextItemCommand(_game,  itemTexture));
-            //commands.Add(Keys.U, new ShowPreviousItemCommand(_game, itemTexture));
             commands.Add(Keys.E, new DamageLinkCommand(_game));
             commands.Add(Keys.D, new MoveRightCommand(_game));
             commands.Add(Keys.A, new MoveLeftCommand(_game));
@@ -57,6 +53,7 @@ namespace sprint0Real.Controllers
             commands.Add(Keys.P, new PauseCommand(_game));
             commands.Add(Keys.M, new MenuCommand(_game));
             commands.Add(Keys.L, new GameOverCommand(_game));
+            commands.Add(Keys.H, new KamehamehaCommand(_game));
             commands.Add(Keys.OemQuotes, new MuteCommand(_game));
 
             commands.Add(Keys.D1, new ItemChangeCommand(_game, 1));

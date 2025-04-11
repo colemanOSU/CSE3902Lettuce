@@ -60,12 +60,11 @@ namespace sprint0Real.LinkStuff
             //All items set to true by default for testing
             foreach (Items item in Enum.GetValues(typeof(Items)))
             {
-                InventoryList.Add(item, true);
+                InventoryList.Add(item, false);
             }
-            HasMap = true;
-            HasCompass = true;
-            ObtainItem(Items.Boomerang);
-            CurrentItem = Items.Boomerang;
+            HasMap = false;
+            HasCompass = false;
+            CurrentItem = Items.NONE;
             CurrentSword = Swords.Wood_Sword;
             KeyCount = 0;
             RupeeCount = 0;

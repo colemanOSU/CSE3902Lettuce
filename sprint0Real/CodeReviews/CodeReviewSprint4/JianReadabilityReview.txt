@@ -1,0 +1,10 @@
+﻿Author:   Jian Wang                           
+Date: 4/7/2024
+Sprint 4
+I'm reviewing Ariv's code for WeaponSwordSprite.cs
+About 3 minutes to complete(after other review)
+
+
+While I can understand what the code is doing by reading each line, the overall readablilty needs a bit of imporvement as some variables are hard to
+understand without context or testing. One thing that would help a lot are comments on what each part is doing would make it a lot more readable to those 
+who arn't too familiar with how the weopons items work in the code. as at a glance the code is too confusing to be understood. ex(why is isDelaying = true; when timer is <5)

@@ -9,14 +9,15 @@ Andrea Stewart
 Jian Wang
 
 CONTROLS:
-	WASD and Arrow Keys: Directional Movement
+	WASD and Arrow Keys: Directional Movement (item selection movement in menu screen)
 	Z and N Keys: Link Attack With Current Item
-	1-0 Keys: Switch Current Item
 	E Key: Induce Spontaneous Damage In Link
-	T and Y: Cycle Through Displayed Block
-	U and I: Cycle Through Displayed Item
-	O and P: Cycle Through Displayed Enemy
 	Q: Quit The Program
 	R: Reset Program
+	M: Pull up/down Menu
+	B: Use selected inventory item
 	ENTER: Start Game from title screen
 	ClICK: Start Game from title screen
+
+Known bugs:
+water is walkable (must make deeper)
