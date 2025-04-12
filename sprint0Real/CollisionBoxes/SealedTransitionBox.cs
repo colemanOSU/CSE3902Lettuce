@@ -9,7 +9,7 @@ using sprint0Real.Levels;
 
 namespace sprint0Real.CollisionBoxes
 {
-    public class SealedTransitionBox : ICollisionBoxes, IUpdates
+    public class SealedTransitionBox : ILockedTransitionBox, IUpdates, ITouchesLink
     {
 
         public Rectangle Rect { get; }
@@ -23,7 +23,7 @@ namespace sprint0Real.CollisionBoxes
         {
             if (CheckIfAllEnemiesDead())
             {
-                Unseal();
+                Unlock();
             }
         }
         public bool CheckIfAllEnemiesDead()
@@ -35,8 +35,11 @@ namespace sprint0Real.CollisionBoxes
             }
             return true;
         }
-        public void Unseal()
+        public void Unlock()
         {
+            // Add sound effect
+            CurrentMap.Instance.DeStage(this);
+            CurrentMap.Instance.Stage(new RoomTransitionBox(Rect, direction));
             CurrentMap.Instance.SetDoor(direction, "Open");
         }
     }

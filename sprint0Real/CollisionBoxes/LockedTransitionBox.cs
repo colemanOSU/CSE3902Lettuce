@@ -9,7 +9,7 @@ using sprint0Real.Levels;
 
 namespace sprint0Real.CollisionBoxes
 {
-    public class LockedTransitionBox : ICollisionBoxes, ITouchesLink
+    public class LockedTransitionBox : ILockedTransitionBox, ITouchesLink
     {
         public Rectangle Rect { get; }
         public String direction { get; }
@@ -18,11 +18,12 @@ namespace sprint0Real.CollisionBoxes
             Rect = destinationRectangle;
             this.direction = direction;
         }
-
         public void Unlock()
         {
+            // Add sound effect
             CurrentMap.Instance.DeStage(this);
             CurrentMap.Instance.Stage(new RoomTransitionBox(Rect, direction));
+            CurrentMap.Instance.SetDoor(direction, "Open");
         }
     }
 }
