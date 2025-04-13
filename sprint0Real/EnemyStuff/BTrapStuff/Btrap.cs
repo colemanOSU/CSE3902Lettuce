@@ -19,7 +19,8 @@ namespace sprint0Real.EnemyStuff.BTrapStuff
 
         public ISprite2 mySprite;
         private Vector2 Location;
-        public int speed = 4;
+        public int speed {  get; set; }
+
 
         private int FPS = 6;
         private float timer = 0f;
@@ -30,6 +31,7 @@ namespace sprint0Real.EnemyStuff.BTrapStuff
             stateMachine = new BTrapStateMachine(this);
             behavior = new BTrapBehavior(this);
             mySprite = EnemySpriteFactory.Instance.CreateBTrapSprite();
+            speed = 2;
         }
 
         public void TakeDamage(int damage)
@@ -50,11 +52,6 @@ namespace sprint0Real.EnemyStuff.BTrapStuff
         public void Return()
         {
             stateMachine.Return();
-        }
-
-        public void Despawn()
-        {
-            CurrentMap.Instance.DeStage(this);
         }
 
         public void Update(GameTime gameTime)

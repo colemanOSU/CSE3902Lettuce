@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using sprint0Real.Interfaces;
+using sprint0Real.Levels;
 
 namespace sprint0Real.EnemyStuff.DinoStuff
 {
@@ -24,19 +25,23 @@ namespace sprint0Real.EnemyStuff.DinoStuff
             {
                 case 0:
                     currentState = DinoStates.Right;
-                    myDino.mySprite = EnemySpriteFactory.Instance.CreateDinoHurtRightSprite();
+                    myDino.mySprite = EnemySpriteFactory.Instance.CreateDinoRightSprite();
+                    myDino.Location = new Rectangle(myDino.Location.X, myDino.Location.Y, 28 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
                     break;
                 case 1:
                     currentState = DinoStates.Left;
-                    myDino.mySprite = EnemySpriteFactory.Instance.CreateDinoHurtLeftSprite();
+                    myDino.mySprite = EnemySpriteFactory.Instance.CreateDinoLeftSprite();
+                    myDino.Location = new Rectangle(myDino.Location.X, myDino.Location.Y, 28 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
                     break;
                 case 2:
                     currentState = DinoStates.Up;
-                    myDino.mySprite = EnemySpriteFactory.Instance.CreateDinoHurtUpSprite();
+                    myDino.mySprite = EnemySpriteFactory.Instance.CreateDinoUpSprite();
+                    myDino.Location = new Rectangle(myDino.Location.X, myDino.Location.Y, 16 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
                     break;
                 case 3:
                     currentState = DinoStates.Down;
-                    myDino.mySprite = EnemySpriteFactory.Instance.CreateDinoHurtDownSprite();
+                    myDino.mySprite = EnemySpriteFactory.Instance.CreateDinoDownSprite();
+                    myDino.Location = new Rectangle(myDino.Location.X, myDino.Location.Y, 16 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
                     break;
             }
         }
@@ -51,29 +56,34 @@ namespace sprint0Real.EnemyStuff.DinoStuff
                     break;
                 case DinoStates.Left:
                     currentState = DinoStates.DamagedLeft;
-                    myDino.mySprite = EnemySpriteFactory.Instance.CreateDinoHurtRightSprite();
+                    myDino.mySprite = EnemySpriteFactory.Instance.CreateDinoHurtLeftSprite();
                     break;
                 case DinoStates.Up:
                     currentState = DinoStates.DamagedUp;
-                    myDino.mySprite = EnemySpriteFactory.Instance.CreateDinoHurtRightSprite();
+                    myDino.mySprite = EnemySpriteFactory.Instance.CreateDinoHurtUpSprite();
                     break;
                 case DinoStates.Down:
                     currentState = DinoStates.DamagedDown;
-                    myDino.mySprite = EnemySpriteFactory.Instance.CreateDinoHurtRightSprite();
+                    myDino.mySprite = EnemySpriteFactory.Instance.CreateDinoHurtDownSprite();
                     break;
             }
         }
-
+        private bool NotDamaged()
+        {
+            return (currentState != DinoStates.DamagedDown && currentState != DinoStates.DamagedUp && currentState != DinoStates.DamagedLeft && currentState != DinoStates.DamagedRight);
+        }
         public void TakeDamage(int damage)
         {
-            myDino.health -= damage;
+            if (NotDamaged())
+            {
+                myDino.health -= damage;
+                ChangeToDamageSprite();
+            }
+            
             if (myDino.health < 0)
             {
-                //death
-            }
-            else
-            {
-                ChangeToDamageSprite();
+                // Add sound effects?
+                CurrentMap.Instance.DeStage(myDino);
             }
         }
 
@@ -102,19 +112,20 @@ namespace sprint0Real.EnemyStuff.DinoStuff
 
         public void Update()
         {
+            Rectangle currentRect = myDino.Location;
             switch (currentState)
-            {
+            {   
                 case DinoStates.Right:
-                    myDino.location = new Vector2(myDino.location.X - myDino.speed, myDino.location.Y);
+                    myDino.Location = new Rectangle(currentRect.X + myDino.speed, currentRect.Y, currentRect.Width, currentRect.Height);
                     break;
                 case DinoStates.Left:
-                    myDino.location = new Vector2(myDino.location.X + myDino.speed, myDino.location.Y);
+                    myDino.Location = new Rectangle(currentRect.X - myDino.speed, currentRect.Y, currentRect.Width, currentRect.Height);
                     break;
                 case DinoStates.Up:
-                    myDino.location = new Vector2(myDino.location.X, myDino.location.Y - myDino.speed);
+                    myDino.Location = new Rectangle(currentRect.X, currentRect.Y - myDino.speed, currentRect.Width, currentRect.Height);
                     break;
                 case DinoStates.Down:
-                    myDino.location = new Vector2(myDino.location.X, myDino.location.Y + myDino.speed);
+                    myDino.Location = new Rectangle(currentRect.X, currentRect.Y + myDino.speed, currentRect.Width, currentRect.Height);
                     break;
             }
         }

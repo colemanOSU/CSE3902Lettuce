@@ -19,7 +19,7 @@ namespace sprint0Real.EnemyStuff.DragonStuff
         public ISprite2 sprite;
         private Vector2 Location;
         public int speed = 2;
-        private int health = 10;
+        private int health = 0;
 
         private int FPS = 6;
         private float timer = 0f;

@@ -41,7 +41,6 @@ namespace sprint0Real.Commands.CollisionCommands
         }
         public void Execute(IObject objA, IObject objB, CollisionDirections direction)
         {
-
             ((IEnemy)objA).ChangeDirection();
             Adjust((IEnemy)objA, (ICollisionBoxes)objB, direction);
         }

@@ -17,7 +17,7 @@ namespace sprint0Real.EnemyStuff.DinoStuff
 
         private bool damageFlag = false;
         private float damageTimer = 0f;
-        private float damageDelay = 0f;
+        private float damageDelay = 1f;
 
         private Random random = new Random();
 

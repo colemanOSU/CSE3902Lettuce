@@ -39,7 +39,7 @@ namespace sprint0Real.EnemyStuff.DinoStuff.DinoWalkingSprites
                 sourceRectangle = new Rectangle(35, 58, 16, 16);
                 destinationRectangle = new Rectangle((int)location.X,
                 (int)location.Y, 16 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
-                spriteBatch.Draw(sprites, destinationRectangle, sourceRectangle, Color.White, 0, new Vector2(0, 0), SpriteEffects.FlipVertically, 1);
+                spriteBatch.Draw(sprites, destinationRectangle, sourceRectangle, Color.White, 0, Vector2.Zero, SpriteEffects.FlipHorizontally, 1);
             }
 
         }

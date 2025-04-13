@@ -5,6 +5,7 @@
 	
 	<Objects>
 		<Object Type="Skeleton" x="50" y="50"/>
+		<Object Type="Dino" x="350" y="250"/>
 		<Object Type="Map" x="50" y="150"/>
 		<Object Type="Dragon" x="50" y="250"/>
 		<Object Type="Arrow" x="450" y="200"/>
@@ -19,7 +20,6 @@
 		<Object Type="LifePotion" x="240" y="250"/>
 		<Object Type="Boomerang" x="400" y="50"/>
 		<Object Type="BlueRing" x="400" y="140"/>
-
 	</Objects>
 	
 	<MapHitBoxes>

@@ -152,36 +152,36 @@ namespace sprint0Real.EnemyStuff
 
         public ISprite2 CreateDinoRightSprite()
         {
-            return new DinoWalkingRightSprite(enemySpriteSheet);
+            return new DinoWalkingRightSprite(bossesSheet);
         }
         public ISprite2 CreateDinoLeftSprite()
         {
-            return new DinoWalkingLeftSprite(enemySpriteSheet);
+            return new DinoWalkingLeftSprite(bossesSheet);
         }
         public ISprite2 CreateDinoUpSprite()
         {
-            return new DinoWalkingUpSprite(enemySpriteSheet);
+            return new DinoWalkingUpSprite(bossesSheet);
         }
         public ISprite2 CreateDinoDownSprite()
         {
-            return new DinoWalkingDownSprite(enemySpriteSheet);
+            return new DinoWalkingDownSprite(bossesSheet);
         }
 
         public ISprite2 CreateDinoHurtRightSprite()
         {
-            return new DinoHurtRightSprite(enemySpriteSheet);
+            return new DinoHurtRightSprite(bossesSheet);
         }
         public ISprite2 CreateDinoHurtLeftSprite()
         {
-            return new DinoHurtLeftSprite(enemySpriteSheet);
+            return new DinoHurtLeftSprite(bossesSheet);
         }
         public ISprite2 CreateDinoHurtUpSprite()
         {
-            return new DinoHurtUpSprite(enemySpriteSheet);
+            return new DinoHurtUpSprite(bossesSheet);
         }
         public ISprite2 CreateDinoHurtDownSprite()
         {
-            return new DinoHurtDownSprite(enemySpriteSheet);
+            return new DinoHurtDownSprite(bossesSheet);
         }
     }
 }

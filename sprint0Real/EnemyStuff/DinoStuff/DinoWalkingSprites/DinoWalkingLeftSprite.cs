@@ -30,15 +30,15 @@ namespace sprint0Real.EnemyStuff.DinoStuff.DinoWalkingSprites
             {
                 sourceRectangle = new Rectangle(69, 58, 28, 16);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 16 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
-                spriteBatch.Draw(sprites, destinationRectangle, sourceRectangle, Color.White, 0, new Vector2(0, 0), SpriteEffects.FlipVertically, 1);
+                (int)location.Y, 28 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
+                spriteBatch.Draw(sprites, destinationRectangle, sourceRectangle, Color.White, 0, Vector2.Zero, SpriteEffects.FlipHorizontally, 1);
             }
             else
             {
                 sourceRectangle = new Rectangle(102, 58, 28, 16);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 16 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
-                spriteBatch.Draw(sprites, destinationRectangle, sourceRectangle, Color.White, 0, new Vector2(0, 0), SpriteEffects.FlipVertically, 1);
+                (int)location.Y, 28 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
+                spriteBatch.Draw(sprites, destinationRectangle, sourceRectangle, Color.White, 0, Vector2.Zero, SpriteEffects.FlipHorizontally, 1);
             }
         }
         public void Update()
