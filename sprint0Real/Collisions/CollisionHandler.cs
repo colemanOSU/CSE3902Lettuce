@@ -53,7 +53,12 @@ namespace sprint0Real.Collisions
             collisionCommands.Add(("Link", "BlockSpriteStairs"), new LinkStairsCollisionCommand());
             collisionCommands.Add(("Enemy", "Border"), new EnemyBorderCommand());
             collisionCommands.Add(("Enemy", "BlockSpriteFloorBlock"), new EnemyBlockCommand());
+
             collisionCommands.Add(("Enemy", "RoomTransitionBox"), new EnemyTransitionBoxes());
+            collisionCommands.Add(("Link", "SealedTransitionBox"), new LinkLockedTransitionBoxCollisionCommand());
+            collisionCommands.Add(("Enemy", "SealedTransitionBox"), new EnemyTransitionBoxes());
+            collisionCommands.Add(("Link", "LockedTransitionBox"), new LinkLockedTransitionBoxCollisionCommand());
+            collisionCommands.Add(("Enemy", "LockedTransitionBox"), new EnemyTransitionBoxes());
         }
 
         public void HandleCollision(IObject objA, IObject objB)

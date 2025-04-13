@@ -5,6 +5,7 @@
 	
 	<Objects>
 		<Object Type="Skeleton" x="50" y="50"/>
+		<Object Type="Dino" x="350" y="250"/>
 		<Object Type="Map" x="50" y="150"/>
 		<Object Type="Dragon" x="50" y="250"/>
 		<Object Type="Arrow" x="450" y="200"/>
@@ -19,7 +20,6 @@
 		<Object Type="LifePotion" x="240" y="250"/>
 		<Object Type="Boomerang" x="400" y="50"/>
 		<Object Type="BlueRing" x="400" y="140"/>
-
 	</Objects>
 	
 	<MapHitBoxes>
@@ -49,7 +49,7 @@
 
 		<HitBox Type="RoomTransitionBox" x="0" y="216" width="96" height="96" direction="Left"/>
 		<HitBox Type="RoomTransitionBox" x="672" y="216" width="80" height="96" direction="Right"/>
-		<HitBox Type="RoomTransitionBox" x="336" y="0" width="96" height="96" direction="Up"/>
+		<HitBox Type="LockedTransitionBox" x="336" y="0" width="96" height="96" direction="Up"/>
 		<HitBox Type="Border" x="336" y="432" width="96" height="96"/>
 	</MapHitBoxes>
 

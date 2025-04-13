@@ -39,8 +39,12 @@ namespace sprint0Real.EnemyStuff.DragonStuff
 
         public void TakeDamage(int damage)
         {
-            myDragon.Health -= damage;
-            currentState = DragonState.Damaged;
+            if (currentState != DragonState.Damaged)
+            {
+                myDragon.Health -= damage;
+                currentState = DragonState.Damaged;
+                myDragon.mySprite = EnemySpriteFactory.Instance.CreateDragonDamagedSprite();
+            }
             if (myDragon.Health <= 0)
             {
                 if (!DieSoundPlayed)
@@ -53,19 +57,17 @@ namespace sprint0Real.EnemyStuff.DragonStuff
                 death = new Death(myDragon.location);
                 CurrentMap.Instance.Stage(death);
             }
-            else
-            {
-                myDragon.mySprite = EnemySpriteFactory.Instance.CreateDragonDamagedSprite();
-            }
         }
 
         public void Attack()
         {
+            currentState = DragonState.Attack;
             myDragon.mySprite = EnemySpriteFactory.Instance.CreateDragonAttackSprite();
         }
 
         public void Idle()
         {
+            currentState = DragonState.Idle;
             myDragon.mySprite = EnemySpriteFactory.Instance.CreateDragonEnemySprite();
         }
 

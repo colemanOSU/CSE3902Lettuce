@@ -70,7 +70,6 @@ namespace sprint0Real.EnemyStuff.DragonStuff
             jukeTimer += (float)time.ElapsedGameTime.TotalSeconds;
             
             JukeCheck();
-            // Gotta make sure the dragon doesn't juke it's way off screen
             AttackCheck();
             AttackFinish();
 
