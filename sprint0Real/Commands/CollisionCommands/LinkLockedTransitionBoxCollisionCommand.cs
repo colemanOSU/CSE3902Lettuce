@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,15 +17,23 @@ namespace sprint0Real.Commands.CollisionCommands
         // else just act like a border. 
         LinkBorderCommand borderCommand = new LinkBorderCommand();
 
+        private bool LinkHasKey(Link link)
+        {
+            return (link.inventory.KeyCount > 0);
+        }
         public void Execute(IObject link, IObject border, CollisionDirections direction)
         {
             Link Link = (Link)link;
-            if (border.GetType().ToString() == "LockedTransitionBox")
+            if (border.GetType().Name == "LockedTransitionBox")
             {
-                if (Link.inventory.KeyCount > 0)
+                if (LinkHasKey(Link))
                 {
-                    // Add sound effect
+                    // Add something here that uses up a key
                     ((ILockedTransitionBox)border).Unlock();
+                }
+                else
+                {
+                    borderCommand.Execute(link, border, direction);
                 }
             }
             else
