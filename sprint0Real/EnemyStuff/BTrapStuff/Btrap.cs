@@ -15,7 +15,6 @@ namespace sprint0Real.EnemyStuff.BTrapStuff
     public class BTrap : IEnemy
     {
         private BTrapStateMachine stateMachine;
-        private BTrapBehavior behavior;
 
         public ISprite2 mySprite;
         private Vector2 Location;
@@ -29,7 +28,6 @@ namespace sprint0Real.EnemyStuff.BTrapStuff
         {
             Location = start;
             stateMachine = new BTrapStateMachine(this);
-            behavior = new BTrapBehavior(this);
             mySprite = EnemySpriteFactory.Instance.CreateBTrapSprite();
             speed = 2;
         }
@@ -41,7 +39,7 @@ namespace sprint0Real.EnemyStuff.BTrapStuff
 
         public void ChangeDirection()
         {
-            stateMachine.ChangeDirection();
+            stateMachine.Returned();
         }
 
         public void hitWall()
@@ -57,7 +55,6 @@ namespace sprint0Real.EnemyStuff.BTrapStuff
         public void Update(GameTime gameTime)
         {
             stateMachine.Update();
-            behavior.Update(gameTime);
 
             timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
 

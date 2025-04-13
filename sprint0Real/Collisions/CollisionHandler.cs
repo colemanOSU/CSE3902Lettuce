@@ -37,6 +37,7 @@ namespace sprint0Real.Collisions
             collisionCommands.Add(("Link", "RoomTransitionBox"), new RoomTransitionCommand(game));
             collisionCommands.Add(("LinkWeapon", "Border"), new StopLinkWeaponCommand(game));
             collisionCommands.Add(("Enemy", "LinkWeapon"), new DamageEnemyCollisionCommand());
+            collisionCommands.Add(("Enemy", "Enemy"), new EnemyEnemyCollisionCommand());
 
             collisionCommands.Add(("Link", "EnemyProjectile"), new LinkEnemyCommand());
             collisionCommands.Add(("Link", "TreasureItem"), new LinkItemCollisionCommand());
