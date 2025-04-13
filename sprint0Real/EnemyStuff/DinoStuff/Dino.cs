@@ -11,9 +11,21 @@ namespace sprint0Real.EnemyStuff.DinoStuff
 {
     public class Dino : IEnemy
     {
-        public Vector2 location { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        private DinoStateMachine DinoStateMachine;
+        private DinoBehavior DinoBehavior;
+        public ISprite2 mySprite { get; set; }
+        public float speed { get; set; }
+        public Vector2 location { get; set; }
+        public int health { get; set; }
 
-        public Rectangle Rect => throw new NotImplementedException();
+        public Rectangle Rect { get; }
+
+        public Dino(Vector2 location)
+        {
+            this.location = location;
+            speed = 2f;
+            health = 10;
+        }
 
         public void ChangeDirection()
         {
@@ -27,7 +39,16 @@ namespace sprint0Real.EnemyStuff.DinoStuff
 
         public void TakeDamage(int damage)
         {
-            throw new NotImplementedException();
+            // Depends on amount of damage a bomb does
+            if (damage > 5)
+            {
+
+            }
+        }
+
+        public void FinishDamage()
+        {
+
         }
 
         public void Update(GameTime gameTime)

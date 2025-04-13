@@ -16,6 +16,9 @@ using sprint0Real.EnemyStuff.BTrapStuff;
 using sprint0Real.Interfaces;
 using sprint0Real.EnemyStuff.SlimeStuff;
 using sprint0Real.EnemyStuff.DeathSprites;
+using sprint0Real.EnemyStuff.DinoStuff;
+using sprint0Real.EnemyStuff.DinoStuff.DinoWalkingSprites;
+using sprint0Real.EnemyStuff.DinoStuff.DinoHurtSprites;
 
 namespace sprint0Real.EnemyStuff
 {
@@ -145,6 +148,40 @@ namespace sprint0Real.EnemyStuff
         public Texture2D ReturnOldManSpriteSheet()
         {
             return OldManSpriteSheet;
+        }
+
+        public ISprite2 CreateDinoRightSprite()
+        {
+            return new DinoWalkingRightSprite(enemySpriteSheet);
+        }
+        public ISprite2 CreateDinoLeftSprite()
+        {
+            return new DinoWalkingLeftSprite(enemySpriteSheet);
+        }
+        public ISprite2 CreateDinoUpSprite()
+        {
+            return new DinoWalkingUpSprite(enemySpriteSheet);
+        }
+        public ISprite2 CreateDinoDownSprite()
+        {
+            return new DinoWalkingDownSprite(enemySpriteSheet);
+        }
+
+        public ISprite2 CreateDinoHurtRightSprite()
+        {
+            return new DinoHurtRightSprite(enemySpriteSheet);
+        }
+        public ISprite2 CreateDinoHurtLeftSprite()
+        {
+            return new DinoHurtLeftSprite(enemySpriteSheet);
+        }
+        public ISprite2 CreateDinoHurtUpSprite()
+        {
+            return new DinoHurtUpSprite(enemySpriteSheet);
+        }
+        public ISprite2 CreateDinoHurtDownSprite()
+        {
+            return new DinoHurtDownSprite(enemySpriteSheet);
         }
     }
 }

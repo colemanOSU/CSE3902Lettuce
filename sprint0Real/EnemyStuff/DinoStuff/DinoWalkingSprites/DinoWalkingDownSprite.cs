@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using sprint0Real.Interfaces;
 
-namespace sprint0Real.EnemyStuff.DinoStuff
+namespace sprint0Real.EnemyStuff.DinoStuff.DinoWalkingSprites
 {
     public class DinoWalkingDownSprite : ISprite2
     {
@@ -13,7 +15,7 @@ namespace sprint0Real.EnemyStuff.DinoStuff
         private int currentFrame;
         private int totalFrames;
 
-        public DinoSprite(Texture2D spriteSheet, SpriteBatch spriteBatch)
+        public DinoWalkingDownSprite(Texture2D spriteSheet)
         {
             sprites = spriteSheet;
             totalFrames = 2;
@@ -23,23 +25,21 @@ namespace sprint0Real.EnemyStuff.DinoStuff
         {
             Rectangle sourceRectangle;
             Rectangle destinationRectangle;
-            Vector2 org;
-            org.X = 0;
-            org.Y = 0;
 
             if (currentFrame == 0)
             {
-                sourceRectangle = new Rectangle(1, 59, 16, 16);
+                sourceRectangle = new Rectangle(1, 58, 16, 16);
                 destinationRectangle = new Rectangle((int)location.X,
                 (int)location.Y, 16 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
+                spriteBatch.Draw(sprites, destinationRectangle, sourceRectangle, Color.White);
             }
             else
             {
-                sourceRectangle = new Rectangle(159, 78, 16, 16);
+                sourceRectangle = new Rectangle(1, 58, 16, 16);
                 destinationRectangle = new Rectangle((int)location.X,
                 (int)location.Y, 16 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
+                spriteBatch.Draw(sprites, destinationRectangle, sourceRectangle, Color.White, 0, new Vector2(0, 0), SpriteEffects.FlipVertically, 1);
             }
-            spriteBatch.Draw(sprites, destinationRectangle, sourceRectangle, Color.White);
         }
         public void Update()
         {
