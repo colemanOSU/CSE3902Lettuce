@@ -12,13 +12,10 @@ namespace sprint0Real.EnemyStuff.BTrapStuff
     public class BTrapSprite : ISprite2
     {
         private Texture2D sprites;
-        private int currentFrame;
-        private int totalFrames;
 
         public BTrapSprite(Texture2D spriteSheet, SpriteBatch spriteBatch)
         {
             sprites = spriteSheet;
-            totalFrames = 2;
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
@@ -33,7 +30,7 @@ namespace sprint0Real.EnemyStuff.BTrapStuff
         }
         public void Update()
         {
-            currentFrame = (currentFrame + 1) % totalFrames;
+            // Static Sprite
         }
     }
 }

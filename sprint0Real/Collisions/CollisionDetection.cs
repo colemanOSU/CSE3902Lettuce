@@ -47,9 +47,10 @@ namespace sprint0Real.Collisions
 
         public void CheckCollisions()
         {
-                // Enemies against Borders 
+                 
                 foreach (IEnemy enemy in gameObjectsInRoom.OfType<IEnemy>())
                 {
+                    // Enemies against Borders
                     foreach (ICollisionBoxes collision in gameObjectsInRoom.OfType<ICollisionBoxes>())
                     {
                         if (enemy.Rect.Intersects(collision.Rect))
@@ -73,7 +74,15 @@ namespace sprint0Real.Collisions
                             collisionHandler.HandleCollision(enemy, enemyDamage);
                         }
                     }
+                // Enemies against Enemies
+                foreach (IEnemy enemy2 in gameObjectsInRoom.OfType<IEnemy>())
+                {
+                    if (enemy != enemy2 && enemy.Rect.Intersects(enemy2.Rect))
+                    {
+                        collisionHandler.HandleCollision(enemy, enemy2);
+                    }
                 }
+            }
 
                 // Link against all collisionBoxes
                 foreach (ITouchesLink source in gameObjectsInRoom.OfType<ITouchesLink>())

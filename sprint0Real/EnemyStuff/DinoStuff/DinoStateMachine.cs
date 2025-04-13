@@ -97,15 +97,15 @@ namespace sprint0Real.EnemyStuff.DinoStuff
                     break;
                 case DinoStates.DamagedLeft:
                     currentState = DinoStates.Left;
-                    myDino.mySprite = EnemySpriteFactory.Instance.CreateDinoRightSprite();
+                    myDino.mySprite = EnemySpriteFactory.Instance.CreateDinoLeftSprite();
                     break;
                 case DinoStates.DamagedUp:
                     currentState = DinoStates.Up;
-                    myDino.mySprite = EnemySpriteFactory.Instance.CreateDinoRightSprite();
+                    myDino.mySprite = EnemySpriteFactory.Instance.CreateDinoUpSprite();
                     break;
                 case DinoStates.DamagedDown:
                     currentState = DinoStates.Down;
-                    myDino.mySprite = EnemySpriteFactory.Instance.CreateDinoRightSprite();
+                    myDino.mySprite = EnemySpriteFactory.Instance.CreateDinoDownSprite();
                     break;
             }
         }
