@@ -15,6 +15,7 @@ namespace sprint0Real.EnemyStuff.GoriyaStuff
     public class GoriyaStateMachine : IStateMachine
     {
         private enum AttackStates {Idle, Attack}
+        private bool DamagedFlag = false;
         private GoriyaState currentState = GoriyaState.Right;
         private AttackStates attackStatus = AttackStates.Idle;
         private Goriya myGoriya;
@@ -72,21 +73,10 @@ namespace sprint0Real.EnemyStuff.GoriyaStuff
         }
         public void TakeDamage(int damage)
         {
-            myGoriya.Health -= damage;
-            if (myGoriya.Health <= 0)
+            if (!DamagedFlag)
             {
-                if (!DieSoundPlayed)
-                {
-                    EnemyDie.Play();
-                    DieSoundPlayed = true;
-                }
-                DropManager.Instance.OnDeath(myGoriya.location);
-                CurrentMap.Instance.DeStage(myGoriya);
-                death = new Death(myGoriya.location);
-                CurrentMap.Instance.Stage(death);
-            }
-            else
-            {
+                DamagedFlag = true;
+                myGoriya.Health -= damage;
                 switch (currentState)
                 {
                     case GoriyaState.Right:
@@ -103,6 +93,18 @@ namespace sprint0Real.EnemyStuff.GoriyaStuff
                         break;
                 }
             }
+            if (myGoriya.Health <= 0)
+            {
+                if (!DieSoundPlayed)
+                {
+                    EnemyDie.Play();
+                    DieSoundPlayed = true;
+                }
+                DropManager.Instance.OnDeath(myGoriya.location);
+                CurrentMap.Instance.DeStage(myGoriya);
+                death = new Death(myGoriya.location);
+                CurrentMap.Instance.Stage(death);
+            }
         }
 
         public void Attack()
@@ -115,6 +117,11 @@ namespace sprint0Real.EnemyStuff.GoriyaStuff
         public void Idle()
         {
             attackStatus = AttackStates.Idle;
+        }
+
+        public void FinishDamage()
+        {
+            DamagedFlag = false;
         }
 
         public void Update()

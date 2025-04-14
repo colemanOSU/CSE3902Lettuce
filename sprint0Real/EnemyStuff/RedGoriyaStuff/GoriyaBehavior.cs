@@ -72,6 +72,13 @@ namespace sprint0Real.EnemyStuff.RedGoriyaStuff
             damageFlag = true;
         }
 
+        private void FinishDamage()
+        {
+            damageTimer = 0;
+            damageFlag = false;
+            myGoriya.FinishDamage();
+        }
+
         public void Update(GameTime time)
         {
             jukeTimer += (float)time.ElapsedGameTime.TotalSeconds;
@@ -81,7 +88,6 @@ namespace sprint0Real.EnemyStuff.RedGoriyaStuff
             }
 
             JukeCheck();
-            // Gotta make sure the Goriya doesn't juke it's way off screen
             AttackCheck();
             AttackFinish();
 
@@ -90,9 +96,7 @@ namespace sprint0Real.EnemyStuff.RedGoriyaStuff
                 damageTimer += (float)time.ElapsedGameTime.TotalSeconds;
                 if (damageTimer >= damageDuration)
                 {
-                    damageTimer = 0;
-                    damageFlag = false;
-                    myGoriya.Idle();
+                    FinishDamage();
                 }
             }
         }
