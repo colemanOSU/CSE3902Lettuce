@@ -28,7 +28,7 @@ namespace sprint0Real.Commands.CollisionCommands
             {
                 if (LinkHasKey(Link))
                 {
-                    // Add something here that uses up a key
+                    Link.inventory.KeyUse();
                     ((ILockedTransitionBox)border).Unlock();
                 }
                 else
