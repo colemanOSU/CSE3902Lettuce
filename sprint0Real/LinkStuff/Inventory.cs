@@ -70,7 +70,7 @@ namespace sprint0Real.LinkStuff
             RupeeCount = 0;
 
             //We'll give 'em some bombs to play with.
-            BombCount = 4;
+            PickUpBomb();
         }
 
         //Marks item as accessible within inventory
@@ -105,6 +105,10 @@ namespace sprint0Real.LinkStuff
         {
             BombCount += 4;
             if (BombCount > MAXBOMBS) BombCount = MAXBOMBS;
+            if (!HasItem(Items.Bomb))
+            {
+                ObtainItem(Items.Bomb);
+            }
         }
 
         public void BombUse()
