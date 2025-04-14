@@ -36,7 +36,12 @@ namespace sprint0Real.NameRegistration
             this.spriteSheet = spriteSheet;
             playerName = new StringBuilder();
 
-            charMap['A'] = new Rectangle(303, 126, 8, 8);
+            charMap['A'] = new Rectangle(303, 126, 14, 14);
+            charMap['B'] = new Rectangle(318, 126, 14, 14);
+            charMap['C'] = new Rectangle(333, 126, 15, 14);
+            charMap['D'] = new Rectangle
+
+
         }
     }
 }
