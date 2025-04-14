@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LevelData>
+	<Name>Dungeon</Name>
+	<Door Exterior ="Dungeon" Interior ="Nil" Left="Nil" Right="Nil" Up="Nil" Down="Nil"/>
+
+	<Objects>
+			
+	</Objects>
+
+	<MapHitBoxes>
+		
+	</MapHitBoxes>
+
+	<Neighbors>
+		<Neighbor Side="Up" Name="Level10"/>
+	</Neighbors>
+</LevelData>
