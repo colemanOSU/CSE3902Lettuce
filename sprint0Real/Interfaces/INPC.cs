@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace sprint0Real.CollisionBoxes
+namespace sprint0Real.Interfaces
 {
-    internal class DestroyableWall
+    public interface INPC : IGameObject
     {
+        void TakeDamage(int damage);
     }
 }

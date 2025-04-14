@@ -16,6 +16,11 @@ using sprint0Real.EnemyStuff.BTrapStuff;
 using sprint0Real.Interfaces;
 using sprint0Real.EnemyStuff.SlimeStuff;
 using sprint0Real.EnemyStuff.DeathSprites;
+using sprint0Real.EnemyStuff.DinoStuff;
+using sprint0Real.EnemyStuff.DinoStuff.DinoWalkingSprites;
+using sprint0Real.EnemyStuff.DinoStuff.DinoHurtSprites;
+using sprint0Real.EnemyStuff.RedGoriyaStuff.GoriyaSprites.MovingSprites;
+using sprint0Real.EnemyStuff.RedGoriyaStuff.GoriyaSprites.DamagedSpries;
 
 namespace sprint0Real.EnemyStuff
 {
@@ -124,7 +129,7 @@ namespace sprint0Real.EnemyStuff
         {
             return new SlimeSprite(enemySpriteSheet, myGame._spriteBatch);
         }
-        public ISprite2 CreateHandSprite()
+        public HandSprite CreateHandSprite()
         {
             return new HandSprite(enemySpriteSheet, myGame._spriteBatch);
         }
@@ -145,6 +150,40 @@ namespace sprint0Real.EnemyStuff
         public Texture2D ReturnOldManSpriteSheet()
         {
             return OldManSpriteSheet;
+        }
+
+        public ISprite2 CreateDinoRightSprite()
+        {
+            return new DinoWalkingRightSprite(bossesSheet);
+        }
+        public ISprite2 CreateDinoLeftSprite()
+        {
+            return new DinoWalkingLeftSprite(bossesSheet);
+        }
+        public ISprite2 CreateDinoUpSprite()
+        {
+            return new DinoWalkingUpSprite(bossesSheet);
+        }
+        public ISprite2 CreateDinoDownSprite()
+        {
+            return new DinoWalkingDownSprite(bossesSheet);
+        }
+
+        public ISprite2 CreateDinoHurtRightSprite()
+        {
+            return new DinoHurtRightSprite(bossesSheet);
+        }
+        public ISprite2 CreateDinoHurtLeftSprite()
+        {
+            return new DinoHurtLeftSprite(bossesSheet);
+        }
+        public ISprite2 CreateDinoHurtUpSprite()
+        {
+            return new DinoHurtUpSprite(bossesSheet);
+        }
+        public ISprite2 CreateDinoHurtDownSprite()
+        {
+            return new DinoHurtDownSprite(bossesSheet);
         }
     }
 }
