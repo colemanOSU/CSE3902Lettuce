@@ -33,6 +33,7 @@ namespace sprint0Real
         private SoundEffect bombDrop;
         private SoundEffect magicRod;
         private SoundEffect EnemyHit;
+        private SoundEffect doorUnlock;
         private SoundEffect EnemyDie;
 
         public static SoundEffectFactory Instance => instance;
@@ -52,6 +53,7 @@ namespace sprint0Real
             magicRod = content.Load<SoundEffect>("LOZ_MagicalRod");
             EnemyHit = content.Load<SoundEffect>("LOZ_Enemy_Hit");
             EnemyDie = content.Load<SoundEffect>("LOZ_Enemy_Die");
+            doorUnlock = content.Load<SoundEffect>("LOZ_Door_Unlock");
         }
 
         public SoundEffect getBlockSoundEffect()
@@ -73,6 +75,11 @@ namespace sprint0Real
         public SoundEffect getMagicRod()
         {
             return magicRod;
+        }
+
+        public SoundEffect getDoorUnlock()
+        {
+            return doorUnlock;
         }
        
         public SoundEffect getEnemyHit()
