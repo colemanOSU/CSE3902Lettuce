@@ -78,6 +78,7 @@ namespace sprint0Real.Levels
             myMap.Draw(spriteBatch);
         }
 
+        // Draw blocks and the background. 
         public void DrawBackground(SpriteBatch spriteBatch, Vector2 offset)
         {
             myMap.DrawBackground(spriteBatch, offset);
@@ -86,6 +87,25 @@ namespace sprint0Real.Levels
         public void DrawPreviousBackground(SpriteBatch spriteBatch)
         {
             previousMap.DrawBackground(spriteBatch);
+        }
+        public void SetDoor(String direction, String sprite)
+        {
+            if (direction == "Left")
+            {
+                myMap.background.SetLeftDoor(sprite);
+            }
+            else if (direction == "Right")
+            {
+                myMap.background.SetRightDoor(sprite);
+            }
+            else if (direction == "Up")
+            {
+                myMap.background.SetUpDoor(sprite);
+            }
+            else if (direction == "Down")
+            {
+                myMap.background.SetDownDoor(sprite);
+            }
         }
     }
 }

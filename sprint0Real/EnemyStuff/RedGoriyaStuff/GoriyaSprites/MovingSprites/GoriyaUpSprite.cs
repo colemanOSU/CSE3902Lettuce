@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0Real.Interfaces;
 
-namespace sprint0Real.EnemyStuff.RedGoriyaStuff
+namespace sprint0Real.EnemyStuff.RedGoriyaStuff.GoriyaSprites.MovingSprites
 {
     public class GoriyaUpSprite : ISprite2
     {

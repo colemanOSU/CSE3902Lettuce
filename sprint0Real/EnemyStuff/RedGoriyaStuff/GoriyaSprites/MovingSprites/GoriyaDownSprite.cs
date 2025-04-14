@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0Real.Interfaces;
 
-namespace sprint0Real.EnemyStuff.RedGoriyaStuff
+namespace sprint0Real.EnemyStuff.RedGoriyaStuff.GoriyaSprites.MovingSprites
 {
     public class GoriyaDownSprite : ISprite2
     {
@@ -25,7 +25,7 @@ namespace sprint0Real.EnemyStuff.RedGoriyaStuff
         {
             Rectangle sourceRectangle;
             Rectangle destinationRectangle;
-   
+
             if (currentFrame == 0)
             {
                 sourceRectangle = new Rectangle(223, 11, 15, 15);

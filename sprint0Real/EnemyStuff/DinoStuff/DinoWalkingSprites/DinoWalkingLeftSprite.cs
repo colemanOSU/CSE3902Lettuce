@@ -7,15 +7,15 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0Real.Interfaces;
 
-namespace sprint0Real.EnemyStuff.RedGoriyaStuff
+namespace sprint0Real.EnemyStuff.DinoStuff.DinoWalkingSprites
 {
-    public class GoriyaRightSprite : ISprite2
+    public class DinoWalkingLeftSprite : ISprite2
     {
         private Texture2D sprites;
         private int currentFrame;
         private int totalFrames;
 
-        public GoriyaRightSprite(Texture2D spriteSheet, SpriteBatch spriteBatch)
+        public DinoWalkingLeftSprite(Texture2D spriteSheet)
         {
             sprites = spriteSheet;
             totalFrames = 2;
@@ -28,18 +28,18 @@ namespace sprint0Real.EnemyStuff.RedGoriyaStuff
 
             if (currentFrame == 0)
             {
-                sourceRectangle = new Rectangle(39, 78, 15, 15);
+                sourceRectangle = new Rectangle(69, 58, 28, 16);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 16 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
+                (int)location.Y, 28 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
+                spriteBatch.Draw(sprites, destinationRectangle, sourceRectangle, Color.White, 0, Vector2.Zero, SpriteEffects.FlipHorizontally, 1);
             }
             else
             {
-                sourceRectangle = new Rectangle(58, 78, 15, 15);
+                sourceRectangle = new Rectangle(102, 58, 28, 16);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 16 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
+                (int)location.Y, 28 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
+                spriteBatch.Draw(sprites, destinationRectangle, sourceRectangle, Color.White, 0, Vector2.Zero, SpriteEffects.FlipHorizontally, 1);
             }
-
-            spriteBatch.Draw(sprites, destinationRectangle, sourceRectangle, Color.White);
         }
         public void Update()
         {

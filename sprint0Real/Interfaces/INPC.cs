@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace sprint0Real.CollisionBoxes
+namespace sprint0Real.Interfaces
 {
-    public class BtrapCollisionBox
+    public interface INPC : IGameObject
     {
+        void TakeDamage(int damage);
     }
 }

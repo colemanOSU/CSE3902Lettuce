@@ -8,7 +8,7 @@ using sprint0Real.Interfaces;
 
 namespace sprint0Real.CollisionBoxes
 {
-    public class Border : ICollisionBoxes, ITouchesLink
+    public class Border : ICollisionBoxes
     {
         Rectangle myDestinationRectangle;
         public Border(Rectangle destinationRectangle) {

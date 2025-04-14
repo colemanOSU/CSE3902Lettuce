@@ -19,7 +19,7 @@ namespace sprint0Real.EnemyStuff.DragonStuff
         public ISprite2 sprite;
         private Vector2 Location;
         public int speed = 2;
-        private int health = 10;
+        private int health = 0;
 
         private int FPS = 6;
         private float timer = 0f;
@@ -51,6 +51,7 @@ namespace sprint0Real.EnemyStuff.DragonStuff
 
         public void Attack()
         {
+            // This is quite the hack to access link's location
             DragonAttack attack = new DragonAttack(location, new Vector2(EnemySpriteFactory.Instance.myGame.Link.GetLocation().X, EnemySpriteFactory.Instance.myGame.Link.GetLocation().Y));
             attack.Attack();
             stateMachine.Attack();
