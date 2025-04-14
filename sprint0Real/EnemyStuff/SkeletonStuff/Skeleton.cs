@@ -10,6 +10,7 @@ using sprint0Real.EnemyStuff.GoriyaStuff;
 using sprint0Real.EnemyStuff.RedGoriyaStuff;
 using sprint0Real.Interfaces;
 using sprint0Real.Levels;
+using sprint0Real.TreasureItemStuff;
 
 namespace sprint0Real.EnemyStuff.SkeletonStuff
 {
@@ -25,6 +26,7 @@ namespace sprint0Real.EnemyStuff.SkeletonStuff
         private int FPS = 6;
         private float timer = 0f;
         private int health = 1;
+        public ITreasureItems item { get; set; }
 
         public Skeleton(Vector2 start)
         {
@@ -33,10 +35,32 @@ namespace sprint0Real.EnemyStuff.SkeletonStuff
             behavior = new SkeletonBehavior(this);
             mySprite = EnemySpriteFactory.Instance.CreateSkeletonSprite();
         }
+
+        public Skeleton(Vector2 start, ITreasureItems item)
+        {
+            Location = start;
+            stateMachine = new SkeletonStateMachine(this);
+            behavior = new SkeletonBehavior(this);
+            mySprite = EnemySpriteFactory.Instance.CreateSkeletonSprite();
+            this.item = item;
+        }
+
         public void hitWall()
         {
             stateMachine.hitWall();
             stateMachine.ChangeDirection();
+        }
+
+        public void StageItem()
+        {
+            if (item != null)
+            {
+                CurrentMap.Instance.Stage(item);
+            }
+            else
+            {
+                DropManager.Instance.OnDeath(location);
+            }
         }
 
         public void TakeDamage(int damage)
@@ -44,18 +68,9 @@ namespace sprint0Real.EnemyStuff.SkeletonStuff
             stateMachine.TakeDamage(damage);
         }
 
-        public void hitLink()
-        {
-            Despawn();
-        }
         public void ChangeDirection()
         {
             stateMachine.ChangeDirection();
-        }
-
-        public void Despawn()
-        {
-            CurrentMap.Instance.DeStage(this);
         }
 
         public void Update(GameTime gameTime)
@@ -74,6 +89,13 @@ namespace sprint0Real.EnemyStuff.SkeletonStuff
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            if (item != null)
+            {
+                // No way to change the location of an item, so this abomination is necessary. :/
+                Type type = Type.GetType(item.GetType().ToString());
+                item = (ITreasureItems)Activator.CreateInstance(type, location);
+                item.Draw(spriteBatch);
+            }
             mySprite.Draw(spriteBatch, location);
         }
         public Rectangle Rect

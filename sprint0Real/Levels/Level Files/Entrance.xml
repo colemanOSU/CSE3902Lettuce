@@ -4,7 +4,7 @@
 	<Door Exterior ="Default" Interior ="EntranceInterior" Left="Open" Right="Open" Up="Locked" Down="Locked"/>
 	
 	<Objects>
-		<Object Type="Skeleton" x="50" y="50"/>
+		<Object Type="Skeleton" x="50" y="50" Item = "Key"/>
 		<Object Type="Dino" x="350" y="250"/>
 		<Object Type="BTrap" x="0" y="0"/>
 		<Object Type="BTrap" x="300" y="0"/>

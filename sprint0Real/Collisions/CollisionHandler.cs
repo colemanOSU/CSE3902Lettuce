@@ -38,6 +38,7 @@ namespace sprint0Real.Collisions
             collisionCommands.Add(("LinkWeapon", "Border"), new StopLinkWeaponCommand(game));
             collisionCommands.Add(("Enemy", "LinkWeapon"), new DamageEnemyCollisionCommand());
             collisionCommands.Add(("Enemy", "Enemy"), new EnemyEnemyCollisionCommand());
+            collisionCommands.Add(("OldManSprite", "LinkWeapon"), new OldManCollisionCommand());
 
             collisionCommands.Add(("Link", "EnemyProjectile"), new LinkEnemyCommand());
             collisionCommands.Add(("Link", "TreasureItem"), new LinkItemCollisionCommand());
