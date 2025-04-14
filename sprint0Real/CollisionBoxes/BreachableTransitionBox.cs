@@ -9,11 +9,11 @@ using sprint0Real.Levels;
 
 namespace sprint0Real.CollisionBoxes
 {
-    public class DestroyableWall : ILockedTransitionBox
+    public class BreachableTransitionBox : ILockedTransitionBox
     {
         public Rectangle Rect { get; }
         public String direction { get; }
-        public DestroyableWall(Rectangle destinationRectangle, String direction)
+        public BreachableTransitionBox(Rectangle destinationRectangle, String direction)
         {
             Rect = destinationRectangle;
             this.direction = direction;
@@ -23,7 +23,7 @@ namespace sprint0Real.CollisionBoxes
             // Add sound effect
             CurrentMap.Instance.DeStage(this);
             CurrentMap.Instance.Stage(new RoomTransitionBox(Rect, direction));
-            CurrentMap.Instance.SetDoor(direction, "Open");
+            CurrentMap.Instance.SetDoor(direction, "Breached");
         }
     }
 }

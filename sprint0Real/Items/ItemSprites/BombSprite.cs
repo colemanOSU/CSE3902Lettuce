@@ -107,5 +107,10 @@ namespace sprint0Real.Items.ItemSprites
                 }
             }
         }
+
+        public bool IsDetonated()
+        {
+            return (_frameCount > 1);
+        }
     }
 }
