@@ -1,19 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0Real.EnemyStuff;
 using sprint0Real.Interfaces;
+using sprint0Real.Levels;
 
 namespace sprint0Real.NPCStuff
 {
-    public class OldManSprite : IGameObject
+    public class OldManSprite : INPC
     {
         private Texture2D sprites;
-        private Vector2 location;
+        public Vector2 location { get; set; }
+        private int FPS = 6;
+        private int health = 10;
+
+        private float damageTimer = 0f;
+        private float damageDelay = 1f;
+        private bool damageFlag = false;
+
+        private float attackTimer = 0f;
+        private float attackDelay = 3f;
+        private bool attackFlag = false;
         public OldManSprite(Vector2 location)
         {
             this.location = location;
@@ -28,9 +40,70 @@ namespace sprint0Real.NPCStuff
 
             spriteBatch.Draw(sprites, destinationRectangle, sourceRectangle, Color.White);
         }
-        public void Update(GameTime gametime)
+        public void Update(GameTime gameTime)
         {
-            // Doesn't update
+            // Check whether to attack
+            if (attackFlag)
+            {
+                attackTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                if (attackTimer >= attackDelay)
+                {
+                    attackTimer = 0f;
+                    SignalAttack();
+                }
+            }
+
+            // Check if recently took damage
+            if (damageFlag)
+            {
+                damageTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                if (damageTimer >= damageDelay)
+                {
+                    damageTimer = 0f;
+                    damageFlag = false;
+                }
+            }
+        }
+
+        private void SignalAttack()
+        {
+            foreach(FireSprite fire in CurrentMap.Instance.ObjectList().OfType<FireSprite>())
+            {
+                fire.Attack();
+            }
+        }
+
+        private void SignalDespawn()
+        {
+            foreach (FireSprite fire in CurrentMap.Instance.ObjectList().OfType<FireSprite>())
+            {
+                CurrentMap.Instance.DeStage(fire);
+            }
+        }
+
+        public void TakeDamage(int damage)
+        {
+            if (!damageFlag)
+            {
+                health -= damage;
+                damageFlag = true;
+            }
+
+            if (health <= 5)
+            {
+                attackFlag = true;
+            }
+
+            if (health <= 0)
+            {
+                SignalDespawn();
+                CurrentMap.Instance.DeStage(this);
+            }
+        }
+
+        public void ChangeDirection()
+        {
+            throw new NotImplementedException();
         }
 
         public Rectangle Rect

@@ -9,7 +9,7 @@ using sprint0Real.Levels;
 
 namespace sprint0Real.CollisionBoxes
 {
-    public class SealedTransitionBox : ILockedTransitionBox, IUpdates, ITouchesLink
+    public class SealedTransitionBox : ILockedTransitionBox, IUpdates
     {
 
         public Rectangle Rect { get; }

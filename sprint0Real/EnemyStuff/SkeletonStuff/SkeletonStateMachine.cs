@@ -36,7 +36,7 @@ namespace sprint0Real.EnemyStuff.SkeletonStuff
                     EnemyDie.Play();
                     DieSoundPlayed = true;
                 }
-                DropManager.Instance.OnDeath(mySkeleton.location);
+                mySkeleton.StageItem();
                 CurrentMap.Instance.DeStage(mySkeleton);
                 death = new Death(mySkeleton.location);
                 CurrentMap.Instance.Stage(death);

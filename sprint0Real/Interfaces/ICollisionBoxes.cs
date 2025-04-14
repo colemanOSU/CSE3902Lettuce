@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 
 namespace sprint0Real.Interfaces
 {
-    public interface ICollisionBoxes: IObject
+    public interface ICollisionBoxes: IObject, ITouchesLink
     { 
     }
 }

@@ -29,7 +29,7 @@ namespace sprint0Real.EnemyStuff.HandStuff
             {
                 jukeTimer = 0;
                 jukeDelay = (float)(random.NextDouble() * 1);
-                myHand.ChangeDirection();
+                //myHand.ChangeDirection();
             }
         }
 

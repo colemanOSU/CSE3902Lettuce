@@ -52,7 +52,7 @@ namespace sprint0Real.EnemyStuff.DragonStuff
             {
                 sourceRectangle = new Rectangle(354, 226, 24, 32);
                 destinationRectangle = new Rectangle((int)location.X,
-                (int)location.Y, 48, 64);
+                (int)location.Y, 24 * Game1.RENDERSCALE, 32 * Game1.RENDERSCALE);
             }
 
             spriteBatch.Draw(sprites, destinationRectangle, sourceRectangle, Color.White);

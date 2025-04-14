@@ -76,6 +76,11 @@ namespace sprint0Real.EnemyStuff.RedGoriya
             mySprite.Draw(spriteBatch, location);
         }
 
+        public void FinishDamage()
+        {
+            stateMachine.FinishDamage();
+        }
+
         public void Update(GameTime time)
         {
             // Moves onto the next frame in animation

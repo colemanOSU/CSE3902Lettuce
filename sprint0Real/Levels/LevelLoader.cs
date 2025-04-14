@@ -45,7 +45,17 @@ namespace sprint0Real.Levels
                     Debug.WriteLine(catalogue.ReturnObjectType(Object.GetAttribute("Type")));
                     int x = Int32.Parse(Object.GetAttribute("x")) + 96;
                     int y = Int32.Parse(Object.GetAttribute("y")) + 186 + 96;
-                    newMap.Stage((IGameObject)Activator.CreateInstance(type, new Vector2(x, y)));
+
+                    if (Object.HasAttribute("Item"))
+                    {
+                        Type itemType = Type.GetType(catalogue.ReturnObjectType(Object.GetAttribute("Item")));
+                        ITreasureItems item = (ITreasureItems)Activator.CreateInstance(itemType, new Vector2(x, y));
+                        newMap.Stage((IGameObject)Activator.CreateInstance(type, new Vector2(x, y), item));
+                    }
+                    else
+                    {
+                        newMap.Stage((IGameObject)Activator.CreateInstance(type, new Vector2(x, y)));
+                    }
                 }
                 foreach(XmlElement MapHitBox in xml.SelectNodes("//MapHitBoxes/HitBox"))
                 {

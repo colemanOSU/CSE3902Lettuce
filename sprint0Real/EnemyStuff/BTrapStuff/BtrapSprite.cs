@@ -22,9 +22,9 @@ namespace sprint0Real.EnemyStuff.BTrapStuff
         {
             Rectangle sourceRectangle;
             Rectangle destinationRectangle;
-            sourceRectangle = new Rectangle(164, 59, 15, 15);
+            sourceRectangle = new Rectangle(164, 59, 16, 16);
             destinationRectangle = new Rectangle((int)location.X,
-            (int)location.Y, 30, 30);
+            (int)location.Y, 16 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
 
             spriteBatch.Draw(sprites, destinationRectangle, sourceRectangle, Color.White);
         }

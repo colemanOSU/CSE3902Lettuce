@@ -8,7 +8,7 @@ using sprint0Real.Interfaces;
 
 namespace sprint0Real.CollisionBoxes
 {
-    public class RoomTransitionBox : ITransitionBox, ITouchesLink
+    public class RoomTransitionBox : ITransitionBox
     {
         public Rectangle Rect { get; }
         public String direction { get; }

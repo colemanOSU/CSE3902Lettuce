@@ -8,15 +8,15 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0Real.Interfaces;
 
-namespace sprint0Real.EnemyStuff.RedGoriyaStuff
+namespace sprint0Real.EnemyStuff.RedGoriyaStuff.GoriyaSprites.DamagedSpries
 {
-    public class GoriyaRightDamaged : ISprite2
+    public class GoriyaLeftDamaged : ISprite2
     {
         private Texture2D sprites;
         private int currentFrame;
         private int totalFrames;
 
-        public GoriyaRightDamaged(Texture2D spriteSheet, SpriteBatch spriteBatch)
+        public GoriyaLeftDamaged(Texture2D spriteSheet, SpriteBatch spriteBatch)
         {
             sprites = spriteSheet;
             totalFrames = 8;
@@ -29,49 +29,49 @@ namespace sprint0Real.EnemyStuff.RedGoriyaStuff
 
             if (currentFrame == 0)
             {
-                sourceRectangle = new Rectangle(5, 98, 15, 15);
+                sourceRectangle = new Rectangle(325, 28, 15, 15);
                 destinationRectangle = new Rectangle((int)location.X,
                 (int)location.Y, 16 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
             }
             else if (currentFrame == 1)
             {
-                sourceRectangle = new Rectangle(44, 95, 15, 15);
+                sourceRectangle = new Rectangle(399, 28, 15, 15);
                 destinationRectangle = new Rectangle((int)location.X,
                 (int)location.Y, 16 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
             }
             else if (currentFrame == 2)
             {
-                sourceRectangle = new Rectangle(38, 78, 15, 15);
+                sourceRectangle = new Rectangle(256, 11, 15, 15);
                 destinationRectangle = new Rectangle((int)location.X,
                 (int)location.Y, 16 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
             }
             else if (currentFrame == 3)
             {
-                sourceRectangle = new Rectangle(1, 78, 15, 15);
+                sourceRectangle = new Rectangle(257, 28, 15, 15);
                 destinationRectangle = new Rectangle((int)location.X,
                 (int)location.Y, 16 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
             }
             else if (currentFrame == 4)
             {
-                sourceRectangle = new Rectangle(24, 27, 15, 15);
+                sourceRectangle = new Rectangle(343, 28, 15, 15);
                 destinationRectangle = new Rectangle((int)location.X,
                 (int)location.Y, 16 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
             }
             else if (currentFrame == 5)
             {
-                sourceRectangle = new Rectangle(62, 95, 15, 15);
+                sourceRectangle = new Rectangle(417, 28, 15, 15);
                 destinationRectangle = new Rectangle((int)location.X,
                 (int)location.Y, 16 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
-            }   
+            }
             else if (currentFrame == 6)
             {
-                sourceRectangle = new Rectangle(58, 78, 15, 15);
+                sourceRectangle = new Rectangle(273, 11, 15, 15);
                 destinationRectangle = new Rectangle((int)location.X,
                 (int)location.Y, 16 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
             }
             else
             {
-                sourceRectangle = new Rectangle(20, 78, 15, 15);
+                sourceRectangle = new Rectangle(275, 28, 15, 15);
                 destinationRectangle = new Rectangle((int)location.X,
                 (int)location.Y, 16 * Game1.RENDERSCALE, 16 * Game1.RENDERSCALE);
             }
