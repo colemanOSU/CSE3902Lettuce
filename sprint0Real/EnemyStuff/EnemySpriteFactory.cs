@@ -19,6 +19,8 @@ using sprint0Real.EnemyStuff.DeathSprites;
 using sprint0Real.EnemyStuff.DinoStuff;
 using sprint0Real.EnemyStuff.DinoStuff.DinoWalkingSprites;
 using sprint0Real.EnemyStuff.DinoStuff.DinoHurtSprites;
+using sprint0Real.EnemyStuff.RedGoriyaStuff.GoriyaSprites.MovingSprites;
+using sprint0Real.EnemyStuff.RedGoriyaStuff.GoriyaSprites.DamagedSpries;
 
 namespace sprint0Real.EnemyStuff
 {
@@ -127,7 +129,7 @@ namespace sprint0Real.EnemyStuff
         {
             return new SlimeSprite(enemySpriteSheet, myGame._spriteBatch);
         }
-        public ISprite2 CreateHandSprite()
+        public HandSprite CreateHandSprite()
         {
             return new HandSprite(enemySpriteSheet, myGame._spriteBatch);
         }

@@ -122,6 +122,21 @@ namespace sprint0Real.EnemyStuff.GoriyaStuff
         public void FinishDamage()
         {
             DamagedFlag = false;
+            switch (currentState)
+            {
+                case GoriyaState.Right:
+                    myGoriya.mySprite = EnemySpriteFactory.Instance.CreateGoriyaRightSprite();
+                    break;
+                case GoriyaState.Left:
+                    myGoriya.mySprite = EnemySpriteFactory.Instance.CreateGoriyaLeftSprite();
+                    break;
+                case GoriyaState.Up:
+                    myGoriya.mySprite = EnemySpriteFactory.Instance.CreateGoriyaUpSprite();
+                    break;
+                case GoriyaState.Down:
+                    myGoriya.mySprite = EnemySpriteFactory.Instance.CreateGoriyaDownSprite();
+                    break;
+            }
         }
 
         public void Update()

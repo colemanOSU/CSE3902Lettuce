@@ -6,18 +6,19 @@ using sprint0Real.Levels;
 
 namespace sprint0Real.EnemyStuff.HandStuff
 {
-    public class Hand : IEnemy
+    public class Hand : IGameObject
     {
         private HandStateMachine stateMachine;
         private HandBehavior behavior;
 
-        public ISprite2 mySprite;
+        public HandSprite mySprite;
         private Vector2 Location;
-        public int speed = 2;
+        public Vector2 speed;
 
         private int FPS = 6;
         private float timer = 0f;
         private int health = 1;
+        private bool YGreaterThanHalf;
 
         public Hand(Vector2 start)
         {
@@ -25,23 +26,12 @@ namespace sprint0Real.EnemyStuff.HandStuff
             stateMachine = new HandStateMachine(this);
             behavior = new HandBehavior(this);
             mySprite = EnemySpriteFactory.Instance.CreateHandSprite();
+            YGreaterThanHalf = location.Y > Game1.SCREENHEIGHT / 2;
         }
 
-        public void ChangeDirection()
-        {
-            stateMachine.ChangeDirection();
-        }
         public void TakeDamage(int damage)
         {
             stateMachine.TakeDamage(damage);
-        }
-        public void hitLink()
-        {
-            Despawn();
-        }
-        public void Despawn()
-        {
-            CurrentMap.Instance.DeStage(this);
         }
 
         public void Update(GameTime gameTime)
