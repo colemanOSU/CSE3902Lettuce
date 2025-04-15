@@ -20,6 +20,8 @@ using sprint0Real.Commands;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
 using sprint0Real.TreasureItemStuff;
+using sprint0Real.NameRegistration;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace sprint0Real
 {
@@ -64,6 +66,9 @@ namespace sprint0Real
         public CollisionHandler collisionHandler;
 
         public ItemStateMachine itemStateMachine;
+
+        public NameRegistrationScene NameScene;
+        public string CurrentPlayerName { get; set; }
 
         public SoundEffect LinkScream;
 
@@ -135,6 +140,7 @@ namespace sprint0Real
             collisionHandler = new CollisionHandler(this);
             collisionDetection = new CollisionDetection(this, collisionHandler);
             DropManager.Init(Link);
+            SaveManager.Load();
 
 
             base.Initialize();
@@ -153,6 +159,8 @@ namespace sprint0Real
             //Load Sprite Sheets
             linkSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - Link");
             UISheet = Content.Load<Texture2D>("NES - The Legend of Zelda - HUD & Pause Screen");
+            Texture2D fileSelectSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - File Select");
+            NameScene = new NameRegistrationScene(this, fileSelectSheet, font1);
 
             Dungeon = Content.Load<Song>("04 - Dungeon");
             GameOverMusic = Content.Load<Song>("07 - Game Over");
@@ -207,6 +215,13 @@ namespace sprint0Real
                     foreach (IController controller in controllerList)
                     {
                         //sprite = controller.Update(sprite);
+                        controller.Update(gameTime);
+
+                    }
+                    break;
+                case GameStates.NameRegistration:
+                    foreach (IController controller in controllerList)
+                    {
                         controller.Update(gameTime);
 
                     }
@@ -302,6 +317,10 @@ namespace sprint0Real
                     break;
                 case GameStates.GameOver:
                     GameOverScreen.Draw(_spriteBatch);
+                    break;
+                case GameStates.NameRegistration:
+                    NameScene.Draw(_spriteBatch);
+                    NameScene.Update(gameTime);
                     break;
                 case GameStates.Pause:
                     //We still want things to be drawn, just not updated

@@ -1,0 +1,69 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+using System.Text.Json;
+
+namespace sprint0Real.NameRegistration
+{
+    public class SaveManager
+    {
+        private static string savePath = "saves.json";
+
+        public static Dictionary<string, SaveFile> AllSaves = new();
+        public static List<string> RecentNames = new(); //Most recent 3
+
+        public static void Load()
+        {
+            if (File.Exists(savePath))
+            {
+                var json = File.ReadAllText(savePath);
+                var wrapper = JsonSerializer.Deserialize<SaveWrapper>(json) ?? new SaveWrapper();
+                AllSaves = wrapper.AllSaves ?? new();
+                RecentNames = wrapper.RecentNames ?? new();
+            }
+        }
+
+        public static void Save()
+        {
+            var wrapper = new SaveWrapper { AllSaves = AllSaves, RecentNames = RecentNames };
+            var json = JsonSerializer.Serialize(wrapper, new JsonSerializerOptions { WriteIndented = true });
+            File.WriteAllText(savePath, json);
+        }
+
+        public static void UsePlayer(string name)
+        {
+            if (!AllSaves.ContainsKey(name))
+            {
+                AllSaves[name] = new SaveFile(name);
+            }
+
+            AllSaves[name].LastUsed = DateTime.Now;
+
+            //Move to front of recent list
+            RecentNames.Remove(name);
+            RecentNames.Insert(0, name);
+
+            //Trim to 3
+            if (RecentNames.Count > 3)
+            {
+                RecentNames.RemoveAt(3);
+            }
+
+            Save();
+        }
+
+        public static SaveFile GetSave(string name)
+        {
+            return AllSaves.ContainsKey(name) ? AllSaves[name] : null;
+        }
+
+        private class SaveWrapper
+        {
+            public Dictionary<string, SaveFile> AllSaves { get; set; }
+            public List<string> RecentNames { get; set; }
+        }
+    }
+}
