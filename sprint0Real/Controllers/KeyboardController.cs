@@ -19,6 +19,7 @@ namespace sprint0Real.Controllers
         private Dictionary<Keys, ICommand> MenuCommands;
         private Dictionary<Keys, ICommand> PauseCommands;
         private Dictionary<Keys, ICommand> GameOverCommands;
+        private Dictionary<Keys, ICommand> NameRegistrationCommands;
 
         private Dictionary<Keys, bool> keyPreviouslyPressed;
 
@@ -105,6 +106,21 @@ namespace sprint0Real.Controllers
 
             GameOverCommands.Add(Keys.Q, new QuitCommand(_game));
 
+            NameRegistrationCommands = new Dictionary<Keys, ICommand>
+            {
+                { Keys.Right, new MoveNameCursorCommand(_game, 1, 0) },
+                { Keys.Left, new MoveNameCursorCommand(_game, -1, 0) },
+                { Keys.Up, new MoveNameCursorCommand(_game, 0, -1) },
+                { Keys.Down, new MoveNameCursorCommand(_game, 0, 1) },
+                { Keys.Enter, new SelectLetterCommand(_game) },
+                { Keys.Back, new BackspaceLetterCommand(_game) },
+                { Keys.Tab, new SwitchToOptionsCommand(_game) }
+            };
+            foreach (Keys key in NameRegistrationCommands.Keys)
+            {
+                keyPreviouslyPressed[key] = false;
+            }
+
             foreach (Keys key in commands.Keys)
             {
                 keyPreviouslyPressed[key] = false;
@@ -140,6 +156,21 @@ namespace sprint0Real.Controllers
                         command.Value.Execute();
                     }
                     //update state
+                    keyPreviouslyPressed[key] = isKeyDown;
+                }
+            }
+            else if (_game.currentGameState == GameState.GameStates.NameRegistration)
+            {
+                foreach (var command in NameRegistrationCommands)
+                {
+                    Keys key = command.Key;
+                    bool isKeyDown = KeyboardState.IsKeyDown(key);
+
+                    if (isKeyDown && !keyPreviouslyPressed[key])
+                    {
+                        command.Value.Execute();
+                    }
+
                     keyPreviouslyPressed[key] = isKeyDown;
                 }
             }
