@@ -10,6 +10,7 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using sprint0Real.GameState;
 using System.Xml.Linq;
+using sprint0Real.NameRegistrationandAchievements;
 
 namespace sprint0Real.NameRegistration
 {
@@ -149,8 +150,6 @@ namespace sprint0Real.NameRegistration
             {
                 if (options[optionIndex] == "REGISTER")
                 {
-                    Debug.WriteLine("Name saved: " + playerName.ToString());
-                    //TODO file saved names
 
                     string finalName = playerName.ToString();
 
@@ -204,18 +203,18 @@ namespace sprint0Real.NameRegistration
             );
 
             //Draw entered name
-            Vector2 namePos = new Vector2(64, 45) * scale;
-
-            for(int i = 0; i < playerName.Length; i++)
-            {
-                char c = playerName[i];
-                if (charMap.ContainsKey(c))
-                {
-                    Rectangle src = charMap[c];
-                    Vector2 dest = namePos + new Vector2(i * charSpacing, 0) * scale;
-                    spriteBatch.Draw(spriteSheet, new Rectangle((int)dest.X, (int)dest.Y, (int)(src.Width * scale), (int)(src.Height * scale)), src, Color.White);
-                }
-            }
+            Vector2 namePos = new Vector2(40, 45) * scale;
+            spriteBatch.DrawString(
+                font,
+                playerName,
+                namePos,
+                Color.Blue,
+                0f,
+                Vector2.Zero,
+                3f,
+                SpriteEffects.None,
+                0f
+            );
 
             //Draw character grid
             for (int y = 0; y < 4; y++)

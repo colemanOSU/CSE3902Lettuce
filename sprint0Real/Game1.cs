@@ -22,6 +22,7 @@ using Microsoft.Xna.Framework.Media;
 using sprint0Real.TreasureItemStuff;
 using sprint0Real.NameRegistration;
 using static System.Net.Mime.MediaTypeNames;
+using sprint0Real.NameRegistrationandAchievements;
 
 namespace sprint0Real
 {
@@ -68,7 +69,9 @@ namespace sprint0Real
         public ItemStateMachine itemStateMachine;
 
         public NameRegistrationScene NameScene;
+        private List<AchievementPopup> activePopups = new();
         public string CurrentPlayerName { get; set; }
+        public static Game1 Instance { get; private set; }
 
         public SoundEffect LinkScream;
 
@@ -108,6 +111,7 @@ namespace sprint0Real
         public bool isPaused;
         public Game1()
         {
+            Instance = this;
             _graphics = new GraphicsDeviceManager(this);
             
             //Code to change resolution of game.
@@ -194,6 +198,13 @@ namespace sprint0Real
 
         protected override void Update(GameTime gameTime)
         {
+            for (int i = activePopups.Count - 1; i >= 0; i--)
+            {
+                activePopups[i].Update(gameTime);
+                if (!activePopups[i].IsVisible)
+                    activePopups.RemoveAt(i);
+            }
+
             switch (currentGameState)
             {
                 case GameStates.TitleScreen:
@@ -225,6 +236,7 @@ namespace sprint0Real
                         controller.Update(gameTime);
 
                     }
+                    NameScene.Update(gameTime);
                     break;
                 case GameStates.Menu:
                     foreach (IController controller in controllerList)
@@ -320,7 +332,6 @@ namespace sprint0Real
                     break;
                 case GameStates.NameRegistration:
                     NameScene.Draw(_spriteBatch);
-                    NameScene.Update(gameTime);
                     break;
                 case GameStates.Pause:
                     //We still want things to be drawn, just not updated
@@ -394,6 +405,17 @@ namespace sprint0Real
                     _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, null);
                     CurrentMap.Instance.Draw(_spriteBatch);
 
+                    //first achievement
+                    if (SaveManager.GetSave(CurrentPlayerName).Achievements.Count == 0)
+                    {
+                        AchievementManager.Unlock(CurrentPlayerName, "FirstPlay");
+                    }
+
+                    foreach (var popup in activePopups)
+                    {
+                        popup.Draw(_spriteBatch, font1);
+                    }
+
                     if (itemSprite != null)
                     {
                         itemSprite.Draw(_spriteBatch);
@@ -441,7 +463,10 @@ namespace sprint0Real
             
 
         }
-
+        public void ShowAchievementPopup(string achievementId)
+        {
+            activePopups.Add(new AchievementPopup(achievementId));
+        }
         public void MuteMusic()
         {
             MediaPlayer.Stop();
