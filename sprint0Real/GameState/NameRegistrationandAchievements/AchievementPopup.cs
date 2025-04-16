@@ -14,7 +14,7 @@ namespace sprint0Real.GameState.NameRegistrationandAchievements
         private float timer;
         private const float displayTime = 4.5f;
         private Vector2 position;
-        private float alpha = 0f;
+        private float fade = 0f;
 
         public bool IsVisible => timer < displayTime;
 
@@ -31,11 +31,11 @@ namespace sprint0Real.GameState.NameRegistrationandAchievements
 
             // Fade in first 0.5s, fade out last 0.5s
             if (timer < 0.5f)
-                alpha = timer / 0.5f;
+                fade = timer / 0.5f;
             else if (timer > displayTime - 0.5f)
-                alpha = (displayTime - timer) / 0.5f;
+                fade = (displayTime - timer) / 0.5f;
             else
-                alpha = 1f;
+                fade = 1f;
         }
 
         public void Draw(SpriteBatch spriteBatch, SpriteFont font)
@@ -47,8 +47,8 @@ namespace sprint0Real.GameState.NameRegistrationandAchievements
 
             Texture2D rect = new Texture2D(spriteBatch.GraphicsDevice, 1, 1);
             rect.SetData(new[] { Color.Black * 0.7f });
-            spriteBatch.Draw(rect, new Rectangle((int)drawPos.X - 10, (int)drawPos.Y - 5, (int)size.X + 20, (int)size.Y + 10), Color.White * alpha);
-            spriteBatch.DrawString(font, message, drawPos, Color.White * alpha);
+            spriteBatch.Draw(rect, new Rectangle((int)drawPos.X - 10, (int)drawPos.Y - 5, (int)size.X + 20, (int)size.Y + 10), Color.White * fade);
+            spriteBatch.DrawString(font, message, drawPos, Color.White * fade);
         }
     }
 }
