@@ -16,6 +16,7 @@ CONTROLS:
 	R: Reset Program
 	M: Pull up/down Menu
 	B: Use selected inventory item
+	H: Unleash your power (may only be used horizontally)
 	ENTER: Start Game from title screen
 	ClICK: Start Game from title screen
 

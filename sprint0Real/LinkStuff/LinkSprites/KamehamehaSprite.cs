@@ -48,8 +48,10 @@ namespace sprint0Real.LinkStuff.LinkSprites
         private Rectangle KameThreeFrameFourSource = new(155 + 34 + 34, 219, 16, 16);
 
         private bool BeamCreated;
+        private int Facing;
+        private SpriteEffects FlipEffect;
 
-        public KamehamehaSprite(Texture2D texture, Game1 game)
+        public KamehamehaSprite(Texture2D texture, Game1 game, Link.Direction facing)
         {
             _texture = texture;
             myGame = game;
@@ -62,16 +64,24 @@ namespace sprint0Real.LinkStuff.LinkSprites
             FrameCounter = 0;
 
             BeamCreated = false;
-
+            if (facing == Link.Direction.Left)
+            {
+                FlipEffect = SpriteEffects.FlipHorizontally;
+                Facing = -1;
+            } else
+            {
+                FlipEffect = SpriteEffects.None;
+                Facing = 1;
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             //Draw Link
-            spriteBatch.Draw(_texture, DestinationRectangle, CurrentFrameSource, myGame.Link.GetLinkColor());
+            spriteBatch.Draw(_texture, DestinationRectangle, CurrentFrameSource, myGame.Link.GetLinkColor(), 0, Vector2.Zero, FlipEffect, 0);
 
             //Draw Ball
-            spriteBatch.Draw(_texture, DestinationRectangle, CurrentKameSource, Color.White);
+            spriteBatch.Draw(_texture, DestinationRectangle, CurrentKameSource, Color.White, 0, Vector2.Zero, FlipEffect, 0);
 
             if (Beam != null)
             {
@@ -158,7 +168,7 @@ namespace sprint0Real.LinkStuff.LinkSprites
                 CurrentKameSource = new(140, 220, 1, 1);
                 if (!BeamCreated)
                 {
-                    Beam = new BeamSprite(_texture, myGame);
+                    Beam = new BeamSprite(_texture, myGame, Facing);
                     CurrentMap.Instance.ObjectList().Add(Beam);
                     BeamCreated = true;
                 }
@@ -166,14 +176,14 @@ namespace sprint0Real.LinkStuff.LinkSprites
             }
             else
             {
-                myGame.Link.SetCanAttack(true);
-                myGame.Link.SetCanMove(true);
-                myGame.linkSprite = new FaceRightSprite(_texture, myGame);
-        
                 CurrentMap.Instance.DeStage(Beam);
                 MediaPlayer.Resume();
                 Beam = null;
-
+                
+                myGame.Link.SetCanAttack(true);
+                myGame.Link.SetCanMove(true);
+                if (Facing == 1) { myGame.linkSprite = new FaceRightSprite(_texture, myGame); }
+                else { myGame.linkSprite = new FaceLeftSprite(_texture, myGame); }
             }
 
             if (Beam != null)
