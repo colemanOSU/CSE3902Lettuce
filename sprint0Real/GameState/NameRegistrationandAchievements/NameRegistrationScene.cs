@@ -10,9 +10,9 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using sprint0Real.GameState;
 using System.Xml.Linq;
-using sprint0Real.NameRegistrationandAchievements;
+using sprint0Real.GameState.NameRegistrationandAchievements;
 
-namespace sprint0Real.NameRegistration
+namespace sprint0Real.GameState.NameRegistrationandAchievements
 {
     public class NameRegistrationScene
     {
@@ -42,7 +42,7 @@ namespace sprint0Real.NameRegistration
         private float scale => Game1.RENDERSCALE;
 
 
-        private string[,] charGrid = new string[4,11]
+        private string[,] charGrid = new string[4, 11]
         {
             { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"},
             { "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V" },
@@ -114,9 +114,9 @@ namespace sprint0Real.NameRegistration
 
         public void MoveCursor(int dx, int dy)
         {
-            if(optionIndex == -1)
+            if (optionIndex == -1)
             {
-                if(dy == 1 && cursorY == 3)
+                if (dy == 1 && cursorY == 3)
                 {
                     optionIndex = 0;
                 }
@@ -129,7 +129,7 @@ namespace sprint0Real.NameRegistration
             }
             else
             {
-                if(dy == -1)
+                if (dy == -1)
                 {
                     optionIndex = -1; //back up to grid
                 }
@@ -142,11 +142,12 @@ namespace sprint0Real.NameRegistration
 
         public void SelectCurrentLetter()
         {
-            if(optionIndex == -1 && playerName.Length < maxNameLength)
+            if (optionIndex == -1 && playerName.Length < maxNameLength)
             {
                 char selected = charGrid[cursorY, cursorX][0];
                 playerName.Append(selected);
-            }else if (optionIndex != -1)
+            }
+            else if (optionIndex != -1)
             {
                 if (options[optionIndex] == "REGISTER")
                 {
@@ -181,15 +182,14 @@ namespace sprint0Real.NameRegistration
 
         public void ToggleOptionMode()
         {
-            optionIndex = (optionIndex == -1) ? 0 : -1;
+            optionIndex = optionIndex == -1 ? 0 : -1;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Begin();
 
             //Draw title
-            spriteBatch.Draw(spriteSheet,new Rectangle((int)titleDest.X, (int)titleDest.Y, (int)(titleSrc.Width * scale), (int)(titleSrc.Height * scale)), titleSrc, Color.White);
+            spriteBatch.Draw(spriteSheet, new Rectangle(titleDest.X, titleDest.Y, (int)(titleSrc.Width * scale), (int)(titleSrc.Height * scale)), titleSrc, Color.White);
             spriteBatch.DrawString(
                 font,
                 "Select Recent Name or Press TAB to Create New",
@@ -247,7 +247,7 @@ namespace sprint0Real.NameRegistration
                 string name = SaveManager.RecentNames[i];
                 Vector2 pos = recentStart + new Vector2(0, i * recentSpacing);
 
-                Color color = (currentMode == RegistrationMode.SelectingRecent && i == recentNameIndex)
+                Color color = currentMode == RegistrationMode.SelectingRecent && i == recentNameIndex
                     ? Color.Yellow
                     : Color.White;
 
@@ -268,7 +268,7 @@ namespace sprint0Real.NameRegistration
             for (int i = 0; i < options.Length; i++)
             {
                 Vector2 pos = optionBasePos + new Vector2(i * 130, 0) * scale; //spacing between options
-                Color color = (optionIndex == i) ? Color.Yellow : Color.White;
+                Color color = optionIndex == i ? Color.Yellow : Color.White;
 
                 spriteBatch.DrawString(
                     font,
@@ -283,7 +283,6 @@ namespace sprint0Real.NameRegistration
                 );
             }
 
-            spriteBatch.End();
         }
         private bool Pressed(Keys key)
         {
@@ -332,14 +331,15 @@ namespace sprint0Real.NameRegistration
         }
         public void ChangePlayerChoice()
         {
-            if(currentMode == RegistrationMode.SelectingRecent)
+            if (currentMode == RegistrationMode.SelectingRecent)
             {
                 currentMode = RegistrationMode.TypingNew;
                 cursorX = 0;
                 cursorY = 0;
                 optionIndex = -1;
                 playerName.Clear();
-            }else if(currentMode == RegistrationMode.TypingNew)
+            }
+            else if (currentMode == RegistrationMode.TypingNew)
             {
                 currentMode = RegistrationMode.SelectingRecent;
             }
