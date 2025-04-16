@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using sprint0Real.GameState.NameRegistrationandAchievements;
 using sprint0Real.Interfaces;
-using sprint0Real.NameRegistration;
 
 namespace sprint0Real.Commands.KeyboardCommands
 {
@@ -22,11 +22,11 @@ namespace sprint0Real.Commands.KeyboardCommands
 
         public void Execute()
         {
-            if(_game.NameScene.currentMode == NameRegistration.NameRegistrationScene.RegistrationMode.TypingNew)
+            if(_game.NameScene.currentMode == NameRegistrationScene.RegistrationMode.TypingNew)
             {
                 _game.NameScene.MoveCursor(deltaX, deltaY);
             }
-            else if (_game.NameScene.currentMode == NameRegistration.NameRegistrationScene.RegistrationMode.SelectingRecent)
+            else if (_game.NameScene.currentMode == NameRegistrationScene.RegistrationMode.SelectingRecent)
             {
                 _game.NameScene.recentNameIndex = (_game.NameScene.recentNameIndex + deltaY) % SaveManager.RecentNames.Count;
             }

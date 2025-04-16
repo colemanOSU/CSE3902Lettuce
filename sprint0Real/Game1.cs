@@ -20,9 +20,7 @@ using sprint0Real.Commands;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
 using sprint0Real.TreasureItemStuff;
-using sprint0Real.NameRegistration;
-using static System.Net.Mime.MediaTypeNames;
-using sprint0Real.NameRegistrationandAchievements;
+using sprint0Real.GameState.NameRegistrationandAchievements;
 
 namespace sprint0Real
 {
@@ -70,6 +68,7 @@ namespace sprint0Real
 
         public NameRegistrationScene NameScene;
         private List<AchievementPopup> activePopups = new();
+        private AchievementScreen achievementScreen;
         public string CurrentPlayerName { get; set; }
         public static Game1 Instance { get; private set; }
 
@@ -165,6 +164,7 @@ namespace sprint0Real
             UISheet = Content.Load<Texture2D>("NES - The Legend of Zelda - HUD & Pause Screen");
             Texture2D fileSelectSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - File Select");
             NameScene = new NameRegistrationScene(this, fileSelectSheet, font1);
+            achievementScreen = new AchievementScreen(this, font1);
 
             Dungeon = Content.Load<Song>("04 - Dungeon");
             GameOverMusic = Content.Load<Song>("07 - Game Over");
@@ -222,6 +222,14 @@ namespace sprint0Real
 
                     }
                     break;
+                case GameStates.AchievementScreen:
+                    foreach (IController controller in controllerList)
+                    {
+                        controller.Update(gameTime);
+
+                    }
+                    achievementScreen.Update(gameTime);
+                    break;
                 case GameStates.Pause:
                     foreach (IController controller in controllerList)
                     {
@@ -260,6 +268,11 @@ namespace sprint0Real
                     break;
 
                 case GameStates.GamePlay:
+
+                    if (!AchievementManager.HasAchievement(CurrentPlayerName, "First Time Playing!"))
+                    {
+                        AchievementManager.Unlock("First Time Playing!");
+                    }
 
                     if (MediaPlayer.Queue.ActiveSong != Dungeon)
                     {
@@ -331,7 +344,9 @@ namespace sprint0Real
                     GameOverScreen.Draw(_spriteBatch);
                     break;
                 case GameStates.NameRegistration:
+                    _spriteBatch.Begin();
                     NameScene.Draw(_spriteBatch);
+                    _spriteBatch.End();
                     break;
                 case GameStates.Pause:
                     //We still want things to be drawn, just not updated
@@ -346,6 +361,11 @@ namespace sprint0Real
 
                     PauseUISprite.Draw(_spriteBatch);
 
+                    _spriteBatch.End();
+                    break;
+                case GameStates.AchievementScreen:
+                    _spriteBatch.Begin();
+                    achievementScreen.Draw(_spriteBatch);
                     _spriteBatch.End();
                     break;
                 case GameStates.MenuTransition:
@@ -404,12 +424,6 @@ namespace sprint0Real
                 case GameStates.GamePlay:
                     _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, null);
                     CurrentMap.Instance.Draw(_spriteBatch);
-
-                    //first achievement
-                    if (SaveManager.GetSave(CurrentPlayerName).Achievements.Count == 0)
-                    {
-                        AchievementManager.Unlock(CurrentPlayerName, "FirstPlay");
-                    }
 
                     foreach (var popup in activePopups)
                     {

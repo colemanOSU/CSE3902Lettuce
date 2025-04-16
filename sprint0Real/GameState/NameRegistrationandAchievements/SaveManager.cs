@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Text.Json;
 
-namespace sprint0Real.NameRegistration
+namespace sprint0Real.GameState.NameRegistrationandAchievements
 {
     public class SaveManager
     {

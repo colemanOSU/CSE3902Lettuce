@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
-namespace sprint0Real.NameRegistrationandAchievements
+namespace sprint0Real.GameState.NameRegistrationandAchievements
 {
     public class AchievementPopup
     {
         private string message;
         private float timer;
-        private const float displayTime = 3f;
+        private const float displayTime = 4f;
         private Vector2 position;
         private float alpha = 0f;
 
@@ -20,7 +20,7 @@ namespace sprint0Real.NameRegistrationandAchievements
 
         public AchievementPopup(string achievementName)
         {
-            message = $"Achievement Unlocked: {achievementName}";
+            message = $"Achievement Unlocked: {achievementName} (SPACE to view)";
             timer = 0f;
             position = new Vector2(Game1.SCREENWIDTH / 2f, Game1.SCREENHEIGHT - 80);
         }
