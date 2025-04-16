@@ -39,7 +39,7 @@ namespace sprint0Real.GameState.NameRegistrationandAchievements
         private Game1 game;
 
         public enum RegistrationMode { SelectingRecent, TypingNew, SelectingOption }
-        public RegistrationMode currentMode = RegistrationMode.SelectingRecent;
+        public RegistrationMode currentMode = SaveManager.RecentNames.Count > 0 ? RegistrationMode.SelectingRecent : RegistrationMode.TypingNew;
         private float scale = 3f;
 
 
@@ -321,7 +321,10 @@ namespace sprint0Real.GameState.NameRegistrationandAchievements
             }
             else if (currentMode == RegistrationMode.TypingNew)
             {
-                currentMode = RegistrationMode.SelectingRecent;
+                if (SaveManager.RecentNames.Count > 0)
+                {
+                    currentMode = RegistrationMode.SelectingRecent;
+                }
             }
         }
     }
