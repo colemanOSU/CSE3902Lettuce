@@ -91,6 +91,7 @@ namespace sprint0Real.LinkStuff.LinkSprites
 
         public void Update(GameTime gameTime, SpriteBatch spriteBatch)
         {
+            
             SpentTime += gameTime.ElapsedGameTime;
 
             if (FrameCounter >= (FRAMESPAN * 4)) FrameCounter = 0;

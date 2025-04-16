@@ -45,6 +45,8 @@ namespace sprint0Real
         public ILink Link;
         public ILinkSpriteTemp linkSprite;
 
+        private Random rand = new();
+
 
         //For menus and UIs
         public UI UISprite;
@@ -80,6 +82,11 @@ namespace sprint0Real
         public Vector2 CameraTarget;
         public bool InMenu;
         public Vector2 transitionOffset;
+
+        public Camera KameCamera;
+        public bool KameCameraAtRest;
+        public Vector2 KameCameraTarget;
+        private bool KameCameraLeft;
 
         private bool TempDying;
 
@@ -127,6 +134,7 @@ namespace sprint0Real
             //TEMP PAUSE
             isPaused = false;
             CameraTarget = new Vector2(SCREENMIDX, SCREENMIDY);
+            KameCameraTarget = new Vector2(SCREENMIDX, SCREENMIDY);
             InMenu = false;
         }
 
@@ -150,6 +158,11 @@ namespace sprint0Real
             base.Initialize();
             _camera = new Camera();
             _camera.Center = new Vector2(SCREENMIDX, SCREENMIDY);
+
+            KameCamera = new Camera();
+            KameCamera.Center = new Vector2(SCREENMIDX, SCREENMIDY);
+            KameCameraAtRest = true;
+            KameCameraLeft = true;
         }
 
         protected override void LoadContent()
@@ -408,10 +421,13 @@ namespace sprint0Real
 
                     _spriteBatch.End();
                     break;
-                case GameStates.GamePlay:
-                    _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, null);
-                    CurrentMap.Instance.Draw(_spriteBatch);
 
+                case GameStates.GamePlay:
+
+                    transform = Matrix.CreateTranslation(KameCamera.GetTopLeft().X, KameCamera.GetTopLeft().Y, 0);
+                    _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, transform);
+
+                    CurrentMap.Instance.Draw(_spriteBatch);
                     foreach (var popup in activePopups)
                     {
                         popup.Draw(_spriteBatch, font1);
@@ -424,6 +440,15 @@ namespace sprint0Real
                     }
                     linkSprite.Update(gameTime, _spriteBatch);
                     linkSprite.Draw(_spriteBatch);
+
+                    UISprite.Update(gameTime, Link);
+                    UISprite.Draw(_spriteBatch);
+
+                    _spriteBatch.End();
+
+                    //Two different _spriteBatches, as we don't want the UI to move with the camera.
+                    _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, null);
+
 
                     UISprite.Update(gameTime, Link);
                     UISprite.Draw(_spriteBatch);
@@ -471,6 +496,22 @@ namespace sprint0Real
         public void MuteMusic()
         {
             MediaPlayer.Stop();
+        }
+
+        public void CameraShake()
+        {
+            float MaxDistance = 12;
+            float KameCamSpeed = 2;
+
+            if (KameCameraAtRest)
+            {
+                float Offset = KameCameraLeft ? 0 : - MaxDistance;
+                KameCameraLeft = !KameCameraLeft;
+                
+                KameCameraTarget = new Vector2(SCREENMIDX + (float)rand.NextDouble() * MaxDistance + Offset, SCREENMIDY + (float)rand.NextDouble() * MaxDistance - MaxDistance / 2);
+                Debug.WriteLine(KameCameraTarget.ToString());
+            }
+            KameCameraAtRest = KameCamera.MoveToward(KameCameraTarget, KameCamSpeed);
         }
     }
 

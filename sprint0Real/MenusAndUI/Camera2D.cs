@@ -21,7 +21,7 @@ public class Camera
     private Vector2 _quarterScreen;
     public Vector2 GetTopLeft() => Center - _quarterScreen;
 
-    private float CamSpeed = 12;
+    private const float DEFAULTSPEED = 12;
     public Camera()
     {
         _quarterScreen = new Vector2(Game1.SCREENWIDTH / 2, Game1.SCREENHEIGHT / 2);
@@ -32,7 +32,8 @@ public class Camera
     //where MoveToward is continuously called until target is reached.
 
     //target is the center of the position you want the camera to move towards.
-    public bool MoveToward(Vector2 target)
+    //CamSpeed is an optional parameter
+    public bool MoveToward(Vector2 target, float CamSpeed = DEFAULTSPEED)
     {
         //figure out which direction to move the camera,
         //by subtracting the current location from the target's

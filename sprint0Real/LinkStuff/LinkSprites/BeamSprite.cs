@@ -61,7 +61,7 @@ namespace sprint0Real.LinkStuff.LinkSprites
 
         public void Update(GameTime gameTime)
         {
-
+            myGame.CameraShake();
             ElapsedTime = ElapsedTime.Add(gameTime.ElapsedGameTime);
             if (ElapsedTime.CompareTo(TimeSpan.FromSeconds(0.25)) > 0)
             {
@@ -75,6 +75,8 @@ namespace sprint0Real.LinkStuff.LinkSprites
             {
                 Rect = new Rectangle(StartDestination.X - 16 * Scale * (BeamLength + 2), StartDestination.Y, 16 * Scale * (BeamLength + 2), 55 * Scale);
             }
+
+         
             
         }
 
