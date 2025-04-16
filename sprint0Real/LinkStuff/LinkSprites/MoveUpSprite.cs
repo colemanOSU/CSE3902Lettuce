@@ -30,7 +30,7 @@ namespace sprint0Real.LinkStuff.LinkSprites
         public void Draw(SpriteBatch spriteBatch)
         {
             //Draws all right facing sprites flipped horizontally
-            spriteBatch.Draw(_texture, myGame.Link.GetLocation(), sourceRectangle, myGame.Link.GetLinkColor(), 0, Vector2.Zero, SpriteEffects.FlipHorizontally, 0);
+            spriteBatch.Draw(_texture, myGame.Link.GetLocation(), sourceRectangle, myGame.Link.GetLinkColor());
         }
 
         public void Update(GameTime gameTime, SpriteBatch spriteBatch)
