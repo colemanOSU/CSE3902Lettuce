@@ -35,6 +35,7 @@ namespace sprint0Real
         private SoundEffect EnemyHit;
         private SoundEffect doorUnlock;
         private SoundEffect EnemyDie;
+        private SoundEffect secretFound;
 
         public static SoundEffectFactory Instance => instance;
         private SoundEffectFactory() { }
@@ -54,8 +55,14 @@ namespace sprint0Real
             EnemyHit = content.Load<SoundEffect>("LOZ_Enemy_Hit");
             EnemyDie = content.Load<SoundEffect>("LOZ_Enemy_Die");
             doorUnlock = content.Load<SoundEffect>("LOZ_Door_Unlock");
+            secretFound = content.Load<SoundEffect>("LOZ_Secret");
+
         }
 
+        public SoundEffect getSecretSound()
+        {
+            return secretFound;
+        }
         public SoundEffect getBlockSoundEffect()
         {
             return stairs;

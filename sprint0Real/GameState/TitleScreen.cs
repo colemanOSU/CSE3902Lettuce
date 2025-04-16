@@ -75,7 +75,7 @@ namespace sprint0Real.GameState
                     if (_currentFrame >= frameCount)
                     {
                     _currentFrame = 0;
-                    MediaPlayer.Stop();
+                    //MediaPlayer.Stop();
                     return GameStates.NameRegistration;
                 }
                 }

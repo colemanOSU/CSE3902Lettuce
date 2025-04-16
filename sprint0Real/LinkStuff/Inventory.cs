@@ -100,14 +100,16 @@ namespace sprint0Real.LinkStuff
             var save = SaveManager.GetSave(Game1.Instance.CurrentPlayerName);
             if (save == null) return;
 
-            if (save.KeyCollectCount == 5)
-            {
-                AchievementManager.Unlock("Key Collector!");
-            }
-            else if(save.KeyCollectCount < 5)
+            if (save.KeyCollectCount < 5)
             {
                 save.KeyCollectCount++;
             }
+
+            if (save.KeyCollectCount >= 5)
+            {
+                AchievementManager.Unlock("Key Collector!");
+            }
+
             SaveManager.Save();
         }
 
