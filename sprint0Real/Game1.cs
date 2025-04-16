@@ -144,7 +144,7 @@ namespace sprint0Real
             collisionDetection = new CollisionDetection(this, collisionHandler);
             DropManager.Init(Link);
             SaveManager.Load();
-
+            SaveManager.UsePlayer("Test");
 
             base.Initialize();
             _camera = new Camera();

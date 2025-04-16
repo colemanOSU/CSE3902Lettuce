@@ -10,24 +10,39 @@ namespace sprint0Real.GameState.NameRegistrationandAchievements
 {
     public class SaveManager
     {
-        private static string savePath = "saves.json";
+        private static readonly string saveDirectory = Path.Combine(AppContext.BaseDirectory, "sprint0Real", "GameState", "NameRegistrationandAchievements");
+        private static readonly string savePath = Path.Combine(saveDirectory, "playerData.json");
 
         public static Dictionary<string, SaveFile> AllSaves = new();
         public static List<string> RecentNames = new(); //Most recent 3
 
         public static void Load()
         {
+            if (!Directory.Exists(saveDirectory))
+            {
+                Directory.CreateDirectory(saveDirectory);
+            }
+
             if (File.Exists(savePath))
             {
-                var json = File.ReadAllText(savePath);
+                string json = File.ReadAllText(savePath);
                 var wrapper = JsonSerializer.Deserialize<SaveWrapper>(json) ?? new SaveWrapper();
                 AllSaves = wrapper.AllSaves ?? new();
                 RecentNames = wrapper.RecentNames ?? new();
+            }
+            else
+            {
+                Save();
             }
         }
 
         public static void Save()
         {
+            if (!Directory.Exists(saveDirectory))
+            {
+                Directory.CreateDirectory(saveDirectory);
+            }
+
             var wrapper = new SaveWrapper { AllSaves = AllSaves, RecentNames = RecentNames };
             var json = JsonSerializer.Serialize(wrapper, new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(savePath, json);
@@ -37,7 +52,7 @@ namespace sprint0Real.GameState.NameRegistrationandAchievements
         {
             if (!AllSaves.ContainsKey(name))
             {
-                AllSaves[name] = new SaveFile(name);
+                AllSaves[name] = new SaveFile { Name = name};
             }
 
             AllSaves[name].LastUsed = DateTime.Now;
@@ -57,7 +72,7 @@ namespace sprint0Real.GameState.NameRegistrationandAchievements
 
         public static SaveFile GetSave(string name)
         {
-            return AllSaves.ContainsKey(name) ? AllSaves[name] : null;
+            return AllSaves.TryGetValue(name, out var save) ? save : null;
         }
 
         private class SaveWrapper
