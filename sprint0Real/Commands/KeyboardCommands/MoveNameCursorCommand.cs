@@ -28,7 +28,12 @@ namespace sprint0Real.Commands.KeyboardCommands
             }
             else if (_game.NameScene.currentMode == NameRegistrationScene.RegistrationMode.SelectingRecent)
             {
-                _game.NameScene.recentNameIndex = (_game.NameScene.recentNameIndex + deltaY) % SaveManager.RecentNames.Count;
+                int count = SaveManager.RecentNames.Count;
+                if(count == 0)
+                {
+                    return;
+                }
+                _game.NameScene.recentNameIndex = ((_game.NameScene.recentNameIndex + deltaY) % count + count) % count;
             }
         }
     }
