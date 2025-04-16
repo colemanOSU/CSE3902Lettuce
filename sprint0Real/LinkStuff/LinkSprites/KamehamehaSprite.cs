@@ -9,10 +9,11 @@ using sprint0Real.Interfaces;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Audio;
+using sprint0Real.Levels;
 
 namespace sprint0Real.LinkStuff.LinkSprites
 {
-    internal class KamehamehaSprite : ILinkSpriteTemp
+    public class KamehamehaSprite : ILinkSpriteTemp
     {
         private Texture2D _texture;
         private Game1 myGame;
@@ -21,6 +22,8 @@ namespace sprint0Real.LinkStuff.LinkSprites
         private Rectangle FrameTwoSource = new(183, 11, 16, 16);
         private Rectangle CurrentFrameSource;
         private Rectangle DestinationRectangle;
+
+        private BeamSprite Beam = null;
 
         private const int FRAMESPAN = 8;
         private int FrameCounter;
@@ -44,6 +47,8 @@ namespace sprint0Real.LinkStuff.LinkSprites
         private Rectangle KameThreeFrameThreeSource = new(155 + 34 + 34, 202, 16, 16);
         private Rectangle KameThreeFrameFourSource = new(155 + 34 + 34, 219, 16, 16);
 
+        private bool BeamCreated;
+
         public KamehamehaSprite(Texture2D texture, Game1 game)
         {
             _texture = texture;
@@ -56,6 +61,7 @@ namespace sprint0Real.LinkStuff.LinkSprites
             MediaPlayer.Pause();
             FrameCounter = 0;
 
+            BeamCreated = false;
 
         }
 
@@ -66,6 +72,11 @@ namespace sprint0Real.LinkStuff.LinkSprites
 
             //Draw Ball
             spriteBatch.Draw(_texture, DestinationRectangle, CurrentKameSource, Color.White);
+
+            if (Beam != null)
+            {
+                Beam.Draw(spriteBatch);
+            }
         }
 
         public void Update(GameTime gameTime, SpriteBatch spriteBatch)
@@ -145,15 +156,30 @@ namespace sprint0Real.LinkStuff.LinkSprites
             {
                 CurrentFrameSource = FrameTwoSource;
                 CurrentKameSource = new(140, 220, 1, 1);
+                if (!BeamCreated)
+                {
+                    Beam = new BeamSprite(_texture, myGame);
+                    CurrentMap.Instance.ObjectList().Add(Beam);
+                    BeamCreated = true;
+                }
+                
             }
             else
             {
                 myGame.Link.SetCanAttack(true);
                 myGame.Link.SetCanMove(true);
                 myGame.linkSprite = new FaceRightSprite(_texture, myGame);
+        
+                CurrentMap.Instance.DeStage(Beam);
                 MediaPlayer.Resume();
+                Beam = null;
+
             }
 
+            if (Beam != null)
+            {
+                Beam.Update(gameTime);
+            }
         }
     }
 }

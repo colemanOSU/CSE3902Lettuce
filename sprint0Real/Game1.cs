@@ -45,6 +45,7 @@ namespace sprint0Real
         public ILink Link;
         public ILinkSpriteTemp linkSprite;
 
+
         //For menus and UIs
         public UI UISprite;
         public MenuUI MenuUISprite;
