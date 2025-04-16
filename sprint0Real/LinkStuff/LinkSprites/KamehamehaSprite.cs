@@ -180,7 +180,8 @@ namespace sprint0Real.LinkStuff.LinkSprites
                 CurrentMap.Instance.DeStage(Beam);
                 MediaPlayer.Resume();
                 Beam = null;
-                
+                myGame.KameCamera.Center = new Vector2(Game1.SCREENMIDX, Game1.SCREENMIDY);
+
                 myGame.Link.SetCanAttack(true);
                 myGame.Link.SetCanMove(true);
                 if (Facing == 1) { myGame.linkSprite = new FaceRightSprite(_texture, myGame); }

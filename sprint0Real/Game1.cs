@@ -500,12 +500,12 @@ namespace sprint0Real
 
         public void CameraShake()
         {
-            float MaxDistance = 12;
+            float MaxDistance = 10;
             float KameCamSpeed = 2;
 
             if (KameCameraAtRest)
             {
-                float Offset = KameCameraLeft ? 0 : - MaxDistance;
+                float Offset = KameCameraLeft ? 2 : - MaxDistance - 2;
                 KameCameraLeft = !KameCameraLeft;
                 
                 KameCameraTarget = new Vector2(SCREENMIDX + (float)rand.NextDouble() * MaxDistance + Offset, SCREENMIDY + (float)rand.NextDouble() * MaxDistance - MaxDistance / 2);
