@@ -40,7 +40,7 @@ namespace sprint0Real.GameState.NameRegistrationandAchievements
 
         public enum RegistrationMode { SelectingRecent, TypingNew, SelectingOption }
         public RegistrationMode currentMode = RegistrationMode.SelectingRecent;
-        private float scale => Game1.RENDERSCALE;
+        private float scale = 3f;
 
 
         private string[,] charGrid = new string[4, 11]
@@ -123,8 +123,8 @@ namespace sprint0Real.GameState.NameRegistrationandAchievements
                 }
                 else
                 {
-                    cursorX = (cursorX + dx + 11) % 11;
-                    cursorY = (cursorY + dy + 4) % 4;
+                    cursorX = Math.Clamp((cursorX + dx + 11) % 11, 0, 10);
+                    cursorY = Math.Clamp((cursorY + dy + 4) % 4, 0, 3);
                 }
 
             }
@@ -294,29 +294,7 @@ namespace sprint0Real.GameState.NameRegistrationandAchievements
             previousKeyState = currentKeyState;
             currentKeyState = Keyboard.GetState();
 
-            if (currentMode == RegistrationMode.TypingNew)
-            {
-
-                if (optionIndex == -1) //Only type when not in REGISTER/END
-                {
-                    Keys[] pressedKeys = currentKeyState.GetPressedKeys();
-
-                    foreach (Keys key in pressedKeys)
-                    {
-                        if (WasKeyJustPressed(key))
-                        {
-                            char? c = ConvertKeyToChar(key);
-                            if (c.HasValue && charMap.ContainsKey(c.Value) && playerName.Length < maxNameLength)
-                            {
-                                playerName.Append(c.Value);
-                            }
-                        }
-                    }
-                }
-            }
-
-
-            if (currentMode == RegistrationMode.SelectingRecent)
+            if (currentMode == RegistrationMode.SelectingRecent && SaveManager.RecentNames.Count > 0)
             {
 
                 if (Pressed(Keys.Enter))
@@ -344,33 +322,6 @@ namespace sprint0Real.GameState.NameRegistrationandAchievements
             else if (currentMode == RegistrationMode.TypingNew)
             {
                 currentMode = RegistrationMode.SelectingRecent;
-            }
-        }
-        private bool WasKeyJustPressed(Keys key)
-        {
-            return currentKeyState.IsKeyDown(key) && previousKeyState.IsKeyUp(key);
-        }
-
-        private char? ConvertKeyToChar(Keys key)
-        {
-            if (key >= Keys.A && key <= Keys.Z)
-                return key.ToString()[0];
-
-            if (key >= Keys.D0 && key <= Keys.D9)
-                return (char)('0' + (key - Keys.D0));
-
-            switch (key)
-            {
-                case Keys.OemPeriod: return '.';
-                case Keys.OemComma: return ',';
-                case Keys.OemMinus: return '-';
-                case Keys.OemQuotes: return '\'';
-                case Keys.OemQuestion: return '/';
-                case Keys.OemSemicolon: return ';';
-                case Keys.Space: return ' ';
-                case Keys.D1 when currentKeyState.IsKeyDown(Keys.LeftShift): return '!';
-                case Keys.D7 when currentKeyState.IsKeyDown(Keys.LeftShift): return '&';
-                default: return null;
             }
         }
     }
