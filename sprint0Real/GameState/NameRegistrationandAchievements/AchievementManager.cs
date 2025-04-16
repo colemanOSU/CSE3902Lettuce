@@ -11,7 +11,8 @@ namespace sprint0Real.GameState.NameRegistrationandAchievements
         public static Dictionary<string, string> AllAchievements = new Dictionary<string, string>
         {
             { "First Time Playing!", "Start the game for the first time." },
-            { "Key Collector!", "Gather 5 keys." }
+            { "Key Collector!", "Gather 5 keys." },
+            { "Secret Revealer!", "Find hidden door." }
         };
         public static bool Unlock(string title)
         {

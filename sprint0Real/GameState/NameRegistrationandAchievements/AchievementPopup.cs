@@ -12,7 +12,7 @@ namespace sprint0Real.GameState.NameRegistrationandAchievements
     {
         private string message;
         private float timer;
-        private const float displayTime = 4f;
+        private const float displayTime = 4.5f;
         private Vector2 position;
         private float alpha = 0f;
 

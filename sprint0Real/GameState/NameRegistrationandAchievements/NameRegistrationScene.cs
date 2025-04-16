@@ -11,6 +11,7 @@ using System.Runtime.CompilerServices;
 using sprint0Real.GameState;
 using System.Xml.Linq;
 using sprint0Real.GameState.NameRegistrationandAchievements;
+using Microsoft.Xna.Framework.Media;
 
 namespace sprint0Real.GameState.NameRegistrationandAchievements
 {
@@ -159,7 +160,7 @@ namespace sprint0Real.GameState.NameRegistrationandAchievements
 
                     //Store this as the current player
                     game.CurrentPlayerName = finalName;
-
+                    MediaPlayer.Stop();
                     game.currentGameState = GameStates.GamePlay;
                     playerName.Clear();
                     optionIndex = -1;
@@ -324,6 +325,7 @@ namespace sprint0Real.GameState.NameRegistrationandAchievements
                     string selected = SaveManager.RecentNames[recentNameIndex];
                     SaveManager.UsePlayer(selected);
                     game.CurrentPlayerName = selected;
+                    MediaPlayer.Stop();
                     game.currentGameState = GameStates.GamePlay;
                 }
             }

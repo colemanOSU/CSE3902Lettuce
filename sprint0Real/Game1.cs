@@ -180,20 +180,6 @@ namespace sprint0Real
             collisionHandler.LoadCommands();
             collisionDetection.Load(Link);
             tempItem = null;
-            
-            //Uncomment for a cacaphony 
-
-            /*
-            // For mp3 files use song
-            Song song = Content.Load<Song>("01 - Intro");
-            MediaPlayer.Play(song);
-            // For .wav files use SoundEffect
-            SoundEffect soundEffect = Content.Load<SoundEffect>("LOZ_Secret");
-            // To make the soundEffect loop, make a soundEffectInstance
-            SoundEffectInstance soundEffectInstance = soundEffect.CreateInstance();
-            soundEffectInstance.IsLooped = true;
-            soundEffectInstance.Play();
-            */
         }
 
         protected override void Update(GameTime gameTime)
