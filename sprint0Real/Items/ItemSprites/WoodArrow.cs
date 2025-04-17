@@ -4,6 +4,7 @@ using sprint0Real.Interfaces;
 using sprint0Real.Commands;
 using System.Linq.Expressions;
 using Microsoft.Xna.Framework.Audio;
+using sprint0Real.Audio;
 
 namespace sprint0Real.Items.ItemSprites
 {
@@ -36,7 +37,6 @@ namespace sprint0Real.Items.ItemSprites
         private bool isDelaying = false;
         private Vector2 finalPosition;
         private Link.Direction arrowDirection;
-        private SoundEffect soundEffect;
         private bool SoundPlayed = false;
 
         public WoodArrow(Texture2D texture, Game1 game)
@@ -50,7 +50,6 @@ namespace sprint0Real.Items.ItemSprites
             GetPosition(arrowDirection);
             _position = startPosition;
             destinationRectangle = new Rectangle((int)_position.X, (int)_position.Y, 16*3, 16 * 3);
-            soundEffect = SoundEffectFactory.Instance.getArrowOrBoomerang();
 
         }
         public Rectangle Rect
@@ -140,7 +139,7 @@ namespace sprint0Real.Items.ItemSprites
         {
             if (!SoundPlayed)
             {
-                soundEffect.Play();
+                SoundEffectFactory.Instance.Play(SoundEffectType.boomerandOrArrow);
                 SoundPlayed = true;
             }
             _timer += gameTime.ElapsedGameTime.TotalSeconds*2;

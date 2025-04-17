@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
+using sprint0Real.Audio;
 using sprint0Real.EnemyStuff.BatStuff;
 using sprint0Real.EnemyStuff.DeathSprites;
 using sprint0Real.EnemyStuff.SlimeStuff;
@@ -16,13 +17,11 @@ namespace sprint0Real.EnemyStuff.SlimeStuff
         private SlimeStates currentState = SlimeStates.Right;
         private Slime mySlime;
         private Random random = new Random();
-        private SoundEffect EnemyDie;
         private bool DieSoundPlayed = false;
         private Death death;
         public SlimeStateMachine(Slime Slime)
         {
             mySlime = Slime;
-            EnemyDie = SoundEffectFactory.Instance.getEnemyDie();
         }
 
         public void TakeDamage(int damage)
@@ -32,7 +31,7 @@ namespace sprint0Real.EnemyStuff.SlimeStuff
             {
                 if (!DieSoundPlayed)
                 {
-                    EnemyDie.Play();
+                    SoundEffectFactory.Instance.Play(SoundEffectType.EnemyDie);
                     DieSoundPlayed = true;
                 }
                 DropManager.Instance.OnDeath(mySlime.location);

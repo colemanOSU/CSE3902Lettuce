@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using sprint0Real.Audio;
 using sprint0Real.Interfaces;
 using sprint0Real.Levels;
 using sprint0Real.TreasureItemStuff;
@@ -12,7 +13,6 @@ namespace sprint0Real.TreasureItemStuff.TreasureItemSprites
     {
         public Rectangle sourceRectangle = new Rectangle(208, 0, 16, 16);
         public Rectangle destinationRectangle;
-        private SoundEffect soundEffect;
         private bool SoundPlayed = false;
         public Texture2D _texture;
 
@@ -20,7 +20,6 @@ namespace sprint0Real.TreasureItemStuff.TreasureItemSprites
         {
             destinationRectangle = new Rectangle((int)pos.X, (int)pos.Y, 48, 48);
             _texture = TreasureItemSpriteFactory.Instance.GetItemSpriteSheet();
-            soundEffect = SoundEffectFactory.Instance.getFanfareSoundEffect();
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -31,7 +30,7 @@ namespace sprint0Real.TreasureItemStuff.TreasureItemSprites
         {
             if (!SoundPlayed)
             {
-                soundEffect.Play();
+                SoundEffectFactory.Instance.Play(SoundEffectType.Fanfare);
                 SoundPlayed = true;
             }
         }

@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using sprint0Real.Audio;
 using sprint0Real.Interfaces;
 
 
@@ -14,7 +15,6 @@ namespace sprint0Real.BlockSprites
         public Rectangle sourceRectangle;
         public Rectangle destinationRectangle;
         public Vector2 position;
-        private SoundEffect stairsSound;
         private bool SoundPlayed = false;
 
         public Texture2D texture;
@@ -29,10 +29,9 @@ namespace sprint0Real.BlockSprites
         }
         public void TakeStairs()
         {
-            stairsSound = SoundEffectFactory.Instance.getBlockSoundEffect();
             if (!SoundPlayed)
             {
-                stairsSound.Play();
+                SoundEffectFactory.Instance.Play(SoundEffectType.stairs);
                 SoundPlayed = true;
             }
         }

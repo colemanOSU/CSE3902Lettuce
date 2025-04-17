@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
 using Microsoft.Xna.Framework.Media;
+using sprint0Real.Audio;
 
 namespace sprint0Real.GameState
 {
@@ -35,7 +36,6 @@ namespace sprint0Real.GameState
         public void LoadContent(GraphicsDevice graphicsDevice, ContentManager content)
         {
             title = content.Load<Texture2D>("TitleScreen");
-            introSong = content.Load<Song>("01 - Intro");
 
         }
 
@@ -47,16 +47,9 @@ namespace sprint0Real.GameState
 
             if (MediaPlayer.State != MediaState.Playing)
             {
-                MediaPlayer.Play(introSong);
-                MediaPlayer.IsRepeating = true; // Keep it looping if desired
+                SoundEffectFactory.Instance.PlaySong(SongType.Title, true);
             }
-
-            if (currentKeyState.IsKeyDown(Keys.Q))
-            {
-                _game.Exit();
-            }
-
-
+            
             if (!isAnimating && currentKeyState.IsKeyDown(Keys.Enter) && previousKeyState.IsKeyUp(Keys.Enter) || !isAnimating && mouseState.LeftButton == ButtonState.Pressed)
             {
                 isAnimating = true;

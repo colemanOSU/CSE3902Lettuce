@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Audio;
+using sprint0Real.Audio;
 using sprint0Real.GameState.NameRegistrationandAchievements;
 
 namespace sprint0Real.LinkStuff
@@ -30,7 +31,6 @@ namespace sprint0Real.LinkStuff
 
         private const int MAXRUPEES = 99;
 
-        private SoundEffect DoorUnlock;
         public enum Swords
         {
             Wood_Sword,
@@ -73,8 +73,6 @@ namespace sprint0Real.LinkStuff
             KeyCount = 0;
             RupeeCount = 0;
 
-            DoorUnlock = SoundEffectFactory.Instance.getDoorUnlock();
-
             //We'll give 'em some bombs to play with.
             PickUpBomb();
         }
@@ -115,7 +113,7 @@ namespace sprint0Real.LinkStuff
 
         public void KeyUse()
         {
-            DoorUnlock.Play();
+            SoundEffectFactory.Instance.Play(SoundEffectType.doorUnlock);
 
             if (KeyCount <= 0)
             {
