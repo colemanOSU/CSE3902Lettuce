@@ -68,8 +68,14 @@ namespace sprint0Real.GameState.NameRegistrationandAchievements
                     SpriteEffects.None,
                     0f
                 );
-                //spriteBatch.DrawString(font, $"{achievementTitle}", new Vector2(80, y), color);
-                y += 25;
+                if (unlocked)
+                {
+                    y += 25;
+                }
+                else
+                {
+                    y += 35;
+                }
 
                 if (unlocked)
                 {
