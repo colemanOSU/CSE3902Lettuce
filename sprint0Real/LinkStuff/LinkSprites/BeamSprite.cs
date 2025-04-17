@@ -12,6 +12,11 @@ namespace sprint0Real.LinkStuff.LinkSprites
         private Rectangle StartSource = new(276, 251, 17, 55);
         private Rectangle MidSource = new(294, 251, 16, 55);
         private Rectangle EndSource = new(311, 251, 16, 55);
+
+        private Rectangle SparksSource1 = new(316, 163, 16, 59);
+        private Rectangle SparksSource2 = new(316 + 17, 163, 16, 59);
+        private Rectangle SparksSource3 = new(316 + 17 + 17, 163, 16, 59);
+
         private Rectangle LinkDestination;
         private Rectangle StartDestination;
         private Rectangle EndDestination;
@@ -54,6 +59,23 @@ namespace sprint0Real.LinkStuff.LinkSprites
             for (i = 0; i < BeamLength; i++)
             {
                 spriteBatch.Draw(_texture, new Rectangle(StartDestination.X + (i + 1) * 16 * Facing * Scale, StartDestination.Y, 16 *Scale, 55 * Scale), MidSource, Color.White, 0, Vector2.Zero, FlipEffect, 0);
+
+                int random = myGame.rand.Next(3);
+                switch (random)
+                {
+                    case 1:
+                        spriteBatch.Draw(_texture, new Rectangle(StartDestination.X + (i + 1) * 16 * Facing * Scale, StartDestination.Y - 4, 16 * Scale, 59 * Scale), SparksSource1, Color.White, 0, Vector2.Zero, FlipEffect, 0);
+                        break;
+                    case 2:
+                        spriteBatch.Draw(_texture, new Rectangle(StartDestination.X + (i + 1) * 16 * Facing * Scale, StartDestination.Y - 4, 16 * Scale, 59 * Scale), SparksSource2, Color.White, 0, Vector2.Zero, FlipEffect, 0);
+                        break;
+                    case 3:
+                        spriteBatch.Draw(_texture, new Rectangle(StartDestination.X + (i + 1) * 16 * Facing * Scale, StartDestination.Y - 4, 16 * Scale, 59 * Scale), SparksSource3, Color.White, 0, Vector2.Zero, FlipEffect, 0);
+                        break;
+                }
+                    
+                
+
             }
             //Draw last sprite of beam
             spriteBatch.Draw(_texture, new Rectangle(StartDestination.X + (i + 1)*16* Scale * Facing, StartDestination.Y, 16 * Scale, 55 * Scale), EndSource, Color.White, 0, Vector2.Zero, FlipEffect, 0);

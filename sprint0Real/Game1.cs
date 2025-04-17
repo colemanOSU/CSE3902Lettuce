@@ -45,7 +45,7 @@ namespace sprint0Real
         public ILink Link;
         public ILinkSpriteTemp linkSprite;
 
-        private Random rand = new();
+        public Random rand = new();
 
 
         //For menus and UIs
@@ -323,6 +323,7 @@ namespace sprint0Real
                     {
                         linkSprite = new DeathSprite(linkSheet, this);
                         DyingTime = TimeSpan.Zero;
+                        MediaPlayer.Stop();
                         MediaPlayer.Play(GameOverMusic);
                         TempDying = false;
                     }
