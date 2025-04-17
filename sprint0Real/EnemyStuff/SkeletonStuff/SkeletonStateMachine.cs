@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
+using sprint0Real.Audio;
 using sprint0Real.EnemyStuff.BatStuff;
 using sprint0Real.EnemyStuff.DeathSprites;
 using sprint0Real.EnemyStuff.DragonStuff;
@@ -17,13 +18,11 @@ namespace sprint0Real.EnemyStuff.SkeletonStuff
         private SkeletonStates currentState = SkeletonStates.Right;
         private Skeleton mySkeleton;
         private Random random = new Random();
-        private SoundEffect EnemyDie;
         private bool DieSoundPlayed = false;
         private Death death;
         public SkeletonStateMachine(Skeleton Skeleton)
         {
             mySkeleton = Skeleton;
-            EnemyDie = SoundEffectFactory.Instance.getEnemyDie();
         }
 
         public void TakeDamage(int damage)
@@ -33,7 +32,7 @@ namespace sprint0Real.EnemyStuff.SkeletonStuff
             {
                 if (!DieSoundPlayed)
                 {
-                    EnemyDie.Play();
+                    SoundEffectFactory.Instance.Play(SoundEffectType.EnemyDie);
                     DieSoundPlayed = true;
                 }
                 mySkeleton.StageItem();

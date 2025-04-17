@@ -5,6 +5,7 @@ using sprint0Real.Interfaces;
 using sprint0Real.Commands;
 using System.Linq.Expressions;
 using Microsoft.Xna.Framework.Audio;
+using sprint0Real.Audio;
 
 namespace sprint0Real.Items.ItemSprites
 {
@@ -35,7 +36,6 @@ namespace sprint0Real.Items.ItemSprites
         private double delayDuration = 0.5;
         private bool isDelaying = false;
         private Link.Direction swordDirection;
-        private SoundEffect shootSwordSound;
         private bool SoundPlayed = false;
 
 
@@ -50,7 +50,6 @@ namespace sprint0Real.Items.ItemSprites
             GetPosition(swordDirection);
             _position = startPosition;
             destinationRectangle = new Rectangle((int)_position.X, (int)_position.Y, 16 * 3, 16 * 3);
-            shootSwordSound = SoundEffectFactory.Instance.getSwordShoot();
 
         }
         public Rectangle Rect
@@ -111,7 +110,7 @@ namespace sprint0Real.Items.ItemSprites
         {
             if (!SoundPlayed)
             {
-                shootSwordSound.Play();
+                SoundEffectFactory.Instance.Play(SoundEffectType.swordShoot);
                 SoundPlayed = true;
             }
             _timer += gameTime.ElapsedGameTime.TotalSeconds * 2;

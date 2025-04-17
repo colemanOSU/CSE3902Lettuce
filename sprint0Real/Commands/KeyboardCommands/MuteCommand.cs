@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using sprint0Real.Audio;
 using sprint0Real.Interfaces;
 using sprint0Real.LinkStuff.LinkSprites;
 using System.Diagnostics;
@@ -17,7 +18,8 @@ namespace sprint0Real.Commands.KeyboardCommands
 
         public void Execute()
         {
-            myGame.MuteMusic();
+            //myGame.MuteMusic();
+            SoundEffectFactory.Instance.ToggleMute();
         }
     }
 }

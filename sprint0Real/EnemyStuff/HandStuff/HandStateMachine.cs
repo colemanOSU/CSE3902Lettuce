@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
+using sprint0Real.Audio;
 using sprint0Real.EnemyStuff.BatStuff;
 using sprint0Real.EnemyStuff.DragonStuff;
 using sprint0Real.EnemyStuff.HandStuff;
@@ -13,12 +14,10 @@ namespace sprint0Real.EnemyStuff.HandStuff
     public class HandStateMachine : IStateMachine
     {
         private Hand myHand;
-        private SoundEffect EnemyDie;
         private bool DieSoundPlayed = false;
         public HandStateMachine(Hand Hand)
         {
             myHand = Hand;
-            EnemyDie = SoundEffectFactory.Instance.getEnemyDie();
         }
 
         public void TakeDamage(int damage)
@@ -28,7 +27,7 @@ namespace sprint0Real.EnemyStuff.HandStuff
             {
                 if (!DieSoundPlayed)
                 {
-                    EnemyDie.Play();
+                    SoundEffectFactory.Instance.Play(SoundEffectType.EnemyDie);
                     DieSoundPlayed = true;
                 }
                 DropManager.Instance.OnDeath(myHand.location);
