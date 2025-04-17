@@ -110,7 +110,7 @@ namespace sprint0Real.Items.ItemSprites
 
         public bool IsDetonated()
         {
-            return (_frameCount > 1);
+            return (_currentFrame > 1);
         }
     }
 }

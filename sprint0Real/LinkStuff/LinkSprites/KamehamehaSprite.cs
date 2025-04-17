@@ -9,10 +9,11 @@ using sprint0Real.Interfaces;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Audio;
+using sprint0Real.Levels;
 
 namespace sprint0Real.LinkStuff.LinkSprites
 {
-    internal class KamehamehaSprite : ILinkSpriteTemp
+    public class KamehamehaSprite : ILinkSpriteTemp
     {
         private Texture2D _texture;
         private Game1 myGame;
@@ -21,6 +22,8 @@ namespace sprint0Real.LinkStuff.LinkSprites
         private Rectangle FrameTwoSource = new(183, 11, 16, 16);
         private Rectangle CurrentFrameSource;
         private Rectangle DestinationRectangle;
+
+        private BeamSprite Beam = null;
 
         private const int FRAMESPAN = 8;
         private int FrameCounter;
@@ -44,7 +47,11 @@ namespace sprint0Real.LinkStuff.LinkSprites
         private Rectangle KameThreeFrameThreeSource = new(155 + 34 + 34, 202, 16, 16);
         private Rectangle KameThreeFrameFourSource = new(155 + 34 + 34, 219, 16, 16);
 
-        public KamehamehaSprite(Texture2D texture, Game1 game)
+        private bool BeamCreated;
+        private int Facing;
+        private SpriteEffects FlipEffect;
+
+        public KamehamehaSprite(Texture2D texture, Game1 game, Link.Direction facing)
         {
             _texture = texture;
             myGame = game;
@@ -56,20 +63,35 @@ namespace sprint0Real.LinkStuff.LinkSprites
             MediaPlayer.Pause();
             FrameCounter = 0;
 
-
+            BeamCreated = false;
+            if (facing == Link.Direction.Left)
+            {
+                FlipEffect = SpriteEffects.FlipHorizontally;
+                Facing = -1;
+            } else
+            {
+                FlipEffect = SpriteEffects.None;
+                Facing = 1;
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             //Draw Link
-            spriteBatch.Draw(_texture, DestinationRectangle, CurrentFrameSource, myGame.Link.GetLinkColor());
+            spriteBatch.Draw(_texture, DestinationRectangle, CurrentFrameSource, myGame.Link.GetLinkColor(), 0, Vector2.Zero, FlipEffect, 0);
 
             //Draw Ball
-            spriteBatch.Draw(_texture, DestinationRectangle, CurrentKameSource, Color.White);
+            spriteBatch.Draw(_texture, DestinationRectangle, CurrentKameSource, Color.White, 0, Vector2.Zero, FlipEffect, 0);
+
+            if (Beam != null)
+            {
+                Beam.Draw(spriteBatch);
+            }
         }
 
         public void Update(GameTime gameTime, SpriteBatch spriteBatch)
         {
+            
             SpentTime += gameTime.ElapsedGameTime;
 
             if (FrameCounter >= (FRAMESPAN * 4)) FrameCounter = 0;
@@ -145,15 +167,31 @@ namespace sprint0Real.LinkStuff.LinkSprites
             {
                 CurrentFrameSource = FrameTwoSource;
                 CurrentKameSource = new(140, 220, 1, 1);
+                if (!BeamCreated)
+                {
+                    Beam = new BeamSprite(_texture, myGame, Facing);
+                    CurrentMap.Instance.ObjectList().Add(Beam);
+                    BeamCreated = true;
+                }
+                
             }
             else
             {
+                CurrentMap.Instance.DeStage(Beam);
+                MediaPlayer.Resume();
+                Beam = null;
+                myGame.KameCamera.Center = new Vector2(Game1.SCREENMIDX, Game1.SCREENMIDY);
+
                 myGame.Link.SetCanAttack(true);
                 myGame.Link.SetCanMove(true);
-                myGame.linkSprite = new FaceRightSprite(_texture, myGame);
-                MediaPlayer.Resume();
+                if (Facing == 1) { myGame.linkSprite = new FaceRightSprite(_texture, myGame); }
+                else { myGame.linkSprite = new FaceLeftSprite(_texture, myGame); }
             }
 
+            if (Beam != null)
+            {
+                Beam.Update(gameTime);
+            }
         }
     }
 }

@@ -20,6 +20,7 @@ using sprint0Real.Commands;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
 using sprint0Real.TreasureItemStuff;
+using sprint0Real.GameState.NameRegistrationandAchievements;
 
 namespace sprint0Real
 {
@@ -44,6 +45,9 @@ namespace sprint0Real
         public ILink Link;
         public ILinkSpriteTemp linkSprite;
 
+        public Random rand = new();
+
+
         //For menus and UIs
         public UI UISprite;
         public MenuUI MenuUISprite;
@@ -65,6 +69,12 @@ namespace sprint0Real
 
         public ItemStateMachine itemStateMachine;
 
+        public NameRegistrationScene NameScene;
+        private List<AchievementPopup> activePopups = new();
+        private AchievementScreen achievementScreen;
+        public string CurrentPlayerName { get; set; }
+        public static Game1 Instance { get; private set; }
+
         public SoundEffect LinkScream;
 
         //TEMP CAMERA
@@ -72,6 +82,11 @@ namespace sprint0Real
         public Vector2 CameraTarget;
         public bool InMenu;
         public Vector2 transitionOffset;
+
+        public Camera KameCamera;
+        public bool KameCameraAtRest;
+        public Vector2 KameCameraTarget;
+        private bool KameCameraLeft;
 
         private bool TempDying;
 
@@ -103,6 +118,7 @@ namespace sprint0Real
         public bool isPaused;
         public Game1()
         {
+            Instance = this;
             _graphics = new GraphicsDeviceManager(this);
             
             //Code to change resolution of game.
@@ -118,6 +134,7 @@ namespace sprint0Real
             //TEMP PAUSE
             isPaused = false;
             CameraTarget = new Vector2(SCREENMIDX, SCREENMIDY);
+            KameCameraTarget = new Vector2(SCREENMIDX, SCREENMIDY);
             InMenu = false;
         }
 
@@ -135,11 +152,17 @@ namespace sprint0Real
             collisionHandler = new CollisionHandler(this);
             collisionDetection = new CollisionDetection(this, collisionHandler);
             DropManager.Init(Link);
-
+            SaveManager.Load();
+            SaveManager.UsePlayer("Test");
 
             base.Initialize();
             _camera = new Camera();
             _camera.Center = new Vector2(SCREENMIDX, SCREENMIDY);
+
+            KameCamera = new Camera();
+            KameCamera.Center = new Vector2(SCREENMIDX, SCREENMIDY);
+            KameCameraAtRest = true;
+            KameCameraLeft = true;
         }
 
         protected override void LoadContent()
@@ -153,6 +176,9 @@ namespace sprint0Real
             //Load Sprite Sheets
             linkSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - Link");
             UISheet = Content.Load<Texture2D>("NES - The Legend of Zelda - HUD & Pause Screen");
+            Texture2D fileSelectSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - File Select");
+            NameScene = new NameRegistrationScene(this, fileSelectSheet, font1);
+            achievementScreen = new AchievementScreen(this, font1);
 
             Dungeon = Content.Load<Song>("04 - Dungeon");
             GameOverMusic = Content.Load<Song>("07 - Game Over");
@@ -168,24 +194,17 @@ namespace sprint0Real
             collisionHandler.LoadCommands();
             collisionDetection.Load(Link);
             tempItem = null;
-            
-            //Uncomment for a cacaphony 
-
-            /*
-            // For mp3 files use song
-            Song song = Content.Load<Song>("01 - Intro");
-            MediaPlayer.Play(song);
-            // For .wav files use SoundEffect
-            SoundEffect soundEffect = Content.Load<SoundEffect>("LOZ_Secret");
-            // To make the soundEffect loop, make a soundEffectInstance
-            SoundEffectInstance soundEffectInstance = soundEffect.CreateInstance();
-            soundEffectInstance.IsLooped = true;
-            soundEffectInstance.Play();
-            */
         }
 
         protected override void Update(GameTime gameTime)
         {
+            for (int i = activePopups.Count - 1; i >= 0; i--)
+            {
+                activePopups[i].Update(gameTime);
+                if (!activePopups[i].IsVisible)
+                    activePopups.RemoveAt(i);
+            }
+
             switch (currentGameState)
             {
                 case GameStates.TitleScreen:
@@ -203,6 +222,14 @@ namespace sprint0Real
 
                     }
                     break;
+                case GameStates.AchievementScreen:
+                    foreach (IController controller in controllerList)
+                    {
+                        controller.Update(gameTime);
+
+                    }
+                    achievementScreen.Update(gameTime);
+                    break;
                 case GameStates.Pause:
                     foreach (IController controller in controllerList)
                     {
@@ -210,6 +237,14 @@ namespace sprint0Real
                         controller.Update(gameTime);
 
                     }
+                    break;
+                case GameStates.NameRegistration:
+                    foreach (IController controller in controllerList)
+                    {
+                        controller.Update(gameTime);
+
+                    }
+                    NameScene.Update(gameTime);
                     break;
                 case GameStates.Menu:
                     foreach (IController controller in controllerList)
@@ -233,6 +268,11 @@ namespace sprint0Real
                     break;
 
                 case GameStates.GamePlay:
+
+                    if (!AchievementManager.HasAchievement(CurrentPlayerName, "First Time Playing!"))
+                    {
+                        AchievementManager.Unlock("First Time Playing!");
+                    }
 
                     if (MediaPlayer.Queue.ActiveSong != Dungeon)
                     {
@@ -283,6 +323,7 @@ namespace sprint0Real
                     {
                         linkSprite = new DeathSprite(linkSheet, this);
                         DyingTime = TimeSpan.Zero;
+                        MediaPlayer.Stop();
                         MediaPlayer.Play(GameOverMusic);
                         TempDying = false;
                     }
@@ -303,6 +344,11 @@ namespace sprint0Real
                 case GameStates.GameOver:
                     GameOverScreen.Draw(_spriteBatch);
                     break;
+                case GameStates.NameRegistration:
+                    _spriteBatch.Begin();
+                    NameScene.Draw(_spriteBatch);
+                    _spriteBatch.End();
+                    break;
                 case GameStates.Pause:
                     //We still want things to be drawn, just not updated
                     transform = Matrix.CreateTranslation(-_camera.GetTopLeft().X, -_camera.GetTopLeft().Y, 0);
@@ -316,6 +362,11 @@ namespace sprint0Real
 
                     PauseUISprite.Draw(_spriteBatch);
 
+                    _spriteBatch.End();
+                    break;
+                case GameStates.AchievementScreen:
+                    _spriteBatch.Begin();
+                    achievementScreen.Draw(_spriteBatch);
                     _spriteBatch.End();
                     break;
                 case GameStates.MenuTransition:
@@ -371,9 +422,17 @@ namespace sprint0Real
 
                     _spriteBatch.End();
                     break;
+
                 case GameStates.GamePlay:
-                    _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, null);
+
+                    transform = Matrix.CreateTranslation(KameCamera.GetTopLeft().X, KameCamera.GetTopLeft().Y, 0);
+                    _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, transform);
+
                     CurrentMap.Instance.Draw(_spriteBatch);
+                    foreach (var popup in activePopups)
+                    {
+                        popup.Draw(_spriteBatch, font1);
+                    }
 
                     if (itemSprite != null)
                     {
@@ -382,6 +441,15 @@ namespace sprint0Real
                     }
                     linkSprite.Update(gameTime, _spriteBatch);
                     linkSprite.Draw(_spriteBatch);
+
+                    UISprite.Update(gameTime, Link);
+                    UISprite.Draw(_spriteBatch);
+
+                    _spriteBatch.End();
+
+                    //Two different _spriteBatches, as we don't want the UI to move with the camera.
+                    _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, null);
+
 
                     UISprite.Update(gameTime, Link);
                     UISprite.Draw(_spriteBatch);
@@ -422,10 +490,29 @@ namespace sprint0Real
             
 
         }
-
+        public void ShowAchievementPopup(string achievementId)
+        {
+            activePopups.Add(new AchievementPopup(achievementId));
+        }
         public void MuteMusic()
         {
             MediaPlayer.Stop();
+        }
+
+        public void CameraShake()
+        {
+            float MaxDistance = 10;
+            float KameCamSpeed = 2;
+
+            if (KameCameraAtRest)
+            {
+                float Offset = KameCameraLeft ? 2 : - MaxDistance - 2;
+                KameCameraLeft = !KameCameraLeft;
+                
+                KameCameraTarget = new Vector2(SCREENMIDX + (float)rand.NextDouble() * MaxDistance + Offset, SCREENMIDY + (float)rand.NextDouble() * MaxDistance - MaxDistance / 2);
+                Debug.WriteLine(KameCameraTarget.ToString());
+            }
+            KameCameraAtRest = KameCamera.MoveToward(KameCameraTarget, KameCamSpeed);
         }
     }
 

@@ -10,6 +10,8 @@ namespace sprint0Real.GameState
     {
         TitleScreen,
         GamePlay,
+        NameRegistration,
+        AchievementScreen,
         Menu,
         MenuTransition,
         Pause,

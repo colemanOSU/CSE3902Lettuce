@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Audio;
+using sprint0Real.GameState.NameRegistrationandAchievements;
 
 namespace sprint0Real.LinkStuff
 {
@@ -95,6 +96,21 @@ namespace sprint0Real.LinkStuff
         public void KeyGet()
         {
             KeyCount++;
+
+            var save = SaveManager.GetSave(Game1.Instance.CurrentPlayerName);
+            if (save == null) return;
+
+            if (save.KeyCollectCount < 5)
+            {
+                save.KeyCollectCount++;
+            }
+
+            if (save.KeyCollectCount >= 5)
+            {
+                AchievementManager.Unlock("Key Collector!");
+            }
+
+            SaveManager.Save();
         }
 
         public void KeyUse()

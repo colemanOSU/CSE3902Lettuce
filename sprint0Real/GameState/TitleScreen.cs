@@ -56,6 +56,7 @@ namespace sprint0Real.GameState
                 _game.Exit();
             }
 
+
             if (!isAnimating && currentKeyState.IsKeyDown(Keys.Enter) && previousKeyState.IsKeyUp(Keys.Enter) || !isAnimating && mouseState.LeftButton == ButtonState.Pressed)
             {
                 isAnimating = true;
@@ -74,8 +75,8 @@ namespace sprint0Real.GameState
                     if (_currentFrame >= frameCount)
                     {
                     _currentFrame = 0;
-                    MediaPlayer.Stop();
-                    return GameStates.GamePlay;
+                    //MediaPlayer.Stop();
+                    return GameStates.NameRegistration;
                 }
                 }
             

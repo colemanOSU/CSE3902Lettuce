@@ -25,7 +25,7 @@ namespace sprint0Real.Commands.KeyboardCommands
             {
                 myGame.Link.SetCanAttack(false);
                 myGame.Link.SetCanMove(false);
-                myGame.linkSprite = new KamehamehaSprite(myGame.linkSheet, myGame);
+                myGame.linkSprite = new KamehamehaSprite(myGame.linkSheet, myGame, myGame.Link.GetFacing());
             }
             
 

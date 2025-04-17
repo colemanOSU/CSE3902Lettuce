@@ -1,0 +1,19 @@
+AUTHOR: Kelly Coleman
+SUBJECT: NameRegistrationScene.cs
+AUTHOR OF SUBJECT: Andrea Stewart
+FOCUS: Readability
+SPRINT: 5
+DATE: 17 April 2025
+TIME TAKEN TO COMPLETE: 10 Minutes
+
+I mean it's alright. I think this code's greatest barrier to fluent readability is a lack of
+descriptive naming schemes. Lots of very generic variable names like "pos" and "x", "y", which
+might suffice if the code were laden with descriptive and illustrative comments, but without
+only serves to muddle to purpose of the code. The fact that functionality that objectively
+should not be handled within the class is here only helps obfuscate the code's purpose and
+makes tracing through it a, and pardon my French here, real pain in the oiseaux.
+
+It would not take too much to save this code. A quick passing over to rename some variables, a
+touching up of comments, and the quick and immediate seperation of functionality into seperate
+classes where they belong, and this code would be as good as new. Until that day comes however,
+I have no choice but to give this code a mild thumbs down for readability.
