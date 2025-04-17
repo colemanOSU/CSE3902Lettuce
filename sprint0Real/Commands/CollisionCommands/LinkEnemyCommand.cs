@@ -9,10 +9,11 @@ using sprint0Real.Interfaces;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Content;
 using sprint0Real.Levels;
+using Microsoft.Xna.Framework;
 
 namespace sprint0Real.Commands.CollisionCommands2
 {
-    public class LinkEnemyCommand() : ICollisionCommand
+    public class LinkEnemyCommand(Game1 game) : ICollisionCommand
     {
         public void Execute(IObject Link, IObject Enemy, CollisionDirections direction)
         {
@@ -20,6 +21,7 @@ namespace sprint0Real.Commands.CollisionCommands2
             {
                 EnemyPage nextMap = LevelLoader.Instance.RetrieveMap("Entrance");
                 CurrentMap.Instance.SetMap(nextMap);
+                game.collisionDetection.UpdateRoomObjects();
             }
             else
             {
