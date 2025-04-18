@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using sprint0Real.Audio;
 using sprint0Real.Interfaces;
 using sprint0Real.Levels;
 using sprint0Real.TreasureItemStuff;
@@ -25,7 +26,7 @@ namespace sprint0Real.TreasureItemStuff.TreasureItemSprites
         {
             if (!SoundPlayed)
             {
-                soundEffect.Play();
+                SoundEffectFactory.Instance.Play(SoundEffectType.RupeePickup);
                 SoundPlayed = true;
             }
         }
