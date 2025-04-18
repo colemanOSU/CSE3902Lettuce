@@ -19,7 +19,7 @@ namespace sprint0Real.TreasureItemStuff.TreasureItemSprites
         public WolfBubble(Vector2 pos) {
             destinationRectangle = new Rectangle((int)pos.X, (int)pos.Y, 7*3, 7*3);
             _texture = WolfSpriteFactory.Instance.GetItemSpriteSheet();
-            soundEffect = SoundEffectFactory.Instance.getFanfareSoundEffect();
+            
         }
         public void CollectItem()
         {
