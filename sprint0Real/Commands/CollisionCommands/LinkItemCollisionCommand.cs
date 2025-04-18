@@ -94,6 +94,9 @@ namespace sprint0Real.Commands.CollisionCommands2
                 case SecondPotion:
                     inv.ObtainItem(Inventory.Items.Red_Potion);
                     break;
+                case WolfBubble:
+                    inv.ObtainItem(Inventory.Items.WolfBubble);
+                    break;
                 //TODO other cases
                 default:
                     break;

@@ -21,6 +21,8 @@ using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
 using sprint0Real.TreasureItemStuff;
 using sprint0Real.GameState.NameRegistrationandAchievements;
+using sprint0Real.WolfLink;
+using System.Net.Http.Headers;
 
 namespace sprint0Real
 {
@@ -32,6 +34,7 @@ namespace sprint0Real
 
         public Texture2D linkSheet;
         public Texture2D UISheet;
+        public Texture2D wolfSheet;
 
         SpriteFont font1;
 
@@ -176,6 +179,7 @@ namespace sprint0Real
             //Load Sprite Sheets
             linkSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - Link");
             UISheet = Content.Load<Texture2D>("NES - The Legend of Zelda - HUD & Pause Screen");
+            wolfSheet = Content.Load<Texture2D>("WolfSprite");
             Texture2D fileSelectSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - File Select");
             NameScene = new NameRegistrationScene(this, fileSelectSheet, font1);
             achievementScreen = new AchievementScreen(this, font1);
@@ -188,6 +192,7 @@ namespace sprint0Real
             SoundEffectFactory.Instance.LoadAllTextures(Content);
             BlockSpriteFactory.Instance.LoadAllTextures(Content);
             TreasureItemSpriteFactory.Instance.LoadAllTextures(Content);
+            WolfSpriteFactory.Instance.LoadContent(Content);
             LevelLoader.Instance.LoadLevels();
 
             ResetGame();

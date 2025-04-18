@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Audio;
 using sprint0Real.GameState.NameRegistrationandAchievements;
+using sprint0Real.WolfLink;
 
 namespace sprint0Real.LinkStuff
 {
@@ -12,7 +13,8 @@ namespace sprint0Real.LinkStuff
         //Or to take arms against a sea of troubles, And by opposing end them
 
         private Dictionary<Items, Boolean> InventoryList = [];
-
+        private static Inventory instance = new Inventory();
+        public static Inventory Instance { get { return instance; } }
         //Keeps track of currently equipped item.
         //Starts as set to null.
         public Items CurrentItem { get; set; }
@@ -52,6 +54,7 @@ namespace sprint0Real.LinkStuff
             Note,
             Blue_Potion,
             Red_Potion,
+            WolfBubble,
             Staff
         }
 

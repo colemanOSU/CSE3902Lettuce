@@ -124,6 +124,9 @@ public static class UIHelper
             case Inventory.Items.Staff:
                 X = 715;
                 break;
+			case Inventory.Items.WolfBubble:
+				X = 726;
+				break;
         }
 
 		return new Rectangle(X, 137, 8, 16);
