@@ -6,6 +6,7 @@
 	<Objects>
 		<Object Type="Bat" x="96" y="96" />
 		<Object Type="Bat" x="192" y="144" />
+		<Object Type="Hand" x="150" y="150"/>
 		<Object Type="Bat" x="96" y="288" />
 	</Objects>
 

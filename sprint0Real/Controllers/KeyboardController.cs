@@ -21,13 +21,12 @@ namespace sprint0Real.Controllers
         private Dictionary<Keys, ICommand> GameOverCommands;
         private Dictionary<Keys, ICommand> NameRegistrationCommands;
         private Dictionary<Keys, ICommand> AchievementScreenCommands;
+        private Dictionary<Keys, ICommand> TitleScreenCommands;
 
         private Dictionary<Keys, bool> keyPreviouslyPressed;
 
         private Game1 _game;
         private ILink _Link;
-        private Texture2D blockTexture;
-        private Texture2D itemTexture;
         private bool MovementKeyIsDown;
 
         public KeyboardController(Game1 game)
@@ -58,6 +57,7 @@ namespace sprint0Real.Controllers
             commands.Add(Keys.H, new KamehamehaCommand(_game));
             commands.Add(Keys.OemQuotes, new MuteCommand(_game));
             commands.Add(Keys.Space, new ShowAchievementsCommand(_game));
+            commands.Add(Keys.V, new MuteCommand(_game));
 
             commands.Add(Keys.D1, new ItemChangeCommand(_game, 1));
             commands.Add(Keys.D2, new ItemChangeCommand(_game, 2));
@@ -97,6 +97,7 @@ namespace sprint0Real.Controllers
             MenuCommands.Add(Keys.Left, new MoveSelectorLeftCommand(_game));
             MenuCommands.Add(Keys.Up, new MoveSelectorVerticalCommand(_game));
             MenuCommands.Add(Keys.Down, new MoveSelectorVerticalCommand(_game));
+            MenuCommands.Add(Keys.V, new MuteCommand(_game));
 
             //Commands for when game is Paused. Subject to change.
             PauseCommands = new Dictionary<Keys, ICommand>();
@@ -107,6 +108,12 @@ namespace sprint0Real.Controllers
             GameOverCommands = new Dictionary<Keys, ICommand>();
 
             GameOverCommands.Add(Keys.Q, new QuitCommand(_game));
+            GameOverCommands.Add(Keys.V, new MuteCommand(_game));
+
+
+            TitleScreenCommands = new Dictionary<Keys, ICommand>();
+            TitleScreenCommands.Add(Keys.Q, new QuitCommand(_game));
+            TitleScreenCommands.Add(Keys.V, new MuteCommand(_game));
 
             NameRegistrationCommands = new Dictionary<Keys, ICommand>
             {
@@ -114,10 +121,15 @@ namespace sprint0Real.Controllers
                 { Keys.Left, new MoveNameCursorCommand(_game, -1, 0) },
                 { Keys.Up, new MoveNameCursorCommand(_game, 0, -1) },
                 { Keys.Down, new MoveNameCursorCommand(_game, 0, 1) },
+                { Keys.D, new MoveNameCursorCommand(_game, 1, 0) },
+                { Keys.A, new MoveNameCursorCommand(_game, -1, 0) },
+                { Keys.W, new MoveNameCursorCommand(_game, 0, -1) },
+                { Keys.S, new MoveNameCursorCommand(_game, 0, 1) },
                 { Keys.Enter, new SelectLetterCommand(_game) },
                 { Keys.Back, new BackspaceLetterCommand(_game) },
                 { Keys.Tab, new SwitchToOptionsCommand(_game) },
                 { Keys.Q, new QuitCommand(_game) },
+                { Keys.V, new MuteCommand(_game) }
             };
 
             AchievementScreenCommands = new Dictionary<Keys, ICommand>();
@@ -125,8 +137,14 @@ namespace sprint0Real.Controllers
             AchievementScreenCommands.Add(Keys.Escape, new ShowAchievementsCommand(_game));
             AchievementScreenCommands.Add(Keys.Q, new QuitCommand(_game));
             AchievementScreenCommands.Add(Keys.R, new ResetCommand(_game));
+            AchievementScreenCommands.Add(Keys.V, new MuteCommand(_game));
 
             foreach (Keys key in NameRegistrationCommands.Keys)
+            {
+                keyPreviouslyPressed[key] = false;
+            }
+
+            foreach (Keys key in TitleScreenCommands.Keys)
             {
                 keyPreviouslyPressed[key] = false;
             }
@@ -174,6 +192,23 @@ namespace sprint0Real.Controllers
                     keyPreviouslyPressed[key] = isKeyDown;
                 }
             }
+
+            if (_game.currentGameState == GameState.GameStates.TitleScreen || _game.currentGameState == GameState.GameStates.Dying)
+            {
+                foreach (var command in TitleScreenCommands)
+                {
+                    Keys key = command.Key;
+                    bool isKeyDown = KeyboardState.IsKeyDown(key);
+
+                    if (isKeyDown && !keyPreviouslyPressed[key])
+                    {
+                        command.Value.Execute();
+                    }
+                    //update state
+                    keyPreviouslyPressed[key] = isKeyDown;
+                }
+            }
+
             else if (_game.currentGameState == GameState.GameStates.AchievementScreen)
             {
                 foreach (var command in AchievementScreenCommands)

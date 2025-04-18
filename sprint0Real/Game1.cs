@@ -23,6 +23,7 @@ using sprint0Real.TreasureItemStuff;
 using sprint0Real.GameState.NameRegistrationandAchievements;
 using sprint0Real.WolfLink;
 using System.Net.Http.Headers;
+using sprint0Real.Audio;
 
 namespace sprint0Real
 {
@@ -156,7 +157,6 @@ namespace sprint0Real
             collisionDetection = new CollisionDetection(this, collisionHandler);
             DropManager.Init(Link);
             SaveManager.Load();
-            SaveManager.UsePlayer("Test");
 
             base.Initialize();
             _camera = new Camera();
@@ -189,7 +189,7 @@ namespace sprint0Real
 
             EnemySpriteFactory.Instance.LoadAllTextures(Content);
             EnemySpriteFactory.Instance.LoadGame(this);
-            SoundEffectFactory.Instance.LoadAllTextures(Content);
+            SoundEffectFactory.Instance.LoadAllSounds(Content);
             BlockSpriteFactory.Instance.LoadAllTextures(Content);
             TreasureItemSpriteFactory.Instance.LoadAllTextures(Content);
             WolfSpriteFactory.Instance.LoadContent(Content);
@@ -214,9 +214,18 @@ namespace sprint0Real
             {
                 case GameStates.TitleScreen:
                     currentGameState = titleScreen.Update(gameTime, this);
+                    foreach (IController controller in controllerList)
+                    {
+                        controller.Update(gameTime);
+
+                    }
                     break;
                 case GameStates.Dying:
+                    foreach (IController controller in controllerList)
+                    {
+                        controller.Update(gameTime);
 
+                    }
                     break;
                 case GameStates.GameOver:
                     MediaPlayer.Stop();
@@ -278,13 +287,12 @@ namespace sprint0Real
                     {
                         AchievementManager.Unlock("First Time Playing!");
                     }
-
+                    
                     if (MediaPlayer.Queue.ActiveSong != Dungeon)
                     {
-                        MediaPlayer.Stop(); // Stop any currently playing song
-                        MediaPlayer.Play(Dungeon);
-                        MediaPlayer.IsRepeating = true; // Loop the dungeon music
+                        SoundEffectFactory.Instance.PlaySong(SongType.Dungeon, true);
                     }
+
 
                     itemStateMachine.setActive();
                     Link.Update(gameTime);
@@ -328,8 +336,7 @@ namespace sprint0Real
                     {
                         linkSprite = new DeathSprite(linkSheet, this);
                         DyingTime = TimeSpan.Zero;
-                        MediaPlayer.Stop();
-                        MediaPlayer.Play(GameOverMusic);
+                        SoundEffectFactory.Instance.PlaySong(SongType.Gameover, false);
                         TempDying = false;
                     }
 
@@ -499,11 +506,6 @@ namespace sprint0Real
         {
             activePopups.Add(new AchievementPopup(achievementId));
         }
-        public void MuteMusic()
-        {
-            MediaPlayer.Stop();
-        }
-
         public void CameraShake()
         {
             float MaxDistance = 10;

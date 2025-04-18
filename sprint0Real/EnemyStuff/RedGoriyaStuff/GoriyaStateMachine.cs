@@ -9,6 +9,7 @@ using sprint0Real.Interfaces;
 using sprint0Real.Levels;
 using sprint0Real.EnemyStuff.DeathSprites;
 using sprint0Real.TreasureItemStuff;
+using sprint0Real.Audio;
 
 namespace sprint0Real.EnemyStuff.GoriyaStuff
 {
@@ -20,14 +21,12 @@ namespace sprint0Real.EnemyStuff.GoriyaStuff
         private AttackStates attackStatus = AttackStates.Idle;
         private Goriya myGoriya;
         private Random random = new Random();
-        private SoundEffect EnemyDie;
         private bool DieSoundPlayed = false;
         private Death death;
 
         public GoriyaStateMachine(Goriya Goriya)
         {
             myGoriya = Goriya;
-            EnemyDie = SoundEffectFactory.Instance.getEnemyDie();
         }
 
         public void ChangeDirection()
@@ -97,7 +96,7 @@ namespace sprint0Real.EnemyStuff.GoriyaStuff
             {
                 if (!DieSoundPlayed)
                 {
-                    EnemyDie.Play();
+                    SoundEffectFactory.Instance.Play(SoundEffectType.EnemyDie);
                     DieSoundPlayed = true;
                 }
                 DropManager.Instance.OnDeath(myGoriya.location);

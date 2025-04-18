@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using sprint0Real.Audio;
 using sprint0Real.Interfaces;
 using sprint0Real.Levels;
 using sprint0Real.TreasureItemStuff;
@@ -20,7 +21,6 @@ namespace sprint0Real.TreasureItemStuff.TreasureItemSprites
         private Rectangle currentFrame;
         public Rectangle destinationRectangle;
         private int frameXOffset = 72;
-        private SoundEffect soundEffect;
         private bool SoundPlayed = false;
         public Texture2D _texture;
 
@@ -29,7 +29,6 @@ namespace sprint0Real.TreasureItemStuff.TreasureItemSprites
             destinationRectangle = new Rectangle((int)pos.X, (int)pos.Y, 28, 48);
             _texture = TreasureItemSpriteFactory.Instance.GetItemSpriteSheet();
             currentFrame = new Rectangle(frameXOffset, 0, frameWidth, frameHeight);
-            soundEffect = SoundEffectFactory.Instance.getRupeeSoundEffect();
         }
         public void Spawn()
         {
@@ -39,7 +38,7 @@ namespace sprint0Real.TreasureItemStuff.TreasureItemSprites
         {
             if (!SoundPlayed)
             {
-                soundEffect.Play();
+                SoundEffectFactory.Instance.Play(SoundEffectType.RupeePickup);
                 SoundPlayed = true;
             }
         }

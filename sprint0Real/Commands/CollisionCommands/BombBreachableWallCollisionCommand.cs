@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Audio;
+using sprint0Real.Audio;
 using sprint0Real.CollisionBoxes;
 using sprint0Real.Collisions;
 using sprint0Real.GameState.NameRegistrationandAchievements;
@@ -14,11 +15,8 @@ namespace sprint0Real.Commands.CollisionCommands
 {
     public class BombBreachableWallCollisionCommand : ICollisionCommand
     {
-        private SoundEffect secret;
-
         public void Execute(IObject border, IObject bomb, CollisionDirections direction)
         {
-            secret = SoundEffectFactory.Instance.getSecretSound();
 
            if (bomb.GetType().Name == "BombSprite")
             {
@@ -26,7 +24,7 @@ namespace sprint0Real.Commands.CollisionCommands
                 if (Bomb.IsDetonated())
                 {
                     ((BreachableTransitionBox)border).Unlock();
-                    secret.Play();
+                    SoundEffectFactory.Instance.Play(SoundEffectType.secretFound);
 
                     var save = SaveManager.GetSave(Game1.Instance.CurrentPlayerName);
                     if (save == null) return;

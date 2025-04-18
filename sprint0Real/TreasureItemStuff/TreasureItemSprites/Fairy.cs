@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using sprint0Real.Audio;
 
 namespace sprint0Real.TreasureItemStuff.TreasureItemSprites
 {
@@ -25,7 +26,6 @@ namespace sprint0Real.TreasureItemStuff.TreasureItemSprites
         public Rectangle destinationRectangle;
         private Vector2 Location;
         private int frameXOffset = 40;
-        private SoundEffect soundEffect;
         private bool SoundPlayed = false;
         public float speed = 1.15f;
         private float jukeTimer = 0f;
@@ -42,14 +42,13 @@ namespace sprint0Real.TreasureItemStuff.TreasureItemSprites
             destinationRectangle = new Rectangle((int)pos.X, (int)pos.Y, 28, 48);
             _texture = TreasureItemSpriteFactory.Instance.GetItemSpriteSheet();
             currentFrame = new Rectangle(frameXOffset, 0, frameWidth, frameHeight);
-            soundEffect = SoundEffectFactory.Instance.getItemSoundEffect();
             _stateMachine = new FairyStateMachine(this);
         }
         public void CollectItem()
         {
             if (!SoundPlayed)
             {
-                soundEffect.Play();
+                SoundEffectFactory.Instance.Play(SoundEffectType.itemPickup);
                 SoundPlayed = true;
             }
         }

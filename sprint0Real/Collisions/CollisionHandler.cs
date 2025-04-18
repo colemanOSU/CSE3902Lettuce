@@ -32,7 +32,7 @@ namespace sprint0Real.Collisions
         }
         public void LoadCommands()
         {
-            collisionCommands.Add(("Link", "Enemy"),  new LinkEnemyCommand());
+            collisionCommands.Add(("Link", "Enemy"),  new LinkEnemyCommand(game));
             collisionCommands.Add(("Link", "Border"), new LinkBorderCommand());
             collisionCommands.Add(("Link", "RoomTransitionBox"), new RoomTransitionCommand(game));
             collisionCommands.Add(("LinkWeapon", "Border"), new StopLinkWeaponCommand(game));
@@ -40,7 +40,7 @@ namespace sprint0Real.Collisions
             collisionCommands.Add(("Enemy", "Enemy"), new EnemyEnemyCollisionCommand());
             collisionCommands.Add(("OldManSprite", "LinkWeapon"), new OldManCollisionCommand());
 
-            collisionCommands.Add(("Link", "EnemyProjectile"), new LinkEnemyCommand());
+            collisionCommands.Add(("Link", "EnemyProjectile"), new LinkEnemyCommand(game));
             collisionCommands.Add(("Link", "TreasureItem"), new LinkItemCollisionCommand());
 
             collisionCommands.Add(("Link", "BlockSpriteBlack"), new LinkStairsCollisionCommand());

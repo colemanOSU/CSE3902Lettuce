@@ -11,6 +11,7 @@ using sprint0Real.LinkStuff.LinkSprites;
 using System.Security.Cryptography;
 using Microsoft.Xna.Framework.Audio;
 using sprint0Real.WolfLink;
+using sprint0Real.Audio;
 public class Link : ILink
 {
     private Rectangle destinationRectangle;
@@ -69,7 +70,7 @@ public class Link : ILink
         {
             isDamaged = true;
             stateMachine?.DamageLink();
-            linkHurt.Play();
+            SoundEffectFactory.Instance.Play(SoundEffectType.linkHurt);
         }
     }
 

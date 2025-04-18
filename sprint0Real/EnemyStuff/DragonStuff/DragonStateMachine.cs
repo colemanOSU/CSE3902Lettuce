@@ -5,6 +5,7 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Audio;
+using sprint0Real.Audio;
 using sprint0Real.EnemyStuff.BatStuff;
 using sprint0Real.EnemyStuff.DeathSprites;
 using sprint0Real.Interfaces;
@@ -20,7 +21,6 @@ namespace sprint0Real.EnemyStuff.DragonStuff
         private enum DragonState { Idle, Attack, Damaged };
         private DragonState currentState = DragonState.Idle;
         private Dragon myDragon;
-        private SoundEffect EnemyDie;
         private bool DieSoundPlayed = false;
         private Death death;
 
@@ -28,7 +28,6 @@ namespace sprint0Real.EnemyStuff.DragonStuff
         public DragonStateMachine(Dragon dragon)
         {
             myDragon = dragon;
-            EnemyDie = SoundEffectFactory.Instance.getEnemyDie();
         }
 
         public void ChangeDirection()
@@ -49,7 +48,7 @@ namespace sprint0Real.EnemyStuff.DragonStuff
             {
                 if (!DieSoundPlayed)
                 {
-                    EnemyDie.Play();
+                    SoundEffectFactory.Instance.Play(SoundEffectType.EnemyDie);
                     DieSoundPlayed=true;
                 }
                 DropManager.Instance.OnDeath(myDragon.location);
