@@ -5,7 +5,10 @@ using sprint0Real.Collisions;
 using sprint0Real.Interfaces;
 using sprint0Real.ItemUseSprites;
 using sprint0Real.Levels;
+using sprint0Real.LinkStuff;
 using sprint0Real.LinkStuff.LinkSprites;
+using sprint0Real.WolfLink;
+using System.Diagnostics;
 
 namespace sprint0Real.Commands.KeyboardCommands
 {
@@ -21,6 +24,19 @@ namespace sprint0Real.Commands.KeyboardCommands
         }
         public void Execute()
         {
+            if (myGame.Link.GetInventory().CurrentItem == Inventory.Items.WolfBubble)
+            {
+                if (Wolf.Instance.isUsed())
+                {
+                    Wolf.Instance.setUsed(false);
+                }
+                else
+                {
+                    Wolf.Instance.setUsed(true);
+                }
+                return; 
+            }
+
             if (myGame.Link.CanAttack())
             {
                 myGame.Link.SetCanAttack(false);
@@ -40,9 +56,9 @@ namespace sprint0Real.Commands.KeyboardCommands
                         myGame.linkSprite = new UseDownSprite(myGame.linkSheet, myGame, useItem);
                         break;
                 }
-
             }
-
         }
+
     }
+    
 }

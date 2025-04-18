@@ -10,6 +10,7 @@ using System.Diagnostics;
 using sprint0Real.LinkStuff.LinkSprites;
 using System.Security.Cryptography;
 using Microsoft.Xna.Framework.Audio;
+using sprint0Real.WolfLink;
 using sprint0Real.Audio;
 public class Link : ILink
 {
@@ -22,6 +23,8 @@ public class Link : ILink
     private Color LinkSpriteColor;
     private Vector2 MomentumVector;
     public Texture2D linkSheet;
+    private SoundEffect linkHurt;
+    private int actualSpeed;
 
     public Inventory inventory;
     private int MaxHealth { get; set; }
@@ -54,6 +57,8 @@ public class Link : ILink
         itemStateMachine = new ItemStateMachine(game, inventory);
         MaxHealth = 8;
         CurrentHealth = MaxHealth;
+        linkHurt = game.Content.Load<SoundEffect>("LOZ_Link_Hurt");
+        
     }
     public void Damaged()
     {
@@ -99,19 +104,25 @@ public class Link : ILink
         
         if (canMove)
         {
+            actualSpeed = SPEED;
+            if (Wolf.Instance.isUsed())
+            {
+                actualSpeed = (int)(SPEED * 1.5f); 
+            }
+
             switch (dir)
             {
                 case Direction.Up:
-                    MomentumVector = new Vector2(0, -SPEED);
+                    MomentumVector = new Vector2(0, -actualSpeed);
                     break;
                 case Direction.Down:
-                    MomentumVector = new Vector2(0, SPEED);
+                    MomentumVector = new Vector2(0, actualSpeed);
                     break;
                 case Direction.Left:
-                    MomentumVector = new Vector2(-SPEED, 0);
+                    MomentumVector = new Vector2(-actualSpeed, 0);
                     break;
                 case Direction.Right:
-                    MomentumVector = new Vector2(SPEED, 0);
+                    MomentumVector = new Vector2(actualSpeed, 0);
                     break;
             }   
         }

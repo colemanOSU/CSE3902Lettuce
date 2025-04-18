@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using sprint0Real.Collisions;
 using sprint0Real.Interfaces;
 using sprint0Real.LinkStuff.LinkSprites;
+using sprint0Real.WolfLink;
 
 namespace sprint0Real.Commands.KeyboardCommands
 {
@@ -21,7 +22,14 @@ namespace sprint0Real.Commands.KeyboardCommands
         {
             if (myGame.Link.CanMove() && !IsMoving)
             {
+                if (Wolf.Instance.isUsed())
+                {
+                    myGame.linkSprite = new WolfFaceDownSprite(myGame.wolfSheet, myGame);
+
+                }
+                else { 
                 myGame.linkSprite = new FaceDownSprite(myGame.linkSheet, myGame);
+                }
             }
         }
     }

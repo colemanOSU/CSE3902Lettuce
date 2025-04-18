@@ -5,6 +5,7 @@ using sprint0Real.Collisions;
 using sprint0Real.Controllers;
 using sprint0Real.Interfaces;
 using sprint0Real.LinkStuff.LinkSprites;
+using sprint0Real.WolfLink;
 
 namespace sprint0Real.Commands.KeyboardCommands
 {
@@ -22,8 +23,14 @@ namespace sprint0Real.Commands.KeyboardCommands
         {
             if (myGame.Link.CanMove() && !IsMoving)
             {
-                myGame.linkSprite = new FaceRightSprite(myGame.linkSheet, myGame);
-
+                if (Wolf.Instance.isUsed())
+                {
+                    myGame.linkSprite = new WolfFaceRightSprite(myGame.wolfSheet, myGame);
+                }
+                else
+                {
+                    myGame.linkSprite = new FaceRightSprite(myGame.linkSheet, myGame);
+                }
             }
         }
     }

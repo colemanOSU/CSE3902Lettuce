@@ -22,6 +22,7 @@
 		<Object Type="LifePotion" x="240" y="250"/>
 		<Object Type="Boomerang" x="400" y="50"/>
 		<Object Type="BlueRing" x="400" y="140"/>
+		<Object Type="WolfBubble" x="400" y="100"/>
 	</Objects>
 	
 	<MapHitBoxes>

@@ -73,6 +73,8 @@ namespace sprint0Real.Levels
 
             objectCatalogue.Add("Oldman", "sprint0Real.NPCStuff.OldManSprite");
             objectCatalogue.Add("Fire", "sprint0Real.NPCStuff.FireSprite");
+
+            objectCatalogue.Add("WolfBubble", "sprint0Real.TreasureItemStuff.TreasureItemSprites.WolfBubble");
         }
 
         public String ReturnObjectType(String type)

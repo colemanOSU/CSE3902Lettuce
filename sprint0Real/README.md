@@ -15,7 +15,7 @@ CONTROLS:
 	Q: Quit The Program
 	R: Reset Program
 	M: Pull up/down Menu
-	B: Use selected inventory item
+	B: Use/unuse selected inventory item
 	H: Unleash your power (may only be used horizontally)
 	V: Mute/Unmute Volume
 	ENTER: Start Game from title screen

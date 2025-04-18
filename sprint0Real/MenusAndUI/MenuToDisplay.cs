@@ -52,6 +52,11 @@ namespace sprint0Real.MenusAndUI
             {
                 Menu[1, 0] = Inventory.Items.Flute;
             }
+            else if (inv.HasItem(Inventory.Items.WolfBubble))
+            {
+                Menu[1, 0] = Inventory.Items.WolfBubble;
+
+            }
 
             if (inv.HasItem(Inventory.Items.Meat))
             {
@@ -71,6 +76,7 @@ namespace sprint0Real.MenusAndUI
             {
                 Menu[1, 3] = Inventory.Items.Staff;
             }
+            
 
             return Menu;
         }
