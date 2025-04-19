@@ -22,6 +22,7 @@ namespace sprint0Real.Collisions
     {
         private Dictionary<(String, String), ICollisionCommand> collisionCommands;
         private Game1 game;
+        public bool isPhaseActive = false;
 
 
         // Maybe make these strings
@@ -109,7 +110,14 @@ namespace sprint0Real.Collisions
 
             if (collisionCommands.TryGetValue((typeA, typeB), out ICollisionCommand command))
             {
-                command.Execute(objA, objB, direction);
+                if (!isPhaseActive)
+                {
+                    command.Execute(objA, objB, direction);
+                }
+                else if (!(typeA == "Link" & (typeB == "Enemy" || typeB == "EnemyProjectile")))
+                {
+                    command.Execute(objA, objB, direction);
+                }
             }
         }
 
