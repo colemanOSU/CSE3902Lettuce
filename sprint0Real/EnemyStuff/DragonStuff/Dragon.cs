@@ -9,6 +9,8 @@ using sprint0Real.Interfaces;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0Real.EnemyStuff.Fireballs;
 using sprint0Real.EnemyStuff.SkeletonStuff;
+using sprint0Real.Levels;
+using sprint0Real.TreasureItemStuff;
 
 namespace sprint0Real.EnemyStuff.DragonStuff
 {
@@ -52,6 +54,17 @@ namespace sprint0Real.EnemyStuff.DragonStuff
         {
             behavior.TakeDamage();
             stateMachine.TakeDamage(damage);
+        }
+        public void StageItem()
+        {
+            if (item != null)
+            {
+                CurrentMap.Instance.Stage(item);
+            }
+            else
+            {
+                DropManager.Instance.OnDeath(location);
+            }
         }
 
         public void hitWall()

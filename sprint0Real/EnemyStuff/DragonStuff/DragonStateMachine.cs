@@ -51,7 +51,7 @@ namespace sprint0Real.EnemyStuff.DragonStuff
                     SoundEffectFactory.Instance.Play(SoundEffectType.EnemyDie);
                     DieSoundPlayed=true;
                 }
-                DropManager.Instance.OnDeath(myDragon.location);
+                myDragon.StageItem();
                 CurrentMap.Instance.DeStage(myDragon);
                 death = new Death(myDragon.location);
                 CurrentMap.Instance.Stage(death);

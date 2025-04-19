@@ -99,7 +99,7 @@ namespace sprint0Real.EnemyStuff.GoriyaStuff
                     SoundEffectFactory.Instance.Play(SoundEffectType.EnemyDie);
                     DieSoundPlayed = true;
                 }
-                DropManager.Instance.OnDeath(myGoriya.location);
+                myGoriya.StageItem();
                 CurrentMap.Instance.DeStage(myGoriya);
                 death = new Death(myGoriya.location);
                 CurrentMap.Instance.Stage(death);

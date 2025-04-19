@@ -10,6 +10,7 @@ using sprint0Real.EnemyStuff.GoriyaStuff;
 using sprint0Real.EnemyStuff.RedGoriyaStuff;
 using sprint0Real.Interfaces;
 using sprint0Real.Levels;
+using sprint0Real.TreasureItemStuff;
 
 namespace sprint0Real.EnemyStuff.RedGoriya
 {
@@ -25,7 +26,7 @@ namespace sprint0Real.EnemyStuff.RedGoriya
         public Boomerang boomerang;
         private int FPS = 6;
         private float timer = 0f;
-        
+        public ITreasureItems item { get; }
 
         public Goriya(Vector2 placement)
         {
@@ -35,6 +36,28 @@ namespace sprint0Real.EnemyStuff.RedGoriya
             mySprite = EnemySpriteFactory.Instance.CreateGoriyaRightSprite();
             
         }
+
+        public Goriya(Vector2 placement, ITreasureItems item)
+        {
+            Location = placement;
+            stateMachine = new GoriyaStateMachine(this);
+            behavior = new GoriyaBehavior(this);
+            mySprite = EnemySpriteFactory.Instance.CreateGoriyaRightSprite();
+            this.item = item;
+        }
+
+        public void StageItem()
+        {
+            if (item != null)
+            {
+                CurrentMap.Instance.Stage(item);
+            }
+            else
+            {
+                DropManager.Instance.OnDeath(location);
+            }
+        }
+
         public void hitWall()
         {
             stateMachine.hitWall();

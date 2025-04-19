@@ -39,7 +39,7 @@ namespace sprint0Real.EnemyStuff.BatStuff
                     SoundEffectFactory.Instance.Play(SoundEffectType.EnemyDie);
                     DieSoundPlayed = true;
                 }
-                DropManager.Instance.OnDeath(myBat.location);
+                myBat.StageItem();
                 CurrentMap.Instance.DeStage(myBat);
                 death = new Death(myBat.location);
                 CurrentMap.Instance.Stage(death);

@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using sprint0Real.Interfaces;
 using sprint0Real.Levels;
+using sprint0Real.TreasureItemStuff;
 
 namespace sprint0Real.EnemyStuff.BatStuff
 {
@@ -18,7 +19,7 @@ namespace sprint0Real.EnemyStuff.BatStuff
         public float speed = 2f;
         public float FPS = 10;
         private float timer = 0f;
-        
+        public ITreasureItems item { get; }
 
         public Bat(Vector2 start)
         {
@@ -26,6 +27,27 @@ namespace sprint0Real.EnemyStuff.BatStuff
             stateMachine = new BatStateMachine(this);
             behavior = new BatBehavior(this);
             sprite = EnemySpriteFactory.Instance.CreateBatSprite();
+        }
+
+        public Bat(Vector2 start, ITreasureItems item)
+        {
+            Location = start;
+            stateMachine = new BatStateMachine(this);
+            behavior = new BatBehavior(this);
+            sprite = EnemySpriteFactory.Instance.CreateBatSprite();
+            this.item = item;
+        }
+
+        public void StageItem()
+        {
+            if (item != null)
+            {
+                CurrentMap.Instance.Stage(item);
+            }
+            else
+            {
+                DropManager.Instance.OnDeath(location);
+            }
         }
 
         public void Perch()
