@@ -20,14 +20,17 @@ namespace sprint0Real.Commands.KeyboardCommands
 
         public void Execute()
         {
-            if (Wolf.Instance.isUsed())
+            if (myGame.Link.CanMove() && !IsMoving)
             {
-                myGame.linkSprite = new WolfFaceUpSprite(myGame.wolfSheet, myGame);
+                if (Wolf.Instance.isUsed())
+                {
+                    myGame.linkSprite = new WolfFaceUpSprite(myGame.wolfSheet, myGame);
 
-            }
-            else
-            {
-                myGame.linkSprite = new FaceUpSprite(myGame.linkSheet, myGame);
+                }
+                else
+                {
+                    myGame.linkSprite = new FaceUpSprite(myGame.linkSheet, myGame);
+                }
             }
         }
     }
