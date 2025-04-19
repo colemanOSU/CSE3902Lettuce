@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <LevelData>
 	<Name>Entrance</Name>
-	<Door Exterior ="Default" Interior ="EntranceInterior" Left="Open" Right="Open" Up="Default" Down="Locked"/>
+	<Door Exterior ="Default" Interior ="EntranceInterior" Left="Open" Right="Open" Up="Open" Down="Locked"/>
 	
 	<Objects>
 		<Object Type="Hand" x="50" y="50"/>
@@ -54,7 +54,7 @@
 
 		<HitBox Type="RoomTransitionBox" x="0" y="216" width="96" height="96" direction="Left"/>
 		<HitBox Type="RoomTransitionBox" x="672" y="216" width="80" height="96" direction="Right"/>
-		<HitBox Type="BreachableTransitionBox" x="336" y="0" width="96" height="96" direction="Up"/>
+		<HitBox Type="RoomTransitionBox" x="336" y="0" width="96" height="96" direction="Up"/>
 		<HitBox Type="Border" x="336" y="432" width="96" height="96"/>
 	</MapHitBoxes>
 
