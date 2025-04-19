@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Audio;
 using sprint0Real.Audio;
 using sprint0Real.EnemyStuff.BatStuff;
+using sprint0Real.EnemyStuff.DeathSprites;
 using sprint0Real.EnemyStuff.DragonStuff;
 using sprint0Real.EnemyStuff.HandStuff;
 using sprint0Real.Interfaces;
@@ -63,6 +64,7 @@ namespace sprint0Real.EnemyStuff.HandStuff
                 }
                 DropManager.Instance.OnDeath(myHand.location);
                 CurrentMap.Instance.DeStage(myHand);
+                CurrentMap.Instance.Stage(new Death(myHand.location));
             }
         }
 
