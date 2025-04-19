@@ -41,6 +41,27 @@ namespace sprint0Real.EnemyStuff.HandStuff
 
             spriteBatch.Draw(sprites, destinationRectangle, sourceRectangle, Color.White);
         }
+
+        public void DrawUpsideDown(SpriteBatch spriteBatch, Vector2 location)
+        {
+            Rectangle sourceRectangle;
+            Rectangle destinationRectangle;
+
+            if (currentFrame == 0)
+            {
+                sourceRectangle = new Rectangle(393, 11, 15, 15);
+                destinationRectangle = new Rectangle((int)location.X,
+                (int)location.Y, 15 * Game1.RENDERSCALE, 15 * Game1.RENDERSCALE);
+            }
+            else
+            {
+                sourceRectangle = new Rectangle(409, 11, 15, 15);
+                destinationRectangle = new Rectangle((int)location.X,
+                (int)location.Y, 15 * Game1.RENDERSCALE, 15 * Game1.RENDERSCALE);
+            }
+
+            spriteBatch.Draw(sprites, destinationRectangle, sourceRectangle, Color.White, 0, Vector2.Zero, SpriteEffects.FlipVertically, 1);
+        }
         public void Update()
         {
             currentFrame = (currentFrame + 1) % totalFrames;

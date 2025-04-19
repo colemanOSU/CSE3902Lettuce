@@ -17,26 +17,56 @@ namespace sprint0Real.EnemyStuff.HandStuff
             myHand = Hand;
         }
 
-        private float jukeTimer = 0f;
-        private float jukeDelay = 0f;
+        private bool returnFlag = false;
+        private float returnTimer = 0f;
+        private float returnDelay = 0f;
 
+        private bool stunFlag = false;
+        private float stunTimer = 0f;
+        private float stunDelay = 2f;
 
         private Random random = new Random();
 
-        private void JukeCheck()
+        public void StartReturnTimer()
         {
-            if (jukeDelay <= jukeTimer)
+            returnFlag = true;
+            returnDelay = (float)(random.NextDouble() * 2 + 3);
+        }
+
+        private void ReturnCheck()
+        {
+            if (returnDelay <= returnTimer)
             {
-                jukeTimer = 0;
-                jukeDelay = (float)(random.NextDouble() * 1);
-                //myHand.ChangeDirection();
+                myHand.Return();
+            }
+        }
+
+        public void Stun()
+        {
+            stunFlag = true;
+        }
+
+        private void StunCheck()
+        {
+            if (stunDelay <= stunTimer)
+            {
+                stunFlag = false;
+                myHand.UnStun();
             }
         }
 
         public void Update(GameTime time)
         {
-            jukeTimer += (float)time.ElapsedGameTime.TotalSeconds;
-            JukeCheck();
+            if (returnFlag && !stunFlag)
+            {
+                returnTimer += (float)time.ElapsedGameTime.TotalSeconds;
+                ReturnCheck();
+            }
+            if (stunFlag)
+            {
+                stunTimer += (float)time.ElapsedGameTime.TotalSeconds;
+                StunCheck();
+            }
         }
     }
 }

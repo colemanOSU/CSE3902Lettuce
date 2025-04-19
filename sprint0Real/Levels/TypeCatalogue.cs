@@ -70,6 +70,7 @@ namespace sprint0Real.Levels
             objectCatalogue.Add("SealedTransitionBox", "sprint0Real.CollisionBoxes.SealedTransitionBox");
             objectCatalogue.Add("LockedTransitionBox", "sprint0Real.CollisionBoxes.LockedTransitionBox");
             objectCatalogue.Add("BreachableTransitionBox", "sprint0Real.CollisionBoxes.BreachableTransitionBox");
+            objectCatalogue.Add("HandSpawner", "sprint0Real.CollisionBoxes.HandVicinitySpawner");
 
             objectCatalogue.Add("Oldman", "sprint0Real.NPCStuff.OldManSprite");
             objectCatalogue.Add("Fire", "sprint0Real.NPCStuff.FireSprite");

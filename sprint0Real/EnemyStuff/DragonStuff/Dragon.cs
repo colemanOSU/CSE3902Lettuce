@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using sprint0Real.Interfaces;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0Real.EnemyStuff.Fireballs;
+using sprint0Real.EnemyStuff.SkeletonStuff;
 
 namespace sprint0Real.EnemyStuff.DragonStuff
 {
@@ -23,6 +24,7 @@ namespace sprint0Real.EnemyStuff.DragonStuff
 
         private int FPS = 6;
         private float timer = 0f;
+        public ITreasureItems item { get; }
 
         public Dragon(Vector2 placement)
         {
@@ -30,6 +32,15 @@ namespace sprint0Real.EnemyStuff.DragonStuff
             stateMachine = new DragonStateMachine(this);
             behavior = new DragonBehavior(this);
             sprite = EnemySpriteFactory.Instance.CreateDragonEnemySprite();
+        }
+
+        public Dragon(Vector2 start, ITreasureItems item)
+        {
+            Location = start;
+            stateMachine = new DragonStateMachine(this);
+            behavior = new DragonBehavior(this);
+            mySprite = EnemySpriteFactory.Instance.CreateDragonEnemySprite();
+            this.item = item;
         }
 
         public void ChangeDirection()

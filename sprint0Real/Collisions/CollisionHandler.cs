@@ -64,6 +64,8 @@ namespace sprint0Real.Collisions
             collisionCommands.Add(("Link", "BreachableTransitionBox"), new LinkLockedTransitionBoxCollisionCommand());
             collisionCommands.Add(("Enemy", "BreachableTransitionBox"), new EnemyTransitionBoxes());
             collisionCommands.Add(("BreachableTransitionBox", "LinkWeapon"), new BombBreachableWallCollisionCommand());
+
+            collisionCommands.Add(("Link", "HandVicinitySpawner"), new LinkHandSpawnerCollisionCommand());
         }
 
         public void HandleCollision(IObject objA, IObject objB)

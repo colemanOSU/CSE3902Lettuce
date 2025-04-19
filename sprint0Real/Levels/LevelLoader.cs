@@ -65,7 +65,7 @@ namespace sprint0Real.Levels
                     int y = Int32.Parse(MapHitBox.GetAttribute("y")) + 186;
                     int width = Int32.Parse(MapHitBox.GetAttribute("width"));
                     int height = Int32.Parse(MapHitBox.GetAttribute("height"));
-                    if (boxType != "Border")
+                    if (boxType != "Border" && boxType != "HandSpawner")
                     {
                         string direction = MapHitBox.GetAttribute("direction");
                         newMap.Stage((ITransitionBox)Activator.CreateInstance(type, new Rectangle(x, y, width, height), direction));
