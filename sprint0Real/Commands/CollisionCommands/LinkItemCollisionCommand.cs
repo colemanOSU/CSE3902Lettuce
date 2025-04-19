@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework;
 using sprint0Real.Collisions;
 using sprint0Real.Interfaces;
 using sprint0Real.Levels;
@@ -15,6 +16,11 @@ namespace sprint0Real.Commands.CollisionCommands2
     {
         private Inventory inv;
         private Link link;
+        private Game1 myGame;
+        public LinkItemCollisionCommand(Game1 game)
+        {
+            myGame = game;
+        }
         public void Execute(IObject LinkObj, IObject Item, CollisionDirections direction)
         {
             //Maybe Dangerous
@@ -96,6 +102,9 @@ namespace sprint0Real.Commands.CollisionCommands2
                     break;
                 case WolfBubble:
                     inv.ObtainItem(Inventory.Items.WolfBubble);
+                    break;
+                case Triforce:
+                    myGame.currentGameState = GameState.GameStates.Winning;
                     break;
                 //TODO other cases
                 default:

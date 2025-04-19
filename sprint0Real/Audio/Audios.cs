@@ -29,6 +29,7 @@ namespace sprint0Real.Audio
     {
         Dungeon,
         Title,
+        Winning,
         Gameover
     }
     internal class Audios

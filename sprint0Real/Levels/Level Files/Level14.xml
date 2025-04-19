@@ -4,12 +4,11 @@
 	<Door Exterior ="Default" Interior ="Level14" Left="Open" Right="Default" Up="Default" Down="Default"/>
 	
 	<Objects>
+		<Object Type="Triforce" x="300" y="180"/>
 	</Objects>
 	
 	<MapHitBoxes>
-		<HitBox Type="Border" x="144" y="144" width="480" height="48"/>
-		<HitBox Type="Border" x="144" y="192" width="48" height="192"/>
-		<HitBox Type="Border" x="144" y="336" width="192" height="48"/>
+		
 		<HitBox Type="Border" x="576" y="192" width="48" height="192"/>
 		<HitBox Type="Border" x="432" y="336" width="192" height="48"/>
 
@@ -32,6 +31,7 @@
 		<HitBox Type="Border" x="672" y="216" width="80" height="96" direction="Right"/>
 		<HitBox Type="Border" x="336" y="0" width="96" height="96" direction="Up"/>
 		<HitBox Type="Border" x="336" y="432" width="96" height="96" direction="Down"/>
+
 	</MapHitBoxes>
 
 	<Neighbors>

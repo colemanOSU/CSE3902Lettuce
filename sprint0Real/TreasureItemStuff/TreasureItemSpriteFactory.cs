@@ -34,6 +34,7 @@ namespace sprint0Real.TreasureItemStuff
                 "Fairy" => new Fairy(pos),
                 "Clock" => new Clock(pos),
                 "WolfBubble" => new WolfBubble(pos),
+                "Triforce" => new Triforce(pos),
                 _ => null
             };
         }

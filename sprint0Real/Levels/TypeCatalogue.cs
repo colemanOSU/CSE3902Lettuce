@@ -76,6 +76,7 @@ namespace sprint0Real.Levels
             objectCatalogue.Add("Fire", "sprint0Real.NPCStuff.FireSprite");
 
             objectCatalogue.Add("WolfBubble", "sprint0Real.TreasureItemStuff.TreasureItemSprites.WolfBubble");
+            objectCatalogue.Add("Triforce", "sprint0Real.TreasureItemStuff.TreasureItemSprites.Triforce");
         }
 
         public String ReturnObjectType(String type)

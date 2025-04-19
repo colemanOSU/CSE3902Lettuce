@@ -41,7 +41,7 @@ namespace sprint0Real.LinkStuff.LinkSprites
             {
                 myGame.Link.SetCanAttack(true);
                 myGame.Link.SetCanMove(true);
-                sourceRectangle = new(35, 11, 16, 16);
+                sourceRectangle = new(230, 11, 16, 16);
             }
         }
     }
