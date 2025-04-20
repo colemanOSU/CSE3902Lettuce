@@ -15,7 +15,7 @@ public class StopLinkWeaponCommand : ICollisionCommand
     {
         if (objA is ILinkSprite sword)
         {
-            sword.Disable(); // Stop and fade the sword
+            sword.Disable(); 
         }
         game.Link.SetCanAttack(true);
         game.Link.SetCanMove(true);

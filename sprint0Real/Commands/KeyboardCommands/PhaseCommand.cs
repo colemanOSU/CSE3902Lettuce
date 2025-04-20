@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using sprint0Real.Collisions;
 using sprint0Real.Interfaces;
 using sprint0Real.LinkStuff.LinkSprites;
 using System.Diagnostics;
@@ -17,7 +18,7 @@ namespace sprint0Real.Commands.KeyboardCommands
 
         public void Execute()
         {
-            myGame.currentGameState = myGame.currentGameState == GameState.GameStates.Pause ? GameState.GameStates.GamePlay : GameState.GameStates.Pause;
+            myGame.collisionHandler.switchPhaseActive();
         }
     }
 }

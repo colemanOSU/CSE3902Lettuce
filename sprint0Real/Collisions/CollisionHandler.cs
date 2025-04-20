@@ -161,5 +161,16 @@ namespace sprint0Real.Collisions
             }
             return recentCollisionDirection;
         }
+        public void switchPhaseActive()
+        {
+            if (isPhaseActive)
+            {
+                isPhaseActive = false;
+            }
+            else
+            {
+                isPhaseActive=true;
+            }
+        }
     }
 }
