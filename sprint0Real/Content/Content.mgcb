@@ -79,6 +79,13 @@
 /processorParam:TextureFormat=Color
 /build:Dungeon Enemies.png
 
+#begin File.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:File.spritefont;WinFont.spritefont
+
 #begin LinkKamehameha.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor

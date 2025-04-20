@@ -13,6 +13,7 @@ namespace sprint0Real.TreasureItemStuff.TreasureItemSprites
     {
         private Texture2D _texture;
         private Game1 _game;
+        private Vector2 _position;
         private Rectangle[] _sourceFrames = new Rectangle[]
         {
             new Rectangle(275, 3, 10, 10),
@@ -28,7 +29,8 @@ namespace sprint0Real.TreasureItemStuff.TreasureItemSprites
 
         public Triforce(Vector2 pos)
         {
-            destinationRectangle = new Rectangle((int)pos.X, (int)pos.Y, 10*3, 10*3);
+            _position = pos;
+            destinationRectangle = new Rectangle((int)_position.X, (int)_position.Y, 10*3, 10*3);
             _texture = TreasureItemSpriteFactory.Instance.GetItemSpriteSheet();
         }
         public void CollectItem()
@@ -62,6 +64,11 @@ namespace sprint0Real.TreasureItemStuff.TreasureItemSprites
         public Rectangle Rect
         {
             get { return destinationRectangle; }
+        }
+        public void SetPosition(Vector2 pos)
+        {
+            _position = pos;
+            destinationRectangle = new Rectangle((int)_position.X, (int)_position.Y, 10 * 3, 10 * 3); 
         }
     }
 }
