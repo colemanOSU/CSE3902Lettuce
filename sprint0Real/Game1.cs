@@ -44,6 +44,8 @@ namespace sprint0Real
         public TitleScreen titleScreen;
         public GameOverUI GameOverScreen;
         public Song Dungeon;
+        public Song Winning;
+        public Song Title;
         public Song GameOverMusic;
 
         public ILink Link;
@@ -78,6 +80,8 @@ namespace sprint0Real
         private AchievementScreen achievementScreen;
         public string CurrentPlayerName { get; set; }
         public static Game1 Instance { get; private set; }
+
+        private WinningState winningState;
 
         public SoundEffect LinkScream;
 
@@ -133,8 +137,8 @@ namespace sprint0Real
 
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
-            Link = new Link(this); 
-
+            Link = new Link(this);
+            
             //TEMP PAUSE
             isPaused = false;
             CameraTarget = new Vector2(SCREENMIDX, SCREENMIDY);
@@ -183,8 +187,12 @@ namespace sprint0Real
             Texture2D fileSelectSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - File Select");
             NameScene = new NameRegistrationScene(this, fileSelectSheet, font1);
             achievementScreen = new AchievementScreen(this, font1);
+           
+
 
             Dungeon = Content.Load<Song>("04 - Dungeon");
+            Winning = Content.Load<Song>("06 - Triforce");
+            Title = Content.Load<Song>("01 - Intro");
             GameOverMusic = Content.Load<Song>("07 - Game Over");
 
             EnemySpriteFactory.Instance.LoadAllTextures(Content);
@@ -194,7 +202,7 @@ namespace sprint0Real
             TreasureItemSpriteFactory.Instance.LoadAllTextures(Content);
             WolfSpriteFactory.Instance.LoadContent(Content);
             LevelLoader.Instance.LoadLevels();
-
+            winningState = new WinningState(this);
             ResetGame();
             collisionHandler.LoadCommands();
             collisionDetection.Load(Link);
@@ -280,7 +288,13 @@ namespace sprint0Real
                 case GameStates.LevelTransition:
 
                     break;
-
+                case GameStates.Winning:
+                    winningState.Update(gameTime);
+                    if (MediaPlayer.Queue.ActiveSong != Winning)
+                    {
+                        SoundEffectFactory.Instance.PlaySong(SongType.Winning, true);
+                    }
+                    break;
                 case GameStates.GamePlay:
 
                     if (!AchievementManager.HasAchievement(CurrentPlayerName, "First Time Playing!"))
@@ -434,7 +448,9 @@ namespace sprint0Real
 
                     _spriteBatch.End();
                     break;
-
+                case GameStates.Winning:
+                    winningState.Draw(_spriteBatch);
+                    break;
                 case GameStates.GamePlay:
 
                     transform = Matrix.CreateTranslation(KameCamera.GetTopLeft().X, KameCamera.GetTopLeft().Y, 0);
@@ -478,7 +494,6 @@ namespace sprint0Real
            
             this.titleScreen.isAnimating = false;
             currentGameState = GameStates.TitleScreen;
-
             CurrentMap.Instance.SetMap(LevelLoader.Instance.RetrieveMap("Entrance"));
 
             linkSprite = new ResetLink(linkSheet, this);
@@ -489,6 +504,7 @@ namespace sprint0Real
             MenuUISprite = new MenuUI(UISheet);
             PauseUISprite = new PauseUI(UISheet);
             GameOverScreen = new GameOverUI(UISheet);
+            winningState = new WinningState(this);
 
             weaponItemsA = new NullSprite(linkSheet, this);
             weaponItemsB = new NullSprite(linkSheet, this);
