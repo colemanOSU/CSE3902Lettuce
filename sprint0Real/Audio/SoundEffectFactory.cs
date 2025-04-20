@@ -67,6 +67,7 @@ namespace sprint0Real.Audio
             songs[SongType.Title] = content.Load<Song>("01 - Intro");
             songs[SongType.Gameover] = content.Load<Song>("07 - Game Over");
             songs[SongType.Dungeon] = content.Load<Song>("04 - Dungeon");
+            songs[SongType.Winning] = content.Load<Song>("06 - Triforce");
 
         }
         public SoundEffect Get(SoundEffectType type)

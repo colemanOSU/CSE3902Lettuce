@@ -36,13 +36,18 @@ namespace sprint0Real.LinkStuff.LinkSprites
 
         public void Update(GameTime gameTime, SpriteBatch spriteBatch)
         {
+            destinationRectangle = myGame.Link.GetLocation();
             frame++;
             if (frame >= 10)
             {
                 myGame.Link.SetCanAttack(true);
                 myGame.Link.SetCanMove(true);
-                sourceRectangle = new(35, 11, 16, 16);
+                sourceRectangle = new(230, 11, 16, 16);
             }
+        }
+        public Rectangle GetDestinationRectangle()
+        {
+            return destinationRectangle;
         }
     }
 }
