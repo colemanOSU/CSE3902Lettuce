@@ -108,6 +108,7 @@ namespace sprint0Real.Commands.CollisionCommands2
                 case Triforce:
                     myGame.currentGameState = GameState.GameStates.Winning;
                     break;
+
                 //TODO other cases
                 default:
                     break;

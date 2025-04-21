@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0Real.Interfaces;
 using sprint0Real.Levels;
@@ -12,6 +13,9 @@ namespace sprint0Real.EnemyStuff.BatStuff
         private BatBehavior behavior;
         private bool Perched = false;
         private int health = 1;
+
+        private TimeSpan stunTimer = TimeSpan.Zero;
+        public bool IsStunned => stunTimer > TimeSpan.Zero;
 
         private ISprite2 sprite;
         private Vector2 Location;
@@ -49,7 +53,10 @@ namespace sprint0Real.EnemyStuff.BatStuff
                 DropManager.Instance.OnDeath(location);
             }
         }
-
+        public void Stun(TimeSpan duration)
+        {
+            stunTimer = duration;
+        }
         public void Perch()
         {
             Perched = true;
@@ -80,8 +87,15 @@ namespace sprint0Real.EnemyStuff.BatStuff
 
         public void Update(GameTime gameTime)
         {
+            if (IsStunned)
+            {
+                stunTimer -= gameTime.ElapsedGameTime;
+                return;
+            }
+
             stateMachine.Update();
             behavior.Update(gameTime);
+
             timer += (float)gameTime.ElapsedGameTime.TotalSeconds;     
             if (timer >= (1 / FPS) && !Perched)
             {
