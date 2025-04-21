@@ -44,10 +44,6 @@ namespace sprint0Real
         public GameStates currentGameState;
         public TitleScreen titleScreen;
         public GameOverUI GameOverScreen;
-        public Song Dungeon;
-        public Song Winning;
-        public Song Title;
-        public Song GameOverMusic;
 
         public ILink Link;
         public ILinkSpriteTemp linkSprite;
