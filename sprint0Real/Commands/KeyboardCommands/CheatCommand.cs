@@ -7,7 +7,8 @@ using sprint0Real.ItemUseSprites;
 using sprint0Real.Levels;
 using sprint0Real.LinkStuff.LinkSprites;
 using System;
-using System.Linq;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace sprint0Real.Commands.KeyboardCommands
 {
@@ -15,35 +16,41 @@ namespace sprint0Real.Commands.KeyboardCommands
     {
         private Game1 myGame;
         private bool useItem = false;
-        int[] ans = { 1, 2, 3, 4, 3, 2, 1 };
-        int[] buffer;
-
+        Queue ans = new Queue();
+        Queue buffer = new Queue();
+        int lastDirection=2;
+        bool attackReady = false;
 
         public CheatCommand(Game1 game)
         {
             myGame = game;
+            ans.Enqueue(1);
+            ans.Enqueue(2);
+            ans.Enqueue(3);
+            ans.Enqueue(4);
+            ans.Enqueue(3);
+            ans.Enqueue(2);
+            ans.Enqueue(1);
 
         }
         public void Add(int direction)
         {
-            int length = buffer.Length;
-            if (buffer[length - 1]!= direction)
+            if(lastDirection != direction)
             {
-                int[] temp = { };
-                if (buffer.Length == 7)
+                buffer.Enqueue(direction);
+                if (buffer.Count > 7)
                 {
-                    Array.Copy(buffer, 1, temp,0, 6);
-                    Array.Copy(temp, 0, buffer, 0, 6);
-                    buffer[7] = direction;
+                    buffer.Dequeue();
                 }
-                else
+                if (ans.Equals(buffer))
                 {
-                    buffer[length - 1] = direction;
+                    attackReady = true;
                 }
-                if (ans.SequenceEqual(buffer))
+                if (attackReady)
                 {
                     Execute();
                 }
+                lastDirection = direction;
             }
         }
         public void Execute()
