@@ -23,7 +23,8 @@ namespace sprint0Real.Audio
         doorUnlock,
         EnemyDie,
         secretFound,
-        linkHurt
+        linkHurt,
+        Kamehameha
     }
     public enum SongType
     {
