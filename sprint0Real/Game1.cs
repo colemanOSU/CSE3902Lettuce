@@ -178,7 +178,6 @@ namespace sprint0Real
             
             font1 = Content.Load<SpriteFont>("MyMenuFont");
 
-            //Load Sprite Sheets
             linkSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - Link");
             UISheet = Content.Load<Texture2D>("NES - The Legend of Zelda - HUD & Pause Screen");
             wolfSheet = Content.Load<Texture2D>("WolfSprite");
@@ -247,7 +246,6 @@ namespace sprint0Real
                 case GameStates.Pause:
                     foreach (IController controller in controllerList)
                     {
-                        //sprite = controller.Update(sprite);
                         controller.Update(gameTime);
 
                     }
@@ -263,7 +261,6 @@ namespace sprint0Real
                 case GameStates.Menu:
                     foreach (IController controller in controllerList)
                     {
-                        //sprite = controller.Update(sprite);
                         controller.Update(gameTime);
                         MenuUISprite.Update(gameTime, Link);
                         UISprite.Update(gameTime, Link);
@@ -304,17 +301,10 @@ namespace sprint0Real
 
                     foreach (IController controller in controllerList)
                      {
-                         //sprite = controller.Update(sprite);
                          controller.Update(gameTime);
 
                      }
                      LinkState.Update(gameTime);
-
-                    //NOTE:
-                    //I hate hate hate passing game as a parameter to so many things
-                    //Will address when I have the time to
-                    //Which is not right now
-                     //CollisionChecker.Update(gameTime, this);
 
                     Link.ApplyMomentum();
                     collisionDetection.Update(gameTime);
@@ -485,7 +475,6 @@ namespace sprint0Real
            
             this.titleScreen.isAnimating = false;
             currentGameState = GameStates.TitleScreen;
-            //CurrentMap.Instance.SetMap(LevelLoader.Instance.RetrieveMap("Entrance"));
 
             LevelLoader.Instance.ReloadAllLevels();
             CurrentMap.Instance.SetMap(LevelLoader.Instance.RetrieveMap("Entrance"));
