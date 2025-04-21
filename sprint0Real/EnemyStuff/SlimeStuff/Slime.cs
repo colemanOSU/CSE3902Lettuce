@@ -24,6 +24,8 @@ namespace sprint0Real.EnemyStuff.SlimeStuff
         private int FPS = 6;
         private float timer = 0f;
         private int health = 1;
+        private TimeSpan stunTimer = TimeSpan.Zero;
+        public bool IsStunned => stunTimer > TimeSpan.Zero;
 
         public Slime(Vector2 start)
         {
@@ -37,7 +39,11 @@ namespace sprint0Real.EnemyStuff.SlimeStuff
             stateMachine.hitWall();
             stateMachine.ChangeDirection();
         }
-        
+        public void Stun(TimeSpan duration)
+        {
+            stunTimer = duration;
+        }
+
         public void TakeDamage(int damage)
         {
             stateMachine.TakeDamage(damage);
@@ -55,6 +61,11 @@ namespace sprint0Real.EnemyStuff.SlimeStuff
 
         public void Update(GameTime gameTime)
         {
+            if (IsStunned)
+            {
+                stunTimer -= gameTime.ElapsedGameTime;
+                return;
+            }
             stateMachine.Update();
             behavior.Update(gameTime);
 

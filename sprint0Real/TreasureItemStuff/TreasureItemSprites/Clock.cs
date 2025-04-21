@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Linq;
+using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -27,6 +29,10 @@ namespace sprint0Real.TreasureItemStuff.TreasureItemSprites
             {
                 SoundEffectFactory.Instance.Play(SoundEffectType.itemPickup);
                 SoundPlayed = true;
+            }
+            foreach (var enemy in CurrentMap.Instance.ObjectList().OfType<IEnemy>())
+            {
+                enemy.Stun(TimeSpan.FromSeconds(10));
             }
         }
         public void Draw(SpriteBatch spriteBatch)

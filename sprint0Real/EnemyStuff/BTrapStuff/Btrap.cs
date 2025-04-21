@@ -18,6 +18,8 @@ namespace sprint0Real.EnemyStuff.BTrapStuff
 
         public ISprite2 mySprite;
         private Vector2 Location;
+        private TimeSpan stunTimer = TimeSpan.Zero;
+        public bool IsStunned => stunTimer > TimeSpan.Zero;
         public int speed {  get; set; }
 
 
@@ -46,6 +48,10 @@ namespace sprint0Real.EnemyStuff.BTrapStuff
         {
             stateMachine.hitWall();
         }
+        public void Stun(TimeSpan duration)
+        {
+            stunTimer = duration;
+        }
 
         public void Return()
         {
@@ -54,6 +60,11 @@ namespace sprint0Real.EnemyStuff.BTrapStuff
 
         public void Update(GameTime gameTime)
         {
+            if (IsStunned)
+            {
+                stunTimer -= gameTime.ElapsedGameTime;
+                return;
+            }
             stateMachine.Update();
 
             timer += (float)gameTime.ElapsedGameTime.TotalSeconds;

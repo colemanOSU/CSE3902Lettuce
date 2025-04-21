@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0Real.Audio;
+using sprint0Real.GameState.NameRegistrationandAchievements;
 using sprint0Real.Interfaces;
 
 namespace sprint0Real.Items.ItemSprites
@@ -69,6 +70,7 @@ namespace sprint0Real.Items.ItemSprites
 
         public void Update(GameTime gameTime)
         {
+            AchievementManager.Unlock("Bomber!");
             if (!SoundDropPlayed)
             {
                 SoundEffectFactory.Instance.Play(SoundEffectType.bombDrop);

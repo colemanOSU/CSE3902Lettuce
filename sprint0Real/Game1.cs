@@ -36,6 +36,7 @@ namespace sprint0Real
         public Texture2D linkSheet;
         public Texture2D UISheet;
         public Texture2D wolfSheet;
+        public Texture2D bossesSheet;
 
         SpriteFont font1;
 
@@ -184,16 +185,10 @@ namespace sprint0Real
             linkSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - Link");
             UISheet = Content.Load<Texture2D>("NES - The Legend of Zelda - HUD & Pause Screen");
             wolfSheet = Content.Load<Texture2D>("WolfSprite");
+            bossesSheet = Content.Load<Texture2D>("Bosses");
             Texture2D fileSelectSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - File Select");
             NameScene = new NameRegistrationScene(this, fileSelectSheet, font1);
             achievementScreen = new AchievementScreen(this, font1);
-           
-
-
-            Dungeon = Content.Load<Song>("04 - Dungeon");
-            Winning = Content.Load<Song>("06 - Triforce");
-            Title = Content.Load<Song>("01 - Intro");
-            GameOverMusic = Content.Load<Song>("07 - Game Over");
 
             EnemySpriteFactory.Instance.LoadAllTextures(Content);
             EnemySpriteFactory.Instance.LoadGame(this);
@@ -290,9 +285,11 @@ namespace sprint0Real
                     break;
                 case GameStates.Winning:
                     winningState.Update(gameTime);
-                    if (MediaPlayer.Queue.ActiveSong != Winning)
+                    SoundEffectFactory.Instance.PlaySong(SongType.Winning, true);
+                    foreach (IController controller in controllerList)
                     {
-                        SoundEffectFactory.Instance.PlaySong(SongType.Winning, true);
+                        controller.Update(gameTime);
+
                     }
                     break;
                 case GameStates.GamePlay:
@@ -302,10 +299,7 @@ namespace sprint0Real
                         AchievementManager.Unlock("First Time Playing!");
                     }
                     
-                    if (MediaPlayer.Queue.ActiveSong != Dungeon)
-                    {
-                        SoundEffectFactory.Instance.PlaySong(SongType.Dungeon, true);
-                    }
+                    SoundEffectFactory.Instance.PlaySong(SongType.Dungeon, true);
 
 
                     itemStateMachine.setActive();
@@ -494,7 +488,12 @@ namespace sprint0Real
            
             this.titleScreen.isAnimating = false;
             currentGameState = GameStates.TitleScreen;
+            //CurrentMap.Instance.SetMap(LevelLoader.Instance.RetrieveMap("Entrance"));
+
+            LevelLoader.Instance.ReloadAllLevels();
             CurrentMap.Instance.SetMap(LevelLoader.Instance.RetrieveMap("Entrance"));
+
+            SoundEffectFactory.Instance.ResetSongState();
 
             linkSprite = new ResetLink(linkSheet, this);
             Link = new Link(this);

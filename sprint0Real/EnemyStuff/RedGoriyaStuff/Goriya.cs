@@ -23,6 +23,8 @@ namespace sprint0Real.EnemyStuff.RedGoriya
         private Vector2 Location;
         public int speed = 2;
         private int health = 10;
+        private TimeSpan stunTimer = TimeSpan.Zero;
+        public bool IsStunned => stunTimer > TimeSpan.Zero;
         public Boomerang boomerang;
         private int FPS = 6;
         private float timer = 0f;
@@ -103,12 +105,20 @@ namespace sprint0Real.EnemyStuff.RedGoriya
         {
             stateMachine.FinishDamage();
         }
-
+        public void Stun(TimeSpan duration)
+        {
+            stunTimer = duration;
+        }
         public void Update(GameTime time)
         {
+            if (IsStunned)
+            {
+                stunTimer -= time.ElapsedGameTime;
+                return;
+            }
             // Moves onto the next frame in animation
             timer += (float)time.ElapsedGameTime.TotalSeconds;
-            
+
             if (timer >= ((float)1 / FPS))
             {
                 timer = 0f;

@@ -26,6 +26,7 @@ namespace sprint0Real.Audio
         private Dictionary<SoundEffectType, SoundEffect> soundEffects = new();
         private Dictionary<SongType, Song> songs = new();
         private ContentManager content;
+        private SongType? currentSong = null;
         private bool muted = false;
         public bool Muted
         {
@@ -81,13 +82,20 @@ namespace sprint0Real.Audio
                 soundEffects[type].Play();
             }
         }
-        public void PlaySong(SongType type, bool repeat)
+        public void ResetSongState()
+        {
+            currentSong = null;
+        }
+        public void PlaySong(SongType type, bool repeat = true)
         {
             if(!muted && songs.ContainsKey(type))
             {
-                MediaPlayer.Stop(); //stop current song
-                MediaPlayer.IsRepeating = repeat;
-                MediaPlayer.Play(songs[type]);
+                if (currentSong != type)
+                {
+                    MediaPlayer.IsRepeating = repeat;
+                    MediaPlayer.Play(songs[type]);
+                    currentSong = type;
+                }
             }
         }
         public void ToggleMute()

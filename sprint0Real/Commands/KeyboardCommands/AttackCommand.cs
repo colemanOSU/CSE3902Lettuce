@@ -28,16 +28,16 @@ namespace sprint0Real.Commands.KeyboardCommands
                 switch (myGame.Link.GetFacing())
                 {
                     case Link.Direction.Left:
-                        myGame.linkSprite = new UseLeftSprite(myGame.linkSheet, myGame, useItem);
+                        myGame.linkSprite = new UseLeftSprite(myGame.bossesSheet, myGame, useItem);
                         break;
                     case Link.Direction.Right:
-                        myGame.linkSprite = new UseRightSprite(myGame.linkSheet, myGame, useItem);
+                        myGame.linkSprite = new UseRightSprite(myGame.bossesSheet, myGame, useItem);
                         break;
                     case Link.Direction.Up:
-                        myGame.linkSprite = new UseUpSprite(myGame.linkSheet, myGame, useItem);
+                        myGame.linkSprite = new UseUpSprite(myGame.bossesSheet, myGame, useItem);
                         break;
                     case Link.Direction.Down:
-                        myGame.linkSprite = new UseDownSprite(myGame.linkSheet, myGame, useItem);
+                        myGame.linkSprite = new UseDownSprite(myGame.bossesSheet, myGame, useItem);
                         break;
                 }
 

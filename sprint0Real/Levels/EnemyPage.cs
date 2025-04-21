@@ -25,6 +25,7 @@ namespace sprint0Real.Levels
             background = new LevelBackground();
             Neighbors = new Dictionary<string, string>();
         }
+        public string Name { get; set; }
         public List<IObject> ReturnObjectList()
         {
             return gameObjects;

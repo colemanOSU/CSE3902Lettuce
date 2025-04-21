@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using sprint0Real.Collisions;
+using sprint0Real.GameState.NameRegistrationandAchievements;
 using sprint0Real.Interfaces;
 using sprint0Real.ItemUseSprites;
 using sprint0Real.Levels;
@@ -26,6 +27,7 @@ namespace sprint0Real.Commands.KeyboardCommands
         {
             if (myGame.Link.GetInventory().CurrentItem == Inventory.Items.WolfBubble)
             {
+                AchievementManager.Unlock("Wolf Rider!");
                 if (Wolf.Instance.isUsed())
                 {
                     Wolf.Instance.setUsed(false);

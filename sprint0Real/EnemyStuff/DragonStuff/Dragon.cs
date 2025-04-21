@@ -23,6 +23,8 @@ namespace sprint0Real.EnemyStuff.DragonStuff
         private Vector2 Location;
         public int speed = 2;
         private int health = 0;
+        private TimeSpan stunTimer = TimeSpan.Zero;
+        public bool IsStunned => stunTimer > TimeSpan.Zero;
 
         private int FPS = 6;
         private float timer = 0f;
@@ -85,11 +87,20 @@ namespace sprint0Real.EnemyStuff.DragonStuff
         {
             stateMachine.Idle();
         }
-
+        public void Stun(TimeSpan duration)
+        {
+            stunTimer = duration;
+        }
         public void Update(GameTime time)
         {
+            if (IsStunned)
+            {
+                stunTimer -= time.ElapsedGameTime;
+                return;
+            }
             // Updates the location
             stateMachine.Update();
+
             // Moves onto the next frame in animation
             timer += (float) time.ElapsedGameTime.TotalSeconds;
             if (timer >= ((float) 1 / FPS))

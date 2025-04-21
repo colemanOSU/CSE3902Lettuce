@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using sprint0Real.Audio;
 using sprint0Real.Interfaces;
 using sprint0Real.Levels;
 
@@ -21,9 +22,12 @@ namespace sprint0Real.CollisionBoxes
         }
         public void Update(GameTime gameTime)
         {
-            if (CheckIfAllEnemiesDead())
+            if (CurrentMap.Instance.MapName != "Level8")
             {
-                Unlock();
+                if (CheckIfAllEnemiesDead())
+                {
+                    Unlock();
+                }
             }
         }
         public bool CheckIfAllEnemiesDead()
@@ -41,6 +45,7 @@ namespace sprint0Real.CollisionBoxes
             CurrentMap.Instance.DeStage(this);
             CurrentMap.Instance.Stage(new RoomTransitionBox(Rect, direction));
             CurrentMap.Instance.SetDoor(direction, "Open");
+            SoundEffectFactory.Instance.Play(SoundEffectType.doorUnlock);
         }
     }
 }
