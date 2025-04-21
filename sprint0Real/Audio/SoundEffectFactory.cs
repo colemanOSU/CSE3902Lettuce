@@ -64,6 +64,7 @@ namespace sprint0Real.Audio
             soundEffects[SoundEffectType.doorUnlock] = content.Load<SoundEffect>("LOZ_Door_Unlock");
             soundEffects[SoundEffectType.secretFound] = content.Load<SoundEffect>("LOZ_Secret");
             soundEffects[SoundEffectType.linkHurt] = content.Load<SoundEffect>("LOZ_Link_Hurt");
+            soundEffects[SoundEffectType.Kamehameha] = content.Load<SoundEffect>("LinkKamehameha");
 
             songs[SongType.Title] = content.Load<Song>("01 - Intro");
             songs[SongType.Gameover] = content.Load<Song>("07 - Game Over");
