@@ -27,7 +27,6 @@ namespace sprint0Real.Controllers
 
         private Game1 _game;
         private bool MovementKeyIsDown;
-        private bool MovementKeyIsDown;
 
         public KeyboardController(Game1 game)
         {
