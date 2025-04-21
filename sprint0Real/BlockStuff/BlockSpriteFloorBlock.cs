@@ -1,7 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using sprint0Real.Audio;
+using sprint0Real.CollisionBoxes;
+using sprint0Real.Collisions;
 using sprint0Real.Interfaces;
+using sprint0Real.Levels;
 
 namespace sprint0Real.BlockSprites
 {
@@ -12,6 +16,11 @@ namespace sprint0Real.BlockSprites
         public Rectangle sourceRectangle;
         public Rectangle destinationRectangle;
         public Vector2 position;
+        private bool hasMoved = false;
+        private float totalPushedDistance = 0f;
+        private float maxPushDistance = 48f;
+        private float pushSpeed = 1f;
+        private bool isBeingPushed = false;
 
         public Texture2D texture;
 
@@ -32,8 +41,40 @@ namespace sprint0Real.BlockSprites
 
         public void Update(GameTime gametime)
         {
+            if (isBeingPushed && !hasMoved)
+            {
+                float pushAmount = pushSpeed;
+                position.X -= pushAmount;
+                totalPushedDistance += pushAmount;
+
+                if (totalPushedDistance >= maxPushDistance)
+                {
+                    hasMoved = true;
+                    isBeingPushed = false;
+
+                    foreach (var obj in CurrentMap.Instance.ObjectList())
+                    {
+                        if (obj is SealedTransitionBox sealedDoor)
+                        {
+                            sealedDoor.Unlock();
+                        }
+                    }
+                }
+            }
+
             destinationRectangle.X = (int)position.X;
             destinationRectangle.Y = (int)position.Y;
+        }
+
+        public void TryPush(Link link, CollisionDirections direction)
+        {
+            Rectangle linkRect = link.Rect;
+
+            // Check if Link is touching the right side of the block
+            if (!hasMoved && direction == CollisionDirections.Right && CurrentMap.Instance.MapName == "Level8")
+            {
+                isBeingPushed = true;
+            }
         }
         public void Move(Vector2 direction)
         {

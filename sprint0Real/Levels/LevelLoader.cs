@@ -39,7 +39,11 @@ namespace sprint0Real.Levels
                 EnemyPage newMap = new EnemyPage();
                 XmlDocument xml = new XmlDocument();
                 xml.Load(fileName);
-                foreach(XmlElement Object in xml.SelectNodes("//Objects/Object"))
+
+                string mapName = xml.SelectSingleNode("/LevelData/Name").InnerText;
+                newMap.Name = mapName;
+
+                foreach (XmlElement Object in xml.SelectNodes("//Objects/Object"))
                 {
                     Type type = Type.GetType(catalogue.ReturnObjectType(Object.GetAttribute("Type")));
                     Debug.WriteLine(catalogue.ReturnObjectType(Object.GetAttribute("Type")));
@@ -107,6 +111,7 @@ namespace sprint0Real.Levels
             xml.Load(path);
 
             EnemyPage newMap = new EnemyPage();
+            newMap.Name = mapName;
 
             foreach (XmlElement obj in xml.SelectNodes("//Objects/Object"))
             {
