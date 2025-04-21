@@ -26,13 +26,11 @@ namespace sprint0Real.Controllers
         private Dictionary<Keys, bool> keyPreviouslyPressed;
 
         private Game1 _game;
-        private ILink _Link;
         private bool MovementKeyIsDown;
 
         public KeyboardController(Game1 game)
         {
             commands = new Dictionary<Keys, ICommand>();
-
 
             keyPreviouslyPressed = new Dictionary<Keys, bool>();
             _game = game;
@@ -73,7 +71,7 @@ namespace sprint0Real.Controllers
 
 
 
-            //Commands for when key is released. Subject to change.
+            //Commands for when key is released.
             releaseCommands = new Dictionary<Keys, ICommand>();
 
             releaseCommands.Add(Keys.D, new FaceRightCommand(_game, MovementKeyIsDown));
@@ -85,7 +83,7 @@ namespace sprint0Real.Controllers
             releaseCommands.Add(Keys.Up, new FaceUpCommand(_game, MovementKeyIsDown));
             releaseCommands.Add(Keys.Down, new FaceDownCommand(_game, MovementKeyIsDown));
 
-            //Commands for when game is in a menu. Subject to change.
+            //Commands for when game is in a menu.
             MenuCommands = new Dictionary<Keys, ICommand>();
 
             MenuCommands.Add(Keys.Q, new QuitCommand(_game));
@@ -100,16 +98,11 @@ namespace sprint0Real.Controllers
             MenuCommands.Add(Keys.Down, new MoveSelectorVerticalCommand(_game));
             MenuCommands.Add(Keys.V, new MuteCommand(_game));
 
-            //Commands for when game is Paused. Subject to change.
+            //Commands for when game is Paused.
             PauseCommands = new Dictionary<Keys, ICommand>();
 
             PauseCommands.Add(Keys.P, new PauseCommand(_game));
             PauseCommands.Add(Keys.Q, new QuitCommand(_game));
-
-            GameOverCommands = new Dictionary<Keys, ICommand>();
-
-            GameOverCommands.Add(Keys.Q, new QuitCommand(_game));
-            GameOverCommands.Add(Keys.V, new MuteCommand(_game));
 
 
             TitleScreenCommands = new Dictionary<Keys, ICommand>();
@@ -194,7 +187,7 @@ namespace sprint0Real.Controllers
                 }
             }
 
-            if (_game.currentGameState == GameState.GameStates.TitleScreen || _game.currentGameState == GameState.GameStates.Dying || _game.currentGameState == GameState.GameStates.Winning)
+            if (_game.currentGameState == GameState.GameStates.TitleScreen || _game.currentGameState == GameState.GameStates.Dying || _game.currentGameState == GameState.GameStates.Winning || _game.currentGameState == GameState.GameStates.GameOver)
             {
                 foreach (var command in TitleScreenCommands)
                 {
@@ -237,21 +230,6 @@ namespace sprint0Real.Controllers
                         command.Value.Execute();
                     }
 
-                    keyPreviouslyPressed[key] = isKeyDown;
-                }
-            }
-            else if (_game.currentGameState == GameState.GameStates.GameOver)
-            {
-                foreach (var command in GameOverCommands)
-                {
-                    Keys key = command.Key;
-                    bool isKeyDown = KeyboardState.IsKeyDown(key);
-
-                    if (isKeyDown && !keyPreviouslyPressed[key])
-                    {
-                        command.Value.Execute();
-                    }
-                    //update state
                     keyPreviouslyPressed[key] = isKeyDown;
                 }
             }
