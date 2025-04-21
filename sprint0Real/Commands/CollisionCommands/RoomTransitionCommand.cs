@@ -73,6 +73,7 @@ namespace sprint0Real.Commands.CollisionCommands2
             CurrentMap.Instance.SetMap(nextMap);
             myGame.collisionDetection.UpdateRoomObjects();
             NewLinkLocation((Link)Link, transitionDirection);
+            myGame.Link.GetInventory().blueCandleUsedThisRoom = false;
         }
     }
 }

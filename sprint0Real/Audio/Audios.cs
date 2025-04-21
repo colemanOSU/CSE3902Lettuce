@@ -24,7 +24,8 @@ namespace sprint0Real.Audio
         EnemyDie,
         secretFound,
         linkHurt,
-        Kamehameha
+        Kamehameha,
+        Candle
     }
     public enum SongType
     {

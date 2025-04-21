@@ -8,7 +8,9 @@ using sprint0Real.ItemUseSprites;
 using sprint0Real.Levels;
 using sprint0Real.LinkStuff;
 using sprint0Real.LinkStuff.LinkSprites;
+using sprint0Real.TreasureItemStuff;
 using sprint0Real.WolfLink;
+using sprint0Real.Items.ItemSprites;
 using System.Collections;
 using System.Diagnostics;
 
@@ -69,6 +71,9 @@ namespace sprint0Real.Commands.KeyboardCommands
                         myGame.linkSprite = new UseDownSprite(myGame.linkSheet, myGame, useItem);
                         break;
                 }
+
+
+
             }
         }
 
