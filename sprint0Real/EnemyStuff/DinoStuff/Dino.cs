@@ -16,6 +16,8 @@ namespace sprint0Real.EnemyStuff.DinoStuff
         private DinoBehavior DinoBehavior;
         public ISprite2 mySprite { get; set; }
         public int speed { get; set; }
+        private TimeSpan stunTimer = TimeSpan.Zero;
+        public bool IsStunned => stunTimer > TimeSpan.Zero;
         public Rectangle Location { get; set; }
         public int health { get; set; }
 
@@ -58,7 +60,10 @@ namespace sprint0Real.EnemyStuff.DinoStuff
                 DinoStateMachine.TakeDamage(damage);
             }
         }
-
+        public void Stun(TimeSpan duration)
+        {
+            stunTimer = duration;
+        }
         public void FinishDamage()
         {
             DinoStateMachine.FinishDamage();
@@ -66,6 +71,11 @@ namespace sprint0Real.EnemyStuff.DinoStuff
 
         public void Update(GameTime gameTime)
         {
+            if (IsStunned)
+            {
+                stunTimer -= gameTime.ElapsedGameTime;
+                return;
+            }
             DinoBehavior.Update(gameTime);
             DinoStateMachine.Update();
 

@@ -17,6 +17,11 @@ namespace sprint0Real.Commands.CollisionCommands2
     {
         public void Execute(IObject Link, IObject Enemy, CollisionDirections direction)
         {
+            if (Enemy is IEnemy enemy && enemy.IsStunned)
+            {
+                return;
+            }
+
             if (Enemy.GetType().Name == "Hand")
             {
                 EnemyPage nextMap = LevelLoader.Instance.RetrieveMap("Entrance");

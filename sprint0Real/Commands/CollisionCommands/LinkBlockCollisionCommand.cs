@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using sprint0Real.BlockSprites;
 using sprint0Real.CollisionBoxes;
 using sprint0Real.Collisions;
 using sprint0Real.Interfaces;
@@ -47,6 +48,11 @@ namespace sprint0Real.Commands.CollisionCommands2
             {
                 Adjust((Link)Link, (IBlock)Block, direction);
                 linkA.StopMomentumInDirection(direction.ToLinkDirection());
+
+                if (Block is BlockSpriteFloorBlock pushableBlock)
+                {
+                    pushableBlock.TryPush(linkA, direction);
+                }
             }
         }
     }

@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using sprint0Real.Collisions;
+using sprint0Real.GameState.NameRegistrationandAchievements;
 using sprint0Real.Interfaces;
 using sprint0Real.ItemUseSprites;
 using sprint0Real.Levels;
@@ -27,7 +28,7 @@ namespace sprint0Real.Commands.KeyboardCommands
                 myGame.Link.SetCanMove(false);
                 myGame.linkSprite = new KamehamehaSprite(myGame.linkSheet, myGame, myGame.Link.GetFacing());
             }
-            
+            AchievementManager.Unlock("Kamehame-HA!");
 
         }
     }

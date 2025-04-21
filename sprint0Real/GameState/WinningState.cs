@@ -5,6 +5,7 @@ using sprint0Real.TreasureItemStuff.TreasureItemSprites;
 using sprint0Real;
 using sprint0Real.Levels;
 using Microsoft.Xna.Framework.Media;
+using sprint0Real.GameState.NameRegistrationandAchievements;
 
 internal class WinningState
 {
@@ -63,6 +64,7 @@ internal class WinningState
     public void Update(GameTime gameTime)
     {
         pickUpSprite.Update(gameTime, null);
+        AchievementManager.Unlock("Dungeon Complete!");
         Rectangle linkPos = pickUpSprite.GetDestinationRectangle();
 
         Vector2 triforcePos = new Vector2(

@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0Real.Interfaces;
@@ -15,6 +16,8 @@ namespace sprint0Real.EnemyStuff.HandStuff
         private Vector2 Location;
         public int movementSpeed { get; }
         public Vector2 speed;
+        private TimeSpan stunTimer = TimeSpan.Zero;
+        public bool IsStunned => stunTimer > TimeSpan.Zero;
 
         private int FPS = 6;
         private float timer = 0f;
@@ -65,9 +68,17 @@ namespace sprint0Real.EnemyStuff.HandStuff
         {
             stateMachine.Return();
         }
-
+        public void Stun(TimeSpan duration)
+        {
+            stunTimer = duration;
+        }
         public void Update(GameTime gameTime)
         {
+            if (IsStunned)
+            {
+                stunTimer -= gameTime.ElapsedGameTime;
+                return;
+            }
             stateMachine.Update();
             behavior.Update(gameTime);
 
