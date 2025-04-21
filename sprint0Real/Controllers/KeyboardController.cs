@@ -194,7 +194,7 @@ namespace sprint0Real.Controllers
                 }
             }
 
-            if (_game.currentGameState == GameState.GameStates.TitleScreen || _game.currentGameState == GameState.GameStates.Dying)
+            if (_game.currentGameState == GameState.GameStates.TitleScreen || _game.currentGameState == GameState.GameStates.Dying || _game.currentGameState == GameState.GameStates.Winning)
             {
                 foreach (var command in TitleScreenCommands)
                 {

@@ -12,7 +12,12 @@ namespace sprint0Real.GameState.NameRegistrationandAchievements
         {
             { "First Time Playing!", "Start the game for the first time." },
             { "Key Collector!", "Gather 5 keys." },
-            { "Secret Revealer!", "Find hidden door." }
+            { "Bomber!", "Use a bomb for the first time." },
+            { "Secret Revealer!", "Find hidden door." },
+            { "Kamehame-HA!", "Use the Kamehameha for the first time." },
+            { "Fairy Catcher!", "Collect a fairy." },
+            { "Wolf Rider!", "Use Link's Wolf powerup." },
+            { "Dungeon Complete!", "Collect the Triforce." }
         };
         public static bool Unlock(string title)
         {
@@ -23,7 +28,6 @@ namespace sprint0Real.GameState.NameRegistrationandAchievements
             save.Achievements.Add(title);
             SaveManager.Save();
 
-            // 🎉 Show popup if possible
             Game1.Instance?.ShowAchievementPopup(title);
 
             return true;
