@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0Real.Collisions;
 using sprint0Real.Interfaces;
+using sprint0Real.TreasureItemStuff.TreasureItemSprites;
 
 namespace sprint0Real.Levels
 {
@@ -32,6 +33,10 @@ namespace sprint0Real.Levels
         public void SetMap(EnemyPage newMap)
         {
             myMap = newMap;
+            if(CurrentMap.Instance.MapName == "Level8" && previousMap.Name == "Level11")
+            {
+                CurrentMap.Instance.Stage(new Map(new Vector2(550, 425)));
+            }
         }
         public void SetPrevious()
         {
@@ -107,5 +112,6 @@ namespace sprint0Real.Levels
                 myMap.background.SetDownDoor(sprite);
             }
         }
+        public string MapName => myMap?.Name;
     }
 }
