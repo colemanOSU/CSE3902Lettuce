@@ -36,6 +36,7 @@ namespace sprint0Real
         public Texture2D linkSheet;
         public Texture2D UISheet;
         public Texture2D wolfSheet;
+        public Texture2D bossesSheet;
 
         SpriteFont font1;
 
@@ -82,8 +83,6 @@ namespace sprint0Real
         public static Game1 Instance { get; private set; }
 
         private WinningState winningState;
-
-        public SoundEffect LinkScream;
 
         //TEMP CAMERA
         public Camera _camera;
@@ -179,11 +178,10 @@ namespace sprint0Real
             
             font1 = Content.Load<SpriteFont>("MyMenuFont");
 
-            LinkScream = Content.Load<SoundEffect>("LinkKamehameha");
-            //Load Sprite Sheets
             linkSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - Link");
             UISheet = Content.Load<Texture2D>("NES - The Legend of Zelda - HUD & Pause Screen");
             wolfSheet = Content.Load<Texture2D>("WolfSprite");
+            bossesSheet = Content.Load<Texture2D>("Bosses");
             Texture2D fileSelectSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - File Select");
             NameScene = new NameRegistrationScene(this, fileSelectSheet, font1);
             achievementScreen = new AchievementScreen(this, font1);
@@ -195,7 +193,7 @@ namespace sprint0Real
             TreasureItemSpriteFactory.Instance.LoadAllTextures(Content);
             WolfSpriteFactory.Instance.LoadContent(Content);
             LevelLoader.Instance.LoadLevels();
-            winningState = new WinningState(this);
+            winningState = new WinningState(this, UISheet);
             ResetGame();
             collisionHandler.LoadCommands();
             collisionDetection.Load(Link);
@@ -248,7 +246,6 @@ namespace sprint0Real
                 case GameStates.Pause:
                     foreach (IController controller in controllerList)
                     {
-                        //sprite = controller.Update(sprite);
                         controller.Update(gameTime);
 
                     }
@@ -264,7 +261,6 @@ namespace sprint0Real
                 case GameStates.Menu:
                     foreach (IController controller in controllerList)
                     {
-                        //sprite = controller.Update(sprite);
                         controller.Update(gameTime);
                         MenuUISprite.Update(gameTime, Link);
                         UISprite.Update(gameTime, Link);
@@ -305,17 +301,10 @@ namespace sprint0Real
 
                     foreach (IController controller in controllerList)
                      {
-                         //sprite = controller.Update(sprite);
                          controller.Update(gameTime);
 
                      }
                      LinkState.Update(gameTime);
-
-                    //NOTE:
-                    //I hate hate hate passing game as a parameter to so many things
-                    //Will address when I have the time to
-                    //Which is not right now
-                     //CollisionChecker.Update(gameTime, this);
 
                     Link.ApplyMomentum();
                     collisionDetection.Update(gameTime);
@@ -486,7 +475,6 @@ namespace sprint0Real
            
             this.titleScreen.isAnimating = false;
             currentGameState = GameStates.TitleScreen;
-            //CurrentMap.Instance.SetMap(LevelLoader.Instance.RetrieveMap("Entrance"));
 
             LevelLoader.Instance.ReloadAllLevels();
             CurrentMap.Instance.SetMap(LevelLoader.Instance.RetrieveMap("Entrance"));
@@ -501,7 +489,7 @@ namespace sprint0Real
             MenuUISprite = new MenuUI(UISheet);
             PauseUISprite = new PauseUI(UISheet);
             GameOverScreen = new GameOverUI(UISheet);
-            winningState = new WinningState(this);
+            winningState = new WinningState(this, UISheet);
 
             weaponItemsA = new NullSprite(linkSheet, this);
             weaponItemsB = new NullSprite(linkSheet, this);

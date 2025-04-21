@@ -9,6 +9,7 @@ using sprint0Real.Interfaces;
 using sprint0Real.EnemyStuff.DragonStuff;
 using System.Diagnostics;
 using sprint0Real.Audio;
+using sprint0Real.Items.ItemSprites;
 
 namespace sprint0Real.Commands.CollisionCommands2
 {
@@ -24,7 +25,14 @@ namespace sprint0Real.Commands.CollisionCommands2
             }
             if (enemy is IEnemy enemyA)
             {
-                enemyA.TakeDamage(1);
+                if (enemyDamage is WoodBoomerangSprite || enemyDamage is BlueBoomerangSprite)
+                {
+                    enemyA.Stun(TimeSpan.FromSeconds(2));
+                }
+                else
+                {
+                    enemyA.TakeDamage(1);
+                }
             }
         }
     }
