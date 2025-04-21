@@ -58,10 +58,6 @@ public class Link : ILink
         CurrentHealth = MaxHealth;
         
     }
-    public void Damaged()
-    {
-            
-    }
     public void TakeDamage()
     {
         if (!isDamaged) //Avoid Damage if already in damageed state
@@ -269,5 +265,9 @@ public class Link : ILink
     public void SetMaxHealth(int amount)
     {
         MaxHealth = amount;
+    }
+    public void RestoreAllHealth()
+    {
+        CurrentHealth = MaxHealth;
     }
 }

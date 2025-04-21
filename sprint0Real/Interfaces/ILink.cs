@@ -27,7 +27,6 @@ namespace sprint0Real.Interfaces
         public void SetFacing(Direction facing);
 
         public void SetCanAttack(bool canAttack);
-        public void Damaged();
         public void SetItem(int num,Game1 game);
         public void DrawWeaponSprite();
         public void DrawItemSprite();
@@ -52,5 +51,6 @@ namespace sprint0Real.Interfaces
         public int GetMaxHealth();
 
         public void SetMaxHealth(int amount);
+        public void RestoreAllHealth();
     }
 }
