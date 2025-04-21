@@ -18,6 +18,7 @@ public class Link : ILink
     private bool canMove;
     private bool canAttack;
     private bool isDamaged;
+    public bool isPhaseActive;
     private LinkStateMachine stateMachine;
     private ItemStateMachine itemStateMachine;
     private Color LinkSpriteColor;
@@ -52,6 +53,7 @@ public class Link : ILink
         stateMachine = new LinkStateMachine(this);
         LinkSpriteColor = Color.White;
         isDamaged = false;
+        isPhaseActive = false;
         MomentumVector = new Vector2(0, 0);
         inventory = new Inventory();
         itemStateMachine = new ItemStateMachine(game, inventory);
@@ -226,7 +228,10 @@ public class Link : ILink
     {
         return isDamaged;
     }
-
+    public bool IsPhaseActive()
+    {
+        return isPhaseActive;
+    }
     public void SetIsDamaged(bool ToDamage)
     {
         isDamaged = ToDamage;
@@ -271,5 +276,10 @@ public class Link : ILink
     public void SetMaxHealth(int amount)
     {
         MaxHealth = amount;
+    }
+
+    public void SwitchPhaseActive()
+    {
+        isPhaseActive = !isPhaseActive;
     }
 }

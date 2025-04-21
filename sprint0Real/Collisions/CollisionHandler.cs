@@ -22,7 +22,6 @@ namespace sprint0Real.Collisions
     {
         private Dictionary<(String, String), ICollisionCommand> collisionCommands;
         private Game1 game;
-        public bool isPhaseActive = false;
 
 
         // Maybe make these strings
@@ -110,7 +109,7 @@ namespace sprint0Real.Collisions
 
             if (collisionCommands.TryGetValue((typeA, typeB), out ICollisionCommand command))
             {
-                if (!isPhaseActive)
+                if (!game.Link.IsPhaseActive())
                 {
                     command.Execute(objA, objB, direction);
                 }
@@ -160,17 +159,6 @@ namespace sprint0Real.Collisions
                 //Debug.WriteLine("Collision from Right of " + objB.GetType().Name);
             }
             return recentCollisionDirection;
-        }
-        public void switchPhaseActive()
-        {
-            if (isPhaseActive)
-            {
-                isPhaseActive = false;
-            }
-            else
-            {
-                isPhaseActive=true;
-            }
         }
     }
 }

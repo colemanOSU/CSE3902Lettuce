@@ -18,7 +18,7 @@ namespace sprint0Real.Commands.KeyboardCommands
 
         public void Execute()
         {
-            myGame.collisionHandler.switchPhaseActive();
+            myGame.Link.SwitchPhaseActive();
         }
     }
 }

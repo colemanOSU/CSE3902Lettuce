@@ -14,13 +14,17 @@ namespace sprint0Real.LinkStuff
 
         private ILink Link;
         private double DamageFrameCount;
+        private double PhaseFrameCount;
 
         private int DamageLoops;
+        private int PhaseLoops;
         public LinkStateMachine(ILink link)
         {
             Link = link;
             DamageFrameCount = 0;
             DamageLoops = 0;
+            PhaseFrameCount = 0;
+            PhaseLoops = 0;
         }
         public void DamageLink()
         {
@@ -57,6 +61,37 @@ namespace sprint0Real.LinkStuff
                 {
                     DamageLoops = 0;
                     Link.SetIsDamaged(false);
+                    Link.SetLinkColor(Color.White);
+                }
+
+            }
+            if (Link.IsPhaseActive())
+            {
+                PhaseFrameCount = PhaseFrameCount + 0.2;
+                switch ((int)PhaseFrameCount)
+                {
+                    case 1:
+                        Link.SetLinkColor(Color.Gray);
+                        break;
+                    case 2:
+                        Link.SetLinkColor(Color.White);
+                        break;
+                    case 3:
+                        Link.SetLinkColor(Color.DarkGray);
+                        break;
+                    case 4:
+                        Link.SetLinkColor(Color.White);
+                        break;
+                    case 5:
+                        PhaseFrameCount = 0;
+                        PhaseLoops++;
+                        break;
+                }
+
+                if (PhaseLoops >= 3)
+                {
+                    PhaseLoops = 0;
+                    Link.SwitchPhaseActive();
                     Link.SetLinkColor(Color.White);
                 }
 

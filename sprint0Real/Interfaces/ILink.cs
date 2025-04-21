@@ -40,6 +40,8 @@ namespace sprint0Real.Interfaces
 
         public bool IsDamaged();
 
+        public bool IsPhaseActive();
+
         public void SetIsDamaged(bool toDamage);
 
         public void SetLinkColor(Color color);
@@ -52,5 +54,7 @@ namespace sprint0Real.Interfaces
         public int GetMaxHealth();
 
         public void SetMaxHealth(int amount);
+
+        public void SwitchPhaseActive();
     }
 }
