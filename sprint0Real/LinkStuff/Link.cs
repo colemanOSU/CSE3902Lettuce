@@ -207,10 +207,6 @@ public class Link : ILink
     {
         Facing = facing;
     }
-    public void PickUpItem()
-    {
-        stateMachine?.PickUpItem();
-    }
 
     // Make the compiler happy
     public void NextItem()

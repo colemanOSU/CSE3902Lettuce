@@ -26,6 +26,8 @@ namespace sprint0Real.EnemyStuff.SkeletonStuff
         private int FPS = 6;
         private float timer = 0f;
         private int health = 1;
+        private TimeSpan stunTimer = TimeSpan.Zero;
+        public bool IsStunned => stunTimer > TimeSpan.Zero;
         public ITreasureItems item { get; set; }
 
         public Skeleton(Vector2 start)
@@ -67,6 +69,10 @@ namespace sprint0Real.EnemyStuff.SkeletonStuff
         {
             stateMachine.TakeDamage(damage);
         }
+        public void Stun(TimeSpan duration)
+        {
+            stunTimer = duration;
+        }
 
         public void ChangeDirection()
         {
@@ -75,8 +81,14 @@ namespace sprint0Real.EnemyStuff.SkeletonStuff
 
         public void Update(GameTime gameTime)
         {
+            if (IsStunned)
+            {
+                stunTimer -= gameTime.ElapsedGameTime;
+                return;
+            }
             stateMachine.Update();
             behavior.Update(gameTime);
+
 
             timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
 

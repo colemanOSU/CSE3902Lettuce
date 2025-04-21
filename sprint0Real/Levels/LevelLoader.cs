@@ -23,6 +23,7 @@ namespace sprint0Real.Levels
         private Dictionary<String, EnemyPage> Maps = new Dictionary<String, EnemyPage>();
         private static LevelLoader instance = new LevelLoader();
         private TypeCatalogue catalogue = new TypeCatalogue();
+        public IEnumerable<EnemyPage> AllMaps => Maps.Values;
         public static LevelLoader Instance
         {
             get

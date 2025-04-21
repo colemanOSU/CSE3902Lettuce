@@ -27,16 +27,9 @@ namespace sprint0Real.LinkStuff
             Link.OffsetCurrentHealth(-1);
             Link.SetIsDamaged(true);
         }
-        public void PickUpItem()
-        {
-            // TODO
-
-            Debug.WriteLine("Item picked up!");
-            // Implement the actual logic for the item being picked up.
-        }
-
         public void Update(GameTime gametime)
         {
+
             if (Link.IsDamaged())
             {
                 DamageFrameCount = DamageFrameCount + 0.2;
