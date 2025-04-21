@@ -17,6 +17,7 @@ namespace sprint0Real.TreasureItemStuff
     {
         private static TreasureItemSpriteFactory instance = new TreasureItemSpriteFactory();
         private Texture2D itemSheet;
+        private SpriteFont spriteFont;
 
         public static TreasureItemSpriteFactory Instance => instance;
 
@@ -42,11 +43,16 @@ namespace sprint0Real.TreasureItemStuff
         public void LoadAllTextures(ContentManager content)
         {
             itemSheet = content.Load<Texture2D>("NES - The Legend of Zelda - Items & Weapons");
+            spriteFont = content.Load<SpriteFont>("MyMenuFont");
         }
 
         public Texture2D GetItemSpriteSheet()
         {
             return itemSheet;
+        }
+        public SpriteFont GetSpriteFont()
+        {
+            return spriteFont;
         }
     }
 }

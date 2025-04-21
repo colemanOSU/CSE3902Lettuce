@@ -7,6 +7,7 @@
 		<Object Type="Oldman" x="264" y="96"/>
 		<Object Type="Fire" x="396" y="96"/>
 		<Object Type="Fire" x="132" y="96"/>
+		<Object Type="Message" x="132" y="40"/>
 	</Objects>
 	
 	<MapHitBoxes>
