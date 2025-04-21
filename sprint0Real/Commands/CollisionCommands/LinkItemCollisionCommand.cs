@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using sprint0Real.Collisions;
+using sprint0Real.GameState.NameRegistrationandAchievements;
 using sprint0Real.Interfaces;
 using sprint0Real.Levels;
 using sprint0Real.LinkStuff;
@@ -43,6 +44,7 @@ namespace sprint0Real.Commands.CollisionCommands2
                     break;
                 case Fairy:
                     link.OffsetCurrentHealth(link.GetMaxHealth());
+                    AchievementManager.Unlock("Fairy Catcher!");
                     break;
                 case ContainerHeart:
                     link.SetMaxHealth(link.GetMaxHealth() + 2);

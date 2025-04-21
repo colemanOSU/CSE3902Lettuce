@@ -96,5 +96,87 @@ namespace sprint0Real.Levels
         {
             return Maps[nextMap];
         }
+
+        public EnemyPage LoadFreshMap(string mapName)
+        {
+            string path = Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "Levels", "Level Files", mapName + ".xml");
+            if (!File.Exists(path))
+                throw new FileNotFoundException($"Level file not found: {path}");
+
+            XmlDocument xml = new XmlDocument();
+            xml.Load(path);
+
+            EnemyPage newMap = new EnemyPage();
+
+            foreach (XmlElement obj in xml.SelectNodes("//Objects/Object"))
+            {
+                Type type = Type.GetType(catalogue.ReturnObjectType(obj.GetAttribute("Type")));
+                int x = int.Parse(obj.GetAttribute("x")) + 96;
+                int y = int.Parse(obj.GetAttribute("y")) + 186 + 96;
+
+                if (obj.HasAttribute("Item"))
+                {
+                    Type itemType = Type.GetType(catalogue.ReturnObjectType(obj.GetAttribute("Item")));
+                    ITreasureItems item = (ITreasureItems)Activator.CreateInstance(itemType, new Vector2(x, y));
+                    newMap.Stage((IGameObject)Activator.CreateInstance(type, new Vector2(x, y), item));
+                }
+                else
+                {
+                    newMap.Stage((IGameObject)Activator.CreateInstance(type, new Vector2(x, y)));
+                }
+            }
+
+            foreach (XmlElement hitBox in xml.SelectNodes("//MapHitBoxes/HitBox"))
+            {
+                string boxType = hitBox.GetAttribute("Type");
+                Type type = Type.GetType(catalogue.ReturnObjectType(boxType));
+                int x = int.Parse(hitBox.GetAttribute("x"));
+                int y = int.Parse(hitBox.GetAttribute("y")) + 186;
+                int width = int.Parse(hitBox.GetAttribute("width"));
+                int height = int.Parse(hitBox.GetAttribute("height"));
+
+                if (boxType != "Border" && boxType != "HandSpawner")
+                {
+                    string direction = hitBox.GetAttribute("direction");
+                    newMap.Stage((ITransitionBox)Activator.CreateInstance(type, new Rectangle(x, y, width, height), direction));
+                }
+                else
+                {
+                    newMap.Stage((ICollisionBoxes)Activator.CreateInstance(type, new Rectangle(x, y, width, height)));
+                }
+            }
+
+            foreach (XmlElement neighbor in xml.SelectNodes("//Neighbors/Neighbor"))
+            {
+                newMap.AddNeighbor(neighbor.GetAttribute("Side"), neighbor.GetAttribute("Name"));
+            }
+
+            var door = xml.SelectSingleNode("/LevelData/Door").Attributes;
+            newMap.background.SetRoomExterior(door["Exterior"].Value);
+            newMap.background.SetRoomInterior(door["Interior"].Value);
+            newMap.background.SetLeftDoor(door["Left"].Value);
+            newMap.background.SetRightDoor(door["Right"].Value);
+            newMap.background.SetDownDoor(door["Down"].Value);
+            newMap.background.SetUpDoor(door["Up"].Value);
+
+            return newMap;
+        }
+
+        public void ReloadAllLevels()
+        {
+            Maps.Clear();
+
+            string path = Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "Levels", "Level Files");
+            foreach (string fileName in Directory.GetFiles(path))
+            {
+                XmlDocument xml = new XmlDocument();
+                xml.Load(fileName);
+
+                string mapName = xml.SelectSingleNode("/LevelData/Name").InnerText;
+
+                EnemyPage freshMap = LoadFreshMap(mapName);
+                Maps[mapName] = freshMap;
+            }
+        }
     }
 }
