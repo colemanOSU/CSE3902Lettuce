@@ -50,12 +50,12 @@ namespace sprint0Real.TreasureItemStuff
         {
             List<DropItem> dropTable = new List<DropItem>
             {
-            new DropItem("Rupee", 40),
-            new DropItem("Heart", lowHealth ? 30 : 10),
-            new DropItem("Bomb", hasBombs ? 15 : 0),
+            new DropItem("Rupee", 35),
+            new DropItem("Heart", lowHealth ? 35 : 15),
+            new DropItem("Bomb", hasBombs ? 10 : 0),
             new DropItem("FiveRupies", 10),
-            new DropItem("Fairy", lowHealth ? 4 : 1),
-            new DropItem("Clock", 1)
+            new DropItem("Fairy", lowHealth ? 8 : 3),
+            new DropItem("Clock", 3)
             };
 
             //Filter out zero-weight entries
@@ -80,7 +80,7 @@ namespace sprint0Real.TreasureItemStuff
             bool hasBombs = inv.BombCount > 0;
             bool lowHealth = link.GetCurrentHealth() < link.GetMaxHealth();
 
-            if (RandomChance(0.5)) //50% chance to drop something
+            if (RandomChance(0.4)) //40% chance to drop something
             {
                 string dropType = GetRandomDrop(hasBombs, lowHealth);
                 if (!string.IsNullOrEmpty(dropType))

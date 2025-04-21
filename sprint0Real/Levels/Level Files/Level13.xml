@@ -6,8 +6,8 @@
 	<Objects>
 		<Object Type="Dragon" x="336" y="96"/>
 		
-		<Object Type="BlockTile" x="432" y="48"/>
-		<Object Type="BlockTile" x="432" y="240"/>
+		<Object Type="BlockTile" x="432" y="48" Movable="false" Direction="null"/>
+		<Object Type="BlockTile" x="432" y="240" Movable="false" Direction="null"/>
 	</Objects>
 	
 	<MapHitBoxes>

@@ -15,6 +15,7 @@ using System.Diagnostics;
 using sprint0Real.EnemyStuff.RedGoriya;
 using static Link;
 using sprint0Real.CollisionBoxes;
+using sprint0Real.Collisions;
 
 namespace sprint0Real.Levels
 {
@@ -57,8 +58,16 @@ namespace sprint0Real.Levels
                         ITreasureItems item = (ITreasureItems)Activator.CreateInstance(itemType, new Vector2(x, y));
                         newMap.Stage((IGameObject)Activator.CreateInstance(type, new Vector2(x, y), item));
                     }
-                    else
+                    bool movable = Object.HasAttribute("Movable") && bool.Parse(Object.GetAttribute("Movable"));
+                    string direction = Object.HasAttribute("Direction") ? Object.GetAttribute("Direction") : "None";
+
+                    try
                     {
+                        newMap.Stage((IGameObject)Activator.CreateInstance(type, new Vector2(x, y), movable, direction));
+                    }
+                    catch
+                    {
+                        //fallback if constructor doesn't take extra params
                         newMap.Stage((IGameObject)Activator.CreateInstance(type, new Vector2(x, y)));
                     }
                 }
@@ -126,8 +135,16 @@ namespace sprint0Real.Levels
                     ITreasureItems item = (ITreasureItems)Activator.CreateInstance(itemType, new Vector2(x, y));
                     newMap.Stage((IGameObject)Activator.CreateInstance(type, new Vector2(x, y), item));
                 }
-                else
+                bool movable = obj.HasAttribute("Movable") && bool.Parse(obj.GetAttribute("Movable"));
+                string direction = obj.HasAttribute("Direction") ? obj.GetAttribute("Direction") : "None";
+
+                try
                 {
+                    newMap.Stage((IGameObject)Activator.CreateInstance(type, new Vector2(x, y), movable, direction));
+                }
+                catch
+                {
+                    //fallback if constructor doesn't take extra params
                     newMap.Stage((IGameObject)Activator.CreateInstance(type, new Vector2(x, y)));
                 }
             }

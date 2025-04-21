@@ -22,7 +22,7 @@ namespace sprint0Real.EnemyStuff.DragonStuff
         public ISprite2 sprite;
         private Vector2 Location;
         public int speed = 2;
-        private int health = 0;
+        private int health = 5;
         private TimeSpan stunTimer = TimeSpan.Zero;
         public bool IsStunned => stunTimer > TimeSpan.Zero;
 
@@ -54,6 +54,10 @@ namespace sprint0Real.EnemyStuff.DragonStuff
 
         public void TakeDamage(int damage)
         {
+            if (IsStunned)
+            {
+                return;
+            }
             behavior.TakeDamage();
             stateMachine.TakeDamage(damage);
         }

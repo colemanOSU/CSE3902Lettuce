@@ -8,12 +8,12 @@
 		<Object Type="Skeleton" x="192" y="144"/>
 		<Object Type="Skeleton" x="240" y="240"/>
 		
-		<Object Type="BlockTile" x="240" y="96"/>
-		<Object Type="BlockTile" x="288" y="96"/>
-		<Object Type="BlockTile" x="240" y="144"/>
-		<Object Type="BlockTile" x="288" y="144"/>
-		<Object Type="BlockTile" x="240" y="192"/>
-		<Object Type="BlockTile" x="288" y="192"/>
+		<Object Type="BlockTile" x="240" y="96" Movable="false" Direction="null"/>
+		<Object Type="BlockTile" x="288" y="96" Movable="false" Direction="null"/>
+		<Object Type="BlockTile" x="240" y="144" Movable="false" Direction="null"/>
+		<Object Type="BlockTile" x="288" y="144" Movable="false" Direction="null"/>
+		<Object Type="BlockTile" x="240" y="192" Movable="false" Direction="null"/>
+		<Object Type="BlockTile" x="288" y="192" Movable="false" Direction="null"/>
 	</Objects>
 	
 	<MapHitBoxes>

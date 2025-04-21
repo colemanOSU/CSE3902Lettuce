@@ -15,10 +15,10 @@
 
 		<Object Type="Compass" x="441" y="150"/>
 
-		<Object Type="BlockTile" x="96" y="48"/>
-		<Object Type="BlockTile" x="432" y="48"/>
-		<Object Type="BlockTile" x="96" y="240"/>
-		<Object Type="BlockTile" x="432" y="240"/>
+		<Object Type="BlockTile" x="96" y="48" Movable="false" Direction="null"/>
+		<Object Type="BlockTile" x="432" y="48" Movable="false" Direction="null"/>
+		<Object Type="BlockTile" x="96" y="240" Movable="false" Direction="null"/>
+		<Object Type="BlockTile" x="432" y="240" Movable="false" Direction="null"/>
 	</Objects>
 	
 	<MapHitBoxes>

@@ -46,6 +46,10 @@ namespace sprint0Real.EnemyStuff.SlimeStuff
 
         public void TakeDamage(int damage)
         {
+            if (IsStunned)
+            {
+                return;
+            }
             stateMachine.TakeDamage(damage);
         }
 

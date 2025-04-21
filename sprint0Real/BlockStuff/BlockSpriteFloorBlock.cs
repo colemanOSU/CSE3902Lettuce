@@ -22,16 +22,20 @@ namespace sprint0Real.BlockSprites
         private float pushSpeed = 1f;
         private bool isBeingPushed = false;
 
+        private bool isMovable;
+        private string pushDirection;
+
         public Texture2D texture;
 
-        public BlockSpriteFloorBlock(Vector2 startPos)
+        public BlockSpriteFloorBlock(Vector2 startPos, bool isMovable, string direction)
         {
             this.texture = BlockSpriteFactory.Instance.GetDungeonTileSet();
             this.position = startPos;
 
             sourceRectangle = new Rectangle(1001, 11, width, height);
             destinationRectangle = new Rectangle((int)position.X, (int)position.Y, width * 3, height * 3);
-            //destination(200, 200)
+            this.isMovable = isMovable;
+            this.pushDirection = direction;
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -44,7 +48,23 @@ namespace sprint0Real.BlockSprites
             if (isBeingPushed && !hasMoved)
             {
                 float pushAmount = pushSpeed;
-                position.X -= pushAmount;
+
+                switch (pushDirection)
+                {
+                    case "Left":
+                        position.X -= pushAmount;
+                        break;
+                    case "Right":
+                        position.X += pushAmount;
+                        break;
+                    case "Up":
+                        position.Y -= pushAmount;
+                        break;
+                    case "Down":
+                        position.Y += pushAmount;
+                        break;
+                }
+
                 totalPushedDistance += pushAmount;
 
                 if (totalPushedDistance >= maxPushDistance)
@@ -68,13 +88,25 @@ namespace sprint0Real.BlockSprites
 
         public void TryPush(Link link, CollisionDirections direction)
         {
-            Rectangle linkRect = link.Rect;
 
-            // Check if Link is touching the right side of the block
-            if (!hasMoved && direction == CollisionDirections.Right && CurrentMap.Instance.MapName == "Level8")
+            if (!isMovable || hasMoved)
+                return;
+
+            //Only allow pushing from the opposite side of the intended direction
+            bool validPush = pushDirection switch
+            {
+                "Left" => direction == CollisionDirections.Right,
+                "Right" => direction == CollisionDirections.Left,
+                "Up" => direction == CollisionDirections.Down,
+                "Down" => direction == CollisionDirections.Up,
+                _ => false
+            };
+
+            if (validPush)
             {
                 isBeingPushed = true;
             }
+
         }
         public void Move(Vector2 direction)
         {
