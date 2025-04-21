@@ -28,6 +28,7 @@ namespace sprint0Real.Audio
         private ContentManager content;
         private SongType? currentSong = null;
         private bool muted = false;
+        private bool IsPaused = false;
         public bool Muted
         {
             get => muted;
@@ -102,6 +103,21 @@ namespace sprint0Real.Audio
         public void ToggleMute()
         {
             Muted = !Muted;
+        }
+
+        public void TogglePauseMusic()
+        {
+            if (!IsPaused)
+            {
+                MediaPlayer.Pause();
+            }
+            if (IsPaused && !Muted)
+            {
+                MediaPlayer.Resume();
+            }
+
+
+            IsPaused = !IsPaused;
         }
     }
 }

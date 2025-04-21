@@ -73,6 +73,8 @@ namespace sprint0Real.LinkStuff.LinkSprites
                 FlipEffect = SpriteEffects.None;
                 Facing = 1;
             }
+
+            SoundEffectFactory.Instance.TogglePauseMusic();
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -178,6 +180,7 @@ namespace sprint0Real.LinkStuff.LinkSprites
             else
             {
                 CurrentMap.Instance.DeStage(Beam);
+                SoundEffectFactory.Instance.TogglePauseMusic();
                 Beam = null;
                 myGame.KameCamera.Center = new Vector2(Game1.SCREENMIDX, Game1.SCREENMIDY);
 
