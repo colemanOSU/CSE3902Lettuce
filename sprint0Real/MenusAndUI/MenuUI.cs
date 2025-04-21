@@ -201,13 +201,14 @@ public class MenuUI
     public void MoveSelectorVertical()
     {
         int TempYSelect = (YSelect == 0) ? 1 : 0;
-    
+
         if (DisplayInventory[TempYSelect, XSelect] != 0)
         {
-            YSelect = TempYSelect; 
+            YSelect = TempYSelect;
             inv.CurrentItem = DisplayInventory[YSelect, XSelect];
-                
+
         }
+        else { MoveSelectorRight(); }
 
     }
 
