@@ -9,6 +9,7 @@ using sprint0Real.LinkStuff.LinkSprites;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace sprint0Real.Commands.KeyboardCommands
@@ -17,74 +18,90 @@ namespace sprint0Real.Commands.KeyboardCommands
     {
         private Game1 myGame;
         private bool useItem = false;
-        int[] ans = {1,2,3,4,3,2,1};
-        Queue buffer = new Queue();
-        int lastDirection=2;
-        bool attackReady = false;
-        int cheatSize = 7;
+        public int[] ans = { 1, 2, 3, 4, 3, 2, 1 };
+        public Queue buffer = new Queue();
+        public int lastDirection;
+        public bool attackReady = false;
+        public int cheatSize = 7;
 
-        public CheatCommand(Game1 game,  int direction)
+        public CheatCommand(Game1 game)
         {
             myGame = game;
-            Add(direction);
-
+            lastDirection = 0;
         }
-        public bool areEqual()
+        public void areEqual()
         {
             int count = 0;
-            bool equality = false;
-            if (buffer.Count == cheatSize) 
+            attackReady = false;
+            if (buffer.Count >= cheatSize)
             {
-                equality = true;
+                attackReady = true;
                 foreach (int direction in buffer)
                 {
                     if (direction != ans[count])
                     {
-                    equality = false;
+                        attackReady = false;
                     }
-                count++;
+                    count++;
                 }
             }
-            return equality;
         }
 
         public void Add(int direction)
         {
-            if(lastDirection != direction)
+            if (lastDirection != direction)
             {
+                Debug.WriteLine(direction);
+                Debug.WriteLine(lastDirection);
                 buffer.Enqueue(direction);
                 if (buffer.Count > cheatSize)
                 {
                     buffer.Dequeue();
                 }
-                if (attackReady)
-                {
-                    Execute();
-                }
                 lastDirection = direction;
-                if (areEqual())
-                {
-                    attackReady = true;
-                }
+                areEqual();
             }
         }
-        public void Execute()
+        public int whichDirection()
         {
             switch (myGame.Link.GetFacing())
             {
-                //case Link.Direction.Left:
-                //    myGame.linkSprite = new UseLeftSprite(myGame.linkSheet, myGame, useItem);
-                //    break;
-                //case Link.Direction.Right:
-                //    myGame.linkSprite = new UseRightSprite(myGame.linkSheet, myGame, useItem);
-                //    break;
-                //case Link.Direction.Up:
-                //    myGame.linkSprite = new UseUpSprite(myGame.linkSheet, myGame, useItem);
-                //    break;
-                //case Link.Direction.Down:
-                //    myGame.linkSprite = new UseDownSprite(myGame.linkSheet, myGame, useItem);
-                //    break;
+                case Link.Direction.Left:
+                    return 4;
+                case Link.Direction.Right:
+                    return 2;
+                case Link.Direction.Up:
+                    return 1;
+                case Link.Direction.Down:
+                    return 3;
             }
+            return 0;
+        }
+        public void Execute()
+        {
+            int direction = whichDirection();
+            if (attackReady)
+            {
+                attackReady = false;
+                lastDirection = 0;
+                switch (myGame.Link.GetFacing())
+                {
+                    //bossesSheet
+                    case Link.Direction.Left:
+                        myGame.linkSprite = new UseLeftSprite(myGame.linkSheet, myGame, useItem);
+                        break;
+                    case Link.Direction.Right:
+                        myGame.linkSprite = new UseRightSprite(myGame.linkSheet, myGame, useItem);
+                        break;
+                    case Link.Direction.Up:
+                        myGame.linkSprite = new UseUpSprite(myGame.linkSheet, myGame, useItem);
+                        break;
+                    case Link.Direction.Down:
+                        myGame.linkSprite = new UseDownSprite(myGame.linkSheet, myGame, useItem);
+                        break;
+                }
+            }
+            Add(direction);
 
         }
     }
