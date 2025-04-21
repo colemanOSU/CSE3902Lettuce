@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework;
 using sprint0Real.Interfaces;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0Real.EnemyStuff.Fireballs;
+using sprint0Real.BlockSprites;
 
 
 namespace sprint0Real.Levels
@@ -60,10 +61,18 @@ namespace sprint0Real.Levels
             background.Draw(spriteBatch, offset);
             foreach (IBlock block in gameObjects.OfType<IBlock>())
             {
-                // This is a hack to get blocks to show up during level transitions
-                Type type = Type.GetType(block.GetType().ToString());
-                IBlock temp = (IBlock)Activator.CreateInstance(type, block.Position + offset);
-                temp.Draw(spriteBatch);
+                if (block is BlockSpriteFloorBlock floorBlock)
+                {
+                    IBlock temp = new BlockSpriteFloorBlock(floorBlock.Position + offset, true, "Left");
+                    temp.Draw(spriteBatch);
+                }
+                else
+                {
+                    //fallback for others
+                    Type type = Type.GetType(block.GetType().ToString());
+                    IBlock temp = (IBlock)Activator.CreateInstance(type, block.Position + offset);
+                    temp.Draw(spriteBatch);
+                }
             }
         }
         public void Draw(SpriteBatch spriteBatch)

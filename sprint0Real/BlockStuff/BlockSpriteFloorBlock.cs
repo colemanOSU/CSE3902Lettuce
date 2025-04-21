@@ -22,16 +22,20 @@ namespace sprint0Real.BlockSprites
         private float pushSpeed = 1f;
         private bool isBeingPushed = false;
 
+        private bool isMovable;
+        private string pushDirection;
+
         public Texture2D texture;
 
-        public BlockSpriteFloorBlock(Vector2 startPos)
+        public BlockSpriteFloorBlock(Vector2 startPos, bool isMovable, string direction)
         {
             this.texture = BlockSpriteFactory.Instance.GetDungeonTileSet();
             this.position = startPos;
+            this.isMovable = isMovable;
+            this.pushDirection = direction;
 
             sourceRectangle = new Rectangle(1001, 11, width, height);
             destinationRectangle = new Rectangle((int)position.X, (int)position.Y, width * 3, height * 3);
-            //destination(200, 200)
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -43,21 +47,34 @@ namespace sprint0Real.BlockSprites
         {
             if (isBeingPushed && !hasMoved)
             {
-                float pushAmount = pushSpeed;
-                position.X -= pushAmount;
-                totalPushedDistance += pushAmount;
-
-                if (totalPushedDistance >= maxPushDistance)
+                if (isBeingPushed && !hasMoved)
                 {
-                    hasMoved = true;
-                    isBeingPushed = false;
+                    float pushAmount = pushSpeed;
 
-                    foreach (var obj in CurrentMap.Instance.ObjectList())
+                    switch (pushDirection)
                     {
-                        if (obj is SealedTransitionBox sealedDoor)
-                        {
-                            sealedDoor.Unlock();
-                        }
+                        case "Left":
+                            position.X -= pushAmount;
+                            break;
+                        case "Right":
+                            position.X += pushAmount;
+                            break;
+                        case "Up":
+                            position.Y -= pushAmount;
+                            break;
+                        case "Down":
+                            position.Y += pushAmount;
+                            break;
+                    }
+
+                    totalPushedDistance += pushAmount;
+
+                    if (totalPushedDistance >= maxPushDistance)
+                    {
+                        hasMoved = true;
+                        isBeingPushed = false;
+
+                        Unlock();
                     }
                 }
             }
@@ -66,12 +83,35 @@ namespace sprint0Real.BlockSprites
             destinationRectangle.Y = (int)position.Y;
         }
 
+        private void Unlock()
+        {
+            if (CurrentMap.Instance.MapName == "Level8") {
+                foreach (var obj in CurrentMap.Instance.ObjectList())
+                {
+                    if (obj is SealedTransitionBox sealedDoor)
+                    {
+                        sealedDoor.Unlock();
+                    }
+                }
+            }
+        }
+
         public void TryPush(Link link, CollisionDirections direction)
         {
-            Rectangle linkRect = link.Rect;
+            if (!isMovable || hasMoved)
+                return;
 
-            // Check if Link is touching the right side of the block
-            if (!hasMoved && direction == CollisionDirections.Right && CurrentMap.Instance.MapName == "Level8")
+            // Only allow pushing from the opposite side of the intended direction
+            bool validPush = pushDirection switch
+            {
+                "Left" => direction == CollisionDirections.Right,
+                "Right" => direction == CollisionDirections.Left,
+                "Up" => direction == CollisionDirections.Down,
+                "Down" => direction == CollisionDirections.Up,
+                _ => false
+            };
+
+            if (validPush)
             {
                 isBeingPushed = true;
             }
