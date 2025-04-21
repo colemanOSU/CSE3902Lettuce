@@ -51,8 +51,6 @@ namespace sprint0Real.Commands.KeyboardCommands
         {
             if (lastDirection != direction)
             {
-                Debug.WriteLine(direction);
-                Debug.WriteLine(lastDirection);
                 buffer.Enqueue(direction);
                 if (buffer.Count > cheatSize)
                 {
