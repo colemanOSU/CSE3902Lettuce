@@ -36,6 +36,7 @@ namespace sprint0Real
         public Texture2D linkSheet;
         public Texture2D UISheet;
         public Texture2D wolfSheet;
+        public Texture2D bossesSheet;
 
         SpriteFont font1;
 
@@ -184,6 +185,7 @@ namespace sprint0Real
             linkSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - Link");
             UISheet = Content.Load<Texture2D>("NES - The Legend of Zelda - HUD & Pause Screen");
             wolfSheet = Content.Load<Texture2D>("WolfSprite");
+            bossesSheet = Content.Load<Texture2D>("Bosses");
             Texture2D fileSelectSheet = Content.Load<Texture2D>("NES - The Legend of Zelda - File Select");
             NameScene = new NameRegistrationScene(this, fileSelectSheet, font1);
             achievementScreen = new AchievementScreen(this, font1);
