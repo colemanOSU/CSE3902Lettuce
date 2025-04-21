@@ -89,6 +89,11 @@ public class Link : ILink
     {
         itemStateMachine.DrawWeaponSprite();
     }
+
+    public void DrawFireball()
+    {
+        itemStateMachine.DrawFireball();
+    }
     public void DrawItemSprite()
     {
         itemStateMachine.DrawItemSprite();

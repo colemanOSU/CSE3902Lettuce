@@ -142,6 +142,24 @@ namespace sprint0Real.LinkSprites
                 }
             }
         }
+        public void DrawFireball()
+        {
+            CurrentMap.Instance.ObjectList().RemoveAll(obj => obj is ILinkSprite && obj != myGame.weaponItemsA);
+            CurrentMap.Instance.ObjectList().RemoveAll(obj => obj is ILinkSprite && obj != myGame.weaponItemsB);
+            if (myGame.weaponItemsA != null && !(myGame.weaponItemsA is NullSprite))
+            {
+                CurrentMap.Instance.ObjectList().Remove(myGame.weaponItemsA);
+            }
+
+
+            
+            myGame.weaponItemsA = new linkFire(myGame.bossesSheet, myGame);
+
+            if (!CurrentMap.Instance.ObjectList().Contains(myGame.weaponItemsA))
+            {
+                CurrentMap.Instance.ObjectList().Add(myGame.weaponItemsA);
+            }
+        }
         public void DrawItemSprite()
         {
             if (isNoItem && currentItem == Inventory.Items.Bomb) return;
