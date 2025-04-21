@@ -38,14 +38,14 @@ namespace sprint0Real.Controllers
             _game = game;
 
             commands.Add(Keys.E, new DamageLinkCommand(_game));
-            commands.Add(Keys.D, new MoveRightCommand(_game));
-            commands.Add(Keys.A, new MoveLeftCommand(_game));
-            commands.Add(Keys.W, new MoveUpCommand(_game));
-            commands.Add(Keys.S, new MoveDownCommand(_game));
-            commands.Add(Keys.Right, new MoveRightCommand(_game));
-            commands.Add(Keys.Left, new MoveLeftCommand(_game));
-            commands.Add(Keys.Up, new MoveUpCommand(_game));
-            commands.Add(Keys.Down, new MoveDownCommand(_game));
+            commands.Add(Keys.D, new MultipleCommand(new MoveRightCommand(_game), new CheatCommand(_game, 2)));
+            commands.Add(Keys.A, new MultipleCommand(new MoveLeftCommand(_game), new CheatCommand(_game, 4)));
+            commands.Add(Keys.W, new MultipleCommand(new MoveUpCommand(_game), new CheatCommand(_game, 1)));
+            commands.Add(Keys.S, new MultipleCommand(new MoveDownCommand(_game), new CheatCommand(_game, 3)));
+            commands.Add(Keys.Right, new MultipleCommand(new MoveRightCommand(_game), new CheatCommand(_game, 2)));
+            commands.Add(Keys.Left, new MultipleCommand(new MoveLeftCommand(_game), new CheatCommand(_game, 4)));
+            commands.Add(Keys.Up, new MultipleCommand(new MoveUpCommand(_game), new CheatCommand(_game, 1)));
+            commands.Add(Keys.Down, new MultipleCommand(new MoveDownCommand(_game), new CheatCommand(_game, 3)));
             commands.Add(Keys.Z, new AttackCommand(_game));
             commands.Add(Keys.N, new AttackCommand(_game));
             commands.Add(Keys.B, new UseCurrentItemCommand(_game));
