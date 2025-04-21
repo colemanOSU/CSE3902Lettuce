@@ -197,7 +197,7 @@ namespace sprint0Real
             TreasureItemSpriteFactory.Instance.LoadAllTextures(Content);
             WolfSpriteFactory.Instance.LoadContent(Content);
             LevelLoader.Instance.LoadLevels();
-            winningState = new WinningState(this);
+            winningState = new WinningState(this, UISheet);
             ResetGame();
             collisionHandler.LoadCommands();
             collisionDetection.Load(Link);
@@ -503,7 +503,7 @@ namespace sprint0Real
             MenuUISprite = new MenuUI(UISheet);
             PauseUISprite = new PauseUI(UISheet);
             GameOverScreen = new GameOverUI(UISheet);
-            winningState = new WinningState(this);
+            winningState = new WinningState(this, UISheet);
 
             weaponItemsA = new NullSprite(linkSheet, this);
             weaponItemsB = new NullSprite(linkSheet, this);
