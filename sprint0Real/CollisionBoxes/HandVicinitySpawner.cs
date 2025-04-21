@@ -34,7 +34,6 @@ namespace sprint0Real.CollisionBoxes
             float spawnLocation = (float)random.NextDouble() * Rect.Width + Rect.Left;
             if (Top)
             {
-                Debug.Print(spawnLocation.ToString());
                 CurrentMap.Instance.Stage(new Hand(new Vector2(spawnLocation, 138)));
             }
             else
