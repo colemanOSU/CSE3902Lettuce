@@ -9,6 +9,7 @@ using sprint0Real.Levels;
 using sprint0Real.LinkStuff;
 using sprint0Real.LinkStuff.LinkSprites;
 using sprint0Real.WolfLink;
+using System.Collections;
 using System.Diagnostics;
 
 namespace sprint0Real.Commands.KeyboardCommands
@@ -25,18 +26,28 @@ namespace sprint0Real.Commands.KeyboardCommands
         }
         public void Execute()
         {
-            if (myGame.Link.GetInventory().CurrentItem == Inventory.Items.WolfBubble)
+            switch (myGame.Link.GetInventory().CurrentItem)
             {
-                AchievementManager.Unlock("Wolf Rider!");
-                if (Wolf.Instance.isUsed())
-                {
-                    Wolf.Instance.setUsed(false);
-                }
-                else
-                {
-                    Wolf.Instance.setUsed(true);
-                }
-                return; 
+
+                case (Inventory.Items.WolfBubble):
+                    AchievementManager.Unlock("Wolf Rider!");
+                    if (Wolf.Instance.isUsed())
+                    {
+                        Wolf.Instance.setUsed(false);
+                    }
+                    else
+                    {
+                        Wolf.Instance.setUsed(true);
+                    }
+                    break;
+
+                case (Inventory.Items.Blue_Potion):
+                    myGame.Link.GetInventory().BluePotionUse();
+                    break;
+                case (Inventory.Items.Red_Potion):
+                    myGame.Link.GetInventory().RedPotionUse();
+                    break;
+
             }
 
             if (myGame.Link.CanAttack())

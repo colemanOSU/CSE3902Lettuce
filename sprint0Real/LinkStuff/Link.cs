@@ -60,10 +60,6 @@ public class Link : ILink
         linkHurt = game.Content.Load<SoundEffect>("LOZ_Link_Hurt");
         
     }
-    public void Damaged()
-    {
-            
-    }
     public void TakeDamage()
     {
         if (!isDamaged) //Avoid Damage if already in damageed state
@@ -271,5 +267,9 @@ public class Link : ILink
     public void SetMaxHealth(int amount)
     {
         MaxHealth = amount;
+    }
+    public void RestoreAllHealth()
+    {
+        CurrentHealth = MaxHealth;
     }
 }
