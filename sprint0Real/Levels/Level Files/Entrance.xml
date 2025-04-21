@@ -4,13 +4,8 @@
 	<Door Exterior ="Default" Interior ="EntranceInterior" Left="Open" Right="Open" Up="Open" Down="Locked"/>
 	
 	<Objects>
-		<Object Type="Hand" x="50" y="50"/>
-		<Object Type="Skeleton" x="50" y="50" Item = "Key"/>
-		<Object Type="Goriya" x="384" y="0"/>
-		<Object Type="BTrap" x="0" y="0"/>
 		<Object Type="BTrap" x="300" y="0"/>
 		<Object Type="Map" x="50" y="150"/>
-		<Object Type="Dragon" x="50" y="250"/>
 		<Object Type="Arrow" x="450" y="200"/>
 		<Object Type="Heart" x="350" y="200"/>
 		<Object Type="Fairy" x="450" y="50"/>
