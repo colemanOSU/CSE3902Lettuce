@@ -275,4 +275,8 @@ public class Link : ILink
     {
         CurrentHealth = MaxHealth;
     }
+    public void SwitchPhaseActive()
+    {
+        isPhaseActive = !isPhaseActive;
+    }
 }

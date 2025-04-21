@@ -88,7 +88,7 @@ namespace sprint0Real.LinkStuff
                         break;
                 }
 
-                if (PhaseLoops >= 3)
+                if (PhaseLoops >= 5)
                 {
                     PhaseLoops = 0;
                     Link.SwitchPhaseActive();

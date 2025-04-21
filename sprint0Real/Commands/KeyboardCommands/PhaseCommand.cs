@@ -18,7 +18,11 @@ namespace sprint0Real.Commands.KeyboardCommands
 
         public void Execute()
         {
-            myGame.Link.SwitchPhaseActive();
+            if (!myGame.Link.IsPhaseActive())
+            {
+                myGame.Link.SwitchPhaseActive();
+
+            }
         }
     }
 }

@@ -53,6 +53,8 @@ namespace sprint0Real.Interfaces
         public int GetMaxHealth();
 
         public void SetMaxHealth(int amount);
+
+        public void SwitchPhaseActive();
         public void RestoreAllHealth();
     }
 }
