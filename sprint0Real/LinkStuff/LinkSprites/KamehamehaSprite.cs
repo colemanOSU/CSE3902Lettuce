@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Audio;
 using sprint0Real.Levels;
+using sprint0Real.Audio;
 
 namespace sprint0Real.LinkStuff.LinkSprites
 {
@@ -58,9 +59,8 @@ namespace sprint0Real.LinkStuff.LinkSprites
             DestinationRectangle = myGame.Link.GetLocation();
             CurrentFrameSource = FrameOneSource;
             CurrentKameSource = KameOneFrameOneSource;
-            
-            game.LinkScream.Play();
-            MediaPlayer.Pause();
+
+            SoundEffectFactory.Instance.Play(SoundEffectType.Kamehameha);
             FrameCounter = 0;
 
             BeamCreated = false;
@@ -178,7 +178,6 @@ namespace sprint0Real.LinkStuff.LinkSprites
             else
             {
                 CurrentMap.Instance.DeStage(Beam);
-                MediaPlayer.Resume();
                 Beam = null;
                 myGame.KameCamera.Center = new Vector2(Game1.SCREENMIDX, Game1.SCREENMIDY);
 

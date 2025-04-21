@@ -13,11 +13,12 @@ namespace sprint0Real.Levels
     {
         // Functions as a singleton that holds the current stage, and as an interface between what should be added
         // to that stage.
-        private EnemyPage previousMap;
+        public EnemyPage previousMap;
         private static CurrentMap instance = new CurrentMap();
         private EnemyPage myMap;
         private List<IObject> stagingAdd;
-        private List<IObject> stagingRemove; 
+        private List<IObject> stagingRemove;
+        private bool TextShown;
         public static CurrentMap Instance
         {
             get
@@ -33,7 +34,13 @@ namespace sprint0Real.Levels
         public void SetMap(EnemyPage newMap)
         {
             myMap = newMap;
-            if(CurrentMap.Instance.MapName == "Level8" && previousMap.Name == "Level11")
+            UpdateSpecificRoom();
+            
+        }
+        public void UpdateSpecificRoom()
+        {
+            
+            if (CurrentMap.Instance.MapName == "Level8" && previousMap.Name == "Level11")
             {
                 CurrentMap.Instance.Stage(new Map(new Vector2(550, 425)));
             }

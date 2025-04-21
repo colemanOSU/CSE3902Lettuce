@@ -22,7 +22,7 @@ namespace sprint0Real.EnemyStuff.RedGoriya
         public ISprite2 mySprite;
         private Vector2 Location;
         public int speed = 2;
-        private int health = 10;
+        private int health = 2;
         private TimeSpan stunTimer = TimeSpan.Zero;
         public bool IsStunned => stunTimer > TimeSpan.Zero;
         public Boomerang boomerang;

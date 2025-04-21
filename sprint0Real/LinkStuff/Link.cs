@@ -24,7 +24,6 @@ public class Link : ILink
     private Color LinkSpriteColor;
     private Vector2 MomentumVector;
     public Texture2D linkSheet;
-    private SoundEffect linkHurt;
     private int actualSpeed;
 
     public Inventory inventory;
@@ -59,12 +58,7 @@ public class Link : ILink
         itemStateMachine = new ItemStateMachine(game, inventory);
         MaxHealth = 8;
         CurrentHealth = MaxHealth;
-        linkHurt = game.Content.Load<SoundEffect>("LOZ_Link_Hurt");
         
-    }
-    public void Damaged()
-    {
-            
     }
     public void TakeDamage()
     {
@@ -277,9 +271,8 @@ public class Link : ILink
     {
         MaxHealth = amount;
     }
-
-    public void SwitchPhaseActive()
+    public void RestoreAllHealth()
     {
-        isPhaseActive = !isPhaseActive;
+        CurrentHealth = MaxHealth;
     }
 }

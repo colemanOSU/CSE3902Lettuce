@@ -24,6 +24,8 @@ internal class WinningState
     private Game1 game;
     private SpriteFont winFont;
 
+    private Texture2D SpriteSheet;
+
 
     private double animationElapsedTime = 0;
     private const double animationTotalDuration = 8; 
@@ -34,7 +36,7 @@ internal class WinningState
     private int numFlashes = 6;
     private double flashElapsedTime = 0;
 
-    public WinningState(Game1 game)
+    public WinningState(Game1 game, Texture2D _texture)
     {
         this.game = game;
         this.linksheet = game.linkSheet;
@@ -59,6 +61,8 @@ internal class WinningState
         );
         triforce = new Triforce(triforcePos);
         winFont = game.Content.Load<SpriteFont>("WinFont");
+
+        SpriteSheet = _texture;
     }
 
     public void Update(GameTime gameTime)
@@ -130,8 +134,8 @@ internal class WinningState
                 (screenWidth - size.X) / 2,
                 (screenHeight - size.Y) / 2
             );
+            spriteBatch.Draw(SpriteSheet, new Rectangle(Game1.SCREENMIDX - 82 * Game1.RENDERSCALE, Game1.SCREENMIDY - 4 * Game1.RENDERSCALE, 164 * Game1.RENDERSCALE, 9 * Game1.RENDERSCALE), new Rectangle(258, 98, 164, 9), Color.White);
 
-            spriteBatch.DrawString(winFont, message, position, Color.Gold);
         }
         spriteBatch.End();
     }

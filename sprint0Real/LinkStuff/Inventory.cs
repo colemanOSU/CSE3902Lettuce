@@ -15,8 +15,6 @@ namespace sprint0Real.LinkStuff
         //Or to take arms against a sea of troubles, And by opposing end them
 
         private Dictionary<Items, Boolean> InventoryList = [];
-        private static Inventory instance = new Inventory();
-        public static Inventory Instance { get { return instance; } }
         //Keeps track of currently equipped item.
         //Starts as set to null.
         public Items CurrentItem { get; set; }
@@ -27,6 +25,8 @@ namespace sprint0Real.LinkStuff
         public int RupeeCount { get; set; }
 
         public int BombCount { get; set; }
+
+        public int RedPotionCount {  get; set; }
 
         //Original game has ability to increase max bombs
         //Hell if we're implementing that though
@@ -153,6 +153,14 @@ namespace sprint0Real.LinkStuff
         {
             RupeeCount -= amount;
             if (RupeeCount < 0) RupeeCount = 0;
+        }
+        public void BluePotionUse()
+        {
+            Game1.Instance.Link.RestoreAllHealth();
+        }
+        public void RedPotionUse()
+        {
+            Game1.Instance.Link.RestoreAllHealth();
         }
     }
 }

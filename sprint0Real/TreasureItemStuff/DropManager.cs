@@ -80,7 +80,7 @@ namespace sprint0Real.TreasureItemStuff
             bool hasBombs = inv.BombCount > 0;
             bool lowHealth = link.GetCurrentHealth() < link.GetMaxHealth();
 
-            if (RandomChance(0.25)) //25% chance to drop something
+            if (RandomChance(0.5)) //50% chance to drop something
             {
                 string dropType = GetRandomDrop(hasBombs, lowHealth);
                 if (!string.IsNullOrEmpty(dropType))
