@@ -1,0 +1,17 @@
+﻿Author: Andrea Stewart
+Date: 04/21/2025
+Sprint 5
+This review took around 35 minutes.
+
+Maintainability:
+(I am reviewing Allen's HandStateMachine.cs)
+HandStateMachine is tightly coupled with the Hand object. It directly anipulates properties like location, speed, and health which breaks encapsulation. This could be avoided
+to help with future refactoring. There is a lot of logic in the stateMachine for example some of the damage logic and I think it would be more benefitial for maintainability
+if the state machine more just focused on transitioning between behaviors because if the game were to develop and add more maintaining and tsting the code would become pretty
+complex. Overall though I think this code is simple and follows good OOP and is consistent between the other enemy state machines.
+
+Readability
+(I am reviewing Allen's HandStateMachine.cs)
+This class conveys its functionality with pretty clear intent, however, it could be improved by illiminating some of its inconsister structure and adding more documentation to
+some of the logic. The HandStates enum is intuitive, but the transitions between states are implicit and I think it would be benefitiial to highlight more of their purpose because
+it can be hard to follow the flow ar first. There is a lot of mixture of state logic and game effect logic that can ake it difficult for readers to untangle responsibilities.

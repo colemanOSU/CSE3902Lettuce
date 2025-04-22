@@ -17,10 +17,11 @@
 		<Object Type="Compass" x="240" y="150"/>
 		<Object Type="LifePotion" x="240" y="250"/>
 		<Object Type="Boomerang" x="400" y="50"/>
-		<Object Type="BlueRing" x="400" y="140"/>
 		<Object Type="WolfBubble" x="400" y="100"/>
 		<Object Type="Clock" x="100" y="100"/>
-		<Object Type="BlueCandle" x="150" y="150"/>
+		<Object Type="BlueCandle" x="400" y="150"/>
+		<Object Type="RedCandle" x="400" y="300"/>
+		<Object Type="Hand" x="50" y="50"/>
 	</Objects>
 
 	<MapHitBoxes>
