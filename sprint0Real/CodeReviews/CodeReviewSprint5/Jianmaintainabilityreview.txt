@@ -1,26 +1,13 @@
-AUTHOR: Kelly Coleman
-SUBJECT: NameRegistrationScene.cs
-AUTHOR OF SUBJECT: Andrea Stewart
+AUTHOR: Jian wang
+SUBJECT: LinkStateMachine.cs
+AUTHOR OF SUBJECT: Ariv
 FOCUS: Maintainability
 SPRINT: 5
 DATE: 17 April 2025
-TIME TAKEN TO COMPLETE: 15 Minutes
+TIME TAKEN TO COMPLETE:  Minutes
 
-I don't mean to be dour, but surely manually initializing each element of the dictionary char -
-Rectangle dictionary way not the play. You already have an array of the chars defined! Treat 
-yourself and set up a for-each loop with the Rectangle offsets determined by the row and column
-indices. Not very maintainable as is!
-
-Overall, I don't think I can score this code particularly high in the maintainability aspect.
-Much of it seems to be hard-coded to fit the exact layout as it is now; I can't imagine that the
-English language is getting any new letters soon so it's not that terrible, but should you wish
-to adjust your layout or available symbols later, there will be Hell on Earth.
-
-Having any keyboard control happen in this class is an absolute no-no from me. If I were grading
-the maintainability on a 10-point scale, that choice alone would have knocked down my score by 
-at least two points. 
-
-It works, and for various reasons I assume nobody will be touching this code in two weeks time
-so it isn't really a problem, but I think this code overall gets a thumbs down from me
-on the sustainability front.
+This code is suprisingly maintainable dispite its unreadability. The use of variables and switch cases allow for modularity
+and allow for wasy additions to new phases or other Colors depending on links situation. One last change to your code would be to get rid 
+of magic numbers and change stuff like 0.2 to variables like timeIncriment. Other than that I would proabaly sugest adding code to other methods 
+instead of cramming every code into update making fixing, adding, and debugging code much simpler in the future.
 
