@@ -17,10 +17,10 @@
 		<HitBox Type="Border" x="0" y="480" width="762" height="48"/>
 		<HitBox Type="Border" x="192" y="-48" width="600" height="48"/>
 		
-		<HitBox Type="RoomTransitionBox" x="144" y="-48" width="48" height="48" direction="Up"/>
+		<HitBox Type="RoomTransitionBox" x="144" y="-48" width="48" height="48" direction="Aboveground"/>
 	</MapHitBoxes>
 
 	<Neighbors>
-		<Neighbor Side="Up" Name="Level10"/>
+		<Neighbor Side="Aboveground" Name="Level10"/>
 	</Neighbors>
 </LevelData>

@@ -24,5 +24,6 @@ CONTROLS:
 	SPACE: View Achievements
 	TAB: Switch between create new name or selecting from most recent 3 players
 
-Known bugs:
-water is walkable (must make deeper)
+CHEATS(INPUT BUFFER):
+FIREBALL MOVEMENT DIRECTIONS:
+UP, RIGHT, DOWN, LEFT, DOWN, RIGHT, UP, +Direction of fireball

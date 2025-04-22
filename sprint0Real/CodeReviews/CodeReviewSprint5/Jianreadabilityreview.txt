@@ -1,0 +1,17 @@
+AUTHOR: Jian wang
+SUBJECT: LinkStateMachine.cs
+AUTHOR OF SUBJECT: Ariv
+FOCUS: Maintainability
+SPRINT: 5
+DATE: 17 April 2025
+TIME TAKEN TO COMPLETE: 6 Minutes
+
+While there are some obvious critiques like adding comments to explain whats 
+going on, one thing that I is really important is to create more methods for 
+update to execute instead of putting all the code into updates, not only will 
+that make updating the game in the future easier but it would also make it easier 
+to understand each part and funtion separelty instead of putting all of it together 
+like link's phases and damage reaction. While phases is a bit vague without knowing what 
+it is, the vaiable names you've given are all really good, reading the code was't that 
+hard to disect due to being easily able to know what each varible is.
+

@@ -17,7 +17,8 @@ namespace sprint0Real.GameState.NameRegistrationandAchievements
             { "Kamehame-HA!", "Use the Kamehameha for the first time." },
             { "Fairy Catcher!", "Collect a fairy." },
             { "Wolf Rider!", "Use Link's Wolf powerup." },
-            { "Dungeon Complete!", "Collect the Triforce." }
+            { "Dungeon Complete!", "Collect the Triforce." },
+            { "???", "Discover Secret Cheat Code Fireball" }
         };
         public static bool Unlock(string title)
         {
