@@ -5,7 +5,7 @@
 
 	<Objects>
 		<Object Type="Bat" x="96" y="96" />
-		<Object Type="Bat" x="192" y="144" />
+		<Object Type="Bat" x="192" y="144" Item ="Key"/>
 		<Object Type="Bat" x="96" y="288" />
 	</Objects>
 

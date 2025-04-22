@@ -54,6 +54,10 @@ namespace sprint0Real.EnemyStuff.DragonStuff
 
         public void TakeDamage(int damage)
         {
+            if (IsStunned)
+            {
+                return;
+            }
             behavior.TakeDamage();
             stateMachine.TakeDamage(damage);
         }

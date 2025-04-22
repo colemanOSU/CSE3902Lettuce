@@ -13,12 +13,12 @@ namespace sprint0Real.Commands.CollisionCommands2
         private Dictionary<String, Rectangle> TransitionLinkPlacement = new Dictionary<String, Rectangle>();
         
         public TransitionDirections() { 
-            TransitionLinkPlacement.Add("Left", new Rectangle(621, 240, 48, 48));
+            TransitionLinkPlacement.Add("Left", new Rectangle(624, 240, 48, 48));
             TransitionLinkPlacement.Add("Right", new Rectangle(96, 240, 48, 48));
-            TransitionLinkPlacement.Add("Up", new Rectangle(350, 350, 48, 48));
-            TransitionLinkPlacement.Add("Down", new Rectangle(350, 100, 48, 48));
-            TransitionLinkPlacement.Add("Underground", new Rectangle(288, 288, 48, 48));
-            TransitionLinkPlacement.Add("Aboveground", new Rectangle(288, 288, 48, 48));
+            TransitionLinkPlacement.Add("Up", new Rectangle(350, 384, 48, 48));
+            TransitionLinkPlacement.Add("Down", new Rectangle(350, 96, 48, 48));
+            TransitionLinkPlacement.Add("Underground", new Rectangle(144, 0, 48, 48));
+            TransitionLinkPlacement.Add("Aboveground", new Rectangle(432, 240, 48, 48));
         }
 
         public Rectangle ReturnPlacement(String transitionDirection)

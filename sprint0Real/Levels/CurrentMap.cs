@@ -39,7 +39,7 @@ namespace sprint0Real.Levels
         }
         public void UpdateSpecificRoom()
         {
-            
+
             if (CurrentMap.Instance.MapName == "Level8" && previousMap.Name == "Level11")
             {
                 CurrentMap.Instance.Stage(new Map(new Vector2(550, 425)));

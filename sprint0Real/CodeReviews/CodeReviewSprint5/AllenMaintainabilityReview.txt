@@ -1,0 +1,12 @@
+Author: Allen Sluss
+Date: 4/21/2024
+Sprint 5
+I'm reviewing Jian's code for CheatCommand.cs
+About 5 minutes to complete
+
+The code for CheatCommand seems to be pretty maintainable, as long as someone with 
+a decent understanding of algorithms/queues maintains it. Modifying the code would probably
+be as simple as changing the numbers that are in the ans array so that seems pretty easy. One
+problem that might arise is that that code doesn't seem to be able to interpret repeated commands, 
+meaning that if someone wants additional key presses for a cheat code that might require modifying 
+other classes outside the cheatcommand, which might be tedious/difficult

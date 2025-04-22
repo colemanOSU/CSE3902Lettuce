@@ -4,7 +4,7 @@
 	<Door Exterior ="Default" Interior ="Level13" Left="Default" Right="Sealed" Up="Default" Down="Open"/>
 	
 	<Objects>
-		<Object Type="Dragon" x="336" y="96"/>
+		<Object Type="Dragon" x="336" y="96" Item="ContainerHeart"/>
 		
 		<Object Type="BlockTile" x="432" y="48"/>
 		<Object Type="BlockTile" x="432" y="240"/>
@@ -27,7 +27,7 @@
 		<HitBox Type="Border" x="669" y="0" width="96" height="216"/>
 
 		<HitBox Type="Border" x="0" y="216" width="96" height="96" direction="Left"/>
-		<HitBox Type="RoomTransitionBox" x="672" y="216" width="80" height="96" direction="Right"/>
+		<HitBox Type="SealedTransitionBox" x="672" y="216" width="80" height="96" direction="Right"/>
 		<HitBox Type="Border" x="336" y="0" width="96" height="96" direction="Up"/>
 		<HitBox Type="RoomTransitionBox" x="336" y="432" width="96" height="96" direction="Down"/>
 	</MapHitBoxes>

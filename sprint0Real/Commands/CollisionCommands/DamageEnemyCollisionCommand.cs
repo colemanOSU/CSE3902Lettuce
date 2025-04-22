@@ -10,12 +10,22 @@ using sprint0Real.EnemyStuff.DragonStuff;
 using System.Diagnostics;
 using sprint0Real.Audio;
 using sprint0Real.Items.ItemSprites;
+using sprint0Real.Levels;
+using sprint0Real.EnemyStuff.DinoStuff;
 
 namespace sprint0Real.Commands.CollisionCommands2
 {
     internal class DamageEnemyCollisionCommand :ICollisionCommand
     {
         private bool hitPlayed = false;
+        private void CheckForDinoDamage(Dino dino, IObject enemyDamage)
+        {
+            if (enemyDamage.GetType().Name == "BombSprite" && !((BombSprite)enemyDamage).IsDetonated())
+            {
+                dino.TakeDamage(5);
+                CurrentMap.Instance.DeStage(enemyDamage);
+            }
+        }
         public void Execute(IObject enemy, IObject enemyDamage, CollisionDirections direction)
         {
             if (!hitPlayed)
@@ -25,7 +35,11 @@ namespace sprint0Real.Commands.CollisionCommands2
             }
             if (enemy is IEnemy enemyA)
             {
-                if (enemyDamage is WoodBoomerangSprite || enemyDamage is BlueBoomerangSprite)
+                if (enemyA.GetType().Name == "Dino")
+                {
+                    CheckForDinoDamage((Dino)enemyA, enemyDamage);
+                }
+                else if (enemyDamage is WoodBoomerangSprite || enemyDamage is BlueBoomerangSprite)
                 {
                     enemyA.Stun(TimeSpan.FromSeconds(2));
                 }
