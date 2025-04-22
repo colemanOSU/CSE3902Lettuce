@@ -1,0 +1,11 @@
+AUTHOR: Ariv Puri
+DATE: 21 April 2025
+CLASS: WinningState.cs
+AUTHOR OF CLASS: Jenny
+SPRINT: 5
+TIME TAKEN: 15 Minutes
+
+Overall I would rate the readability of this class very highly. The constructor logically sets up textures, screen size, and sprite positions, making it easy to follow. 
+The Draw method also logically divides steps, which aids in clarity and makes it easier to follow. Some minor things I would change to make the class more readable is to 
+add comments. Specifically the Flash Logic, "showWhiteFlash ((int)(flashElapsedTime / flashDuration) % 2 == 0)", could use a comment to explain the logic better. Apart from 
+that line comments could help throughout any class, however everything else is plenty readable without.
