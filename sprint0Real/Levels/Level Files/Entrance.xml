@@ -4,6 +4,7 @@
 	<Door Exterior ="Default" Interior ="EntranceInterior" Left="Open" Right="Open" Up="Open" Down="Open"/>
 	
 	<Objects>
+
 	</Objects>
 	
 	<MapHitBoxes>

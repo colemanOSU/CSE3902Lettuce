@@ -1,0 +1,13 @@
+Author: Allen Sluss
+Date: 4/21/2024
+Sprint 5
+I'm reviewing Jian's code for CheatCommand.cs
+About 5 minutes to complete
+
+The code is pretty readable, with most of the stuff contained being algorithms like
+iterating over a queue and using that to determine what direction a fireball should be 
+fired. The function names are easy to interpret and helps to understand the code that 
+is contained in each function. One thing that might be improved for readability might
+be to replace the magic numbers that are used in the ans array with some array of enum values
+so it is easier to understand what the ans numbers represent, but that's about all the 
+critiques I can think of. 
