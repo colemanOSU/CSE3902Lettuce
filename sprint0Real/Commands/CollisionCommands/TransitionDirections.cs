@@ -18,7 +18,7 @@ namespace sprint0Real.Commands.CollisionCommands2
             TransitionLinkPlacement.Add("Up", new Rectangle(350, 384, 48, 48));
             TransitionLinkPlacement.Add("Down", new Rectangle(350, 96, 48, 48));
             TransitionLinkPlacement.Add("Underground", new Rectangle(144, 0, 48, 48));
-            TransitionLinkPlacement.Add("Aboveground", new Rectangle(432, 240, 48, 48));
+            TransitionLinkPlacement.Add("Aboveground", new Rectangle(336, 240, 48, 48));
         }
 
         public Rectangle ReturnPlacement(String transitionDirection)

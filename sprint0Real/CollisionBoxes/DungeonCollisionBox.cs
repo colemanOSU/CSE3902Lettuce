@@ -8,10 +8,10 @@ using sprint0Real.Interfaces;
 
 namespace sprint0Real.CollisionBoxes
 {
-    public class DunegeonCollisionBox : ICollisionBoxes
+    public class DungeonCollisionBox : ICollisionBoxes
     {
         Rectangle myDestinationRectangle;
-        public DunegeonCollisionBox(Rectangle destinationRectangle)
+        public DungeonCollisionBox(Rectangle destinationRectangle)
         {
             myDestinationRectangle = destinationRectangle;
         }

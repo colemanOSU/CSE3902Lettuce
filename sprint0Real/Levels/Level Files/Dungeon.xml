@@ -8,15 +8,28 @@
 		<Object Type="Bat" x="528" y="96"/>
 		<Object Type="Bat" x="528" y="288"/>
 		<Object Type="Bat" x="576" y="192"/>
+
+		<Object Type="Arrow" x="300" y="118"/>
 	</Objects>
 
 	<MapHitBoxes>
 		<HitBox Type="Border" x="-48" y="-48" width="48" height="576"/>
 		<HitBox Type="Border" x="768" y="-48" width="48" height="576"/>
 		<HitBox Type="Border" x="-48" y="-48" width="144" height="48"/>
-		<HitBox Type="Border" x="0" y="480" width="762" height="48"/>
+		<HitBox Type="Border" x="0" y="480" width="714" height="48"/>
 		<HitBox Type="Border" x="192" y="-48" width="600" height="48"/>
-		
+
+		<HitBox Type="DungeonCollisionBox" x="96" y="0" width="43" height="372"/>
+		<HitBox Type="DungeonCollisionBox" x="196" y="0" width="43" height="372"/>
+		<HitBox Type="DungeonCollisionBox" x="48" y="360" width="48" height="100"/>
+		<HitBox Type="DungeonCollisionBox" x="196" y="262" width="328" height="105"/>
+		<HitBox Type="DungeonCollisionBox" x="48" y="420" width="650" height="48"/>
+		<HitBox Type="DungeonCollisionBox" x="578" y="262" width="100" height="105"/>
+		<HitBox Type="DungeonCollisionBox" x="675" y="96" width="48" height="400"/>
+		<HitBox Type="DungeonCollisionBox" x="250" y="168" width="400" height="48"/>
+		<HitBox Type="DungeonCollisionBox" x="290" y="214" width="43" height="48"/>
+
+
 		<HitBox Type="RoomTransitionBox" x="144" y="-48" width="48" height="48" direction="Aboveground"/>
 	</MapHitBoxes>
 
