@@ -53,6 +53,10 @@ namespace sprint0Real.EnemyStuff.DinoStuff
 
         public void TakeDamage(int damage)
         {
+            if (IsStunned)
+            {
+                return;
+            }
             // Depends on amount of damage a bomb does
             if (damage > 0)
             {
