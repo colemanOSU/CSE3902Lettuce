@@ -21,7 +21,6 @@
 		<Object Type="Clock" x="100" y="100"/>
 		<Object Type="BlueCandle" x="400" y="150"/>
 		<Object Type="RedCandle" x="400" y="300"/>
-		<Object Type="Hand" x="50" y="50"/>
 	</Objects>
 
 	<MapHitBoxes>

@@ -12,6 +12,7 @@
 		<Object Type="BlockTile" x="240" y="192"/>
 		<Object Type="BlockTile" x="336" y="192"/>
 		<Object Type="BlockTile" x="288" y="240"/>
+		<Object Type="Stairs" x="288" y="144"/>
 		<Object Type="BTrap" x="0" y="0"/>
 		<Object Type="BTrap" x="528" y="0"/>
 		<Object Type="BTrap" x="0" y="288"/>
