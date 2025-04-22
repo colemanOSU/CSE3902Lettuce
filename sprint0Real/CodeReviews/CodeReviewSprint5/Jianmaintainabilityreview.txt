@@ -4,10 +4,13 @@ AUTHOR OF SUBJECT: Ariv
 FOCUS: Maintainability
 SPRINT: 5
 DATE: 17 April 2025
-TIME TAKEN TO COMPLETE:  Minutes
+TIME TAKEN TO COMPLETE: 12 Minutes
 
-This code is suprisingly maintainable dispite its unreadability. The use of variables and switch cases allow for modularity
-and allow for wasy additions to new phases or other Colors depending on links situation. One last change to your code would be to get rid 
-of magic numbers and change stuff like 0.2 to variables like timeIncriment. Other than that I would proabaly sugest adding code to other methods 
-instead of cramming every code into update making fixing, adding, and debugging code much simpler in the future.
+This code is suprisingly maintainable dispite its unreadability. The use of 
+variables and switch cases allow for modularity and allow for wasy additions 
+to new phases or other Colors depending on links situation. One last change to 
+your code would be to get rid of magic numbers and change stuff like 0.2 to variables 
+like timeIncriment. Other than that I would proabaly sugest adding code to other methods 
+instead of cramming every code into update making fixing, adding, and debugging code much 
+simpler in the future.
 
