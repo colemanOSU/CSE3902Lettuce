@@ -1,0 +1,12 @@
+AUTHOR: Ariv Puri
+DATE: 21 April 2025
+CLASS: WinningState.cs
+AUTHOR OF CLASS: Jenny
+SPRINT: 5
+TIME TAKEN: 25 Minutes
+
+Jenny has had consisitently high code quality over the last few sprints that I have reviewed her code. In WinningState.cs, this is consistent. 
+Some pros of her Code Quality is her use of constants like "animationTotalDuration" and "flashDuration" to improve maintainability. She also 
+used existing sprite classes, specifically "PickUpSprite" and "Triforce" instead of hardcoding logic, which helps with reuse with other items 
+that get picked up. I don't like the use of magic numbers in her code, but that is a minor issue and very common in this class I would guess. 
+Another issue is "Game1" is passed into the class, and there are a few tightly coupled methods like "game.ResetGame()" that discourage reusability. 
