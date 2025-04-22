@@ -27,6 +27,3 @@ CONTROLS:
 CHEATS(INPUT BUFFER):
 FIREBALL MOVEMENT DIRECTIONS:
 UP, RIGHT, DOWN, LEFT, DOWN, RIGHT, UP, +Direction of fireball
-
-Known bugs:
-water is walkable (must make deeper)
