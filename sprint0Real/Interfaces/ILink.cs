@@ -28,6 +28,8 @@ namespace sprint0Real.Interfaces
 
         public void SetCanAttack(bool canAttack);
         public void DrawWeaponSprite();
+
+        public void DrawFireball();
         public void DrawItemSprite();
         public Color GetLinkColor();
 

@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework.Audio;
 using sprint0Real.Audio;
 using sprint0Real.GameState.NameRegistrationandAchievements;
+using sprint0Real.WolfLink;
+
 namespace sprint0Real.LinkStuff
 {
     public class Inventory
@@ -23,6 +26,9 @@ namespace sprint0Real.LinkStuff
         public int BombCount { get; set; }
 
         public int RedPotionCount {  get; set; }
+        public enum CandleType { None, Blue, Red }
+        public CandleType CurrentCandle = CandleType.None;
+        public bool blueCandleUsedThisRoom = false;
 
         //Original game has ability to increase max bombs
         //Hell if we're implementing that though

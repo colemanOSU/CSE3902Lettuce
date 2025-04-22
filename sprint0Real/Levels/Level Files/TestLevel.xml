@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LevelData>
+	<Name>TestLevel</Name>
+	<Door Exterior ="Default" Interior ="Default" Left="Default" Right="Default" Up="Open" Down="Default"/>
+
+	<Objects>
+		<Object Type="Dino" x="300" y="0"/>
+		<Object Type="Map" x="50" y="150"/>
+		<Object Type="Arrow" x="450" y="200"/>
+		<Object Type="Heart" x="350" y="200"/>
+		<Object Type="Fairy" x="450" y="50"/>
+		<Object Type="Rupee" x="150" y="150"/>
+		<Object Type="FiveRupies" x="150" y="250"/>
+		<Object Type="WhiteSword" x="400" y="100"/>
+		<Object Type="Key" x="450" y="240"/>
+		<Object Type="ContainerHeart" x="250" y="50"/>
+		<Object Type="Compass" x="240" y="150"/>
+		<Object Type="LifePotion" x="240" y="250"/>
+		<Object Type="Boomerang" x="400" y="50"/>
+		<Object Type="WolfBubble" x="400" y="100"/>
+		<Object Type="Clock" x="100" y="100"/>
+		<Object Type="BlueCandle" x="400" y="150"/>
+		<Object Type="RedCandle" x="400" y="300"/>
+	</Objects>
+
+	<MapHitBoxes>
+
+		<HitBox Type="Border" x="429" y="432" width="336" height="96"/>
+		<HitBox Type="Border" x="0" y="432" width="336" height="96"/>
+		<HitBox Type="Border" x="669" y="312" width="96" height="216"/>
+		<HitBox Type="Border" x="0" y="312" width="96" height="216"/>
+
+		<HitBox Type="Border" x="0" y="0" width="336" height="96"/>
+		<HitBox Type="Border" x="429" y="0" width="336" height="96"/>
+		<HitBox Type="Border" x="0" y="0" width="96" height="216"/>
+		<HitBox Type="Border" x="669" y="0" width="96" height="216"/>
+
+		<HitBox Type="Border" x="0" y="216" width="96" height="96" direction="Left"/>
+		<HitBox Type="Border" x="672" y="216" width="80" height="96" direction="Right"/>
+		<HitBox Type="RoomTransitionBox" x="336" y="0" width="96" height="96" direction="Up"/>
+		<HitBox Type="Border" x="336" y="432" width="96" height="96"/>
+	</MapHitBoxes>
+
+	<Neighbors>
+		<Neighbor Side="Up" Name="Entrance"/>
+	</Neighbors>
+</LevelData>

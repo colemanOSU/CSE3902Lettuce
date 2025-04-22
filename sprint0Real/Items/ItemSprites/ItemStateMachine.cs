@@ -18,7 +18,6 @@ namespace sprint0Real.LinkSprites
     //to play based on the properties of both
     public class ItemStateMachine
     {
-
         private Inventory inventory;
         private Inventory.Items currentItem;
         private Inventory.Swords currentSwords;
@@ -43,8 +42,10 @@ namespace sprint0Real.LinkSprites
             currentItem = inventory.CurrentItem;
             currentSwords = inventory.CurrentSword;
             bombCount = inventory.BombCount;
+        }
+        public void SetItem(int num, Game1 game)
+        {
 
-            //System.Diagnostics.Debug.WriteLine($"Updated currentItem: {currentItem}");
         }
         public void setActive()
         {
@@ -89,8 +90,30 @@ namespace sprint0Real.LinkSprites
                 }
             }
         }
+        public void DrawFireball()
+        {
+            CurrentMap.Instance.ObjectList().RemoveAll(obj => obj is ILinkSprite && obj != myGame.weaponItemsA);
+            CurrentMap.Instance.ObjectList().RemoveAll(obj => obj is ILinkSprite && obj != myGame.weaponItemsB);
+            if (myGame.weaponItemsA != null && !(myGame.weaponItemsA is NullSprite))
+            {
+                CurrentMap.Instance.ObjectList().Remove(myGame.weaponItemsA);
+            }
+
+
+            
+            myGame.weaponItemsA = new linkFire(myGame.bossesSheet, myGame);
+
+            if (!CurrentMap.Instance.ObjectList().Contains(myGame.weaponItemsA))
+            {
+                CurrentMap.Instance.ObjectList().Add(myGame.weaponItemsA);
+            }
+        }
         public void DrawItemSprite()
         {
+            if (myGame.weaponItemsB is FireSprite fire && fire.IsActive)
+            {
+                return;
+            }
             if (isNoItem && currentItem == Inventory.Items.Bomb) return;
             CurrentMap.Instance.ObjectList().RemoveAll(obj => obj is ILinkSprite && obj != myGame.weaponItemsA);
             CurrentMap.Instance.ObjectList().RemoveAll(obj => obj is ILinkSprite && obj != myGame.weaponItemsB);
@@ -117,6 +140,15 @@ namespace sprint0Real.LinkSprites
             UpdateEquippedItems(new GameTime()); 
 
             ILinkSprite item = CreateItemInstance(currentItem);
+            
+            if (item is FireSprite)
+            {
+                if (currentItem == Inventory.Items.Blue_Candle)
+                {
+                    myGame.Link.GetInventory().blueCandleUsedThisRoom = true;
+                }
+                timeSinceLastUse = 0;
+            }
 
             if (currentItem == Inventory.Items.Bomb)
             {
@@ -154,17 +186,33 @@ namespace sprint0Real.LinkSprites
         }
         private ILinkSprite CreateItemInstance(Inventory.Items item)
         {
-            return item switch
+            switch (item)
             {
-                //Inventory.Items.MagicRod => new MagicRod(myGame.linkSheet, myGame),
-                Inventory.Items.Arrow => new WoodArrow(myGame.linkSheet, myGame),
-                Inventory.Items.Silver_Arrow => new BlueArrowSprite(myGame.linkSheet, myGame),
-                Inventory.Items.Boomerang => new WoodBoomerangSprite(myGame.linkSheet, myGame),
-                Inventory.Items.M_Boomerang => new BlueBoomerangSprite(myGame.linkSheet, myGame),
-                Inventory.Items.Bomb => new BombSprite(myGame.linkSheet, myGame),
-                // Inventory.Items.Fire => new FireSprite(myGame.linkSheet, myGame),
-                _ => new NullSprite(myGame.linkSheet, myGame),
-            };
+                case Inventory.Items.Red_Candle:
+                    return new FireSprite(myGame.linkSheet, myGame);
+
+                case Inventory.Items.Blue_Candle:
+                    if (!myGame.Link.GetInventory().blueCandleUsedThisRoom)
+                    {
+                        return new FireSprite(myGame.linkSheet, myGame);
+                    }
+                    return new NullSprite(myGame.linkSheet, myGame);
+
+                // Other items
+                case Inventory.Items.Arrow:
+                    return new WoodArrow(myGame.linkSheet, myGame);
+                case Inventory.Items.Silver_Arrow:
+                    return new BlueArrowSprite(myGame.linkSheet, myGame);
+                case Inventory.Items.Boomerang:
+                    return new WoodBoomerangSprite(myGame.linkSheet, myGame);
+                case Inventory.Items.M_Boomerang:
+                    return new BlueBoomerangSprite(myGame.linkSheet, myGame);
+                case Inventory.Items.Bomb:
+                    return new BombSprite(myGame.linkSheet, myGame);
+
+                default:
+                    return new NullSprite(myGame.linkSheet, myGame);
+            }
         }
 
     }

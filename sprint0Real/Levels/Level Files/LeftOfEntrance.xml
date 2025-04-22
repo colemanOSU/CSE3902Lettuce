@@ -5,7 +5,7 @@
 
 	<Objects>
 		<Object Type="Bat" x="96" y="96" />
-		<Object Type="Bat" x="192" y="144" />
+		<Object Type="Bat" x="192" y="144" Item ="Key"/>
 		<Object Type="Bat" x="96" y="288" />
 	</Objects>
 
@@ -24,8 +24,6 @@
 		<HitBox Type="SealedTransitionBox" x="672" y="216" width="80" height="96" direction="Right"/>
 		<HitBox Type="Border" x="336" y="0" width="96" height="96"/>
 		<HitBox Type="Border" x="336" y="432" width="96" height="96"/>
-
-		<HitBox Type="HandSpawner" x="0" y="0" width="240" height="240"/>
 	</MapHitBoxes>
 
 	<Neighbors>

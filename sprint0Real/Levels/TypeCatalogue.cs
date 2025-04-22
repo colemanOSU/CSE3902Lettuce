@@ -28,6 +28,7 @@ namespace sprint0Real.Levels
             objectCatalogue.Add("BlackBlock", "sprint0Real.BlockSprites.BlockSpriteBlack");
             objectCatalogue.Add("NavyBlock", "sprint0Real.BlockSprites.BlockSpriteNavy");
             objectCatalogue.Add("BlockTile", "sprint0Real.BlockSprites.BlockSpriteFloorBlock");
+            objectCatalogue.Add("Stairs", "sprint0Real.BlockSprites.BlockSpriteStairs");
 
             objectCatalogue.Add("Message", "sprint0Real.TreasureItemStuff.TreasureItemSprites.StaticTextSprite");
 
@@ -73,6 +74,7 @@ namespace sprint0Real.Levels
             objectCatalogue.Add("LockedTransitionBox", "sprint0Real.CollisionBoxes.LockedTransitionBox");
             objectCatalogue.Add("BreachableTransitionBox", "sprint0Real.CollisionBoxes.BreachableTransitionBox");
             objectCatalogue.Add("HandSpawner", "sprint0Real.CollisionBoxes.HandVicinitySpawner");
+            objectCatalogue.Add("DungeonCollisionBox", "sprint0Real.CollisionBoxes.DungeonCollisionBox");
 
             objectCatalogue.Add("Oldman", "sprint0Real.NPCStuff.OldManSprite");
             objectCatalogue.Add("Fire", "sprint0Real.NPCStuff.FireSprite");

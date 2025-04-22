@@ -15,6 +15,7 @@ namespace sprint0Real.Items.ItemSprites
     internal class FireSprite : ILinkSprite
     {
         public bool IsActive { get; private set; } = false; // Start inactive
+        public bool IsFinished { get; private set; } = false;
 
         public void Disable()
         {
@@ -98,7 +99,7 @@ namespace sprint0Real.Items.ItemSprites
         {
             if (!SoundPlayed)
             {
-                SoundEffectFactory.Instance.Play(SoundEffectType.swordShoot);
+                SoundEffectFactory.Instance.Play(SoundEffectType.Candle);
                 SoundPlayed = true;
             }
             _timer += gameTime.ElapsedGameTime.TotalSeconds * 2;
@@ -122,6 +123,7 @@ namespace sprint0Real.Items.ItemSprites
                 if (delayTimer >= delayDuration)
                 {
                     isDelaying = false;
+                    IsFinished = true;
                     myGame.weaponItemsB = new NullSprite(_texture,myGame);
                 }
             }

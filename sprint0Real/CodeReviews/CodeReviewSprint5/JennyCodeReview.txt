@@ -1,0 +1,20 @@
+Author: Jenny Ding
+Date: 4/21/2025
+Sprint 5
+I'm reviewing Kelly's code for BeamSprite.cs
+This review took me about 10 minutes
+
+READABILITY:
+This file is pretty readable, all the variables are named properly and 
+their purposes are clear(examples would be StartSource, MidSource, etc). 
+The class is also small enough so all the components are clear to see,
+the draw and update functions are also easy to follow with some 
+comments. I don't think I have anything to add on this, it is very
+easy to follow and know what everything is doing.
+
+MAINTAINABILITY:
+This file is decently maintainable, the only thing I think I
+can talk about is the magic numbers, putting them into constant variables
+will probably make the class more maintainable, but in this context I think
+it is okay to just leave them out, and I do that too. Overall I think this 
+class is very maintainable.

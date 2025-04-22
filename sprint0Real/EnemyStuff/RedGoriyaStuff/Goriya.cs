@@ -82,6 +82,10 @@ namespace sprint0Real.EnemyStuff.RedGoriya
 
         public void TakeDamage(int damage)
         {
+            if (IsStunned)
+            {
+                return;
+            }
             behavior.TakeDamage();
             stateMachine.TakeDamage(damage);
         }

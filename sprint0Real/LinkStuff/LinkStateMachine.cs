@@ -13,6 +13,9 @@ namespace sprint0Real.LinkStuff
     {
 
         private ILink Link;
+
+        private int phaseCounter;
+
         private double DamageFrameCount;
         private double PhaseFrameCount;
 
@@ -65,7 +68,7 @@ namespace sprint0Real.LinkStuff
                 }
 
             }
-            if (Link.IsPhaseActive())
+            if (Link.IsPhaseActive() & phaseCounter > 500) 
             {
                 PhaseFrameCount = PhaseFrameCount + 0.2;
                 switch ((int)PhaseFrameCount)
@@ -90,11 +93,21 @@ namespace sprint0Real.LinkStuff
 
                 if (PhaseLoops >= 5)
                 {
+                    phaseCounter = 0;
                     PhaseLoops = 0;
                     Link.SwitchPhaseActive();
                     Link.SetLinkColor(Color.White);
                 }
 
+            }
+            else if (Link.IsPhaseActive())
+            {
+                phaseCounter++;
+                Link.SwitchPhaseActive();
+            }
+            else
+            {
+                phaseCounter++;
             }
         }
     }

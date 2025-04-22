@@ -3,7 +3,7 @@ This program serves as a recreation of the first dungeon of the The Legend of Ze
 AUTHORS:
 Kelly Coleman
 Jenny Ding
-Avi Puri
+Ariv Puri
 Allen Sluss
 Andrea Stewart
 Jian Wang
@@ -11,6 +11,7 @@ Jian Wang
 CONTROLS:
 	WASD and Arrow Keys: Directional Movement (item selection movement in menu screen and Name Registration)
 	Z and N Keys: Link Attack With Current Item
+	F Key: Activates Temporary Phase For Link Where He Cannot be Damaged by ememies.
 	E Key: Induce Spontaneous Damage In Link
 	Q: Quit The Program
 	R: Reset Program
@@ -23,5 +24,6 @@ CONTROLS:
 	SPACE: View Achievements
 	TAB: Switch between create new name or selecting from most recent 3 players
 
-Known bugs:
-water is walkable (must make deeper)
+CHEATS(INPUT BUFFER):
+FIREBALL MOVEMENT DIRECTIONS:
+UP, RIGHT, DOWN, LEFT, DOWN, RIGHT, UP, +Direction of fireball

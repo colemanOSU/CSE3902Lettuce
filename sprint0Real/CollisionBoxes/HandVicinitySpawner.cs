@@ -19,7 +19,7 @@ namespace sprint0Real.CollisionBoxes
 
         private bool spawnFlag = false;
         private float spawnTimer = 0f;
-        private float spawnDelay = 4f;
+        private float spawnDelay = 0.5f;
 
         public HandVicinitySpawner(Rectangle destinationRectangle)
         {
@@ -31,10 +31,10 @@ namespace sprint0Real.CollisionBoxes
         }
         private void SpawnHand()
         {
+            spawnDelay = (float)random.NextDouble() * 2 + 2;
             float spawnLocation = (float)random.NextDouble() * Rect.Width + Rect.Left;
             if (Top)
             {
-                Debug.Print(spawnLocation.ToString());
                 CurrentMap.Instance.Stage(new Hand(new Vector2(spawnLocation, 138)));
             }
             else

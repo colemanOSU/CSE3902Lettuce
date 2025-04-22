@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <LevelData>
 	<Name>Level9</Name>
-	<Door Exterior ="Default" Interior ="Default" Left="Locked" Right="Open" Up="Default" Down="Breached"/>
+	<Door Exterior ="Default" Interior ="Default" Left="Locked" Right="Open" Up="Default" Down="Default"/>
 	
 	<Objects>
 		<Object Type="Goriya" x="384" y="0"/>
 		<Object Type="Goriya" x="384" y="240"/>
-		<Object Type="Goriya" x="480" y="48"/>
+		<Object Type="Goriya" x="480" y="48" Item="Boomerang"/>
 
 		<Object Type="BlockTile" x="96" y="96"/>
 		<Object Type="BlockTile" x="432" y="96"/>
@@ -28,7 +28,7 @@
 		<HitBox Type="RoomTransitionBox" x="0" y="216" width="96" height="96" direction="Left"/>
 		<HitBox Type="RoomTransitionBox" x="672" y="216" width="80" height="96" direction="Right"/>
 		<HitBox Type="Border" x="336" y="0" width="96" height="96" direction="Up"/>
-		<HitBox Type="RoomTransitionBox" x="336" y="432" width="96" height="96" direction="Down"/>
+		<HitBox Type="BreachableTransitionBox" x="336" y="432" width="96" height="96" direction="Down"/>
 	</MapHitBoxes>
 
 	<Neighbors>

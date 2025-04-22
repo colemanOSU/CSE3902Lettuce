@@ -55,6 +55,10 @@ namespace sprint0Real.EnemyStuff.HandStuff
 
         public void TakeDamage(int damage)
         {
+            if (IsStunned)
+            {
+                return;
+            }
             stateMachine.TakeDamage(damage);
         }
 

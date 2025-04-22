@@ -21,7 +21,7 @@ namespace sprint0Real.Items.ItemSprites
             IsActive = true;
         }
 
-        private Rectangle sourceRectangle = new(191, 185, 16, 16);
+        private Rectangle sourceRectangle = new Rectangle(101, 11, 7, 15);
         private Rectangle destinationRectangle;
 
         private Texture2D _texture;
