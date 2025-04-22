@@ -54,6 +54,7 @@ namespace sprint0Real.Collisions
             collisionCommands.Add(("Link", "BlockSpriteStripes"), new LinkBlockCollisionCommand());
             collisionCommands.Add(("Link", "BlockSpriteStairs"), new LinkStairsCollisionCommand());
             collisionCommands.Add(("Enemy", "Border"), new EnemyBorderCommand());
+            collisionCommands.Add(("Link", "DungeonCollisionBox"), new LinkBorderCommand());
             collisionCommands.Add(("Enemy", "BlockSpriteFloorBlock"), new EnemyBlockCommand());
 
             collisionCommands.Add(("Enemy", "RoomTransitionBox"), new EnemyTransitionBoxes());
