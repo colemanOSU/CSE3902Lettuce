@@ -73,6 +73,10 @@ namespace sprint0Real.EnemyStuff.BatStuff
         
         public void TakeDamage(int damage)
         {
+            if (IsStunned)
+            {
+                return;
+            }
             stateMachine.TakeDamage(damage);
         }
         public void ChangeDirection()
