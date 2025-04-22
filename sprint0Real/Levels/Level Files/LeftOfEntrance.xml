@@ -24,8 +24,6 @@
 		<HitBox Type="SealedTransitionBox" x="672" y="216" width="80" height="96" direction="Right"/>
 		<HitBox Type="Border" x="336" y="0" width="96" height="96"/>
 		<HitBox Type="Border" x="336" y="432" width="96" height="96"/>
-
-		<HitBox Type="HandSpawner" x="0" y="0" width="240" height="240"/>
 	</MapHitBoxes>
 
 	<Neighbors>
