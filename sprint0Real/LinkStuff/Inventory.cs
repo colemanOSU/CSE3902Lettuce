@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Microsoft.Xna.Framework.Audio;
 using sprint0Real.Audio;
 using sprint0Real.GameState.NameRegistrationandAchievements;
-using sprint0Real.WolfLink;
-using sprint0Real.Audio;
-
 namespace sprint0Real.LinkStuff
 {
     public class Inventory

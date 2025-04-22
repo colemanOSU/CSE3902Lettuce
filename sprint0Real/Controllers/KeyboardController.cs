@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using sprint0Real.Commands.KeyboardCommands;
 using sprint0Real.Interfaces;
-using sprint0Real.TreasureItemStuff;
-using sprint0Real.TreasureItemStuff.TreasureItemSprites;
 
 
 namespace sprint0Real.Controllers
@@ -58,17 +53,6 @@ namespace sprint0Real.Controllers
             commands.Add(Keys.Space, new ShowAchievementsCommand(_game));
             commands.Add(Keys.V, new MuteCommand(_game));
             commands.Add(Keys.F, new PhaseCommand(_game));
-
-            commands.Add(Keys.D1, new ItemChangeCommand(_game, 1));
-            commands.Add(Keys.D2, new ItemChangeCommand(_game, 2));
-            commands.Add(Keys.D3, new ItemChangeCommand(_game, 3));
-            commands.Add(Keys.D4, new ItemChangeCommand(_game, 4));
-            commands.Add(Keys.D5, new ItemChangeCommand(_game, 5));
-            commands.Add(Keys.D6, new ItemChangeCommand(_game, 6));
-            commands.Add(Keys.D7, new ItemChangeCommand(_game, 7));
-            commands.Add(Keys.D8, new ItemChangeCommand(_game, 8));
-            commands.Add(Keys.D9, new ItemChangeCommand(_game, 9));
-            commands.Add(Keys.D0, new ItemChangeCommand(_game, 0));
 
 
 

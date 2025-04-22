@@ -128,12 +128,6 @@ internal class WinningState
         }
         if (isFinished)
         {
-            string message = "YOU WON!";
-            Vector2 size = winFont.MeasureString(message);
-            Vector2 position = new Vector2(
-                (screenWidth - size.X) / 2,
-                (screenHeight - size.Y) / 2
-            );
             spriteBatch.Draw(SpriteSheet, new Rectangle(Game1.SCREENMIDX - 82 * Game1.RENDERSCALE, Game1.SCREENMIDY - 4 * Game1.RENDERSCALE, 164 * Game1.RENDERSCALE, 9 * Game1.RENDERSCALE), new Rectangle(258, 98, 164, 9), Color.White);
 
         }

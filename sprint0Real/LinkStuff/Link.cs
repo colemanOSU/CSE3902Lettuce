@@ -5,11 +5,6 @@ using sprint0Real.LinkSprites;
 using sprint0Real;
 using sprint0Real.LinkStuff;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Media;
-using System.Diagnostics;
-using sprint0Real.LinkStuff.LinkSprites;
-using System.Security.Cryptography;
-using Microsoft.Xna.Framework.Audio;
 using sprint0Real.WolfLink;
 using sprint0Real.Audio;
 public class Link : ILink
@@ -80,11 +75,6 @@ public class Link : ILink
         LinkSpriteColor = color;
     }
 
-    //ItemStateMachine
-    public void SetItem(int num, Game1 game)
-    {
-        itemStateMachine.SetItem(num,game);
-    }
     public void DrawWeaponSprite()
     {
         itemStateMachine.DrawWeaponSprite();
@@ -202,20 +192,6 @@ public class Link : ILink
     public void SetFacing(Direction facing)
     {
         Facing = facing;
-    }
-
-    // Make the compiler happy
-    public void NextItem()
-    {
-    }
-
-    public void LastItem()
-    {
-    }
-
-    public void DamageLink()
-    {
-    
     }
 
     public bool IsDamaged()

@@ -21,8 +21,4 @@ namespace sprint0Real.GameState
         Winning,
         GameOver
     }
-    internal class GameState
-    {
-       
-    }
 }

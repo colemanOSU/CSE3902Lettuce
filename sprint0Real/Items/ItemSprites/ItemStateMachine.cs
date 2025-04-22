@@ -18,21 +18,7 @@ namespace sprint0Real.LinkSprites
     //to play based on the properties of both
     public class ItemStateMachine
     {
-        /*
-        public enum Item
-        {
-            WoodSword,
-            Whitesword,
-            MagicRod,
-            WoodArrow,
-            BlueArrow,
-            WoodBoomerang,
-            BlueBoomerang,
-            Bomb,
-            Fire,
-            MagicSword
-        }
-        */
+
         private Inventory inventory;
         private Inventory.Items currentItem;
         private Inventory.Swords currentSwords;
@@ -59,45 +45,6 @@ namespace sprint0Real.LinkSprites
             bombCount = inventory.BombCount;
 
             //System.Diagnostics.Debug.WriteLine($"Updated currentItem: {currentItem}");
-        }
-        public void SetItem(int num, Game1 game)
-        {
-            /*
-            switch (num)
-            {
-                case 1:
-                    CurrentItem = Item.WoodSword;
-                    break;
-                case 2:
-                    CurrentItem = Item.Whitesword;
-                    break;
-                case 3:
-                    CurrentItem = Item.MagicRod;
-                    break;
-                case 4:
-                    CurrentItem = Item.WoodArrow;
-                    break;
-                case 5:
-                    CurrentItem = Item.BlueArrow;
-                    break
-            ;   case 6:
-                    CurrentItem = Item.WoodBoomerang;
-                    break;
-                case 7:
-                    CurrentItem = Item.BlueBoomerang;
-                    break;
-                case 8:
-                    CurrentItem = Item.Bomb;
-                    break;
-                case 9:
-                    CurrentItem = Item.Fire;
-                    break;
-                case 0:
-                    CurrentItem = Item.MagicSword;
-                    break;
-            }
-            */
-
         }
         public void setActive()
         {

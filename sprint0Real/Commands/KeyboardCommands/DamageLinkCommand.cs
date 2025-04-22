@@ -17,7 +17,6 @@ namespace sprint0Real.Commands.KeyboardCommands
 
         public void Execute()
         {
-            myGame.Link.DamageLink();
             myGame.LinkState.DamageLink();
         }
     }

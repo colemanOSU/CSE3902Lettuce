@@ -27,15 +27,9 @@ namespace sprint0Real.Interfaces
         public void SetFacing(Direction facing);
 
         public void SetCanAttack(bool canAttack);
-        public void SetItem(int num,Game1 game);
         public void DrawWeaponSprite();
         public void DrawItemSprite();
-        public void NextItem();
-        public void LastItem();
-
         public Color GetLinkColor();
-
-        public void DamageLink();
 
         public bool IsDamaged();
 
